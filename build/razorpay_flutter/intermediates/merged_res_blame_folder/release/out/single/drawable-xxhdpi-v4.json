@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "D:\\Downloads\\FabFurni\\FabFurni\\build\\razorpay_flutter\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4\\googleg_standard_color_18.png",
+        "source": "C:\\Users\\Keshav Kumar\\.gradle\\caches\\transforms-3\\0ad2712fea70403ce172435aaa230d4d\\transformed\\jetified-play-services-base-17.5.0\\res\\drawable-xxhdpi-v4\\googleg_standard_color_18.png"
+    },
+    {
+        "merged": "D:\\Downloads\\FabFurni\\FabFurni\\build\\razorpay_flutter\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4\\googleg_disabled_color_18.png",
+        "source": "C:\\Users\\Keshav Kumar\\.gradle\\caches\\transforms-3\\0ad2712fea70403ce172435aaa230d4d\\transformed\\jetified-play-services-base-17.5.0\\res\\drawable-xxhdpi-v4\\googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "D:\\Downloads\\FabFurni\\FabFurni\\build\\razorpay_flutter\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4\\rzp_name_logo.png",
+        "source": "C:\\Users\\Keshav Kumar\\.gradle\\caches\\transforms-3\\9849bbe06c66abdd8c9dc173bf3e7035\\transformed\\jetified-checkout-1.6.31\\res\\drawable-xxhdpi-v4\\rzp_name_logo.png"
+    },
+    {
+        "merged": "D:\\Downloads\\FabFurni\\FabFurni\\build\\razorpay_flutter\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png",
+        "source": "C:\\Users\\Keshav Kumar\\.gradle\\caches\\transforms-3\\0ad2712fea70403ce172435aaa230d4d\\transformed\\jetified-play-services-base-17.5.0\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\Downloads\\FabFurni\\FabFurni\\build\\razorpay_flutter\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4\\rzp_logo.png",
+        "source": "C:\\Users\\Keshav Kumar\\.gradle\\caches\\transforms-3\\9849bbe06c66abdd8c9dc173bf3e7035\\transformed\\jetified-checkout-1.6.31\\res\\drawable-xxhdpi-v4\\rzp_logo.png"
+    },
+    {
+        "merged": "D:\\Downloads\\FabFurni\\FabFurni\\build\\razorpay_flutter\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png",
+        "source": "C:\\Users\\Keshav Kumar\\.gradle\\caches\\transforms-3\\0ad2712fea70403ce172435aaa230d4d\\transformed\\jetified-play-services-base-17.5.0\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\Downloads\\FabFurni\\FabFurni\\build\\razorpay_flutter\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4\\ic_alert.png",
+        "source": "C:\\Users\\Keshav Kumar\\.gradle\\caches\\transforms-3\\9849bbe06c66abdd8c9dc173bf3e7035\\transformed\\jetified-checkout-1.6.31\\res\\drawable-xxhdpi-v4\\ic_alert.png"
+    },
+    {
+        "merged": "D:\\Downloads\\FabFurni\\FabFurni\\build\\razorpay_flutter\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png",
+        "source": "C:\\Users\\Keshav Kumar\\.gradle\\caches\\transforms-3\\0ad2712fea70403ce172435aaa230d4d\\transformed\\jetified-play-services-base-17.5.0\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\Downloads\\FabFurni\\FabFurni\\build\\razorpay_flutter\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png",
+        "source": "C:\\Users\\Keshav Kumar\\.gradle\\caches\\transforms-3\\0ad2712fea70403ce172435aaa230d4d\\transformed\\jetified-play-services-base-17.5.0\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\Downloads\\FabFurni\\FabFurni\\build\\razorpay_flutter\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4\\ic_tick_mark.png",
+        "source": "C:\\Users\\Keshav Kumar\\.gradle\\caches\\transforms-3\\9849bbe06c66abdd8c9dc173bf3e7035\\transformed\\jetified-checkout-1.6.31\\res\\drawable-xxhdpi-v4\\ic_tick_mark.png"
+    }
+]
