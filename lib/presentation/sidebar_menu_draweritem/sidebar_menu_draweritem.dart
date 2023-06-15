@@ -1,7 +1,10 @@
+import 'package:keshav_s_application2/presentation/drawermenuitems/blogs/BlogsScreen.dart';
+import 'package:keshav_s_application2/presentation/drawermenuitems/offers/OffersScreen.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/presentation/profile_screen/profile_screen.dart';
 import 'package:keshav_s_application2/presentation/store_screen/store_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:sizer/sizer.dart';
 
 import 'controller/sidebar_menu_controller.dart';
 import 'package:flutter/material.dart';
@@ -166,49 +169,89 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                           size: Size(280, 2),
                           painter: CurvePainter(),
                         ),
-                        Padding(
-                            padding: getPadding(left:18,right: 24,top:20,bottom: 10),
-                            child: Text("lbl_gift_cards".tr,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,color: ColorConstant.black900,)
-                            )),
-                        Padding(
-                            padding: getPadding(left:18,right: 24,top:10,bottom: 10),
-                            child: Text("msg_corporate_enquiries".tr,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
-                        Padding(
-                            padding: getPadding(left:18,right: 24,top:10,bottom: 10),
-                            child: Text("lbl_find_a_studio".tr,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
-                        Padding(
-                            padding: getPadding(left:18,right: 24,top:10,bottom: 10),
-                            child: Text("lbl_buy_on_phone".tr,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
-                        Padding(
-                            padding: getPadding(left:18,right: 24,top:10,bottom: 10),
-                            child: Text("lbl_our_blogs".tr,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
-                        Padding(
-                            padding: getPadding(left:18,right: 24,top:10,bottom: 10),
-                            child: Text("lbl_partner_with_us".tr,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => OffersScreen(widget.data),
+                            ));
+                          },
+                          child: Container(
+                              width: 75.w,
+                              padding: getPadding(left:18,right: 24,top:20,bottom: 10),
+                              child: Text("Offers",
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,)
+                              )),
+                        ),
+                        InkWell(
+                          onTap: (){
+
+                          },
+                          child: Container(
+                              width: 75.w,
+                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              child: Text("msg_corporate_enquiries".tr,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                        ),
+                        InkWell(
+                          onTap: (){
+
+                          },
+                          child: Container(
+                              width: 75.w,
+                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              child: Text("lbl_find_a_studio".tr,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                        ),
+                        InkWell(
+                          onTap: (){
+
+                          },
+                          child: Container(
+                              width: 75.w,
+                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              child: Text("lbl_buy_on_phone".tr,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                        ),
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => BlogsScreen(widget.data),
+                            ));
+                          },
+                          child: Container(
+                              width: 75.w,
+                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              child: Text("lbl_our_blogs".tr,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                        ),
+                        InkWell(
+                          onTap: (){
+
+                          },
+                          child: Container(
+                              width: 75.w,
+                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              child: Text("lbl_partner_with_us".tr,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                        ),
 
                         SizedBox(height: 20,),
                         CustomPaint(

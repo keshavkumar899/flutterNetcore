@@ -1641,7 +1641,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
       backgroundColor: Colors.transparent,
       builder: (BuildContext context) {
         return Container(
-            height: MediaQuery.of(context).size.height * 0.4,
+            height: MediaQuery.of(context).size.height * 0.33,
             decoration: new BoxDecoration(
               color: Colors.white,
               borderRadius: new BorderRadius.only(
@@ -1683,7 +1683,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
       backgroundColor: Colors.transparent,
       builder: (BuildContext context) {
         return Container(
-            height: MediaQuery.of(context).size.height * 0.6,
+            height: MediaQuery.of(context).size.height * 0.85,
             decoration: new BoxDecoration(
               color: Colors.white,
               borderRadius: new BorderRadius.only(
