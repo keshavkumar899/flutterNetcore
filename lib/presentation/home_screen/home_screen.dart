@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:animated_shimmer/animated_shimmer.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:keshav_s_application2/presentation/cart_screen/cart_screen.dart';
 import 'package:keshav_s_application2/presentation/click_after_slect_tab_furniture_screen/click_after_slect_tab_furniture_screen.dart';
 import 'package:keshav_s_application2/presentation/home_screen/models/HomeModel.dart'
     as homes;
+import 'package:card_loading/card_loading.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/presentation/product_detail_screen/product_detail_screen.dart';
 import 'package:keshav_s_application2/presentation/select_product_screen/productlistafterclickionbanner.dart';
@@ -743,10 +745,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                           (context, child, loadingProgress) =>
                                               (loadingProgress == null)
                                                   ? child
-                                                  : CircularProgressIndicator(
-                                                      color: Color(0xff9BA6BF),
-                                                      strokeWidth: 2,
-                                                    ),
+                                                  : AnimatedShimmer(
+                                                height: 206,
+                                                width: 100.w,
+                                                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                              ),
+                                              // CircularProgressIndicator(
+                                              //         color: Color(0xff9BA6BF),
+                                              //         strokeWidth: 2,
+                                              //       ),
                                       errorBuilder: (context, error, stackTrace) =>
                                           Image.asset(
                                               "assets/images/image_not_found.png"),
@@ -899,10 +907,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                             (context, child, loadingProgress) =>
                                                 (loadingProgress == null)
                                                     ? child
-                                                    : CircularProgressIndicator(
-                                                        color: Color(0xff9BA6BF),
-                                                        strokeWidth: 2,
-                                                      ),
+                                                    : AnimatedShimmer(
+                                                  height: 206,
+                                                  width: 250,
+                                                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                  delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                ),
                                         errorBuilder: (context, error, stackTrace) =>
                                             Image.asset(
                                                 "assets/images/image_not_found.png"),
@@ -1350,11 +1360,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             loadingProgress) =>
                                                         (loadingProgress == null)
                                                             ? child
-                                                            : CircularProgressIndicator(
-                                                                color: Color(
-                                                                    0xff9BA6BF),
-                                                                strokeWidth: 2,
-                                                              ),
+                                                            : AnimatedShimmer(
+                                                          height: 280,
+                                                          width: 150,
+                                                          borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                          delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                        ),
                                                     errorBuilder: (context, error,
                                                             stackTrace) =>
                                                         Image.asset(
@@ -1493,10 +1504,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     loadingProgress) =>
                                                 (loadingProgress == null)
                                                     ? child
-                                                    : CircularProgressIndicator(
-                                                        color: Color(0xff9BA6BF),
-                                                        strokeWidth: 2,
-                                                      ),
+                                                    : AnimatedShimmer(
+                                                  height: 145,
+                                                  width: 200,
+                                                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                  delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                ),
                                             errorBuilder: (context, error,
                                                     stackTrace) =>
                                                 Image.asset(
@@ -1651,11 +1664,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         loadingProgress) =>
                                                     (loadingProgress == null)
                                                         ? child
-                                                        : CircularProgressIndicator(
-                                                            color:
-                                                                Color(0xff9BA6BF),
-                                                            strokeWidth: 2,
-                                                          ),
+                                                        : AnimatedShimmer(
+                                                      height: 140,
+                                                      width: 150,
+                                                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                      delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                    ),
                                                 errorBuilder: (context, error,
                                                         stackTrace) =>
                                                     Image.asset(
@@ -1818,10 +1832,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                             (context, child, loadingProgress) =>
                                                 (loadingProgress == null)
                                                     ? child
-                                                    : CircularProgressIndicator(
-                                                        color: Color(0xff9BA6BF),
-                                                        strokeWidth: 2,
-                                                      ),
+                                                    : AnimatedShimmer(
+                                                  height: 140,
+                                                  width: 150,
+                                                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                  delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                ),
                                         errorBuilder: (context, error,
                                                 stackTrace) =>
                                             Image.asset(

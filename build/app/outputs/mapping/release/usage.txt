@@ -10415,8 +10415,12 @@ com.razorpay.AppSignatureHelper:
     public static final int NUM_BASE64_CHAR
     public static final int NUM_HASHED_BYTES
 com.razorpay.B$$W$:
+    private com.razorpay.q smsAgent
     public void addJavascriptInterfaceToPrimaryWebview(java.lang.Object,java.lang.String)
+    public void checkSmsPermission()
     public void loadData(int,java.lang.String,java.lang.String,java.lang.String)
+    public void postSms(java.lang.String,java.lang.String)
+    public void setSmsPermission(boolean)
 com.razorpay.BaseConfig:
     static final java.lang.String ADVERTISING_ID
     static final java.lang.String CONFIG_JSON
@@ -10505,7 +10509,10 @@ com.razorpay.Checkout:
     public final void setPublicKey(java.lang.String)
 com.razorpay.CheckoutActivity:
     public final synthetic bridge void addJavascriptInterfaceToPrimaryWebview(java.lang.Object,java.lang.String)
+    public final synthetic bridge void checkSmsPermission()
     public final synthetic bridge void loadData(int,java.lang.String,java.lang.String,java.lang.String)
+    public final synthetic bridge void postSms(java.lang.String,java.lang.String)
+    public final synthetic bridge void setSmsPermission(boolean)
 com.razorpay.CheckoutInteractor:
     public abstract void checkSmsPermission()
     public abstract void relay(java.lang.String)
@@ -10593,8 +10600,12 @@ com.razorpay.R$styleable
 com.razorpay.R$xml
 com.razorpay.R
 com.razorpay.RzpAssist:
+    java.lang.String message
     final void enableMagic()
     public final void paymentFlowEnd()
+    public final void postSms(java.lang.String,java.lang.String)
+    final void setOTPEnabled(boolean)
+    public final void setSmsPermission(boolean)
 com.razorpay.RzpGpayMerged
 com.razorpay.RzpGpayUtilMerged
 com.razorpay.RzpInternalCallback:
@@ -10609,6 +10620,7 @@ com.razorpay.RzpPluginCompatibilityResponse:
     void <init>(boolean,java.lang.String)
 com.razorpay.RzpPluginRegisterCallback:
     public abstract void onResponse(boolean)
+com.razorpay.SmsAgentInterface
 com.razorpay.a_$P$
 com.razorpay.c_$W_
 com.razorpay.c__C_
@@ -10622,7 +10634,7 @@ com.razorpay.l__d$
 com.razorpay.m
 com.razorpay.n
 com.razorpay.q:
-    final void b(android.app.Activity)
+    final void a(android.app.Activity)
 com.razorpay.r$_Y_:
     public final void onResponse(boolean)
 com.razorpay.r__Q_
@@ -10657,6 +10669,9 @@ com.razorpay.razorpay_flutter.RazorpayDelegate:
 com.razorpay.razorpay_flutter.RazorpayFlutterPlugin:
     private void <init>(io.flutter.plugin.common.PluginRegistry$Registrar)
     public static void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar)
+com.razorpay.w_$E$:
+    public void postSms(java.lang.String,java.lang.String)
+    public void setSmsPermission(boolean)
 com.tekartik.sqflite.BuildConfig
 com.tekartik.sqflite.Constant:
     static final java.lang.String CMD_GET

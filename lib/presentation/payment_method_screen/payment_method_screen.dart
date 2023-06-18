@@ -374,7 +374,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                                             letterSpacing:
                                                 getHorizontalSize(0.6))))
                           ])),
-                      /*Padding(
+                      Padding(
                           padding: getPadding(top: 14),
                           child: Divider(
                               height: getVerticalSize(1),
@@ -382,8 +382,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                               color: ColorConstant.purple5001)),
                       InkWell(
                         onTap: ()async{
-                          String orderId=getRandomString(10);
-                          await generateTxnToken(widget.total_amount, orderId,widget.userid);
+                          _startPayment();
                         },
                         child: Row(
                           children: [
@@ -421,8 +420,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                           ])),
                       InkWell(
                         onTap: ()async{
-                          String orderId=getRandomString(10);
-                          await generateTxnToken(widget.total_amount, orderId,widget.userid);
+                          _startPayment();
                         },
                         child: Row(
                           children: [
@@ -489,8 +487,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                           ])),
                       InkWell(
                         onTap: ()async{
-                          String orderId=getRandomString(10);
-                          await generateTxnToken(widget.total_amount, orderId,widget.userid);
+                          _startPayment();
                         },
                         child: Row(
                           children: [
@@ -557,8 +554,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                           ])),
                       InkWell(
                         onTap: ()async{
-                          String orderId=getRandomString(10);
-                          await generateTxnToken(widget.total_amount, orderId,widget.userid);
+                          _startPayment();
                         },
                         child: Row(
                           children: [
@@ -596,8 +592,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                           ])),
                       InkWell(
                         onTap: ()async{
-                          String orderId=getRandomString(10);
-                          await generateTxnToken(widget.total_amount, orderId,widget.userid);
+                          _startPayment();
                         },
                         child: Row(
                           children: [
@@ -632,23 +627,23 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                                         height: getVerticalSize(1),
                                         thickness: getVerticalSize(1),
                                         color: ColorConstant.purple5001)))
-                          ])),*/
-                      InkWell(
-                        onTap: ()async{
-                          _startPayment();
-                        },
-                        child: Row(
-                          children: [
-                            Padding(
-                                padding: getPadding(left: 25, top: 13),
-                                child: Text("Online",
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
-                                    style: AppStyle.txtRobotoMedium14.copyWith(
-                                        letterSpacing: getHorizontalSize(0.7)))),
-                          ],
-                        ),
-                      ),
+                          ])),
+                      // InkWell(
+                      //   onTap: ()async{
+                      //     _startPayment();
+                      //   },
+                      //   child: Row(
+                      //     children: [
+                      //       Padding(
+                      //           padding: getPadding(left: 25, top: 13),
+                      //           child: Text("Online",
+                      //               overflow: TextOverflow.ellipsis,
+                      //               textAlign: TextAlign.left,
+                      //               style: AppStyle.txtRobotoMedium14.copyWith(
+                      //                   letterSpacing: getHorizontalSize(0.7)))),
+                      //     ],
+                      //   ),
+                      // ),
                       Container(
                           height: getVerticalSize(1),
                           width: double.maxFinite,
@@ -671,34 +666,34 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                                         thickness: getVerticalSize(1),
                                         color: ColorConstant.purple5001)))
                           ])),
-                      InkWell(
-                        onTap: ()async{
-                          // String orderId=getRandomString(10);
-                          // await generateTxnToken(widget.total_amount, orderId,widget.userid);
-                          var number ="";
-                          var randomnumber=  Random();
-                          //chnage i < 15 on your digits need
-                          for (var i = 0; i < 10; i++) {
-                            number = number + randomnumber.nextInt(9).toString();
-                          }
-
-                          String transactionId=number.toString();
-                          print(transactionId);
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => OrderPlacedScreen(widget.total_amount,widget.address_id,widget.address1,widget.address2,widget.product_id,widget.userid,transactionId,widget.discount_price,widget.mrp_price,widget.data,'0')));
-
-                        },
-                        child: Row(
-                          children: [
-                            Padding(
-                                padding: getPadding(left: 25, top: 13),
-                                child: Text("Cash On Delivery".tr,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
-                                    style: AppStyle.txtRobotoMedium14.copyWith(
-                                        letterSpacing: getHorizontalSize(0.7)))),
-                          ],
-                        ),
-                      ),
+                      // InkWell(
+                      //   onTap: ()async{
+                      //     // String orderId=getRandomString(10);
+                      //     // await generateTxnToken(widget.total_amount, orderId,widget.userid);
+                      //     var number ="";
+                      //     var randomnumber=  Random();
+                      //     //chnage i < 15 on your digits need
+                      //     for (var i = 0; i < 10; i++) {
+                      //       number = number + randomnumber.nextInt(9).toString();
+                      //     }
+                      //
+                      //     String transactionId=number.toString();
+                      //     print(transactionId);
+                      //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => OrderPlacedScreen(widget.total_amount,widget.address_id,widget.address1,widget.address2,widget.product_id,widget.userid,transactionId,widget.discount_price,widget.mrp_price,widget.data,'0')));
+                      //
+                      //   },
+                      //   child: Row(
+                      //     children: [
+                      //       Padding(
+                      //           padding: getPadding(left: 25, top: 13),
+                      //           child: Text("Cash On Delivery".tr,
+                      //               overflow: TextOverflow.ellipsis,
+                      //               textAlign: TextAlign.left,
+                      //               style: AppStyle.txtRobotoMedium14.copyWith(
+                      //                   letterSpacing: getHorizontalSize(0.7)))),
+                      //     ],
+                      //   ),
+                      // ),
                       Padding(
                           padding: getPadding(top: 10),
                           child: Divider(

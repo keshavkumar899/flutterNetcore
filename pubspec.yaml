@@ -10,6 +10,8 @@ dependencies:
   connectivity_plus: ^4.0.1
   country_pickers: ^2.0.0
   paytm_allinonesdk: ^1.2.1
+  card_loading: ^0.3.0
+  animated_shimmer: ^1.0.0
   grouped_buttons: ^1.0.4
   shimmer_animation: ^2.1.0+1
   shared_preferences:

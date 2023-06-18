@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "animated_shimmer",
+      "rootUri": "file:///C:/Users/Keshav%20Kumar/AppData/Local/Pub/Cache/hosted/pub.dev/animated_shimmer-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "archive",
       "rootUri": "file:///C:/Users/Keshav%20Kumar/AppData/Local/Pub/Cache/hosted/pub.dev/archive-3.3.7",
       "packageUri": "lib/",
@@ -42,6 +48,12 @@
       "rootUri": "file:///C:/Users/Keshav%20Kumar/AppData/Local/Pub/Cache/hosted/pub.dev/cached_network_image_web-1.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "card_loading",
+      "rootUri": "file:///C:/Users/Keshav%20Kumar/AppData/Local/Pub/Cache/hosted/pub.dev/card_loading-0.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "carousel_pro",
@@ -668,7 +680,7 @@
       "languageVersion": "2.11"
     }
   ],
-  "generated": "2023-06-10T08:08:28.670081Z",
+  "generated": "2023-06-18T04:39:06.186127Z",
   "generator": "pub",
   "generatorVersion": "2.19.3"
 }

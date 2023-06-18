@@ -134,10 +134,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="com.razorpay:checkout:1.6.31@aar"
-      jars="C:\Users\Keshav Kumar\.gradle\caches\transforms-3\9849bbe06c66abdd8c9dc173bf3e7035\transformed\jetified-checkout-1.6.31\jars\classes.jar"
-      resolved="com.razorpay:checkout:1.6.31"
-      folder="C:\Users\Keshav Kumar\.gradle\caches\transforms-3\9849bbe06c66abdd8c9dc173bf3e7035\transformed\jetified-checkout-1.6.31"
+      name="com.razorpay:checkout:1.6.32@aar"
+      jars="C:\Users\Keshav Kumar\.gradle\caches\transforms-3\508fbead60639387a575d675fe7a25fd\transformed\jetified-checkout-1.6.32\jars\classes.jar"
+      resolved="com.razorpay:checkout:1.6.32"
+      folder="C:\Users\Keshav Kumar\.gradle\caches\transforms-3\508fbead60639387a575d675fe7a25fd\transformed\jetified-checkout-1.6.32"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

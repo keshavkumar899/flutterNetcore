@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 3.1.66
 # min_api: 21
-# pg_map_id: 64041ad
+# pg_map_id: 611c0d2
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"1.0"}
 a4.KeyEventChannel$$ExternalSyntheticLambda0 -> a4.c:
@@ -19142,25 +19142,21 @@ com.razorpay.B$$W$ -> com.razorpay.g:
     com.razorpay.CheckoutPresenter presenter -> j
     android.webkit.WebChromeClient primaryWebChromeClient -> n
     android.webkit.WebChromeClient secondaryWebChromeClient -> o
-    com.razorpay.q smsAgent -> q
     void hideProgressBar() -> a
     void showToast(java.lang.String,int) -> b
     void loadDataWithBaseURL(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> c
-    void setSmsPermission(boolean) -> d
-    void showProgressBar(int) -> e
-    void makeWebViewVisible(int) -> f
-    android.webkit.WebView getWebView(int) -> g
-    void postSms(java.lang.String,java.lang.String) -> h
-    void loadUrl(int,java.lang.String) -> i
-    void clearWebViewHistory(int) -> j
-    boolean isWebViewVisible(int) -> k
-    void destroy(int,java.lang.String) -> l
-    void checkSmsPermission() -> m
-    void createContainer() -> n
-    void createPrimaryWebView(java.lang.Object) -> o
-    void createSecondaryWebView() -> p
-    void setWebChromeClient(int,android.webkit.WebChromeClient) -> q
-    void setWebViewClient(int,android.webkit.WebViewClient) -> r
+    void showProgressBar(int) -> d
+    void makeWebViewVisible(int) -> e
+    android.webkit.WebView getWebView(int) -> f
+    void loadUrl(int,java.lang.String) -> g
+    void clearWebViewHistory(int) -> h
+    boolean isWebViewVisible(int) -> i
+    void destroy(int,java.lang.String) -> j
+    void createContainer() -> k
+    void createPrimaryWebView(java.lang.Object) -> l
+    void createSecondaryWebView() -> m
+    void setWebChromeClient(int,android.webkit.WebChromeClient) -> n
+    void setWebViewClient(int,android.webkit.WebViewClient) -> o
 com.razorpay.B$$Z_ -> com.razorpay.h:
     void onPositiveButtonClick() -> a
     void onNegativeButtonClick() -> b
@@ -19338,16 +19334,13 @@ com.razorpay.CheckoutActivity -> com.razorpay.CheckoutActivity:
     void hideProgressBar() -> a
     void showToast(java.lang.String,int) -> b
     void loadDataWithBaseURL(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> c
-    void setSmsPermission(boolean) -> d
-    void showProgressBar(int) -> e
-    void makeWebViewVisible(int) -> f
-    android.webkit.WebView getWebView(int) -> g
-    void postSms(java.lang.String,java.lang.String) -> h
-    void loadUrl(int,java.lang.String) -> i
-    void clearWebViewHistory(int) -> j
-    boolean isWebViewVisible(int) -> k
-    void destroy(int,java.lang.String) -> l
-    void checkSmsPermission() -> m
+    void showProgressBar(int) -> d
+    void makeWebViewVisible(int) -> e
+    android.webkit.WebView getWebView(int) -> f
+    void loadUrl(int,java.lang.String) -> g
+    void clearWebViewHistory(int) -> h
+    boolean isWebViewVisible(int) -> i
+    void destroy(int,java.lang.String) -> j
 com.razorpay.CheckoutBridge -> com.razorpay.q:
     com.razorpay.CheckoutInteractor interactor -> a
     int webViewType -> b
@@ -19530,13 +19523,13 @@ com.razorpay.CheckoutPresenterImpl$CheckoutView -> com.razorpay.v:
     void hideProgressBar() -> a
     void showToast(java.lang.String,int) -> b
     void loadDataWithBaseURL(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> c
-    void showProgressBar(int) -> e
-    void makeWebViewVisible(int) -> f
-    android.webkit.WebView getWebView(int) -> g
-    void loadUrl(int,java.lang.String) -> i
-    void clearWebViewHistory(int) -> j
-    boolean isWebViewVisible(int) -> k
-    void destroy(int,java.lang.String) -> l
+    void showProgressBar(int) -> d
+    void makeWebViewVisible(int) -> e
+    android.webkit.WebView getWebView(int) -> f
+    void loadUrl(int,java.lang.String) -> g
+    void clearWebViewHistory(int) -> h
+    boolean isWebViewVisible(int) -> i
+    void destroy(int,java.lang.String) -> j
 com.razorpay.CheckoutUtils -> com.razorpay.y:
     java.lang.String a(java.lang.String,java.lang.String,java.lang.String) -> b
     org.json.JSONObject a(android.content.Context,android.content.pm.ResolveInfo) -> c
@@ -19856,52 +19849,48 @@ com.razorpay.ResponseObject -> com.razorpay.y1:
     void setResponseCode(int) -> e
     void setResponseResult(java.lang.String) -> f
 com.razorpay.RzpAssist -> com.razorpay.z1:
-    long pageStartTime -> j
-    org.json.JSONObject paymentData -> r
-    java.lang.String currentLoadingUrl -> i
-    java.lang.String lastURL -> h
-    org.json.JSONObject otpElfPreferences -> q
-    com.razorpay.OtpElfData elfData -> p
-    boolean isMagic -> k
-    boolean isRazorpayOtpReceived -> l
-    android.app.Activity activity -> m
-    boolean otpRead -> u
-    java.lang.String merchantKey -> n
-    java.lang.String paymentId -> s
-    com.razorpay.q smsAgent -> o
-    boolean isRzpAssistEnabled -> t
-    java.lang.String sdkType -> v
-    java.lang.String lastSms -> y
-    java.lang.String sdkVersion -> x
-    java.lang.String message -> z
-    android.webkit.WebView webview -> f
-    int sdkVersionCode -> w
-    boolean hasOtpPermission -> g
-    java.lang.String sender -> A
-    boolean jsInsertedInCurrentPage -> B
+    java.lang.String merchantKey -> i
+    boolean isRzpAssistEnabled -> o
+    boolean otpRead -> p
+    long pageStartTime -> e
+    org.json.JSONObject otpElfPreferences -> l
+    org.json.JSONObject paymentData -> m
+    java.lang.String paymentId -> n
+    boolean jsInsertedInCurrentPage -> v
+    java.lang.String sdkType -> q
+    com.razorpay.OtpElfData elfData -> k
+    java.lang.String sdkVersion -> s
+    java.lang.String sender -> u
+    java.lang.String lastSms -> t
+    android.app.Activity activity -> h
+    com.razorpay.q smsAgent -> j
+    boolean isMagic -> f
+    boolean isRazorpayOtpReceived -> g
+    android.webkit.WebView webview -> a
+    java.lang.String lastURL -> c
+    int sdkVersionCode -> r
+    boolean hasOtpPermission -> b
+    java.lang.String currentLoadingUrl -> d
     android.webkit.WebView access$000(com.razorpay.RzpAssist) -> a
     android.app.Activity access$100(com.razorpay.RzpAssist) -> b
     boolean access$202(com.razorpay.RzpAssist,boolean) -> c
-    void setSmsPermission(boolean) -> d
-    boolean access$302(com.razorpay.RzpAssist,boolean) -> e
-    java.lang.String getCurrentLoadingUrl() -> f
-    java.lang.String getLastLoadedUrl() -> g
-    void postSms(java.lang.String,java.lang.String) -> h
-    void handleJsInsertion() -> i
-    void injectJs(java.lang.String) -> j
-    boolean isRazorpayOtpReceived() -> k
-    void onPageFinished(android.webkit.WebView,java.lang.String) -> l
-    void onPageStarted(android.webkit.WebView,java.lang.String) -> m
-    void onProgressChanged(int) -> n
-    void onRequestPermissionsResult(int,java.lang.String[],int[]) -> o
-    void postStatsToAPI() -> p
-    void reset() -> q
-    void setOTPEnabled(boolean) -> r
-    void setOtpElfPreferences(org.json.JSONObject) -> s
-    void setPaymentData(org.json.JSONObject) -> t
-    void setPaymentId(java.lang.String) -> u
-    void setRzpAssistEnabled(boolean) -> v
-    void setup() -> w
+    boolean access$302(com.razorpay.RzpAssist,boolean) -> d
+    java.lang.String getCurrentLoadingUrl() -> e
+    java.lang.String getLastLoadedUrl() -> f
+    void handleJsInsertion() -> g
+    void injectJs(java.lang.String) -> h
+    boolean isRazorpayOtpReceived() -> i
+    void onPageFinished(android.webkit.WebView,java.lang.String) -> j
+    void onPageStarted(android.webkit.WebView,java.lang.String) -> k
+    void onProgressChanged(int) -> l
+    void onRequestPermissionsResult(int,java.lang.String[],int[]) -> m
+    void postStatsToAPI() -> n
+    void reset() -> o
+    void setOtpElfPreferences(org.json.JSONObject) -> p
+    void setPaymentData(org.json.JSONObject) -> q
+    void setPaymentId(java.lang.String) -> r
+    void setRzpAssistEnabled(boolean) -> s
+    void setup() -> t
 com.razorpay.RzpInternalCallback -> com.razorpay.a2:
 com.razorpay.RzpPlugin -> com.razorpay.b2:
     void onActivityResult(java.lang.String,int,int,android.content.Intent) -> a
@@ -19915,88 +19904,85 @@ com.razorpay.S$_U_ -> com.razorpay.d2:
 com.razorpay.S__Z$ -> com.razorpay.e2:
 com.razorpay.SecondaryWebViewClient -> com.razorpay.f2:
     com.razorpay.CheckoutPresenter presenter -> a
-com.razorpay.SmsAgentInterface -> com.razorpay.g2:
-    void setSmsPermission(boolean) -> d
-    void postSms(java.lang.String,java.lang.String) -> h
 com.razorpay.SmsReceiver -> com.razorpay.SmsReceiver:
     com.razorpay.q smsAgent -> a
-com.razorpay.T_$Z$ -> com.razorpay.h2:
+com.razorpay.T_$Z$ -> com.razorpay.g2:
     java.lang.String a -> f
     com.razorpay.CheckoutPresenterImpl b -> g
-com.razorpay.T__j$ -> com.razorpay.i2:
+com.razorpay.T__j$ -> com.razorpay.h2:
     void unSecure() -> a
     void secure() -> b
-com.razorpay.U$$U$ -> com.razorpay.j2:
-com.razorpay.U$_z$ -> com.razorpay.k2:
+com.razorpay.U$$U$ -> com.razorpay.i2:
+com.razorpay.U$_z$ -> com.razorpay.j2:
     void unSecure() -> a
     void secure() -> b
-com.razorpay.U_$B$ -> com.razorpay.l2:
+com.razorpay.U_$B$ -> com.razorpay.k2:
     void a(int) -> b
     void a(int,int) -> c
     void a(com.razorpay.U_$B$,int,int) -> d
     int b() -> e
     int b(int) -> f
     void c(int) -> g
-com.razorpay.V$$3$ -> com.razorpay.m2:
-com.razorpay.X$_8_ -> com.razorpay.n2:
+com.razorpay.V$$3$ -> com.razorpay.l2:
+com.razorpay.X$_8_ -> com.razorpay.m2:
     void unSecure() -> a
     void secure() -> b
-com.razorpay.Y$_o$ -> com.razorpay.o2:
+com.razorpay.Y$_o$ -> com.razorpay.n2:
     void run(com.razorpay.ResponseObject) -> a
-com.razorpay.Y_$B$ -> com.razorpay.p2:
+com.razorpay.Y_$B$ -> com.razorpay.o2:
     void unSecure() -> a
     void secure() -> b
-com.razorpay.Y_$H_ -> com.razorpay.q2:
-com.razorpay.Z$_A_ -> com.razorpay.r2:
+com.razorpay.Y_$H_ -> com.razorpay.p2:
+com.razorpay.Z$_A_ -> com.razorpay.q2:
     void run(com.razorpay.ResponseObject) -> a
-com.razorpay.a -> com.razorpay.t2:
-com.razorpay.a$_G$ -> com.razorpay.s2:
-com.razorpay.b -> com.razorpay.v2:
-com.razorpay.b$_f_ -> com.razorpay.u2:
+com.razorpay.a -> com.razorpay.s2:
+com.razorpay.a$_G$ -> com.razorpay.r2:
+com.razorpay.b -> com.razorpay.u2:
+com.razorpay.b$_f_ -> com.razorpay.t2:
     java.lang.String a -> f
     com.razorpay.CheckoutPresenterImpl c -> h
     int b -> g
-com.razorpay.b_$A$ -> com.razorpay.w2:
+com.razorpay.b_$A$ -> com.razorpay.v2:
     void unSecure() -> a
     void secure() -> b
-com.razorpay.c -> com.razorpay.y2:
+com.razorpay.c -> com.razorpay.x2:
     android.content.Context a -> b
     java.lang.Thread$UncaughtExceptionHandler b -> a
     void a(android.content.Context) -> b
-com.razorpay.c$_2_ -> com.razorpay.x2:
-com.razorpay.c__h$ -> com.razorpay.z2:
+com.razorpay.c$_2_ -> com.razorpay.w2:
+com.razorpay.c__h$ -> com.razorpay.y2:
     java.lang.String b -> g
     com.razorpay.CheckoutPresenterImpl c -> h
     int a -> f
-com.razorpay.d -> com.razorpay.a3:
+com.razorpay.d -> com.razorpay.z2:
     com.razorpay.c b -> g
     java.lang.Throwable a -> f
-com.razorpay.d__1_ -> com.razorpay.b3:
-com.razorpay.d__B_ -> com.razorpay.c3:
+com.razorpay.d__1_ -> com.razorpay.a3:
+com.razorpay.d__B_ -> com.razorpay.b3:
     void run(com.razorpay.ResponseObject) -> a
-com.razorpay.e -> com.razorpay.d3:
+com.razorpay.e -> com.razorpay.c3:
     android.view.View c -> h
     int a -> f
     int b -> g
-com.razorpay.e_$r$ -> com.razorpay.e3:
+com.razorpay.e_$r$ -> com.razorpay.d3:
     void run(com.razorpay.ResponseObject) -> a
-com.razorpay.f -> com.razorpay.f3:
+com.razorpay.f -> com.razorpay.e3:
     boolean a(android.content.Context) -> b
-com.razorpay.g -> com.razorpay.i3:
+com.razorpay.g -> com.razorpay.h3:
     void run(com.razorpay.ResponseObject) -> a
-com.razorpay.g$$C_ -> com.razorpay.g3:
+com.razorpay.g$$C_ -> com.razorpay.f3:
     void run(com.razorpay.ResponseObject) -> a
-com.razorpay.g$_H$ -> com.razorpay.h3:
-com.razorpay.g__v_ -> com.razorpay.j3:
-com.razorpay.h -> com.razorpay.k3:
+com.razorpay.g$_H$ -> com.razorpay.g3:
+com.razorpay.g__v_ -> com.razorpay.i3:
+com.razorpay.h -> com.razorpay.j3:
     com.razorpay.RzpAssist b -> g
     boolean a -> f
-com.razorpay.h__y_ -> com.razorpay.l3:
+com.razorpay.h__y_ -> com.razorpay.k3:
     void unSecure() -> a
     void secure() -> b
-com.razorpay.i -> com.razorpay.m3:
+com.razorpay.i -> com.razorpay.l3:
     com.razorpay.RzpAssist a -> f
-com.razorpay.i_$z_ -> com.razorpay.n3:
+com.razorpay.i_$z_ -> com.razorpay.m3:
     com.razorpay.RzpAssist primaryRzpAssist -> C
     com.razorpay.RzpAssist secondaryRzpAssist -> D
     boolean isSecondaryRzpAssistEnabled -> E
@@ -20010,20 +19996,20 @@ com.razorpay.i_$z_ -> com.razorpay.n3:
     void onPageStarted(int,android.webkit.WebView,java.lang.String) -> q
     void primaryWebviewPageFinished(java.lang.String,android.webkit.WebView) -> r0
     void backPressed(java.util.Map) -> w
-com.razorpay.j -> com.razorpay.o3:
+com.razorpay.j -> com.razorpay.n3:
     java.lang.String a -> f
     com.razorpay.RzpAssist b -> g
-com.razorpay.k -> com.razorpay.p3:
+com.razorpay.k -> com.razorpay.o3:
     java.lang.String a -> f
     com.razorpay.RzpAssist b -> g
-com.razorpay.k__c$ -> com.razorpay.q3:
+com.razorpay.k__c$ -> com.razorpay.p3:
     java.lang.String c -> g
     java.lang.String b -> f
     java.lang.String d -> h
     com.razorpay.CheckoutPresenterImpl a -> i
-com.razorpay.l__9_ -> com.razorpay.r3:
+com.razorpay.l__9_ -> com.razorpay.q3:
     void run(com.razorpay.ResponseObject) -> a
-com.razorpay.n$$t$ -> com.razorpay.s3:
+com.razorpay.n$$t$ -> com.razorpay.r3:
     int c -> O
     java.lang.Boolean o -> E
     java.lang.String s -> I
@@ -20065,44 +20051,37 @@ com.razorpay.n$$t$ -> com.razorpay.s3:
     java.lang.String l() -> i0
     boolean m() -> j0
     boolean n() -> k0
-com.razorpay.n$_B$ -> com.razorpay.t3:
-com.razorpay.n__T$ -> com.razorpay.u3:
+com.razorpay.n$_B$ -> com.razorpay.s3:
+com.razorpay.n__T$ -> com.razorpay.t3:
     void unSecure() -> a
     void secure() -> b
-com.razorpay.o -> com.razorpay.w3:
-com.razorpay.o$_b$ -> com.razorpay.v3:
+com.razorpay.o -> com.razorpay.v3:
+com.razorpay.o$_b$ -> com.razorpay.u3:
     android.os.AsyncTask a(java.lang.String,java.lang.String,java.util.Map,com.razorpay.Callback) -> b
     android.os.AsyncTask a(java.lang.String,java.util.Map,com.razorpay.Callback) -> c
     com.razorpay.ResponseObject a(java.lang.String[]) -> d
     java.lang.String a(java.io.InputStream) -> e
-com.razorpay.p -> com.razorpay.z3:
+com.razorpay.p -> com.razorpay.y3:
     java.lang.String a(android.content.Context,java.lang.String) -> b
     java.lang.String a(android.content.Context,java.lang.String,java.lang.String) -> c
     android.content.SharedPreferences$Editor b(android.content.Context) -> d
     void b(android.content.Context,java.lang.String,java.lang.String) -> e
     android.content.SharedPreferences c(android.content.Context) -> f
     android.content.SharedPreferences$Editor d(android.content.Context) -> g
-com.razorpay.p$$q_ -> com.razorpay.x3:
+com.razorpay.p$$q_ -> com.razorpay.w3:
     void run(com.razorpay.ResponseObject) -> a
-com.razorpay.p$_5$ -> com.razorpay.y3:
+com.razorpay.p$_5$ -> com.razorpay.x3:
     java.lang.String b -> c
     java.lang.String c -> b
     void a(com.razorpay.p$_5$,java.lang.String) -> b
     java.lang.String b(com.razorpay.p$_5$,java.lang.String) -> c
-com.razorpay.q -> com.razorpay.b4:
-    com.razorpay.SmsReceiver b -> a
-    java.util.ArrayList a -> b
-    void a(com.razorpay.SmsAgentInterface) -> b
-    void a(boolean) -> c
-    boolean a(android.app.Activity) -> d
-    void b() -> e
-    void b(com.razorpay.SmsAgentInterface) -> f
-com.razorpay.q$_Y$ -> com.razorpay.a4:
+com.razorpay.q -> com.razorpay.a4:
+com.razorpay.q$_Y$ -> com.razorpay.z3:
     com.razorpay.CheckoutUtils$BackButtonDialogCallback a -> f
-com.razorpay.q_$J$ -> com.razorpay.c4:
+com.razorpay.q_$J$ -> com.razorpay.b4:
     com.razorpay.CheckoutUtils$BackButtonDialogCallback a -> f
-com.razorpay.r -> com.razorpay.d4:
-com.razorpay.r_$Z$ -> com.razorpay.e4:
+com.razorpay.r -> com.razorpay.c4:
+com.razorpay.r_$Z$ -> com.razorpay.d4:
     void unSecure() -> a
     void secure() -> b
 com.razorpay.razorpay_flutter.RazorpayDelegate -> d3.a:
@@ -20130,32 +20109,29 @@ com.razorpay.razorpay_flutter.RazorpayFlutterPlugin -> d3.b:
     void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> f
     void onDetachedFromActivityForConfigChanges() -> g
     void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> h
-com.razorpay.t$$1$ -> com.razorpay.f4:
+com.razorpay.t$$1$ -> com.razorpay.e4:
     com.razorpay.CheckoutPresenterImpl b -> g
     boolean a -> f
-com.razorpay.t_$J_ -> com.razorpay.g4:
+com.razorpay.t_$J_ -> com.razorpay.f4:
     void unSecure() -> a
     void secure() -> b
-com.razorpay.v__i_ -> com.razorpay.h4:
-com.razorpay.w_$E$ -> com.razorpay.i4:
-    boolean d -> m
-    java.lang.String f -> h
-    android.webkit.WebView e -> g
-    boolean g -> j
-    boolean c -> k
-    com.razorpay.q b -> i
-    com.razorpay.p$_5$ h -> l
-    android.content.Context a -> f
+com.razorpay.v__i_ -> com.razorpay.g4:
+com.razorpay.w_$E$ -> com.razorpay.h4:
+    com.razorpay.q b -> d
+    com.razorpay.p$_5$ h -> g
+    boolean g -> e
+    boolean c -> f
+    android.webkit.WebView e -> b
+    boolean d -> h
+    java.lang.String f -> c
     void a(java.lang.String) -> b
-    void setSmsPermission(boolean) -> d
-    void postSms(java.lang.String,java.lang.String) -> h
-com.razorpay.x_$Q_ -> com.razorpay.j4:
+com.razorpay.x_$Q_ -> com.razorpay.i4:
     void unSecure() -> a
     void secure() -> b
-com.razorpay.y$_O_ -> com.razorpay.k4:
+com.razorpay.y$_O_ -> com.razorpay.j4:
     void unSecure() -> a
     void secure() -> b
-com.razorpay.z$_w$ -> com.razorpay.l4:
+com.razorpay.z$_w$ -> com.razorpay.k4:
     com.razorpay.CheckoutPresenterImpl a -> f
 com.tekartik.sqflite.Constant -> e3.a:
     java.lang.String[] EMPTY_STRING_ARRAY -> a
@@ -24122,6 +24098,7 @@ io.flutter.plugins.pathprovider.Messages$StorageDirectory -> f4.a$c:
     io.flutter.plugins.pathprovider.Messages$StorageDirectory RINGTONES -> j
     io.flutter.plugins.pathprovider.Messages$StorageDirectory ROOT -> g
     io.flutter.plugins.pathprovider.Messages$StorageDirectory MUSIC -> h
+    io.flutter.plugins.pathprovider.Messages$StorageDirectory[] $values() -> a
 io.flutter.plugins.pathprovider.PathProviderPlugin -> f4.i:
     android.content.Context context -> f
     java.lang.String getTemporaryPath() -> a
