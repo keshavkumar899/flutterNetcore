@@ -9,7 +9,7 @@ class ProfileController extends GetxController {
 
   TextEditingController emailController = TextEditingController();
 
-  Rx<ProfileModel> profileModelObj = ProfileModel().obs;
+  // Rx<ProfileModel> profileModelObj = ProfileModel().obs;
 
   @override
   void onReady() {

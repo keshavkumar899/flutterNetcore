@@ -1,11 +1,11 @@
-class OtpModel {
+class ProfileGet {
   String status;
   String message;
   Data data;
 
-  OtpModel({this.status, this.message, this.data});
+  ProfileGet({this.status, this.message, this.data});
 
-  OtpModel.fromJson(Map<String, dynamic> json) {
+  ProfileGet.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
@@ -35,7 +35,7 @@ class Data {
   String createOn;
   String isDelete;
   String isActive;
-  String wallet_balance;
+  String walletBalence;
 
   Data(
       {this.id,
@@ -50,7 +50,7 @@ class Data {
         this.createOn,
         this.isDelete,
         this.isActive,
-      this.wallet_balance});
+        this.walletBalence});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -65,7 +65,7 @@ class Data {
     createOn = json['create_on'];
     isDelete = json['is_delete'];
     isActive = json['is_active'];
-    wallet_balance=json['wallet_balence'];
+    walletBalence = json['wallet_balence'];
   }
 
   Map<String, dynamic> toJson() {
@@ -82,7 +82,7 @@ class Data {
     data['create_on'] = this.createOn;
     data['is_delete'] = this.isDelete;
     data['is_active'] = this.isActive;
-    data['wallet_balence']=this.wallet_balance;
+    data['wallet_balence'] = this.walletBalence;
     return data;
   }
 }

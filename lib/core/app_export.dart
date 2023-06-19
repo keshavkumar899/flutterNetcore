@@ -8,7 +8,6 @@ export 'package:keshav_s_application2/core/utils/pref_utils.dart';
 export 'package:keshav_s_application2/core/utils/initial_bindings.dart';
 export 'package:keshav_s_application2/theme/app_style.dart';
 export 'package:keshav_s_application2/theme/app_decoration.dart';
-export 'package:connectivity_plus/connectivity_plus.dart';
 export 'package:keshav_s_application2/routes/app_routes.dart';
 export 'package:keshav_s_application2/data/models/selectionPopupModel/selection_popup_model.dart';
 export 'package:keshav_s_application2/widgets/custom_image_view.dart';

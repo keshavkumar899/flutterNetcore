@@ -10,6 +10,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../add_address_screen_click_on_manage_address_screen/ManageAddressModel.dart';
 import 'controller/cart_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
@@ -43,6 +44,54 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
   int total;
   List<carts.ProductDetails> cart = [];
   Razorpay _razorpay;
+  Future<AddressList> manageAddress;
+  List<AddressData> addresslist = [];
+
+  Future<AddressList> getAddressList() async {
+    Map data = {
+      'user_id': widget.data.id,
+    };
+    //encode Map to JSON
+    var body = json.encode(data);
+    var response =
+    await dio.Dio().post("https://fabfurni.com/api/Auth/addressList",
+        options: dio.Options(
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+          },
+        ),
+        data: body);
+    var jsonObject = jsonDecode(response.toString());
+    if (response.statusCode == 200) {
+      print(jsonObject);
+      if (AddressList.fromJson(jsonObject).status == "true") {
+        return AddressList.fromJson(jsonObject);
+        // inviteList.sort((a, b) => a.id.compareTo(b.id));
+      }else if (AddressList.fromJson(jsonObject).status == "false") {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(AddressList.fromJson(jsonObject).message),
+            backgroundColor: Colors.redAccent));
+
+      }
+      else if(AddressList.fromJson(jsonObject).data == null){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+            jsonObject['message'] + ' Please check after sometime.',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.redAccent,
+        ));
+      }
+      else {
+        throw Exception('Failed to load');
+      }
+    } else {
+      throw Exception('Failed to load');
+    }
+    return jsonObject;
+  }
+
 
   Future<carts.CartModel> getCartList() async {
     Map data = {
@@ -113,6 +162,14 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+
+    // manageAddress = getAddressList();
+    // for(int i)
+    // manageAddress.then((value) {
+    //   setState(() {
+    //     addresslist = value.data;
+    //   });
+    // });
 
     super.initState();
   }
@@ -306,6 +363,92 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
                                         textAlign: TextAlign.left,
                                         style: AppStyle.txtRobotoRegular12))
                               ])):Container(),
+                      // FutureBuilder(
+                      //         future:manageAddress,
+                      //     builder:(context,snapshot){
+                      //           if(snapshot.hasData){
+                      //             addresslist.iterator.current.defaulted=='1';
+                      //             if(snapshot.data.data.length==0){
+                      //               return Center(
+                      //                   child: Text('No data available.',
+                      //                       style: TextStyle(
+                      //                         fontFamily: 'poppins',
+                      //                         fontSize: 16.0,
+                      //                         fontWeight: FontWeight.bold,
+                      //                         color: const Color(0xff45536A),
+                      //                       )));
+                      //             }
+                      //             else{
+                      //               return Container(
+                      //                   margin: getMargin(left: 25, top: 11, right: 25),
+                      //                   decoration: AppDecoration.outlineBlack90019
+                      //                       .copyWith(
+                      //                       borderRadius:
+                      //                       BorderRadiusStyle.customBorderBR50),
+                      //                   child: Column(
+                      //                       mainAxisSize: MainAxisSize.min,
+                      //                       crossAxisAlignment: CrossAxisAlignment.start,
+                      //                       mainAxisAlignment: MainAxisAlignment.start,
+                      //                       children: [
+                      //                         Padding(
+                      //                             padding: getPadding(right: 15),
+                      //                             child: Row(
+                      //                                 crossAxisAlignment:
+                      //                                 CrossAxisAlignment.end,
+                      //                                 children: [
+                      //                                   CustomButton(
+                      //                                     variant: ButtonVariant.FillPurple900,
+                      //                                     height: getVerticalSize(
+                      //                                       21,
+                      //                                     ),
+                      //                                     width: getHorizontalSize(
+                      //                                       62,
+                      //                                     ),
+                      //                                     text:item4=="0"?"Home":"Office",
+                      //                                     fontStyle: ButtonFontStyle.RobotoMedium12,
+                      //                                     margin: getMargin(
+                      //                                       bottom: 8,
+                      //                                     ),
+                      //                                   ),
+                      //                                   Spacer(),
+                      //                                 ])),
+                      //                         Padding(
+                      //                             padding: getPadding(left: 15, top: 6),
+                      //                             child: Text(item2.capitalizeFirst,
+                      //                                 overflow: TextOverflow.ellipsis,
+                      //                                 textAlign: TextAlign.left,
+                      //                                 style: AppStyle.txtRobotoMedium14)),
+                      //                         // Padding(
+                      //                         //     padding: getPadding(left: 16, top: 3),
+                      //                         //     child: Text("87887 87887",
+                      //                         //         overflow: TextOverflow.ellipsis,
+                      //                         //         textAlign: TextAlign.left,
+                      //                         //         style: AppStyle.txtRobotoRegular9)),
+                      //                         Container(
+                      //                             width: getHorizontalSize(281),
+                      //                             margin: getMargin(
+                      //                                 left: 16,
+                      //                                 top: 3,
+                      //                                 right: 81,
+                      //                                 bottom: 15),
+                      //                             child: Text(item3.capitalizeFirst,
+                      //                                 maxLines: null,
+                      //                                 textAlign: TextAlign.left,
+                      //                                 style: AppStyle.txtRobotoRegular12))
+                      //                       ]));
+                      //             }
+                      //           }
+                      //           else{
+                      //             return const Center(
+                      //               heightFactor: 15,
+                      //               child: CircularProgressIndicator(
+                      //                 color: Colors.purple,
+                      //               ),
+                      //             );
+                      //
+                      //           }
+                      //
+                      // } ),
                       Flexible(
                         child: Container(
                           // height: 100.h,

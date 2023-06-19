@@ -20,6 +20,8 @@ import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
+
+import '../add_address_screen_click_on_manage_address_screen/add_address_screen_click_on_manage_address_screen.dart';
 // ignore_for_file: must_be_immutable
 
 // ignore_for_file: must_be_immutable
@@ -113,6 +115,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     dio.FormData formData = dio.FormData.fromMap({
       "user_id": widget.data.id,
       "name": fullnameController.text,
+      "mobile_number":mobilenumberController.text,
       "address_one": addressController.text,
       "address_two": "",
       "city": cityController.text,
@@ -138,19 +141,26 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     if (response.statusCode == 200) {
       if (AddressAdd.fromJson(jsonObject).status == "true") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.only(bottom: 20.0),
           duration: Duration(seconds: 2),
           content: Text(
-            "Address added Successful",
+            "Address added Successfuly",
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.greenAccent,
         ));
         Navigator.of(context).pop();
+        // Navigator.push(context,MaterialPageRoute(
+        //   builder: (context) => AddAddressScreenClickOnManageAddressScreen(widget.data),
+        // ));
         // Navigator.of(context).pushReplacement(MaterialPageRoute(
         //   builder: (context) => LogInScreen(),
         // ));
       } else if (AddressAdd.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            behavior: SnackBarBehavior.floating,
+            margin: EdgeInsets.only(bottom: 20.0),
             content: Text(AddressAdd.fromJson(jsonObject).message),
             backgroundColor: Colors.redAccent));
         // setState(() {

@@ -1,14 +1,18 @@
 import 'package:keshav_s_application2/presentation/add_address_screen_click_on_manage_address_screen/add_address_screen_click_on_manage_address_screen.dart';
 import 'package:keshav_s_application2/presentation/cart_screen/cart_screen.dart';
+import 'package:keshav_s_application2/presentation/changepassword/changepassword.dart';
 import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.dart';
 import 'package:keshav_s_application2/presentation/my_orders_screen/my_orders_screen.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/presentation/profile_screen/profile_screen.dart';
+import 'package:keshav_s_application2/presentation/search_screen/search_screen.dart';
 import 'package:keshav_s_application2/presentation/sidebar_menu_draweritem/sidebar_menu_draweritem.dart';
+import 'package:keshav_s_application2/presentation/wallet/wallet_screen.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../resetPassword/resetpasswordafterlogin.dart';
 import 'controller/profile_one_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
@@ -292,7 +296,12 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                         ),
                         InkWell(
                           onTap: (){
-
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        WalletScreen(widget.data
+                                        )));
                           },
                           child: Align(
                               alignment: Alignment.centerLeft,
@@ -348,7 +357,13 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                         ),
                         InkWell(
                           onTap: (){
-
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ChangePassword(
+                                            widget.data,
+                                        )));
                           },
                           child: Align(
                               alignment: Alignment.centerLeft,
@@ -375,7 +390,13 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                         ),
                         InkWell(
                           onTap: (){
-
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ResetPasswordAfterLogin(
+                                          widget.data,
+                                        )));
                           },
                           child: Align(
                               alignment: Alignment.centerLeft,
@@ -383,13 +404,13 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                                   padding: getPadding(left: 25, top: 0),
                                   child: Row(children: [
                                     CustomImageView(
-                                        svgPath: ImageConstant.imgArrowdown,
+                                        svgPath: ImageConstant.imgLock,
                                         height: getVerticalSize(25),
                                         width: getHorizontalSize(18),
                                         margin: getMargin(left: 4)),
                                     Padding(
                                         padding: getPadding(left: 34, top: 1),
-                                        child: Text("Two Step Verification",
+                                        child: Text("Reset Password",
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
                                             style: AppStyle
@@ -400,6 +421,33 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Divider(color: Colors.purple,thickness: 0.5,),
                         ),
+                        // InkWell(
+                        //   onTap: (){
+                        //
+                        //   },
+                        //   child: Align(
+                        //       alignment: Alignment.centerLeft,
+                        //       child: Padding(
+                        //           padding: getPadding(left: 25, top: 0),
+                        //           child: Row(children: [
+                        //             CustomImageView(
+                        //                 svgPath: ImageConstant.imgArrowdown,
+                        //                 height: getVerticalSize(25),
+                        //                 width: getHorizontalSize(18),
+                        //                 margin: getMargin(left: 4)),
+                        //             Padding(
+                        //                 padding: getPadding(left: 34, top: 1),
+                        //                 child: Text("Two Step Verification",
+                        //                     overflow: TextOverflow.ellipsis,
+                        //                     textAlign: TextAlign.left,
+                        //                     style: AppStyle
+                        //                         .txtRobotoRegular14Purple400))
+                        //           ]))),
+                        // ),
+                        // Padding(
+                        //   padding: const EdgeInsets.all(8.0),
+                        //   child: Divider(color: Colors.purple,thickness: 0.5,),
+                        // ),
                         InkWell(
                           onTap: () async{
                             final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -833,7 +881,9 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
   }
 
   onTapSearch() {
-    Get.toNamed(AppRoutes.searchScreen);
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => SearchScreen(widget.data,''),
+    ));
   }
 
   onTapWishlist() {

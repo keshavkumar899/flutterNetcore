@@ -5,12 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:keshav_s_application2/landingpage.dart';
 import 'package:keshav_s_application2/paytm_config.dart';
 import 'package:keshav_s_application2/presentation/order_placed_screen/order_placed_screen.dart';
-import 'package:paytm_allinonesdk/paytm_allinonesdk.dart';
+// import 'package:paytm_allinonesdk/paytm_allinonesdk.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../widgets/custom_button.dart';
+import '../cart_screen/ChooseAddress.dart';
 import '../otp_screen/models/otp_model.dart';
+import 'applycoupon.dart';
 import 'controller/payment_method_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
@@ -37,6 +40,11 @@ class PaymentMethodScreen extends StatefulWidget {
 }
 
 class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
+
+  String item1="";
+  String item2="";
+  String item3="";
+  String item4="";
   Razorpay _razorpay;
   @override
   void initState() {
@@ -352,6 +360,73 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                               height: getVerticalSize(3),
                               thickness: getVerticalSize(3),
                               color: ColorConstant.purple5001)),
+                      // CustomButton(
+                      //   onTap: () async{
+                      //     List<String> resultList = await Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(builder: (context) => ApplyCoupon(widget.data)),
+                      //     );
+                      //
+                      //     // Check if the resultList is not null before accessing its elements
+                      //     setState(() {
+                      //       if (resultList != null) {
+                      //         // Access the elements of the resultList
+                      //         item1 = resultList[0];
+                      //         item4=resultList[1];
+                      //         item2 = resultList[2];
+                      //         item3 = resultList[3];
+                      //         print(item1+item4+item2+item3);
+                      //       }
+                      //     });
+                      //
+                      //   },
+                      //   height: getVerticalSize(21),
+                      //   width: getHorizontalSize(250),
+                      //   margin: getMargin(left: 85, right: 13,top: 10),
+                      //   variant: ButtonVariant.OutlinePurple700,
+                      //   shape: ButtonShape.RoundedBorder5,
+                      //   padding: ButtonPadding.PaddingT10,
+                      //   fontStyle: ButtonFontStyle.RobotoMedium15Black900,
+                      //   text: item1.isEmpty?"Apply Coupon":"Change Coupon",
+                      //   // margin: getMargin(bottom: 8)
+                      // ),
+                      // item1.isNotEmpty?
+                      // Container(child: Column(
+                      //   mainAxisAlignment: MainAxisAlignment.start,
+                      //   crossAxisAlignment: CrossAxisAlignment.start,
+                      //   children: [
+                      //   Align(
+                      //       alignment: Alignment.center,
+                      //       child: Padding(
+                      //           padding: getPadding(left: 25, top: 13, right: 22),
+                      //           child: Row(
+                      //               mainAxisAlignment:
+                      //               MainAxisAlignment.spaceBetween,
+                      //               children: [
+                      //                 Padding(
+                      //                     padding: getPadding(bottom: 1),
+                      //                     child: Text("Coupon Code:",
+                      //                         overflow: TextOverflow.ellipsis,
+                      //                         textAlign: TextAlign.left,
+                      //                         style: AppStyle.txtRobotoLight10)),
+                      //                 // Text("lbl_change".tr,
+                      //                 //     overflow: TextOverflow.ellipsis,
+                      //                 //     textAlign: TextAlign.left,
+                      //                 //     style: AppStyle.txtRobotoMedium11)
+                      //               ]))),
+                      //   Padding(
+                      //       padding: getPadding(left: 25, top: 8),
+                      //       child: Text(item4,
+                      //           overflow: TextOverflow.ellipsis,
+                      //           textAlign: TextAlign.left,
+                      //           style: AppStyle.txtRobotoMedium14)),
+                      // ],),):Container(),
+                      // Padding(
+                      //     padding: getPadding(top: 13),
+                      //     child: Divider(
+                      //         height: getVerticalSize(3),
+                      //         thickness: getVerticalSize(3),
+                      //         color: ColorConstant.purple5001)),
                       Padding(
                           padding: getPadding(left: 25, top: 16),
                           child: Row(children: [
@@ -644,7 +719,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                       //     ],
                       //   ),
                       // ),
-                      Container(
+                     /* Container(
                           height: getVerticalSize(1),
                           width: double.maxFinite,
                           margin: getMargin(top: 12),
@@ -665,7 +740,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                                         height: getVerticalSize(1),
                                         thickness: getVerticalSize(1),
                                         color: ColorConstant.purple5001)))
-                          ])),
+                          ])),*/
                       // InkWell(
                       //   onTap: ()async{
                       //     // String orderId=getRandomString(10);
@@ -814,79 +889,79 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
         content: Text(response.toString()),
         backgroundColor: Colors.green));
   }
-  Future<void> generateTxnToken(String amount, String orderId,String userid) async {
-    final callBackUrl =
-        'https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID=$orderId';
-    final body = json.encode({
-      "MID": "zTJIdC64240043931357",
-      "key_secret": "eZJzbfkZwL56y3ac",
-      "CHANNEL_ID":"WEB",
-      "WEBSITE": "WEBSTAGING",
-      "ORDER_ID": orderId,
-      "TXN_AMOUNT": amount,
-      "CALLBACK_URL": callBackUrl,
-      "CUST_ID": userid,
-    });
+  // Future<void> generateTxnToken(String amount, String orderId,String userid) async {
+  //   final callBackUrl =
+  //       'https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID=$orderId';
+  //   final body = json.encode({
+  //     "MID": "zTJIdC64240043931357",
+  //     "key_secret": "eZJzbfkZwL56y3ac",
+  //     "CHANNEL_ID":"WEB",
+  //     "WEBSITE": "WEBSTAGING",
+  //     "ORDER_ID": orderId,
+  //     "TXN_AMOUNT": amount,
+  //     "CALLBACK_URL": callBackUrl,
+  //     "CUST_ID": userid,
+  //   });
+  //
+  //   try {
+  //     var response =
+  //     await dio.Dio().post("https://fabfurni.com/api/Webservice/get_Paytm_Tranjection_Token",
+  //         options: dio.Options(
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             "Accept": "*/*",
+  //           },
+  //         ),
+  //         data: body);
+  //     // final response = await http.post(
+  //     //   Uri.parse(url),
+  //     //   body: body,
+  //     //   headers: {'Content-type': "application/json"},
+  //     // );
+  //     var jsonObject = jsonDecode(response.toString());
+  //     // if(response.statusCode==200){
+  //     //   return TxnToken.fromJson(jsonObject);
+  //     // }
+  //     String txnToken = jsonObject["txnToken"];
+  //     print("txntoken:"+txnToken);
+  //
+  //     await initiateTransaction(orderId, amount, txnToken, callBackUrl,userid);
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
-    try {
-      var response =
-      await dio.Dio().post("https://fabfurni.com/api/Webservice/get_Paytm_Tranjection_Token",
-          options: dio.Options(
-            headers: {
-              "Content-Type": "application/json",
-              "Accept": "*/*",
-            },
-          ),
-          data: body);
-      // final response = await http.post(
-      //   Uri.parse(url),
-      //   body: body,
-      //   headers: {'Content-type': "application/json"},
-      // );
-      var jsonObject = jsonDecode(response.toString());
-      // if(response.statusCode==200){
-      //   return TxnToken.fromJson(jsonObject);
-      // }
-      String txnToken = jsonObject["txnToken"];
-      print("txntoken:"+txnToken);
-
-      await initiateTransaction(orderId, amount, txnToken, callBackUrl,userid);
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  Future<void> initiateTransaction(String orderId, String amount,
-      String txnToken, String callBackUrl,String userid) async {
-    String result = '';
-    try {
-      var response = AllInOneSdk.startTransaction(
-        "zTJIdC64240043931357",
-        orderId,
-        amount.toString(),
-        txnToken,
-        callBackUrl,
-        true,
-        false,
-      );
-      response.then((value) {
-        // Transaction successfull
-        print(value);
-      }).catchError((onError) {
-        if (onError is PlatformException) {
-          result = onError.message + " \n  " + onError.details.toString();
-          print(result);
-        } else {
-          result = onError.toString();
-          print(result);
-        }
-      });
-    } catch (err) {
-      // Transaction failed
-      result = err.toString();
-      print(result);
-    }
-  }
+  // Future<void> initiateTransaction(String orderId, String amount,
+  //     String txnToken, String callBackUrl,String userid) async {
+  //   String result = '';
+  //   try {
+  //     var response = AllInOneSdk.startTransaction(
+  //       "zTJIdC64240043931357",
+  //       orderId,
+  //       amount.toString(),
+  //       txnToken,
+  //       callBackUrl,
+  //       true,
+  //       false,
+  //     );
+  //     response.then((value) {
+  //       // Transaction successfull
+  //       print(value);
+  //     }).catchError((onError) {
+  //       if (onError is PlatformException) {
+  //         result = onError.message + " \n  " + onError.details.toString();
+  //         print(result);
+  //       } else {
+  //         result = onError.toString();
+  //         print(result);
+  //       }
+  //     });
+  //   } catch (err) {
+  //     // Transaction failed
+  //     result = err.toString();
+  //     print(result);
+  //   }
+  // }
 
 
 }

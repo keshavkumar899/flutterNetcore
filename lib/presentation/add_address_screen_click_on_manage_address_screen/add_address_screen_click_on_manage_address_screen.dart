@@ -4,6 +4,7 @@ import 'package:keshav_s_application2/presentation/add_address_screen/add_addres
 import 'package:keshav_s_application2/presentation/add_address_screen_click_on_manage_address_screen/ManageAddressModel.dart';
 import 'package:keshav_s_application2/presentation/cart_screen/cart_screen.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
+import 'package:keshav_s_application2/presentation/search_screen/search_screen.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_6.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
@@ -125,7 +126,9 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
                       margin:
                       getMargin(left: 12, top: 22, right: 10, bottom: 10),
                       onTap: (){
-                        Get.toNamed(AppRoutes.searchScreen);
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SearchScreen(widget.data,''),
+                        ));
                       }),
                   Container(
                       height: getVerticalSize(23),

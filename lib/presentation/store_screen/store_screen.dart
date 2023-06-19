@@ -1,5 +1,6 @@
 import 'package:keshav_s_application2/presentation/click_after_slect_tab_furniture_screen/click_after_slect_tab_furniture_screen.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
+import 'package:keshav_s_application2/presentation/search_screen/search_screen.dart';
 import 'package:keshav_s_application2/presentation/select_product_screen/newproductlist.dart';
 import 'package:keshav_s_application2/presentation/select_product_screen/select_product_screen.dart';
 import 'package:keshav_s_application2/presentation/sidebar_menu_draweritem/sidebar_menu_draweritem.dart';
@@ -502,7 +503,9 @@ class _StoreScreenState extends State<StoreScreen> {
   }
 
   onTapSearch() {
-    Get.toNamed(AppRoutes.searchScreen);
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => SearchScreen(widget.data,''),
+    ));
   }
 
   onTapLocation() {

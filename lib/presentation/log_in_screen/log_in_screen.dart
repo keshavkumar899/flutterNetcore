@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:keshav_s_application2/core/utils/utils.dart';
 import 'package:keshav_s_application2/presentation/PasswordScreen.dart';
 import 'package:keshav_s_application2/presentation/log_in_screen/models/log_in_model.dart';
@@ -260,8 +261,22 @@ class _LogInScreenState extends State<LogInScreen> {
                                 onTap: onTapSendotp),
                             CustomButton(
                               onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => PasswordScreen(mobilenumberController.text)));
-                              },
+                                if(mobilenumberController.text.isEmpty){
+                                  Fluttertoast.showToast(
+                                      msg:"Please enter the mobile number",
+                                      toastLength: Toast.LENGTH_LONG,
+                                      gravity: ToastGravity.BOTTOM,
+                                      timeInSecForIosWeb: 3,
+                                      backgroundColor: Colors.red,
+                                      textColor: Colors.black,
+                                      fontSize: 14.0);
+                                }else {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          PasswordScreen(
+                                              mobilenumberController.text)));
+                                }
+                                },
                                 height: getVerticalSize(39),
                                 text: "msg_login_using_password".tr,
                                 margin: getMargin(left: 27, top: 15, right: 26),

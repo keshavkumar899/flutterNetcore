@@ -1,5 +1,3 @@
-
-
 class ProductDetailModel {
   ProductDetailModel({
       this.status, 
@@ -119,12 +117,12 @@ class Data {
         productImages.add(ProductImages.fromJson(v));
       });
     }
-    // if (json['attributes'] != null) {
-    //   attributes = [];
-    //   json['attributes'].forEach((v) {
-    //     attributes.add(Attributes.fromJson(v));
-    //   });
-    // }
+    if (json['attributes'] != null) {
+      attributes = [];
+      json['attributes'].forEach((v) {
+        attributes.add(Attributes.fromJson(v));
+      });
+    }
   }
   String id;
   String name;
@@ -192,9 +190,9 @@ class Data {
     if (productImages != null) {
       map['product_images'] = productImages.map((v) => v.toJson()).toList();
     }
-    // if (attributes != null) {
-    //   map['attributes'] = attributes.map((v) => v.toJson()).toList();
-    // }
+    if (attributes != null) {
+      map['attributes'] = attributes.map((v) => v.toJson()).toList();
+    }
     return map;
   }
 
@@ -435,6 +433,27 @@ class BrandProduct {
 
 }
 
-class Attributes{
+class Attributes {
+  String id;
+  String productId;
+  String productKey;
+  String productValue;
 
+  Attributes({this.id, this.productId, this.productKey, this.productValue});
+
+  Attributes.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    productId = json['product_id'];
+    productKey = json['product_key'];
+    productValue = json['product_value'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['product_id'] = this.productId;
+    data['product_key'] = this.productKey;
+    data['product_value'] = this.productValue;
+    return data;
+  }
 }

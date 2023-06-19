@@ -92,7 +92,7 @@ class _aboutUsScreen extends State<AboutUsScreen> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           AppConstant.aboutType = '1';
                           int index = _listData.indexWhere((setting) => setting.settingsKeys == 'terms_condition');
@@ -124,7 +124,7 @@ class _aboutUsScreen extends State<AboutUsScreen> {
                           child: Divider(
                               height: getVerticalSize(1),
                               thickness: getVerticalSize(1))),
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           AppConstant.aboutType = '2';
                           int index = _listData.indexWhere((setting) => setting.settingsKeys == 'privacy_policy');
@@ -155,7 +155,7 @@ class _aboutUsScreen extends State<AboutUsScreen> {
                           child: Divider(
                               height: getVerticalSize(1),
                               thickness: getVerticalSize(1))),
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           AppConstant.aboutType = '3';
                           int index = _listData.indexWhere((setting) => setting.settingsKeys == 'return_policy');
@@ -191,7 +191,7 @@ class _aboutUsScreen extends State<AboutUsScreen> {
                       ),
                       Visibility(
                         visible: false,
-                        child: GestureDetector(
+                        child: InkWell(
                           onTap: () {
                             AppConstant.aboutType = '4';
                             onTapTxt();

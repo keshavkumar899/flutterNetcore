@@ -7,7 +7,6 @@ import 'package:keshav_s_application2/presentation/cart_screen/cart_screen.dart'
 import 'package:keshav_s_application2/presentation/click_after_slect_tab_furniture_screen/click_after_slect_tab_furniture_screen.dart';
 import 'package:keshav_s_application2/presentation/home_screen/models/HomeModel.dart'
     as homes;
-import 'package:card_loading/card_loading.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/presentation/product_detail_screen/product_detail_screen.dart';
 import 'package:keshav_s_application2/presentation/select_product_screen/productlistafterclickionbanner.dart';
@@ -311,7 +310,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: double.infinity,
                   child: ListView.separated(
                       // set the scroll direction to horizontal
-                      itemCount: 10,
+                      itemCount: homelist.length,
                       scrollDirection: Axis.horizontal,
                       separatorBuilder: (context, int) {
                         return SizedBox(
@@ -321,7 +320,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemBuilder: (context, index) {
                         return CategoryCard(
                             title: homelist[index].name,
-                            previewImageAsset: images[index],
+                            previewImageAsset: homelist[index].image,
                             onTap: () {
                               // print(homelist[index].id);
                               categorylist[index].subCategory.length == 0
@@ -1383,7 +1382,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   child: Text(
                                                     favouriteProduct[index]
                                                         .description,
-                                                    maxLines: 4,
+                                                    maxLines: 2,
                                                     overflow: TextOverflow.ellipsis,
                                                     textAlign: TextAlign.left,
                                                     style: TextStyle(
@@ -1684,7 +1683,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                                 child: Text(
                                                   bannersgoodLooks[index].name,
-                                                  maxLines: 4,
+                                                  maxLines: 2,
                                                   overflow: TextOverflow.ellipsis,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
@@ -1853,7 +1852,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         bannersBrothers[index].name,
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.center,
-                                        maxLines: 4,
+                                        maxLines: 2,
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w400,
@@ -2075,7 +2074,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 0,
             ),
             CustomImageView(
-              imagePath: previewImageAsset,
+              url: previewImageAsset,
               height: getSize(40),
               width: getSize(40),
               margin: getMargin(top: 3),

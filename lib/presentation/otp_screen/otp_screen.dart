@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:keshav_s_application2/core/utils/utils.dart';
 import 'package:keshav_s_application2/landingpage.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
@@ -97,10 +98,23 @@ class _OtpScreenState extends State<OtpScreen> {
         Navigator.of(context).pushAndRemoveUntil<dynamic>(MaterialPageRoute(
           builder: (context) => landingPage(OtpModel.fromJson(jsonObject).data),
         ),(route) => false,);
+        Fluttertoast.showToast(
+            msg:"Logged in Successfully",
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 3,
+            backgroundColor: Colors.greenAccent,
+            textColor: Colors.black,
+            fontSize: 14.0);
       } else if (OtpModel.fromJson(jsonObject).status == "false") {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(OtpModel.fromJson(jsonObject).message),
-            backgroundColor: Colors.redAccent));
+        Fluttertoast.showToast(
+            msg:OtpModel.fromJson(jsonObject).message,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 3,
+            backgroundColor: Colors.redAccent,
+            textColor: Colors.black,
+            fontSize: 14.0);
         setState(() {
           _btnController.error();
         });

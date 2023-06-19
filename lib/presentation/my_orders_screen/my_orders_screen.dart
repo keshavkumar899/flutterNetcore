@@ -382,27 +382,27 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                                     ),
                                                                   ),
                                                                 ),
-                                                                InkWell(
-                                                                  onTap:(){
-                                                                    Get.toNamed(AppRoutes.trackOrderOneScreen);
-                                                                  },
-                                                                  child: Padding(
-                                                                    padding: getPadding(
-                                                                        left: 9,
-                                                                        top: 14,
-                                                                        bottom: 0),
-                                                                    child: Text(
-                                                                      "Track Item",
-                                                                      style: TextStyle(
-                                                                          fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                          fontSize: 15,
-                                                                          color: ColorConstant
-                                                                              .purple700),
-                                                                    ),
-                                                                  ),
-                                                                )
+                                                                // InkWell(
+                                                                //   onTap:(){
+                                                                //     Get.toNamed(AppRoutes.trackOrderOneScreen);
+                                                                //   },
+                                                                //   child: Padding(
+                                                                //     padding: getPadding(
+                                                                //         left: 9,
+                                                                //         top: 14,
+                                                                //         bottom: 0),
+                                                                //     child: Text(
+                                                                //       "Track Item",
+                                                                //       style: TextStyle(
+                                                                //           fontWeight:
+                                                                //           FontWeight
+                                                                //               .w500,
+                                                                //           fontSize: 15,
+                                                                //           color: ColorConstant
+                                                                //               .purple700),
+                                                                //     ),
+                                                                //   ),
+                                                                // )
                                                               ],
                                                             ),
                                                             Spacer(),

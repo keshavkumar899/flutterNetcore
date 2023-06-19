@@ -1,14 +1,14 @@
-class OtpModel {
+class ChangePasswordModel {
   String status;
   String message;
-  Data data;
+  ChangePasswordData data;
 
-  OtpModel({this.status, this.message, this.data});
+  ChangePasswordModel({this.status, this.message, this.data});
 
-  OtpModel.fromJson(Map<String, dynamic> json) {
+  ChangePasswordModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? new ChangePasswordData.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -22,7 +22,7 @@ class OtpModel {
   }
 }
 
-class Data {
+class ChangePasswordData {
   String id;
   String firstName;
   String lastName;
@@ -35,9 +35,9 @@ class Data {
   String createOn;
   String isDelete;
   String isActive;
-  String wallet_balance;
+  String walletBalence;
 
-  Data(
+  ChangePasswordData(
       {this.id,
         this.firstName,
         this.lastName,
@@ -50,9 +50,9 @@ class Data {
         this.createOn,
         this.isDelete,
         this.isActive,
-      this.wallet_balance});
+        this.walletBalence});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  ChangePasswordData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     firstName = json['first_name'];
     lastName = json['last_name'];
@@ -65,7 +65,7 @@ class Data {
     createOn = json['create_on'];
     isDelete = json['is_delete'];
     isActive = json['is_active'];
-    wallet_balance=json['wallet_balence'];
+    walletBalence = json['wallet_balence'];
   }
 
   Map<String, dynamic> toJson() {
@@ -82,7 +82,7 @@ class Data {
     data['create_on'] = this.createOn;
     data['is_delete'] = this.isDelete;
     data['is_active'] = this.isActive;
-    data['wallet_balence']=this.wallet_balance;
+    data['wallet_balence'] = this.walletBalence;
     return data;
   }
 }

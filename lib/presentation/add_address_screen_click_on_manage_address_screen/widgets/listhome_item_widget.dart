@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
 import 'package:keshav_s_application2/presentation/add_address_screen_click_on_manage_address_screen/ManageAddressModel.dart';
 import 'package:keshav_s_application2/presentation/add_new_address_screen_click_on_manage_address_screen/add_new_address_screen_click_on_manage_address_screen.dart';
@@ -6,9 +7,19 @@ import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.d
 import 'package:keshav_s_application2/widgets/custom_button.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
+import '../../../core/utils/utils.dart';
+import '../DeleteAddress.Modeldart.dart';
+
+import 'dart:convert';
+
+import 'package:dio/dio.dart' as dio;
+
+import '../add_address_screen_click_on_manage_address_screen.dart';
+
 // ignore: must_be_immutable
 class ListhomeItemWidget extends StatefulWidget {
-  ListhomeItemWidget(this.data,this.addressdata);
+  ListhomeItemWidget(this.data, this.addressdata);
+
   Data data;
   AddressData addressdata;
 
@@ -17,6 +28,80 @@ class ListhomeItemWidget extends StatefulWidget {
 }
 
 class _ListhomeItemWidgetState extends State<ListhomeItemWidget> {
+  Future<DeleteAddress> deleteAddress() async {
+    var url = 'https://fabfurni.com/api/Auth/deleteAddress';
+    // var token = "432222222222";
+
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+      "User-Agent": "PostmanRuntime/7.30.0",
+      "Accept": "*/*",
+      "Accept-Encoding": "gzip, deflate, br",
+      "Connection": "keep-alive"
+    };
+
+    dio.FormData formData = dio.FormData.fromMap({
+      "user_id": widget.data.id,
+      "address_id": widget.addressdata.id
+      // 'fcm_token': token,
+    });
+    print(formData.fields);
+    var response = await dio.Dio().post(url,
+        options: dio.Options(
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+          },
+        ),
+        data: formData);
+    // print(response.data);
+    // String jsonsDataString = response.data.toString();
+    var jsonObject = jsonDecode(response.toString());
+    // print(jsonObject.toString());
+    if (response.statusCode == 200) {
+      if (DeleteAddress.fromJson(jsonObject).status == "true") {
+        Fluttertoast.showToast(
+            msg: "Address Deleted Successful",
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 3,
+            backgroundColor: Colors.greenAccent,
+            textColor: Colors.black,
+            fontSize: 14.0);
+        Navigator.of(context).pop();
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => AddAddressScreenClickOnManageAddressScreen(widget.data),
+        ));
+        // Navigator.of(context).pushReplacement(MaterialPageRoute(
+        //   builder: (context) => LogInScreen(),
+        // ));
+      } else if (DeleteAddress.fromJson(jsonObject).status == "false") {
+        Fluttertoast.showToast(
+            msg: DeleteAddress.fromJson(jsonObject).message,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 3,
+            backgroundColor: Colors.redAccent,
+            textColor: Colors.black,
+            fontSize: 14.0);
+        // setState(() {
+        //   _btnController.error();
+        // });
+      }
+
+      // print(Logindata.fromJson(jsonObject).message);
+      print(DeleteAddress.fromJson(jsonObject).toString());
+      return DeleteAddress.fromJson(
+          jsonObject); // you can mapping json object also here
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Sending Message"),
+      )); // you can mapping json object also here
+    }
+    return jsonObject;
+    // return response;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,7 +130,8 @@ class _ListhomeItemWidgetState extends State<ListhomeItemWidget> {
                     width: getHorizontalSize(
                       62,
                     ),
-                    text: widget.addressdata.defaulted=="0"?"Home":"Office",
+                    text:
+                        widget.addressdata.defaulted == "0" ? "Home" : "Office",
                     fontStyle: ButtonFontStyle.RobotoMedium12,
                     margin: getMargin(
                       bottom: 8,
@@ -87,6 +173,10 @@ class _ListhomeItemWidgetState extends State<ListhomeItemWidget> {
                       child: Stack(
                         children: [
                           CustomImageView(
+                            onTap: () async {
+                              // print(cartlist[index].id);
+                              await deleteAddress();
+                            },
                             svgPath: ImageConstant.imgTrash,
                             height: getVerticalSize(
                               11,
@@ -104,9 +194,11 @@ class _ListhomeItemWidgetState extends State<ListhomeItemWidget> {
                     onTap: () {
                       pushNewScreen(
                         context,
-                        screen: AddNewAddressScreenClickOnManageAddressScreen(widget.data,widget.addressdata),
+                        screen: AddNewAddressScreenClickOnManageAddressScreen(
+                            widget.data, widget.addressdata),
                         withNavBar: false, // OPTIONAL VALUE. True by default.
-                        pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                        pageTransitionAnimation:
+                            PageTransitionAnimation.cupertino,
                       );
                     },
                     child: Card(
@@ -197,7 +289,13 @@ class _ListhomeItemWidgetState extends State<ListhomeItemWidget> {
                 bottom: 15,
               ),
               child: Text(
-                widget.addressdata.addressOne.capitalizeFirst +", "+ widget.addressdata.city +"\n" + widget.addressdata.state + " - "+widget.addressdata.pincode,
+                widget.addressdata.addressOne.capitalizeFirst +
+                    ", " +
+                    widget.addressdata.city +
+                    "\n" +
+                    widget.addressdata.state +
+                    " - " +
+                    widget.addressdata.pincode,
                 maxLines: null,
                 textAlign: TextAlign.left,
                 style: AppStyle.txtRobotoRegular12Gray6001,

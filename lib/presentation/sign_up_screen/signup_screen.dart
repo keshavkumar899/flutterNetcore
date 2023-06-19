@@ -195,7 +195,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               margin: getMargin(left: 27, top: 71, right: 26),
                               validator: (value) {
                                 if (!isText(value)) {
-                                  return "Please enter valid text";
+                                  return "Please enter your full name";
                                 }
                                 return null;
                               }),

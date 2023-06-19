@@ -1,17 +1,17 @@
-class BlogsModel {
+class BlogsDetailModel {
   String status;
   String message;
-  List<BlogsData> data;
+  List<BlogsDetailData> data;
 
-  BlogsModel({this.status, this.message, this.data});
+  BlogsDetailModel({this.status, this.message, this.data});
 
-  BlogsModel.fromJson(Map<String, dynamic> json) {
+  BlogsDetailModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
     if (json['data'] != null) {
-      data = <BlogsData>[];
+      data = <BlogsDetailData>[];
       json['data'].forEach((v) {
-        data.add(new BlogsData.fromJson(v));
+        data.add(new BlogsDetailData.fromJson(v));
       });
     }
   }
@@ -27,7 +27,7 @@ class BlogsModel {
   }
 }
 
-class BlogsData {
+class BlogsDetailData {
   String id;
   String name;
   String image;
@@ -39,7 +39,7 @@ class BlogsData {
   String createOn;
   String updateOn;
 
-  BlogsData(
+  BlogsDetailData(
       {this.id,
         this.name,
         this.image,
@@ -51,7 +51,7 @@ class BlogsData {
         this.createOn,
         this.updateOn});
 
-  BlogsData.fromJson(Map<String, dynamic> json) {
+  BlogsDetailData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     image = json['image'];

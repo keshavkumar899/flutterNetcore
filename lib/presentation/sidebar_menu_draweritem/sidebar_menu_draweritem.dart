@@ -6,6 +6,9 @@ import 'package:keshav_s_application2/presentation/store_screen/store_screen.dar
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:sizer/sizer.dart';
 
+import '../my_orders_screen/my_orders_screen.dart';
+import '../need_help/NeedHelp.dart';
+import '../whislist_screen/whislist_screen.dart';
 import 'controller/sidebar_menu_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
@@ -187,12 +190,14 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                         ),
                         InkWell(
                           onTap: (){
-
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => MyOrdersScreen(widget.data),
+                            ));
                           },
                           child: Container(
                               width: 75.w,
                               padding: getPadding(left:18,right: 24,top:10,bottom: 10),
-                              child: Text("msg_corporate_enquiries".tr,
+                              child: Text("My Orders",
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
                                   style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
@@ -200,30 +205,37 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                         ),
                         InkWell(
                           onTap: (){
-
+                            pushNewScreen(
+                              context,
+                              screen: WhislistScreen(widget.data),
+                              withNavBar:
+                              false, // OPTIONAL VALUE. True by default.
+                              pageTransitionAnimation:
+                              PageTransitionAnimation.cupertino,
+                            );
                           },
                           child: Container(
                               width: 75.w,
                               padding: getPadding(left:18,right: 24,top:10,bottom: 10),
-                              child: Text("lbl_find_a_studio".tr,
+                              child: Text("Wishlist",
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
                                   style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
                                     fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
                         ),
-                        InkWell(
-                          onTap: (){
-
-                          },
-                          child: Container(
-                              width: 75.w,
-                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
-                              child: Text("lbl_buy_on_phone".tr,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
-                        ),
+                        // InkWell(
+                        //   onTap: (){
+                        //
+                        //   },
+                        //   child: Container(
+                        //       width: 75.w,
+                        //       padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                        //       child: Text("lbl_buy_on_phone".tr,
+                        //           overflow: TextOverflow.ellipsis,
+                        //           textAlign: TextAlign.left,
+                        //           style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
+                        //             fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                        // ),
                         InkWell(
                           onTap: (){
                             Navigator.of(context).push(MaterialPageRoute(
@@ -239,19 +251,19 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                                   style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
                                     fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
                         ),
-                        InkWell(
-                          onTap: (){
-
-                          },
-                          child: Container(
-                              width: 75.w,
-                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
-                              child: Text("lbl_partner_with_us".tr,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
-                        ),
+                        // InkWell(
+                        //   onTap: (){
+                        //
+                        //   },
+                        //   child: Container(
+                        //       width: 75.w,
+                        //       padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                        //       child: Text("lbl_partner_with_us".tr,
+                        //           overflow: TextOverflow.ellipsis,
+                        //           textAlign: TextAlign.left,
+                        //           style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
+                        //             fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                        // ),
 
                         SizedBox(height: 20,),
                         CustomPaint(
@@ -279,13 +291,20 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                         //         textAlign: TextAlign.left,
                         //         style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
                         //           fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
-                        Padding(
-                            padding: getPadding(left:18,right: 24,top:10,bottom: 10),
-                            child: Text("lbl_need_help".tr,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => NeedHelp(),
+                            ));
+                          },
+                          child: Padding(
+                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              child: Text("lbl_need_help".tr,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                        ),
                         InkWell(
                             onTap: () {
                               onTapTxtAboutus();

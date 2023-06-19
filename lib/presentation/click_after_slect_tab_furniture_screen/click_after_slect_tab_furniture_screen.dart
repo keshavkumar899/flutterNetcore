@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:keshav_s_application2/presentation/click_after_slect_tab_furniture_screen/models/Category_subcategory.dart' as sub ;
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
+import 'package:keshav_s_application2/presentation/search_screen/search_screen.dart';
 import 'package:keshav_s_application2/presentation/select_product_screen/select_product_screen.dart';
 import 'package:keshav_s_application2/presentation/store_screen/models/StoreModel.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
@@ -136,7 +137,9 @@ class _ClickAfterSlectTabFurnitureScreenState extends State<ClickAfterSlectTabFu
                     margin:
                     getMargin(left: 12, top: 0, right: 10, bottom: 10),
                     onTap: (){
-                      Get.toNamed(AppRoutes.searchScreen);
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => SearchScreen(widget.data,''),
+                      ));
                     }),
                 Container(
                     height: getVerticalSize(23),

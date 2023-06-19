@@ -5,6 +5,7 @@ import 'package:keshav_s_application2/core/utils/size_utils.dart';
 import 'package:keshav_s_application2/theme/app_style.dart';
 import 'package:keshav_s_application2/widgets/custom_button.dart';
 import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:sizer/sizer.dart';
 
 import '../widgets/custom_image_view.dart';
@@ -20,6 +21,9 @@ class _ResetPasswordState extends State<ResetPassword> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController newpasswordController=TextEditingController();
   TextEditingController confirmpasswordController=TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  final RoundedLoadingButtonController _btnController =
+  RoundedLoadingButtonController();
   bool _isObscure = false;
   @override
   Widget build(BuildContext context) {
@@ -73,71 +77,26 @@ class _ResetPasswordState extends State<ResetPassword> {
                                                 AppStyle.txtRobotoMedium18))
                                       ]))),
                           SizedBox(height: 8.h,),
-                          CustomTextFormField(
-                              focusNode: FocusNode(),
-                              controller: newpasswordController,
-                              hintText: "Enter New password",
-                              margin: getMargin(left: 27, top: 18, right: 26),
-                              textInputAction: TextInputAction.done,
-                              textInputType: TextInputType.visiblePassword,
-                              // suffix: InkWell(
-                              //     onTap: () {
-                              //       newpasswordController._isObscure =
-                              //       !controller.isShowPassword.value;
-                              //     },
-                              //     child: Container(
-                              //         margin: getMargin(
-                              //             left: 30,
-                              //             top: 1,
-                              //             right: 7,
-                              //             bottom: 5),
-                              //         // decoration: BoxDecoration(
-                              //         //     color: ColorConstant.purple900),
-                              //         child: CustomImageView(
-                              //             svgPath: controller
-                              //                 .isShowPassword.value
-                              //                 ? ImageConstant.imgContrast
-                              //                 : ImageConstant.imgContrast))),
-                              suffix: IconButton(
-                                padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
-                                icon: Icon(
-                                  // Based on passwordVisible state choose the icon
-                                  _isObscure
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  color: ColorConstant.purple700,
-                                ),
-                                onPressed: () {
-                                  // Update the state i.e. toogle the state of passwordVisible variable
-                                  setState(() {
-                                    _isObscure = !_isObscure;
-                                  });
-                                },
-                              ),
-                              suffixConstraints: BoxConstraints(
-                                  maxHeight: getVerticalSize(20)),
-                              validator: (value) {
-                                if (value.isEmpty) {
-                                  return 'Please enter the password';
-                                }
-                                return null;
-                              },
-                              isObscureText: !_isObscure,
-                              // isObscureText: !is
-                          ),
-                          SizedBox(height: 1.h,),
+                          Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                  padding: getPadding(left: 27, top: 45),
+                                  child: Text("Enter Your email",
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.left,
+                                      style: AppStyle
+                                          .txtRobotoRegular12Purple300))),
                           CustomTextFormField(
                             focusNode: FocusNode(),
-                            controller: confirmpasswordController,
-                            hintText: "Confirm Password",
-                            margin: getMargin(left: 27, top: 18, right: 26,bottom: 10),
-                            textInputType: TextInputType.text,
+                            controller: emailController,
+                            margin: getMargin(left: 27, top: 5, right: 26),
                             validator: (value) {
                               if (value.isEmpty) {
-                                return 'Please enter the password';
+                                return 'Please enter the email';
                               }
                               return null;
                             },
+
                           ),
                           CustomButton(
                               height: getVerticalSize(39),

@@ -1,60 +1,48 @@
 import 'dart:async';
 
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:keshav_s_application2/core/utils/utils.dart';
-import 'package:keshav_s_application2/landingpage.dart';
-import 'package:keshav_s_application2/presentation/cart_screen/cart_screen.dart';
-import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
-import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-
-import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
-import 'package:rounded_loading_button/rounded_loading_button.dart';
-
-import '../search_screen/search_screen.dart';
-import 'controller/profile_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
-import 'package:keshav_s_application2/core/app_export.dart';
-import 'package:keshav_s_application2/core/utils/validation_functions.dart';
-import 'package:keshav_s_application2/widgets/app_bar/appbar_image.dart';
-import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_5.dart';
-import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_6.dart';
-import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
-import 'package:keshav_s_application2/widgets/custom_button.dart';
-import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:sizer/sizer.dart';
+
+import '../../core/utils/color_constant.dart';
+import '../../core/utils/image_constant.dart';
+import '../../core/utils/size_utils.dart';
+import '../../core/utils/utils.dart';
+import '../../theme/app_style.dart';
+import '../../widgets/app_bar/appbar_image.dart';
+import '../../widgets/app_bar/appbar_title.dart';
+import '../../widgets/app_bar/custom_app_bar.dart';
+import '../../widgets/custom_button.dart';
+import '../../widgets/custom_text_form_field.dart';
+import '../ResetPassword.dart';
 
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
-import 'models/profile_model.dart';
-import 'models/profileget.dart';
+import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
 
-// ignore_for_file: must_be_immutable
-class ProfileScreen extends StatefulWidget {
+import 'model/ResetPasswordModel.dart';
+
+class ResetPasswordAfterLogin extends StatefulWidget {
 
   otp.Data data;
-  ProfileScreen(this.data);
+  ResetPasswordAfterLogin(this.data);
+
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<ResetPasswordAfterLogin> createState() => _ResetPasswordAfterLoginState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ResetPasswordAfterLoginState extends State<ResetPasswordAfterLogin> {
+
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  TextEditingController fullnameoneController = TextEditingController();
-
-  TextEditingController mobilenumberController = TextEditingController();
-
   TextEditingController emailController = TextEditingController();
-
   final RoundedLoadingButtonController _btnController =
   RoundedLoadingButtonController();
 
-  Future<ProfileGet> myProfile;
-
-  Future<ProfileUpdate> postRequest() async {
-    var url = 'https://fabfurni.com/api/Auth/updateProfile';
+  Future<ResetPasswordModel> postRequest() async {
+    var url = 'https://fabfurni.com/api/Auth/resetPassword';
     // var token = "432222222222";
 
     Map<String, String> headers = {
@@ -67,10 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     dio.FormData formData = dio.FormData.fromMap({
       "user_id":widget.data.id,
-      "name":fullnameoneController.text,
-      "mobile":mobilenumberController.text,
-      "email": emailController.text,
-      // 'fcm_token': token,
+      "email":emailController.text,
     });
     print(formData.fields);
     var response = await dio.Dio().post(url,
@@ -86,10 +71,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     var jsonObject = jsonDecode(response.toString());
     // print(jsonObject.toString());
     if (response.statusCode == 200) {
-      if (ProfileUpdate.fromJson(jsonObject).status == "true") {
+      if (ResetPasswordModel.fromJson(jsonObject).status == "true") {
 
         Fluttertoast.showToast(
-            msg:"Profile Updated Successful",
+            msg:"Email sent Successfully. Please check your email",
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -97,13 +82,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             textColor: Colors.black,
             fontSize: 14.0);
         Navigator.of(context).pop();
-        Navigator.of(context).pop();
         // Navigator.of(context).pushReplacement(MaterialPageRoute(
         //   builder: (context) => LogInScreen(),
         // ));
-      } else if (ProfileUpdate.fromJson(jsonObject).status == "false") {
+      } else if (ResetPasswordModel.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg:ProfileUpdate.fromJson(jsonObject).message,
+            msg:ResetPasswordModel.fromJson(jsonObject).message,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -113,27 +97,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         // setState(() {
         //   _btnController.error();
         // });
-      } else if (ProfileUpdate.fromJson(jsonObject).data == null) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(
-              'Server Error..Please try again after sometime',
-              style: SafeGoogleFont(
-                'Poppins SemiBold',
-                // fontSize: 18 * ffem,
-                fontWeight: FontWeight.w400,
-                // height: 1.2575 * ffem / fem,
-                color: Colors.black,
-              ),
-            ),
-            backgroundColor: Colors.redAccent));
-        // setState(() {
-        //   _btnController.error();
-        // });
       }
 
       // print(Logindata.fromJson(jsonObject).message);
-      print(ProfileUpdate.fromJson(jsonObject).toString());
-      return ProfileUpdate.fromJson(
+      print(ResetPasswordModel.fromJson(jsonObject).toString());
+      return ResetPasswordModel.fromJson(
           jsonObject); // you can mapping json object also here
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -144,65 +112,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // return response;
   }
 
-  Future<ProfileGet> getProfileData() async {
-    Map data = {
-      'user_id': widget.data.id,
-    };
-    //encode Map to JSON
-    var body = json.encode(data);
-    var response =
-    await dio.Dio().post("https://fabfurni.com/api/Auth/myprofile",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
-    var jsonObject = jsonDecode(response.toString());
-    if (response.statusCode == 200) {
-      print(jsonObject);
-
-      if (ProfileGet.fromJson(jsonObject).status == "true") {
-        // print(orders.MyOrdersModel.fromJson(jsonObject).data.first.products.first.image);
-
-        return ProfileGet.fromJson(jsonObject);
-
-        // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      } else if (ProfileGet.fromJson(jsonObject).status == "false") {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(ProfileGet.fromJson(jsonObject).message),
-            backgroundColor: Colors.redAccent));
-      } else if (ProfileGet.fromJson(jsonObject).data == null) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(
-            jsonObject['message'] + ' Please check after sometime.',
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Colors.redAccent,
-        ));
-      } else {
-        throw Exception('Failed to load');
-      }
-    } else {
-      throw Exception('Failed to load');
-    }
-    return jsonObject;
-  }
-
-  @override
-  void initState() {
-    myProfile = getProfileData();
-    myProfile.then((value) {
-      setState(() {
-        fullnameoneController.text = value.data.firstName + " "+ value.data.lastName;
-        mobilenumberController.text=value.data.mobile;
-        emailController.text=value.data.email;
-      });
-    });
-
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -211,82 +120,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
             resizeToAvoidBottomInset: false,
             backgroundColor: ColorConstant.whiteA700,
             appBar: CustomAppBar(
-                height: getVerticalSize(90),
-                leadingWidth: 34,
+                height: getVerticalSize(70),
+                leadingWidth: 41,
                 leading: AppbarImage(
-                    height: getVerticalSize(0),
-                    width: getHorizontalSize(0),
-                    svgPath: ImageConstant.imgArrowleft,
-                    margin: getMargin(left: 25, top: 34, bottom: 42),
-                    onTap: () {
+                    onTap: (){
                       Navigator.pop(context);
-                    }),
-                title: AppbarImage(
-                    height: getVerticalSize(32),
-                    width: getHorizontalSize(106),
-                    imagePath: ImageConstant.imgFinallogo03,
-                    margin: getMargin(left: 13, top: 0, bottom: 15)),
-                actions: [
-                  AppbarImage(
-                      height: getSize(21),
-                      width: getSize(21),
-                      svgPath: ImageConstant.imgSearch,
-                      margin:
-                      getMargin(left: 12, top: 0, right: 10, bottom: 10),
-                      onTap: onTapSearch),
-                  Container(
-                      height: getVerticalSize(23),
-                      width: getHorizontalSize(27),
-                      margin:
-                      getMargin(left: 20, top: 25, right: 10, bottom: 0),
-                      child: Stack(alignment: Alignment.topRight, children: [
-                        AppbarImage(
-                            height: getVerticalSize(21),
-                            width: getHorizontalSize(21),
-                            svgPath: ImageConstant.imgLocation,
-                            margin: getMargin(top: 5, right: 6),
-                            onTap: (){
-                              pushNewScreen(
-                                context,
-                                screen: WhislistScreen(widget.data),
-                                withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
-                                pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
-                              );
-                            }),
-                        // AppbarSubtitle6(
-                        //     text: "lbl_2".tr,
-                        //     margin: getMargin(left: 17, bottom: 13))
-                      ])),
-                  Container(
-                      height: getVerticalSize(24),
-                      width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 27, right: 31),
-                      child: Stack(alignment: Alignment.topRight, children: [
-                        AppbarImage(
-                            onTap: () {
-                              pushNewScreen(
-                                context,
-                                screen: CartScreen(widget.data),
-                                withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
-                                pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
-                              );
-                              // Navigator.of(context).push(MaterialPageRoute(
-                              //   builder: (context) => CartScreen(widget.data),
-                              // ));
-                            },
-                            height: getVerticalSize(20),
-                            width: getHorizontalSize(23),
-                            svgPath: ImageConstant.imgCart,
-                            margin: getMargin(top: 4, right: 6)),
-                        AppbarSubtitle6(
-                            text: CartScreen.count.toString(),
-                            margin: getMargin(left: 17, bottom: 13))
-                      ]))
-                ],
+                    },
+                    height: getVerticalSize(15),
+                    width: getHorizontalSize(9),
+                    svgPath: ImageConstant.imgArrowleft,
+                    margin: getMargin(left: 20, top: 30, bottom: 25)),
+                title: AppbarTitle(
+                    text: "Reset Password",
+                    margin: getMargin(left: 19, top: 49, bottom: 42)),
                 styleType: Style.bgShadowBlack90033),
             body: Form(
                 key: _formKey,
@@ -298,36 +144,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
-                                  padding: getPadding(left: 27, top: 16),
-                                  child: Text("lbl_full_name".tr,
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.left,
-                                      style: AppStyle
-                                          .txtRobotoRegular12Purple300))),
-                          CustomTextFormField(
-                              focusNode: FocusNode(),
-                              controller: fullnameoneController,
-                              hintText: fullnameoneController.text,
-                              margin: getMargin(left: 27, top: 5, right: 26)),
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                  padding: getPadding(left: 27, top: 13),
-                                  child: Text("lbl_mobile_number".tr,
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.left,
-                                      style: AppStyle
-                                          .txtRobotoRegular12Purple300))),
-                          CustomTextFormField(
-                              focusNode: FocusNode(),
-                              controller: mobilenumberController,
-                              hintText: mobilenumberController.text,
-                              margin: getMargin(left: 27, top: 5, right: 26)),
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                  padding: getPadding(left: 27, top: 13),
-                                  child: Text("lbl_email_id".tr,
+                                  padding: getPadding(left: 27, top: 45),
+                                  child: Text("Enter Your email",
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.left,
                                       style: AppStyle
@@ -335,36 +153,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           CustomTextFormField(
                               focusNode: FocusNode(),
                               controller: emailController,
-                              hintText:emailController.text,
-                              margin: getMargin(left: 27, top: 6, right: 26),
-                              textInputAction: TextInputAction.done,
-                              textInputType: TextInputType.emailAddress,
-                              validator: (value) {
-                                if (value == null ||
-                                    (!isValidEmail(value, isRequired: true))) {
-                                  return "Please enter valid email";
-                                }
-                                return null;
-                              }),
-                          CustomButton(
-                            onTap: (){
-                              FocusManager.instance.primaryFocus.unfocus();
-                              if (_formKey.currentState.validate()) {
-                                postRequest();
-                                // print(field);
-                                // if(cred!.=='success'){
-                                //
-                                // }
-                              } else {
-                                setState(() {
-                                  Timer(Duration(seconds: 0), () {
-                                    _btnController.reset();
-                                  });
-                                });
+                              margin: getMargin(left: 27, top: 5, right: 26),
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter the email';
                               }
+                              return null;
                             },
+
+                          ),
+
+                          SizedBox(height: 4.h,),
+
+                          CustomButton(
+                              onTap: (){
+                                FocusManager.instance.primaryFocus.unfocus();
+                                if (_formKey.currentState.validate()) {
+                                  postRequest();
+                                  // print(field);
+                                  // if(cred!.=='success'){
+                                  //
+                                  // }
+                                } else {
+                                  setState(() {
+                                    Timer(Duration(seconds: 0), () {
+                                      _btnController.reset();
+                                    });
+                                  });
+                                }
+                              },
                               height: getVerticalSize(39),
-                              text: "lbl_save".tr,
+                              text: "Submit",
                               margin: getMargin(left: 27, top: 43, right: 26),
                               variant: ButtonVariant.FillPurple900,
                               padding: ButtonPadding.PaddingAll11,
@@ -652,20 +471,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: getVerticalSize(5),
                                   thickness: getVerticalSize(5),
                                   color: ColorConstant.purple50))
-                        ])))));
-  }
-
-  onTapArrowleft15() {
-    Get.back();
-  }
-
-  onTapSearch() {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => SearchScreen(widget.data,''),
-    ));
-  }
-
-  onTapWishlist() {
-    Get.toNamed(AppRoutes.whislistScreen);
+                        ])))));;
   }
 }

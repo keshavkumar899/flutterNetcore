@@ -52,6 +52,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   List<products.SimilarProduct> similarProduct = [];
   List<products.BrandProduct> brandProduct = [];
   List<products.ProductImages> productImages=[];
+  List<products.Attributes> attributes=[];
   // List<homes.FavouriteProduct> favouriteProduct = [];
   // List<homes.Bannerswow> bannerswow = [];
   // List<homes.BannersgoodLooks> bannersgoodLooks = [];
@@ -431,8 +432,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         similarProduct=value.similarProduct;
         brandProduct=value.brandProduct;
         productImages=value.data.productImages;
+        attributes=value.data.attributes;
       });
     });
+    print(attributes.length);
+    print(widget.product_id);
 
     super.initState();
   }
@@ -1077,6 +1081,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                       letterSpacing:
                                                       getHorizontalSize(0.5))))
                                         ])),
+                                attributes.length !=0?
                                 Container(
                                     margin: getMargin(left: 10, top: 10, right: 10),
                                     padding: getPadding(
@@ -1100,174 +1105,212 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                   thickness: getVerticalSize(1),
                                                   color: ColorConstant.gray40002,
                                                   indent: getHorizontalSize(1))),
-                                          Padding(
-                                              padding: getPadding(left: 8, top: 8),
-                                              child: Row(children: [
-                                                Text("lbl_brand".tr,
-                                                    overflow: TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.left,
-                                                    style: AppStyle
-                                                        .txtRobotoRegular10Bluegray900),
-                                                Padding(
-                                                    padding: getPadding(left: 84),
-                                                    child: Text(productlist.brandName,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.left,
-                                                        style: AppStyle
-                                                            .txtRobotoRegular10Bluegray900))
-                                              ])),
-                                          Padding(
-                                              padding: getPadding(
-                                                  left: 8, top: 8, right: 92),
-                                              child: Row(
-                                                  crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                        padding: getPadding(bottom: 15),
-                                                        child: Text("lbl_dimension".tr,
-                                                            overflow:
-                                                            TextOverflow.ellipsis,
+
+                                          Container(
+                                            width: 400,
+                                            height: 200,
+                                            child: ListView.builder(
+                                                itemCount: attributes.length,
+                                                itemBuilder: (context,index){
+                                              return  Padding(
+                                                  padding: getPadding(left: 0, top: 8),
+                                                  child: Row(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                      children: [
+                                                    FittedBox(
+                                                      fit:BoxFit.fill,
+                                                      child: Container(
+                                                        width:120,
+                                                        child: Text(attributes[index].productKey.capitalizeFirst+":",
+                                                            overflow: TextOverflow.ellipsis,
                                                             textAlign: TextAlign.left,
                                                             style: AppStyle
-                                                                .txtRobotoRegular10Bluegray900)),
-                                                    Container(
-                                                        width: getHorizontalSize(159),
-                                                        margin: getMargin(left: 63),
-                                                        child: Text(
-                                                            "msg_h_37_5_w_62".tr,
-                                                            maxLines: null,
-                                                            textAlign: TextAlign.left,
-                                                            style: AppStyle
-                                                                .txtRobotoRegular10Bluegray9001))
-                                                  ])),
-                                          Padding(
-                                              padding: getPadding(left: 8, top: 6),
-                                              child: Row(children: [
-                                                Text("lbl_weight".tr,
-                                                    overflow: TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.left,
-                                                    style: AppStyle
-                                                        .txtRobotoRegular10Bluegray900),
-                                                Padding(
-                                                    padding: getPadding(left: 79),
-                                                    child: Text("lbl_46_2_kg".tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.left,
-                                                        style: AppStyle
-                                                            .txtRobotoRegular10Bluegray900))
-                                              ])),
-                                          Padding(
-                                              padding: getPadding(left: 8, top: 9),
-                                              child: Row(children: [
-                                                Text("lbl_warrenty".tr,
-                                                    overflow: TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.left,
-                                                    style: AppStyle
-                                                        .txtRobotoRegular10Bluegray900),
-                                                Padding(
-                                                    padding: getPadding(left: 70),
-                                                    child: Text(
-                                                        "msg_12_months_warrenty2".tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.left,
-                                                        style: AppStyle
-                                                            .txtRobotoRegular10Bluegray900))
-                                              ])),
-                                          Padding(
-                                              padding: getPadding(left: 8, top: 8),
-                                              child: Row(children: [
-                                                Text("lbl_assembly".tr,
-                                                    overflow: TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.left,
-                                                    style: AppStyle
-                                                        .txtRobotoRegular10Bluegray900),
-                                                Padding(
-                                                    padding: getPadding(left: 66),
-                                                    child: Text(
-                                                        "msg_carpenter_assembly".tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.left,
-                                                        style: AppStyle
-                                                            .txtRobotoRegular10Bluegray900))
-                                              ])),
-                                          Padding(
-                                              padding: getPadding(left: 8, top: 7),
-                                              child: Row(children: [
-                                                Padding(
-                                                    padding: getPadding(top: 1),
-                                                    child: Text(
-                                                        "msg_primary_material".tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.left,
-                                                        style: AppStyle
-                                                            .txtRobotoRegular10Bluegray900)),
-                                                Padding(
-                                                    padding:
-                                                    getPadding(left: 37, bottom: 1),
-                                                    child: Text("lbl_fabric".tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.left,
-                                                        style: AppStyle
-                                                            .txtRobotoRegular10Bluegray900))
-                                              ])),
-                                          Padding(
-                                              padding: getPadding(left: 8, top: 9),
-                                              child: Row(children: [
-                                                Text("lbl_room_type".tr,
-                                                    overflow: TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.left,
-                                                    style: AppStyle
-                                                        .txtRobotoRegular10Bluegray900),
-                                                Padding(
-                                                    padding: getPadding(left: 60),
-                                                    child: Text("lbl_living_room".tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.left,
-                                                        style: AppStyle
-                                                            .txtRobotoRegular10Bluegray900))
-                                              ])),
-                                          Padding(
-                                              padding: getPadding(left: 8, top: 7),
-                                              child: Row(children: [
-                                                Text("lbl_seating_height".tr,
-                                                    overflow: TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.left,
-                                                    style: AppStyle
-                                                        .txtRobotoRegular10Bluegray900),
-                                                Padding(
-                                                    padding: getPadding(left: 45),
-                                                    child: Text("lbl_18".tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.left,
-                                                        style: AppStyle
-                                                            .txtRobotoRegular10Bluegray900))
-                                              ])),
-                                          Padding(
-                                              padding: getPadding(left: 8, top: 8),
-                                              child: Row(children: [
-                                                Text("lbl_color".tr,
-                                                    overflow: TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.left,
-                                                    style: AppStyle
-                                                        .txtRobotoRegular10Bluegray900),
-                                                Padding(
-                                                    padding: getPadding(left: 86),
-                                                    child: Text("lbl_black".tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.left,
-                                                        style: AppStyle
-                                                            .txtRobotoRegular10Bluegray900))
-                                              ])),
-                                          Padding(
-                                              padding: getPadding(
-                                                  left: 8, top: 9, bottom: 5),
-                                              child: Text("lbl_sku".tr,
-                                                  overflow: TextOverflow.ellipsis,
-                                                  textAlign: TextAlign.left,
-                                                  style: AppStyle
-                                                      .txtRobotoRegular10Bluegray900))
-                                        ])),
+                                                                .txtRobotoRegular15),
+                                                      ),
+                                                    ),
+                                                    FittedBox(
+                                                      fit: BoxFit.fill,
+                                                      child: Container(
+                                                        width: 200,
+                                                          padding: getPadding(left: 0),
+                                                          child: Text(attributes[index].productValue,
+                                                              overflow: TextOverflow.ellipsis,
+                                                              textAlign: TextAlign.left,
+                                                              style: AppStyle
+                                                                  .txtRobotoRegular15)),
+                                                    )
+                                                  ]));
+                                            }),
+                                          ),
+                                          // Padding(
+                                          //     padding: getPadding(left: 8, top: 8),
+                                          //     child: Row(children: [
+                                          //       Text("lbl_brand".tr,
+                                          //           overflow: TextOverflow.ellipsis,
+                                          //           textAlign: TextAlign.left,
+                                          //           style: AppStyle
+                                          //               .txtRobotoRegular10Bluegray900),
+                                          //       Padding(
+                                          //           padding: getPadding(left: 84),
+                                          //           child: Text(productlist.brandName,
+                                          //               overflow: TextOverflow.ellipsis,
+                                          //               textAlign: TextAlign.left,
+                                          //               style: AppStyle
+                                          //                   .txtRobotoRegular10Bluegray900))
+                                          //     ])),
+                                          // Padding(
+                                          //     padding: getPadding(
+                                          //         left: 8, top: 8, right: 92),
+                                          //     child: Row(
+                                          //         crossAxisAlignment:
+                                          //         CrossAxisAlignment.start,
+                                          //         children: [
+                                          //           Padding(
+                                          //               padding: getPadding(bottom: 15),
+                                          //               child: Text("lbl_dimension".tr,
+                                          //                   overflow:
+                                          //                   TextOverflow.ellipsis,
+                                          //                   textAlign: TextAlign.left,
+                                          //                   style: AppStyle
+                                          //                       .txtRobotoRegular10Bluegray900)),
+                                          //           Container(
+                                          //               width: getHorizontalSize(159),
+                                          //               margin: getMargin(left: 63),
+                                          //               child: Text(
+                                          //                   "msg_h_37_5_w_62".tr,
+                                          //                   maxLines: null,
+                                          //                   textAlign: TextAlign.left,
+                                          //                   style: AppStyle
+                                          //                       .txtRobotoRegular10Bluegray9001))
+                                          //         ])),
+                                          // Padding(
+                                          //     padding: getPadding(left: 8, top: 6),
+                                          //     child: Row(children: [
+                                          //       Text("lbl_weight".tr,
+                                          //           overflow: TextOverflow.ellipsis,
+                                          //           textAlign: TextAlign.left,
+                                          //           style: AppStyle
+                                          //               .txtRobotoRegular10Bluegray900),
+                                          //       Padding(
+                                          //           padding: getPadding(left: 79),
+                                          //           child: Text("lbl_46_2_kg".tr,
+                                          //               overflow: TextOverflow.ellipsis,
+                                          //               textAlign: TextAlign.left,
+                                          //               style: AppStyle
+                                          //                   .txtRobotoRegular10Bluegray900))
+                                          //     ])),
+                                          // Padding(
+                                          //     padding: getPadding(left: 8, top: 9),
+                                          //     child: Row(children: [
+                                          //       Text("lbl_warrenty".tr,
+                                          //           overflow: TextOverflow.ellipsis,
+                                          //           textAlign: TextAlign.left,
+                                          //           style: AppStyle
+                                          //               .txtRobotoRegular10Bluegray900),
+                                          //       Padding(
+                                          //           padding: getPadding(left: 70),
+                                          //           child: Text(
+                                          //               "msg_12_months_warrenty2".tr,
+                                          //               overflow: TextOverflow.ellipsis,
+                                          //               textAlign: TextAlign.left,
+                                          //               style: AppStyle
+                                          //                   .txtRobotoRegular10Bluegray900))
+                                          //     ])),
+                                          // Padding(
+                                          //     padding: getPadding(left: 8, top: 8),
+                                          //     child: Row(children: [
+                                          //       Text("lbl_assembly".tr,
+                                          //           overflow: TextOverflow.ellipsis,
+                                          //           textAlign: TextAlign.left,
+                                          //           style: AppStyle
+                                          //               .txtRobotoRegular10Bluegray900),
+                                          //       Padding(
+                                          //           padding: getPadding(left: 66),
+                                          //           child: Text(
+                                          //               "msg_carpenter_assembly".tr,
+                                          //               overflow: TextOverflow.ellipsis,
+                                          //               textAlign: TextAlign.left,
+                                          //               style: AppStyle
+                                          //                   .txtRobotoRegular10Bluegray900))
+                                          //     ])),
+                                          // Padding(
+                                          //     padding: getPadding(left: 8, top: 7),
+                                          //     child: Row(children: [
+                                          //       Padding(
+                                          //           padding: getPadding(top: 1),
+                                          //           child: Text(
+                                          //               "msg_primary_material".tr,
+                                          //               overflow: TextOverflow.ellipsis,
+                                          //               textAlign: TextAlign.left,
+                                          //               style: AppStyle
+                                          //                   .txtRobotoRegular10Bluegray900)),
+                                          //       Padding(
+                                          //           padding:
+                                          //           getPadding(left: 37, bottom: 1),
+                                          //           child: Text("lbl_fabric".tr,
+                                          //               overflow: TextOverflow.ellipsis,
+                                          //               textAlign: TextAlign.left,
+                                          //               style: AppStyle
+                                          //                   .txtRobotoRegular10Bluegray900))
+                                          //     ])),
+                                          // Padding(
+                                          //     padding: getPadding(left: 8, top: 9),
+                                          //     child: Row(children: [
+                                          //       Text("lbl_room_type".tr,
+                                          //           overflow: TextOverflow.ellipsis,
+                                          //           textAlign: TextAlign.left,
+                                          //           style: AppStyle
+                                          //               .txtRobotoRegular10Bluegray900),
+                                          //       Padding(
+                                          //           padding: getPadding(left: 60),
+                                          //           child: Text("lbl_living_room".tr,
+                                          //               overflow: TextOverflow.ellipsis,
+                                          //               textAlign: TextAlign.left,
+                                          //               style: AppStyle
+                                          //                   .txtRobotoRegular10Bluegray900))
+                                          //     ])),
+                                          // Padding(
+                                          //     padding: getPadding(left: 8, top: 7),
+                                          //     child: Row(children: [
+                                          //       Text("lbl_seating_height".tr,
+                                          //           overflow: TextOverflow.ellipsis,
+                                          //           textAlign: TextAlign.left,
+                                          //           style: AppStyle
+                                          //               .txtRobotoRegular10Bluegray900),
+                                          //       Padding(
+                                          //           padding: getPadding(left: 45),
+                                          //           child: Text("lbl_18".tr,
+                                          //               overflow: TextOverflow.ellipsis,
+                                          //               textAlign: TextAlign.left,
+                                          //               style: AppStyle
+                                          //                   .txtRobotoRegular10Bluegray900))
+                                          //     ])),
+                                          // Padding(
+                                          //     padding: getPadding(left: 8, top: 8),
+                                          //     child: Row(children: [
+                                          //       Text("lbl_color".tr,
+                                          //           overflow: TextOverflow.ellipsis,
+                                          //           textAlign: TextAlign.left,
+                                          //           style: AppStyle
+                                          //               .txtRobotoRegular10Bluegray900),
+                                          //       Padding(
+                                          //           padding: getPadding(left: 86),
+                                          //           child: Text("lbl_black".tr,
+                                          //               overflow: TextOverflow.ellipsis,
+                                          //               textAlign: TextAlign.left,
+                                          //               style: AppStyle
+                                          //                   .txtRobotoRegular10Bluegray900))
+                                          //     ])),
+                                          // Padding(
+                                          //     padding: getPadding(
+                                          //         left: 8, top: 9, bottom: 5),
+                                          //     child: Text("lbl_sku".tr,
+                                          //         overflow: TextOverflow.ellipsis,
+                                          //         textAlign: TextAlign.left,
+                                          //         style: AppStyle
+                                          //             .txtRobotoRegular10Bluegray900))
+                                        ])):Container(),
                                 Container(
                                   // height: getVerticalSize(442),
                                     width: double.maxFinite,
@@ -1417,8 +1460,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                             });
                                                           },
                                                             height: getVerticalSize(30),
-                                                            text: "lbl_additional_info"
-                                                                .tr,
+                                                            text: " Additional Info",
                                                             margin: getMargin(
                                                                 left: 15,
                                                                 top: 15,
@@ -1555,8 +1597,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                             },
                                                             height: getVerticalSize(30),
                                                             text:
-                                                            "msg_customer_redressal"
-                                                                .tr,
+                                                            "  Customer Redressal",
                                                             margin: getMargin(
                                                                 left: 15,
                                                                 top: 10,
@@ -1692,7 +1733,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                               });
                                                             },
                                                             height: getVerticalSize(30),
-                                                            text: "Merchant Info",
+                                                            text: " Merchant Info",
                                                             margin: getMargin(
                                                                 left: 15,
                                                                 top: 10,
@@ -1829,8 +1870,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                             },
                                                             height: getVerticalSize(30),
                                                             text:
-                                                            "msg_returns_cancellation"
-                                                                .tr,
+                                                            "  Returns & Cancellation",
                                                             margin: getMargin(
                                                                 left: 15,
                                                                 top: 10,
@@ -1967,7 +2007,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                             },
                                                             height: getVerticalSize(30),
                                                             text:
-                                                            "Warranty Installation",
+                                                            "  Warranty Installation",
                                                             margin: getMargin(
                                                                 left: 15,
                                                                 top: 10,
