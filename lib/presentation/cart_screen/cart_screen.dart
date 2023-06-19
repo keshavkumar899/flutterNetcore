@@ -760,6 +760,7 @@ class _CartScreenState extends State<CartScreen> {
                                                                     style: AppStyle
                                                                         .txtRobotoRegular14Purple400),
                                                                 SizedBox(height: 1.h,),
+                                                                product.description.isNotEmpty?
                                                                 Container(
                                                                   constraints: const BoxConstraints(
                                                                     maxWidth: 230,
@@ -777,7 +778,7 @@ class _CartScreenState extends State<CartScreen> {
                                                                         style: AppStyle
                                                                             .txtRobotoRegular9),
                                                                   ),
-                                                                ),
+                                                                ):Container(),
                                                                 Padding(
                                                                     padding:
                                                                     getPadding(
@@ -925,69 +926,69 @@ class _CartScreenState extends State<CartScreen> {
                                           ],
                                         );
                                       }),
-                                  InkWell(
-                                    onTap: (){
-                                      Get.toNamed(AppRoutes.clickGstinScreen);
-                                    },
-                                    child: Container(
-                                      child: Column(children: [
-                                        Padding(
-                                            padding: getPadding(top: 14),
-                                            child: Divider(
-                                                height: getVerticalSize(3),
-                                                thickness:
-                                                getVerticalSize(3),
-                                                color: ColorConstant
-                                                    .purple5001)),
-                                        Align(
-                                            alignment: Alignment.centerLeft,
-                                            child: Padding(
-                                                padding: getPadding(
-                                                    left: 34, top: 15),
-                                                child: Row(
-                                                  children: [
-                                                    Text(
-                                                        "Use GSTIN For Business Purchase (Optional)",
-                                                        overflow:
-                                                        TextOverflow
-                                                            .ellipsis,
-                                                        textAlign:
-                                                        TextAlign.left,
-                                                        style: AppStyle
-                                                            .txtRobotoMedium14
-                                                            .copyWith(
-                                                            letterSpacing:
-                                                            getHorizontalSize(
-                                                                0.7))),
-                                                    Spacer(),
-                                                    CustomImageView(
-                                                        svgPath: ImageConstant
-                                                            .imgArrowrightGray50015x9,
-                                                        height:
-                                                        getVerticalSize(
-                                                            15),
-                                                        width:
-                                                        getHorizontalSize(
-                                                            9),
-                                                        alignment: Alignment
-                                                            .topRight,
-                                                        margin: getMargin(
-                                                            top: 0,
-                                                            right: 27)),
-                                                  ],
-                                                ))),
-                                        Padding(
-                                            padding: getPadding(top: 12),
-                                            child: Divider(
-                                                height: getVerticalSize(3),
-                                                thickness:
-                                                getVerticalSize(3),
-                                                color: ColorConstant
-                                                    .purple5001)),
-                                      ],),
-                                    ),
-                                  ),
-                                  SizedBox(height: 5.h,)
+                                  // InkWell(
+                                  //   onTap: (){
+                                  //     Get.toNamed(AppRoutes.clickGstinScreen);
+                                  //   },
+                                  //   child: Container(
+                                  //     child: Column(children: [
+                                  //       Padding(
+                                  //           padding: getPadding(top: 14),
+                                  //           child: Divider(
+                                  //               height: getVerticalSize(3),
+                                  //               thickness:
+                                  //               getVerticalSize(3),
+                                  //               color: ColorConstant
+                                  //                   .purple5001)),
+                                  //       Align(
+                                  //           alignment: Alignment.centerLeft,
+                                  //           child: Padding(
+                                  //               padding: getPadding(
+                                  //                   left: 34, top: 15),
+                                  //               child: Row(
+                                  //                 children: [
+                                  //                   Text(
+                                  //                       "Use GSTIN For Business Purchase (Optional)",
+                                  //                       overflow:
+                                  //                       TextOverflow
+                                  //                           .ellipsis,
+                                  //                       textAlign:
+                                  //                       TextAlign.left,
+                                  //                       style: AppStyle
+                                  //                           .txtRobotoMedium14
+                                  //                           .copyWith(
+                                  //                           letterSpacing:
+                                  //                           getHorizontalSize(
+                                  //                               0.7))),
+                                  //                   Spacer(),
+                                  //                   CustomImageView(
+                                  //                       svgPath: ImageConstant
+                                  //                           .imgArrowrightGray50015x9,
+                                  //                       height:
+                                  //                       getVerticalSize(
+                                  //                           15),
+                                  //                       width:
+                                  //                       getHorizontalSize(
+                                  //                           9),
+                                  //                       alignment: Alignment
+                                  //                           .topRight,
+                                  //                       margin: getMargin(
+                                  //                           top: 0,
+                                  //                           right: 27)),
+                                  //                 ],
+                                  //               ))),
+                                  //       Padding(
+                                  //           padding: getPadding(top: 12),
+                                  //           child: Divider(
+                                  //               height: getVerticalSize(3),
+                                  //               thickness:
+                                  //               getVerticalSize(3),
+                                  //               color: ColorConstant
+                                  //                   .purple5001)),
+                                  //     ],),
+                                  //   ),
+                                  // ),
+                                  // SizedBox(height: 5.h,)
                                 ],
                               ),
                             ),

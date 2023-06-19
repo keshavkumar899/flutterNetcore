@@ -572,6 +572,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     margin: getMargin(top: 5),
                                     child:
                                     Stack(alignment: Alignment.topRight, children: [
+                                      productImages.length!=0?
                                       CarouselSlider.builder(
                                           options: CarouselOptions(
                                             height: getVerticalSize(215),
@@ -594,21 +595,57 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                             //     .productDetailModelObj
                                             //     .value
                                             //     .sliderItemList[index];
-                                            return Align(
-                                              alignment: Alignment.center,
-                                              child: CustomImageView(
-                                                url:
-                                                productImages[index].images,
-                                                height: getVerticalSize(
-                                                  215,
-                                                ),
-                                                width: getHorizontalSize(
-                                                  428,
+                                            return GestureDetector(
+                                              onTap: (){
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) => documentViewer(
+                                                        productImages[index].images,
+                                                        context),
+                                                  ),
+                                                );
+                                              },
+                                              child: Align(
+                                                alignment: Alignment.center,
+                                                child: CustomImageView(
+                                                  url:
+                                                  productImages[index].images,
+                                                  height: getVerticalSize(
+                                                    215,
+                                                  ),
+                                                  width: getHorizontalSize(
+                                                    428,
+                                                  ),
                                                 ),
                                               ),
                                             );
                                             // SliderItemWidget(model);
-                                          }),
+                                          }): GestureDetector(
+                                        onTap: (){
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => documentViewer(
+                                                  productlist.image,
+                                                  context),
+                                            ),
+                                          );
+                                        },
+                                            child: Align(
+                                        alignment: Alignment.center,
+                                        child: CustomImageView(
+                                            url:
+                                            productlist.image,
+                                            height: getVerticalSize(
+                                              215,
+                                            ),
+                                            width: getHorizontalSize(
+                                              428,
+                                            ),
+                                        ),
+                                      ),
+                                          ),
                                       Align(
                                           alignment: Alignment.topRight,
                                           child: Container(
@@ -1378,6 +1415,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                     child: FittedBox(
                                                                       fit: BoxFit.fill,
                                                                       child: Container(
+                                                                        width: 90.w,
+                                                                        height: 20.h,
                                                                         margin: getMargin(
                                                                           right: 10,
                                                                         ),
@@ -1405,7 +1444,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                               ),
                                                                               width:
                                                                               getSize(
-                                                                                130,
+                                                                                300,
                                                                               ),
                                                                               margin:
                                                                               getMargin(
@@ -2428,6 +2467,59 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       throw 'Could not launch $url';
     }
   }
+
+  static Widget documentViewer(String url, context) => SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomRight,
+                colors: <Color>[Color(0xff000000), Color(0xff000000)],
+              ),
+            ),
+          ),
+          elevation: 0.5,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios_new_outlined,
+              color: Color(0xff9BA6BF),
+              size: 19,
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ),
+        backgroundColor: Colors.black,
+        body: Container(
+          decoration: BoxDecoration (
+            gradient: LinearGradient (
+              begin: Alignment(0.184, 1),
+              end: Alignment(0.184, -1),
+              colors: <Color>[Color(0xff000000), Color(0x00000000)],
+              stops: <double>[0, 1],
+            ),
+          ),
+          alignment: Alignment.topCenter,
+          // padding: const EdgeInsets.fromLTRB(20.0,0,20,100),
+          child: InteractiveViewer(
+            panEnabled: true,
+            maxScale: 4,
+            scaleEnabled: true,
+            constrained: false,
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(url),
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ));
 
   onTapArrowleft6() {
     Navigator.of(context).pop();
