@@ -204,7 +204,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             duration: Duration(seconds: 1),
             behavior: SnackBarBehavior.floating,
-            margin: EdgeInsets.only(bottom: 10.0),
+            margin: EdgeInsets.only(bottom: 20.0),
             content: Text("Added to Wishlist "+AddWishlist.fromJson(jsonObject).message+"ly",style: TextStyle(color: Colors.black),),
             backgroundColor: Colors.greenAccent));
 

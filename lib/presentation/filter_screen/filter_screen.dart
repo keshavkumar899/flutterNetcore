@@ -100,10 +100,10 @@ class _filterScreen extends State<FilterScreen> {
 
                           AppConstant.selectedIndexBrand = -1;
                           AppConstant.selectedIndexBrandId = '';
-                          SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          Map json1 = jsonDecode(prefs.getString('userData'));
-                          var user1 = OtpModel.fromJson(json1);
+                          // SharedPreferences prefs =
+                          //     await SharedPreferences.getInstance();
+                          // Map json1 = jsonDecode(prefs.getString('userData'));
+                          // var user1 = OtpModel.fromJson(json1);
                           List<String> stringArray = [
                             '',
                             '',
@@ -127,10 +127,10 @@ class _filterScreen extends State<FilterScreen> {
                               endIndent: getHorizontalSize(4))),
                       GestureDetector(
                         onTap: () async {
-                          SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          Map json1 = jsonDecode(prefs.getString('userData'));
-                          var user1 = OtpModel.fromJson(json1);
+                          // SharedPreferences prefs =
+                          //     await SharedPreferences.getInstance();
+                          // Map json1 = jsonDecode(prefs.getString('userData'));
+                          // var user1 = OtpModel.fromJson(json1);
                           List<String> stringArray = [
                             AppConstant.selectedIndexCategoryId,
                             AppConstant.selectedIndexSubCategoryId,

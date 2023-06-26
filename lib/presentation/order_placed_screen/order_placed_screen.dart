@@ -519,7 +519,7 @@ class _OrderPlacedScreenState extends State<OrderPlacedScreen> {
                                                                               15),
                                                                       width:
                                                                           getHorizontalSize(
-                                                                              52),
+                                                                              47),
                                                                       margin:
                                                                           getMargin(
                                                                               top:
@@ -527,7 +527,7 @@ class _OrderPlacedScreenState extends State<OrderPlacedScreen> {
                                                                       child: Stack(
                                                                           alignment:
                                                                               Alignment
-                                                                                  .center,
+                                                                                  .topCenter,
                                                                           children: [
                                                                             CustomImageView(
                                                                                 svgPath:
@@ -536,13 +536,17 @@ class _OrderPlacedScreenState extends State<OrderPlacedScreen> {
                                                                                 width: getHorizontalSize(6),
                                                                                 alignment: Alignment.topLeft,
                                                                                 margin: getMargin(left: 11)),
-                                                                            Align(
-                                                                                alignment: Alignment
-                                                                                    .center,
-                                                                                child: Text(widget.discount_price,
-                                                                                    overflow: TextOverflow.ellipsis,
-                                                                                    textAlign: TextAlign.left,
-                                                                                    style: AppStyle.txtRobotoMedium12Purple900a2))
+                                                                            Padding(
+                                                                              padding: const EdgeInsets.only(left: 10.0),
+                                                                              child: Align(
+                                                                                  alignment: Alignment
+                                                                                      .center,
+                                                                                  child: Text(widget.discount_price,
+                                                                                      overflow: TextOverflow.ellipsis,
+                                                                                      textAlign: TextAlign.left,
+                                                                                      style: AppStyle
+                                                                                          .txtRobotoMedium12Purple900)),
+                                                                            )
                                                                           ]))
                                                                 ])),
                                                         Padding(

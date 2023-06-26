@@ -145,7 +145,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           margin: EdgeInsets.only(bottom: 20.0),
           duration: Duration(seconds: 2),
           content: Text(
-            "Address added Successfuly",
+            "Address Added Successfully",
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.greenAccent,

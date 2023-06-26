@@ -5,6 +5,7 @@ import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.d
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../screenwithoutlogin/landingpage1.dart';
 import 'controller/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
@@ -42,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
     }else{
       Future.delayed(const Duration(milliseconds: 3000), () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => LogInScreen(),
+          builder: (context) => landingPage1(),
         ));
         // Get.offNamed(AppRoutes.logInScreen);
       });

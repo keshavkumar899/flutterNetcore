@@ -5,6 +5,7 @@ import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
 import 'package:country_pickers/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
 import 'package:keshav_s_application2/core/utils/utils.dart';
@@ -117,14 +118,14 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
     // print(jsonObject.toString());
     if (response.statusCode == 200) {
       if (AddressUpdate.fromJson(jsonObject).status == "true") {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          duration: Duration(seconds: 2),
-          content: Text(
-            "Address Updated Successful",
-            style: TextStyle(color: Colors.black),
-          ),
-          backgroundColor: Colors.greenAccent,
-        ));
+        Fluttertoast.showToast(
+            msg:"Address Updated Successfully",
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 3,
+            backgroundColor: Colors.greenAccent,
+            textColor: Colors.black,
+            fontSize: 14.0);
         Navigator.of(context).pop();
         // Navigator.of(context).pushReplacement(MaterialPageRoute(
         //   builder: (context) => LogInScreen(),
@@ -173,6 +174,12 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
 
   @override
   Widget build(BuildContext context) {
+     fullnameoneController.text=widget.addressdata.name.capitalizeFirst;
+     flatnumberController.text=widget.addressdata.addressOne.capitalizeFirst;
+     pincodeController.text=widget.addressdata.pincode;
+     cityController.text=widget.addressdata.city.capitalizeFirst;
+     stateController.text=widget.addressdata.state.capitalizeFirst;
+
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.whiteA700,
@@ -959,6 +966,9 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   CustomButton(
+                                    onTap:(){
+                                      Navigator.of(context).pop();
+                                    },
                                       height: getVerticalSize(36),
                                       width: getHorizontalSize(195),
                                       text: "CANCEL",

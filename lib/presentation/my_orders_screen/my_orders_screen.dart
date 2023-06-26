@@ -321,7 +321,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                             CustomImageView(
                                                                 onTap: (){
                                                                   Navigator.of(context).push(MaterialPageRoute(
-                                                                    builder: (context) => OrderDetailScreen(orderslist[index].products[0].productDetails, orderslist[index].products[0],orderslist[index].status.capitalizeFirst,orderslist[index].orderNumber,_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),orderslist[index].total,orderslist[index]),
+                                                                    builder: (context) => OrderDetailScreen(widget.data,orderslist[index].products[0].productDetails, orderslist[index].products[0],orderslist[index].status.capitalizeFirst,orderslist[index].orderNumber,_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),orderslist[index].total,orderslist[index]),
                                                                   ));
                                                                   // Get.toNamed(AppRoutes.orderDetailScreen);
                                                                 },
@@ -338,7 +338,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                                 InkWell(
                                                                   onTap:(){
                                                                     Navigator.of(context).push(MaterialPageRoute(
-                                                                      builder: (context) => OrderDetailScreen(orderslist[index].products[0].productDetails, orderslist[index].products[0],orderslist[index].status.capitalizeFirst,orderslist[index].orderNumber,_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),orderslist[index].total,orderslist[index]),
+                                                                      builder: (context) => OrderDetailScreen(widget.data,orderslist[index].products[0].productDetails, orderslist[index].products[0],orderslist[index].status.capitalizeFirst,orderslist[index].orderNumber,_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),orderslist[index].total,orderslist[index]),
                                                                     ));
                                                                     // Get.toNamed(AppRoutes.orderDetailScreen);
                                                                   },
@@ -361,7 +361,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                                 InkWell(
                                                                   onTap:(){
                                                                     Navigator.of(context).push(MaterialPageRoute(
-                                                                      builder: (context) => OrderDetailScreen(orderslist[index].products[0].productDetails, orderslist[index].products[0],orderslist[index].status.capitalizeFirst,orderslist[index].orderNumber,_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),orderslist[index].total,orderslist[index]),
+                                                                      builder: (context) => OrderDetailScreen(widget.data,orderslist[index].products[0].productDetails, orderslist[index].products[0],orderslist[index].status.capitalizeFirst,orderslist[index].orderNumber,_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),orderslist[index].total,orderslist[index]),
                                                                     ));
                                                                   },
                                                                   child: Container(
@@ -409,7 +409,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                             CustomImageView(
                                                                 onTap: (){
                                                                   Navigator.of(context).push(MaterialPageRoute(
-                                                                    builder: (context) => OrderDetailScreen(orderslist[index].products[0].productDetails, orderslist[index].products[0],orderslist[index].status.capitalizeFirst,orderslist[index].orderNumber,_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),orderslist[index].total,orderslist[index]),
+                                                                    builder: (context) => OrderDetailScreen(widget.data,orderslist[index].products[0].productDetails, orderslist[index].products[0],orderslist[index].status.capitalizeFirst,orderslist[index].orderNumber,_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),orderslist[index].total,orderslist[index]),
                                                                   ));
                                                                   // Get.toNamed(AppRoutes.orderDetailScreen);
                                                                 },

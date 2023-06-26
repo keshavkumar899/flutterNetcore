@@ -122,26 +122,24 @@ class _OffersScreenState extends State<OffersScreen> {
                         return Center(
                             child: Padding(
                                 padding: const EdgeInsets.only(left: 4.0),
-                                child:  Expanded(
-                                  child: Wrap(
-                                    children: [
-                                      RichText(
-                                        textAlign: TextAlign.center,
-                                        text: TextSpan(
-                                          children: [
-                                            TextSpan(
-                                              text:
-                                              "Data Not Found",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.grey[600],
-                                              ),
+                                child:  Wrap(
+                                  children: [
+                                    RichText(
+                                      textAlign: TextAlign.center,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                            "Data Not Found",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.grey[600],
                                             ),
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
                                 )
                             )
                           // Utils.noDataTextWidget()

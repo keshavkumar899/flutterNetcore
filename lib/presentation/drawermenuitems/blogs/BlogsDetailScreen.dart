@@ -111,7 +111,7 @@ class _BlogsDetailScreenState extends State<BlogsDetailScreen> {
                 Navigator.pop(context);
               }),
           title: AppbarTitle(
-              text: "Detailed Blog",
+              text: "Blog Detail",
               margin: getMargin(left: 19, top: 50, bottom: 18)),
           // actions: [
           //   AppbarImage(

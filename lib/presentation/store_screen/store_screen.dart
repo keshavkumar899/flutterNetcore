@@ -113,7 +113,7 @@ class _StoreScreenState extends State<StoreScreen> {
                     width: getHorizontalSize(15),
                     svgPath: ImageConstant.imgMenu,
                     margin: getMargin(left: 20, top: 10, bottom: 17)),
-                title: AppbarImage(
+                title: CustomAppbarTitle(
                     height: getVerticalSize(32),
                     width: getHorizontalSize(106),
                     imagePath: ImageConstant.imgFinallogo03,

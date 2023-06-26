@@ -1,10 +1,18 @@
 import 'dart:async';
 
+import 'package:dio/dio.dart';
+import 'package:flutter/gestures.dart';
+import 'package:html/parser.dart';
 import 'package:keshav_s_application2/core/utils/utils.dart';
+import 'package:keshav_s_application2/presentation/about_us_screen/models/SettingVO.dart';
 import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.dart';
 import 'package:keshav_s_application2/presentation/sign_up_screen/models/signup_screen_model.dart';
+import 'package:package_info/package_info.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
+import '../../core/utils/appConstant.dart';
+import '../../screenwithoutlogin/landingpage1.dart';
 import 'controller/signup_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
@@ -33,6 +41,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController passwordController = TextEditingController();
   bool _isObscure = false;
   final RoundedLoadingButtonController _btnController = RoundedLoadingButtonController();
+
+  final List<Setting> _listData = <Setting>[];
+  SettingVO settingVO;
+  String versionCode;
 
   Future<SignUpScreenModel> postRequest(String name,String mobile,String email,String password
       ) async {
@@ -79,9 +91,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
           backgroundColor: Colors.greenAccent,
         ));
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => LogInScreen(),
-        ));
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+            LogInScreen()), (Route<dynamic> route) => false);
       } else if (SignUpScreenModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(SignUpScreenModel.fromJson(jsonObject).message),
@@ -119,6 +130,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
     // return response;
   }
 
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _requestData();
+    getVersion();
+  }
+
   @override
   void dispose(){
     fullnameController.dispose();
@@ -126,6 +146,62 @@ class _SignUpScreenState extends State<SignUpScreen> {
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
+  }
+
+
+  getVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    String versionName = packageInfo.version;
+    print('Version Name: $versionName');
+    setState(() {
+      versionCode = packageInfo.version;
+    });
+  }
+
+
+  onTapTxt() {
+    Get.toNamed(AppRoutes.termsOfConditionScreen);
+  }
+  apiCall() {
+    BaseOptions options = new BaseOptions(
+        baseUrl: 'https://fabfurni.com/api/',
+        connectTimeout: Duration(seconds: 60), // 60 seconds
+        receiveTimeout: Duration(seconds: 60), // 60 seconds
+        headers: {
+          "Accept": "application/json",
+          'content-type': 'application/json; charset=UTF-8',
+        });
+    final dioClient = Dio(options);
+    return dioClient;
+  }
+  Future<void> _requestData() async {
+    try {
+      var response = await apiCall().get(
+        'Auth/settings',
+      );
+      if (response.statusCode == 200) {
+        settingVO = SettingVO.fromJson(jsonDecode(response.toString()));
+        if (settingVO != null &&
+            settingVO.status == 'true' &&
+            settingVO.data.isNotEmpty) {
+          _listData.addAll(settingVO.data);
+
+
+        }
+        setState(() {});
+      } else {}
+    } catch (e) {
+      return null;
+    }
+  }
+
+  String _parseHtmlString(String htmlString) {
+
+    var document = parse(htmlString);
+
+    String parsedString = parse(document.body.text).documentElement.text;
+
+    return parsedString;
   }
 
   @override
@@ -149,7 +225,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               alignment: Alignment.centerLeft,
                               margin: getMargin(left: 24, top: 2),
                               onTap: () {
-                                onTapImgClosesvgrepocom();
+                                pushNewScreen(
+                                  context,
+                                  screen: landingPage1(),
+                                  withNavBar:
+                                  false, // OPTIONAL VALUE. True by default.
+                                  pageTransitionAnimation:
+                                  PageTransitionAnimation.cupertino,
+                                );
                               }),
                           Align(
                               alignment: Alignment.centerLeft,
@@ -302,7 +385,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             color: ColorConstant.purple700,
                                             fontSize: getFontSize(14),
                                             fontFamily: 'Roboto',
-                                            fontWeight: FontWeight.w400)),
+                                            fontWeight: FontWeight.w400),
+                                        recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        AppConstant.aboutType = '1';
+                                        int index = _listData.indexWhere((
+                                            setting) =>
+                                        setting.settingsKeys ==
+                                            'terms_condition');
+                                        AppConstant.terms = _parseHtmlString(
+                                            _listData[index].settingsValues);
+                                        onTapTxt();
+                                        // setState(() {
+                                        //   _launched = _launchInBrowser(Uri(scheme: 'https', host: '', path: 'headers/'));
+                                        // });
+                                        // }),
+                                      }
+                                      ),
                                     TextSpan(
                                         text: "lbl".tr,
                                         style: TextStyle(
@@ -316,7 +415,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             color: ColorConstant.purple700,
                                             fontSize: getFontSize(14),
                                             fontFamily: 'Roboto',
-                                            fontWeight: FontWeight.w400))
+                                            fontWeight: FontWeight.w400),
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () {
+                                            AppConstant.aboutType = '2';
+                                            int index = _listData.indexWhere((setting) => setting.settingsKeys == 'privacy_policy');
+                                            AppConstant.terms = _parseHtmlString(_listData[index].settingsValues);
+                                            onTapTxt();
+                                            // setState(() {
+                                            //   _launched = _launchInBrowser(Uri(scheme: 'https', host: '', path: 'headers/'));
+                                            // });
+                                            // }),
+                                          }
+                                    )
                                   ]),
                                   textAlign: TextAlign.center)),
                           Spacer(),
@@ -335,17 +446,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     textAlign: TextAlign.left,
                                     style: AppStyle.txtRobotoMedium18)),
                           ),
-                          Padding(
-                              padding: getPadding(top: 101),
-                              child: Text("msg_or_continue_with".tr,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.left,
-                                  style: AppStyle.txtRobotoRegular15)),
-                          CustomImageView(
-                              svgPath: ImageConstant.imgGooglesvgrepocom,
-                              height: getSize(45),
-                              width: getSize(45),
-                              margin: getMargin(top: 21)),
+                          // Padding(
+                          //     padding: getPadding(top: 101),
+                          //     child: Text("msg_or_continue_with".tr,
+                          //         overflow: TextOverflow.ellipsis,
+                          //         textAlign: TextAlign.left,
+                          //         style: AppStyle.txtRobotoRegular15)),
+                          // CustomImageView(
+                          //     svgPath: ImageConstant.imgGooglesvgrepocom,
+                          //     height: getSize(45),
+                          //     width: getSize(45),
+                          //     margin: getMargin(top: 21)),
                           CustomImageView(
                               imagePath: ImageConstant.imgFinallogo03,
                               height: getVerticalSize(32),

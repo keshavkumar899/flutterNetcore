@@ -221,7 +221,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onTap: () {
                       Navigator.pop(context);
                     }),
-                title: AppbarImage(
+                title: CustomAppbarTitle(
                     height: getVerticalSize(32),
                     width: getHorizontalSize(106),
                     imagePath: ImageConstant.imgFinallogo03,

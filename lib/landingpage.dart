@@ -15,14 +15,7 @@ import 'package:dio/dio.dart' as dio;
 import 'core/utils/color_constant.dart';
 
 class landingPage extends StatefulWidget {
-  // String name;
-  // String user_id;
-  // String chapter_id;
-  // String city_id;
-  // ChapterDetails chapterDetails;
   Data data;
-  // List<ChapterUserDetails> chapterUserDetails;
-  // Data logindata;
   //
   landingPage(this.data,);
   @override
@@ -31,85 +24,6 @@ class landingPage extends StatefulWidget {
 
 class _landingPageState extends State<landingPage> {
 
-  // String message;
-  // int count;
-  // Future<carts.CartModel> mycart;
-  // List<carts.CartData> cartlist = [];
-
-  // Future<carts.CartModel> getCartList() async {
-  //   Map data = {
-  //     'user_id': widget.data.id,
-  //   };
-  //   //encode Map to JSON
-  //   var body = json.encode(data);
-  //   var response =
-  //   await dio.Dio().post("https://fabfurni.com/api/Webservice/listCart",
-  //       options: dio.Options(
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           "Accept": "*/*",
-  //         },
-  //       ),
-  //       data: body);
-  //   var jsonObject = jsonDecode(response.toString());
-  //   if (response.statusCode == 200) {
-  //     print(jsonObject);
-  //
-  //     if (carts.CartModel.fromJson(jsonObject).status == "true") {
-  //       // print(orders.MyOrdersModel.fromJson(jsonObject).data.first.products.first.image);
-  //
-  //       return carts.CartModel.fromJson(jsonObject);
-  //
-  //       // inviteList.sort((a, b) => a.id.compareTo(b.id));
-  //     }else if (carts.CartModel.fromJson(jsonObject).status == "false") {
-  //       // message=carts.CartModel.fromJson(jsonObject).message;
-  //       // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //       //     duration: Duration(seconds: 1),
-  //       //     behavior: SnackBarBehavior.floating,
-  //       //     margin: EdgeInsets.only(bottom: 25.0),
-  //       //     content: Text(carts.CartModel.fromJson(jsonObject).message),
-  //       //     backgroundColor: Colors.redAccent));
-  //
-  //     }
-  //     else if(carts.CartModel.fromJson(jsonObject).data == null){
-  //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //         duration: Duration(seconds: 2),
-  //         behavior: SnackBarBehavior.floating,
-  //         margin: EdgeInsets.only(bottom: 25.0),
-  //         content: Text(
-  //           jsonObject['message'] + ' Please check after sometime.',
-  //           style: TextStyle(color: Colors.white),
-  //         ),
-  //         backgroundColor: Colors.redAccent,
-  //       ));
-  //     }
-  //     else {
-  //       throw Exception('Failed to load');
-  //     }
-  //   } else {
-  //     throw Exception('Failed to load');
-  //   }
-  //   return jsonObject;
-  // }
-
-  // @override
-  // void initState() {
-  //   mycart = getCartList();
-  //   mycart.then((value) {
-  //     setState(() {
-  //       cartlist = value.data;
-  //       count=value.count;
-  //
-  //       // products=value.data;
-  //       // recentuserslist = value.recentusers;
-  //       // onetoonelist = value.onetoonemeeting;
-  //       // interchapterlist = value.interchepter;
-  //       // topuserslist=value.topUsers; //to be omitted
-  //     });
-  //   });
-  //
-  //   super.initState();
-  // }
   PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
 
@@ -150,7 +64,7 @@ class _landingPageState extends State<landingPage> {
     ];
   }
 
-  Future<bool> _onWillPop() async {
+  Future<bool> _onWillPop(BuildContext context) async {
     return (await showDialog(
       context: context,
       builder: (context) => new AlertDialog(
@@ -191,6 +105,9 @@ class _landingPageState extends State<landingPage> {
       //   child:
       PersistentTabView(
         context,
+        onWillPop: (context) async{
+         await  _onWillPop(context);
+        },
         controller: _controller,
         screens: _buildScreens(),
         items: _navBarsItems(),

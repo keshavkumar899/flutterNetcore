@@ -276,7 +276,8 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                               builder: (context) => ProfileScreen(widget.data),
                             ));
                           },
-                          child: Padding(
+                          child: Container(
+                            width: 75.w,
                               padding: getPadding(left:18,right: 24,top:20,bottom: 10),
                               child: Text("lbl_my_account".tr,
                                   overflow: TextOverflow.ellipsis,
@@ -297,7 +298,8 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                               builder: (context) => NeedHelp(),
                             ));
                           },
-                          child: Padding(
+                          child: Container(
+                            width: 75.w,
                               padding: getPadding(left:18,right: 24,top:10,bottom: 10),
                               child: Text("lbl_need_help".tr,
                                   overflow: TextOverflow.ellipsis,
@@ -309,7 +311,8 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                             onTap: () {
                               onTapTxtAboutus();
                             },
-                            child: Padding(
+                            child: Container(
+                              width: 75.w,
                                 padding: getPadding(left:18,right: 24,top:10,bottom: 10),
                                 child: Text("lbl_about_us2".tr,
                                     overflow: TextOverflow.ellipsis,

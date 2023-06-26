@@ -46,3 +46,39 @@ class AppbarImage extends StatelessWidget {
     );
   }
 }
+class CustomAppbarTitle extends StatelessWidget {
+  CustomAppbarTitle(
+      { this.height,
+        this.width,
+        this.imagePath,
+        this.svgPath,
+        this.color,
+        this.margin,});
+
+  double height;
+
+  double width;
+
+  String imagePath;
+
+  String svgPath;
+
+  Color color;
+
+  EdgeInsetsGeometry margin;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: margin  ?? EdgeInsets.zero,
+      child: CustomImageView(
+        color: color,
+        svgPath: svgPath,
+        imagePath: imagePath,
+        height: height,
+        width: width,
+        fit: BoxFit.contain,
+      ),
+    );
+  }
+}

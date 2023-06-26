@@ -1,6 +1,10 @@
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_2.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:sizer/sizer.dart';
 
+import '../cart_screen/cart_screen.dart';
+import '../product_detail_screen/QuantityBottomSheet.dart';
+import '../product_detail_screen/models/AddtoCart.dart';
 import 'controller/order_detail_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
@@ -10,8 +14,13 @@ import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
 import 'package:keshav_s_application2/widgets/custom_button.dart';
 import 'package:keshav_s_application2/presentation/my_orders_screen/models/my_orders_model.dart'
     as orders;
+import 'dart:convert';
+
+import 'package:dio/dio.dart' as dio;
+import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
 
 class OrderDetailScreen extends StatefulWidget {
+  otp.Data data;
   orders.ProductDetails productdetails;
   orders.Products product;
   String Status;
@@ -19,13 +28,15 @@ class OrderDetailScreen extends StatefulWidget {
   String order_date;
   String order_total;
   orders.OrdersData order;
-  OrderDetailScreen(this.productdetails, this.product, this.Status,
+  OrderDetailScreen(this.data,this.productdetails, this.product, this.Status,
       this.order_number, this.order_date, this.order_total, this.order);
   @override
   State<OrderDetailScreen> createState() => _OrderDetailScreenState();
 }
 
 class _OrderDetailScreenState extends State<OrderDetailScreen> {
+
+  String _selectedQty;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -359,7 +370,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                                                                   Padding(
                                                                                       padding: getPadding(top: 1),
                                                                                       child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.start, children: [
-                                                                                        Text("msg_sku_id_sku541ku29".tr, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular12Black900),
+                                                                                        //Text("msg_sku_id_sku541ku29".tr, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular12Black900),
                                                                                         Padding(
                                                                                             padding: getPadding(top: 2),
                                                                                             child: Container(
@@ -383,28 +394,28 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                                                             padding:
                                                                                 getPadding(top: 23),
                                                                             child: Divider(height: getVerticalSize(2), thickness: getVerticalSize(2), color: ColorConstant.purple5001)),
-                                                                        Padding(
-                                                                            padding: getPadding(
-                                                                                left: 21,
-                                                                                top: 11,
-                                                                                right: 30),
-                                                                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                                                                              CustomImageView(svgPath: ImageConstant.imgMapBlack900, height: getVerticalSize(22), width: getHorizontalSize(25)),
-                                                                              CustomImageView(svgPath: ImageConstant.imgArrowleftBlack900, height: getVerticalSize(10), width: getHorizontalSize(21), margin: getMargin(top: 9, bottom: 2)),
-                                                                              CustomImageView(svgPath: ImageConstant.imgStar, height: getVerticalSize(22), width: getHorizontalSize(23))
-                                                                            ])),
-                                                                        Padding(
-                                                                            padding: getPadding(
-                                                                                left: 21,
-                                                                                top: 7,
-                                                                                right: 20),
-                                                                            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                                                                              Text("lbl_track".tr, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular10Black900),
-                                                                              Spacer(flex: 53),
-                                                                              Text("lbl_return".tr, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular10Black900),
-                                                                              Spacer(flex: 46),
-                                                                              Text("lbl_feedback".tr, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular10Black900)
-                                                                            ]))
+                                                                        // Padding(
+                                                                        //     padding: getPadding(
+                                                                        //         left: 21,
+                                                                        //         top: 11,
+                                                                        //         right: 30),
+                                                                        //     child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                                                                        //       CustomImageView(svgPath: ImageConstant.imgMapBlack900, height: getVerticalSize(22), width: getHorizontalSize(25)),
+                                                                        //       CustomImageView(svgPath: ImageConstant.imgArrowleftBlack900, height: getVerticalSize(10), width: getHorizontalSize(21), margin: getMargin(top: 9, bottom: 2)),
+                                                                        //       CustomImageView(svgPath: ImageConstant.imgStar, height: getVerticalSize(22), width: getHorizontalSize(23))
+                                                                        //     ])),
+                                                                        // Padding(
+                                                                        //     padding: getPadding(
+                                                                        //         left: 21,
+                                                                        //         top: 7,
+                                                                        //         right: 20),
+                                                                        //     child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                                                                        //       Text("lbl_track".tr, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular10Black900),
+                                                                        //       Spacer(flex: 53),
+                                                                        //       Text("lbl_return".tr, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular10Black900),
+                                                                        //       Spacer(flex: 46),
+                                                                        //       Text("lbl_feedback".tr, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular10Black900)
+                                                                        //     ]))
                                                                       ]))),
                                                           Align(
                                                               alignment:
@@ -447,6 +458,20 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                                                   )))
                                                         ])),
                                                 CustomButton(
+                                                    onTap: (){
+                                                      _showQuantityBottomSheet(context,widget.product.productId);
+                                                      // if(_selectedQty==null){
+                                                      //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                      //       duration: Duration(seconds: 1),
+                                                      //       behavior: SnackBarBehavior.floating,
+                                                      //       margin: EdgeInsets.only(bottom: 30.0),
+                                                      //       dismissDirection: DismissDirection.none,
+                                                      //       content: Text("Please select quantity"),
+                                                      //       backgroundColor: Colors.redAccent));
+                                                      // }else{
+                                                      //   addtocart(_selectedQty);
+                                                      // }
+                                                    },
                                                     height: getVerticalSize(50),
                                                     width:
                                                         getHorizontalSize(217),
@@ -546,6 +571,93 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                 ])),
                       ])),
             )));
+  }
+  Future<AddtoCart> addtocart(String qty,String product_id) async {
+    Map data = {
+      'user_id': widget.data.id,
+      'product_id':product_id,
+      'qty':qty,
+    };
+    //encode Map to JSON
+    var body = json.encode(data);
+    var response =
+    await dio.Dio().post("https://fabfurni.com/api/Webservice/addtoCart",
+        options: dio.Options(
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+          },
+        ),
+        data: body);
+    var jsonObject = jsonDecode(response.toString());
+    if (response.statusCode == 200) {
+      print(jsonObject);
+
+      if (AddtoCart.fromJson(jsonObject).status == "true") {
+        // print(orders.MyOrdersModel.fromJson(jsonObject).data.first.products.first.image);
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            duration: Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
+            margin: EdgeInsets.only(bottom: 20.0),
+            content: Text("Added to Cart "+AddtoCart.fromJson(jsonObject).message+"ly",style: TextStyle(color: Colors.black),),
+            backgroundColor: Colors.greenAccent));
+
+        Future.delayed(const Duration(seconds: 2), () {
+          pushNewScreen(
+            context,
+            screen: CartScreen(widget.data),
+            withNavBar:
+            false, // OPTIONAL VALUE. True by default.
+            pageTransitionAnimation:
+            PageTransitionAnimation.cupertino,
+          );
+        });
+
+        return AddtoCart.fromJson(jsonObject);
+
+        // inviteList.sort((a, b) => a.id.compareTo(b.id));
+      }else if (AddtoCart.fromJson(jsonObject).status == "false") {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            duration: Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
+            margin: EdgeInsets.only(bottom: 10.0),
+            content: Text(AddtoCart.fromJson(jsonObject).message.capitalizeFirst),
+            backgroundColor: Colors.redAccent));
+
+      }
+      else if(AddtoCart.fromJson(jsonObject).data == null){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          duration: Duration(seconds: 3),
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.only(bottom: 10.0),
+          content: Text(
+            jsonObject['message'] + ' Please check after sometime.',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.redAccent,
+        ));
+      }
+      else {
+        throw Exception('Failed to load');
+      }
+    } else {
+      throw Exception('Failed to load');
+    }
+    return jsonObject;
+  }
+  void _showQuantityBottomSheet(BuildContext context,String product_id) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return QuantityBottomSheet();
+      },
+    ).then((value) {
+      if (value != null) {
+        // Handle the selected quantity returned from the bottom sheet
+        addtocart(value.toString(),product_id);
+        print('Selected quantity: $value');
+      }
+    });
   }
 
   onTapArrowleft12() {

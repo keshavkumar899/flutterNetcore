@@ -7,8 +7,10 @@ import 'package:keshav_s_application2/presentation/PasswordScreen.dart';
 import 'package:keshav_s_application2/presentation/log_in_screen/models/log_in_model.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/otp_screen.dart';
 import 'package:keshav_s_application2/presentation/sign_up_screen/signup_screen.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
+import '../../screenwithoutlogin/landingpage1.dart';
 import 'controller/log_in_controller.dart';
 import 'dart:convert';
 
@@ -169,7 +171,7 @@ class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: _onWillPop,
+      // onWillPop: _onWillPop,
       child: SafeArea(
           child: Scaffold(
               resizeToAvoidBottomInset: false,
@@ -184,7 +186,20 @@ class _LogInScreenState extends State<LogInScreen> {
                           children: [
                             InkWell(
                               onTap: (){
-                                _onWillPop();
+                                pushNewScreen(
+                                  context,
+                                  screen: landingPage1(),
+                                  withNavBar:
+                                  false, // OPTIONAL VALUE. True by default.
+                                  pageTransitionAnimation:
+                                  PageTransitionAnimation.cupertino,
+                                );
+                                // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                //     landingPage1()), (Route<dynamic> route) => false);
+                                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                //   builder: (context) => landingPage1(),
+                                // ));
+                                // _onWillPop();
                               },
                               child: CustomImageView(
                                   svgPath: ImageConstant.imgClosesvgrepocom,
@@ -294,7 +309,8 @@ class _LogInScreenState extends State<LogInScreen> {
                                 padding: getPadding(top: 9),
                                 child: GestureDetector(
                                   onTap: (){
-                                    Get.offNamed(AppRoutes.signUpScreen);
+                                    // Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignUpScreen()));
+                                    Get.toNamed(AppRoutes.signUpScreen);
                                   },
                                   child: Text("lbl_register_here".tr,
                                       overflow: TextOverflow.ellipsis,
@@ -304,18 +320,18 @@ class _LogInScreenState extends State<LogInScreen> {
                             Spacer(),
                             Column(
                               children: [
-                                Text("msg_or_continue_with".tr,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
-                                    style: AppStyle.txtRobotoRegular15),
-                                CustomImageView(
-                                    svgPath: ImageConstant.imgGoogle,
-                                    height: getVerticalSize(45),
-                                    width: getHorizontalSize(43),
-                                    margin: getMargin(top: 21),
-                                    onTap: () {
-                                      onTapImgGoogle();
-                                    }),
+                                // Text("msg_or_continue_with".tr,
+                                //     overflow: TextOverflow.ellipsis,
+                                //     textAlign: TextAlign.left,
+                                //     style: AppStyle.txtRobotoRegular15),
+                                // CustomImageView(
+                                //     svgPath: ImageConstant.imgGoogle,
+                                //     height: getVerticalSize(45),
+                                //     width: getHorizontalSize(43),
+                                //     margin: getMargin(top: 21),
+                                //     onTap: () {
+                                //       onTapImgGoogle();
+                                //     }),
                                 CustomImageView(
                                     imagePath: ImageConstant.imgFinallogo03,
                                     height: getVerticalSize(32),

@@ -138,55 +138,57 @@ class _ListhomeItemWidgetState extends State<ListhomeItemWidget> {
                     ),
                   ),
                   Spacer(),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    elevation: 0,
-                    margin: getMargin(
-                      top: 10,
-                    ),
-                    color: ColorConstant.whiteA700,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: ColorConstant.purple900,
-                        width: getHorizontalSize(
-                          1,
+                  GestureDetector(
+                    onTap: () async {
+                      // print(cartlist[index].id);
+                      await deleteAddress();
+                    },
+                    child: Card(
+                      clipBehavior: Clip.antiAlias,
+                      elevation: 0,
+                      margin: getMargin(
+                        top: 10,
+                      ),
+                      color: ColorConstant.whiteA700,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          color: ColorConstant.purple900,
+                          width: getHorizontalSize(
+                            1,
+                          ),
                         ),
-                      ),
-                      borderRadius: BorderRadiusStyle.roundedBorder5,
-                    ),
-                    child: Container(
-                      height: getVerticalSize(
-                        19,
-                      ),
-                      width: getHorizontalSize(
-                        26,
-                      ),
-                      padding: getPadding(
-                        left: 9,
-                        top: 4,
-                        right: 9,
-                        bottom: 4,
-                      ),
-                      decoration: AppDecoration.outlinePurple9001.copyWith(
                         borderRadius: BorderRadiusStyle.roundedBorder5,
                       ),
-                      child: Stack(
-                        children: [
-                          CustomImageView(
-                            onTap: () async {
-                              // print(cartlist[index].id);
-                              await deleteAddress();
-                            },
-                            svgPath: ImageConstant.imgTrash,
-                            height: getVerticalSize(
-                              11,
+                      child: Container(
+                        height: getVerticalSize(
+                          19,
+                        ),
+                        width: getHorizontalSize(
+                          26,
+                        ),
+                        padding: getPadding(
+                          left: 9,
+                          top: 4,
+                          right: 9,
+                          bottom: 4,
+                        ),
+                        decoration: AppDecoration.outlinePurple9001.copyWith(
+                          borderRadius: BorderRadiusStyle.roundedBorder5,
+                        ),
+                        child: Stack(
+                          children: [
+                            CustomImageView(
+                              svgPath: ImageConstant.imgTrash,
+                              height: getVerticalSize(
+                                11,
+                              ),
+                              width: getHorizontalSize(
+                                8,
+                              ),
+                              alignment: Alignment.center,
                             ),
-                            width: getHorizontalSize(
-                              8,
-                            ),
-                            alignment: Alignment.center,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
