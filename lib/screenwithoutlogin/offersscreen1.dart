@@ -134,7 +134,7 @@ class _OffersScreen1State extends State<OffersScreen1> {
                                         children: [
                                           TextSpan(
                                             text:
-                                            "Data Not Found",
+                                            "No Offers Available",
                                             style: TextStyle(
                                               fontSize: 15,
                                               color: Colors.grey[600],
