@@ -383,10 +383,10 @@ library {
   maven_library {
     groupId: "com.razorpay"
     artifactId: "checkout"
-    version: "1.6.32"
+    version: "1.6.33"
   }
   digests {
-    sha256: "\302\321\263\226?FW\340\234\254\026S\273a\370\325D@\253&T\326\225\3049\220uY\2248/v"
+    sha256: "\022 t1J\345\002\360\030\v\255!\214\347\3578\035\332\226\351!\312\222\0046\333Jq\203!\346\325"
   }
   repo_index {
     value: 1
@@ -527,7 +527,7 @@ library {
 }
 library {
   digests {
-    sha256: "\370E\353k\233\033\0210\270\357fy\325\261<X\rNR\326\376\377\v\200\037TU\305\323\v\253\272"
+    sha256: "\222\271OQ\240\215\227\033\\\230\371,\024V\252\230\301\033\346\005\315\225\f\336\251\327\204:\202\330\256\236"
   }
 }
 library_dependencies {
@@ -783,6 +783,16 @@ repositories {
 repositories {
   maven_repo {
     url: "https://storage.googleapis.com/download.flutter.io"
+  }
+}
+repositories {
+  maven_repo {
+    url: "https://dl.google.com/dl/android/maven2/"
+  }
+}
+repositories {
+  maven_repo {
+    url: "https://repo.maven.apache.org/maven2/"
   }
 }
 repositories {

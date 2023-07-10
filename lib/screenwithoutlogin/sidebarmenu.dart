@@ -177,6 +177,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                         ),
                         InkWell(
                           onTap: (){
+
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => OffersScreen1(),
                             ));

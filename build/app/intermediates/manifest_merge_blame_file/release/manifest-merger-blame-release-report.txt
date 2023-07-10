@@ -20,66 +20,66 @@
 18    <uses-permission android:name="android.permission.INTERNET" />
 18-->C:\FabFurni\FabFurni\android\app\src\main\AndroidManifest.xml:9:5-66
 18-->C:\FabFurni\FabFurni\android\app\src\main\AndroidManifest.xml:9:22-64
-19
-20    <queries>
-20-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:10:5-39:15
-21        <intent>
-21-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:11:9-17:18
-22            <action android:name="android.intent.action.VIEW" />
-22-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:12:13-65
-22-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:12:21-62
-23
-24            <data
-24-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:14:13-16:38
-25                android:mimeType="*/*"
-25-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:15:17-39
-26                android:scheme="*" />
-26-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:16:17-35
-27        </intent>
-28        <intent>
-28-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:18:9-27:18
-29            <action android:name="android.intent.action.VIEW" />
-29-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:12:13-65
-29-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:12:21-62
-30
-31            <category android:name="android.intent.category.BROWSABLE" />
-31-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:21:13-74
-31-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:21:23-71
-32
-33            <data
-33-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:14:13-16:38
-34                android:host="pay"
-35                android:mimeType="*/*"
-35-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:15:17-39
-36                android:scheme="upi" />
-36-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:16:17-35
-37        </intent>
-38        <intent>
-38-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:28:9-30:18
-39            <action android:name="android.intent.action.MAIN" />
-39-->C:\FabFurni\FabFurni\android\app\src\main\AndroidManifest.xml:37:17-68
-39-->C:\FabFurni\FabFurni\android\app\src\main\AndroidManifest.xml:37:25-66
-40        </intent>
-41        <intent>
-41-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:31:9-35:18
-42            <action android:name="android.intent.action.SEND" />
-42-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:32:13-65
-42-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:32:21-62
-43
-44            <data android:mimeType="*/*" />
-44-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:14:13-16:38
-44-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:15:17-39
-45        </intent>
-46        <intent>
-46-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:36:9-38:18
-47            <action android:name="rzp.device_token.share" />
-47-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:37:13-61
-47-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:37:21-58
-48        </intent>
-49    </queries> <!-- Include required permissions for Google Maps API to run. -->
-50    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-50-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\1cdc8b12b68d51c84921f96a9fb8bcb0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
-50-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\1cdc8b12b68d51c84921f96a9fb8bcb0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:22-76
+19    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+19-->[:connectivity_plus] C:\FabFurni\FabFurni\build\connectivity_plus\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-79
+19-->[:connectivity_plus] C:\FabFurni\FabFurni\build\connectivity_plus\intermediates\merged_manifest\release\AndroidManifest.xml:9:22-76
+20
+21    <queries>
+21-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:10:5-39:15
+22        <intent>
+22-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:11:9-17:18
+23            <action android:name="android.intent.action.VIEW" />
+23-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:12:13-65
+23-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:12:21-62
+24
+25            <data
+25-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:14:13-16:38
+26                android:mimeType="*/*"
+26-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:15:17-39
+27                android:scheme="*" />
+27-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:16:17-35
+28        </intent>
+29        <intent>
+29-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:18:9-27:18
+30            <action android:name="android.intent.action.VIEW" />
+30-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:12:13-65
+30-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:12:21-62
+31
+32            <category android:name="android.intent.category.BROWSABLE" />
+32-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:21:13-74
+32-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:21:23-71
+33
+34            <data
+34-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:14:13-16:38
+35                android:host="pay"
+36                android:mimeType="*/*"
+36-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:15:17-39
+37                android:scheme="upi" />
+37-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:16:17-35
+38        </intent>
+39        <intent>
+39-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:28:9-30:18
+40            <action android:name="android.intent.action.MAIN" />
+40-->C:\FabFurni\FabFurni\android\app\src\main\AndroidManifest.xml:37:17-68
+40-->C:\FabFurni\FabFurni\android\app\src\main\AndroidManifest.xml:37:25-66
+41        </intent>
+42        <intent>
+42-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:31:9-35:18
+43            <action android:name="android.intent.action.SEND" />
+43-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:32:13-65
+43-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:32:21-62
+44
+45            <data android:mimeType="*/*" />
+45-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:14:13-16:38
+45-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:15:17-39
+46        </intent>
+47        <intent>
+47-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:36:9-38:18
+48            <action android:name="rzp.device_token.share" />
+48-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:37:13-61
+48-->[com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:37:21-58
+49        </intent>
+50    </queries>
 51
 52    <uses-feature
 52-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\1cdc8b12b68d51c84921f96a9fb8bcb0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35

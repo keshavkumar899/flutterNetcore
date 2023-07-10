@@ -1,23 +1,23 @@
 [
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-hdpi-v4/notification_bg_normal.9.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-hdpi-v4/notification_bg_normal.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_icon_light_focused.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_icon_light_focused.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_icon_light_focused.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xhdpi-v4/googleg_standard_color_18.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xhdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/mipmap-mdpi_ic_launcher.png.flat",
@@ -25,127 +25,127 @@
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-ldpi-v4_ic_alert.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-ldpi-v4/ic_alert.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-ldpi-v4/ic_alert.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-xhdpi-v4/notification_bg_normal.9.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-xhdpi-v4/notification_bg_normal.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-mdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-mdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-anydpi-v21_ic_alert.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-anydpi-v21/ic_alert.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-anydpi-v21/ic_alert.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_rzp_border_bottom.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable/rzp_border_bottom.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable/rzp_border_bottom.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-hdpi-v4/notification_bg_low_normal.9.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-hdpi-v4/notification_bg_low_normal.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/color_common_google_signin_btn_text_dark.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/color/common_google_signin_btn_text_dark.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/color/common_google_signin_btn_text_dark.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_text_dark_focused.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_text_dark_focused.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_text_dark_focused.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_rzp_border.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable/rzp_border.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable/rzp_border.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-hdpi-v4/googleg_standard_color_18.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-hdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_notification_icon_background.xml.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable/notification_icon_background.xml"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable/notification_icon_background.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_notification_bg.xml.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable/notification_bg.xml"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable/notification_bg.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxhdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxxhdpi-v4_ic_tick_mark.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-xxxhdpi-v4/ic_tick_mark.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-xxxhdpi-v4/ic_tick_mark.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxhdpi-v4_rzp_name_logo.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-xxhdpi-v4/rzp_name_logo.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-xxhdpi-v4/rzp_name_logo.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-hdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-hdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/color_common_google_signin_btn_tint.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/color/common_google_signin_btn_tint.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/color/common_google_signin_btn_tint.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-mdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-mdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/color_wallet_secondary_text_holo_dark.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-wallet-18.1.3-19:/color/wallet_secondary_text_holo_dark.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-wallet-18.1.3-20:/color/wallet_secondary_text_holo_dark.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_icon_light.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_icon_light.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_icon_light.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_icon_dark_normal.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_icon_dark_normal.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_icon_dark_normal.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-mdpi-v4/googleg_disabled_color_18.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-mdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_ic_tick_mark.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-xhdpi-v4/ic_tick_mark.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-xhdpi-v4/ic_tick_mark.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-v21_notification_action_background.xml.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-v21/notification_action_background.xml"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-v21/notification_action_background.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_launch_background.xml.flat",
@@ -153,47 +153,47 @@
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxhdpi-v4_ic_tick_mark.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-xxhdpi-v4/ic_tick_mark.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-xxhdpi-v4/ic_tick_mark.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-mdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-mdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_rzp_white_border_black_bg.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable/rzp_white_border_black_bg.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable/rzp_white_border_black_bg.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-hdpi-v4/googleg_disabled_color_18.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-hdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_common_full_open_on_phone.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-hdpi-v4/common_full_open_on_phone.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-hdpi-v4/common_full_open_on_phone.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_text_light_focused.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_text_light_focused.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_text_light_focused.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/raw_rzp_config.json.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/raw/rzp_config.json"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/raw/rzp_config.json"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout_single_item.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/layout/single_item.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/layout/single_item.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/color_common_google_signin_btn_text_light.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/color/common_google_signin_btn_text_light.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/color/common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout_notification_template_part_chronometer.xml.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/layout/notification_template_part_chronometer.xml"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/layout/notification_template_part_chronometer.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/mipmap-hdpi_ic_launcher.png.flat",
@@ -201,103 +201,103 @@
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout-v21_notification_action.xml.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/layout-v21/notification_action.xml"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/layout-v21/notification_action.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_rzp_secured_by_bg.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable/rzp_secured_by_bg.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable/rzp_secured_by_bg.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_text_dark.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_text_dark.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_text_dark.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout_custom_dialog.xml.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/layout/custom_dialog.xml"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/layout/custom_dialog.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_text_light_normal.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_text_light_normal.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_text_light_normal.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxhdpi-v4_ic_alert.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-xxhdpi-v4/ic_alert.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-xxhdpi-v4/ic_alert.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_rzp_logo.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-mdpi-v4/rzp_logo.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-mdpi-v4/rzp_logo.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout_notification_template_part_time.xml.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/layout/notification_template_part_time.xml"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/layout/notification_template_part_time.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-anydpi-v24_rzp_logo.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-anydpi-v24/rzp_logo.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-anydpi-v24/rzp_logo.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_notification_bg_low.xml.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable/notification_bg_low.xml"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable/notification_bg_low.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_icon_dark.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_icon_dark.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_icon_dark.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_rzp_poweredby.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable/rzp_poweredby.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable/rzp_poweredby.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_ic_tick_mark.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-mdpi-v4/ic_tick_mark.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-mdpi-v4/ic_tick_mark.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_toast_bg.xml.flat",
-        "source": "com.keshavsapplication.app-packaged_res-8:/drawable/toast_bg.xml"
+        "source": "com.keshavsapplication.app-packaged_res-9:/drawable/toast_bg.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout_wallet_test_layout.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-wallet-18.1.3-19:/layout/wallet_test_layout.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-wallet-18.1.3-20:/layout/wallet_test_layout.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_text_light.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_text_light.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout_rzp_loader.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/layout/rzp_loader.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/layout/rzp_loader.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout_toast_custom.xml.flat",
-        "source": "com.keshavsapplication.app-packaged_res-8:/layout/toast_custom.xml"
+        "source": "com.keshavsapplication.app-packaged_res-9:/layout/toast_custom.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/mipmap-xxhdpi_ic_launcher.png.flat",
@@ -305,43 +305,43 @@
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-ldpi-v4_ic_tick_mark.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-ldpi-v4/ic_tick_mark.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-ldpi-v4/ic_tick_mark.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-mdpi-v4/notification_bg_normal.9.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-mdpi-v4/notification_bg_normal.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_icon_light_normal.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_icon_light_normal.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_icon_light_normal.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_rzp_loader_circle.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable/rzp_loader_circle.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable/rzp_loader_circle.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-watch-v20_common_google_signin_btn_text_dark_normal.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-auth-17.0.0-21:/drawable-watch-v20/common_google_signin_btn_text_dark_normal.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-auth-17.0.0-22:/drawable-watch-v20/common_google_signin_btn_text_dark_normal.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-mdpi-v4/googleg_standard_color_18.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-mdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/xml_file_provider_path.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/xml/file_provider_path.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/xml/file_provider_path.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxxhdpi-v4_ic_alert.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-xxxhdpi-v4/ic_alert.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-xxxhdpi-v4/ic_alert.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout_rzp_magic_base.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/layout/rzp_magic_base.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/layout/rzp_magic_base.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/mipmap-xhdpi_ic_launcher.png.flat",
@@ -353,130 +353,130 @@
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_corner.xml.flat",
-        "source": "com.keshavsapplication.app-packaged_res-8:/drawable/corner.xml"
+        "source": "com.keshavsapplication.app-packaged_res-9:/drawable/corner.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_rzp_green_button.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable/rzp_green_button.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable/rzp_green_button.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-ldpi-v4_rzp_logo.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-ldpi-v4/rzp_logo.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-ldpi-v4/rzp_logo.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxxhdpi-v4_rzp_logo.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-xxxhdpi-v4/rzp_logo.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-xxxhdpi-v4/rzp_logo.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-mdpi-v4/notification_bg_low_normal.9.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-mdpi-v4/notification_bg_low_normal.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_ic_alert.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-xhdpi-v4/ic_alert.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-xhdpi-v4/ic_alert.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxhdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xxhdpi-v4/googleg_standard_color_18.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xxhdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-mdpi-v4_ic_alert.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-mdpi-v4/ic_alert.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-mdpi-v4/ic_alert.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_icon_disabled.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_icon_disabled.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_icon_disabled.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout-v21_notification_template_icon_group.xml.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/layout-v21/notification_template_icon_group.xml"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/layout-v21/notification_template_icon_group.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout_sdk_integration_status.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/layout/sdk_integration_status.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/layout/sdk_integration_status.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_text_dark_normal.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_text_dark_normal.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_text_dark_normal.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xxhdpi-v4_rzp_logo.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-xxhdpi-v4/rzp_logo.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-xxhdpi-v4/rzp_logo.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_ic_tick_mark.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-hdpi-v4/ic_tick_mark.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-hdpi-v4/ic_tick_mark.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-watch-v20_common_google_signin_btn_text_disabled.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-auth-17.0.0-21:/drawable-watch-v20/common_google_signin_btn_text_disabled.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-auth-17.0.0-22:/drawable-watch-v20/common_google_signin_btn_text_disabled.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xhdpi-v4/googleg_disabled_color_18.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xhdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_rzp_logo.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-hdpi-v4/rzp_logo.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-hdpi-v4/rzp_logo.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_text_disabled.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_text_disabled.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_text_disabled.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout-v21_notification_action_tombstone.xml.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/layout-v21/notification_action_tombstone.xml"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/layout-v21/notification_action_tombstone.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_common_google_signin_btn_icon_dark_focused.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable/common_google_signin_btn_icon_dark_focused.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable/common_google_signin_btn_icon_dark_focused.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable_notification_tile_bg.xml.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable/notification_tile_bg.xml"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable/notification_tile_bg.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/color_wallet_primary_text_holo_light.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-wallet-18.1.3-19:/color/wallet_primary_text_holo_light.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-wallet-18.1.3-20:/color/wallet_primary_text_holo_light.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/layout-v21_notification_template_custom_big.xml.flat",
-        "source": "com.keshavsapplication.app-core-1.6.0-23:/layout-v21/notification_template_custom_big.xml"
+        "source": "com.keshavsapplication.app-core-1.6.0-24:/layout-v21/notification_template_custom_big.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-watch-v20_common_google_signin_btn_text_light_normal.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-auth-17.0.0-21:/drawable-watch-v20/common_google_signin_btn_text_light_normal.xml"
+        "source": "com.keshavsapplication.app-jetified-play-services-auth-17.0.0-22:/drawable-watch-v20/common_google_signin_btn_text_light_normal.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-hdpi-v4_ic_alert.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-hdpi-v4/ic_alert.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-hdpi-v4/ic_alert.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-anydpi-v21_ic_tick_mark.xml.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-anydpi-v21/ic_tick_mark.xml"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-anydpi-v21/ic_tick_mark.xml"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_rzp_logo.png.flat",
-        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-20:/drawable-xhdpi-v4/rzp_logo.png"
+        "source": "com.keshavsapplication.app-jetified-checkout-1.6.32-21:/drawable-xhdpi-v4/rzp_logo.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_common_full_open_on_phone.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xhdpi-v4/common_full_open_on_phone.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xhdpi-v4/common_full_open_on_phone.png"
     },
     {
         "merged": "com.keshavsapplication.app-merged_res-7:/drawable-xhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-24:/drawable-xhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "com.keshavsapplication.app-jetified-play-services-base-17.5.0-25:/drawable-xhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     }
 ]

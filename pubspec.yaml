@@ -13,6 +13,7 @@ dependencies:
   grouped_buttons: ^1.0.4
   shimmer_animation: ^2.1.0+1
   shared_preferences:
+  connectivity_plus: ^4.0.1
   fluttertoast:
   razorpay_flutter:
   html:

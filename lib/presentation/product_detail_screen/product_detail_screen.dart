@@ -1523,107 +1523,138 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                     blurRadius: 6.0,
                                                                   ),
                                                                 ]),
-                                                            child: Column(
-                                                              children: <Widget>[
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_22.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('**** 8295'),
-                                                                //       SizedBox(
-                                                                //         width: 130,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // ),
-                                                                // SizedBox(height: 10,),
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_23.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('**** 3704'),
-                                                                //       SizedBox(
-                                                                //         width: 130,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // ),
-                                                                // SizedBox(height: 10,),
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_24.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('Cash'),
-                                                                //       SizedBox(
-                                                                //         width: 160,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // )
-                                                              ],
+                                                            child: SingleChildScrollView(
+                                                              child: Column(
+                                                                children: <Widget>[
+                                                              Padding(
+                                                              padding: getPadding(left: 0, top: 8),
+                                                                child: Row(
+                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                    children: [
+                                                                      FittedBox(
+                                                                        fit:BoxFit.fill,
+                                                                        child: Container(
+                                                                          width:75.w,
+                                                                          child: Text(productlist.additionalInformation!=""?productlist.additionalInformation:"No Data Found",
+                                                                              overflow: TextOverflow.ellipsis,
+                                                                              textAlign: TextAlign.left,
+                                                                              style: AppStyle
+                                                                                  .txtRobotoRegular15),
+                                                                        ),
+                                                                      ),
+                                                                      // FittedBox(
+                                                                      //   fit: BoxFit.fill,
+                                                                      //   child: Container(
+                                                                      //       width: 200,
+                                                                      //       padding: getPadding(left: 0),
+                                                                      //       child: Text(attributes[index].productValue,
+                                                                      //           overflow: TextOverflow.ellipsis,
+                                                                      //           textAlign: TextAlign.left,
+                                                                      //           style: AppStyle
+                                                                      //               .txtRobotoRegular15)),
+                                                                      // )
+                                                                    ])),
+                                                                  // Container(
+                                                                  //   height:50,
+                                                                  //   padding: EdgeInsets.all(5),
+                                                                  //   decoration: BoxDecoration(
+                                                                  //       color: Colors.white,
+                                                                  //       borderRadius: BorderRadius.all(
+                                                                  //           Radius.circular(15)),
+                                                                  //       boxShadow: const [
+                                                                  //         BoxShadow(
+                                                                  //           color: Colors.grey,
+                                                                  //           offset: Offset(0.0, 0.0),
+                                                                  //           blurRadius: 1.0,
+                                                                  //         ),
+                                                                  //       ]),
+                                                                  //   child: Row(
+                                                                  //     children: <Widget>[
+                                                                  //       IconButton(
+                                                                  //           onPressed: () {},
+                                                                  //           icon: Image.asset(
+                                                                  //               'assets/images/img_22.png')),
+                                                                  //       SizedBox(width: 10,),
+                                                                  //       Text('**** 8295'),
+                                                                  //       SizedBox(
+                                                                  //         width: 130,
+                                                                  //       ),
+                                                                  //       IconButton(
+                                                                  //         onPressed: () {},
+                                                                  //         icon: Icon(
+                                                                  //           Icons.arrow_forward_ios,size: 15,),)
+                                                                  //     ],
+                                                                  //   ),
+                                                                  // ),
+                                                                  // SizedBox(height: 10,),
+                                                                  // Container(
+                                                                  //   height:50,
+                                                                  //   padding: EdgeInsets.all(5),
+                                                                  //   decoration: BoxDecoration(
+                                                                  //       color: Colors.white,
+                                                                  //       borderRadius: BorderRadius.all(
+                                                                  //           Radius.circular(15)),
+                                                                  //       boxShadow: const [
+                                                                  //         BoxShadow(
+                                                                  //           color: Colors.grey,
+                                                                  //           offset: Offset(0.0, 0.0),
+                                                                  //           blurRadius: 1.0,
+                                                                  //         ),
+                                                                  //       ]),
+                                                                  //   child: Row(
+                                                                  //     children: <Widget>[
+                                                                  //       IconButton(
+                                                                  //           onPressed: () {},
+                                                                  //           icon: Image.asset(
+                                                                  //               'assets/images/img_23.png')),
+                                                                  //       SizedBox(width: 10,),
+                                                                  //       Text('**** 3704'),
+                                                                  //       SizedBox(
+                                                                  //         width: 130,
+                                                                  //       ),
+                                                                  //       IconButton(
+                                                                  //         onPressed: () {},
+                                                                  //         icon: Icon(
+                                                                  //           Icons.arrow_forward_ios,size: 15,),)
+                                                                  //     ],
+                                                                  //   ),
+                                                                  // ),
+                                                                  // SizedBox(height: 10,),
+                                                                  // Container(
+                                                                  //   height:50,
+                                                                  //   padding: EdgeInsets.all(5),
+                                                                  //   decoration: BoxDecoration(
+                                                                  //       color: Colors.white,
+                                                                  //       borderRadius: BorderRadius.all(
+                                                                  //           Radius.circular(15)),
+                                                                  //       boxShadow: const [
+                                                                  //         BoxShadow(
+                                                                  //           color: Colors.grey,
+                                                                  //           offset: Offset(0.0, 0.0),
+                                                                  //           blurRadius: 1.0,
+                                                                  //         ),
+                                                                  //       ]),
+                                                                  //   child: Row(
+                                                                  //     children: <Widget>[
+                                                                  //       IconButton(
+                                                                  //           onPressed: () {},
+                                                                  //           icon: Image.asset(
+                                                                  //               'assets/images/img_24.png')),
+                                                                  //       SizedBox(width: 10,),
+                                                                  //       Text('Cash'),
+                                                                  //       SizedBox(
+                                                                  //         width: 160,
+                                                                  //       ),
+                                                                  //       IconButton(
+                                                                  //         onPressed: () {},
+                                                                  //         icon: Icon(
+                                                                  //           Icons.arrow_forward_ios,size: 15,),)
+                                                                  //     ],
+                                                                  //   ),
+                                                                  // )
+                                                                ],
+                                                              ),
                                                             ),
                                                             // height: 120,
                                                           ),
@@ -1660,107 +1691,29 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                     blurRadius: 6.0,
                                                                   ),
                                                                 ]),
-                                                            child: Column(
-                                                              children: <Widget>[
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_22.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('**** 8295'),
-                                                                //       SizedBox(
-                                                                //         width: 130,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // ),
-                                                                // SizedBox(height: 10,),
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_23.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('**** 3704'),
-                                                                //       SizedBox(
-                                                                //         width: 130,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // ),
-                                                                // SizedBox(height: 10,),
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_24.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('Cash'),
-                                                                //       SizedBox(
-                                                                //         width: 160,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // )
-                                                              ],
+                                                            child: SingleChildScrollView(
+                                                              child: Column(
+                                                                children: <Widget>[
+                                                                  Padding(
+                                                                      padding: getPadding(left: 0, top: 8),
+                                                                      child: Row(
+                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                          children: [
+                                                                            FittedBox(
+                                                                              fit:BoxFit.fill,
+                                                                              child: Container(
+                                                                                width:75.w,
+                                                                                child: Text(productlist.customerRedressal!=""?productlist.customerRedressal:"No Data Found",
+                                                                                    overflow: TextOverflow.ellipsis,
+                                                                                    textAlign: TextAlign.left,
+                                                                                    style: AppStyle
+                                                                                        .txtRobotoRegular15),
+                                                                              ),
+                                                                            ),
+                                                                          ])),
+                                                                ],
+                                                              ),
                                                             ),
                                                             // height: 120,
                                                           ),
@@ -1796,107 +1749,29 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                     blurRadius: 6.0,
                                                                   ),
                                                                 ]),
-                                                            child: Column(
-                                                              children: <Widget>[
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_22.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('**** 8295'),
-                                                                //       SizedBox(
-                                                                //         width: 130,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // ),
-                                                                // SizedBox(height: 10,),
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_23.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('**** 3704'),
-                                                                //       SizedBox(
-                                                                //         width: 130,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // ),
-                                                                // SizedBox(height: 10,),
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_24.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('Cash'),
-                                                                //       SizedBox(
-                                                                //         width: 160,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // )
-                                                              ],
+                                                            child:SingleChildScrollView(
+                                                              child: Column(
+                                                                children: <Widget>[
+                                                                  Padding(
+                                                                      padding: getPadding(left: 0, top: 8),
+                                                                      child: Row(
+                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                          children: [
+                                                                            FittedBox(
+                                                                              fit:BoxFit.fill,
+                                                                              child: Container(
+                                                                                width:75.w,
+                                                                                child: Text(productlist.marchantInfo!=""?productlist.marchantInfo:"No Data Found",
+                                                                                    overflow: TextOverflow.ellipsis,
+                                                                                    textAlign: TextAlign.left,
+                                                                                    style: AppStyle
+                                                                                        .txtRobotoRegular15),
+                                                                              ),
+                                                                            ),
+                                                                          ])),
+                                                                ],
+                                                              ),
                                                             ),
                                                             // height: 120,
                                                           ),
@@ -1933,107 +1808,29 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                     blurRadius: 6.0,
                                                                   ),
                                                                 ]),
-                                                            child: Column(
-                                                              children: <Widget>[
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_22.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('**** 8295'),
-                                                                //       SizedBox(
-                                                                //         width: 130,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // ),
-                                                                // SizedBox(height: 10,),
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_23.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('**** 3704'),
-                                                                //       SizedBox(
-                                                                //         width: 130,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // ),
-                                                                // SizedBox(height: 10,),
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_24.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('Cash'),
-                                                                //       SizedBox(
-                                                                //         width: 160,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // )
-                                                              ],
+                                                            child: SingleChildScrollView(
+                                                              child: Column(
+                                                                children: <Widget>[
+                                                                  Padding(
+                                                                      padding: getPadding(left: 0, top: 8),
+                                                                      child: Row(
+                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                          children: [
+                                                                            FittedBox(
+                                                                              fit:BoxFit.fill,
+                                                                              child: Container(
+                                                                                width:75.w,
+                                                                                child: Text(productlist.returnCancellation!=""?productlist.returnCancellation:"No Data Found",
+                                                                                    overflow: TextOverflow.ellipsis,
+                                                                                    textAlign: TextAlign.left,
+                                                                                    style: AppStyle
+                                                                                        .txtRobotoRegular15),
+                                                                              ),
+                                                                            ),
+                                                                          ])),
+                                                                ],
+                                                              ),
                                                             ),
                                                             // height: 120,
                                                           ),
@@ -2071,107 +1868,29 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                     blurRadius: 6.0,
                                                                   ),
                                                                 ]),
-                                                            child: Column(
-                                                              children: <Widget>[
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_22.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('**** 8295'),
-                                                                //       SizedBox(
-                                                                //         width: 130,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // ),
-                                                                // SizedBox(height: 10,),
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_23.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('**** 3704'),
-                                                                //       SizedBox(
-                                                                //         width: 130,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // ),
-                                                                // SizedBox(height: 10,),
-                                                                // Container(
-                                                                //   height:50,
-                                                                //   padding: EdgeInsets.all(5),
-                                                                //   decoration: BoxDecoration(
-                                                                //       color: Colors.white,
-                                                                //       borderRadius: BorderRadius.all(
-                                                                //           Radius.circular(15)),
-                                                                //       boxShadow: const [
-                                                                //         BoxShadow(
-                                                                //           color: Colors.grey,
-                                                                //           offset: Offset(0.0, 0.0),
-                                                                //           blurRadius: 1.0,
-                                                                //         ),
-                                                                //       ]),
-                                                                //   child: Row(
-                                                                //     children: <Widget>[
-                                                                //       IconButton(
-                                                                //           onPressed: () {},
-                                                                //           icon: Image.asset(
-                                                                //               'assets/images/img_24.png')),
-                                                                //       SizedBox(width: 10,),
-                                                                //       Text('Cash'),
-                                                                //       SizedBox(
-                                                                //         width: 160,
-                                                                //       ),
-                                                                //       IconButton(
-                                                                //         onPressed: () {},
-                                                                //         icon: Icon(
-                                                                //           Icons.arrow_forward_ios,size: 15,),)
-                                                                //     ],
-                                                                //   ),
-                                                                // )
-                                                              ],
+                                                            child: SingleChildScrollView(
+                                                              child: Column(
+                                                                children: <Widget>[
+                                                                  Padding(
+                                                                      padding: getPadding(left: 0, top: 8),
+                                                                      child: Row(
+                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                          children: [
+                                                                            FittedBox(
+                                                                              fit:BoxFit.fill,
+                                                                              child: Container(
+                                                                                width:75.w,
+                                                                                child: Text(productlist.returnCancellation!=""?productlist.returnCancellation:"No Data Found",
+                                                                                    overflow: TextOverflow.ellipsis,
+                                                                                    textAlign: TextAlign.left,
+                                                                                    style: AppStyle
+                                                                                        .txtRobotoRegular15),
+                                                                              ),
+                                                                            ),
+                                                                          ])),
+                                                                ],
+                                                              ),
                                                             ),
                                                             // height: 120,
                                                           ),

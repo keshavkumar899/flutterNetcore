@@ -328,24 +328,24 @@ class _OtpScreenState extends State<OtpScreen> {
                   fontStyle: ButtonFontStyle.RobotoMedium14,
                 ),
                 Spacer(),
-                Text(
-                  "msg_or_continue_with".tr,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.left,
-                  style: AppStyle.txtRobotoRegular15,
-                ),
-                CustomImageView(
-                  svgPath: ImageConstant.imgGooglesvgrepocom,
-                  height: getSize(
-                    45,
-                  ),
-                  width: getSize(
-                    45,
-                  ),
-                  margin: getMargin(
-                    top: 21,
-                  ),
-                ),
+                // Text(
+                //   "msg_or_continue_with".tr,
+                //   overflow: TextOverflow.ellipsis,
+                //   textAlign: TextAlign.left,
+                //   style: AppStyle.txtRobotoRegular15,
+                // ),
+                // CustomImageView(
+                //   svgPath: ImageConstant.imgGooglesvgrepocom,
+                //   height: getSize(
+                //     45,
+                //   ),
+                //   width: getSize(
+                //     45,
+                //   ),
+                //   margin: getMargin(
+                //     top: 21,
+                //   ),
+                // ),
                 CustomImageView(
                   imagePath: ImageConstant.imgFinallogo03,
                   height: getVerticalSize(

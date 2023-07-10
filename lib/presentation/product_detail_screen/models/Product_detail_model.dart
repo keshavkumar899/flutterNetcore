@@ -75,6 +75,11 @@ class Data {
     this.isDelete,
     this.createOn,
     this.updateOn,
+    this.additionalInformation,
+    this.customerRedressal,
+    this.marchantInfo,
+    this.returnCancellation,
+    this.warentyInstallation,
     this.categoryName,
     this.brandName,
     this.isWishlist,
@@ -108,6 +113,11 @@ class Data {
     isDelete = json['is_delete'];
     createOn = json['create_on'];
     updateOn = json['update_on'];
+    additionalInformation = json['additional_information'];
+    customerRedressal = json['customer_redressal'];
+    marchantInfo = json['marchant_info'];
+    returnCancellation = json['return_cancellation'];
+    warentyInstallation = json['warenty_installation'];
     categoryName = json['category_name'];
     brandName = json['brand_name'];
     isWishlist = json['is_wishlist'];
@@ -150,6 +160,11 @@ class Data {
   String isDelete;
   String createOn;
   String updateOn;
+  String additionalInformation;
+  String customerRedressal;
+  String marchantInfo;
+  String returnCancellation;
+  String warentyInstallation;
   String categoryName;
   String brandName;
   String isWishlist;
@@ -184,6 +199,11 @@ class Data {
     map['is_delete'] = isDelete;
     map['create_on'] = createOn;
     map['update_on'] = updateOn;
+    map['additional_information'] = additionalInformation;
+    map['customer_redressal'] = customerRedressal;
+    map['marchant_info'] = marchantInfo;
+    map['return_cancellation'] = returnCancellation;
+    map['warenty_installation'] = warentyInstallation;
     map['category_name'] = categoryName;
     map['brand_name'] = brandName;
     map['is_wishlist'] = isWishlist;

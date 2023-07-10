@@ -43,10 +43,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="C:\FabFurni\FabFurni\android@@:url_launcher_android::release"
-      jars="C:\FabFurni\FabFurni\build\url_launcher_android\.transforms\2418fdee65e034585971e7bdd1887a60\transformed\out\jars\classes.jar;C:\FabFurni\FabFurni\build\url_launcher_android\.transforms\2418fdee65e034585971e7bdd1887a60\transformed\out\jars\libs\R.jar"
-      resolved="io.flutter.plugins.urllauncher:url_launcher_android:unspecified"
-      folder="C:\FabFurni\FabFurni\build\url_launcher_android\.transforms\2418fdee65e034585971e7bdd1887a60\transformed\out"
+      name="C:\FabFurni\FabFurni\android@@:fluttertoast::release"
+      jars="C:\FabFurni\FabFurni\build\fluttertoast\.transforms\1b9c30f4d992aaf9be058fa051d46642\transformed\out\jars\classes.jar;C:\FabFurni\FabFurni\build\fluttertoast\.transforms\1b9c30f4d992aaf9be058fa051d46642\transformed\out\jars\libs\R.jar"
+      resolved="com.example.FlutterToast:fluttertoast:unspecified"
+      folder="C:\FabFurni\FabFurni\build\fluttertoast\.transforms\1b9c30f4d992aaf9be058fa051d46642\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -56,10 +56,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="C:\FabFurni\FabFurni\android@@:fluttertoast::release"
-      jars="C:\FabFurni\FabFurni\build\fluttertoast\.transforms\1b9c30f4d992aaf9be058fa051d46642\transformed\out\jars\classes.jar;C:\FabFurni\FabFurni\build\fluttertoast\.transforms\1b9c30f4d992aaf9be058fa051d46642\transformed\out\jars\libs\R.jar"
-      resolved="com.example.FlutterToast:fluttertoast:unspecified"
-      folder="C:\FabFurni\FabFurni\build\fluttertoast\.transforms\1b9c30f4d992aaf9be058fa051d46642\transformed\out"
+      name="C:\FabFurni\FabFurni\android@@:url_launcher_android::release"
+      jars="C:\FabFurni\FabFurni\build\url_launcher_android\.transforms\2418fdee65e034585971e7bdd1887a60\transformed\out\jars\classes.jar;C:\FabFurni\FabFurni\build\url_launcher_android\.transforms\2418fdee65e034585971e7bdd1887a60\transformed\out\jars\libs\R.jar"
+      resolved="io.flutter.plugins.urllauncher:url_launcher_android:unspecified"
+      folder="C:\FabFurni\FabFurni\build\url_launcher_android\.transforms\2418fdee65e034585971e7bdd1887a60\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -108,10 +108,23 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="com.razorpay:checkout:1.6.32@aar"
-      jars="C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\jars\classes.jar"
-      resolved="com.razorpay:checkout:1.6.32"
-      folder="C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32"
+      name="C:\FabFurni\FabFurni\android@@:connectivity_plus::release"
+      jars="C:\FabFurni\FabFurni\build\connectivity_plus\.transforms\42fc4b6e2c937868aa72f4b5bcb1a099\transformed\out\jars\classes.jar;C:\FabFurni\FabFurni\build\connectivity_plus\.transforms\42fc4b6e2c937868aa72f4b5bcb1a099\transformed\out\jars\libs\R.jar"
+      resolved="io.flutter.plugins.connectivity:connectivity_plus:unspecified"
+      folder="C:\FabFurni\FabFurni\build\connectivity_plus\.transforms\42fc4b6e2c937868aa72f4b5bcb1a099\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.razorpay:checkout:1.6.33@aar"
+      jars="C:\Users\Keshav Kumar\.gradle\caches\transforms-3\66f164afd79a84b6310d5a669a597ed0\transformed\jetified-checkout-1.6.33\jars\classes.jar"
+      resolved="com.razorpay:checkout:1.6.33"
+      folder="C:\Users\Keshav Kumar\.gradle\caches\transforms-3\66f164afd79a84b6310d5a669a597ed0\transformed\jetified-checkout-1.6.33"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

@@ -9,10 +9,11 @@ MERGED from [:shared_preferences_android] C:\FabFurni\FabFurni\build\shared_pref
 MERGED from [:sqflite] C:\FabFurni\FabFurni\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:razorpay_flutter] C:\FabFurni\FabFurni\build\razorpay_flutter\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-12:12
 MERGED from [:package_info_plus] C:\FabFurni\FabFurni\build\package_info_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
-MERGED from [:url_launcher_android] C:\FabFurni\FabFurni\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-16:12
 MERGED from [:fluttertoast] C:\FabFurni\FabFurni\build\fluttertoast\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:url_launcher_android] C:\FabFurni\FabFurni\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-16:12
 MERGED from [:path_provider_android] C:\FabFurni\FabFurni\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:package_info] C:\FabFurni\FabFurni\build\package_info\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:connectivity_plus] C:\FabFurni\FabFurni\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:2:1-66:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\eeac6b6534473c3bded377e4c266253b\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\523025912b7cf22538dbed9ef438b584\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
@@ -150,14 +151,16 @@ MERGED from [:razorpay_flutter] C:\FabFurni\FabFurni\build\razorpay_flutter\inte
 MERGED from [:razorpay_flutter] C:\FabFurni\FabFurni\build\razorpay_flutter\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:package_info_plus] C:\FabFurni\FabFurni\build\package_info_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:package_info_plus] C:\FabFurni\FabFurni\build\package_info_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:url_launcher_android] C:\FabFurni\FabFurni\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:url_launcher_android] C:\FabFurni\FabFurni\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:fluttertoast] C:\FabFurni\FabFurni\build\fluttertoast\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:fluttertoast] C:\FabFurni\FabFurni\build\fluttertoast\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] C:\FabFurni\FabFurni\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] C:\FabFurni\FabFurni\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\FabFurni\FabFurni\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\FabFurni\FabFurni\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:package_info] C:\FabFurni\FabFurni\build\package_info\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:package_info] C:\FabFurni\FabFurni\build\package_info\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:connectivity_plus] C:\FabFurni\FabFurni\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:connectivity_plus] C:\FabFurni\FabFurni\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:6:5-44
 MERGED from [com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:6:5-44
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\eeac6b6534473c3bded377e4c266253b\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
@@ -230,6 +233,12 @@ ADDED from [:url_launcher_android] C:\FabFurni\FabFurni\build\url_launcher_andro
 		ADDED from [:url_launcher_android] C:\FabFurni\FabFurni\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
 	android:name
 		ADDED from [:url_launcher_android] C:\FabFurni\FabFurni\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:connectivity_plus] C:\FabFurni\FabFurni\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\1cdc8b12b68d51c84921f96a9fb8bcb0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\1cdc8b12b68d51c84921f96a9fb8bcb0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from [:connectivity_plus] C:\FabFurni\FabFurni\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-76
 queries
 ADDED from [com.razorpay:checkout:1.6.32] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\62eee0cef92366d96fef6b9c72dbf2a3\transformed\jetified-checkout-1.6.32\AndroidManifest.xml:10:5-39:15
 intent#action:name:android.intent.action.VIEW+data:mimeType:*/*+data:scheme:*
@@ -322,10 +331,6 @@ ADDED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\Keshav Ku
 		ADDED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\a4879df47c749bf107dc94b81f194244\transformed\jetified-play-services-auth-17.0.0\AndroidManifest.xml:36:13-107
 	android:name
 		ADDED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\a4879df47c749bf107dc94b81f194244\transformed\jetified-play-services-auth-17.0.0\AndroidManifest.xml:34:13-89
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\1cdc8b12b68d51c84921f96a9fb8bcb0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
-	android:name
-		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\1cdc8b12b68d51c84921f96a9fb8bcb0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:22-76
 uses-feature#0x00020000
 ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Keshav Kumar\.gradle\caches\transforms-3\1cdc8b12b68d51c84921f96a9fb8bcb0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
 	android:glEsVersion
