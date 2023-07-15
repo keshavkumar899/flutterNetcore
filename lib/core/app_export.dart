@@ -15,4 +15,4 @@ export 'package:keshav_s_application2/core/errors/exceptions.dart';
 export 'package:keshav_s_application2/core/network/network_info.dart';
 export 'package:keshav_s_application2/core/utils/logger.dart';
 export 'package:keshav_s_application2/core/utils/date_time_utils.dart';
-export 'package:url_launcher/url_launcher.dart';
+// export 'package:url_launcher/url_launcher.dart';

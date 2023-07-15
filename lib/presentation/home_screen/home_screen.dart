@@ -16,7 +16,9 @@ import 'package:keshav_s_application2/presentation/store_screen/store_screen.dar
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:sizer/sizer.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../widgets/app_bar/appbar_title.dart';
 import '../search_screen/search_screen.dart';
 import '../select_product_screen/newproductlist.dart';
 import 'controller/home_controller.dart';
@@ -2041,7 +2043,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        _launchInBrowser(Uri.parse(facebook));
+                                        Get.to(_LinkWebView(
+                                          text: 'Facebook',
+                                          conts: facebook,
+                                        ));
+                                        // _launchInBrowser(Uri.parse(facebook));
                                       },
                                       icon: Image.asset(
                                           "assets/images/facebook.png")),
@@ -2050,7 +2056,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        _launchInBrowser(Uri.parse(instagram));
+                                        Get.to(_LinkWebView(
+                                          text: 'Instagram',
+                                          conts: instagram,
+                                        ));
+                                        // _launchInBrowser(Uri.parse(instagram));
                                       },
                                       icon: Image.asset(
                                           "assets/images/instagram.png")),
@@ -2059,7 +2069,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        _launchInBrowser(Uri.parse(twitter));
+                                        Get.to(_LinkWebView(
+                                          text: 'Twitter',
+                                          conts: twitter,
+                                        ));
+                                        // _launchInBrowser(Uri.parse(twitter));
                                       },
                                       icon: Image.asset(
                                           "assets/images/twitter.png")),
@@ -2117,14 +2131,14 @@ class _HomeScreenState extends State<HomeScreen> {
     Get.toNamed(AppRoutes.whislistScreen);
   }
 
-  Future<void> _launchInBrowser(Uri url) async {
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.inAppWebView,
-    )) {
-      throw 'Could not launch $url';
-    }
-  }
+  // Future<void> _launchInBrowser(Uri url) async {
+  //   if (!await launchUrl(
+  //     url,
+  //     mode: LaunchMode.inAppWebView,
+  //   )) {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
   CategoryCard({String title, String previewImageAsset, VoidCallback onTap}) {
     return Padding(
@@ -2148,6 +2162,66 @@ class _HomeScreenState extends State<HomeScreen> {
               style: TextStyle(fontSize: 12, color: Colors.black),
             )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _LinkWebView extends StatefulWidget {
+  _LinkWebView({
+    this.conts,
+    this.text,
+  });
+  final String conts;
+  final String text;
+  @override
+  State<_LinkWebView> createState() => __LinkWebViewState();
+}
+
+class __LinkWebViewState extends State<_LinkWebView> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:CustomAppBar(
+          height: getVerticalSize(70),
+          leadingWidth: 41,
+          leading: AppbarImage(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              height: getVerticalSize(15),
+              width: getHorizontalSize(9),
+              svgPath: ImageConstant.imgArrowleft,
+              margin: getMargin(left: 20, top: 22, bottom: 32)),
+          title: AppbarTitle(
+              text: widget.text,
+              margin: getMargin(left: 19, top: 30, bottom: 42)),
+          styleType: Style.bgOutlineGray40003),
+      // AppBar(title: Text(widget.text)),
+      body: SafeArea(
+        child: WebViewWidget(
+          controller: WebViewController()
+            ..setJavaScriptMode(JavaScriptMode.unrestricted)
+            ..setBackgroundColor(const Color(0x00000000))
+            ..setNavigationDelegate(
+              NavigationDelegate(
+                onProgress: (int progress) {
+                  // Update loading bar.
+                },
+                onPageStarted: (String url) {},
+                onPageFinished: (String url) {},
+                onWebResourceError: (WebResourceError error) {},
+                onNavigationRequest: (NavigationRequest request) {
+                  if (request.url
+                      .startsWith('${widget.conts}')) {
+                    return NavigationDecision.prevent;
+                  }
+                  return NavigationDecision.navigate;
+                },
+              ),
+            )
+            ..loadRequest(Uri.parse('${widget.conts}')),
         ),
       ),
     );

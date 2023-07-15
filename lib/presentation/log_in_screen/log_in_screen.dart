@@ -370,10 +370,10 @@ class _LogInScreenState extends State<LogInScreen> {
     // Get.toNamed(AppRoutes.otpScreen,arguments: [mobilenumberController.text]);
   }
 
-  onTapImgGoogle() async {
-    var url = 'https://accounts.google.com/';
-    if (!await launch(url)) {
-      throw 'Could not launch https://accounts.google.com/';
-    }
-  }
+  // onTapImgGoogle() async {
+  //   var url = 'https://accounts.google.com/';
+  //   if (!await launch(url)) {
+  //     throw 'Could not launch https://accounts.google.com/';
+  //   }
+  // }
 }

@@ -2232,14 +2232,14 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
         ));
   }
 
-  Future<void> _launchInBrowser(Uri url) async {
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.inAppWebView,
-    )) {
-      throw 'Could not launch $url';
-    }
-  }
+  // Future<void> _launchInBrowser(Uri url) async {
+  //   if (!await launchUrl(
+  //     url,
+  //     mode: LaunchMode.inAppWebView,
+  //   )) {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
   static Widget documentViewer(String url, context) => SafeArea(
       child: Scaffold(
