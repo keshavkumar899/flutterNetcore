@@ -2217,9 +2217,9 @@ class _LinkWebView extends StatefulWidget {
 
 class __LinkWebViewState extends State<_LinkWebView> {
 
-  InAppWebViewController _webViewController;
-  double progress = 0;
-  String url='';
+  // InAppWebViewController _webViewController;
+  // double progress = 0;
+  // String url='';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
