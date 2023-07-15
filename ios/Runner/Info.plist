@@ -14,10 +14,22 @@
 	<string>FabFurni</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleIconName</key>
+    <string>AppIcon</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Allow permission to fetch photos from album</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Allow access of microphone to search product by voice</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Allow permission to access camera to take photo for profile</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>Allow access of microphone to search product by voice</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Allow access of location to fetch accurate address to deliver product at right place</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
