@@ -1435,20 +1435,23 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                           MainAxisAlignment
                                                                               .end,
                                                                           children: [
-                                                                            CustomImageView(
-                                                                              url:
-                                                                              similarProduct[index].image,
-                                                                              height:
-                                                                              getSize(
-                                                                                130,
-                                                                              ),
-                                                                              width:
-                                                                              getSize(
-                                                                                300,
-                                                                              ),
-                                                                              margin:
-                                                                              getMargin(
-                                                                                top: 5,
+                                                                            Flexible(
+                                                                              flex:1,
+                                                                              child: CustomImageView(
+                                                                                url:
+                                                                                similarProduct[index].image,
+                                                                                height:
+                                                                                getSize(
+                                                                                  130,
+                                                                                ),
+                                                                                width:
+                                                                                getSize(
+                                                                                  300,
+                                                                                ),
+                                                                                margin:
+                                                                                getMargin(
+                                                                                  top: 5,
+                                                                                ),
                                                                               ),
                                                                             ),
                                                                             Padding(

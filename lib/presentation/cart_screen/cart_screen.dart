@@ -830,92 +830,95 @@ class _CartScreenState extends State<CartScreen> {
                                                               ])),
                                                     ])),
                                             Container(
-                                                width: double.maxFinite,
+                                                width: MediaQuery.of(context).size.width,
                                                 margin: getMargin(top: 5),
                                                 // padding: getPadding(
                                                 //     left: 41, right: 41),
                                                 decoration: AppDecoration
                                                     .outlineGray400,
-                                                child: Row(
-                                                    mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                    children: [
-                                                      InkWell(
-                                                        onTap:()async{
-                                                          // print(cartlist[index].id);
-                                                          await removecart(cartlist[index].id);
-                                                          setState(() {
-                                                            initState();
-                                                          });
-
-                                                        },
-                                                        child: Container(
-                                                          // color:Colors.black,
-                                                            width:180,
-                                                            padding: getPadding(
-                                                                left: 37,
-                                                                top: 11,
-                                                                bottom: 9),
-                                                            child: Text(
-                                                                "lbl_remove".tr,
-                                                                overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                                textAlign:
-                                                                TextAlign
-                                                                    .center,
-                                                                style: AppStyle
-                                                                    .txtRobotoRegular12Black900
-                                                                    .copyWith(
-                                                                    letterSpacing:
-                                                                    getHorizontalSize(
-                                                                        1.2)))),
-                                                      ),
-                                                      Spacer(),
-                                                      SizedBox(
-                                                          height:
-                                                          getVerticalSize(
-                                                              36),
-                                                          child: VerticalDivider(
-                                                              width:
-                                                              getHorizontalSize(
-                                                                  1),
-                                                              thickness:
-                                                              getVerticalSize(
-                                                                  1),
-                                                              color: ColorConstant
-                                                                  .gray40001)),
-                                                      InkWell(
-                                                        onTap:()async{
-                                                          await movetowishlist(cartlist[index].id,cartlist[index].productId) ;
-                                                          setState(() {
-                                                            initState();
-                                                          });
-                                        },
-                                                        child: Container(
-                                                          // color:Colors.black,
-                                                            width:200,
-                                                            padding: getPadding(
-                                                                left: 0,
-                                                                top: 11,
-                                                                bottom: 9),
-                                                            child: Text(
-                                                                "msg_move_to_wishlist"
-                                                                    .tr,
-                                                                overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                                textAlign:
-                                                                TextAlign
-                                                                    .center,
-                                                                style: AppStyle
-                                                                    .txtRobotoRegular12Black900
-                                                                    .copyWith(
-                                                                    letterSpacing:
-                                                                    getHorizontalSize(
-                                                                        1.2)))),
-                                                      )
-                                                    ])),
+                                                child: Flexible(
+                                                  flex: 1,
+                                                  child: Row(
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment.spaceBetween,
+                                                      children: [
+                                                        InkWell(
+                                                          onTap:()async{
+                                                            // print(cartlist[index].id);
+                                                            await removecart(cartlist[index].id);
+                                                            setState(() {
+                                                              initState();
+                                                            });
+                                                
+                                                          },
+                                                          child: Container(
+                                                            // color:Colors.black,
+                                                              //width:180,
+                                                              padding: getPadding(
+                                                                  left: 90,
+                                                                  top: 11,
+                                                                  bottom: 9),
+                                                              child: Text(
+                                                                  "lbl_remove".tr,
+                                                                  overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                                  textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                                  style: AppStyle
+                                                                      .txtRobotoRegular12Black900
+                                                                      .copyWith(
+                                                                      letterSpacing:
+                                                                      getHorizontalSize(
+                                                                          1.2)))),
+                                                        ),
+                                                        //Spacer(),
+                                                        SizedBox(
+                                                            height:
+                                                            getVerticalSize(
+                                                                36),
+                                                            child: VerticalDivider(
+                                                                width:
+                                                                getHorizontalSize(
+                                                                    1),
+                                                                thickness:
+                                                                getVerticalSize(
+                                                                    1),
+                                                                color: ColorConstant
+                                                                    .gray40001)),
+                                                        InkWell(
+                                                          onTap:()async{
+                                                            await movetowishlist(cartlist[index].id,cartlist[index].productId) ;
+                                                            setState(() {
+                                                              initState();
+                                                            });
+                                                                                        },
+                                                          child: Container(
+                                                            // color:Colors.black,
+                                                              //width:200,
+                                                              padding: getPadding(
+                                                                  left: 0,
+                                                                  top: 11,
+                                                                  bottom: 9,right: 45),
+                                                              child: Text(
+                                                                  "msg_move_to_wishlist"
+                                                                      .tr,
+                                                                  overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                                  textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                                  style: AppStyle
+                                                                      .txtRobotoRegular12Black900
+                                                                      .copyWith(
+                                                                      letterSpacing:
+                                                                      getHorizontalSize(
+                                                                          1.2)))),
+                                                        )
+                                                      ]),
+                                                )),
 
 
 

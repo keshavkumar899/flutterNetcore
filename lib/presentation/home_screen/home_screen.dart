@@ -1,9 +1,14 @@
 import 'dart:convert';
+import 'dart:convert';
 
 import 'package:animated_shimmer/animated_shimmer.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dio/dio.dart' as dio;
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
+import 'package:keshav_s_application2/core/app_export.dart';
 import 'package:keshav_s_application2/presentation/cart_screen/cart_screen.dart';
 import 'package:keshav_s_application2/presentation/click_after_slect_tab_furniture_screen/click_after_slect_tab_furniture_screen.dart';
 import 'package:keshav_s_application2/presentation/home_screen/models/HomeModel.dart'
@@ -12,8 +17,13 @@ import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.d
 import 'package:keshav_s_application2/presentation/product_detail_screen/product_detail_screen.dart';
 import 'package:keshav_s_application2/presentation/select_product_screen/productlistafterclickionbanner.dart';
 import 'package:keshav_s_application2/presentation/sidebar_menu_draweritem/sidebar_menu_draweritem.dart';
+import 'package:keshav_s_application2/presentation/store_screen/models/StoreModel.dart'
+    as stores;
 import 'package:keshav_s_application2/presentation/store_screen/store_screen.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
+import 'package:keshav_s_application2/widgets/app_bar/appbar_image.dart';
+import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_6.dart';
+import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:sizer/sizer.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -22,17 +32,6 @@ import '../../widgets/app_bar/appbar_title.dart';
 import '../search_screen/search_screen.dart';
 import '../select_product_screen/newproductlist.dart';
 import 'controller/home_controller.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
-import 'package:keshav_s_application2/core/app_export.dart';
-import 'package:keshav_s_application2/widgets/app_bar/appbar_image.dart';
-import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_6.dart';
-import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
-import 'dart:convert';
-import 'package:keshav_s_application2/presentation/store_screen/models/StoreModel.dart'
-    as stores;
-
-import 'package:dio/dio.dart' as dio;
 
 class HomeScreen extends StatefulWidget {
   Data data;
@@ -40,6 +39,55 @@ class HomeScreen extends StatefulWidget {
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class __LinkWebViewState extends State<_LinkWebView> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:CustomAppBar(
+          height: getVerticalSize(70),
+          leadingWidth: 41,
+          leading: AppbarImage(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              height: getVerticalSize(15),
+              width: getHorizontalSize(9),
+              svgPath: ImageConstant.imgArrowleft,
+              margin: getMargin(left: 20, top: 22, bottom: 32)),
+          title: AppbarTitle(
+              text: widget.text,
+              margin: getMargin(left: 19, top: 30, bottom: 42)),
+          styleType: Style.bgOutlineGray40003),
+      // AppBar(title: Text(widget.text)),
+      body: SafeArea(
+        child: WebViewWidget(
+          controller: WebViewController()
+            ..setJavaScriptMode(JavaScriptMode.unrestricted)
+            ..setBackgroundColor(const Color(0x00000000))
+            ..setNavigationDelegate(
+              NavigationDelegate(
+                onProgress: (int progress) {
+                  // Update loading bar.
+                },
+                onPageStarted: (String url) {},
+                onPageFinished: (String url) {},
+                onWebResourceError: (WebResourceError error) {},
+                onNavigationRequest: (NavigationRequest request) {
+                  if (request.url
+                      .startsWith('${widget.conts}')) {
+                    return NavigationDecision.prevent;
+                  }
+                  return NavigationDecision.navigate;
+                },
+              ),
+            )
+            ..loadRequest(Uri.parse('${widget.conts}')),
+        ),
+      ),
+    );
+  }
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -59,125 +107,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<stores.StoreModel> category;
   List<stores.StoreData> categorylist = [];
 
-  Future<stores.StoreModel> getCategory() async {
-    Map data = {
-      'user_id': widget.data.id,
-    };
-    //encode Map to JSON
-    var body = json.encode(data);
-    var response =
-        await dio.Dio().post("https://fabfurni.com/api/Webservice/category",
-            options: dio.Options(
-              headers: {
-                "Content-Type": "application/json",
-                "Accept": "*/*",
-              },
-            ),
-            data: body);
-    var jsonObject = jsonDecode(response.toString());
-    if (response.statusCode == 200) {
-      print(jsonObject);
-
-      if (stores.StoreModel.fromJson(jsonObject).status == "true") {
-        // print(orders.MyOrdersModel.fromJson(jsonObject).data.first.products.first.image);
-
-        return stores.StoreModel.fromJson(jsonObject);
-
-        // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      } else if (stores.StoreModel.fromJson(jsonObject).status == "false") {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(stores.StoreModel.fromJson(jsonObject).message),
-            backgroundColor: Colors.redAccent));
-      } else if (stores.StoreModel.fromJson(jsonObject).data == null) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(
-            jsonObject['message'] + ' Please check after sometime.',
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Colors.redAccent,
-        ));
-      } else {
-        throw Exception('Failed to load');
-      }
-    } else {
-      throw Exception('Failed to load');
-    }
-    return jsonObject;
-  }
-
-  Future<homes.HomeModel> getdashboard() async {
-    Map data = {
-      'user_id': widget.data.id,
-    };
-    //encode Map to JSON
-    var body = json.encode(data);
-    var response =
-        await dio.Dio().post("https://fabfurni.com/api/Webservice/dashboard",
-            options: dio.Options(
-              headers: {
-                "Content-Type": "application/json",
-                "Accept": "*/*",
-              },
-            ),
-            data: body);
-    var jsonObject = jsonDecode(response.toString());
-    if (response.statusCode == 200) {
-      print(jsonObject);
-
-      if (homes.HomeModel.fromJson(jsonObject).status == "true") {
-        // print(orders.MyOrdersModel.fromJson(jsonObject).data.first.products.first.image);
-
-        return homes.HomeModel.fromJson(jsonObject);
-
-        // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      } else if (homes.HomeModel.fromJson(jsonObject).status == "false") {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(homes.HomeModel.fromJson(jsonObject).message),
-            backgroundColor: Colors.redAccent));
-      } else if (homes.HomeModel.fromJson(jsonObject).data == null) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(
-            jsonObject['message'] + ' Please check after sometime.',
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Colors.redAccent,
-        ));
-      } else {
-        throw Exception('Failed to load');
-      }
-    } else {
-      throw Exception('Failed to load');
-    }
-    return jsonObject;
-  }
-
-  @override
-  void initState() {
-    home = getdashboard();
-    category = getCategory();
-    category.then((value) {
-      setState(() {
-        categorylist = value.data;
-      });
-    });
-    home.then((value) {
-      setState(() {
-        homelist = value.data;
-        banners = value.banners;
-        bannersresportrait = value.bannersResPortrait;
-        favouriteProduct = value.favouriteProduct;
-        bannerswow = value.bannerswow;
-        bannersgoodLooks = value.bannersgoodLooks;
-        bannersBrothers = value.bannersBrothers;
-        facebook = value.links.facebook;
-        instagram = value.links.instagram;
-        twitter = value.links.tweeter;
-      });
-    });
-
-    super.initState();
-  }
-
   List images = [
     ImageConstant.imgSofa,
     ImageConstant.imgTvstand,
@@ -190,6 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ImageConstant.imgMicrowave,
     ImageConstant.imgWardrobe
   ];
+
   int silderIndex=0;
 
   @override
@@ -711,13 +641,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           //                 ])))),
                           SizedBox(height: 8,),
                           Container(
-                            height: 206,
+                           // height: 206,
                             // width: 200.w,
                             padding: getPadding(left: 10,right: 10),
                             // color: Colors.black,
                             child: CarouselSlider.builder(
                                 options: CarouselOptions(
-                                  height: getVerticalSize(215),
+                                  //height: getVerticalSize(215),
                                   initialPage: 0,
                                   autoPlay: true,
                                   viewportFraction: 1.0,
@@ -1409,31 +1339,34 @@ class _HomeScreenState extends State<HomeScreen> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,
                                               children: [
-                                                Container(
-                                                  width: 280,
-                                                  height: 150,
-                                                  child: Image.network(
-                                                    favouriteProduct[index].image,
-                                                    fit: BoxFit.cover,
-                                                    // width: 100.w,
-                                                    alignment: Alignment(-0.15, -0.15),
-                                                    filterQuality:
-                                                        FilterQuality.high,
-                                                    loadingBuilder: (context,
-                                                            child,
-                                                            loadingProgress) =>
-                                                        (loadingProgress == null)
-                                                            ? child
-                                                            : AnimatedShimmer(
-                                                          height: 280,
-                                                          width: 150,
-                                                          borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                          delayInMilliSeconds: Duration(milliseconds: index * 500),
-                                                        ),
-                                                    errorBuilder: (context, error,
-                                                            stackTrace) =>
-                                                        Image.asset(
-                                                            "assets/images/image_not_found.png"),
+                                                Flexible(
+                                                  flex:1,
+                                                  child: Container(
+                                                    width: 280,
+                                                    //height: 150,
+                                                    child: Image.network(
+                                                      favouriteProduct[index].image,
+                                                      fit: BoxFit.cover,
+                                                      // width: 100.w,
+                                                      alignment: Alignment(-0.15, -0.15),
+                                                      filterQuality:
+                                                          FilterQuality.high,
+                                                      loadingBuilder: (context,
+                                                              child,
+                                                              loadingProgress) =>
+                                                          (loadingProgress == null)
+                                                              ? child
+                                                              : AnimatedShimmer(
+                                                            height: 280,
+                                                            width: 150,
+                                                            borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                            delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                          ),
+                                                      errorBuilder: (context, error,
+                                                              stackTrace) =>
+                                                          Image.asset(
+                                                              "assets/images/image_not_found.png"),
+                                                    ),
                                                   ),
                                                 ),
                                                 Container(
@@ -1514,97 +1447,106 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 150,
-                        child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: bannerswow.length,
-                            itemBuilder: (context, index) {
-                              return SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                padding: getPadding(
-                                  left: 10,
-                                  top: 0,
-                                  bottom: 4,
-                                  right: 10,
-                                ),
-                                child: GestureDetector(
-                                  onTap: (){
-                                    if(bannerswow[index].keywordId=='0' || bannerswow[index].keywordId==null){
-                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                          content: Text("No Data"),
-                                          backgroundColor: Colors.redAccent));
-                                    }else{
-                                      Navigator.of(context).push(MaterialPageRoute(
-                                        builder: (context) => productlisrafterclickonbanner(widget.data,bannerswow[index].keywordId,'','',''),
-                                      ));}
-                                    // Navigator.of(context).push(MaterialPageRoute(
-                                    //   builder: (context) => ProductDetailScreen(widget.data,bannerswow[index].id),
-                                    // ));
-                                  },
-                                  child: Container(
-                                    width: 200,
-                                    // color: Colors.black,
-                                    padding: getPadding(
-                                      left: 0.5,
-                                      top: 0,
-                                      right: 0.5,
-                                      bottom: 0,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Container(
-                                          // width: 400,
-                                          height: 145,
-                                          child: Image.network(
-                                            bannerswow[index].image,
-                                            fit: BoxFit.cover,
-                                            alignment: Alignment(1, 1),
-                                            filterQuality: FilterQuality.high,
-                                            loadingBuilder: (context, child,
-                                                    loadingProgress) =>
-                                                (loadingProgress == null)
-                                                    ? child
-                                                    : AnimatedShimmer(
-                                                  height: 145,
-                                                  width: 200,
-                                                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                  delayInMilliSeconds: Duration(milliseconds: index * 500),
+                      Flexible(
+                        flex:1,
+                        child: SizedBox(
+                          height: 150,
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: bannerswow.length,
+                              itemBuilder: (context, index) {
+                                return SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  padding: getPadding(
+                                    left: 10,
+                                    top: 0,
+                                    bottom: 4,
+                                    right: 10,
+                                  ),
+                                  child: GestureDetector(
+                                    onTap: (){
+                                      if(bannerswow[index].keywordId=='0' || bannerswow[index].keywordId==null){
+                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                            content: Text("No Data"),
+                                            backgroundColor: Colors.redAccent));
+                                      }else{
+                                        Navigator.of(context).push(MaterialPageRoute(
+                                          builder: (context) => productlisrafterclickonbanner(widget.data,bannerswow[index].keywordId,'','',''),
+                                        ));}
+                                      // Navigator.of(context).push(MaterialPageRoute(
+                                      //   builder: (context) => ProductDetailScreen(widget.data,bannerswow[index].id),
+                                      // ));
+                                    },
+                                    child: Container(
+                                      width: 200,
+                                      // color: Colors.black,
+                                      padding: getPadding(
+                                        left: 0.5,
+                                        top: 0,
+                                        right: 0.5,
+                                        bottom: 0,
+                                      ),
+                                      child: Flexible(
+                                        flex:1,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            Flexible(
+                                              flex:1,
+                                              child: Container(
+                                                // width: 400,
+                                                height: 145,
+                                                child: Image.network(
+                                                  bannerswow[index].image,
+                                                  fit: BoxFit.cover,
+                                                  alignment: Alignment(1, 1),
+                                                  filterQuality: FilterQuality.high,
+                                                  loadingBuilder: (context, child,
+                                                          loadingProgress) =>
+                                                      (loadingProgress == null)
+                                                          ? child
+                                                          : AnimatedShimmer(
+                                                        height: 145,
+                                                        width: 200,
+                                                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                        delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                      ),
+                                                  errorBuilder: (context, error,
+                                                          stackTrace) =>
+                                                      Image.asset(
+                                                          "assets/images/image_not_found.png"),
                                                 ),
-                                            errorBuilder: (context, error,
-                                                    stackTrace) =>
-                                                Image.asset(
-                                                    "assets/images/image_not_found.png"),
-                                          ),
+                                              ),
+                                            ),
+                                            // Container(
+                                            //   // width: getHorizontalSize(
+                                            //   //   250,
+                                            //   // ),
+                                            //   margin: getMargin(
+                                            //     top: 5,
+                                            //     left: 5,
+                                            //   ),
+                                            //   child: Text(
+                                            //     bannerswow[index].metaDescription,
+                                            //     // maxLines: null,
+                                            //     textAlign: TextAlign.left,
+                                            //     style: TextStyle(
+                                            //         fontSize: 25,
+                                            //         fontWeight: FontWeight.w400,
+                                            //         color: ColorConstant.black900,
+                                            //         fontFamily: 'Roboto'),
+                                            //   ),
+                                            // ),
+                                          ],
                                         ),
-                                        // Container(
-                                        //   // width: getHorizontalSize(
-                                        //   //   250,
-                                        //   // ),
-                                        //   margin: getMargin(
-                                        //     top: 5,
-                                        //     left: 5,
-                                        //   ),
-                                        //   child: Text(
-                                        //     bannerswow[index].metaDescription,
-                                        //     // maxLines: null,
-                                        //     textAlign: TextAlign.left,
-                                        //     style: TextStyle(
-                                        //         fontSize: 25,
-                                        //         fontWeight: FontWeight.w400,
-                                        //         color: ColorConstant.black900,
-                                        //         fontFamily: 'Roboto'),
-                                        //   ),
-                                        // ),
-                                      ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                              );
-                            }),
+                                );
+                              }),
+                        ),
                       )
                     ],
                   ),
@@ -1700,7 +1642,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       },
                                       child: Container(
                                         width: 170,
-                                        height: 130,
+                                        //height: 130,
                                         margin: getMargin(
                                           right: 10,
                                         ),
@@ -1713,31 +1655,34 @@ class _HomeScreenState extends State<HomeScreen> {
                                         decoration: AppDecoration.fillWhiteA700,
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.end,
+                                              MainAxisAlignment.center,
                                           children: [
-                                            Container(
-                                              width: 150,
-                                              height: 140,
-                                              padding: getPadding(top: 0,bottom: 0),
-                                              child: Image.network(
-                                                bannersgoodLooks[index].image,
-                                                fit: BoxFit.cover,
-                                                alignment: Alignment(0.7, 0.7),
-                                                filterQuality: FilterQuality.high,
-                                                loadingBuilder: (context, child,
-                                                        loadingProgress) =>
-                                                    (loadingProgress == null)
-                                                        ? child
-                                                        : AnimatedShimmer(
-                                                      height: 140,
-                                                      width: 150,
-                                                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                      delayInMilliSeconds: Duration(milliseconds: index * 500),
-                                                    ),
-                                                errorBuilder: (context, error,
-                                                        stackTrace) =>
-                                                    Image.asset(
-                                                        "assets/images/image_not_found.png"),
+                                            Flexible(
+                                              flex:1,
+                                              child: Container(
+                                                width: 150,
+                                                height: 140,
+                                                padding: getPadding(top: 0,bottom: 0),
+                                                child: Image.network(
+                                                  bannersgoodLooks[index].image,
+                                                  fit: BoxFit.cover,
+                                                  alignment: Alignment(0.7, 0.7),
+                                                  filterQuality: FilterQuality.high,
+                                                  loadingBuilder: (context, child,
+                                                          loadingProgress) =>
+                                                      (loadingProgress == null)
+                                                          ? child
+                                                          : AnimatedShimmer(
+                                                        height: 140,
+                                                        width: 150,
+                                                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                        delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                      ),
+                                                  errorBuilder: (context, error,
+                                                          stackTrace) =>
+                                                      Image.asset(
+                                                          "assets/images/image_not_found.png"),
+                                                ),
                                               ),
                                             ),
                                             Container(
@@ -1793,7 +1738,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Container(
-                  height: 27.h,
+                 // height: 27.h,
                   color: ColorConstant.whiteA700,
                   child: Column(
                     children: [
@@ -1884,28 +1829,31 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    Container(
-                                      width: 150,
-                                      height: 140,
-                                      child: Image.network(
-                                        bannersBrothers[index].image,
-                                        fit: BoxFit.cover,
-                                        alignment: Alignment(0.7, 0.7),
-                                        filterQuality: FilterQuality.high,
-                                        loadingBuilder:
-                                            (context, child, loadingProgress) =>
-                                                (loadingProgress == null)
-                                                    ? child
-                                                    : AnimatedShimmer(
-                                                  height: 140,
-                                                  width: 150,
-                                                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                  delayInMilliSeconds: Duration(milliseconds: index * 500),
-                                                ),
-                                        errorBuilder: (context, error,
-                                                stackTrace) =>
-                                            Image.asset(
-                                                "assets/images/image_not_found.png"),
+                                    Flexible(
+                                      flex:1,
+                                      child: Container(
+                                        width: 150,
+                                        height: 140,
+                                        child: Image.network(
+                                          bannersBrothers[index].image,
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment(0.7, 0.7),
+                                          filterQuality: FilterQuality.high,
+                                          loadingBuilder:
+                                              (context, child, loadingProgress) =>
+                                                  (loadingProgress == null)
+                                                      ? child
+                                                      : AnimatedShimmer(
+                                                    height: 140,
+                                                    width: 150,
+                                                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                    delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                  ),
+                                          errorBuilder: (context, error,
+                                                  stackTrace) =>
+                                              Image.asset(
+                                                  "assets/images/image_not_found.png"),
+                                        ),
                                       ),
                                     ),
                                     Container(
@@ -2036,48 +1984,53 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: AppStyle.txtRobotoRegular14Gray50001,
                                 ),
                               ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: 13.w,
-                                  ),
-                                  IconButton(
-                                      onPressed: () {
-                                        Get.to(_LinkWebView(
-                                          text: 'Facebook',
-                                          conts: facebook,
-                                        ));
-                                        // _launchInBrowser(Uri.parse(facebook));
-                                      },
-                                      icon: Image.asset(
-                                          "assets/images/facebook.png")),
-                                  SizedBox(
-                                    width: 15,
-                                  ),
-                                  IconButton(
-                                      onPressed: () {
-                                        Get.to(_LinkWebView(
-                                          text: 'Instagram',
-                                          conts: instagram,
-                                        ));
-                                        // _launchInBrowser(Uri.parse(instagram));
-                                      },
-                                      icon: Image.asset(
-                                          "assets/images/instagram.png")),
-                                  SizedBox(
-                                    width: 15,
-                                  ),
-                                  IconButton(
-                                      onPressed: () {
-                                        Get.to(_LinkWebView(
-                                          text: 'Twitter',
-                                          conts: twitter,
-                                        ));
-                                        // _launchInBrowser(Uri.parse(twitter));
-                                      },
-                                      icon: Image.asset(
-                                          "assets/images/twitter.png")),
-                                ],
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    //SizedBox(
+                                      //width: 13.w,
+                                    //),
+                                    IconButton(
+                                        onPressed: () {
+                                          Get.to(_LinkWebView(
+                                            text: 'Facebook',
+                                            conts: facebook,
+                                          ));
+                                          // _launchInBrowser(Uri.parse(facebook));
+                                        },
+                                        icon: Image.asset(
+                                            "assets/images/facebook.png")),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    IconButton(
+                                        onPressed: () {
+                                          Get.to(_LinkWebView(
+                                            text: 'Instagram',
+                                            conts: instagram,
+                                          ));
+                                          // _launchInBrowser(Uri.parse(instagram));
+                                        },
+                                        icon: Image.asset(
+                                            "assets/images/instagram.png")),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    IconButton(
+                                        onPressed: () {
+                                          Get.to(_LinkWebView(
+                                            text: 'Twitter',
+                                            conts: twitter,
+                                          ));
+                                          // _launchInBrowser(Uri.parse(twitter));
+                                        },
+                                        icon: Image.asset(
+                                            "assets/images/twitter.png")),
+                                  ],
+                                ),
                               ),
 
                               // CustomImageView(
@@ -2117,6 +2070,165 @@ class _HomeScreenState extends State<HomeScreen> {
             )));
   }
 
+  // Future<void> _launchInBrowser(Uri url) async {
+  //   if (!await launchUrl(
+  //     url,
+  //     mode: LaunchMode.inAppWebView,
+  //   )) {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
+
+   CategoryCard({String title, String previewImageAsset, VoidCallback onTap}) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 15.0, top: 5),
+      child: InkWell(
+        onTap: onTap,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 0,
+            ),
+            Flexible(
+              flex:1,
+              child: CustomImageView(
+                url: previewImageAsset,
+                height: getSize(40),
+                width: getSize(40),
+                margin: getMargin(top: 3),
+              ),
+            ),
+            SizedBox(height: 5,),
+            //Spacer(),
+            Text(
+              title,
+              style: TextStyle(fontSize: 12, color: Colors.black),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+  
+  Future<stores.StoreModel> getCategory() async {
+    Map data = {
+      'user_id': widget.data.id,
+    };
+    //encode Map to JSON
+    var body = json.encode(data);
+    var response =
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/category",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
+    var jsonObject = jsonDecode(response.toString());
+    if (response.statusCode == 200) {
+      print(jsonObject);
+
+      if (stores.StoreModel.fromJson(jsonObject).status == "true") {
+        // print(orders.MyOrdersModel.fromJson(jsonObject).data.first.products.first.image);
+
+        return stores.StoreModel.fromJson(jsonObject);
+
+        // inviteList.sort((a, b) => a.id.compareTo(b.id));
+      } else if (stores.StoreModel.fromJson(jsonObject).status == "false") {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(stores.StoreModel.fromJson(jsonObject).message),
+            backgroundColor: Colors.redAccent));
+      } else if (stores.StoreModel.fromJson(jsonObject).data == null) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+            jsonObject['message'] + ' Please check after sometime.',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.redAccent,
+        ));
+      } else {
+        throw Exception('Failed to load');
+      }
+    } else {
+      throw Exception('Failed to load');
+    }
+    return jsonObject;
+  }
+
+  Future<homes.HomeModel> getdashboard() async {
+    Map data = {
+      'user_id': widget.data.id,
+    };
+    //encode Map to JSON
+    var body = json.encode(data);
+    var response =
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/dashboard",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
+    var jsonObject = jsonDecode(response.toString());
+    if (response.statusCode == 200) {
+      print(jsonObject);
+
+      if (homes.HomeModel.fromJson(jsonObject).status == "true") {
+        // print(orders.MyOrdersModel.fromJson(jsonObject).data.first.products.first.image);
+
+        return homes.HomeModel.fromJson(jsonObject);
+
+        // inviteList.sort((a, b) => a.id.compareTo(b.id));
+      } else if (homes.HomeModel.fromJson(jsonObject).status == "false") {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(homes.HomeModel.fromJson(jsonObject).message),
+            backgroundColor: Colors.redAccent));
+      } else if (homes.HomeModel.fromJson(jsonObject).data == null) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+            jsonObject['message'] + ' Please check after sometime.',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.redAccent,
+        ));
+      } else {
+        throw Exception('Failed to load');
+      }
+    } else {
+      throw Exception('Failed to load');
+    }
+    return jsonObject;
+  }
+
+  @override
+  void initState() {
+    home = getdashboard();
+    category = getCategory();
+    category.then((value) {
+      setState(() {
+        categorylist = value.data;
+      });
+    });
+    home.then((value) {
+      setState(() {
+        homelist = value.data;
+        banners = value.banners;
+        bannersresportrait = value.bannersResPortrait;
+        favouriteProduct = value.favouriteProduct;
+        bannerswow = value.bannerswow;
+        bannersgoodLooks = value.bannersgoodLooks;
+        bannersBrothers = value.bannersBrothers;
+        facebook = value.links.facebook;
+        instagram = value.links.instagram;
+        twitter = value.links.tweeter;
+      });
+    });
+
+    super.initState();
+  }
+
   onTapImgSofa() {
     Get.toNamed(AppRoutes.storeScreen);
   }
@@ -2130,100 +2242,15 @@ class _HomeScreenState extends State<HomeScreen> {
   onTapWishlist() {
     Get.toNamed(AppRoutes.whislistScreen);
   }
-
-  // Future<void> _launchInBrowser(Uri url) async {
-  //   if (!await launchUrl(
-  //     url,
-  //     mode: LaunchMode.inAppWebView,
-  //   )) {
-  //     throw 'Could not launch $url';
-  //   }
-  // }
-
-  CategoryCard({String title, String previewImageAsset, VoidCallback onTap}) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 15.0, top: 5),
-      child: InkWell(
-        onTap: onTap,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 0,
-            ),
-            CustomImageView(
-              url: previewImageAsset,
-              height: getSize(40),
-              width: getSize(40),
-              margin: getMargin(top: 3),
-            ),
-            Spacer(),
-            Text(
-              title,
-              style: TextStyle(fontSize: 12, color: Colors.black),
-            )
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 class _LinkWebView extends StatefulWidget {
+  final String conts;
+  final String text;
   _LinkWebView({
     this.conts,
     this.text,
   });
-  final String conts;
-  final String text;
   @override
   State<_LinkWebView> createState() => __LinkWebViewState();
-}
-
-class __LinkWebViewState extends State<_LinkWebView> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar:CustomAppBar(
-          height: getVerticalSize(70),
-          leadingWidth: 41,
-          leading: AppbarImage(
-              onTap: (){
-                Navigator.pop(context);
-              },
-              height: getVerticalSize(15),
-              width: getHorizontalSize(9),
-              svgPath: ImageConstant.imgArrowleft,
-              margin: getMargin(left: 20, top: 22, bottom: 32)),
-          title: AppbarTitle(
-              text: widget.text,
-              margin: getMargin(left: 19, top: 30, bottom: 42)),
-          styleType: Style.bgOutlineGray40003),
-      // AppBar(title: Text(widget.text)),
-      body: SafeArea(
-        child: WebViewWidget(
-          controller: WebViewController()
-            ..setJavaScriptMode(JavaScriptMode.unrestricted)
-            ..setBackgroundColor(const Color(0x00000000))
-            ..setNavigationDelegate(
-              NavigationDelegate(
-                onProgress: (int progress) {
-                  // Update loading bar.
-                },
-                onPageStarted: (String url) {},
-                onPageFinished: (String url) {},
-                onWebResourceError: (WebResourceError error) {},
-                onNavigationRequest: (NavigationRequest request) {
-                  if (request.url
-                      .startsWith('${widget.conts}')) {
-                    return NavigationDecision.prevent;
-                  }
-                  return NavigationDecision.navigate;
-                },
-              ),
-            )
-            ..loadRequest(Uri.parse('${widget.conts}')),
-        ),
-      ),
-    );
-  }
 }

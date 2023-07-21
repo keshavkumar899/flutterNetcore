@@ -747,13 +747,13 @@ class _HomeScreen1State extends State<HomeScreen1> {
                               //                 ])))),
                               SizedBox(height: 8,),
                               Container(
-                                height: 206,
+                                //height: 206,
                                 // width: 200.w,
                                 padding: getPadding(left: 10,right: 10),
                                 // color: Colors.black,
                                 child:CarouselSlider.builder(
                                     options: CarouselOptions(
-                                      height: getVerticalSize(215),
+                                      //height: getVerticalSize(215),
                                       initialPage: 0,
                                       autoPlay: true,
                                       viewportFraction: 1.0,
@@ -1430,7 +1430,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                 ));
                                               },
                                               child: Container(
-                                                width: 300,
+                                               width: 300,
                                                 padding: getPadding(
                                                   left: 11,
                                                   top: 0,
@@ -1445,31 +1445,34 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                   mainAxisAlignment:
                                                   MainAxisAlignment.end,
                                                   children: [
-                                                    Container(
-                                                      width: 280,
-                                                      height: 150,
-                                                      child: Image.network(
-                                                        favouriteProduct[index].image,
-                                                        fit: BoxFit.cover,
-                                                        // width: 100.w,
-                                                        alignment: Alignment(-0.15, -0.15),
-                                                        filterQuality:
-                                                        FilterQuality.high,
-                                                        loadingBuilder: (context,
-                                                            child,
-                                                            loadingProgress) =>
-                                                        (loadingProgress == null)
-                                                            ? child
-                                                            : AnimatedShimmer(
-                                                          height: 280,
-                                                          width: 150,
-                                                          borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                          delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                    Flexible(
+                                                      flex:1,
+                                                      child: Container(
+                                                        width: 280,
+                                                        //height: 150,
+                                                        child: Image.network(
+                                                          favouriteProduct[index].image,
+                                                          fit: BoxFit.cover,
+                                                          // width: 100.w,
+                                                          alignment: Alignment(-0.15, -0.15),
+                                                          filterQuality:
+                                                          FilterQuality.high,
+                                                          loadingBuilder: (context,
+                                                              child,
+                                                              loadingProgress) =>
+                                                          (loadingProgress == null)
+                                                              ? child
+                                                              : AnimatedShimmer(
+                                                            height: 280,
+                                                            width: 150,
+                                                            borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                            delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                          ),
+                                                          errorBuilder: (context, error,
+                                                              stackTrace) =>
+                                                              Image.asset(
+                                                                  "assets/images/image_not_found.png"),
                                                         ),
-                                                        errorBuilder: (context, error,
-                                                            stackTrace) =>
-                                                            Image.asset(
-                                                                "assets/images/image_not_found.png"),
                                                       ),
                                                     ),
                                                     Container(
@@ -1550,97 +1553,103 @@ class _HomeScreen1State extends State<HomeScreen1> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 150,
-                            child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: bannerswow.length,
-                                itemBuilder: (context, index) {
-                                  return SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    padding: getPadding(
-                                      left: 10,
-                                      top: 0,
-                                      bottom: 4,
-                                      right: 10,
-                                    ),
-                                    child: GestureDetector(
-                                      onTap: (){
-                                        if(bannerswow[index].keywordId=='0' || bannerswow[index].keywordId==null){
-                                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                              content: Text("No Data"),
-                                              backgroundColor: Colors.redAccent));
-                                        }else{
-                                          Navigator.of(context).push(MaterialPageRoute(
-                                            builder: (context) => productlisrafterclickonbanner1(bannerswow[index].keywordId,'','',''),
-                                          ));}
-                                        // Navigator.of(context).push(MaterialPageRoute(
-                                        //   builder: (context) => ProductDetailScreen(widget.data,bannerswow[index].id),
-                                        // ));
-                                      },
-                                      child: Container(
-                                        width: 200,
-                                        // color: Colors.black,
-                                        padding: getPadding(
-                                          left: 0.5,
-                                          top: 0,
-                                          right: 0.5,
-                                          bottom: 0,
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          mainAxisAlignment: MainAxisAlignment.end,
-                                          children: [
-                                            Container(
-                                              // width: 400,
-                                              height: 145,
-                                              child: Image.network(
-                                                bannerswow[index].image,
-                                                fit: BoxFit.cover,
-                                                alignment: Alignment(1, 1),
-                                                filterQuality: FilterQuality.high,
-                                                loadingBuilder: (context, child,
-                                                    loadingProgress) =>
-                                                (loadingProgress == null)
-                                                    ? child
-                                                    : AnimatedShimmer(
-                                                  height: 145,
-                                                  width: 200,
-                                                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                  delayInMilliSeconds: Duration(milliseconds: index * 500),
+                          Flexible(
+                            flex:1,
+                            child: SizedBox(
+                              height: 150,
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: bannerswow.length,
+                                  itemBuilder: (context, index) {
+                                    return SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      padding: getPadding(
+                                        left: 10,
+                                        top: 0,
+                                        bottom: 4,
+                                        right: 10,
+                                      ),
+                                      child: GestureDetector(
+                                        onTap: (){
+                                          if(bannerswow[index].keywordId=='0' || bannerswow[index].keywordId==null){
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                content: Text("No Data"),
+                                                backgroundColor: Colors.redAccent));
+                                          }else{
+                                            Navigator.of(context).push(MaterialPageRoute(
+                                              builder: (context) => productlisrafterclickonbanner1(bannerswow[index].keywordId,'','',''),
+                                            ));}
+                                          // Navigator.of(context).push(MaterialPageRoute(
+                                          //   builder: (context) => ProductDetailScreen(widget.data,bannerswow[index].id),
+                                          // ));
+                                        },
+                                        child: Container(
+                                          width: 200,
+                                          // color: Colors.black,
+                                          padding: getPadding(
+                                            left: 0.5,
+                                            top: 0,
+                                            right: 0.5,
+                                            bottom: 0,
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            children: [
+                                              Flexible(
+                                                flex:1,
+                                                child: Container(
+                                                  // width: 400,
+                                                  //height: 145,
+                                                  child: Image.network(
+                                                    bannerswow[index].image,
+                                                    fit: BoxFit.cover,
+                                                    alignment: Alignment(1, 1),
+                                                    filterQuality: FilterQuality.high,
+                                                    loadingBuilder: (context, child,
+                                                        loadingProgress) =>
+                                                    (loadingProgress == null)
+                                                        ? child
+                                                        : AnimatedShimmer(
+                                                      height: 145,
+                                                      width: 200,
+                                                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                      delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                    ),
+                                                    errorBuilder: (context, error,
+                                                        stackTrace) =>
+                                                        Image.asset(
+                                                            "assets/images/image_not_found.png"),
+                                                  ),
                                                 ),
-                                                errorBuilder: (context, error,
-                                                    stackTrace) =>
-                                                    Image.asset(
-                                                        "assets/images/image_not_found.png"),
                                               ),
-                                            ),
-                                            // Container(
-                                            //   // width: getHorizontalSize(
-                                            //   //   250,
-                                            //   // ),
-                                            //   margin: getMargin(
-                                            //     top: 5,
-                                            //     left: 5,
-                                            //   ),
-                                            //   child: Text(
-                                            //     bannerswow[index].metaDescription,
-                                            //     // maxLines: null,
-                                            //     textAlign: TextAlign.left,
-                                            //     style: TextStyle(
-                                            //         fontSize: 25,
-                                            //         fontWeight: FontWeight.w400,
-                                            //         color: ColorConstant.black900,
-                                            //         fontFamily: 'Roboto'),
-                                            //   ),
-                                            // ),
-                                          ],
+                                              // Container(
+                                              //   // width: getHorizontalSize(
+                                              //   //   250,
+                                              //   // ),
+                                              //   margin: getMargin(
+                                              //     top: 5,
+                                              //     left: 5,
+                                              //   ),
+                                              //   child: Text(
+                                              //     bannerswow[index].metaDescription,
+                                              //     // maxLines: null,
+                                              //     textAlign: TextAlign.left,
+                                              //     style: TextStyle(
+                                              //         fontSize: 25,
+                                              //         fontWeight: FontWeight.w400,
+                                              //         color: ColorConstant.black900,
+                                              //         fontFamily: 'Roboto'),
+                                              //   ),
+                                              // ),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  );
-                                }),
+                                    );
+                                  }),
+                            ),
                           )
                         ],
                       ),
@@ -1736,7 +1745,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                           },
                                           child: Container(
                                             width: 170,
-                                            height: 130,
+                                            //height: 130,
                                             margin: getMargin(
                                               right: 10,
                                             ),
@@ -1744,36 +1753,39 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                               left: 5,
                                               top: 0,
                                               right: 5,
-                                              bottom: 4,
+                                              bottom: 0,
                                             ),
                                             decoration: AppDecoration.fillWhiteA700,
                                             child: Column(
                                               mainAxisAlignment:
-                                              MainAxisAlignment.end,
+                                              MainAxisAlignment.center,
                                               children: [
-                                                Container(
-                                                  width: 150,
-                                                  height: 140,
-                                                  padding: getPadding(top: 0,bottom: 0),
-                                                  child: Image.network(
-                                                    bannersgoodLooks[index].image,
-                                                    fit: BoxFit.cover,
-                                                    alignment: Alignment(0.7, 0.7),
-                                                    filterQuality: FilterQuality.high,
-                                                    loadingBuilder: (context, child,
-                                                        loadingProgress) =>
-                                                    (loadingProgress == null)
-                                                        ? child
-                                                        : AnimatedShimmer(
-                                                      height: 140,
-                                                      width: 150,
-                                                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                      delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                Flexible(
+                                                  flex:1,
+                                                  child: Container(
+                                                    width: 150,
+                                                    //height: 140,
+                                                    padding: getPadding(top: 0,bottom: 0),
+                                                    child: Image.network(
+                                                      bannersgoodLooks[index].image,
+                                                      fit: BoxFit.cover,
+                                                      alignment: Alignment(0.7, 0.7),
+                                                      filterQuality: FilterQuality.high,
+                                                      loadingBuilder: (context, child,
+                                                          loadingProgress) =>
+                                                      (loadingProgress == null)
+                                                          ? child
+                                                          : AnimatedShimmer(
+                                                        height: 140,
+                                                        width: 150,
+                                                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                        delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                      ),
+                                                      errorBuilder: (context, error,
+                                                          stackTrace) =>
+                                                          Image.asset(
+                                                              "assets/images/image_not_found.png"),
                                                     ),
-                                                    errorBuilder: (context, error,
-                                                        stackTrace) =>
-                                                        Image.asset(
-                                                            "assets/images/image_not_found.png"),
                                                   ),
                                                 ),
                                                 Container(
@@ -1829,7 +1841,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                       ),
                     ),
                     Container(
-                      height: 27.h,
+                      //height: 27.h,
                       color: ColorConstant.whiteA700,
                       child: Column(
                         children: [
@@ -1864,9 +1876,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                             ),
                           ),
                           Container(
-                            height: getVerticalSize(
-                              210,
-                            ),
+                            height: getVerticalSize(210,),
                             child: ListView.separated(
                               padding: getPadding(
                                   left: 0,
@@ -1920,28 +1930,31 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
-                                        Container(
-                                          width: 150,
-                                          height: 140,
-                                          child: Image.network(
-                                            bannersBrothers[index].image,
-                                            fit: BoxFit.cover,
-                                            alignment: Alignment(0.7, 0.7),
-                                            filterQuality: FilterQuality.high,
-                                            loadingBuilder:
-                                                (context, child, loadingProgress) =>
-                                            (loadingProgress == null)
-                                                ? child
-                                                : AnimatedShimmer(
-                                              height: 140,
-                                              width: 150,
-                                              borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                              delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                        Flexible(
+                                          flex:1,
+                                          child: Container(
+                                            width: 150,
+                                            height: 140,
+                                            child: Image.network(
+                                              bannersBrothers[index].image,
+                                              fit: BoxFit.cover,
+                                              alignment: Alignment(0.7, 0.7),
+                                              filterQuality: FilterQuality.high,
+                                              loadingBuilder:
+                                                  (context, child, loadingProgress) =>
+                                              (loadingProgress == null)
+                                                  ? child
+                                                  : AnimatedShimmer(
+                                                height: 140,
+                                                width: 150,
+                                                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                              ),
+                                              errorBuilder: (context, error,
+                                                  stackTrace) =>
+                                                  Image.asset(
+                                                      "assets/images/image_not_found.png"),
                                             ),
-                                            errorBuilder: (context, error,
-                                                stackTrace) =>
-                                                Image.asset(
-                                                    "assets/images/image_not_found.png"),
                                           ),
                                         ),
                                         Container(
@@ -2072,48 +2085,54 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                       style: AppStyle.txtRobotoRegular14Gray50001,
                                     ),
                                   ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 13.w,
-                                      ),
-                                      IconButton(
-                                          onPressed: () {
-                                            Get.to(_LinkWebView(
-                                              text: 'Facebook',
-                                              conts: facebook,
-                                            ));
-                                            // _launchInBrowser(Uri.parse(facebook));
-                                          },
-                                          icon: Image.asset(
-                                              "assets/images/facebook.png")),
-                                      SizedBox(
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                   // color: Colors.black,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        //SizedBox(
+                                          //width: 13.w,
+                                        //),
+                                        IconButton(
+                                            onPressed: () {
+                                              Get.to(_LinkWebView(
+                                                text: 'Facebook',
+                                                conts: facebook,
+                                              ));
+                                              // _launchInBrowser(Uri.parse(facebook));
+                                            },
+                                            icon: Image.asset(
+                                                "assets/images/facebook.png")),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        IconButton(
+                                            onPressed: () {
+                                              Get.to(_LinkWebView(
+                                                text: 'Instagram',
+                                                conts: instagram,
+                                              ));
+                                              // _launchInBrowser(Uri.parse(instagram));
+                                            },
+                                            icon: Image.asset(
+                                                "assets/images/instagram.png")),
+                                        SizedBox(
                                         width: 15,
-                                      ),
-                                      IconButton(
-                                          onPressed: () {
-                                            Get.to(_LinkWebView(
-                                              text: 'Instagram',
-                                              conts: instagram,
-                                            ));
-                                            // _launchInBrowser(Uri.parse(instagram));
-                                          },
-                                          icon: Image.asset(
-                                              "assets/images/instagram.png")),
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      IconButton(
-                                          onPressed: () {
-                                            Get.to(_LinkWebView(
-                                              text: 'Twitter',
-                                              conts: twitter,
-                                            ));
-                                            // _launchInBrowser(Uri.parse(twitter));
-                                          },
-                                          icon: Image.asset(
-                                              "assets/images/twitter.png")),
-                                    ],
+                                        ),
+                                        IconButton(
+                                            onPressed: () {
+                                              Get.to(_LinkWebView(
+                                                text: 'Twitter',
+                                                conts: twitter,
+                                              ));
+                                              // _launchInBrowser(Uri.parse(twitter));
+                                            },
+                                            icon: Image.asset(
+                                                "assets/images/twitter.png")),
+                                      ],
+                                    ),
                                   ),
 
                                   // CustomImageView(
@@ -2186,13 +2205,17 @@ class _HomeScreen1State extends State<HomeScreen1> {
             SizedBox(
               height: 0,
             ),
-            CustomImageView(
-              url: previewImageAsset,
-              height: getSize(40),
-              width: getSize(40),
-              margin: getMargin(top: 3),
+            Flexible(
+              flex:1,
+              child: CustomImageView(
+                url: previewImageAsset,
+                height: getSize(40),
+                width: getSize(40),
+                margin: getMargin(top: 3),
+              ),
             ),
-            Spacer(),
+            SizedBox(height: 5,),
+            //Spacer(),
             Text(
               title,
               style: TextStyle(fontSize: 12, color: Colors.black),

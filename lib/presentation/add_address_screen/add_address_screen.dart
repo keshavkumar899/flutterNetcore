@@ -327,7 +327,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                           Align(
                               alignment: Alignment.centerLeft,
                               child: Container(
-                                  height: getVerticalSize(75),
+                                 // height: getVerticalSize(75),
                                   width: getHorizontalSize(400),
                                   margin: getMargin(left: 25, top: 24),
                                   child: Row(children: [
