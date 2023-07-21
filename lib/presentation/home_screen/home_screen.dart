@@ -41,54 +41,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class __LinkWebViewState extends State<_LinkWebView> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar:CustomAppBar(
-          height: getVerticalSize(70),
-          leadingWidth: 41,
-          leading: AppbarImage(
-              onTap: (){
-                Navigator.pop(context);
-              },
-              height: getVerticalSize(15),
-              width: getHorizontalSize(9),
-              svgPath: ImageConstant.imgArrowleft,
-              margin: getMargin(left: 20, top: 22, bottom: 32)),
-          title: AppbarTitle(
-              text: widget.text,
-              margin: getMargin(left: 19, top: 30, bottom: 42)),
-          styleType: Style.bgOutlineGray40003),
-      // AppBar(title: Text(widget.text)),
-      body: SafeArea(
-        child: WebViewWidget(
-          controller: WebViewController()
-            ..setJavaScriptMode(JavaScriptMode.unrestricted)
-            ..setBackgroundColor(const Color(0x00000000))
-            ..setNavigationDelegate(
-              NavigationDelegate(
-                onProgress: (int progress) {
-                  // Update loading bar.
-                },
-                onPageStarted: (String url) {},
-                onPageFinished: (String url) {},
-                onWebResourceError: (WebResourceError error) {},
-                onNavigationRequest: (NavigationRequest request) {
-                  if (request.url
-                      .startsWith('${widget.conts}')) {
-                    return NavigationDecision.prevent;
-                  }
-                  return NavigationDecision.navigate;
-                },
-              ),
-            )
-            ..loadRequest(Uri.parse('${widget.conts}')),
-        ),
-      ),
-    );
-  }
-}
+
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -1486,61 +1439,58 @@ class _HomeScreenState extends State<HomeScreen> {
                                         right: 0.5,
                                         bottom: 0,
                                       ),
-                                      child: Flexible(
-                                        flex:1,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment: MainAxisAlignment.end,
-                                          children: [
-                                            Flexible(
-                                              flex:1,
-                                              child: Container(
-                                                // width: 400,
-                                                height: 145,
-                                                child: Image.network(
-                                                  bannerswow[index].image,
-                                                  fit: BoxFit.cover,
-                                                  alignment: Alignment(1, 1),
-                                                  filterQuality: FilterQuality.high,
-                                                  loadingBuilder: (context, child,
-                                                          loadingProgress) =>
-                                                      (loadingProgress == null)
-                                                          ? child
-                                                          : AnimatedShimmer(
-                                                        height: 145,
-                                                        width: 200,
-                                                        borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                        delayInMilliSeconds: Duration(milliseconds: index * 500),
-                                                      ),
-                                                  errorBuilder: (context, error,
-                                                          stackTrace) =>
-                                                      Image.asset(
-                                                          "assets/images/image_not_found.png"),
-                                                ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Flexible(
+                                            flex:1,
+                                            child: Container(
+                                              // width: 400,
+                                              height: 145,
+                                              child: Image.network(
+                                                bannerswow[index].image,
+                                                fit: BoxFit.cover,
+                                                alignment: Alignment(1, 1),
+                                                filterQuality: FilterQuality.high,
+                                                loadingBuilder: (context, child,
+                                                        loadingProgress) =>
+                                                    (loadingProgress == null)
+                                                        ? child
+                                                        : AnimatedShimmer(
+                                                      height: 145,
+                                                      width: 200,
+                                                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                      delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                    ),
+                                                errorBuilder: (context, error,
+                                                        stackTrace) =>
+                                                    Image.asset(
+                                                        "assets/images/image_not_found.png"),
                                               ),
                                             ),
-                                            // Container(
-                                            //   // width: getHorizontalSize(
-                                            //   //   250,
-                                            //   // ),
-                                            //   margin: getMargin(
-                                            //     top: 5,
-                                            //     left: 5,
-                                            //   ),
-                                            //   child: Text(
-                                            //     bannerswow[index].metaDescription,
-                                            //     // maxLines: null,
-                                            //     textAlign: TextAlign.left,
-                                            //     style: TextStyle(
-                                            //         fontSize: 25,
-                                            //         fontWeight: FontWeight.w400,
-                                            //         color: ColorConstant.black900,
-                                            //         fontFamily: 'Roboto'),
-                                            //   ),
-                                            // ),
-                                          ],
-                                        ),
+                                          ),
+                                          // Container(
+                                          //   // width: getHorizontalSize(
+                                          //   //   250,
+                                          //   // ),
+                                          //   margin: getMargin(
+                                          //     top: 5,
+                                          //     left: 5,
+                                          //   ),
+                                          //   child: Text(
+                                          //     bannerswow[index].metaDescription,
+                                          //     // maxLines: null,
+                                          //     textAlign: TextAlign.left,
+                                          //     style: TextStyle(
+                                          //         fontSize: 25,
+                                          //         fontWeight: FontWeight.w400,
+                                          //         color: ColorConstant.black900,
+                                          //         fontFamily: 'Roboto'),
+                                          //   ),
+                                          // ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -2109,7 +2059,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-  
+
   Future<stores.StoreModel> getCategory() async {
     Map data = {
       'user_id': widget.data.id,
@@ -2253,4 +2203,52 @@ class _LinkWebView extends StatefulWidget {
   });
   @override
   State<_LinkWebView> createState() => __LinkWebViewState();
+}
+class __LinkWebViewState extends State<_LinkWebView> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:CustomAppBar(
+          height: getVerticalSize(70),
+          leadingWidth: 41,
+          leading: AppbarImage(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              height: getVerticalSize(15),
+              width: getHorizontalSize(9),
+              svgPath: ImageConstant.imgArrowleft,
+              margin: getMargin(left: 20, top: 22, bottom: 32)),
+          title: AppbarTitle(
+              text: widget.text,
+              margin: getMargin(left: 19, top: 30, bottom: 42)),
+          styleType: Style.bgOutlineGray40003),
+      // AppBar(title: Text(widget.text)),
+      body: SafeArea(
+        child: WebViewWidget(
+          controller: WebViewController()
+            ..setJavaScriptMode(JavaScriptMode.unrestricted)
+            ..setBackgroundColor(const Color(0x00000000))
+            ..setNavigationDelegate(
+              NavigationDelegate(
+                onProgress: (int progress) {
+                  // Update loading bar.
+                },
+                onPageStarted: (String url) {},
+                onPageFinished: (String url) {},
+                onWebResourceError: (WebResourceError error) {},
+                onNavigationRequest: (NavigationRequest request) {
+                  if (request.url
+                      .startsWith('${widget.conts}')) {
+                    return NavigationDecision.prevent;
+                  }
+                  return NavigationDecision.navigate;
+                },
+              ),
+            )
+            ..loadRequest(Uri.parse('${widget.conts}')),
+        ),
+      ),
+    );
+  }
 }

@@ -15,13 +15,13 @@ import 'package:shared_preferences_foundation/shared_preferences_foundation.dart
 import 'package:sqflite/sqflite.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:package_info_plus/package_info_plus.dart';
+import 'package:package_info_plus_linux/package_info_plus_linux.dart';
 import 'package:path_provider_linux/path_provider_linux.dart';
 import 'package:shared_preferences_linux/shared_preferences_linux.dart';
 import 'package:path_provider_foundation/path_provider_foundation.dart';
 import 'package:shared_preferences_foundation/shared_preferences_foundation.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:package_info_plus/package_info_plus.dart';
+import 'package:package_info_plus_windows/package_info_plus_windows.dart';
 import 'package:path_provider_windows/path_provider_windows.dart';
 import 'package:shared_preferences_windows/shared_preferences_windows.dart';
 
@@ -124,10 +124,10 @@ class _PluginRegistrant {
       }
 
       try {
-        PackageInfoPlusLinuxPlugin.registerWith();
+        PackageInfoLinux.registerWith();
       } catch (err) {
         print(
-          '`package_info_plus` threw an error: $err. '
+          '`package_info_plus_linux` threw an error: $err. '
           'The app may not function as expected until you remove this plugin from pubspec.yaml'
         );
         rethrow;
@@ -186,10 +186,10 @@ class _PluginRegistrant {
 
     } else if (Platform.isWindows) {
       try {
-        PackageInfoPlusWindowsPlugin.registerWith();
+        PackageInfoWindows.registerWith();
       } catch (err) {
         print(
-          '`package_info_plus` threw an error: $err. '
+          '`package_info_plus_windows` threw an error: $err. '
           'The app may not function as expected until you remove this plugin from pubspec.yaml'
         );
         rethrow;
