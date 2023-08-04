@@ -2077,7 +2077,7 @@ class _HomeScreenState extends State<HomeScreen> {
             data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
-      print(jsonObject);
+      // print(jsonObject);
 
       if (stores.StoreModel.fromJson(jsonObject).status == "true") {
         // print(orders.MyOrdersModel.fromJson(jsonObject).data.first.products.first.image);

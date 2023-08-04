@@ -4204,6 +4204,8 @@ com.google.android.gms.tasks.CancellationToken
 com.google.android.gms.tasks.CancellationTokenSource
 com.google.android.gms.tasks.Continuation
 com.google.android.gms.tasks.OnCanceledListener
+com.google.android.gms.tasks.OnFailureListener
+com.google.android.gms.tasks.OnSuccessListener
 com.google.android.gms.tasks.OnTokenCanceledListener
 com.google.android.gms.tasks.R
 com.google.android.gms.tasks.SuccessContinuation
@@ -4213,8 +4215,10 @@ com.google.android.gms.tasks.Task:
     public com.google.android.gms.tasks.Task addOnCanceledListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnCanceledListener)
     public com.google.android.gms.tasks.Task addOnCompleteListener(android.app.Activity,com.google.android.gms.tasks.OnCompleteListener)
     public abstract com.google.android.gms.tasks.Task addOnFailureListener(android.app.Activity,com.google.android.gms.tasks.OnFailureListener)
+    public abstract com.google.android.gms.tasks.Task addOnFailureListener(com.google.android.gms.tasks.OnFailureListener)
     public abstract com.google.android.gms.tasks.Task addOnFailureListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnFailureListener)
     public abstract com.google.android.gms.tasks.Task addOnSuccessListener(android.app.Activity,com.google.android.gms.tasks.OnSuccessListener)
+    public abstract com.google.android.gms.tasks.Task addOnSuccessListener(com.google.android.gms.tasks.OnSuccessListener)
     public abstract com.google.android.gms.tasks.Task addOnSuccessListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnSuccessListener)
     public com.google.android.gms.tasks.Task continueWith(com.google.android.gms.tasks.Continuation)
     public com.google.android.gms.tasks.Task continueWith(java.util.concurrent.Executor,com.google.android.gms.tasks.Continuation)
@@ -4242,10 +4246,10 @@ com.google.android.gms.tasks.zzg
 com.google.android.gms.tasks.zzh
 com.google.android.gms.tasks.zzj:
     public final void zzb()
-com.google.android.gms.tasks.zzl:
-    public final void zzb()
-com.google.android.gms.tasks.zzn:
-    public final void zzb()
+com.google.android.gms.tasks.zzk
+com.google.android.gms.tasks.zzl
+com.google.android.gms.tasks.zzm
+com.google.android.gms.tasks.zzn
 com.google.android.gms.tasks.zzo
 com.google.android.gms.tasks.zzp
 com.google.android.gms.tasks.zzq:
@@ -4258,7 +4262,11 @@ com.google.android.gms.tasks.zzw:
     public final com.google.android.gms.tasks.Task addOnCanceledListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnCanceledListener)
     public final com.google.android.gms.tasks.Task addOnCompleteListener(android.app.Activity,com.google.android.gms.tasks.OnCompleteListener)
     public final com.google.android.gms.tasks.Task addOnFailureListener(android.app.Activity,com.google.android.gms.tasks.OnFailureListener)
+    public final com.google.android.gms.tasks.Task addOnFailureListener(com.google.android.gms.tasks.OnFailureListener)
+    public final com.google.android.gms.tasks.Task addOnFailureListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnFailureListener)
     public final com.google.android.gms.tasks.Task addOnSuccessListener(android.app.Activity,com.google.android.gms.tasks.OnSuccessListener)
+    public final com.google.android.gms.tasks.Task addOnSuccessListener(com.google.android.gms.tasks.OnSuccessListener)
+    public final com.google.android.gms.tasks.Task addOnSuccessListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnSuccessListener)
     public final com.google.android.gms.tasks.Task continueWith(com.google.android.gms.tasks.Continuation)
     public final com.google.android.gms.tasks.Task continueWith(java.util.concurrent.Executor,com.google.android.gms.tasks.Continuation)
     public final com.google.android.gms.tasks.Task continueWithTask(com.google.android.gms.tasks.Continuation)
@@ -4458,7 +4466,7 @@ com.razorpay.AppSignatureHelper:
     public static final int NUM_BASE64_CHAR
     public static final int NUM_HASHED_BYTES
 com.razorpay.B$$W$:
-    private com.razorpay.q smsAgent
+    private com.razorpay.s smsAgent
     public void addJavascriptInterfaceToPrimaryWebview(java.lang.Object,java.lang.String)
     public void checkSmsPermission()
     public void loadData(int,java.lang.String,java.lang.String,java.lang.String)
@@ -4561,20 +4569,23 @@ com.razorpay.CheckoutInteractor:
     public abstract void relay(java.lang.String)
     public abstract void requestOtpPermission()
 com.razorpay.CheckoutPresenter:
-    public abstract com.razorpay.E$_q$ getCheckoutOptions()
+    public abstract com.razorpay.J__A$ getCheckoutOptions()
     public abstract boolean isMagicPresent()
     public abstract void showRetryDialog(int,java.lang.String)
+    public abstract void unregisterReceivers()
     public abstract void verifyGPaySdkResponse(java.lang.String)
 com.razorpay.CheckoutPresenterImpl$CheckoutView:
     public abstract void addJavascriptInterfaceToPrimaryWebview(java.lang.Object,java.lang.String)
     public abstract void checkSmsPermission()
     public abstract void loadData(int,java.lang.String,java.lang.String,java.lang.String)
 com.razorpay.CheckoutPresenterImpl:
+    private com.razorpay.b__J_ autoReadOtpHelper
+    private com.google.android.gms.tasks.Task loginOtpSmsTask
     protected void addOnFlowEnd()
     public void checkSmsPermission()
     void enableCheckoutLoaded()
     void enableTwoViewFlow()
-    public com.razorpay.E$_q$ getCheckoutOptions()
+    public com.razorpay.J__A$ getCheckoutOptions()
     public void relay(java.lang.String)
     public void requestOtpPermission()
     public void showRetryDialog(int,java.lang.String)
@@ -4594,17 +4605,11 @@ com.razorpay.CircularProgressView:
     public void setProgress(float)
     public void setThickness(int)
 com.razorpay.E$_6$
-com.razorpay.F_$o_:
-    static void a(java.lang.String,java.lang.String)
-    static void a(java.lang.String,java.util.Map)
-com.razorpay.G_$8_:
-    public final void onPaymentError(int,java.lang.String)
-    public final void onPaymentSuccess(java.lang.String)
+com.razorpay.G$_X_
 com.razorpay.G__G_
 com.razorpay.J$_0_
-com.razorpay.M$_3_
+com.razorpay.K_$q$
 com.razorpay.MySMSBroadcastReciever
-com.razorpay.O$_M$
 com.razorpay.O_$B_
 com.razorpay.OpinionatedSoln$DismissCallback
 com.razorpay.OpinionatedSoln$HandleDialogShowPreference
@@ -4614,12 +4619,13 @@ com.razorpay.PluginCheckoutInteractor:
     public abstract void verifyGPayResponse(java.lang.String)
 com.razorpay.PluginOtpElfCheckoutPresenterImpl:
     public synthetic bridge void checkSmsPermission()
-    public synthetic bridge com.razorpay.E$_q$ getCheckoutOptions()
+    public synthetic bridge com.razorpay.J__A$ getCheckoutOptions()
     public synthetic bridge void relay(java.lang.String)
     public synthetic bridge void requestOtpPermission()
     public synthetic bridge void showRetryDialog(int,java.lang.String)
     public void verifyGPayResponse(java.lang.String)
     public synthetic bridge void verifyGPaySdkResponse(java.lang.String)
+com.razorpay.Q__8_
 com.razorpay.R$$r_
 com.razorpay.R$attr
 com.razorpay.R$bool:
@@ -4784,23 +4790,30 @@ com.razorpay.RzpPluginRegisterCallback:
 com.razorpay.SmsAgentInterface
 com.razorpay.SmsReceiver:
     void <init>()
+com.razorpay.U_$B$:
+    public final void onPaymentError(int,java.lang.String)
+    public final void onPaymentSuccess(java.lang.String)
 com.razorpay.a_$P$
-com.razorpay.c_$W_
+com.razorpay.b__J_
 com.razorpay.c__C_
-com.razorpay.d__w$
-com.razorpay.f$_G$
-com.razorpay.i_$z_:
+com.razorpay.d__B_:
     protected void addOnFlowEnd()
-com.razorpay.l
+com.razorpay.f$_G$
+com.razorpay.g$$C_
+com.razorpay.i_$z_
 com.razorpay.l_$w$
 com.razorpay.l__d$
-com.razorpay.m
 com.razorpay.n
-com.razorpay.q:
-    final void a(android.app.Activity)
+com.razorpay.o
+com.razorpay.p$$q_:
+    static void a(java.lang.String,java.lang.String)
+    static void a(java.lang.String,java.util.Map)
+com.razorpay.p$_5$:
+    public void postSms(java.lang.String,java.lang.String)
+    public void setSmsPermission(boolean)
+com.razorpay.p
 com.razorpay.r$_Y_:
     public final void onResponse(boolean)
-com.razorpay.r__Q_
 com.razorpay.razorpay_flutter.BuildConfig
 com.razorpay.razorpay_flutter.R$attr
 com.razorpay.razorpay_flutter.R$bool
@@ -4829,9 +4842,8 @@ com.razorpay.razorpay_flutter.RazorpayDelegate:
 com.razorpay.razorpay_flutter.RazorpayFlutterPlugin:
     private void <init>(io.flutter.plugin.common.PluginRegistry$Registrar)
     public static void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar)
-com.razorpay.w_$E$:
-    public void postSms(java.lang.String,java.lang.String)
-    public void setSmsPermission(boolean)
+com.razorpay.s:
+    final void a(android.app.Activity)
 com.tekartik.sqflite.BuildConfig
 com.tekartik.sqflite.Constant:
     static final java.lang.String CMD_GET

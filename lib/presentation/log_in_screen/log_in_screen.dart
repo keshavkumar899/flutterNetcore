@@ -347,7 +347,16 @@ class _LogInScreenState extends State<LogInScreen> {
 
   onTapSendotp() {
     FocusManager.instance.primaryFocus.unfocus();
-    if (_formKey.currentState.validate()) {
+    if(mobilenumberController.text.isEmpty){
+      Fluttertoast.showToast(
+          msg:"Please enter the mobile number",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 3,
+          backgroundColor: Colors.red,
+          textColor: Colors.black,
+          fontSize: 14.0);
+    }else {
       postRequest(
         mobilenumberController.text,
       );
@@ -355,18 +364,27 @@ class _LogInScreenState extends State<LogInScreen> {
         mobilenumberController.clear();
         _btnController.reset();
       });
-      // print(field);
-      // if(cred!.=='success'){
-      //
-      // }
-
-    } else{
-      setState(() {
-        Timer(Duration(seconds:0), () {
-          _btnController.reset();
-        });
-      });
     }
+    // if (_formKey.currentState.validate()) {
+    //   postRequest(
+    //     mobilenumberController.text,
+    //   );
+    //   Timer(Duration(seconds: 3), () {
+    //     mobilenumberController.clear();
+    //     _btnController.reset();
+    //   });
+    //   // print(field);
+    //   // if(cred!.=='success'){
+    //   //
+    //   // }
+    //
+    // } else{
+    //   setState(() {
+    //     Timer(Duration(seconds:0), () {
+    //       _btnController.reset();
+    //     });
+    //   });
+    // }
     // Get.toNamed(AppRoutes.otpScreen,arguments: [mobilenumberController.text]);
   }
 

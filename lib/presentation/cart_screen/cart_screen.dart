@@ -760,25 +760,25 @@ class _CartScreenState extends State<CartScreen> {
                                                                     style: AppStyle
                                                                         .txtRobotoRegular14Purple400),
                                                                 SizedBox(height: 1.h,),
-                                                                product.description.isNotEmpty?
-                                                                Container(
-                                                                  constraints: const BoxConstraints(
-                                                                    maxWidth: 230,
-                                                                  ),
-                                                                  child: FittedBox(
-                                                                    fit:BoxFit.fill,
-                                                                    child: Text(
-                                                                        product.description,
-                                                                        overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                        textAlign:
-                                                                        TextAlign
-                                                                            .left,
-                                                                        style: AppStyle
-                                                                            .txtRobotoRegular9),
-                                                                  ),
-                                                                ):Container(),
+                                                                // product.description.isNotEmpty?
+                                                                // Container(
+                                                                //   constraints: const BoxConstraints(
+                                                                //     maxWidth: 230,
+                                                                //   ),
+                                                                //   child: FittedBox(
+                                                                //     fit:BoxFit.fill,
+                                                                //     child: Text(
+                                                                //         product.description,
+                                                                //         overflow:
+                                                                //         TextOverflow
+                                                                //             .ellipsis,
+                                                                //         textAlign:
+                                                                //         TextAlign
+                                                                //             .left,
+                                                                //         style: AppStyle
+                                                                //             .txtRobotoRegular9),
+                                                                //   ),
+                                                                // ):Container(),
                                                                 Padding(
                                                                     padding:
                                                                     getPadding(

@@ -257,6 +257,12 @@ class _OtpScreenState extends State<OtpScreen> {
                     top: 68,
                     right: 26,
                   ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return "Please enter the OTP";
+                    }
+                    return null;
+                  },
                   textInputAction: TextInputAction.done,
                   suffix: Container(
                     margin: getMargin(
@@ -267,6 +273,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     // decoration: BoxDecoration(
                     //   color: ColorConstant.purple900,
                     // ),
+
                     child: CustomImageView(
                       svgPath: ImageConstant.imgVector,
                     ),
@@ -295,7 +302,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 CustomButton(
                   onTap:(){
                     FocusManager.instance.primaryFocus.unfocus();
-                    if (_formKey.currentState.validate()) {
+                    if (_formKey.currentState.validate() && otpController.text==widget.otp) {
                       postRequest();
                       Timer(Duration(seconds: 3), () {
                         otpController.clear();
@@ -307,6 +314,14 @@ class _OtpScreenState extends State<OtpScreen> {
                       // }
 
                     } else{
+                      Fluttertoast.showToast(
+                          msg:"OTP entered is not valid",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 3,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.black,
+                          fontSize: 14.0);
                       setState(() {
                         Timer(Duration(seconds:0), () {
                           _btnController.reset();
