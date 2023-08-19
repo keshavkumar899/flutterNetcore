@@ -847,11 +847,6 @@ class _CartScreenState extends State<CartScreen> {
                                                           setState(() {
                                                             initState();
                                                           });
-<<<<<<< Updated upstream
-
-=======
-                                                
->>>>>>> Stashed changes
                                                         },
                                                         child: Container(
                                                           // color:Colors.black,
