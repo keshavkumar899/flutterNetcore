@@ -17,85 +17,85 @@ class HomeModel {
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
-        data.add(HomeData.fromJson(v));
+        data!.add(HomeData.fromJson(v));
       });
     }
     if (json['banners'] != null) {
       banners = [];
       json['banners'].forEach((v) {
-        banners.add(Banners.fromJson(v));
+        banners!.add(Banners.fromJson(v));
       });
     }
     if (json['bannersResPortrait'] != null) {
       bannersResPortrait = [];
       json['bannersResPortrait'].forEach((v) {
-        bannersResPortrait.add(BannersResPortrait.fromJson(v));
+        bannersResPortrait!.add(BannersResPortrait.fromJson(v));
       });
     }
     if (json['favourite_product'] != null) {
       favouriteProduct = [];
       json['favourite_product'].forEach((v) {
-        favouriteProduct.add(FavouriteProduct.fromJson(v));
+        favouriteProduct!.add(FavouriteProduct.fromJson(v));
       });
     }
     if (json['bannerswow'] != null) {
       bannerswow = [];
       json['bannerswow'].forEach((v) {
-        bannerswow.add(Bannerswow.fromJson(v));
+        bannerswow!.add(Bannerswow.fromJson(v));
       });
     }
     if (json['bannersgoodLooks'] != null) {
       bannersgoodLooks = [];
       json['bannersgoodLooks'].forEach((v) {
-        bannersgoodLooks.add(BannersgoodLooks.fromJson(v));
+        bannersgoodLooks!.add(BannersgoodLooks.fromJson(v));
       });
     }
     if (json['bannersBrothers'] != null) {
       bannersBrothers = [];
       json['bannersBrothers'].forEach((v) {
-        bannersBrothers.add(BannersBrothers.fromJson(v));
+        bannersBrothers!.add(BannersBrothers.fromJson(v));
       });
     }
     links = json['links'] != null ? Links.fromJson(json['links']) : null;
   }
-  String status;
-  String message;
-  List<HomeData> data;
-  List<Banners> banners;
-  List<BannersResPortrait> bannersResPortrait;
-  List<FavouriteProduct> favouriteProduct;
-  List<Bannerswow> bannerswow;
-  List<BannersgoodLooks> bannersgoodLooks;
-  List<BannersBrothers> bannersBrothers;
-  Links links;
+  String? status;
+  String? message;
+  List<HomeData>? data;
+  List<Banners>? banners;
+  List<BannersResPortrait>? bannersResPortrait;
+  List<FavouriteProduct>? favouriteProduct;
+  List<Bannerswow>? bannerswow;
+  List<BannersgoodLooks>? bannersgoodLooks;
+  List<BannersBrothers>? bannersBrothers;
+  Links? links;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['status'] = status;
     map['message'] = message;
     if (data != null) {
-      map['data'] = data.map((v) => v.toJson()).toList();
+      map['data'] = data!.map((v) => v.toJson()).toList();
     }
     if (banners != null) {
-      map['banners'] = banners.map((v) => v.toJson()).toList();
+      map['banners'] = banners!.map((v) => v.toJson()).toList();
     }
     if (bannersResPortrait != null) {
-      map['bannersResPortrait'] = bannersResPortrait.map((v) => v.toJson()).toList();
+      map['bannersResPortrait'] = bannersResPortrait!.map((v) => v.toJson()).toList();
     }
     if (favouriteProduct != null) {
-      map['favourite_product'] = favouriteProduct.map((v) => v.toJson()).toList();
+      map['favourite_product'] = favouriteProduct!.map((v) => v.toJson()).toList();
     }
     if (bannerswow != null) {
-      map['bannerswow'] = bannerswow.map((v) => v.toJson()).toList();
+      map['bannerswow'] = bannerswow!.map((v) => v.toJson()).toList();
     }
     if (bannersgoodLooks != null) {
-      map['bannersgoodLooks'] = bannersgoodLooks.map((v) => v.toJson()).toList();
+      map['bannersgoodLooks'] = bannersgoodLooks!.map((v) => v.toJson()).toList();
     }
     if (bannersBrothers != null) {
-      map['bannersBrothers'] = bannersBrothers.map((v) => v.toJson()).toList();
+      map['bannersBrothers'] = bannersBrothers!.map((v) => v.toJson()).toList();
     }
     if (links != null) {
-      map['links'] = links.toJson();
+      map['links'] = links!.toJson();
     }
     return map;
   }
@@ -128,17 +128,17 @@ class HomeData {
     createOn = json['create_on'];
     updateOn = json['update_on'];
   }
-  String id;
-  String parentId;
-  String name;
-  String image;
-  String banner;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
-  String updateOn;
+  String? id;
+  String? parentId;
+  String? name;
+  String? image;
+  String? banner;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -187,18 +187,18 @@ class BannersResPortrait {
     createOn = json['create_on'];
     updateOn = json['update_on'];
   }
-  String id;
-  String type;
-  String name;
-  String image;
-  String keywordId;
-  String link;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
-  String updateOn;
+  String? id;
+  String? type;
+  String? name;
+  String? image;
+  String? keywordId;
+  String? link;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -247,18 +247,18 @@ class Banners {
     createOn = json['create_on'];
     updateOn = json['update_on'];
   }
-  String id;
-  String type;
-  String name;
-  String image;
-  String keywordId;
-  String link;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
-  String updateOn;
+  String? id;
+  String? type;
+  String? name;
+  String? image;
+  String? keywordId;
+  String? link;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -323,26 +323,26 @@ class FavouriteProduct {
     createOn = json['create_on'];
     updateOn = json['update_on'];
   }
-  String id;
-  String name;
-  String code;
-  String categoryId;
-  String subCategoryId;
-  String brandId;
-  String keywordsId;
-  String cityId;
-  String mrpPrice;
-  String salePrice;
-  String discountPrice;
-  String description;
-  String image;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String featured;
-  String isDelete;
-  String createOn;
-  String updateOn;
+  String? id;
+  String? name;
+  String? code;
+  String? categoryId;
+  String? subCategoryId;
+  String? brandId;
+  String? keywordsId;
+  String? cityId;
+  String? mrpPrice;
+  String? salePrice;
+  String? discountPrice;
+  String? description;
+  String? image;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? featured;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -399,18 +399,18 @@ class Bannerswow {
     createOn = json['create_on'];
     updateOn = json['update_on'];
   }
-  String id;
-  String type;
-  String name;
-  String image;
-  String keywordId;
-  String link;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
-  String updateOn;
+  String? id;
+  String? type;
+  String? name;
+  String? image;
+  String? keywordId;
+  String? link;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -459,18 +459,18 @@ class BannersgoodLooks {
     createOn = json['create_on'];
     updateOn = json['update_on'];
   }
-  String id;
-  String type;
-  String name;
-  String image;
-  String keywordId;
-  String link;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
-  String updateOn;
+  String? id;
+  String? type;
+  String? name;
+  String? image;
+  String? keywordId;
+  String? link;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -519,18 +519,18 @@ class BannersBrothers {
     createOn = json['create_on'];
     updateOn = json['update_on'];
   }
-  String id;
-  String type;
-  String name;
-  String image;
-  String keywordId;
-  String link;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
-  String updateOn;
+  String? id;
+  String? type;
+  String? name;
+  String? image;
+  String? keywordId;
+  String? link;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -561,9 +561,9 @@ class Links {
     instagram = json['instagram'];
     tweeter = json['tweeter'];
   }
-  String facebook;
-  String instagram;
-  String tweeter;
+  String? facebook;
+  String? instagram;
+  String? tweeter;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

@@ -1,7 +1,7 @@
 class AddressUpdate {
-  String status;
-  String message;
-  bool data;
+  String? status;
+  String? message;
+  bool? data;
 
   AddressUpdate({this.status, this.message, this.data});
 

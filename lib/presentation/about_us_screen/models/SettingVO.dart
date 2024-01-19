@@ -1,7 +1,7 @@
 class SettingVO {
-  String status;
-  String message;
-  List<Setting> data;
+  String? status;
+  String? message;
+  List<Setting>? data;
 
   SettingVO({this.status, this.message, this.data});
 
@@ -11,7 +11,7 @@ class SettingVO {
     if (json['data'] != null) {
       data = <Setting>[];
       json['data'].forEach((v) {
-        data.add(new Setting.fromJson(v));
+        data!.add(new Setting.fromJson(v));
       });
     }
   }
@@ -21,20 +21,20 @@ class SettingVO {
     data['status'] = this.status;
     data['message'] = this.message;
     if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Setting {
-  String id;
-  String name;
-  String settingsKeys;
-  String settingsValues;
-  String inputField;
-  String status;
-  String createdOn;
+  String? id;
+  String? name;
+  String? settingsKeys;
+  String? settingsValues;
+  String? inputField;
+  String? status;
+  String? createdOn;
   var updatedOn;
 
   Setting(

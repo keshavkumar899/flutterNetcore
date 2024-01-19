@@ -19,35 +19,35 @@ class CustomDropDown extends StatelessWidget {
       this.onChanged,
       this.validator});
 
-  DropDownPadding padding;
+  DropDownPadding? padding;
 
-  DropDownShape shape;
+  DropDownShape? shape;
 
-  DropDownVariant variant;
+  DropDownVariant? variant;
 
-  DropDownFontStyle fontStyle;
+  DropDownFontStyle? fontStyle;
 
-  Alignment alignment;
+  Alignment? alignment;
 
-  double width;
+  double? width;
 
-  EdgeInsetsGeometry margin;
+  EdgeInsetsGeometry? margin;
 
-  FocusNode focusNode;
+  FocusNode? focusNode;
 
-  Widget icon;
+  Widget? icon;
 
-  String hintText;
+  String? hintText;
 
-  Widget prefix;
+  Widget? prefix;
 
-  BoxConstraints prefixConstraints;
+  BoxConstraints? prefixConstraints;
 
-  List<SelectionPopupModel> items;
+  List<SelectionPopupModel>? items;
 
-  Function(SelectionPopupModel) onChanged;
+  Function(SelectionPopupModel)? onChanged;
 
-  FormFieldValidator<SelectionPopupModel> validator;
+  FormFieldValidator<SelectionPopupModel>? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -72,13 +72,13 @@ class CustomDropDown extends StatelessWidget {
           return DropdownMenuItem<SelectionPopupModel>(
             value: item,
             child: Text(
-              item.title,
+              item.title!,
               overflow: TextOverflow.ellipsis,
             ),
           );
         }).toList(),
         onChanged: (value) {
-          onChanged(value);
+          onChanged!(value!);
         },
         validator: validator,
       ),

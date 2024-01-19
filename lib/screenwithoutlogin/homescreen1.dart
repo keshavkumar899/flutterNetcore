@@ -49,7 +49,7 @@ class HomeScreen1 extends StatefulWidget {
 class _HomeScreen1State extends State<HomeScreen1> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  Future<homes.HomeModel> home;
+  Future<homes.HomeModel>? home;
   List<homes.HomeData> homelist = [];
   List<homes.Banners> banners = [];
   List<homes.BannersResPortrait> bannersresportrait = [];
@@ -57,10 +57,10 @@ class _HomeScreen1State extends State<HomeScreen1> {
   List<homes.Bannerswow> bannerswow = [];
   List<homes.BannersgoodLooks> bannersgoodLooks = [];
   List<homes.BannersBrothers> bannersBrothers = [];
-  String facebook;
-  String instagram;
-  String twitter;
-  Future<stores.StoreModel> category;
+  String? facebook;
+  String? instagram;
+  String? twitter;
+  Future<stores.StoreModel>? category;
   List<stores.StoreData> categorylist = [];
 
   Future<stores.StoreModel> getCategory() async {
@@ -90,7 +90,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       } else if (stores.StoreModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(stores.StoreModel.fromJson(jsonObject).message),
+            content: Text(stores.StoreModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
       } else if (stores.StoreModel.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -136,7 +136,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       } else if (homes.HomeModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(homes.HomeModel.fromJson(jsonObject).message),
+            content: Text(homes.HomeModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
       } else if (homes.HomeModel.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -159,23 +159,23 @@ class _HomeScreen1State extends State<HomeScreen1> {
   void initState() {
     home = getdashboard();
     category = getCategory();
-    category.then((value) {
+    category!.then((value) {
       setState(() {
-        categorylist = value.data;
+        categorylist = value.data!;
       });
     });
-    home.then((value) {
+    home!.then((value) {
       setState(() {
-        homelist = value.data;
-        banners = value.banners;
-        bannersresportrait = value.bannersResPortrait;
-        favouriteProduct = value.favouriteProduct;
-        bannerswow = value.bannerswow;
-        bannersgoodLooks = value.bannersgoodLooks;
-        bannersBrothers = value.bannersBrothers;
-        facebook = value.links.facebook;
-        instagram = value.links.instagram;
-        twitter = value.links.tweeter;
+        homelist = value.data!;
+        banners = value.banners!;
+        bannersresportrait = value.bannersResPortrait!;
+        favouriteProduct = value.favouriteProduct!;
+        bannerswow = value.bannerswow!;
+        bannersgoodLooks = value.bannersgoodLooks!;
+        bannersBrothers = value.bannersBrothers!;
+        facebook = value.links!.facebook!;
+        instagram = value.links!.instagram!;
+        twitter = value.links!.tweeter!;
       });
     });
 
@@ -212,7 +212,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                 leadingWidth: 41,
                 leading: AppbarImage(
                     onTap: () {
-                      _scaffoldKey.currentState.openDrawer();
+                      _scaffoldKey.currentState!.openDrawer();
                     },
                     height: getVerticalSize(15),
                     width: getHorizontalSize(15),
@@ -235,7 +235,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 25, right: 10, bottom: 0),
+                      getMargin(left: 20, top: 0, right: 10, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
@@ -270,7 +270,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 27, right: 31),
+                      margin: getMargin(left: 14, top: 0, right: 31,bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -312,23 +312,23 @@ class _HomeScreen1State extends State<HomeScreen1> {
               onRefresh: ()async{
                 home = getdashboard();
                 category = getCategory();
-                category.then((value) {
+                category!.then((value) {
                   setState(() {
-                    categorylist = value.data;
+                    categorylist = value.data!;
                   });
                 });
-                home.then((value) {
+                home!.then((value) {
                   setState(() {
-                    homelist = value.data;
-                    banners = value.banners;
-                    bannersresportrait = value.bannersResPortrait;
-                    favouriteProduct = value.favouriteProduct;
-                    bannerswow = value.bannerswow;
-                    bannersgoodLooks = value.bannersgoodLooks;
-                    bannersBrothers = value.bannersBrothers;
-                    facebook = value.links.facebook;
-                    instagram = value.links.instagram;
-                    twitter = value.links.tweeter;
+                    homelist = value.data!;
+                    banners = value.banners!;
+                    bannersresportrait = value.bannersResPortrait!;
+                    favouriteProduct = value.favouriteProduct!;
+                    bannerswow = value.bannerswow!;
+                    bannersgoodLooks = value.bannersgoodLooks!;
+                    bannersBrothers = value.bannersBrothers!;
+                    facebook = value.links!.facebook;
+                    instagram = value.links!.instagram;
+                    twitter = value.links!.tweeter;
                   });
                 });
               },
@@ -350,18 +350,18 @@ class _HomeScreen1State extends State<HomeScreen1> {
                           },
                           itemBuilder: (context, index) {
                             return CategoryCard(
-                                title: homelist[index].name,
-                                previewImageAsset: homelist[index].image,
+                                title: homelist[index].name!,
+                                previewImageAsset: homelist[index].image!,
                                 onTap: () {
                                   // print(homelist[index].id);
-                                  categorylist[index].subCategory.length!=0?pushNewScreen(
+                                  categorylist[index].subCategory!.length!=0?pushNewScreen(
                                     context,
                                     screen: NewProductScreen1(categorylist[index],),
                                     withNavBar: true, // OPTIONAL VALUE. True by default.
                                     pageTransitionAnimation: PageTransitionAnimation.cupertino,
                                   ):pushNewScreen(
                                     context,
-                                    screen: ClickAfterSlectTabFurnitureScreen1(categorylist[index],categorylist[index].name,),
+                                    screen: ClickAfterSlectTabFurnitureScreen1(categorylist[index],categorylist[index].name!,),
                                     withNavBar: true, // OPTIONAL VALUE. True by default.
                                     pageTransitionAnimation: PageTransitionAnimation.cupertino,
                                   );
@@ -782,11 +782,11 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                 backgroundColor: Colors.redAccent));
                                           }else{
                                             Navigator.of(context).push(MaterialPageRoute(
-                                              builder: (context) => productlisrafterclickonbanner1(banners[index].keywordId,'','',''),
+                                              builder: (context) => productlisrafterclickonbanner1(banners[index].keywordId!,'','',''),
                                             ));}
                                         },
                                         child: Image.network(
-                                          banners[index].image,
+                                          banners[index].image!,
                                           fit: BoxFit.cover,
                                           width: 95.w,
                                           alignment: Alignment(1.2, 1.2),
@@ -985,7 +985,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                 backgroundColor: Colors.redAccent));
                                           }else{
                                             Navigator.of(context).push(MaterialPageRoute(
-                                              builder: (context) => productlisrafterclickonbanner1(bannersresportrait[index].keywordId,'','',''),
+                                              builder: (context) => productlisrafterclickonbanner1(bannersresportrait[index].keywordId!,'','',''),
                                             ));}
                                           // print("tapped");
                                           // Navigator.of(context).push(MaterialPageRoute(
@@ -997,7 +997,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                           // height: 200,
                                           // color: Colors.black,
                                           child: Image.network(
-                                            bannersresportrait[index].image,
+                                            bannersresportrait[index].image!,
                                             fit: BoxFit.cover,
                                             // width: 100.w,
                                             // height: 100.h,
@@ -1426,7 +1426,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                     .push(MaterialPageRoute(
                                                   builder: (context) =>
                                                       ProductDetailScreen1(
-                                                          favouriteProduct[index].id),
+                                                          favouriteProduct[index].id!),
                                                 ));
                                               },
                                               child: Container(
@@ -1451,7 +1451,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                         width: 280,
                                                         //height: 150,
                                                         child: Image.network(
-                                                          favouriteProduct[index].image,
+                                                          favouriteProduct[index].image!,
                                                           fit: BoxFit.cover,
                                                           // width: 100.w,
                                                           alignment: Alignment(-0.15, -0.15),
@@ -1485,7 +1485,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                       ),
                                                       child: Text(
                                                         favouriteProduct[index]
-                                                            .description,
+                                                            .description!,
                                                         maxLines: 2,
                                                         overflow: TextOverflow.ellipsis,
                                                         textAlign: TextAlign.left,
@@ -1577,7 +1577,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                 backgroundColor: Colors.redAccent));
                                           }else{
                                             Navigator.of(context).push(MaterialPageRoute(
-                                              builder: (context) => productlisrafterclickonbanner1(bannerswow[index].keywordId,'','',''),
+                                              builder: (context) => productlisrafterclickonbanner1(bannerswow[index].keywordId!,'','',''),
                                             ));}
                                           // Navigator.of(context).push(MaterialPageRoute(
                                           //   builder: (context) => ProductDetailScreen(widget.data,bannerswow[index].id),
@@ -1603,7 +1603,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                   // width: 400,
                                                   //height: 145,
                                                   child: Image.network(
-                                                    bannerswow[index].image,
+                                                    bannerswow[index].image!,
                                                     fit: BoxFit.cover,
                                                     alignment: Alignment(1, 1),
                                                     filterQuality: FilterQuality.high,
@@ -1737,7 +1737,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                   backgroundColor: Colors.redAccent));
                                             }else{
                                               Navigator.of(context).push(MaterialPageRoute(
-                                                builder: (context) => productlisrafterclickonbanner1(bannersgoodLooks[index].keywordId,'','',''),
+                                                builder: (context) => productlisrafterclickonbanner1(bannersgoodLooks[index].keywordId!,'','',''),
                                               ));}
                                             // Navigator.of(context).push(MaterialPageRoute(
                                             //   builder: (context) => ProductDetailScreen(widget.data,bannersgoodLooks[index].id),
@@ -1767,7 +1767,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                     //height: 140,
                                                     padding: getPadding(top: 0,bottom: 0),
                                                     child: Image.network(
-                                                      bannersgoodLooks[index].image,
+                                                      bannersgoodLooks[index].image!,
                                                       fit: BoxFit.cover,
                                                       alignment: Alignment(0.7, 0.7),
                                                       filterQuality: FilterQuality.high,
@@ -1795,7 +1795,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                       top: 2,
                                                     ),
                                                     child: Text(
-                                                      bannersgoodLooks[index].name,
+                                                      bannersgoodLooks[index].name!,
                                                       maxLines: 2,
                                                       overflow: TextOverflow.ellipsis,
                                                       textAlign: TextAlign.center,
@@ -1908,7 +1908,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                           backgroundColor: Colors.redAccent));
                                     }else{
                                       Navigator.of(context).push(MaterialPageRoute(
-                                        builder: (context) => productlisrafterclickonbanner1(bannersBrothers[index].keywordId,'','',''),
+                                        builder: (context) => productlisrafterclickonbanner1(bannersBrothers[index].keywordId!,'','',''),
                                       ));}
                                     // Navigator.of(context).push(MaterialPageRoute(
                                     //   builder: (context) => ProductDetailScreen(widget.data,bannersBrothers[index].id),
@@ -1936,7 +1936,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                             width: 150,
                                             height: 140,
                                             child: Image.network(
-                                              bannersBrothers[index].image,
+                                              bannersBrothers[index].image!,
                                               fit: BoxFit.cover,
                                               alignment: Alignment(0.7, 0.7),
                                               filterQuality: FilterQuality.high,
@@ -1963,7 +1963,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                             top: 5,
                                           ),
                                           child: Text(
-                                            bannersBrothers[index].name,
+                                            bannersBrothers[index].name!,
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.center,
                                             maxLines: 2,
@@ -2099,7 +2099,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                             onPressed: () {
                                               Get.to(_LinkWebView(
                                                 text: 'Facebook',
-                                                conts: facebook,
+                                                conts: facebook!,
                                               ));
                                               // _launchInBrowser(Uri.parse(facebook));
                                             },
@@ -2112,7 +2112,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                             onPressed: () {
                                               Get.to(_LinkWebView(
                                                 text: 'Instagram',
-                                                conts: instagram,
+                                                conts: instagram!,
                                               ));
                                               // _launchInBrowser(Uri.parse(instagram));
                                             },
@@ -2125,7 +2125,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                             onPressed: () {
                                               Get.to(_LinkWebView(
                                                 text: 'Twitter',
-                                                conts: twitter,
+                                                conts: twitter!,
                                               ));
                                               // _launchInBrowser(Uri.parse(twitter));
                                             },
@@ -2195,7 +2195,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
   //   }
   // }
 
-  CategoryCard({String title, String previewImageAsset, VoidCallback onTap}) {
+  CategoryCard({String? title, String? previewImageAsset, VoidCallback? onTap}) {
     return Padding(
       padding: const EdgeInsets.only(left: 15.0, top: 5),
       child: InkWell(
@@ -2208,7 +2208,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
             Flexible(
               flex:1,
               child: CustomImageView(
-                url: previewImageAsset,
+                url: previewImageAsset!,
                 height: getSize(40),
                 width: getSize(40),
                 margin: getMargin(top: 3),
@@ -2217,7 +2217,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
             SizedBox(height: 5,),
             //Spacer(),
             Text(
-              title,
+              title!,
               style: TextStyle(fontSize: 12, color: Colors.black),
             )
           ],
@@ -2232,8 +2232,8 @@ class _LinkWebView extends StatefulWidget {
     this.conts,
     this.text,
   });
-  final String conts;
-  final String text;
+  final String? conts;
+  final String? text;
   @override
   State<_LinkWebView> createState() => __LinkWebViewState();
 }
@@ -2258,7 +2258,7 @@ class __LinkWebViewState extends State<_LinkWebView> {
               svgPath: ImageConstant.imgArrowleft,
               margin: getMargin(left: 20, top: 22, bottom: 32)),
           title: AppbarTitle(
-              text: widget.text,
+              text: widget.text!,
               margin: getMargin(left: 19, top: 30, bottom: 42)),
           styleType: Style.bgOutlineGray40003),
       body: SafeArea(

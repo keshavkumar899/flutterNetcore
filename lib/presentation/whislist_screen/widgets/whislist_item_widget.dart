@@ -29,7 +29,7 @@ class WhislistItemWidget extends StatefulWidget {
 
 class _WhislistItemWidgetState extends State<WhislistItemWidget> {
 
-  String message;
+  String? message;
 
   Future<AddtoCartfromwishlist> addtocart() async {
     Map data = {
@@ -59,7 +59,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
             duration: Duration(seconds: 1),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text("Added to Cart "+AddtoCartfromwishlist.fromJson(jsonObject).message+"ly",style: TextStyle(color: Colors.black),),
+            content: Text("Added to Cart "+AddtoCartfromwishlist.fromJson(jsonObject).message!+"ly",style: TextStyle(color: Colors.black),),
             backgroundColor: Colors.greenAccent));
 
         return AddtoCartfromwishlist.fromJson(jsonObject);
@@ -70,7 +70,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text(AddtoCartfromwishlist.fromJson(jsonObject).message.capitalizeFirst),
+            content: Text(AddtoCartfromwishlist.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -132,7 +132,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text(RemoveWishlist.fromJson(jsonObject).message.capitalizeFirst),
+            content: Text(RemoveWishlist.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -184,7 +184,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
       }else if (wishlist.WishlistScreenModel.fromJson(jsonObject).status == "false") {
         message=wishlist.WishlistScreenModel.fromJson(jsonObject).message;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(wishlist.WishlistScreenModel.fromJson(jsonObject).message),
+            content: Text(wishlist.WishlistScreenModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -232,7 +232,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomImageView(
-                      url:widget.productdata.image,
+                      url:widget.productdata.image!,
                       // imagePath: ImageConstant.imgImage5,
                       height: getSize(
                         65,
@@ -257,7 +257,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
                                   220,
                                 ),
                                 child: Text(
-                                  widget.productdata.name,
+                                  widget.productdata.name!,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
@@ -309,7 +309,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
                                     left: 2,
                                   ),
                                   child: Text(
-                                    widget.productdata.salePrice,
+                                    widget.productdata.salePrice!,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.left,
                                     style: AppStyle.txtRobotoMedium10,
@@ -346,7 +346,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
                                       Align(
                                         alignment: Alignment.center,
                                         child: Text(
-                                          widget.productdata.mrpPrice,
+                                          widget.productdata.mrpPrice!,
                                           overflow: TextOverflow.ellipsis,
                                           textAlign: TextAlign.left,
                                           style:
@@ -387,7 +387,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
                               top: 2,
                             ),
                             child: Text(
-                              widget.productdata.discountPer+" % Off",
+                              widget.productdata.discountPer!+" % Off",
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
                               style: AppStyle.txtRobotoMedium8Purple900,

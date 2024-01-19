@@ -9,9 +9,9 @@ class AddtoCart {
     message = json['message'];
     data = json['data'];
   }
-  String status;
-  String message;
-  int data;
+  String? status;
+  String? message;
+  int? data;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

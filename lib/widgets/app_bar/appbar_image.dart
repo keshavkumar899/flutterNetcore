@@ -12,25 +12,25 @@ class AppbarImage extends StatelessWidget {
       this.margin,
       this.onTap});
 
-  double height;
+  double? height;
 
-  double width;
+  double? width;
 
-  String imagePath;
+  String? imagePath;
 
-  String svgPath;
+  String? svgPath;
 
-  Color color;
+  Color? color;
 
-  EdgeInsetsGeometry margin;
+  EdgeInsetsGeometry? margin;
 
-  Function onTap;
+  Function? onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        onTap.call();
+        onTap!.call();
       },
       child: Padding(
         padding: margin  ?? EdgeInsets.zero,
@@ -38,8 +38,8 @@ class AppbarImage extends StatelessWidget {
           color: color,
           svgPath: svgPath,
           imagePath: imagePath,
-          height: height,
-          width: width,
+          height: height!,
+          width: width!,
           fit: BoxFit.contain,
         ),
       ),
@@ -55,17 +55,17 @@ class CustomAppbarTitle extends StatelessWidget {
         this.color,
         this.margin,});
 
-  double height;
+  double? height;
 
-  double width;
+  double? width;
 
-  String imagePath;
+  String? imagePath;
 
-  String svgPath;
+  String? svgPath;
 
-  Color color;
+  Color ?color;
 
-  EdgeInsetsGeometry margin;
+  EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +75,8 @@ class CustomAppbarTitle extends StatelessWidget {
         color: color,
         svgPath: svgPath,
         imagePath: imagePath,
-        height: height,
-        width: width,
+        height: height!,
+        width: width!,
         fit: BoxFit.contain,
       ),
     );

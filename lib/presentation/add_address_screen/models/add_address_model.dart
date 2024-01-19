@@ -1,7 +1,7 @@
 class AddressAdd {
-  String status;
-  String message;
-  int data;
+  String? status;
+  String? message;
+  int? data;
 
   AddressAdd({this.status, this.message, this.data});
 

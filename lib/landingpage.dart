@@ -105,9 +105,8 @@ class _landingPageState extends State<landingPage> {
       //   child:
       PersistentTabView(
         context,
-        onWillPop: (context) async{
-         await  _onWillPop(context);
-        },
+        onWillPop: (context) =>
+         _onWillPop(context!),
         controller: _controller,
         screens: _buildScreens(),
         items: _navBarsItems(),

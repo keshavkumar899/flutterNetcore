@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ConnectionLostScreen extends StatelessWidget {
-  ConnectionLostScreen({Key key}) : super(key: key);
+  ConnectionLostScreen({Key? key}) : super(key: key);
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
   @override

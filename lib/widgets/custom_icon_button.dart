@@ -13,23 +13,23 @@ class CustomIconButton extends StatelessWidget {
       this.child,
       this.onTap});
 
-  IconButtonShape shape;
+  IconButtonShape? shape;
 
-  IconButtonPadding padding;
+  IconButtonPadding? padding;
 
-  IconButtonVariant variant;
+  IconButtonVariant? variant;
 
-  Alignment alignment;
+  Alignment? alignment;
 
-  EdgeInsetsGeometry margin;
+  EdgeInsetsGeometry? margin;
 
-  double width;
+  double? width;
 
-  double height;
+  double? height;
 
-  Widget child;
+  Widget? child;
 
-  VoidCallback onTap;
+  VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {

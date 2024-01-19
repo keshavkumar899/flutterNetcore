@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Item {
-  final int id;
-  final String name;
-  final IconData icon;
+  final int? id;
+  final String? name;
+  final IconData? icon;
 
   const Item({this.id, this.name, this.icon});
 }

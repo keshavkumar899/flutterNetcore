@@ -28,15 +28,15 @@ class _SplashScreenState extends State<SplashScreen> {
 
   fetchUser() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isLoggedIn = prefs.getBool("isLoggedIn");
+    bool isLoggedIn = prefs.getBool("isLoggedIn")!;
     var data=prefs.getString('userData');
     if(data!=null && isLoggedIn != null && isLoggedIn){
-      Map json1 = jsonDecode(prefs.getString('userData'));
+      Map <String,dynamic>json1 = jsonDecode(prefs.getString('userData')!);
       var user1 = OtpModel.fromJson(json1);
       print(user1.data);
       Future.delayed(const Duration(milliseconds: 3000), () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => landingPage(user1.data),
+          builder: (context) => landingPage(user1.data!),
         ));
         // Get.offNamed(AppRoutes.logInScreen);
       });
@@ -57,10 +57,10 @@ class _SplashScreenState extends State<SplashScreen> {
         backgroundColor: ColorConstant.whiteA700,
         body: Container(
           width: double.maxFinite,
-          padding: getPadding(
-            top: 26,
-            bottom: 26,
-          ),
+          // padding: getPadding(
+          //   top: 26,
+          //   bottom: 26,
+          // ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -83,7 +83,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   148,
                 ),
                 margin: getMargin(
-                  top: 282,
+                  top: 350,
+                  bottom: 30
                 ),
               ),
             ],

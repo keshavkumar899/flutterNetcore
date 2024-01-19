@@ -29,7 +29,7 @@ import 'package:dio/dio.dart' as dio;
 class CartScreen extends StatefulWidget {
   Data data;
   CartScreen(this.data);
-  static int count;
+  static int? count;
   @override
   State<CartScreen> createState() => _CartScreenState();
 }
@@ -38,12 +38,12 @@ class _CartScreenState extends State<CartScreen> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController pincodeController =TextEditingController();
 
-  Future<carts.CartModel> mycart;
+  Future<carts.CartModel>? mycart;
   List<carts.CartData> cartlist = [];
-  int count1;
-  int total;
+  int? count1;
+  int? total;
   List<carts.ProductDetails> cart = [];
-  String message;
+  String? message;
 
   Future<carts.CartModel> getCartList() async {
     Map data = {
@@ -380,7 +380,7 @@ class _CartScreenState extends State<CartScreen> {
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 25.0),
-            content: Text(MovetoWishlist.fromJson(jsonObject).message),
+            content: Text(MovetoWishlist.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -396,9 +396,9 @@ class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     mycart = getCartList();
-    mycart.then((value) {
+    mycart!.then((value) {
       setState(() {
-        cartlist = value.data;
+        cartlist = value.data!;
         CartScreen.count=value.count;
         count1=value.count;
         total=value.total;
@@ -483,9 +483,9 @@ class _CartScreenState extends State<CartScreen> {
         color: Colors.purple,
         onRefresh: ()async{
           mycart = getCartList();
-          mycart.then((value) {
+          mycart!.then((value) {
             setState(() {
-              cartlist = value.data;
+              cartlist = value.data!;
               CartScreen.count=value.count;
               total=value.total;
             });
@@ -543,7 +543,7 @@ class _CartScreenState extends State<CartScreen> {
                                                     textInputType:
                                                     TextInputType.number,
                                                     validator: (value) {
-                                                      if (!isNumeric(value)) {
+                                                      if (!isNumeric(value!)) {
                                                         return "Please enter valid number";
                                                       }
                                                       return null;
@@ -669,7 +669,7 @@ class _CartScreenState extends State<CartScreen> {
                                       physics: ClampingScrollPhysics(),
                                       itemCount: cartlist.length,
                                       itemBuilder: (context, index) {
-                                        carts.ProductDetails product=cartlist[index].productDetails;
+                                        carts.ProductDetails product=cartlist[index].productDetails!;
                                         return Column(
                                           children: [
                                             Padding(
@@ -696,7 +696,7 @@ class _CartScreenState extends State<CartScreen> {
                                                       Padding(
                                                         padding: const EdgeInsets.only(top: 18.0),
                                                         child: CustomImageView(
-                                                            url:product.image,
+                                                            url:product.image!,
                                                             // imagePath:
                                                             // ImageConstant
                                                             //     .imgImage17,
@@ -723,7 +723,7 @@ class _CartScreenState extends State<CartScreen> {
                                                                   children: [
                                                                     SizedBox(width: 60.w,),
                                                                     Text(
-                                                                        "Qty: "+cartlist[index].qty,
+                                                                        "Qty: "+cartlist[index].qty!,
                                                                         overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
@@ -737,7 +737,7 @@ class _CartScreenState extends State<CartScreen> {
                                                                 Container(
                                                                   width:250,
                                                                   child: Text(
-                                                                      product.name,
+                                                                      product.name!,
                                                                       overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
@@ -750,7 +750,7 @@ class _CartScreenState extends State<CartScreen> {
                                                                 // SizedBox(width: 10.w,),
                                                                 SizedBox(height: 0.5.h,),
                                                                 Text(
-                                                                    product.categoryName+" by "+product.brandName,
+                                                                    product.categoryName!+" by "+product.brandName!,
                                                                     overflow:
                                                                     TextOverflow
                                                                         .ellipsis,
@@ -795,7 +795,7 @@ class _CartScreenState extends State<CartScreen> {
                                                                               margin: getMargin(bottom: 3)),
                                                                           Padding(
                                                                               padding: getPadding(left: 2),
-                                                                              child: Text(product.salePrice, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium14Purple900)),
+                                                                              child: Text(product.salePrice!, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium14Purple900)),
                                                                           CustomImageView(
                                                                               svgPath: ImageConstant.imgCall,
                                                                               height: getVerticalSize(11),
@@ -806,7 +806,7 @@ class _CartScreenState extends State<CartScreen> {
                                                                               width: getHorizontalSize(37),
                                                                               margin: getMargin(left: 3, top: 2),
                                                                               child: Stack(alignment: Alignment.topCenter, children: [
-                                                                                Align(alignment: Alignment.center, child: Text(product.mrpPrice, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium12Gray500)),
+                                                                                Align(alignment: Alignment.center, child: Text(product.mrpPrice!, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium12Gray500)),
                                                                                 Align(alignment: Alignment.topCenter, child: Padding(padding: getPadding(top: 6), child: SizedBox(width: getHorizontalSize(37), child: Divider(height: getVerticalSize(1), thickness: getVerticalSize(1), color: ColorConstant.gray500))))
                                                                               ]))
                                                                         ])),
@@ -843,7 +843,7 @@ class _CartScreenState extends State<CartScreen> {
                                                       InkWell(
                                                         onTap:()async{
                                                           // print(cartlist[index].id);
-                                                          await removecart(cartlist[index].id);
+                                                          await removecart(cartlist[index].id!);
                                                           setState(() {
                                                             initState();
                                                           });
@@ -886,7 +886,7 @@ class _CartScreenState extends State<CartScreen> {
                                                                   .gray40001)),
                                                       InkWell(
                                                         onTap:()async{
-                                                          await movetowishlist(cartlist[index].id,cartlist[index].productId) ;
+                                                          await movetowishlist(cartlist[index].id!,cartlist[index].productId!) ;
                                                           setState(() {
                                                             initState();
                                                           });

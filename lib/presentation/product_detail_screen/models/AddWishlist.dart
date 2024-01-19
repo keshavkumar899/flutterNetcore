@@ -1,7 +1,7 @@
 class AddWishlist {
-  String status;
-  String message;
-  int data;
+  String? status;
+  String? message;
+  int? data;
 
   AddWishlist({this.status, this.message, this.data});
 

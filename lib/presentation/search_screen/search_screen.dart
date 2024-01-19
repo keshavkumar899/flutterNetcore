@@ -32,7 +32,7 @@ class SearchScreen extends StatefulWidget {
 TextEditingController searchController = TextEditingController();
 
 class _SearchScreenState extends State<SearchScreen> {
-  Future<products.ProductList> product;
+  Future<products.ProductList>? product;
   List<products.ProductListData> productlist = [];
   var sortBy = '';
 
@@ -200,7 +200,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                   Navigator.of(context)
                                                                       .push(MaterialPageRoute(
                                                                     builder: (context) =>
-                                                                        ProductDetailScreen(widget.data, productlist[index].id),
+                                                                        ProductDetailScreen(widget.data, productlist[index].id!),
                                                                   ));
                                                                 }),
                                                             Align(
@@ -235,7 +235,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                         3),
                                                                 child: Text(
                                                                     productlist[index]
-                                                                        .name,
+                                                                        .name!,
                                                                     overflow:
                                                                         TextOverflow.ellipsis,
                                                                     textAlign: TextAlign.left,
@@ -264,7 +264,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                         4),
                                                                 child: Text(
                                                                     productlist[index]
-                                                                        .salePrice,
+                                                                        .salePrice!,
                                                                     overflow:
                                                                         TextOverflow.ellipsis,
                                                                     textAlign: TextAlign.left,
@@ -282,10 +282,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                   .center,
                                                           children: [
                                                             Text(
-                                                                productlist[index].categoryName +
+                                                                productlist[index].categoryName! +
                                                                     " by " +
                                                                     productlist[index]
-                                                                        .brandName,
+                                                                        .brandName!,
                                                                 overflow:
                                                                     TextOverflow
                                                                         .ellipsis,
@@ -321,7 +321,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                     alignment:
                                                                         Alignment.center,
                                                                     children: [
-                                                                      Align(alignment: Alignment.center, child: Text(productlist[index].mrpPrice, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium10Gray500)),
+                                                                      Align(alignment: Alignment.center, child: Text(productlist[index].mrpPrice!, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium10Gray500)),
                                                                       Align(alignment: Alignment.center, child: SizedBox(width: getHorizontalSize(32), child: Divider(height: getVerticalSize(1), thickness: getVerticalSize(1), color: ColorConstant.gray500)))
                                                                     ]))
                                                           ])),
@@ -361,7 +361,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                 onTap:
                                                                     () {
                                                                   addtowishlist(
-                                                                      productlist[index].id);
+                                                                      productlist[index].id!);
                                                                 },
                                                                 svgPath:
                                                                     ImageConstant
@@ -380,7 +380,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                     () {
                                                                   _showQuantityBottomSheet(
                                                                       context,
-                                                                      productlist[index].id);
+                                                                      productlist[index].id!);
                                                                 },
                                                                 svgPath:
                                                                     ImageConstant
@@ -968,9 +968,9 @@ class _SearchScreenState extends State<SearchScreen> {
     closeKeyboard();
     productlist.clear();
     product = getProduct();
-    product.then((value) {
+    product!.then((value) {
       setState(() {
-        productlist = value.data;
+        productlist = value.data!;
       });
     });
   }
@@ -1002,7 +1002,7 @@ class _SearchScreenState extends State<SearchScreen> {
             margin: EdgeInsets.only(bottom: 10.0),
             content: Text(
               "Added to Wishlist " +
-                  AddWishlist.fromJson(jsonObject).message +
+                  AddWishlist.fromJson(jsonObject).message! +
                   "ly",
               style: TextStyle(color: Colors.black),
             ),
@@ -1017,7 +1017,7 @@ class _SearchScreenState extends State<SearchScreen> {
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
             content:
-                Text(AddWishlist.fromJson(jsonObject).message.capitalizeFirst),
+                Text(AddWishlist.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
       } else if (AddWishlist.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -1091,7 +1091,7 @@ class _SearchScreenState extends State<SearchScreen> {
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
             content: Text(
-              "Added to Cart " + AddtoCart.fromJson(jsonObject).message + "ly",
+              "Added to Cart " + AddtoCart.fromJson(jsonObject).message! + "ly",
               style: TextStyle(color: Colors.black),
             ),
             backgroundColor: Colors.greenAccent));
@@ -1105,7 +1105,7 @@ class _SearchScreenState extends State<SearchScreen> {
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
             content:
-                Text(AddtoCart.fromJson(jsonObject).message.capitalizeFirst),
+                Text(AddtoCart.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
       } else if (AddtoCart.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -1164,8 +1164,8 @@ class _SearchScreenState extends State<SearchScreen> {
             margin: EdgeInsets.only(bottom: 5.0),
             dismissDirection: DismissDirection.none,
             content: Text(products.ProductList.fromJson(jsonObject)
-                .message
-                .capitalizeFirst),
+                .message!
+                .capitalizeFirst!),
             backgroundColor: Colors.redAccent));
         Timer(Duration(seconds: 2), () {
           Navigator.of(context).pop();

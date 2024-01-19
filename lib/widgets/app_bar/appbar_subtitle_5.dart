@@ -5,11 +5,11 @@ import 'package:keshav_s_application2/core/app_export.dart';
 class AppbarSubtitle5 extends StatelessWidget {
   AppbarSubtitle5({ this.text, this.margin, this.onTap});
 
-  String text;
+  String? text;
 
-  EdgeInsetsGeometry margin;
+  EdgeInsetsGeometry? margin;
 
-  Function onTap;
+  Function? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class AppbarSubtitle5 extends StatelessWidget {
       child: Padding(
         padding: margin ?? EdgeInsets.zero,
         child: Text(
-          text,
+          text!,
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.left,
           style: AppStyle.txtRobotoRegular18.copyWith(

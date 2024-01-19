@@ -1,7 +1,7 @@
 class ChangePasswordModel {
-  String status;
-  String message;
-  ChangePasswordData data;
+  String? status;
+  String? message;
+  ChangePasswordData? data;
 
   ChangePasswordModel({this.status, this.message, this.data});
 
@@ -16,26 +16,26 @@ class ChangePasswordModel {
     data['status'] = this.status;
     data['message'] = this.message;
     if (this.data != null) {
-      data['data'] = this.data.toJson();
+      data['data'] = this.data!.toJson();
     }
     return data;
   }
 }
 
 class ChangePasswordData {
-  String id;
-  String firstName;
-  String lastName;
-  String email;
-  String password;
-  String mobile;
-  String otps;
-  String fcmToken;
-  String profilePhoto;
-  String createOn;
-  String isDelete;
-  String isActive;
-  String walletBalence;
+  String? id;
+  String? firstName;
+  String? lastName;
+  String? email;
+  String? password;
+  String? mobile;
+  String? otps;
+  String? fcmToken;
+  String? profilePhoto;
+  String? createOn;
+  String? isDelete;
+  String? isActive;
+  String? walletBalence;
 
   ChangePasswordData(
       {this.id,

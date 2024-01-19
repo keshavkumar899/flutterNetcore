@@ -13,34 +13,34 @@ class ProductDetailModel {
     if (json['similar_product'] != null) {
       similarProduct = [];
       json['similar_product'].forEach((v) {
-        similarProduct.add(SimilarProduct.fromJson(v));
+        similarProduct?.add(SimilarProduct.fromJson(v));
       });
     }
     if (json['brand_product'] != null) {
       brandProduct = [];
       json['brand_product'].forEach((v) {
-        brandProduct.add(BrandProduct.fromJson(v));
+        brandProduct!.add(BrandProduct.fromJson(v));
       });
     }
   }
-  String status;
-  String message;
-  Data data;
-  List<SimilarProduct> similarProduct;
-  List<BrandProduct> brandProduct;
+  String? status;
+  String? message;
+  Data? data;
+  List<SimilarProduct>? similarProduct;
+  List<BrandProduct>? brandProduct;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['status'] = status;
     map['message'] = message;
     if (data != null) {
-      map['data'] = data.toJson();
+      map['data'] = data!.toJson();
     }
     if (similarProduct != null) {
-      map['similar_product'] = similarProduct.map((v) => v.toJson()).toList();
+      map['similar_product'] = similarProduct!.map((v) => v.toJson()).toList();
     }
     if (brandProduct != null) {
-      map['brand_product'] = brandProduct.map((v) => v.toJson()).toList();
+      map['brand_product'] = brandProduct!.map((v) => v.toJson()).toList();
     }
     return map;
   }
@@ -124,52 +124,52 @@ class Data {
     if (json['product_images'] != null) {
       productImages = [];
       json['product_images'].forEach((v) {
-        productImages.add(ProductImages.fromJson(v));
+        productImages!.add(ProductImages.fromJson(v));
       });
     }
     if (json['attributes'] != null) {
       attributes = [];
       json['attributes'].forEach((v) {
-        attributes.add(Attributes.fromJson(v));
+        attributes!.add(Attributes.fromJson(v));
       });
     }
   }
-  String id;
-  String name;
-  String code;
-  String categoryId;
-  String subCategoryId;
-  String brandId;
-  String keywordsId;
-  String cityId;
-  String mrpPrice;
-  String salePrice;
-  String discountPrice;
-  String discountPer;
-  String description;
-  String image;
-  String sellerId;
-  String emiOption;
-  String monthWarrenty;
-  String easyReturn;
-  String safeDelivery;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String featured;
-  String isDelete;
-  String createOn;
-  String updateOn;
-  String additionalInformation;
-  String customerRedressal;
-  String marchantInfo;
-  String returnCancellation;
-  String warentyInstallation;
-  String categoryName;
-  String brandName;
-  String isWishlist;
-  List<ProductImages> productImages;
-  List<Attributes> attributes;
+  String? id;
+  String? name;
+  String? code;
+  String? categoryId;
+  String? subCategoryId;
+  String? brandId;
+  String? keywordsId;
+  String? cityId;
+  String? mrpPrice;
+  String? salePrice;
+  String? discountPrice;
+  String? discountPer;
+  String? description;
+  String? image;
+  String? sellerId;
+  String? emiOption;
+  String? monthWarrenty;
+  String? easyReturn;
+  String? safeDelivery;
+  String ?metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? featured;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
+  String? additionalInformation;
+  String? customerRedressal;
+  String? marchantInfo;
+  String? returnCancellation;
+  String? warentyInstallation;
+  String? categoryName;
+  String? brandName;
+  String? isWishlist;
+  List<ProductImages>? productImages;
+  List<Attributes>? attributes;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -208,10 +208,10 @@ class Data {
     map['brand_name'] = brandName;
     map['is_wishlist'] = isWishlist;
     if (productImages != null) {
-      map['product_images'] = productImages.map((v) => v.toJson()).toList();
+      map['product_images'] = productImages!.map((v) => v.toJson()).toList();
     }
     if (attributes != null) {
-      map['attributes'] = attributes.map((v) => v.toJson()).toList();
+      map['attributes'] = attributes!.map((v) => v.toJson()).toList();
     }
     return map;
   }
@@ -229,9 +229,9 @@ class ProductImages {
     productId = json['product_id'];
     images = json['images'];
   }
-  String id;
-  String productId;
-  String images;
+  String? id;
+  String? productId;
+  String? images;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -294,29 +294,29 @@ class SimilarProduct {
     brandName = json['brand_name'];
     isWishlist = json['is_wishlist'];
   }
-  String id;
-  String name;
-  String code;
-  String categoryId;
-  String subCategoryId;
-  String brandId;
-  String keywordsId;
-  String cityId;
-  String mrpPrice;
-  String salePrice;
-  String discountPrice;
-  String description;
-  String image;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String featured;
-  String isDelete;
-  String createOn;
-  String updateOn;
-  String categoryName;
-  String brandName;
-  String isWishlist;
+  String? id;
+  String? name;
+  String? code;
+  String? categoryId;
+  String? subCategoryId;
+  String? brandId;
+  String? keywordsId;
+  String? cityId;
+  String? mrpPrice;
+  String ?salePrice;
+  String ?discountPrice;
+  String ?description;
+  String ?image;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? featured;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
+  String? categoryName;
+  String? brandName;
+  String? isWishlist;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -399,29 +399,29 @@ class BrandProduct {
     brandName = json['brand_name'];
     isWishlist = json['is_wishlist'];
   }
-  String id;
-  String name;
-  String code;
-  String categoryId;
-  String subCategoryId;
-  String brandId;
-  String keywordsId;
-  String cityId;
-  String mrpPrice;
-  String salePrice;
-  String discountPrice;
-  String description;
-  String image;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String featured;
-  String isDelete;
-  String createOn;
-  String updateOn;
-  String categoryName;
-  String brandName;
-  String isWishlist;
+  String? id;
+  String? name;
+  String? code;
+  String? categoryId;
+  String? subCategoryId;
+  String? brandId;
+  String? keywordsId;
+  String? cityId;
+  String? mrpPrice;
+  String? salePrice;
+  String? discountPrice;
+  String? description;
+  String? image;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? featured;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
+  String? categoryName;
+  String? brandName;
+  String? isWishlist;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -454,10 +454,10 @@ class BrandProduct {
 }
 
 class Attributes {
-  String id;
-  String productId;
-  String productKey;
-  String productValue;
+  String? id;
+  String? productId;
+  String? productKey;
+  String? productValue;
 
   Attributes({this.id, this.productId, this.productKey, this.productValue});
 

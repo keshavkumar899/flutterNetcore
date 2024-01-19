@@ -37,9 +37,9 @@ class WhislistScreen extends StatefulWidget {
 
 class _WhislistScreenState extends State<WhislistScreen> {
 
-  Future<wishlist.WishlistScreenModel> mywishlist;
+  Future<wishlist.WishlistScreenModel>? mywishlist;
   List<wishlist.WishListData> wishlistdata = [];
-  String message;
+  String? message;
   Future<wishlist.WishlistScreenModel> getWishlist() async {
     Map data = {
       'user_id': widget.data.id,
@@ -125,7 +125,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
             duration: Duration(seconds: 1),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text("Added to Cart "+AddtoCartfromwishlist.fromJson(jsonObject).message+"ly",style: TextStyle(color: Colors.black),),
+            content: Text("Added to Cart "+AddtoCartfromwishlist.fromJson(jsonObject).message!+"ly",style: TextStyle(color: Colors.black),),
             backgroundColor: Colors.greenAccent));
 
         return AddtoCartfromwishlist.fromJson(jsonObject);
@@ -136,7 +136,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
             duration: Duration(seconds: 1),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text(AddtoCartfromwishlist.fromJson(jsonObject).message.capitalizeFirst),
+            content: Text(AddtoCartfromwishlist.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -204,7 +204,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
             duration: Duration(seconds: 1),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text(RemoveWishlist.fromJson(jsonObject).message.capitalizeFirst),
+            content: Text(RemoveWishlist.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -233,9 +233,9 @@ class _WhislistScreenState extends State<WhislistScreen> {
   @override
   void initState() {
     mywishlist = getWishlist();
-    mywishlist.then((value) {
+    mywishlist!.then((value) {
       setState(() {
-        wishlistdata = value.data;
+        wishlistdata = value.data!;
         // count=value.count;
         // total=value.total;
 
@@ -325,9 +325,9 @@ class _WhislistScreenState extends State<WhislistScreen> {
               color: Colors.purple,
               onRefresh: ()async{
                 mywishlist = getWishlist();
-                mywishlist.then((value) {
+                mywishlist!.then((value) {
                   setState(() {
-                    wishlistdata = value.data;
+                    wishlistdata = value.data!;
                   });
                 });
               },
@@ -417,7 +417,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                               children: [
                                                                 CustomImageView(
-                                                                  url:wishlistdata[index].productData.image,
+                                                                  url:wishlistdata[index].productData!.image!,
                                                                   // imagePath: ImageConstant.imgImage5,
                                                                   height: getSize(
                                                                     65,
@@ -442,7 +442,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
                                                                               220,
                                                                             ),
                                                                             child: Text(
-                                                                              wishlistdata[index].productData.name,
+                                                                              wishlistdata[index].productData!.name!,
                                                                               maxLines: 1,
                                                                               overflow: TextOverflow.ellipsis,
                                                                               textAlign: TextAlign.left,
@@ -451,7 +451,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
                                                                           ),
                                                                           CustomImageView(
                                                                             onTap:()async{
-                                                                              await removefromwishlist(wishlistdata[index].productData.id);
+                                                                              await removefromwishlist(wishlistdata[index].productData!.id!);
                                                                               setState(() {
                                                                                 initState();
                                                                               });
@@ -495,7 +495,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
                                                                                 left: 2,
                                                                               ),
                                                                               child: Text(
-                                                                                wishlistdata[index].productData.salePrice,
+                                                                                wishlistdata[index].productData!.salePrice!,
                                                                                 overflow: TextOverflow.ellipsis,
                                                                                 textAlign: TextAlign.left,
                                                                                 style: AppStyle.txtRobotoMedium10,
@@ -532,7 +532,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
                                                                                   Align(
                                                                                     alignment: Alignment.center,
                                                                                     child: Text(
-                                                                                      wishlistdata[index].productData.mrpPrice,
+                                                                                      wishlistdata[index].productData!.mrpPrice!,
                                                                                       overflow: TextOverflow.ellipsis,
                                                                                       textAlign: TextAlign.left,
                                                                                       style:
@@ -573,7 +573,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
                                                                           top: 2,
                                                                         ),
                                                                         child: Text(
-                                                                          wishlistdata[index].productData.discountPer+" % Off",
+                                                                          wishlistdata[index].productData!.discountPer!+" % Off",
                                                                           overflow: TextOverflow.ellipsis,
                                                                           textAlign: TextAlign.left,
                                                                           style: AppStyle.txtRobotoMedium8Purple900,
@@ -616,7 +616,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
                                                             height: 30,
                                                             child: InkWell(
                                                               onTap: ()async{
-                                                                await addtocart(wishlistdata[index].productData.id);
+                                                                await addtocart(wishlistdata[index].productData!.id!);
                                                                 setState(() {
                                                                   initState();
                                                                 });

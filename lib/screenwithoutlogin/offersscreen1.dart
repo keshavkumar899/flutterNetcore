@@ -30,7 +30,7 @@ class OffersScreen1 extends StatefulWidget {
 class _OffersScreen1State extends State<OffersScreen1> {
 
 
-  Future<OffersModel> offers;
+  Future<OffersModel>? offers;
   List<OffersData> offerslist = [];
 
   Future<OffersModel> getOffersList() async {
@@ -56,7 +56,7 @@ class _OffersScreen1State extends State<OffersScreen1> {
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (OffersModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(OffersModel.fromJson(jsonObject).message),
+            content: Text(OffersModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -82,9 +82,9 @@ class _OffersScreen1State extends State<OffersScreen1> {
   @override
   void initState() {
     offers = getOffersList();
-    offers.then((value) {
+    offers!.then((value) {
       setState(() {
-        offerslist = value.data;
+        offerslist = value.data!;
       });
     });
 
@@ -122,7 +122,7 @@ class _OffersScreen1State extends State<OffersScreen1> {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       DateFormat dateFormat = DateFormat('dd-MM-yyyy');
-                      if (snapshot.data.data.length == 0) {
+                      if (!snapshot.hasData) {
                         return Center(
                             child: Padding(
                                 padding: const EdgeInsets.only(left: 4.0),
@@ -168,7 +168,7 @@ class _OffersScreen1State extends State<OffersScreen1> {
                                   width: size.width,
                                   height: 100,
                                   decoration:  BoxDecoration(
-                                      image: DecorationImage(image: NetworkImage(data.image),fit: BoxFit.cover),
+                                      image: DecorationImage(image: NetworkImage(data.image!),fit: BoxFit.cover),
                                       color: Colors.white,
                                       border: Border.all(
                                         color: Colors.purple,  // Set the desired border color here
@@ -221,7 +221,7 @@ class _OffersScreen1State extends State<OffersScreen1> {
                                               mainAxisAlignment:
                                               MainAxisAlignment.start,
                                               children: [
-                                                data.promoCode.isNotEmpty?
+                                                data.promoCode!.isNotEmpty?
                                                 Container(
                                                   decoration: BoxDecoration(  // Set the background color here
                                                     borderRadius:
@@ -244,7 +244,7 @@ class _OffersScreen1State extends State<OffersScreen1> {
                                                     overflow: TextOverflow.ellipsis,
                                                   ),
                                                 ):Container(),
-                                                data.promoCode.isNotEmpty?
+                                                data.promoCode!.isNotEmpty?
                                                 SizedBox(width: 4.w,):SizedBox(width: 0,),
                                                 Text(
                                                   // (Utils.parseHtmlString(
@@ -342,7 +342,7 @@ class _OffersScreen1State extends State<OffersScreen1> {
   static String parseHtmlString(String htmlString) {
     final document = parse(htmlString);
     final String parsedString =
-        parse(document.body.text).documentElement.text;
+        parse(document.body!.text).documentElement!.text;
 
     return parsedString;
   }

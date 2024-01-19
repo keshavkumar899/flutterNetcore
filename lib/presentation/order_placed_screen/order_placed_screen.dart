@@ -34,7 +34,7 @@ class OrderPlacedScreen extends StatefulWidget {
 
 class _OrderPlacedScreenState extends State<OrderPlacedScreen> {
 
-  String message;
+  String? message;
 
   Future<OrderPlaced> orderPlaced() async {
     Map data = {
@@ -69,7 +69,7 @@ class _OrderPlacedScreenState extends State<OrderPlacedScreen> {
             duration: Duration(seconds: 1),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 25.0),
-            content: Text(OrderPlaced.fromJson(jsonObject).message),
+            content: Text(OrderPlaced.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -128,7 +128,7 @@ class _OrderPlacedScreenState extends State<OrderPlacedScreen> {
             duration: Duration(seconds: 1),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 25.0),
-            content: Text(OrderPlaced.fromJson(jsonObject).message),
+            content: Text(OrderPlaced.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }

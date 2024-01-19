@@ -87,7 +87,7 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                                               child: FittedBox(
                                                 fit:BoxFit.fill,
                                                 child: Text(
-                                                 'Hi '+ widget.data.firstName.capitalizeFirst,
+                                                 'Hi '+ widget.data.firstName!.capitalizeFirst!,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                     fontFamily: 'Roboto',
@@ -112,7 +112,7 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                                           child: FittedBox(
                                             fit: BoxFit.fill,
                                             child: Text(
-                                              widget.data.email,
+                                              widget.data!.email!,
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontFamily: 'Roboto',

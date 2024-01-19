@@ -77,7 +77,7 @@ class _ListhomeItemWidgetState extends State<ListhomeItemWidget> {
         // ));
       } else if (DeleteAddress.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg: DeleteAddress.fromJson(jsonObject).message,
+            msg: DeleteAddress.fromJson(jsonObject).message!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -262,7 +262,7 @@ class _ListhomeItemWidgetState extends State<ListhomeItemWidget> {
                 top: 6,
               ),
               child: Text(
-                widget.addressdata.name.capitalizeFirst,
+                widget.addressdata.name!.capitalizeFirst!,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.left,
                 style: AppStyle.txtRobotoMedium14Purple900,
@@ -291,13 +291,13 @@ class _ListhomeItemWidgetState extends State<ListhomeItemWidget> {
                 bottom: 15,
               ),
               child: Text(
-                widget.addressdata.addressOne.capitalizeFirst +
+                widget.addressdata.addressOne!.capitalizeFirst! +
                     ", " +
-                    widget.addressdata.city +
+                    widget.addressdata.city! +
                     "\n" +
-                    widget.addressdata.state +
+                    widget.addressdata.state! +
                     " - " +
-                    widget.addressdata.pincode,
+                    widget.addressdata.pincode!,
                 maxLines: null,
                 textAlign: TextAlign.left,
                 style: AppStyle.txtRobotoRegular12Gray6001,

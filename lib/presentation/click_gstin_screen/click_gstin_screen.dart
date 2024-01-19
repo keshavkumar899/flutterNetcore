@@ -46,7 +46,7 @@ class ClickGstinScreen extends GetWidget<ClickGstinController> {
                     margin: getMargin(left: 27, top: 44, right: 26),
                     textInputType: TextInputType.name,
                     validator: (value) {
-                      if (value.isEmpty  &&
+                      if (value!.isEmpty  &&
                           value.length != 15) {
                         return "Please enter valid gst number";
                       }
@@ -59,7 +59,7 @@ class ClickGstinScreen extends GetWidget<ClickGstinController> {
                     margin: getMargin(left: 27, top: 105, right: 26),
                     textInputAction: TextInputAction.done,
                     validator: (value) {
-                      if (!isText(value)) {
+                      if (!isText(value!)) {
                         return "Please enter valid text";
                       }
                       return null;

@@ -44,7 +44,7 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                 leadingWidth: 41,
                 leading: AppbarImage(
                     onTap: () {
-                      _scaffoldKey.currentState.openDrawer();
+                      _scaffoldKey.currentState!.openDrawer();
                     },
                     height: getVerticalSize(15),
                     width: getHorizontalSize(15),
@@ -67,7 +67,7 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 25, right: 10, bottom: 0),
+                      getMargin(left: 20, top: 0, right: 10, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
@@ -85,13 +85,13 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                               );
                             }),
                         // AppbarSubtitle6(
-                        //     text: "lbl_2".tr,
+                        //     text: widget.cart_count,
                         //     margin: getMargin(left: 17, bottom: 13))
                       ])),
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 27, right: 31),
+                      margin: getMargin(left: 14, top: 0, right: 31,bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -157,7 +157,7 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                                             Padding(
                                                 padding: getPadding(top: 0),
                                                 child: Row(children: [
-                                                  Text('Hi '+ widget.data.firstName.capitalizeFirst,
+                                                  Text('Hi '+ widget.data.firstName!.capitalizeFirst!,
                                                       overflow:
                                                       TextOverflow.ellipsis,
                                                       textAlign: TextAlign.left,
@@ -186,7 +186,7 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                                             Padding(
                                                 padding: getPadding(top: 9),
                                                 child: Text(
-                                                    widget.data.email
+                                                    widget.data.email!
                                                     ,
                                                     overflow:
                                                     TextOverflow.ellipsis,

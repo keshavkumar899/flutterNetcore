@@ -49,7 +49,7 @@ class productlisrafterclickonbanner1 extends StatefulWidget {
 
 class _productlisrafterclickonbanner1State extends State<productlisrafterclickonbanner1> {
 
-  Future<products.ProductList> product;
+  Future<products.ProductList> ?product;
   List<products.ProductListData> productlist = [];
   var sortBy = '';
   final ScrollController _controller = ScrollController();
@@ -105,7 +105,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (products.ProductList.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg: products.ProductList.fromJson(jsonObject).message.capitalizeFirst,
+            msg: products.ProductList.fromJson(jsonObject).message!.capitalizeFirst!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 5,
@@ -142,9 +142,9 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
   void initState() {
     clearFilter();
     product = getProduct();
-    product.then((value) {
+    product!.then((value) {
       setState(() {
-        productlist = value.data;
+        productlist = value.data!;
       });
     });
 
@@ -206,7 +206,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 25, right: 10, bottom: 0),
+                      getMargin(left: 20, top: 0, right: 10, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
@@ -241,7 +241,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 27, right: 31),
+                      margin: getMargin(left: 14, top: 0, right: 31,bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -282,9 +282,9 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
               color: Colors.purple,
               onRefresh: ()async{
                 product = getProduct();
-                product.then((value) {
+                product!.then((value) {
                   setState(() {
-                    productlist = value.data;
+                    productlist = value.data!;
                   });
                 });
               },
@@ -383,7 +383,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                     children: [
                                                       CustomImageView(
                                                           url:
-                                                          productlist[index].image,
+                                                          productlist[index].image!,
                                                           height:
                                                           getVerticalSize(
                                                               206),
@@ -394,7 +394,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                           Alignment.center,
                                                           onTap: () {
                                                             Navigator.of(context).push(MaterialPageRoute(
-                                                              builder: (context) => ProductDetailScreen1(productlist[index].id),
+                                                              builder: (context) => ProductDetailScreen1(productlist[index].id!),
                                                             ));
                                                           }),
                                                       Align(
@@ -475,7 +475,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                           padding: getPadding(
                                                               bottom: 3),
                                                           child: Text(
-                                                              productlist[index].name,
+                                                              productlist[index].name!,
                                                               overflow:
                                                               TextOverflow
                                                                   .ellipsis,
@@ -501,7 +501,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                           padding: getPadding(
                                                               left: 4, top: 3,right: 4),
                                                           child: Text(
-                                                              productlist[index].salePrice,
+                                                              productlist[index].salePrice!,
                                                               overflow:
                                                               TextOverflow
                                                                   .ellipsis,
@@ -520,7 +520,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                         .center,
                                                     children: [
                                                       Text(
-                                                          productlist[index].categoryName+" by "+productlist[index].brandName,
+                                                          productlist[index].categoryName!+" by "+productlist[index].brandName!,
                                                           overflow: TextOverflow
                                                               .ellipsis,
                                                           textAlign:
@@ -559,7 +559,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                                     Alignment
                                                                         .center,
                                                                     child: Text(
-                                                                        productlist[index].mrpPrice,
+                                                                        productlist[index].mrpPrice!,
                                                                         overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
@@ -1714,9 +1714,9 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
             fontSize: 14.0);
         sortBy = value;
         product = getProduct();
-        product.then((value) {
+        product!.then((value) {
           setState(() {
-            productlist = value.data;
+            productlist = value.data!;
           });
         });
       }
@@ -1749,9 +1749,9 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
         widget.keyword_id = value[2];
         widget.brandId = value[3];
         product = getProduct();
-        product.then((value) {
+        product!.then((value) {
           setState(() {
-            productlist = value.data;
+            productlist = value.data!;
           });
         });
       }

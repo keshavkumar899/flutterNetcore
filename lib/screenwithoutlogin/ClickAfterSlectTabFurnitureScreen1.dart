@@ -39,8 +39,8 @@ class ClickAfterSlectTabFurnitureScreen1 extends StatefulWidget {
 
 class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabFurnitureScreen1> {
 
-  Future<sub.CategorySubcategory> subcategories;
-  sub.Data subcategorieslist ;
+  Future<sub.CategorySubcategory>? subcategories;
+  sub.Data? subcategorieslist ;
   List<sub.SubCategory> subcategore=[];
 
 
@@ -72,7 +72,7 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (sub.CategorySubcategory.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(sub.CategorySubcategory.fromJson(jsonObject).message),
+            content: Text(sub.CategorySubcategory.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -97,10 +97,10 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
   @override
   void initState() {
     subcategories = getSubCategory();
-    subcategories.then((value) {
+    subcategories!.then((value) {
       setState(() {
         subcategorieslist = value.data;
-        subcategore=value.data.subCategory;
+        subcategore=value.data!.subCategory!;
       });
     });
 
@@ -148,7 +148,7 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 25, right: 10, bottom: 0),
+                      getMargin(left: 20, top: 0, right: 10, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
@@ -183,7 +183,7 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 27, right: 31),
+                      margin: getMargin(left: 14, top: 0, right: 31,bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -237,7 +237,7 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
                                 print(subcategore[index].id);
                                 pushNewScreen(
                                   context,
-                                  screen:SelectProductScreen1(widget.category,subcategore[index].id),
+                                  screen:SelectProductScreen1(widget.category,subcategore[index].id!),
                                   withNavBar: true, // OPTIONAL VALUE. True by default.
                                   pageTransitionAnimation: PageTransitionAnimation.cupertino,
                                 );
@@ -255,7 +255,7 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
                                   child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(subcategore[index].name,
+                                        Text(subcategore[index].name!,
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
                                             style: AppStyle
@@ -267,7 +267,7 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
                                           onTap: (){
                                             pushNewScreen(
                                               context,
-                                              screen:SelectProductScreen1(widget.category,subcategore[index].id),
+                                              screen:SelectProductScreen1(widget.category,subcategore[index].id!),
                                               withNavBar: true, // OPTIONAL VALUE. True by default.
                                               pageTransitionAnimation: PageTransitionAnimation.cupertino,
                                             );

@@ -9,16 +9,16 @@ class CategorySubcategory {
     message = json['message'];
     data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
-  String status;
-  String message;
-  Data data;
+  String? status;
+  String? message;
+  Data? data;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['status'] = status;
     map['message'] = message;
     if (data != null) {
-      map['data'] = data.toJson();
+      map['data'] = data!.toJson();
     }
     return map;
   }
@@ -55,22 +55,22 @@ class Data {
     if (json['sub_category'] != null) {
       subCategory = [];
       json['sub_category'].forEach((v) {
-        subCategory.add(SubCategory.fromJson(v));
+        subCategory!.add(SubCategory.fromJson(v));
       });
     }
   }
-  String id;
-  String parentId;
-  String name;
-  String image;
-  String banner;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
-  String updateOn;
-  List<SubCategory> subCategory;
+  String? id;
+  String? parentId;
+  String? name;
+  String? image;
+  String? banner;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
+  List<SubCategory>? subCategory;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -86,7 +86,7 @@ class Data {
     map['create_on'] = createOn;
     map['update_on'] = updateOn;
     if (subCategory != null) {
-      map['sub_category'] = subCategory.map((v) => v.toJson()).toList();
+      map['sub_category'] = subCategory!.map((v) => v.toJson()).toList();
     }
     return map;
   }
@@ -119,17 +119,17 @@ class SubCategory {
     createOn = json['create_on'];
     updateOn = json['update_on'];
   }
-  String id;
-  String parentId;
-  String name;
-  String image;
-  String banner;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
-  dynamic updateOn;
+  String? id;
+  String? parentId;
+  String? name;
+  String? image;
+  String? banner;
+  String? metaTitle;
+  String? metaDescription;
+  String ?isActive;
+  String? isDelete;
+  String? createOn;
+  dynamic? updateOn;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

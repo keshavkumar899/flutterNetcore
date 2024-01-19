@@ -43,19 +43,19 @@ class _NeedHelp extends State<NeedHelp> {
         child: Scaffold(
           backgroundColor: ColorConstant.whiteA700,
           appBar: CustomAppBar(
-              height: getVerticalSize(91),
+              height: getVerticalSize(60),
               leadingWidth: 34,
               leading: AppbarImage(
                   height: getVerticalSize(15),
                   width: getHorizontalSize(9),
                   svgPath: ImageConstant.imgArrowleft,
-                  margin: getMargin(left: 25, top: 53, bottom: 23),
+                  margin: getMargin(left: 25, top: 20, bottom: 0),
                   onTap: (){
                     Navigator.pop(context);
                   }),
               title: AppbarTitle(
                   text: "Need Help",
-                  margin: getMargin(left: 19, top: 50, bottom: 18)),
+                  margin: getMargin(left: 19, top: 35, bottom: 18)),
               // actions: [
               //   AppbarImage(
               //       height: getSize(21),
@@ -95,7 +95,7 @@ class _NeedHelp extends State<NeedHelp> {
               styleType: Style.bgStyle_1),
           body: Container(
               width: double.maxFinite,
-              padding: getPadding(top: 20, bottom: 20),
+              padding: getPadding(top: 20, bottom: 20,left: 20),
               child: Center(
                 child: Text("This feature will be live in next update",style: SafeGoogleFont(
                   'Poppins SemiBold',

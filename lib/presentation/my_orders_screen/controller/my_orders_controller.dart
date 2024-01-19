@@ -11,7 +11,7 @@ class MyOrdersController extends GetxController {
 
   Rx<MyOrdersModel> myOrdersModelObj = MyOrdersModel().obs;
 
-  SelectionPopupModel selectedDropDownValue;
+  SelectionPopupModel? selectedDropDownValue;
 
   @override
   void onReady() {

@@ -65,9 +65,9 @@ class _landingPage1State extends State<landingPage1> {
     ];
   }
 
-  Future<bool> _onWillPop(BuildContext context) async {
+  Future<bool> _onWillPop(BuildContext? context) async {
     return (await showDialog(
-      context: context,
+      context: context!,
       builder: (context) => new AlertDialog(
         elevation: 24,
         backgroundColor: Colors.white,
@@ -107,9 +107,8 @@ class _landingPage1State extends State<landingPage1> {
       PersistentTabView(
         context,
         controller: _controller,
-        onWillPop: (context) async{
-          await  _onWillPop(context);
-        },
+        onWillPop: (context) =>
+            _onWillPop(context!),
         screens: _buildScreens(),
         items: _navBarsItems(),
         confineInSafeArea: true,

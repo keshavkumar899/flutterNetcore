@@ -1,6 +1,6 @@
 class TxnToken {
-  Head head;
-  Body body;
+  Head? head;
+  Body? body;
 
   TxnToken({this.head, this.body});
 
@@ -12,19 +12,19 @@ class TxnToken {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.head != null) {
-      data['head'] = this.head.toJson();
+      data['head'] = this.head!.toJson();
     }
     if (this.body != null) {
-      data['body'] = this.body.toJson();
+      data['body'] = this.body!.toJson();
     }
     return data;
   }
 }
 
 class Head {
-  String responseTimestamp;
-  String version;
-  String signature;
+  String? responseTimestamp;
+  String? version;
+  String? signature;
 
   Head({this.responseTimestamp, this.version, this.signature});
 
@@ -44,10 +44,10 @@ class Head {
 }
 
 class Body {
-  ResultInfo resultInfo;
-  String txnToken;
-  bool isPromoCodeValid;
-  bool authenticated;
+  ResultInfo? resultInfo;
+  String? txnToken;
+  bool? isPromoCodeValid;
+  bool? authenticated;
 
   Body(
       {this.resultInfo,
@@ -67,7 +67,7 @@ class Body {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.resultInfo != null) {
-      data['resultInfo'] = this.resultInfo.toJson();
+      data['resultInfo'] = this.resultInfo!.toJson();
     }
     data['txnToken'] = this.txnToken;
     data['isPromoCodeValid'] = this.isPromoCodeValid;
@@ -77,9 +77,9 @@ class Body {
 }
 
 class ResultInfo {
-  String resultStatus;
-  String resultCode;
-  String resultMsg;
+  String? resultStatus;
+  String? resultCode;
+  String? resultMsg;
 
   ResultInfo({this.resultStatus, this.resultCode, this.resultMsg});
 

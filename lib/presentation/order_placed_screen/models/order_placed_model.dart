@@ -1,7 +1,7 @@
 class OrderPlaced {
-  String status;
-  String message;
-  int data;
+  String? status;
+  String? message;
+  int? data;
 
   OrderPlaced({this.status, this.message, this.data});
 

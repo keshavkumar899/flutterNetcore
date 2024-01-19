@@ -87,7 +87,7 @@ class _ChangePasswordState extends State<ChangePassword> {
         // ));
       } else if (ChangePasswordModel.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg:ChangePasswordModel.fromJson(jsonObject).message,
+            msg:ChangePasswordModel.fromJson(jsonObject).message!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -175,8 +175,8 @@ class _ChangePasswordState extends State<ChangePassword> {
 
                           CustomButton(
                               onTap: (){
-                                FocusManager.instance.primaryFocus.unfocus();
-                                if (_formKey.currentState.validate()) {
+                                FocusManager.instance.primaryFocus!.unfocus();
+                                if (_formKey.currentState!.validate()) {
                                   postRequest();
                                   // print(field);
                                   // if(cred!.=='success'){

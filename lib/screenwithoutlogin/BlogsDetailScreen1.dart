@@ -34,7 +34,7 @@ class BlogsDetailScreen1 extends StatefulWidget {
 
 class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
 
-  Future<BlogsDetailModel> blogs;
+  Future<BlogsDetailModel>? blogs;
   List<BlogsDetailData> blogslist = [];
 
   Future<BlogsDetailModel> getBlogsList() async {
@@ -61,7 +61,7 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (BlogsDetailModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(BlogsDetailModel.fromJson(jsonObject).message),
+            content: Text(BlogsDetailModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -87,9 +87,9 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
   @override
   void initState() {
     blogs = getBlogsList();
-    blogs.then((value) {
+    blogs!.then((value) {
       setState(() {
-        blogslist = value.data;
+        blogslist = value.data!;
       });
     });
 
@@ -156,7 +156,7 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
         future: blogs,
         builder: (context,snapshot){
           if(snapshot.hasData){
-            if (snapshot.data.data.length == 0) {
+            if (!snapshot.hasData ) {
               return Center(
                   child: Padding(
                       padding: const EdgeInsets.only(left: 4.0),
@@ -201,7 +201,7 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
                               height: 28.h,
                               width: 100.w,
                               child: CachedNetworkImage(
-                                imageUrl: blogslist[index].image,
+                                imageUrl: blogslist[index].image!,
                                 imageBuilder: (context, imageProvider) => GestureDetector(
                                   onTap: (() {
                                     // print(newsList.image!);
@@ -245,7 +245,7 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
                                   child: Text(
                                     blogslist[index].name ?? '',
                                     maxLines: 1,
-                                    style: Theme.of(context).textTheme.subtitle1.copyWith(
+                                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 20.sp,
                                     ),

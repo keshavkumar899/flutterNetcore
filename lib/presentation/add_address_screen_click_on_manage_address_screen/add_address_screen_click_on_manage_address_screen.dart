@@ -33,7 +33,7 @@ class AddAddressScreenClickOnManageAddressScreen extends StatefulWidget {
 
 class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressScreenClickOnManageAddressScreen> {
 
-  Future<AddressList> manageAddress;
+  Future<AddressList>? manageAddress;
   List<AddressData> addresslist = [];
 
   Future<AddressList> getAddressList() async {
@@ -59,7 +59,7 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (AddressList.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(AddressList.fromJson(jsonObject).message),
+            content: Text(AddressList.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -84,9 +84,9 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
   @override
   void initState() {
     manageAddress = getAddressList();
-    manageAddress.then((value) {
+    manageAddress!.then((value) {
       setState(() {
-        addresslist = value.data;
+        addresslist = value.data!;
       });
     });
 
@@ -134,7 +134,7 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 25, right: 10, bottom: 0),
+                      getMargin(left: 20, top: 5, right: 10, bottom: 0),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
@@ -158,7 +158,7 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 27, right: 31),
+                      margin: getMargin(left: 14, top: 5, right: 31),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -189,9 +189,9 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
               onRefresh: () async{
                 setState(() {
                   manageAddress = getAddressList();
-                  manageAddress.then((value) {
+                  manageAddress!.then((value) {
                     setState(() {
-                      addresslist = value.data;
+                      addresslist = value.data!;
                     });
                   });
                 });
@@ -208,7 +208,7 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
                         future: manageAddress,
                         builder: (context, snapshot){
                           if(snapshot.hasData){
-                            if(snapshot.data.data.length==0){
+                            if(!snapshot.hasData){
                               return Center(
                                   child: Text('No data available.',
                                       style: TextStyle(

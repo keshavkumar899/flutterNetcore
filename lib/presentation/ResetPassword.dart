@@ -91,7 +91,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                             controller: emailController,
                             margin: getMargin(left: 27, top: 5, right: 26),
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please enter the email';
                               }
                               return null;

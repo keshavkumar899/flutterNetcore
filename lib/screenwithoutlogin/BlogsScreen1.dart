@@ -34,7 +34,7 @@ class BlogsScreen1 extends StatefulWidget {
 
 class _BlogsScreen1State extends State<BlogsScreen1> {
 
-  Future<BlogsModel> blogs;
+  Future<BlogsModel>? blogs;
   List<BlogsData> blogslist = [];
 
   Future<BlogsModel> getBlogsList() async {
@@ -60,7 +60,7 @@ class _BlogsScreen1State extends State<BlogsScreen1> {
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (BlogsModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(BlogsModel.fromJson(jsonObject).message),
+            content: Text(BlogsModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -86,9 +86,9 @@ class _BlogsScreen1State extends State<BlogsScreen1> {
   @override
   void initState() {
     blogs = getBlogsList();
-    blogs.then((value) {
+    blogs!.then((value) {
       setState(() {
-        blogslist = value.data;
+        blogslist = value.data!;
       });
     });
 
@@ -125,7 +125,7 @@ class _BlogsScreen1State extends State<BlogsScreen1> {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       DateFormat dateFormat = DateFormat('dd-MM-yyyy');
-                      if (snapshot.data.data.length == 0) {
+                      if (!snapshot.hasData) {
                         return Center(
                             child: Padding(
                                 padding: const EdgeInsets.only(left: 4.0),
@@ -168,7 +168,7 @@ class _BlogsScreen1State extends State<BlogsScreen1> {
                                     MaterialPageRoute(
                                         builder: (context) =>
                                             BlogsDetailScreen1(
-                                              data.id
+                                              data.id!
                                             )));
                               },
                               child: Container(
@@ -190,7 +190,7 @@ class _BlogsScreen1State extends State<BlogsScreen1> {
                                           height: 16.h,
                                           width: 90.w,
                                           child: Image.network(
-                                              data.image,
+                                              data.image!,
                                               fit: BoxFit.cover,
                                               width: 100.w,
                                               // alignment: Alignment(1.2, 1.2),
@@ -306,7 +306,7 @@ class _BlogsScreen1State extends State<BlogsScreen1> {
   static String parseHtmlString(String htmlString) {
     final document = parse(htmlString);
     final String parsedString =
-        parse(document.body.text).documentElement.text;
+        parse(document.body!.text).documentElement!.text;
 
     return parsedString;
   }

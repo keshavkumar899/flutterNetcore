@@ -8,27 +8,27 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomImageView extends StatelessWidget {
   ///[url] is required parameter for fetching network image
-  String url;
+  String? url;
 
   ///[imagePath] is required parameter for showing png,jpg,etc image
-  String imagePath;
+  String? imagePath;
 
   ///[svgPath] is required parameter for showing svg image
-  String svgPath;
+  String? svgPath;
 
   ///[file] is required parameter for fetching image file
-  File file;
+  File? file;
 
-  double height;
-  double width;
-  Color color;
-  BoxFit fit;
-  final String placeHolder;
-  Alignment alignment;
-  VoidCallback onTap;
-  EdgeInsetsGeometry margin;
-  BorderRadius radius;
-  BoxBorder border;
+  double? height;
+  double? width;
+  Color ?color;
+  BoxFit? fit;
+  final String? placeHolder;
+  Alignment? alignment;
+  VoidCallback? onTap;
+  EdgeInsetsGeometry? margin;
+  BorderRadius? radius;
+  BoxBorder? border;
 
   ///a [CustomImageView] it can be used for showing any type of images
   /// it will shows the placeholder image if image is not found on network image
@@ -53,7 +53,7 @@ class CustomImageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return alignment != null
         ? Align(
-            alignment: alignment,
+            alignment: alignment!,
             child: _buildWidget(),
           )
         : _buildWidget();
@@ -73,7 +73,7 @@ class CustomImageView extends StatelessWidget {
   _buildCircleImage() {
     if (radius != null) {
       return ClipRRect(
-        borderRadius: radius,
+        borderRadius: radius!,
         child: _buildImageWithBorder(),
       );
     } else {
@@ -97,32 +97,32 @@ class CustomImageView extends StatelessWidget {
   }
 
   Widget _buildImageView() {
-    if (svgPath != null && svgPath.isNotEmpty) {
+    if (svgPath != null && svgPath!.isNotEmpty) {
       return Container(
         height: height,
         width: width,
         child: SvgPicture.asset(
-          svgPath,
+          svgPath!,
           height: height,
           width: width,
           fit: fit ?? BoxFit.contain,
           color: color,
         ),
       );
-    } else if (file != null && file.path.isNotEmpty) {
+    } else if (file != null && file!.path.isNotEmpty) {
       return Image.file(
-        file,
+        file!,
         height: height,
         width: width,
         fit: fit ?? BoxFit.cover,
         color: color,
       );
-    } else if (url != null && url.isNotEmpty) {
+    } else if (url != null && url!.isNotEmpty) {
       return CachedNetworkImage(
         height: height,
         width: width,
         fit: fit,
-        imageUrl: url,
+        imageUrl: url!,
         color: color,
         placeholder: (context, url) => Container(
           height: 30,
@@ -133,15 +133,15 @@ class CustomImageView extends StatelessWidget {
           ),
         ),
         errorWidget: (context, url, error) => Image.asset(
-          placeHolder,
+          placeHolder!,
           height: height,
           width: width,
           fit: fit ?? BoxFit.cover,
         ),
       );
-    } else if (imagePath != null && imagePath.isNotEmpty) {
+    } else if (imagePath != null && imagePath!.isNotEmpty) {
       return Image.asset(
-        imagePath,
+        imagePath!,
         height: height,
         width: width,
         fit: fit ?? BoxFit.cover,

@@ -1,7 +1,7 @@
 class OffersModel {
-  String status;
-  String message;
-  List<OffersData> data;
+  String? status;
+  String? message;
+  List<OffersData>? data;
 
   OffersModel({this.status, this.message, this.data});
 
@@ -11,7 +11,7 @@ class OffersModel {
     if (json['data'] != null) {
       data = <OffersData>[];
       json['data'].forEach((v) {
-        data.add(new OffersData.fromJson(v));
+        data!.add(new OffersData.fromJson(v));
       });
     }
   }
@@ -21,30 +21,30 @@ class OffersModel {
     data['status'] = this.status;
     data['message'] = this.message;
     if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class OffersData {
-  String id;
-  String keywordsId;
-  String title;
-  String image;
-  String description;
-  String promoCode;
-  String coupanType;
-  String type;
-  String amount;
-  String minCart;
-  String startDate;
-  String endDate;
-  String status;
-  String metaTitle;
-  String metaDescription;
-  String createdAt;
-  String isDelete;
+  String? id;
+  String? keywordsId;
+  String? title;
+  String? image;
+  String? description;
+  String? promoCode;
+  String? coupanType;
+  String? type;
+  String? amount;
+  String? minCart;
+  String? startDate;
+  String? endDate;
+  String? status;
+  String? metaTitle;
+  String? metaDescription;
+  String? createdAt;
+  String? isDelete;
 
   OffersData(
       {this.id,

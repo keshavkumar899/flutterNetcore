@@ -24,45 +24,44 @@ class CustomTextFormField extends StatelessWidget {
       this.suffixConstraints,
       this.validator});
 
-  TextFormFieldPadding padding;
+  TextFormFieldPadding? padding;
 
-  TextFormFieldShape shape;
+  TextFormFieldShape? shape;
 
-  TextFormFieldVariant variant;
+  TextFormFieldVariant? variant;
 
-  TextFormFieldFontStyle fontStyle;
+  TextFormFieldFontStyle? fontStyle;
 
-  Alignment alignment;
+  Alignment? alignment;
 
-  double width;
+  double? width;
 
-  EdgeInsetsGeometry margin;
+  EdgeInsetsGeometry? margin;
 
-  TextEditingController controller;
+  TextEditingController? controller;
 
-  FocusNode focusNode;
+  FocusNode? focusNode;
 
-  bool isObscureText;
+  bool? isObscureText;
 
-  TextInputAction textInputAction;
+  TextInputAction? textInputAction;
 
-  TextInputType textInputType;
+  TextInputType? textInputType;
 
-  int maxLines;
+  int? maxLines;
 
-  int maxLength;
+  int? maxLength;
 
-  String hintText;
+  String? hintText;
 
-  Widget prefix;
+  Widget? prefix;
 
-  BoxConstraints prefixConstraints;
+  BoxConstraints? prefixConstraints;
 
-  Widget suffix;
+  Widget? suffix;
 
-  BoxConstraints suffixConstraints;
-
-  FormFieldValidator<String> validator;
+  BoxConstraints? suffixConstraints;
+  FormFieldValidator<String> ?validator;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +81,7 @@ class CustomTextFormField extends StatelessWidget {
         controller: controller,
         focusNode: focusNode,
         style: _setFontStyle(),
-        obscureText: isObscureText,
+        obscureText: isObscureText!,
         textInputAction: textInputAction,
         keyboardType: textInputType,
         maxLines: maxLines ?? 1,

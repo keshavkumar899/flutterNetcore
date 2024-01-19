@@ -38,13 +38,13 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController pincodeController =TextEditingController();
 
-  Future<carts.CartModel> mycart;
+  Future<carts.CartModel>? mycart;
   List<carts.CartData> cartlist = [];
-  int count;
-  int total;
+  int? count;
+  int? total;
   List<carts.ProductDetails> cart = [];
-  Razorpay _razorpay;
-  Future<AddressList> manageAddress;
+  Razorpay? _razorpay;
+  Future<AddressList>? manageAddress;
   List<AddressData> addresslist = [];
 
   Future<AddressList> getAddressList() async {
@@ -70,7 +70,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (AddressList.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(AddressList.fromJson(jsonObject).message),
+            content: Text(AddressList.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -120,7 +120,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (carts.CartModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(carts.CartModel.fromJson(jsonObject).message),
+            content: Text(carts.CartModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -145,9 +145,9 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
   @override
   void initState() {
     mycart = getCartList();
-    mycart.then((value) {
+    mycart!.then((value) {
       setState(() {
-        cartlist = value.data;
+        cartlist = value.data!;
         count=value.count;
         total=value.total;
 
@@ -159,9 +159,9 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
       });
     });
     _razorpay = Razorpay();
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    _razorpay!.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay!.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay!.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
 
     // manageAddress = getAddressList();
     // for(int i)
@@ -177,9 +177,9 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
   String item2="";
   String item3="";
   String item4="";
-  String product_id;
-  String discount_price;
-  String mrp_price;
+  String? product_id;
+  String? discount_price;
+  String? mrp_price;
 
   @override
   Widget build(BuildContext context) {
@@ -237,9 +237,9 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
             color: Colors.purple,
             onRefresh: ()async{
               mycart = getCartList();
-              mycart.then((value) {
+              mycart!.then((value) {
                 setState(() {
-                  cartlist = value.data;
+                  cartlist = value.data!;
                   count=value.count;
                   total=value.total;
                 });
@@ -341,7 +341,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
                                         ])),
                                 Padding(
                                     padding: getPadding(left: 15, top: 6),
-                                    child: Text(item2.capitalizeFirst,
+                                    child: Text(item2!.capitalizeFirst!,
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle.txtRobotoMedium14)),
@@ -358,7 +358,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
                                         top: 3,
                                         right: 81,
                                         bottom: 15),
-                                    child: Text(item3.capitalizeFirst,
+                                    child: Text(item3.capitalizeFirst!,
                                         maxLines: null,
                                         textAlign: TextAlign.left,
                                         style: AppStyle.txtRobotoRegular12))
@@ -456,7 +456,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
                               future:mycart,
                               builder: (context, snapshot){
                                 if(snapshot.hasData){
-                                  if(snapshot.data.data.length==0){
+                                  if(!snapshot.hasData){
                                     return Center(
                                         child: Text('No data available.',
                                             style: TextStyle(
@@ -516,7 +516,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
                                               itemCount: cartlist.length,
                                               itemBuilder: (context, index) {
                                                 product_id=cartlist[index].productId;
-                                                carts.ProductDetails product=cartlist[index].productDetails;
+                                                carts.ProductDetails product=cartlist[index].productDetails!;
                                                 discount_price=product.discountPrice;
                                                 mrp_price=product.mrpPrice;
                                                 return Column(
@@ -545,7 +545,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
                                                               Padding(
                                                                 padding: const EdgeInsets.only(top: 18.0),
                                                                 child: CustomImageView(
-                                                                    url:product.image,
+                                                                    url:product.image!,
                                                                     // imagePath:
                                                                     // ImageConstant
                                                                     //     .imgImage17,
@@ -572,7 +572,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
                                                                           children: [
                                                                             SizedBox(width: 60.w,),
                                                                             Text(
-                                                                                "Qty: "+cartlist[index].qty,
+                                                                                "Qty: "+cartlist[index].qty!,
                                                                                 overflow:
                                                                                 TextOverflow
                                                                                     .ellipsis,
@@ -586,7 +586,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
                                                                         Container(
                                                                           width:250,
                                                                           child: Text(
-                                                                              product.name,
+                                                                              product.name!,
                                                                               overflow:
                                                                               TextOverflow
                                                                                   .ellipsis,
@@ -599,7 +599,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
                                                                         SizedBox(width: 10.w,),
                                                                         SizedBox(height: 0.5.h,),
                                                                         Text(
-                                                                            product.categoryName+" by "+product.brandName,
+                                                                            product.categoryName!+" by "+product.brandName!,
                                                                             overflow:
                                                                             TextOverflow
                                                                                 .ellipsis,
@@ -616,7 +616,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
                                                                           child: FittedBox(
                                                                             fit:BoxFit.fill,
                                                                             child: Text(
-                                                                                product.description,
+                                                                                product.description!,
                                                                                 overflow:
                                                                                 TextOverflow
                                                                                     .ellipsis,
@@ -643,7 +643,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
                                                                                       margin: getMargin(bottom: 3)),
                                                                                   Padding(
                                                                                       padding: getPadding(left: 2),
-                                                                                      child: Text(product.salePrice, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium14Purple900)),
+                                                                                      child: Text(product.salePrice!, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium14Purple900)),
                                                                                   CustomImageView(
                                                                                       svgPath: ImageConstant.imgCall,
                                                                                       height: getVerticalSize(11),
@@ -654,7 +654,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
                                                                                       width: getHorizontalSize(37),
                                                                                       margin: getMargin(left: 3, top: 2),
                                                                                       child: Stack(alignment: Alignment.topCenter, children: [
-                                                                                        Align(alignment: Alignment.center, child: Text(product.mrpPrice, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium12Gray500)),
+                                                                                        Align(alignment: Alignment.center, child: Text(product.mrpPrice!, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium12Gray500)),
                                                                                         Align(alignment: Alignment.topCenter, child: Padding(padding: getPadding(top: 6), child: SizedBox(width: getHorizontalSize(37), child: Divider(height: getVerticalSize(1), thickness: getVerticalSize(1), color: ColorConstant.gray500))))
                                                                                       ]))
                                                                                 ])),
@@ -979,7 +979,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
               }else{
                 //_startPayment();
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => PaymentMethodScreen(count.toString(),total.toString(),item1,item2,item3,product_id,widget.data.id,discount_price,mrp_price,widget.data),
+                  builder: (context) => PaymentMethodScreen(count.toString(),total.toString(),item1,item2,item3,product_id!,widget.data.id!,discount_price!,mrp_price!,widget.data),
                 ));
               }
             },
@@ -1005,7 +1005,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
         ));
   }
   void _startPayment() {
-    int amountInPaise = (total * 100).toInt();
+    int amountInPaise = (total! * 100).toInt();
     var options = {
       'key': 'rzp_test_pKH5rt8ScPh9Qo',
       'amount': amountInPaise, // amount in paise (example: 10000 paise = ₹100)
@@ -1018,7 +1018,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
     };
 
     try {
-      _razorpay.open(options);
+      _razorpay!.open(options);
     } catch (e) {
       debugPrint('Error: ${e.toString()}');
     }

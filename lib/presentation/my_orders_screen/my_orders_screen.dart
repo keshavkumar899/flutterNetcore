@@ -29,7 +29,7 @@ class MyOrdersScreen extends StatefulWidget {
 
 class _MyOrdersScreenState extends State<MyOrdersScreen> {
 
-  Future<orders.MyOrdersModel> myorders;
+  Future<orders.MyOrdersModel>? myorders;
   List<orders.OrdersData> orderslist = [];
   List<orders.Products> products = [];
 
@@ -60,7 +60,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (orders.MyOrdersModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(orders.MyOrdersModel.fromJson(jsonObject).message),
+            content: Text(orders.MyOrdersModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -85,9 +85,9 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
   @override
   void initState() {
     myorders = getOrdersList();
-    myorders.then((value) {
+    myorders!.then((value) {
       setState(() {
-        orderslist = value.data;
+        orderslist = value.data!;
         // products=value.data;
         // recentuserslist = value.recentusers;
         // onetoonelist = value.onetoonemeeting;
@@ -192,7 +192,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                       builder: (context, snapshot){
 
                         if(snapshot.hasData){
-                          if(snapshot.data.data.length==0){
+                          if(!snapshot.hasData){
                             return Center(
                                 child: Text('No data available.',
                                     style: TextStyle(
@@ -239,7 +239,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                     padding:
                                                     getPadding(left: 8, top: 4),
                                                     child: Text(
-                                                        orderslist[index].status.capitalizeFirst,
+                                                        orderslist[index].status!.capitalizeFirst!,
                                                         overflow: TextOverflow.ellipsis,
                                                         textAlign: TextAlign.left,
                                                         style: AppStyle
@@ -252,7 +252,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                               Padding(
                                                   padding: getPadding(left: 26, top: 7),
                                                   child: Text(
-                                                      "Order ID: "+orderslist[index].orderNumber,
+                                                      "Order ID: "+orderslist[index].orderNumber!,
                                                       overflow: TextOverflow.ellipsis,
                                                       textAlign: TextAlign.left,
                                                       style: AppStyle.txtRobotoMedium14
@@ -262,7 +262,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                               0.7)))),
                                               Padding(
                                                   padding: getPadding(left: 26, top: 7),
-                                                  child: Text(_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),
+                                                  child: Text(_dateFormat.format(DateTime.parse(orderslist[index].orderDate!)),
                                                       overflow: TextOverflow.ellipsis,
                                                       textAlign: TextAlign.left,
                                                       style: AppStyle
@@ -271,7 +271,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                           letterSpacing:
                                                           getHorizontalSize(
                                                               0.7)))),
-                                              orderslist[index].products.isNotEmpty?Padding(
+                                              orderslist[index].products!.isNotEmpty?Padding(
                                                 padding: const EdgeInsets.fromLTRB(
                                                     10.0, 0, 10, 0),
                                                 child: Divider(
@@ -304,7 +304,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                               //     alignment:
                                               //         Alignment
                                               //             .center),
-                                              orderslist[index].products.isNotEmpty?Align(
+                                              orderslist[index].products!.isNotEmpty?Align(
                                                   alignment: Alignment.center,
                                                   child: Padding(
                                                       padding: getPadding(
@@ -321,11 +321,11 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                             CustomImageView(
                                                                 onTap: (){
                                                                   Navigator.of(context).push(MaterialPageRoute(
-                                                                    builder: (context) => OrderDetailScreen(widget.data,orderslist[index].products[0].productDetails, orderslist[index].products[0],orderslist[index].status.capitalizeFirst,orderslist[index].orderNumber,_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),orderslist[index].total,orderslist[index]),
+                                                                    builder: (context) => OrderDetailScreen(widget.data,orderslist[index].products![0].productDetails!, orderslist[index].products![0],orderslist[index].status!.capitalizeFirst!,orderslist[index].orderNumber!,_dateFormat.format(DateTime.parse(orderslist[index].orderDate!)),orderslist[index].total!,orderslist[index]),
                                                                   ));
                                                                   // Get.toNamed(AppRoutes.orderDetailScreen);
                                                                 },
-                                                                url:orderslist[index].products[0].image,
+                                                                url:orderslist[index].products![0].image!,
                                                                 // imagePath: ImageConstant
                                                                 //     .imgImage17,
                                                                 height: getSize(82),
@@ -338,7 +338,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                                 InkWell(
                                                                   onTap:(){
                                                                     Navigator.of(context).push(MaterialPageRoute(
-                                                                      builder: (context) => OrderDetailScreen(widget.data,orderslist[index].products[0].productDetails, orderslist[index].products[0],orderslist[index].status.capitalizeFirst,orderslist[index].orderNumber,_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),orderslist[index].total,orderslist[index]),
+                                                                      builder: (context) => OrderDetailScreen(widget.data,orderslist[index].products![0].productDetails!, orderslist[index].products![0],orderslist[index].status!.capitalizeFirst!,orderslist[index].orderNumber!,_dateFormat.format(DateTime.parse(orderslist[index].orderDate!)),orderslist[index].total!,orderslist[index]),
                                                                     ));
                                                                     // Get.toNamed(AppRoutes.orderDetailScreen);
                                                                   },
@@ -348,7 +348,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                                           top: 2,
                                                                           bottom: 0),
                                                                       child: Text(
-                                                                          'SKU ID : '+orderslist[index].products[0].code,
+                                                                          'SKU ID : '+orderslist[index].products![0].code!,
                                                                           overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
@@ -361,7 +361,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                                 InkWell(
                                                                   onTap:(){
                                                                     Navigator.of(context).push(MaterialPageRoute(
-                                                                      builder: (context) => OrderDetailScreen(widget.data,orderslist[index].products[0].productDetails, orderslist[index].products[0],orderslist[index].status.capitalizeFirst,orderslist[index].orderNumber,_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),orderslist[index].total,orderslist[index]),
+                                                                      builder: (context) => OrderDetailScreen(widget.data,orderslist[index].products![0].productDetails!, orderslist[index].products![0],orderslist[index].status!.capitalizeFirst!,orderslist[index].orderNumber!,_dateFormat.format(DateTime.parse(orderslist[index].orderDate!)),orderslist[index].total!,orderslist[index]),
                                                                     ));
                                                                   },
                                                                   child: Container(
@@ -371,7 +371,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                                         top: 11,
                                                                         bottom: 0),
                                                                     child: Text(
-                                                                      orderslist[index].products[0].name,
+                                                                      orderslist[index].products![0].name!,
                                                                       overflow:TextOverflow.ellipsis,
                                                                       maxLines:2,
                                                                       style: TextStyle(
@@ -409,7 +409,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                             CustomImageView(
                                                                 onTap: (){
                                                                   Navigator.of(context).push(MaterialPageRoute(
-                                                                    builder: (context) => OrderDetailScreen(widget.data,orderslist[index].products[0].productDetails, orderslist[index].products[0],orderslist[index].status.capitalizeFirst,orderslist[index].orderNumber,_dateFormat.format(DateTime.parse(orderslist[index].orderDate)),orderslist[index].total,orderslist[index]),
+                                                                    builder: (context) => OrderDetailScreen(widget.data,orderslist[index].products![0].productDetails!, orderslist[index].products![0],orderslist[index].status!.capitalizeFirst!,orderslist[index].orderNumber!,_dateFormat.format(DateTime.parse(orderslist[index].orderDate!)),orderslist[index].total!,orderslist[index]),
                                                                   ));
                                                                   // Get.toNamed(AppRoutes.orderDetailScreen);
                                                                 },

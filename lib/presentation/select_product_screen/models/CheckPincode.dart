@@ -1,7 +1,7 @@
 class CheckPincode {
-  String status;
-  String message;
-  String data;
+  String? status;
+  String? message;
+  String? data;
 
   CheckPincode({this.status, this.message, this.data});
 

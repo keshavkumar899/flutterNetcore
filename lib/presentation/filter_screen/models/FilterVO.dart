@@ -1,7 +1,7 @@
 class FilterVO {
-  String status;
-  String message;
-  Data data;
+  String? status;
+  String? message;
+  Data? data;
 
   FilterVO({this.status, this.message, this.data});
 
@@ -16,17 +16,17 @@ class FilterVO {
     data['status'] = this.status;
     data['message'] = this.message;
     if (this.data != null) {
-      data['data'] = this.data.toJson();
+      data['data'] = this.data!.toJson();
     }
     return data;
   }
 }
 
 class Data {
-  List<Category> category;
-  List<SubCategorys> subCategory;
-  List<Keywords> keywords;
-  List<Brands> brands;
+  List<Category>? category;
+  List<SubCategorys>? subCategory;
+  List<Keywords>? keywords;
+  List<Brands>? brands;
 
   Data({this.category, this.subCategory, this.keywords, this.brands});
 
@@ -34,25 +34,25 @@ class Data {
     if (json['category'] != null) {
       category = <Category>[];
       json['category'].forEach((v) {
-        category.add(new Category.fromJson(v));
+        category!.add(new Category.fromJson(v));
       });
     }
     if (json['sub_category'] != null) {
       subCategory = <SubCategorys>[];
       json['sub_category'].forEach((v) {
-        subCategory.add(new SubCategorys.fromJson(v));
+        subCategory!.add(new SubCategorys.fromJson(v));
       });
     }
     if (json['keywords'] != null) {
       keywords = <Keywords>[];
       json['keywords'].forEach((v) {
-        keywords.add(new Keywords.fromJson(v));
+        keywords!.add(new Keywords.fromJson(v));
       });
     }
     if (json['brands'] != null) {
       brands = <Brands>[];
       json['brands'].forEach((v) {
-        brands.add(new Brands.fromJson(v));
+        brands!.add(new Brands.fromJson(v));
       });
     }
   }
@@ -60,32 +60,32 @@ class Data {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.category != null) {
-      data['category'] = this.category.map((v) => v.toJson()).toList();
+      data['category'] = this.category!.map((v) => v.toJson()).toList();
     }
     if (this.subCategory != null) {
-      data['sub_category'] = this.subCategory.map((v) => v.toJson()).toList();
+      data['sub_category'] = this.subCategory!.map((v) => v.toJson()).toList();
     }
     if (this.keywords != null) {
-      data['keywords'] = this.keywords.map((v) => v.toJson()).toList();
+      data['keywords'] = this.keywords!.map((v) => v.toJson()).toList();
     }
     if (this.brands != null) {
-      data['brands'] = this.brands.map((v) => v.toJson()).toList();
+      data['brands'] = this.brands!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 class Category {
-  String id;
-  String parentId;
-  String name;
-  String image;
-  String banner;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
-  String updateOn;
+  String? id;
+  String? parentId;
+  String? name;
+  String? image;
+  String? banner;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
 
   Category(
       {this.id,
@@ -131,17 +131,17 @@ class Category {
   }
 }
 class SubCategorys {
-  String id;
-  String parentId;
-  String name;
-  String image;
-  String banner;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
-  String updateOn;
+  String? id;
+  String? parentId;
+  String? name;
+  String? image;
+  String? banner;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
 
   SubCategorys(
       {this.id,
@@ -188,13 +188,13 @@ class SubCategorys {
 }
 
 class Keywords {
-  String id;
-  String name;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
+  String? id;
+  String? name;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? isDelete;
+  String? createOn;
   var updateOn;
 
   Keywords(
@@ -233,15 +233,15 @@ class Keywords {
 }
 
 class Brands {
-  String id;
-  String name;
-  String image;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
-  String updateOn;
+  String? id;
+  String? name;
+  String? image;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
 
   Brands(
       {this.id,

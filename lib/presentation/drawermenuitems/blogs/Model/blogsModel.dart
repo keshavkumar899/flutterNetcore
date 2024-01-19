@@ -1,7 +1,7 @@
 class BlogsModel {
-  String status;
-  String message;
-  List<BlogsData> data;
+  String? status;
+  String? message;
+  List<BlogsData>? data;
 
   BlogsModel({this.status, this.message, this.data});
 
@@ -11,7 +11,7 @@ class BlogsModel {
     if (json['data'] != null) {
       data = <BlogsData>[];
       json['data'].forEach((v) {
-        data.add(new BlogsData.fromJson(v));
+        data!.add(new BlogsData.fromJson(v));
       });
     }
   }
@@ -21,23 +21,23 @@ class BlogsModel {
     data['status'] = this.status;
     data['message'] = this.message;
     if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class BlogsData {
-  String id;
-  String name;
-  String image;
-  String description;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String isDelete;
-  String createOn;
-  String updateOn;
+  String? id;
+  String? name;
+  String? image;
+  String? description;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
 
   BlogsData(
       {this.id,

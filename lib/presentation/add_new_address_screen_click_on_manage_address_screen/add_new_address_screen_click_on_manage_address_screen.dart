@@ -6,7 +6,7 @@ import 'package:country_pickers/country_pickers.dart';
 import 'package:country_pickers/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:grouped_buttons/grouped_buttons.dart';
+import 'package:grouped_buttons_ns/grouped_buttons_ns.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
 import 'package:keshav_s_application2/core/utils/utils.dart';
 import 'package:keshav_s_application2/presentation/add_address_screen/add_address_screen.dart';
@@ -74,8 +74,8 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
 
   bool isCheckbox1 = false;
 
-  int check1;
-  int check2;
+  int? check1;
+  int? check2;
   String selected = "";
   List<String> _checked = [];
 
@@ -132,7 +132,7 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
         // ));
       } else if (AddressUpdate.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(AddressUpdate.fromJson(jsonObject).message),
+            content: Text(AddressUpdate.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
         // setState(() {
         //   _btnController.error();
@@ -174,11 +174,11 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
 
   @override
   Widget build(BuildContext context) {
-     fullnameoneController.text=widget.addressdata.name.capitalizeFirst;
-     flatnumberController.text=widget.addressdata.addressOne.capitalizeFirst;
-     pincodeController.text=widget.addressdata.pincode;
-     cityController.text=widget.addressdata.city.capitalizeFirst;
-     stateController.text=widget.addressdata.state.capitalizeFirst;
+     fullnameoneController.text=widget.addressdata.name!.capitalizeFirst!;
+     flatnumberController.text=widget.addressdata.addressOne!.capitalizeFirst!;
+     pincodeController.text=widget.addressdata.pincode!;
+     cityController.text=widget.addressdata.city!.capitalizeFirst!;
+     stateController.text=widget.addressdata.state!.capitalizeFirst!;
 
     return SafeArea(
         child: Scaffold(
@@ -330,10 +330,10 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                         CustomTextFormField(
                             focusNode: FocusNode(),
                             controller: fullnameoneController,
-                            hintText: widget.addressdata.name.capitalizeFirst,
+                            hintText: widget.addressdata.name!.capitalizeFirst!,
                             margin: getMargin(left: 4, top: 5, right: 26),
                           validator: (value) {
-                            if (value.isEmpty) {
+                            if (value!.isEmpty) {
                               return 'Please enter name';
                             }
                             return null;
@@ -350,10 +350,10 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                         CustomTextFormField(
                             focusNode: FocusNode(),
                             controller: flatnumberController,
-                            hintText: widget.addressdata.addressOne.capitalizeFirst,
+                            hintText: widget.addressdata.addressOne!.capitalizeFirst!,
                             margin: getMargin(left: 4, top: 5, right: 26),
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please enter the address';
                               }
                               return null;
@@ -412,13 +412,13 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                         CustomTextFormField(
                             focusNode: FocusNode(),
                             controller: pincodeController,
-                            hintText: widget.addressdata.pincode,
+                            hintText: widget.addressdata!.pincode!,
                             maxLength: 6,
                             margin: getMargin(left: 4, top: 6, right: 26),
                             textInputAction: TextInputAction.done,
                             textInputType: TextInputType.number,
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please enter the pincode';
                               }
                               return null;
@@ -435,12 +435,12 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                         CustomTextFormField(
                             focusNode: FocusNode(),
                             controller: cityController,
-                            hintText: widget.addressdata.city.capitalizeFirst,
+                            hintText: widget.addressdata.city!.capitalizeFirst!,
                             margin: getMargin(left: 4, top: 6, right: 26),
                             textInputAction: TextInputAction.done,
                             textInputType: TextInputType.emailAddress,
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please enter the city';
                               }
                               return null;
@@ -457,12 +457,12 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                         CustomTextFormField(
                             focusNode: FocusNode(),
                             controller: stateController,
-                            hintText: widget.addressdata.state.capitalizeFirst,
+                            hintText: widget.addressdata.state!.capitalizeFirst!,
                             margin: getMargin(left: 4, top: 6, right: 26),
                             textInputAction: TextInputAction.done,
                             textInputType: TextInputType.emailAddress,
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please enter the state';
                               }
                               return null;
@@ -734,7 +734,7 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                                           } else {
                                             print("only one");
                                           }
-                                          _checked = selected;
+                                          _checked = selected as List<String>;
                                         }),
                                   ),
                                   // Container(
@@ -984,8 +984,8 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                                       padding: ButtonPadding.PaddingAll9,
                                       fontStyle: ButtonFontStyle.RobotoMedium14,
                                       onTap: () {
-                                        FocusManager.instance.primaryFocus.unfocus();
-                                        if (_formKey.currentState.validate()) {
+                                        FocusManager.instance.primaryFocus!.unfocus();
+                                        if (_formKey.currentState!.validate()) {
                                           postRequest();
                                           Timer(Duration(seconds: 3), () {
                                             flatnumberController.clear();

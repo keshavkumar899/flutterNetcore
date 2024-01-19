@@ -87,7 +87,7 @@ class _ResetPasswordAfterLoginState extends State<ResetPasswordAfterLogin> {
         // ));
       } else if (ResetPasswordModel.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg:ResetPasswordModel.fromJson(jsonObject).message,
+            msg:ResetPasswordModel.fromJson(jsonObject).message!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -155,7 +155,7 @@ class _ResetPasswordAfterLoginState extends State<ResetPasswordAfterLogin> {
                               controller: emailController,
                               margin: getMargin(left: 27, top: 5, right: 26),
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please enter the email';
                               }
                               return null;
@@ -167,8 +167,8 @@ class _ResetPasswordAfterLoginState extends State<ResetPasswordAfterLogin> {
 
                           CustomButton(
                               onTap: (){
-                                FocusManager.instance.primaryFocus.unfocus();
-                                if (_formKey.currentState.validate()) {
+                                FocusManager.instance.primaryFocus!.unfocus();
+                                if (_formKey.currentState!.validate()) {
                                   postRequest();
                                   // print(field);
                                   // if(cred!.=='success'){

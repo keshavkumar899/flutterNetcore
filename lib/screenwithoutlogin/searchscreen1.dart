@@ -31,7 +31,7 @@ class SearchScreen1 extends StatefulWidget {
 TextEditingController searchController = TextEditingController();
 
 class _SearchScreen1State extends State<SearchScreen1> {
-  Future<products.ProductList> product;
+  Future<products.ProductList> ?product;
   List<products.ProductListData> productlist = [];
   var sortBy = '';
 
@@ -186,7 +186,7 @@ class _SearchScreen1State extends State<SearchScreen1> {
                                                       children: [
                                                         CustomImageView(
                                                             url: productlist[index]
-                                                                .image,
+                                                                .image!,
                                                             height: getVerticalSize(
                                                                 206),
                                                             width: getHorizontalSize(
@@ -199,7 +199,7 @@ class _SearchScreen1State extends State<SearchScreen1> {
                                                               Navigator.of(context)
                                                                   .push(MaterialPageRoute(
                                                                 builder: (context) =>
-                                                                    ProductDetailScreen1( productlist[index].id),
+                                                                    ProductDetailScreen1( productlist[index].id!),
                                                               ));
                                                             }),
                                                         Align(
@@ -234,7 +234,7 @@ class _SearchScreen1State extends State<SearchScreen1> {
                                                                 3),
                                                             child: Text(
                                                                 productlist[index]
-                                                                    .name,
+                                                                    .name!,
                                                                 overflow:
                                                                 TextOverflow.ellipsis,
                                                                 textAlign: TextAlign.left,
@@ -263,7 +263,7 @@ class _SearchScreen1State extends State<SearchScreen1> {
                                                                 4),
                                                             child: Text(
                                                                 productlist[index]
-                                                                    .salePrice,
+                                                                    .salePrice!,
                                                                 overflow:
                                                                 TextOverflow.ellipsis,
                                                                 textAlign: TextAlign.left,
@@ -281,10 +281,10 @@ class _SearchScreen1State extends State<SearchScreen1> {
                                                           .center,
                                                       children: [
                                                         Text(
-                                                            productlist[index].categoryName +
+                                                            productlist[index].categoryName! +
                                                                 " by " +
                                                                 productlist[index]
-                                                                    .brandName,
+                                                                    .brandName!,
                                                             overflow:
                                                             TextOverflow
                                                                 .ellipsis,
@@ -320,7 +320,7 @@ class _SearchScreen1State extends State<SearchScreen1> {
                                                                 alignment:
                                                                 Alignment.center,
                                                                 children: [
-                                                                  Align(alignment: Alignment.center, child: Text(productlist[index].mrpPrice, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium10Gray500)),
+                                                                  Align(alignment: Alignment.center, child: Text(productlist[index].mrpPrice!, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium10Gray500)),
                                                                   Align(alignment: Alignment.center, child: SizedBox(width: getHorizontalSize(32), child: Divider(height: getVerticalSize(1), thickness: getVerticalSize(1), color: ColorConstant.gray500)))
                                                                 ]))
                                                       ])),
@@ -973,9 +973,9 @@ class _SearchScreen1State extends State<SearchScreen1> {
     closeKeyboard();
     productlist.clear();
     product = getProduct();
-    product.then((value) {
+    product!.then((value) {
       setState(() {
-        productlist = value.data;
+        productlist = value.data!;
       });
     });
   }
@@ -1169,8 +1169,8 @@ class _SearchScreen1State extends State<SearchScreen1> {
             margin: EdgeInsets.only(bottom: 5.0),
             dismissDirection: DismissDirection.none,
             content: Text(products.ProductList.fromJson(jsonObject)
-                .message
-                .capitalizeFirst),
+                .message!
+                .capitalizeFirst!),
             backgroundColor: Colors.redAccent));
         Timer(Duration(seconds: 2), () {
           Navigator.of(context).pop();

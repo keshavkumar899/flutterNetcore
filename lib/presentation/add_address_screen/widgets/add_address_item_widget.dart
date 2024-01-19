@@ -9,7 +9,7 @@ class AddAddressItemWidget extends StatelessWidget {
 
   bool isCheckbox = false;
 
-  VoidCallback onTapStackedit;
+  VoidCallback? onTapStackedit;
 
   @override
   Widget build(BuildContext context) {

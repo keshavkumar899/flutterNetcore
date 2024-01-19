@@ -90,13 +90,13 @@ class _LogInScreenState extends State<LogInScreen> {
         // Map json1 = jsonDecode(pref.getString('userData'));
         // var user1 = LoginData.fromJson(json1);
         // print(user1.data);
-        print(LogInModel.fromJson(jsonObject).data.otps);
+        print(LogInModel.fromJson(jsonObject).data!.otps!);
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => OtpScreen(mobileNumber,LogInModel.fromJson(jsonObject).data.otps),
+          builder: (context) => OtpScreen(mobileNumber,LogInModel.fromJson(jsonObject).data!.otps!),
         ));
       } else if (LogInModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(LogInModel.fromJson(jsonObject).message),
+            content: Text(LogInModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
         setState(() {
           _btnController.error();
@@ -171,7 +171,7 @@ class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      // onWillPop: _onWillPop,
+      onWillPop: _onWillPop,
       child: SafeArea(
           child: Scaffold(
               resizeToAvoidBottomInset: false,
@@ -261,7 +261,7 @@ class _LogInScreenState extends State<LogInScreen> {
                                 suffixConstraints: BoxConstraints(
                                     maxHeight: getVerticalSize(25)),
                                 validator: (value) {
-                                  if (!isValidPhone(value) && value.isEmpty) {
+                                  if (!isValidPhone(value!) && value.isEmpty) {
                                     return "Please enter valid phone number";
                                   }
                                   return null;
@@ -346,7 +346,7 @@ class _LogInScreenState extends State<LogInScreen> {
   }
 
   onTapSendotp() {
-    FocusManager.instance.primaryFocus.unfocus();
+    FocusManager.instance.primaryFocus!.unfocus();
     if(mobilenumberController.text.isEmpty){
       Fluttertoast.showToast(
           msg:"Please enter the mobile number",

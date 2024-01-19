@@ -1,7 +1,7 @@
 class AddtoCartfromwishlist {
-  String status;
-  String message;
-  int data;
+  String? status;
+  String? message;
+  int? data;
 
   AddtoCartfromwishlist({this.status, this.message, this.data});
 

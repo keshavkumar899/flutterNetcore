@@ -45,14 +45,14 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
   String item2="";
   String item3="";
   String item4="";
-  Razorpay _razorpay;
+  Razorpay? _razorpay;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _razorpay = Razorpay();
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay!.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay!.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     //_razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
   }
   @override
@@ -319,7 +319,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                       Container(
                           width: getHorizontalSize(126),
                           margin: getMargin(left: 25, top: 9),
-                          child: Text(widget.address2.capitalize,
+                          child: Text(widget.address2!.capitalize!,
                               maxLines: 4,
                               textAlign: TextAlign.left,
                               style: AppStyle.txtRobotoRegular12Black900)),
@@ -846,7 +846,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
     };
 
     try {
-      _razorpay.open(options);
+      _razorpay!.open(options);
     } catch (e) {
       debugPrint('Error: ${e.toString()}');
     }

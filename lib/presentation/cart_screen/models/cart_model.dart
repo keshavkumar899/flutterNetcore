@@ -1,9 +1,9 @@
 class CartModel {
-  String status;
-  String message;
-  int count;
-  int total;
-  List<CartData> data;
+  String? status;
+  String? message;
+  int? count;
+  int? total;
+  List<CartData>? data;
 
   CartModel({this.status, this.message, this.count, this.total, this.data});
 
@@ -15,7 +15,7 @@ class CartModel {
     if (json['data'] != null) {
       data = <CartData>[];
       json['data'].forEach((v) {
-        data.add(new CartData.fromJson(v));
+        data!.add(new CartData.fromJson(v));
       });
     }
   }
@@ -27,27 +27,27 @@ class CartModel {
     data['count'] = this.count;
     data['total'] = this.total;
     if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class CartData {
-  String id;
-  String userId;
-  String productId;
-  String name;
-  String code;
-  String qty;
-  String description;
-  String image;
-  String mrpPrice;
-  String salePrice;
-  String discountPrice;
-  String cityId;
-  String updateOn;
-  ProductDetails productDetails;
+  String? id;
+  String? userId;
+  String? productId;
+  String? name;
+  String? code;
+  String? qty;
+  String? description;
+  String? image;
+  String? mrpPrice;
+  String? salePrice;
+  String? discountPrice;
+  String? cityId;
+  String? updateOn;
+  ProductDetails? productDetails;
 
   CartData(
       {this.id,
@@ -100,38 +100,38 @@ class CartData {
     data['city_id'] = this.cityId;
     data['update_on'] = this.updateOn;
     if (this.productDetails != null) {
-      data['product_details'] = this.productDetails.toJson();
+      data['product_details'] = this.productDetails!.toJson();
     }
     return data;
   }
 }
 
 class ProductDetails {
-  String id;
-  String name;
-  String code;
-  String categoryId;
-  String subCategoryId;
-  String brandId;
-  String keywordsId;
-  String cityId;
-  String mrpPrice;
-  String salePrice;
-  String discountPrice;
-  String description;
-  String image;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String featured;
-  String isDelete;
-  String createOn;
-  String updateOn;
-  String categoryName;
-  String brandName;
-  String isWishlist;
-  List<ProductImages> productImages;
-  List<Null> attributes;
+  String? id;
+  String? name;
+  String? code;
+  String? categoryId;
+  String? subCategoryId;
+  String? brandId;
+  String? keywordsId;
+  String? cityId;
+  String? mrpPrice;
+  String? salePrice;
+  String? discountPrice;
+  String? description;
+  String? image;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? featured;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
+  String? categoryName;
+  String? brandName;
+  String? isWishlist;
+  List<ProductImages>? productImages;
+  List<Null>? attributes;
 
   ProductDetails(
       {this.id,
@@ -187,7 +187,7 @@ class ProductDetails {
     if (json['product_images'] != null) {
       productImages = <ProductImages>[];
       json['product_images'].forEach((v) {
-        productImages.add(new ProductImages.fromJson(v));
+        productImages!.add(new ProductImages.fromJson(v));
       });
     }
     // if (json['attributes'] != null) {
@@ -225,7 +225,7 @@ class ProductDetails {
     data['is_wishlist'] = this.isWishlist;
     if (this.productImages != null) {
       data['product_images'] =
-          this.productImages.map((v) => v.toJson()).toList();
+          this.productImages!.map((v) => v.toJson()).toList();
     }
     // if (this.attributes != null) {
     //   data['attributes'] = this.attributes.map((v) => v.toJson()).toList();
@@ -235,9 +235,9 @@ class ProductDetails {
 }
 
 class ProductImages {
-  String id;
-  String productId;
-  String images;
+  String? id;
+  String? productId;
+  String? images;
 
   ProductImages({this.id, this.productId, this.images});
 

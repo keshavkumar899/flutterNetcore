@@ -3,7 +3,7 @@ import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
 import 'package:keshav_s_application2/core/app_export.dart';
 
 // ignore: must_be_immutable
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements  PreferredSizeWidget {
   CustomAppBar(
       { this.height,
       this.styleType,
@@ -13,19 +13,19 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       this.centerTitle,
       this.actions});
 
-  double height;
+  double? height;
 
-  Style styleType;
+  Style? styleType;
 
-  double leadingWidth;
+  double? leadingWidth;
 
-  Widget leading;
+  Widget? leading;
 
-  Widget title;
+  Widget? title;
 
-  bool centerTitle;
+  bool? centerTitle;
 
-  List<Widget> actions;
+  List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Size get preferredSize => Size(
         size.width,
-        height,
+        height!,
       );
   _getStyle() {
     switch (styleType) {

@@ -95,12 +95,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
         //   ),
         //   backgroundColor: Colors.greenAccent,
         // ));
-        Map json1 = jsonDecode(pref.getString('userData'));
+        Map <String,dynamic>json1 = jsonDecode(pref.getString('userData')!);
         var user1 = OtpModel.fromJson(json1);
         print(user1.data);
-        print(OtpModel.fromJson(jsonObject).data.otps);
+        print(OtpModel.fromJson(jsonObject).data!.otps!);
         Navigator.of(context).pushAndRemoveUntil<dynamic>(MaterialPageRoute(
-          builder: (context) => landingPage(OtpModel.fromJson(jsonObject).data),
+          builder: (context) => landingPage(OtpModel.fromJson(jsonObject).data!),
         ),(route) => false,);
         Fluttertoast.showToast(
             msg:"Logged in Successfully",
@@ -112,7 +112,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
             fontSize: 14.0);
       } else if (OtpModel.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg:OtpModel.fromJson(jsonObject).message,
+            msg:OtpModel.fromJson(jsonObject).message!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -297,7 +297,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   print(widget.mobileNumber);
                   print(passwordController.text);
 
-                  FocusManager.instance.primaryFocus.unfocus();
+                  FocusManager.instance.primaryFocus!.unfocus();
                   if(passwordController.text.isEmpty){
                     Fluttertoast.showToast(
                         msg: "Please enter your password",

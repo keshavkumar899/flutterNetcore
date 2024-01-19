@@ -47,8 +47,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   TextEditingController pincodeController=TextEditingController();
   int silderIndex = 0;
 
-  Future<products.ProductDetailModel> product;
-  products.Data productlist;
+  Future<products.ProductDetailModel>? product;
+  products.Data? productlist;
   List<products.SimilarProduct> similarProduct = [];
   List<products.BrandProduct> brandProduct = [];
   List<products.ProductImages> productImages=[];
@@ -59,7 +59,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   // List<homes.BannersBrothers> bannersBrothers = [];
   List<String> dropdownItemList = ["1", "2", "3","4","5","6","7","8","9","10"];
   String errorMsg = '';
-  String _selectedQty;
+  String ?_selectedQty;
 
   Future<products.ProductDetailModel> getProductDetail() async {
     Map data = {
@@ -91,7 +91,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       }else if (products.ProductDetailModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           duration: Duration(seconds: 2),
-            content: Text(products.ProductDetailModel.fromJson(jsonObject).message.capitalizeFirst),
+            content: Text(products.ProductDetailModel.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
         Timer(Duration(seconds: 3), () {
           Navigator.of(context).pop();
@@ -155,7 +155,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text(AddtoCart.fromJson(jsonObject).message.capitalizeFirst),
+            content: Text(AddtoCart.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -205,7 +205,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             duration: Duration(seconds: 1),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 20.0),
-            content: Text("Added to Wishlist "+AddWishlist.fromJson(jsonObject).message+"ly",style: TextStyle(color: Colors.black),),
+            content: Text("Added to Wishlist "+AddWishlist.fromJson(jsonObject).message!+"ly",style: TextStyle(color: Colors.black),),
             backgroundColor: Colors.greenAccent));
 
         return AddWishlist.fromJson(jsonObject);
@@ -216,7 +216,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             duration: Duration(seconds: 1),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text(AddWishlist.fromJson(jsonObject).message.capitalizeFirst),
+            content: Text(AddWishlist.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -426,13 +426,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   void initState() {
     product = getProductDetail();
-    product.then((value) {
+    product!.then((value) {
       setState(() {
         productlist = value.data;
-        similarProduct=value.similarProduct;
-        brandProduct=value.brandProduct;
-        productImages=value.data.productImages;
-        attributes=value.data.attributes;
+        similarProduct=value.similarProduct!;
+        brandProduct=value.brandProduct!;
+        productImages=value.data!.productImages!;
+        attributes=value.data!.attributes!;
       });
     });
     print(attributes.length);
@@ -485,7 +485,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       width: getSize(21),
                       svgPath: ImageConstant.imgSearch,
                       margin:
-                      getMargin(left: 12, top: 22, right: 10, bottom: 10),
+                      getMargin(left: 12, top: 15, right: 10, bottom: 10),
                       onTap: (){
                         Get.toNamed(AppRoutes.searchScreen);
                       }),
@@ -493,7 +493,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 25, right: 10, bottom: 0),
+                      getMargin(left: 20, top: 0, right: 10, bottom: 0),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
@@ -517,7 +517,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 27, right: 31),
+                      margin: getMargin(left: 14, top: 0, right: 31),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -556,13 +556,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               children: [
                                 Padding(
                                     padding: getPadding(left: 11, top: 11),
-                                    child: Text(productlist.name,
+                                    child: Text(productlist!.name!,
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle.txtRobotoRegular18)),
                                 Padding(
                                     padding: getPadding(left: 11, top: 2),
-                                    child: Text("by "+productlist.brandName,
+                                    child: Text("by "+productlist!.brandName!,
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle.txtRobotoRegular12Purple700)),
@@ -601,7 +601,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) => documentViewer(
-                                                        productImages[index].images,
+                                                        productImages[index].images!,
                                                         context),
                                                   ),
                                                 );
@@ -610,7 +610,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                 alignment: Alignment.center,
                                                 child: CustomImageView(
                                                   url:
-                                                  productImages[index].images,
+                                                  productImages[index].images!,
                                                   height: getVerticalSize(
                                                     215,
                                                   ),
@@ -627,7 +627,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) => documentViewer(
-                                                  productlist.image,
+                                                  productlist!.image!,
                                                   context),
                                             ),
                                           );
@@ -636,7 +636,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                         alignment: Alignment.center,
                                         child: CustomImageView(
                                             url:
-                                            productlist.image,
+                                            productlist!.image!,
                                             height: getVerticalSize(
                                               215,
                                             ),
@@ -696,7 +696,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                               margin: getMargin(bottom: 4)),
                                           Padding(
                                               padding: getPadding(left: 2),
-                                              child: Text(productlist.salePrice,
+                                              child: Text(productlist!.salePrice!,
                                                   overflow: TextOverflow.ellipsis,
                                                   textAlign: TextAlign.left,
                                                   style: AppStyle
@@ -716,7 +716,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                   children: [
                                                     Align(
                                                         alignment: Alignment.center,
-                                                        child: Text(productlist.mrpPrice,
+                                                        child: Text(productlist!.mrpPrice!,
                                                             overflow:
                                                             TextOverflow.ellipsis,
                                                             textAlign: TextAlign.left,
@@ -771,7 +771,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                           margin: getMargin(left: 6, bottom: 3)),
                                       Padding(
                                           padding: getPadding(left: 4),
-                                          child: Text(productlist.discountPrice,
+                                          child: Text(productlist!.discountPrice!,
                                               overflow: TextOverflow.ellipsis,
                                               textAlign: TextAlign.left,
                                               style:
@@ -795,7 +795,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                   Container(
                                                     // width: getHorizontalSize(50),
                                                       child: Text(
-                                                         "EMI from\n"+ productlist.emiOption,
+                                                         "EMI from\n"+ productlist!.emiOption!,
                                                           maxLines: null,
                                                           textAlign: TextAlign.center,
                                                           style: AppStyle
@@ -816,7 +816,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                       margin: getMargin(
                                                           left: 28, bottom: 8),
                                                       child: Text(
-                                                          productlist.monthWarrenty + " Months \nWarranty",
+                                                          productlist!.monthWarrenty! + " Months \nWarranty",
                                                           maxLines: null,
                                                           textAlign: TextAlign.center,
                                                           style: AppStyle
@@ -836,7 +836,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                     // width: getHorizontalSize(24),
                                                       margin: getMargin(
                                                           left: 36, bottom: 10),
-                                                      child: Text(productlist.easyReturn,
+                                                      child: Text(productlist!.easyReturn!,
                                                           maxLines: null,
                                                           textAlign: TextAlign.center,
                                                           style: AppStyle
@@ -859,7 +859,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                       margin: getMargin(
                                                           left: 43, bottom: 8),
                                                       child: Text(
-                                                          productlist.safeDelivery,
+                                                          productlist!.safeDelivery!,
                                                           maxLines: null,
                                                           textAlign: TextAlign.center,
                                                           style: AppStyle
@@ -947,7 +947,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                           content: Text("Please select quantity"),
                                           backgroundColor: Colors.redAccent));
                                     }else{
-                                      addtocart(_selectedQty);
+                                      addtocart(_selectedQty!);
                                     }
                                   },
                                     height: getVerticalSize(35),
@@ -984,7 +984,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                     content: Text("Please select quantity"),
                                                     backgroundColor: Colors.redAccent));
                                               }else{
-                                                addtocart(_selectedQty);
+                                                addtocart(_selectedQty!);
                                               }
                                             },
                                               height: getVerticalSize(35),
@@ -1049,7 +1049,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                           // textInputType:
                                                           // TextInputType.number,
                                                           validator: (value) {
-                                                            if (!isNumeric(value)) {
+                                                            if (!isNumeric(value!)) {
                                                               return "Please enter valid number";
                                                             }
                                                             return null;
@@ -1159,7 +1159,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                       fit:BoxFit.fill,
                                                       child: Container(
                                                         width:120,
-                                                        child: Text(attributes[index].productKey.capitalizeFirst+":",
+                                                        child: Text(attributes[index].productKey!.capitalizeFirst!+":",
                                                             overflow: TextOverflow.ellipsis,
                                                             textAlign: TextAlign.left,
                                                             style: AppStyle
@@ -1171,7 +1171,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                       child: Container(
                                                         width: 200,
                                                           padding: getPadding(left: 0),
-                                                          child: Text(attributes[index].productValue,
+                                                          child: Text(attributes[index].productValue!,
                                                               overflow: TextOverflow.ellipsis,
                                                               textAlign: TextAlign.left,
                                                               style: AppStyle
@@ -1409,7 +1409,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                   return GestureDetector(
                                                                     onTap:(){
                                                                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                                                        builder: (context) => ProductDetailScreen(widget.data,similarProduct[index].id),
+                                                                        builder: (context) => ProductDetailScreen(widget.data,similarProduct[index].id!),
                                                                       ));
                                                                     },
                                                                     child: FittedBox(
@@ -1439,7 +1439,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                               flex:1,
                                                                               child: CustomImageView(
                                                                                 url:
-                                                                                similarProduct[index].image,
+                                                                                similarProduct[index].image!,
                                                                                 height:
                                                                                 getSize(
                                                                                   130,
@@ -1459,7 +1459,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                                 top: 5,
                                                                               ),
                                                                               child: Text(
-                                                                                similarProduct[index].name,
+                                                                                similarProduct[index].name!,
                                                                                 overflow: TextOverflow.ellipsis,
                                                                                 textAlign: TextAlign.left,
                                                                                 style: TextStyle(
@@ -1476,7 +1476,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                                 top: 5,
                                                                               ),
                                                                               child: Text(
-                                                                                similarProduct[index].description,
+                                                                                similarProduct[index].description!,
                                                                                 overflow: TextOverflow.ellipsis,
                                                                                 textAlign: TextAlign.left,
                                                                                 style: TextStyle(
@@ -1539,7 +1539,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                         fit:BoxFit.fill,
                                                                         child: Container(
                                                                           width:75.w,
-                                                                          child: Text(productlist.additionalInformation!=""?productlist.additionalInformation:"No Data Found",
+                                                                          child: Text(productlist!.additionalInformation!=""?productlist!.additionalInformation!:"No Data Found",
                                                                               overflow: TextOverflow.ellipsis,
                                                                               textAlign: TextAlign.left,
                                                                               style: AppStyle
@@ -1707,7 +1707,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                               fit:BoxFit.fill,
                                                                               child: Container(
                                                                                 width:75.w,
-                                                                                child: Text(productlist.customerRedressal!=""?productlist.customerRedressal:"No Data Found",
+                                                                                child: Text(productlist!.customerRedressal!=""?productlist!.customerRedressal!:"No Data Found",
                                                                                     overflow: TextOverflow.ellipsis,
                                                                                     textAlign: TextAlign.left,
                                                                                     style: AppStyle
@@ -1765,7 +1765,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                               fit:BoxFit.fill,
                                                                               child: Container(
                                                                                 width:75.w,
-                                                                                child: Text(productlist.marchantInfo!=""?productlist.marchantInfo:"No Data Found",
+                                                                                child: Text(productlist!.marchantInfo!=""?productlist!.marchantInfo!:"No Data Found",
                                                                                     overflow: TextOverflow.ellipsis,
                                                                                     textAlign: TextAlign.left,
                                                                                     style: AppStyle
@@ -1824,7 +1824,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                               fit:BoxFit.fill,
                                                                               child: Container(
                                                                                 width:75.w,
-                                                                                child: Text(productlist.returnCancellation!=""?productlist.returnCancellation:"No Data Found",
+                                                                                child: Text(productlist!.returnCancellation!=""?productlist!.returnCancellation!:"No Data Found",
                                                                                     overflow: TextOverflow.ellipsis,
                                                                                     textAlign: TextAlign.left,
                                                                                     style: AppStyle
@@ -1884,7 +1884,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                               fit:BoxFit.fill,
                                                                               child: Container(
                                                                                 width:75.w,
-                                                                                child: Text(productlist.returnCancellation!=""?productlist.returnCancellation:"No Data Found",
+                                                                                child: Text(productlist!.returnCancellation!=""?productlist!.returnCancellation!:"No Data Found",
                                                                                     overflow: TextOverflow.ellipsis,
                                                                                     textAlign: TextAlign.left,
                                                                                     style: AppStyle
@@ -1936,7 +1936,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                       return GestureDetector(
                                                                           onTap:(){
                                                                             Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                                                              builder: (context) => ProductDetailScreen(widget.data,brandProduct[index].id),
+                                                                              builder: (context) => ProductDetailScreen(widget.data,brandProduct[index].id!),
                                                                             ));
                                                                           },
                                                                         child: SingleChildScrollView(
@@ -1949,7 +1949,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                             child: Column(
                                                                               children: [
                                                                                 CustomImageView(
-                                                                                    url: brandProduct[index].image,
+                                                                                    url: brandProduct[index].image!,
                                                                                     height: getVerticalSize(
                                                                                         124),
                                                                                     width:
@@ -1966,7 +1966,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                                     children: [
                                                                                       Container(
                                                                                           width: getHorizontalSize(154),
-                                                                                          child: Text(brandProduct[index].name, maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular14Black900)),
+                                                                                          child: Text(brandProduct[index].name!, maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular14Black900)),
                                                                                       CustomImageView(
                                                                                           svgPath: ImageConstant.imgCut,
                                                                                           height: getVerticalSize(11),
@@ -1974,7 +1974,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                                                           margin: getMargin(left: 47, top: 3, bottom: 16)),
                                                                                       Padding(
                                                                                           padding: getPadding(left: 4, top: 3, bottom: 12),
-                                                                                          child: Text(brandProduct[index].salePrice, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium12Purple900)),
+                                                                                          child: Text(brandProduct[index].salePrice!, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium12Purple900)),
                                                                                     ])
                                                                               ],
                                                                             )),

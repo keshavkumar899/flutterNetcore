@@ -1,6 +1,6 @@
 class ResetPasswordModel {
-  String status;
-  String message;
+  String? status;
+  String? message;
 
   ResetPasswordModel({this.status, this.message});
 

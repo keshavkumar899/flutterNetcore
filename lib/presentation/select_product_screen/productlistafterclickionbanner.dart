@@ -46,7 +46,7 @@ class productlisrafterclickonbanner extends StatefulWidget {
 
 class _productlisrafterclickonbannerState extends State<productlisrafterclickonbanner> {
 
-  Future<products.ProductList> product;
+  Future<products.ProductList>? product;
   List<products.ProductListData> productlist = [];
   var sortBy = '';
   final ScrollController _controller = ScrollController();
@@ -102,7 +102,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (products.ProductList.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg: products.ProductList.fromJson(jsonObject).message.capitalizeFirst,
+            msg: products.ProductList.fromJson(jsonObject).message!.capitalizeFirst!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 5,
@@ -139,9 +139,9 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
   void initState() {
     clearFilter();
     product = getProduct();
-    product.then((value) {
+    product!.then((value) {
       setState(() {
-        productlist = value.data;
+        productlist = value.data!;
       });
     });
 
@@ -194,16 +194,15 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
                       margin:
                       getMargin(left: 12, top: 0, right: 10, bottom: 10),
                       onTap: (){
-                        //Get.toNamed(AppRoutes.searchScreen);
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SearchScreen(widget.data,widget.keyword_id),
+                          builder: (context) => SearchScreen(widget.data,''),
                         ));
                       }),
                   Container(
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 25, right: 10, bottom: 0),
+                      getMargin(left: 20, top: 0, right: 10, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
@@ -227,7 +226,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 27, right: 31),
+                      margin: getMargin(left: 14, top: 0, right: 31,bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -257,9 +256,9 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
               color: Colors.purple,
               onRefresh: ()async{
                 product = getProduct();
-                product.then((value) {
+                product!.then((value) {
                   setState(() {
-                    productlist = value.data;
+                    productlist = value.data!;
                   });
                 });
               },
@@ -358,7 +357,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
                                                     children: [
                                                       CustomImageView(
                                                           url:
-                                                          productlist[index].image,
+                                                          productlist[index].image!,
                                                           height:
                                                           getVerticalSize(
                                                               206),
@@ -369,7 +368,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
                                                           Alignment.center,
                                                           onTap: () {
                                                             Navigator.of(context).push(MaterialPageRoute(
-                                                              builder: (context) => ProductDetailScreen(widget.data,productlist[index].id),
+                                                              builder: (context) => ProductDetailScreen(widget.data,productlist[index].id!),
                                                             ));
                                                           }),
                                                       Align(
@@ -450,7 +449,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
                                                           padding: getPadding(
                                                               bottom: 3),
                                                           child: Text(
-                                                              productlist[index].name,
+                                                              productlist[index].name!,
                                                               overflow:
                                                               TextOverflow
                                                                   .ellipsis,
@@ -476,7 +475,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
                                                           padding: getPadding(
                                                               left: 4, top: 3,right: 4),
                                                           child: Text(
-                                                              productlist[index].salePrice,
+                                                              productlist[index].salePrice!,
                                                               overflow:
                                                               TextOverflow
                                                                   .ellipsis,
@@ -495,7 +494,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
                                                         .center,
                                                     children: [
                                                       Text(
-                                                          productlist[index].categoryName+" by "+productlist[index].brandName,
+                                                          productlist[index].categoryName!+" by "+productlist[index].brandName!,
                                                           overflow: TextOverflow
                                                               .ellipsis,
                                                           textAlign:
@@ -534,7 +533,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
                                                                     Alignment
                                                                         .center,
                                                                     child: Text(
-                                                                        productlist[index].mrpPrice,
+                                                                        productlist[index].mrpPrice!,
                                                                         overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
@@ -618,7 +617,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
                                                       Spacer(),
                                                       CustomImageView(
                                                           onTap: (){
-                                                            addtowishlist(productlist[index].id);
+                                                            addtowishlist(productlist[index].id!);
                                                           },
                                                           svgPath: ImageConstant
                                                               .imgLocation,
@@ -633,7 +632,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
                                                               bottom: 3)),
                                                       CustomImageView(
                                                           onTap: (){
-                                                            _showQuantityBottomSheet(context,productlist[index].id);
+                                                            _showQuantityBottomSheet(context,productlist[index].id!);
                                                           },
                                                           svgPath: ImageConstant
                                                               .imgCart,
@@ -1536,7 +1535,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
             duration: Duration(seconds: 1),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text("Added to Wishlist "+AddWishlist.fromJson(jsonObject).message+"ly",style: TextStyle(color: Colors.black),),
+            content: Text("Added to Wishlist "+AddWishlist.fromJson(jsonObject).message!+"ly",style: TextStyle(color: Colors.black),),
             backgroundColor: Colors.greenAccent));
 
         return AddWishlist.fromJson(jsonObject);
@@ -1547,7 +1546,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text(AddWishlist.fromJson(jsonObject).message.capitalizeFirst),
+            content: Text(AddWishlist.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -1598,7 +1597,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
             duration: Duration(seconds: 3),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text("Added to Cart "+AddtoCart.fromJson(jsonObject).message+"ly",style: TextStyle(color: Colors.black),),
+            content: Text("Added to Cart "+AddtoCart.fromJson(jsonObject).message!+"ly",style: TextStyle(color: Colors.black),),
             backgroundColor: Colors.greenAccent));
 
         return AddtoCart.fromJson(jsonObject);
@@ -1609,7 +1608,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
             duration: Duration(seconds: 3),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text(AddtoCart.fromJson(jsonObject).message.capitalizeFirst),
+            content: Text(AddtoCart.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -1667,9 +1666,9 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
             fontSize: 14.0);
         sortBy = value;
         product = getProduct();
-        product.then((value) {
+        product!.then((value) {
           setState(() {
-            productlist = value.data;
+            productlist = value.data!;
           });
         });
       }
@@ -1702,9 +1701,9 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
         widget.keyword_id = value[2];
         widget.brandId = value[3];
         product = getProduct();
-        product.then((value) {
+        product!.then((value) {
           setState(() {
-            productlist = value.data;
+            productlist = value.data!;
           });
         });
       }

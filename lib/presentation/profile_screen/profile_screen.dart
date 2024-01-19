@@ -51,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final RoundedLoadingButtonController _btnController =
   RoundedLoadingButtonController();
 
-  Future<ProfileGet> myProfile;
+  Future<ProfileGet>? myProfile;
 
   Future<ProfileUpdate> postRequest() async {
     var url = 'https://fabfurni.com/api/Auth/updateProfile';
@@ -103,7 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         // ));
       } else if (ProfileUpdate.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg:ProfileUpdate.fromJson(jsonObject).message,
+            msg:ProfileUpdate.fromJson(jsonObject).message!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -171,7 +171,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       } else if (ProfileGet.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(ProfileGet.fromJson(jsonObject).message),
+            content: Text(ProfileGet.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
       } else if (ProfileGet.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -193,11 +193,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     myProfile = getProfileData();
-    myProfile.then((value) {
+    myProfile!.then((value) {
       setState(() {
-        fullnameoneController.text = value.data.firstName + " "+ value.data.lastName;
-        mobilenumberController.text=value.data.mobile;
-        emailController.text=value.data.email;
+        fullnameoneController.text = value.data!.firstName! + " "+ value.data!.lastName!;
+        mobilenumberController.text=value.data!.mobile!;
+        emailController.text=value.data!.email!;
       });
     });
 
@@ -238,7 +238,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 25, right: 10, bottom: 0),
+                      getMargin(left: 20, top: 0, right: 10, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
@@ -262,7 +262,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 27, right: 31),
+                      margin: getMargin(left: 14, top: 0, right: 31,bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -348,8 +348,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               }),
                           CustomButton(
                             onTap: (){
-                              FocusManager.instance.primaryFocus.unfocus();
-                              if (_formKey.currentState.validate()) {
+                              FocusManager.instance.primaryFocus!.unfocus();
+                              if (_formKey.currentState!.validate()) {
                                 postRequest();
                                 // print(field);
                                 // if(cred!.=='success'){

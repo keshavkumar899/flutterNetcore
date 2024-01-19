@@ -1,7 +1,7 @@
 class RemoveWishlist {
-  String status;
-  String message;
-  bool data;
+  String? status;
+  String? message;
+  bool? data;
 
   RemoveWishlist({this.status, this.message, this.data});
 

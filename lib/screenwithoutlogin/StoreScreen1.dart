@@ -35,7 +35,7 @@ class StoreScreen1 extends StatefulWidget {
 
 class _StoreScreen1State extends State<StoreScreen1> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  Future<stores.StoreModel> category;
+  Future<stores.StoreModel>? category;
   List<stores.StoreData> categorylist = [];
 
   Future<stores.StoreModel> getCategory() async {
@@ -65,7 +65,7 @@ class _StoreScreen1State extends State<StoreScreen1> {
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (stores.StoreModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(stores.StoreModel.fromJson(jsonObject).message),
+            content: Text(stores.StoreModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -90,9 +90,9 @@ class _StoreScreen1State extends State<StoreScreen1> {
   @override
   void initState() {
     category = getCategory();
-    category.then((value) {
+    category!.then((value) {
       setState(() {
-        categorylist = value.data;
+        categorylist = value.data!;
       });
     });
 
@@ -111,7 +111,7 @@ class _StoreScreen1State extends State<StoreScreen1> {
                 leadingWidth: 41,
                 leading: AppbarImage(
                     onTap: () {
-                      _scaffoldKey.currentState.openDrawer();
+                      _scaffoldKey.currentState!.openDrawer();
                     },
                     height: getVerticalSize(15),
                     width: getHorizontalSize(15),
@@ -134,7 +134,7 @@ class _StoreScreen1State extends State<StoreScreen1> {
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 25, right: 10, bottom: 0),
+                      getMargin(left: 20, top: 0, right: 10, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
@@ -161,7 +161,7 @@ class _StoreScreen1State extends State<StoreScreen1> {
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 27, right: 31),
+                      margin: getMargin(left: 14, top: 0, right: 31,bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -199,14 +199,14 @@ class _StoreScreen1State extends State<StoreScreen1> {
                             InkWell(
                               onTap: (){
                                 // Navigator.pushNamed(context, AppRoutes.clickAfterSlectTabFurnitureScreen);
-                                categorylist[index].subCategory.length==0?pushNewScreen(
+                                categorylist[index].subCategory!.length==0?pushNewScreen(
                                   context,
                                   screen: NewProductScreen1(categorylist[index],),
                                   withNavBar: true, // OPTIONAL VALUE. True by default.
                                   pageTransitionAnimation: PageTransitionAnimation.cupertino,
                                 ):pushNewScreen(
                                   context,
-                                  screen: ClickAfterSlectTabFurnitureScreen1(categorylist[index],categorylist[index].name,),
+                                  screen: ClickAfterSlectTabFurnitureScreen1(categorylist[index],categorylist[index].name!,),
                                   withNavBar: true, // OPTIONAL VALUE. True by default.
                                   pageTransitionAnimation: PageTransitionAnimation.cupertino,
                                 );
@@ -239,7 +239,7 @@ class _StoreScreen1State extends State<StoreScreen1> {
                                     child: Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text(categorylist[index].name,
+                                          Text(categorylist[index].name!,
                                               overflow: TextOverflow.ellipsis,
                                               textAlign: TextAlign.left,
                                               style: AppStyle
@@ -249,14 +249,14 @@ class _StoreScreen1State extends State<StoreScreen1> {
                                                   getHorizontalSize(1.8))),
                                           GestureDetector(
                                             onTap: (){
-                                              categorylist[index].subCategory.length==0?pushNewScreen(
+                                              categorylist[index].subCategory!.length==0?pushNewScreen(
                                                 context,
                                                 screen: NewProductScreen1(categorylist[index],),
                                                 withNavBar: true, // OPTIONAL VALUE. True by default.
                                                 pageTransitionAnimation: PageTransitionAnimation.cupertino,
                                               ):pushNewScreen(
                                                 context,
-                                                screen: ClickAfterSlectTabFurnitureScreen1(categorylist[index],categorylist[index].name,),
+                                                screen: ClickAfterSlectTabFurnitureScreen1(categorylist[index],categorylist[index].name!,),
                                                 withNavBar: true, // OPTIONAL VALUE. True by default.
                                                 pageTransitionAnimation: PageTransitionAnimation.cupertino,
                                               );

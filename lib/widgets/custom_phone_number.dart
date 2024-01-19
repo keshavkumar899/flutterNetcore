@@ -10,11 +10,11 @@ class CustomPhoneNumber extends StatelessWidget {
   CustomPhoneNumber(
       { this.country,  this.onTap,  this.controller});
 
-  Country country;
+  Country? country;
 
-  Function(Country) onTap;
+  Function(Country)? onTap;
 
-  TextEditingController controller;
+  TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class CustomPhoneNumber extends StatelessWidget {
               bottom: 4,
             ),
             child: Text(
-              "+${country.phoneCode}",
+              "+${country!.phoneCode}",
               style: AppStyle.txtRobotoRegular12,
             ),
           ),
@@ -58,7 +58,7 @@ class CustomPhoneNumber extends StatelessWidget {
               367,
             ),
             focusNode: FocusNode(),
-            controller: controller,
+            controller: controller!,
             hintText: "99299 99899",
             margin: getMargin(
               left: 6,
@@ -104,7 +104,7 @@ class CustomPhoneNumber extends StatelessWidget {
           isSearchable: true,
           title: Text('Select your phone code',
               style: TextStyle(fontSize: getFontSize(14))),
-          onValuePicked: (Country country) => onTap(country),
+          onValuePicked: (Country country) => onTap!(country),
           itemBuilder: _buildDialogItem,
         ),
       );

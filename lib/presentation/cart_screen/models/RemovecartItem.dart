@@ -1,6 +1,6 @@
 class Removefromcart {
-  String status;
-  String message;
+  String? status;
+  String? message;
 
   Removefromcart({this.status, this.message});
 

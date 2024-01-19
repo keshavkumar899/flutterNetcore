@@ -43,8 +43,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final RoundedLoadingButtonController _btnController = RoundedLoadingButtonController();
 
   final List<Setting> _listData = <Setting>[];
-  SettingVO settingVO;
-  String versionCode;
+  SettingVO? settingVO;
+  String? versionCode;
 
   Future<SignUpScreenModel> postRequest(String name,String mobile,String email,String password
       ) async {
@@ -82,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     // print(jsonObject.toString());
     if (response.statusCode == 200) {
       if (SignUpScreenModel.fromJson(jsonObject).status == "true") {
-        print(SignUpScreenModel.fromJson(jsonObject).data.otps);
+        print(SignUpScreenModel.fromJson(jsonObject).data!.otps!);
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           duration: Duration(seconds: 2),
           content: Text(
@@ -95,7 +95,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             LogInScreen()), (Route<dynamic> route) => false);
       } else if (SignUpScreenModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(SignUpScreenModel.fromJson(jsonObject).message),
+            content: Text(SignUpScreenModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
         setState(() {
           _btnController.error();
@@ -182,9 +182,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       if (response.statusCode == 200) {
         settingVO = SettingVO.fromJson(jsonDecode(response.toString()));
         if (settingVO != null &&
-            settingVO.status == 'true' &&
-            settingVO.data.isNotEmpty) {
-          _listData.addAll(settingVO.data);
+            settingVO!.status == 'true' &&
+            settingVO!.data!.isNotEmpty) {
+          _listData.addAll(settingVO!.data!);
 
 
         }
@@ -199,7 +199,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     var document = parse(htmlString);
 
-    String parsedString = parse(document.body.text).documentElement.text;
+    String parsedString = parse(document.body!.text).documentElement!.text;
 
     return parsedString;
   }
@@ -277,7 +277,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               hintText: "lbl_full_name".tr,
                               margin: getMargin(left: 27, top: 71, right: 26),
                               validator: (value) {
-                                if (!isText(value)) {
+                                if (!isText(value!)) {
                                   return "Please enter your full name";
                                 }
                                 return null;
@@ -289,7 +289,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               margin: getMargin(left: 27, top: 18, right: 26),
                               textInputType: TextInputType.phone,
                               validator: (value) {
-                                if (!isValidPhone(value)) {
+                                if (!isValidPhone(value!)) {
                                   return "Please enter valid phone number";
                                 }
                                 return null;
@@ -351,7 +351,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             suffixConstraints: BoxConstraints(
                                 maxHeight: getVerticalSize(20)),
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please enter the password';
                               }
                               return null;
@@ -394,7 +394,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         setting.settingsKeys ==
                                             'terms_condition');
                                         AppConstant.terms = _parseHtmlString(
-                                            _listData[index].settingsValues);
+                                            _listData[index].settingsValues!);
                                         onTapTxt();
                                         // setState(() {
                                         //   _launched = _launchInBrowser(Uri(scheme: 'https', host: '', path: 'headers/'));
@@ -420,7 +420,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           ..onTap = () {
                                             AppConstant.aboutType = '2';
                                             int index = _listData.indexWhere((setting) => setting.settingsKeys == 'privacy_policy');
-                                            AppConstant.terms = _parseHtmlString(_listData[index].settingsValues);
+                                            AppConstant.terms = _parseHtmlString(_listData[index].settingsValues!);
                                             onTapTxt();
                                             // setState(() {
                                             //   _launched = _launchInBrowser(Uri(scheme: 'https', host: '', path: 'headers/'));
@@ -470,8 +470,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   onTapRegisterone() {
-    FocusManager.instance.primaryFocus.unfocus();
-    if (_formKey.currentState.validate()) {
+    FocusManager.instance.primaryFocus!.unfocus();
+    if (_formKey.currentState!.validate()) {
       postRequest(
         fullnameController.text,mobilenumberController.text,emailController.text,passwordController.text
       );

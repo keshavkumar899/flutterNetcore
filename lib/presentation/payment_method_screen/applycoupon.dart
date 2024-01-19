@@ -35,7 +35,7 @@ class ApplyCoupon extends StatefulWidget {
 
 class _ApplyCouponState extends State<ApplyCoupon> {
 
-  Future<OffersModel> offers;
+  Future<OffersModel>? offers;
   List<OffersData> offerslist = [];
 
   Future<OffersModel> getOffersList() async {
@@ -61,7 +61,7 @@ class _ApplyCouponState extends State<ApplyCoupon> {
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (OffersModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(OffersModel.fromJson(jsonObject).message),
+            content: Text(OffersModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -87,9 +87,9 @@ class _ApplyCouponState extends State<ApplyCoupon> {
   @override
   void initState() {
     offers = getOffersList();
-    offers.then((value) {
+    offers!.then((value) {
       setState(() {
-        offerslist = value.data;
+        offerslist = value.data!;
       });
     });
 
@@ -121,9 +121,9 @@ class _ApplyCouponState extends State<ApplyCoupon> {
               onRefresh: () async{
                 setState(() {
                   offers = getOffersList();
-                  offers.then((value) {
+                  offers!.then((value) {
                     setState(() {
-                      offerslist = value.data;
+                      offerslist = value.data!;
                     });
                   });
                 });
@@ -135,7 +135,7 @@ class _ApplyCouponState extends State<ApplyCoupon> {
                       future: offers,
                       builder: (context, snapshot){
                         if(snapshot.hasData){
-                          if(snapshot.data.data.length==0){
+                          if(!snapshot.hasData){
                             return Center(
                                 child: Text('No data available.',
                                     style: TextStyle(
@@ -159,7 +159,7 @@ class _ApplyCouponState extends State<ApplyCoupon> {
                                   onTap: () {
                                     setState(() {
                                       print("tapped");
-                                      List<String> att = [offerslist[index].id,offerslist[index].title,offerslist[index].description,offerslist[index].promoCode];
+                                      List<String> att = [offerslist[index].id!,offerslist[index].title!,offerslist[index].description!,offerslist[index].promoCode!];
                                       Navigator.pop(context,att);
                                     });
                                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -172,7 +172,7 @@ class _ApplyCouponState extends State<ApplyCoupon> {
                                       width: size.width,
                                       height: 100,
                                       decoration:  BoxDecoration(
-                                          image: DecorationImage(image: NetworkImage(data.image),fit: BoxFit.cover),
+                                          image: DecorationImage(image: NetworkImage(data.image!),fit: BoxFit.cover),
                                           color: Colors.white,
                                           border: Border.all(
                                             color: Colors.purple,  // Set the desired border color here
@@ -225,7 +225,7 @@ class _ApplyCouponState extends State<ApplyCoupon> {
                                                   mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                                   children: [
-                                                    data.promoCode.isNotEmpty?
+                                                    data.promoCode!.isNotEmpty?
                                                     Container(
                                                       decoration: BoxDecoration(  // Set the background color here
                                                         borderRadius:
@@ -248,7 +248,7 @@ class _ApplyCouponState extends State<ApplyCoupon> {
                                                         overflow: TextOverflow.ellipsis,
                                                       ),
                                                     ):Container(),
-                                                    data.promoCode.isNotEmpty?
+                                                    data.promoCode!.isNotEmpty?
                                                     SizedBox(width: 4.w,):SizedBox(width: 0,),
                                                     Text(
                                                       // (Utils.parseHtmlString(
@@ -601,7 +601,7 @@ class _ApplyCouponState extends State<ApplyCoupon> {
   static String parseHtmlString(String htmlString) {
     final document = parse(htmlString);
     final String parsedString =
-        parse(document.body.text).documentElement.text;
+        parse(document.body!.text).documentElement!.text;
 
     return parsedString;
   }

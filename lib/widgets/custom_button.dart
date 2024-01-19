@@ -16,35 +16,35 @@ class CustomButton extends StatelessWidget {
       this.prefixWidget,
       this.suffixWidget});
 
-  ButtonPadding padding;
+  ButtonPadding? padding;
 
-  ButtonShape shape;
+  ButtonShape? shape;
 
-  ButtonVariant variant;
+  ButtonVariant? variant;
 
-  ButtonFontStyle fontStyle;
+  ButtonFontStyle? fontStyle;
 
-  Alignment alignment;
+  Alignment? alignment;
 
-  EdgeInsetsGeometry margin;
+  EdgeInsetsGeometry? margin;
 
-  VoidCallback onTap;
+  VoidCallback? onTap;
 
-  double width;
+  double? width;
 
-  double height;
+  double? height;
 
-  String text;
+  String? text;
 
-  Widget prefixWidget;
+  Widget? prefixWidget;
 
-  Widget suffixWidget;
+  Widget? suffixWidget;
 
   @override
   Widget build(BuildContext context) {
     return alignment != null
         ? Align(
-            alignment: alignment,
+            alignment: alignment!,
             child: _buildButtonWidget(),
           )
         : _buildButtonWidget();

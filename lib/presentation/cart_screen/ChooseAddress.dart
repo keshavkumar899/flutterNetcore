@@ -31,7 +31,7 @@ class ChooseAddressToOrderProduct extends StatefulWidget {
 
 class _ChooseAddressToOrderProductState extends State<ChooseAddressToOrderProduct> {
 
-  Future<AddressList> manageAddress;
+  Future<AddressList>? manageAddress;
   List<AddressData> addresslist = [];
 
   Future<AddressList> getAddressList() async {
@@ -57,7 +57,7 @@ class _ChooseAddressToOrderProductState extends State<ChooseAddressToOrderProduc
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       }else if (AddressList.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(AddressList.fromJson(jsonObject).message),
+            content: Text(AddressList.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
 
       }
@@ -82,9 +82,9 @@ class _ChooseAddressToOrderProductState extends State<ChooseAddressToOrderProduc
   @override
   void initState() {
     manageAddress = getAddressList();
-    manageAddress.then((value) {
+    manageAddress!.then((value) {
       setState(() {
-        addresslist = value.data;
+        addresslist = value.data!;
       });
     });
 
@@ -173,9 +173,9 @@ class _ChooseAddressToOrderProductState extends State<ChooseAddressToOrderProduc
               onRefresh: () async{
                 setState(() {
                   manageAddress = getAddressList();
-                  manageAddress.then((value) {
+                  manageAddress!.then((value) {
                     setState(() {
-                      addresslist = value.data;
+                      addresslist = value.data!;
                     });
                   });
                 });
@@ -187,7 +187,7 @@ class _ChooseAddressToOrderProductState extends State<ChooseAddressToOrderProduc
                       future: manageAddress,
                       builder: (context, snapshot){
                         if(snapshot.hasData){
-                          if(snapshot.data.data.length==0){
+                          if(!snapshot.hasData){
                             return Center(
                                 child: Text('No data available.',
                                     style: TextStyle(
@@ -221,7 +221,7 @@ class _ChooseAddressToOrderProductState extends State<ChooseAddressToOrderProduc
                                                       onTap: (){
                                                         setState(() {
                                                           print("tapped");
-                                                          List<String> att = [addresslist[index].id,addresslist[index].defaulted,addresslist[index].name,addresslist[index].addressOne+" "+addresslist[index].addressTwo+" "+addresslist[index].state.capitalizeFirst+" " +addresslist[index].country.capitalizeFirst+","+addresslist[index].pincode];
+                                                          List<String> att = [addresslist[index].id!,addresslist[index].defaulted!,addresslist[index].name!,addresslist[index].addressOne!+" "+addresslist[index].addressTwo!+" "+addresslist[index].state!.capitalizeFirst!+" " +addresslist[index].country!.capitalizeFirst!+","+addresslist[index].pincode!];
                                                           Navigator.pop(context,att);
                                                         });
                                                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(

@@ -91,12 +91,12 @@ class _OtpScreenState extends State<OtpScreen> {
         //   ),
         //   backgroundColor: Colors.greenAccent,
         // ));
-        Map json1 = jsonDecode(pref.getString('userData'));
+        Map <String,dynamic>json1 = jsonDecode(pref.getString('userData')!);
         var user1 = OtpModel.fromJson(json1);
         print(user1.data);
-        print(OtpModel.fromJson(jsonObject).data.otps);
+        print(OtpModel.fromJson(jsonObject).data!.otps!);
         Navigator.of(context).pushAndRemoveUntil<dynamic>(MaterialPageRoute(
-          builder: (context) => landingPage(OtpModel.fromJson(jsonObject).data),
+          builder: (context) => landingPage(OtpModel.fromJson(jsonObject).data!),
         ),(route) => false,);
         Fluttertoast.showToast(
             msg:"Logged in Successfully",
@@ -108,7 +108,7 @@ class _OtpScreenState extends State<OtpScreen> {
             fontSize: 14.0);
       } else if (OtpModel.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg:OtpModel.fromJson(jsonObject).message,
+            msg:OtpModel.fromJson(jsonObject).message!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -258,7 +258,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     right: 26,
                   ),
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return "Please enter the OTP";
                     }
                     return null;
@@ -301,8 +301,8 @@ class _OtpScreenState extends State<OtpScreen> {
                 ),
                 CustomButton(
                   onTap:(){
-                    FocusManager.instance.primaryFocus.unfocus();
-                    if (_formKey.currentState.validate() && otpController.text==widget.otp) {
+                    FocusManager.instance.primaryFocus!.unfocus();
+                    if (_formKey.currentState!.validate() && otpController.text==widget.otp) {
                       postRequest();
                       Timer(Duration(seconds: 3), () {
                         otpController.clear();

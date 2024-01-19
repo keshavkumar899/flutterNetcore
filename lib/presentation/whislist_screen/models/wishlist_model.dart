@@ -1,7 +1,7 @@
 class WishlistScreenModel {
-  String status;
-  String message;
-  List<WishListData> data;
+  String? status;
+  String? message;
+  List<WishListData>? data;
 
   WishlistScreenModel({this.status, this.message, this.data});
 
@@ -11,7 +11,7 @@ class WishlistScreenModel {
     if (json['data'] != null) {
       data = <WishListData>[];
       json['data'].forEach((v) {
-        data.add(new WishListData.fromJson(v));
+        data!.add(new WishListData.fromJson(v));
       });
     }
   }
@@ -21,17 +21,17 @@ class WishlistScreenModel {
     data['status'] = this.status;
     data['message'] = this.message;
     if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class WishListData {
-  String id;
-  String userId;
-  String productId;
-  ProductData productData;
+  String? id;
+  String? userId;
+  String? productId;
+  ProductData? productData;
 
   WishListData({this.id, this.userId, this.productId, this.productData});
 
@@ -50,39 +50,39 @@ class WishListData {
     data['user_id'] = this.userId;
     data['product_id'] = this.productId;
     if (this.productData != null) {
-      data['product_data'] = this.productData.toJson();
+    data['product_data'] = this.productData!.toJson();
     }
     return data;
   }
 }
 
 class ProductData {
-  String id;
-  String name;
-  String code;
-  String categoryId;
-  String subCategoryId;
-  String brandId;
-  String keywordsId;
-  String cityId;
-  String mrpPrice;
-  String salePrice;
-  String discountPrice;
-  String discountPer;
-  String description;
-  String image;
-  String sellerId;
-  String emiOption;
-  String monthWarrenty;
-  String easyReturn;
-  String safeDelivery;
-  String metaTitle;
-  String metaDescription;
-  String isActive;
-  String featured;
-  String isDelete;
-  String createOn;
-  String updateOn;
+  String? id;
+  String? name;
+  String? code;
+  String? categoryId;
+  String? subCategoryId;
+  String? brandId;
+  String? keywordsId;
+  String? cityId;
+  String? mrpPrice;
+  String? salePrice;
+  String? discountPrice;
+  String? discountPer;
+  String? description;
+  String? image;
+  String ?sellerId;
+  String ?emiOption;
+  String ?monthWarrenty;
+  String ?easyReturn;
+  String ?safeDelivery;
+  String ?metaTitle;
+  String ?metaDescription;
+  String ?isActive;
+  String ?featured;
+  String ?isDelete;
+  String ?createOn;
+  String ?updateOn;
 
   ProductData(
       {this.id,

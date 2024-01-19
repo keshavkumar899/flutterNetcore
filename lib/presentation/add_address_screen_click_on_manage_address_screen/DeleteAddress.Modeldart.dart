@@ -1,6 +1,6 @@
 class DeleteAddress {
-  String status;
-  String message;
+  String? status;
+  String? message;
 
   DeleteAddress({this.status, this.message});
 

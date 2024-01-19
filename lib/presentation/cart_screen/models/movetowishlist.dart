@@ -1,7 +1,7 @@
 class MovetoWishlist {
-  String status;
-  String message;
-  bool data;
+  String? status;
+  String? message;
+  bool? data;
 
   MovetoWishlist({this.status, this.message, this.data});
 

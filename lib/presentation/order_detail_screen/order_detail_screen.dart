@@ -36,7 +36,7 @@ class OrderDetailScreen extends StatefulWidget {
 
 class _OrderDetailScreenState extends State<OrderDetailScreen> {
 
-  String _selectedQty;
+  String? _selectedQty;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -311,7 +311,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                                                                 1),
                                                                         child: Text(
                                                                             widget
-                                                                                .productdetails.salePrice,
+                                                                                .productdetails.salePrice!,
                                                                             overflow:
                                                                                 TextOverflow.ellipsis,
                                                                             textAlign: TextAlign.left,
@@ -363,7 +363,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                                                                 // mainAxisAlignment:
                                                                                 //     MainAxisAlignment.spaceBetween,
                                                                                 children: [
-                                                                                  CustomImageView(url: widget.productdetails.image, imagePath: ImageConstant.imgImage17, height: getSize(82), width: getSize(82), margin: getMargin(bottom: 1)),
+                                                                                  CustomImageView(url: widget.productdetails.image!, imagePath: ImageConstant.imgImage17, height: getSize(82), width: getSize(82), margin: getMargin(bottom: 1)),
                                                                                   SizedBox(
                                                                                     width: 4.w,
                                                                                   ),
@@ -377,16 +377,16 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                                                                               width: 56.w,
                                                                                               // color: Colors.black,
                                                                                               child: Row(children: [
-                                                                                                FittedBox(fit: BoxFit.fill, child: Container(width: 35.w, padding: getPadding(top: 5), child: Text(widget.productdetails.name, overflow: TextOverflow.ellipsis, maxLines: 2, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular14Black900))),
-                                                                                                Padding(padding: getPadding(left: 15.w, bottom: 4, top: 4, right: 2), child: Text("Qty: " + widget.product.qty, overflow: TextOverflow.ellipsis, textAlign: TextAlign.right, style: AppStyle.txtRobotoMedium12Purple900))
+                                                                                                FittedBox(fit: BoxFit.fill, child: Container(width: 35.w, padding: getPadding(top: 5), child: Text(widget.productdetails.name!, overflow: TextOverflow.ellipsis, maxLines: 2, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular14Black900))),
+                                                                                                Padding(padding: getPadding(left: 15.w, bottom: 4, top: 4, right: 2), child: Text("Qty: " + widget.product.qty!, overflow: TextOverflow.ellipsis, textAlign: TextAlign.right, style: AppStyle.txtRobotoMedium12Purple900))
                                                                                               ]),
                                                                                             )),
-                                                                                        Padding(padding: getPadding(top: 2), child: Text(widget.productdetails.categoryName + " by " + widget.productdetails.brandName, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular12Purple700)),
+                                                                                        Padding(padding: getPadding(top: 2), child: Text(widget.productdetails.categoryName! + " by " + widget.productdetails.brandName!, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular12Purple700)),
                                                                                         Padding(
                                                                                             padding: getPadding(top: 12),
                                                                                             child: Row(children: [
                                                                                               CustomImageView(svgPath: ImageConstant.imgCut, height: getVerticalSize(14), width: getHorizontalSize(9), margin: getMargin(bottom: 3)),
-                                                                                              Padding(padding: getPadding(left: 5), child: Text(widget.productdetails.salePrice, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium14Purple900))
+                                                                                              Padding(padding: getPadding(left: 5), child: Text(widget.productdetails.salePrice!, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium14Purple900))
                                                                                             ]))
                                                                                       ]))
                                                                                 ])),
@@ -459,7 +459,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                                         ])),
                                                 CustomButton(
                                                     onTap: (){
-                                                      _showQuantityBottomSheet(context,widget.product.productId);
+                                                      _showQuantityBottomSheet(context,widget.product.productId!);
                                                       // if(_selectedQty==null){
                                                       //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                                       //       duration: Duration(seconds: 1),
@@ -514,7 +514,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                                                       children: [
                                                                         Text(
                                                                             widget
-                                                                                .order.addressDetails.name,
+                                                                                .order.addressDetails!.name!,
                                                                             overflow:
                                                                                 TextOverflow.ellipsis,
                                                                             textAlign: TextAlign.left,
@@ -523,10 +523,10 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                                                             width:
                                                                                 getHorizontalSize(227),
                                                                             margin: getMargin(top: 4, bottom: 2),
-                                                                            child: Text(widget.order.addressDetails.addressTwo + " " + widget.order.addressDetails.addressTwo + " , " + widget.order.addressDetails.city + " , " + widget.order.addressDetails.state + " - " + widget.order.addressDetails.pincode, maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular12Black9001)),
+                                                                            child: Text(widget.order.addressDetails!.addressTwo! + " " + widget.order.addressDetails!.addressTwo! + " , " + widget.order.addressDetails!.city! + " , " + widget.order.addressDetails!.state! + " - " + widget.order.addressDetails!.pincode!, maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular12Black9001)),
                                                                         Text(
                                                                             "Mo. " +
-                                                                                widget.order.addressDetails.mobileNumber,
+                                                                                widget.order.addressDetails!.mobileNumber!,
                                                                             overflow: TextOverflow.ellipsis,
                                                                             textAlign: TextAlign.left,
                                                                             style: AppStyle.txtRobotoRegular14Black900),
@@ -599,7 +599,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 20.0),
-            content: Text("Added to Cart "+AddtoCart.fromJson(jsonObject).message+"ly",style: TextStyle(color: Colors.black),),
+            content: Text("Added to Cart "+AddtoCart.fromJson(jsonObject).message!+"ly",style: TextStyle(color: Colors.black),),
             backgroundColor: Colors.greenAccent));
 
         Future.delayed(const Duration(seconds: 2), () {
@@ -621,7 +621,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text(AddtoCart.fromJson(jsonObject).message.capitalizeFirst),
+            content: Text(AddtoCart.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
 
       }

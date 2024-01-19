@@ -23,8 +23,8 @@ class AboutUsScreen extends StatefulWidget {
 
 class _aboutUsScreen extends State<AboutUsScreen> {
   final List<Setting> _listData = <Setting>[];
-  SettingVO settingVO;
-  String versionCode;
+  SettingVO? settingVO;
+  String? versionCode;
   @override
   void initState() {
     // TODO: implement initState
@@ -96,7 +96,7 @@ class _aboutUsScreen extends State<AboutUsScreen> {
                         onTap: () {
                           AppConstant.aboutType = '1';
                           int index = _listData.indexWhere((setting) => setting.settingsKeys == 'terms_condition');
-                          AppConstant.terms = _parseHtmlString(_listData[index].settingsValues);
+                          AppConstant.terms = _parseHtmlString(_listData[index].settingsValues!);
                           onTapTxt();
                         },
                         child: Padding(
@@ -128,7 +128,7 @@ class _aboutUsScreen extends State<AboutUsScreen> {
                         onTap: () {
                           AppConstant.aboutType = '2';
                           int index = _listData.indexWhere((setting) => setting.settingsKeys == 'privacy_policy');
-                          AppConstant.terms = _parseHtmlString(_listData[index].settingsValues);
+                          AppConstant.terms = _parseHtmlString(_listData[index].settingsValues!);
                           onTapTxt();
                         },
                         child: Padding(
@@ -159,7 +159,7 @@ class _aboutUsScreen extends State<AboutUsScreen> {
                         onTap: () {
                           AppConstant.aboutType = '3';
                           int index = _listData.indexWhere((setting) => setting.settingsKeys == 'return_policy');
-                          AppConstant.terms = _parseHtmlString(_listData[index].settingsValues);
+                          AppConstant.terms = _parseHtmlString(_listData[index].settingsValues!);
                           onTapTxt();
                         },
                         child: Padding(
@@ -333,7 +333,7 @@ class _aboutUsScreen extends State<AboutUsScreen> {
 
     var document = parse(htmlString);
 
-    String parsedString = parse(document.body.text).documentElement.text;
+    String parsedString = parse(document.body!.text).documentElement!.text;
 
     return parsedString;
   }
@@ -357,9 +357,9 @@ class _aboutUsScreen extends State<AboutUsScreen> {
       if (response.statusCode == 200) {
         settingVO = SettingVO.fromJson(jsonDecode(response.toString()));
         if (settingVO != null &&
-            settingVO.status == 'true' &&
-            settingVO.data.isNotEmpty) {
-          _listData.addAll(settingVO.data);
+            settingVO!.status == 'true' &&
+            settingVO!.data!.isNotEmpty) {
+          _listData.addAll(settingVO!.data!);
 
 
         }

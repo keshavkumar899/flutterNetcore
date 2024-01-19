@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:grouped_buttons/grouped_buttons.dart';
+// import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:keshav_s_application2/core/utils/utils.dart';
 import 'package:keshav_s_application2/presentation/add_address_screen/models/add_address_model.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
@@ -18,33 +18,11 @@ import 'package:keshav_s_application2/widgets/custom_drop_down.dart';
 import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
 
 import 'dart:convert';
+import 'package:grouped_buttons_ns/grouped_buttons_ns.dart';
 
 import 'package:dio/dio.dart' as dio;
 
 import '../add_address_screen_click_on_manage_address_screen/add_address_screen_click_on_manage_address_screen.dart';
-// ignore_for_file: must_be_immutable
-
-// ignore_for_file: must_be_immutable
-
-// ignore_for_file: must_be_immutable
-
-// ignore_for_file: must_be_immutable
-
-// ignore_for_file: must_be_immutable
-
-// ignore_for_file: must_be_immutable
-
-// ignore_for_file: must_be_immutable
-
-// ignore_for_file: must_be_immutable
-
-// ignore_for_file: must_be_immutable
-
-// ignore_for_file: must_be_immutable
-
-// ignore_for_file: must_be_immutable
-
-// ignore_for_file: must_be_immutable
 class AddAddressScreen extends StatefulWidget {
   Data data;
   AddAddressScreen(this.data);
@@ -78,8 +56,8 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   bool isCheckbox2 = false;
 
   bool isCheckbox3 = false;
-  int check1;
-  int check2;
+  int? check1;
+  int? check2;
   String selected = "";
   List<String> _checked = [];
   List checkListItems = [
@@ -161,7 +139,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 20.0),
-            content: Text(AddressAdd.fromJson(jsonObject).message),
+            content: Text(AddressAdd.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
         // setState(() {
         //   _btnController.error();
@@ -237,7 +215,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             hintText: "Full Name",
                             margin: getMargin(left: 25, right: 28),
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please enter name';
                               }
                               return null;
@@ -251,7 +229,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             textInputType: TextInputType.phone,
                             maxLength: 10,
                             validator: (value) {
-                              if (value.isEmpty &&
+                              if (value!.isEmpty &&
                                   !isPhone(value) &&
                                   value.length != 10) {
                                 return 'Please enter the 10 digit phone number';
@@ -267,7 +245,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             maxLength: 6,
                             textInputType: TextInputType.number,
                             validator: (value) {
-                              if (value.isEmpty && value.length != 6) {
+                              if (value!.isEmpty && value.length != 6) {
                                 return 'Please enter valid pincode';
                               }
                               return null;
@@ -279,7 +257,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             hintText: "Address & Landmark",
                             margin: getMargin(left: 25, top: 8, right: 28),
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please enter the address';
                               }
                               return null;
@@ -292,7 +270,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             margin: getMargin(left: 25, top: 24, right: 28),
                             textInputAction: TextInputAction.done,
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please enter the city';
                               }
                               return null;
@@ -305,7 +283,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             margin: getMargin(left: 25, top: 24, right: 28),
                             textInputAction: TextInputAction.done,
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please enter the state';
                               }
                               return null;
@@ -318,7 +296,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             margin: getMargin(left: 25, top: 24, right: 28),
                             textInputAction: TextInputAction.done,
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please enter the country';
                               }
                               return null;
@@ -395,7 +373,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                         } else {
                                           print("only one");
                                         }
-                                        _checked = selected;
+                                        _checked = selected as List<String>;
                                       }),
                                     ),
                                     // Container(
@@ -531,7 +509,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                             value: isCheckbox2,
                                             onChanged: (value) {
                                               setState(() {
-                                                isCheckbox2 = value;
+                                                isCheckbox2 = value!;
                                               });
                                             },
                                           ),
@@ -579,8 +557,8 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                               // color: Colors.black,
                               child: GestureDetector(
                                 onTap: () {
-                                  FocusManager.instance.primaryFocus.unfocus();
-                                  if (_formKey.currentState.validate()) {
+                                  FocusManager.instance.primaryFocus!.unfocus();
+                                  if (_formKey.currentState!.validate()) {
                                     postRequest();
                                     Timer(Duration(seconds: 3), () {
                                       mobilenumberController.clear();
@@ -621,7 +599,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Padding(
-                                              padding: getPadding(top: 3),
+                                              padding: getPadding(top: 0),
                                               child: Text("SAVE AND CONTINUE",
                                                   overflow:
                                                       TextOverflow.ellipsis,

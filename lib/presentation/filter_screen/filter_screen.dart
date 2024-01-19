@@ -26,7 +26,7 @@ class _filterScreen extends State<FilterScreen> {
   final List<SubCategorys> _listDataSubCategory = <SubCategorys>[];
   final List<Keywords> _listDataKeywords = <Keywords>[];
   final List<Brands> _listDataBrands = <Brands>[];
-  FilterVO filterVO;
+  FilterVO? filterVO;
 
   @override
   void initState() {
@@ -182,7 +182,7 @@ class _filterScreen extends State<FilterScreen> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 5, vertical: 10),
                                   child: Text(
-                                    StaticData.items[index].name,
+                                    StaticData.items[index].name!,
                                     style: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 12,
@@ -227,7 +227,7 @@ class _filterScreen extends State<FilterScreen> {
                                               }
                                               AppConstant.selectedIndexCategory = index;
                                               AppConstant.selectedIndexCategoryId =
-                                                  _listDataCategory[index].id;
+                                                  _listDataCategory[index].id!;
                                             });
                                           },
                                           child: Container(
@@ -262,7 +262,7 @@ class _filterScreen extends State<FilterScreen> {
                                                         vertical: 10),
                                                     child: Text(
                                                       _listDataCategory[index]
-                                                          .name,
+                                                          .name!,
                                                       maxLines: 1,
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -322,7 +322,7 @@ class _filterScreen extends State<FilterScreen> {
                                               }
                                               AppConstant.selectedIndexSubCategory = index;
                                               AppConstant.selectedIndexSubCategoryId =
-                                                  _listDataSubCategory[index].id;
+                                                  _listDataSubCategory[index].id!;
                                             });
                                           },
                                           child: Container(
@@ -357,7 +357,7 @@ class _filterScreen extends State<FilterScreen> {
                                                         vertical: 10),
                                                     child: Text(
                                                       _listDataSubCategory[index]
-                                                          .name,
+                                                          .name!,
                                                       maxLines: 1,
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -417,7 +417,7 @@ class _filterScreen extends State<FilterScreen> {
                                               }
                                               AppConstant.selectedIndexKeyword = index;
                                               AppConstant.selectedIndexKeywordId =
-                                                  _listDataKeywords[index].id;
+                                                  _listDataKeywords[index].id!;
                                             });
                                           },
                                           child: Container(
@@ -452,7 +452,7 @@ class _filterScreen extends State<FilterScreen> {
                                                         vertical: 10),
                                                     child: Text(
                                                       _listDataKeywords[index]
-                                                          .name,
+                                                          .name!,
                                                       maxLines: 1,
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -512,7 +512,7 @@ class _filterScreen extends State<FilterScreen> {
                                               }
                                               AppConstant.selectedIndexBrand = index;
                                               AppConstant.selectedIndexBrandId =
-                                                  _listDataBrands[index].id;
+                                                  _listDataBrands[index].id!;
                                             });
                                           },
                                           child: Container(
@@ -545,7 +545,7 @@ class _filterScreen extends State<FilterScreen> {
                                                         horizontal: 5,
                                                         vertical: 10),
                                                     child: Text(
-                                                      _listDataBrands[index].name,
+                                                      _listDataBrands[index].name!,
                                                       maxLines: 1,
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -600,12 +600,12 @@ class _filterScreen extends State<FilterScreen> {
       if (response.statusCode == 200) {
         filterVO = FilterVO.fromJson(jsonDecode(response.toString()));
         if (filterVO != null &&
-            filterVO.status == 'true' &&
-            filterVO.data.category.isNotEmpty) {
-          _listDataCategory.addAll(filterVO.data.category);
-          _listDataSubCategory.addAll(filterVO.data.subCategory);
-          _listDataKeywords.addAll(filterVO.data.keywords);
-          _listDataBrands.addAll(filterVO.data.brands);
+            filterVO!.status! == 'true' &&
+            filterVO!.data!.category!.isNotEmpty) {
+          _listDataCategory.addAll(filterVO!.data!.category!);
+          _listDataSubCategory.addAll(filterVO!.data!.subCategory!);
+          _listDataKeywords.addAll(filterVO!.data!.keywords!);
+          _listDataBrands.addAll(filterVO!.data!.brands!);
           setState(() {});
         } else {
           setState(() {});

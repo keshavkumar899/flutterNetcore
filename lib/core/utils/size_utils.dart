@@ -57,11 +57,11 @@ double getFontSize(double px) {
 
 ///This method is used to set padding responsively
 EdgeInsetsGeometry getPadding({
-  double all,
-  double left,
-  double top,
-  double right,
-  double bottom,
+  double? all,
+  double? left,
+  double? top,
+  double? right,
+  double? bottom,
 }) {
   return getMarginOrPadding(
     all: all,
@@ -74,11 +74,11 @@ EdgeInsetsGeometry getPadding({
 
 ///This method is used to set margin responsively
 EdgeInsetsGeometry getMargin({
-  double all,
-  double left,
-  double top,
-  double right,
-  double bottom,
+  double? all,
+  double? left,
+  double? top,
+  double? right,
+  double? bottom,
 }) {
   return getMarginOrPadding(
     all: all,
@@ -91,11 +91,11 @@ EdgeInsetsGeometry getMargin({
 
 ///This method is used to get padding or margin responsively
 EdgeInsetsGeometry getMarginOrPadding({
-  double all,
-  double left,
-  double top,
-  double right,
-  double bottom,
+  double? all,
+  double? left,
+  double? top,
+  double? right,
+  double? bottom,
 }) {
   if (all != null) {
     left = all;

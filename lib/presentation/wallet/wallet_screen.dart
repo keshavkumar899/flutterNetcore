@@ -26,8 +26,8 @@ class WalletScreen extends StatefulWidget {
 
 class _WalletScreenState extends State<WalletScreen> {
 
-  Future<ProfileGet> myProfile;
-  String wallet_balance;
+  Future<ProfileGet>? myProfile;
+  String ?wallet_balance;
 
   Future<ProfileGet> getProfileData() async {
     Map data = {
@@ -56,7 +56,7 @@ class _WalletScreenState extends State<WalletScreen> {
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
       } else if (ProfileGet.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(ProfileGet.fromJson(jsonObject).message),
+            content: Text(ProfileGet.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
       } else if (ProfileGet.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -78,9 +78,9 @@ class _WalletScreenState extends State<WalletScreen> {
   @override
   void initState() {
     myProfile = getProfileData();
-    myProfile.then((value) {
+    myProfile!.then((value) {
       setState(() {
-        wallet_balance = value.data.walletBalence;
+        wallet_balance = value.data!.walletBalence!;
       });
     });
 
@@ -227,7 +227,7 @@ class _WalletScreenState extends State<WalletScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Rs "+wallet_balance??'',
+              "Rs "+wallet_balance!??'',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w500,

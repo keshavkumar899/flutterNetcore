@@ -1,7 +1,7 @@
 class AddressList {
-  String status;
-  String message;
-  List<AddressData> data;
+  String? status;
+  String? message;
+  List<AddressData>? data;
 
   AddressList({this.status, this.message, this.data});
 
@@ -10,7 +10,7 @@ class AddressList {
     message = json['message'];
     if (json['data'] != null) {
       data = <AddressData>[];
-      json['data'].forEach((v) { data.add(new AddressData.fromJson(v)); });
+      json['data'].forEach((v) { data!.add(new AddressData.fromJson(v)); });
     }
   }
 
@@ -19,26 +19,26 @@ class AddressList {
     data['status'] = this.status;
     data['message'] = this.message;
     if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class AddressData {
-  String id;
-  String userId;
-  String name;
-  String addressOne;
-  String addressTwo;
-  String city;
-  String state;
-  String country;
-  String pincode;
-  String isActive;
-  String defaulted;
-  String isDelete;
-  String createOn;
+  String? id;
+  String? userId;
+  String? name;
+  String? addressOne;
+  String? addressTwo;
+  String? city;
+  String? state;
+  String? country;
+  String? pincode;
+  String? isActive;
+  String? defaulted;
+  String? isDelete;
+  String? createOn;
   Null updateOn;
 
   AddressData({this.id, this.userId, this.name, this.addressOne, this.addressTwo, this.city, this.state, this.country, this.pincode, this.isActive, this.defaulted, this.isDelete, this.createOn, this.updateOn});

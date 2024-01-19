@@ -13,23 +13,23 @@ class CustomCheckbox extends StatelessWidget {
       this.width,
       this.margin});
 
-  CheckboxFontStyle fontStyle;
+  CheckboxFontStyle? fontStyle;
 
-  Alignment alignment;
+  Alignment? alignment;
 
-  bool isRightCheck;
+  bool? isRightCheck;
 
-  double iconSize;
+  double? iconSize;
 
-  bool value;
+  bool? value;
 
-  Function(bool) onChange;
+  Function(bool) ?onChange;
 
-  String text;
+  String? text;
 
-  double width;
+  double? width;
 
-  EdgeInsetsGeometry margin;
+  EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +44,13 @@ class CustomCheckbox extends StatelessWidget {
   _buildCheckboxWidget() {
     return InkWell(
       onTap: () {
-        value = !(value);
-        onChange(value);
+        value = !(value!);
+        onChange!(value!);
       },
       child: Container(
         width: width,
         margin: margin ?? EdgeInsets.zero,
-        child: isRightCheck ? getRightSideCheckbox() : getLeftSideCheckbox(),
+        child: isRightCheck! ? getRightSideCheckbox() : getLeftSideCheckbox(),
       ),
     );
   }
@@ -99,7 +99,7 @@ class CustomCheckbox extends StatelessWidget {
       child: Checkbox(
         value: value ?? false,
         onChanged: (value) {
-          onChange(value);
+          onChange!(value!);
         },
         checkColor: ColorConstant.purple900,
         visualDensity: VisualDensity(
