@@ -9,7 +9,7 @@ import 'package:keshav_s_application2/presentation/whislist_screen/whislist_scre
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 
 import '../search_screen/search_screen.dart';
 import 'controller/profile_controller.dart';

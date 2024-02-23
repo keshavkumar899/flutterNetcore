@@ -33,9 +33,11 @@ dependencies:
   light_modal_bottom_sheet: ^0.0.5
   dio: ^5.1.1
   google_fonts: ^6.1.0
-  rounded_loading_button:
+  rounded_loading_button_plus: ^3.0.1
   firebase_core: ^2.24.2
   firebase_messaging: ^14.7.10
+  smartech_base: ^3.2.9
+  smartech_push: ^3.2.7
 
 dev_dependencies: 
   flutter_test: 

@@ -5,7 +5,7 @@ import 'package:keshav_s_application2/core/utils/size_utils.dart';
 import 'package:keshav_s_application2/theme/app_style.dart';
 import 'package:keshav_s_application2/widgets/custom_button.dart';
 import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 import 'package:sizer/sizer.dart';
 
 import '../widgets/custom_image_view.dart';

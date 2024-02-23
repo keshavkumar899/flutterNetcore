@@ -13,7 +13,7 @@ import 'package:keshav_s_application2/theme/app_style.dart';
 import 'package:keshav_s_application2/widgets/custom_button.dart';
 import 'package:keshav_s_application2/widgets/custom_image_view.dart';
 import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/utils/utils.dart';

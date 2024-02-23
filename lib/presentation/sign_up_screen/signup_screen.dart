@@ -9,7 +9,7 @@ import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.d
 import 'package:keshav_s_application2/presentation/sign_up_screen/models/signup_screen_model.dart';
 import 'package:package_info/package_info.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 
 import '../../core/utils/appConstant.dart';
 import '../../screenwithoutlogin/landingpage1.dart';

@@ -29,7 +29,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 
 import 'package:sizer/sizer.dart';
 // ignore_for_file: must_be_immutable

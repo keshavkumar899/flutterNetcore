@@ -1481,7 +1481,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                           style: TextStyle(color: Colors.white),
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                          primary: Colors.blueGrey,
+                                          foregroundColor: Colors.blueGrey,
                                         ),
                                       ),
                                     ),
@@ -1534,7 +1534,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                           style: TextStyle(color: Colors.white),
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                          primary: Colors.cyan,
+                                          foregroundColor: Colors.cyan,
                                         ),
                                       ),
                                     ),

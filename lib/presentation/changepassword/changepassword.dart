@@ -9,7 +9,7 @@ import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.d
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/utils/color_constant.dart';

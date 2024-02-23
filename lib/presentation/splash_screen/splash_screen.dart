@@ -1,9 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:keshav_s_application2/landingpage.dart';
 import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smartech_base/smartech_base.dart';
 
 import '../../screenwithoutlogin/landingpage1.dart';
 import 'controller/splash_controller.dart';
@@ -28,12 +31,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   fetchUser() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isLoggedIn = prefs.getBool("isLoggedIn")!;
+    bool? isLoggedIn = prefs.getBool("isLoggedIn");
     var data=prefs.getString('userData');
     if(data!=null && isLoggedIn != null && isLoggedIn){
       Map <String,dynamic>json1 = jsonDecode(prefs.getString('userData')!);
       var user1 = OtpModel.fromJson(json1);
       print(user1.data);
+      Smartech().login(user1.data!.email!);
       Future.delayed(const Duration(milliseconds: 3000), () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => landingPage(user1.data!),
@@ -41,6 +45,18 @@ class _SplashScreenState extends State<SplashScreen> {
         // Get.offNamed(AppRoutes.logInScreen);
       });
     }else{
+      if(Platform.isIOS){
+        FirebaseMessaging.instance.getAPNSToken().then((token) {
+          print('This is IOS Token: ' '${token}');
+          Smartech().login(token!);
+        });
+      }
+      else if(Platform.isAndroid){
+        FirebaseMessaging.instance.getToken().then((token) {
+          print('This is Android Token: ' '${token}');
+          Smartech().login(token!);
+        });
+      }
       Future.delayed(const Duration(milliseconds: 3000), () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => landingPage1(),
