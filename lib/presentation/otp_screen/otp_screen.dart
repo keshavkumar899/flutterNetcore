@@ -6,6 +6,7 @@ import 'package:keshav_s_application2/landingpage.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smartech_base/smartech_base.dart';
 
 import 'controller/otp_controller.dart';
 import 'dart:convert';
@@ -94,6 +95,7 @@ class _OtpScreenState extends State<OtpScreen> {
         Map <String,dynamic>json1 = jsonDecode(pref.getString('userData')!);
         var user1 = OtpModel.fromJson(json1);
         print(user1.data);
+        Smartech().login(user1.data!.mobile!);
         print(OtpModel.fromJson(jsonObject).data!.otps!);
         Navigator.of(context).pushAndRemoveUntil<dynamic>(MaterialPageRoute(
           builder: (context) => landingPage(OtpModel.fromJson(jsonObject).data!),

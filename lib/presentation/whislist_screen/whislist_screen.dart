@@ -396,6 +396,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
                                                 return Align(
                                                   alignment: Alignment.center,
                                                   child: Container(
+                                                    key: ValueKey((index+1).toString()),
                                                     width: double.maxFinite,
                                                     child: Container(
                                                       padding: getPadding(

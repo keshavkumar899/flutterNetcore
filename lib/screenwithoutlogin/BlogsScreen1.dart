@@ -14,6 +14,7 @@ import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
 
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
 import 'package:sizer/sizer.dart';
+import 'package:smartech_base/smartech_base.dart';
 
 import '../../../widgets/app_bar/appbar_subtitle_6.dart';
 
@@ -55,6 +56,7 @@ class _BlogsScreen1State extends State<BlogsScreen1> {
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
+      Smartech().trackEvent("screen_viewed",jsonObject);
       if (BlogsModel.fromJson(jsonObject).status == "true") {
         return BlogsModel.fromJson(jsonObject);
         // inviteList.sort((a, b) => a.id.compareTo(b.id));

@@ -145,7 +145,7 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                                           left: 28,
                                           top: 16,
                                           right: 28,
-                                          bottom: 16),
+                                          bottom: 14),
                                       decoration: AppDecoration.fillPurple50,
                                       child: Column(
                                           mainAxisSize: MainAxisSize.min,

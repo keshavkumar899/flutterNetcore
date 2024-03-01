@@ -32,6 +32,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "audio_session",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/audio_session-0.1.18",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -72,6 +78,12 @@
       "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/checked_yaml-2.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "chewie",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/chewie-1.7.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
     },
     {
       "name": "cli_util",
@@ -128,6 +140,18 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "cupertino_icons",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "custom_pop_up_menu",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/custom_pop_up_menu-1.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "dbus",
       "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/dbus-0.7.10",
       "packageUri": "lib/",
@@ -135,7 +159,7 @@
     },
     {
       "name": "dio",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/dio-5.4.0",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/dio-5.4.1",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -153,9 +177,9 @@
     },
     {
       "name": "ffi",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/ffi-2.1.0",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/ffi-2.1.2",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "file",
@@ -231,7 +255,7 @@
     },
     {
       "name": "flutter_svg",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_svg-2.0.9",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_svg-2.0.10+1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -285,9 +309,9 @@
     },
     {
       "name": "http",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/http-1.2.0",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/http-1.2.1",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
     },
     {
       "name": "http_parser",
@@ -297,15 +321,15 @@
     },
     {
       "name": "image",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/image-4.1.4",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/image-4.1.7",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
     {
       "name": "intl",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/intl-0.19.0",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/intl-0.18.1",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "2.12"
     },
     {
       "name": "js",
@@ -318,6 +342,24 @@
       "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/json_annotation-4.8.1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "just_audio",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/just_audio-0.9.36",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "just_audio_platform_interface",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/just_audio_platform_interface-4.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "just_audio_web",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/just_audio_web-0.4.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "leak_tracker",
@@ -364,6 +406,12 @@
     {
       "name": "meta",
       "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/meta-1.11.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "nested",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/nested-1.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -476,6 +524,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "provider",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/provider-6.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "razorpay_flutter",
       "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/razorpay_flutter-1.3.6",
       "packageUri": "lib/",
@@ -525,9 +579,9 @@
     },
     {
       "name": "shared_preferences_web",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/shared_preferences_web-2.2.2",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/shared_preferences_web-2.3.0",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
     },
     {
       "name": "shared_preferences_windows",
@@ -554,8 +608,20 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "smartech_appinbox",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/smartech_appinbox-3.2.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "smartech_base",
       "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/smartech_base-3.2.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "smartech_nudges",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/smartech_nudges-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -585,13 +651,13 @@
     },
     {
       "name": "sqflite",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/sqflite-2.3.0",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/sqflite-2.3.2",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "sqflite_common",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/sqflite_common-2.5.0+2",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/sqflite_common-2.5.3",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -644,6 +710,54 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "url_launcher",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/url_launcher-6.2.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "url_launcher_android",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "url_launcher_ios",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/url_launcher_ios-6.2.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "url_launcher_linux",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "url_launcher_macos",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/url_launcher_macos-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "url_launcher_platform_interface",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/url_launcher_platform_interface-2.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "url_launcher_web",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "url_launcher_windows",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "uuid",
       "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/uuid-4.3.3",
       "packageUri": "lib/",
@@ -651,19 +765,19 @@
     },
     {
       "name": "vector_graphics",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/vector_graphics-1.1.9+2",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/vector_graphics-1.1.11+1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "vector_graphics_codec",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/vector_graphics_codec-1.1.9+2",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/vector_graphics_codec-1.1.11+1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "vector_graphics_compiler",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.9+2",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.11+1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -674,38 +788,86 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "video_player",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/video_player-2.8.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "video_player_android",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/video_player_android-2.4.12",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "video_player_avfoundation",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/video_player_avfoundation-2.5.6",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "video_player_platform_interface",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/video_player_platform_interface-6.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "video_player_web",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/video_player_web-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "visibility_detector",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/visibility_detector-0.4.0+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "vm_service",
       "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/vm_service-13.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
+      "name": "wakelock_plus",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/wakelock_plus-1.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "wakelock_plus_platform_interface",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/wakelock_plus_platform_interface-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "web",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/web-0.3.0",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/web-0.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "webview_flutter",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/webview_flutter-4.7.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
-      "name": "webview_flutter",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/webview_flutter-4.4.4",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "webview_flutter_android",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/webview_flutter_android-3.13.2",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/webview_flutter_android-3.15.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "webview_flutter_platform_interface",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/webview_flutter_platform_interface-2.9.1",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/webview_flutter_platform_interface-2.10.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "webview_flutter_wkwebview",
-      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.11.0",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.12.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -740,7 +902,7 @@
       "languageVersion": "2.13"
     }
   ],
-  "generated": "2024-02-23T08:36:12.135738Z",
+  "generated": "2024-03-01T06:16:52.073356Z",
   "generator": "pub",
   "generatorVersion": "3.3.0"
 }

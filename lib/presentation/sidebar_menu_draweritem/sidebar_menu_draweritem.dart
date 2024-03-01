@@ -1,3 +1,4 @@
+import 'package:keshav_s_application2/presentation/app_inbox/app_inbox_screen.dart';
 import 'package:keshav_s_application2/presentation/drawermenuitems/blogs/BlogsScreen.dart';
 import 'package:keshav_s_application2/presentation/drawermenuitems/offers/OffersScreen.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
@@ -175,12 +176,27 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                         InkWell(
                           onTap: (){
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => OffersScreen(widget.data),
+                              builder: (context) => SMTAppInboxScreen(),
                             ));
                           },
                           child: Container(
                               width: 75.w,
                               padding: getPadding(left:18,right: 24,top:20,bottom: 10),
+                              child: Text("App Inbox",
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                        ),
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => OffersScreen(widget.data),
+                            ));
+                          },
+                          child: Container(
+                              width: 75.w,
+                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
                               child: Text("Offers",
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,

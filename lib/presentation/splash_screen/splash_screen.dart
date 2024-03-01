@@ -37,26 +37,33 @@ class _SplashScreenState extends State<SplashScreen> {
       Map <String,dynamic>json1 = jsonDecode(prefs.getString('userData')!);
       var user1 = OtpModel.fromJson(json1);
       print(user1.data);
-      Smartech().login(user1.data!.email!);
+      Smartech().login(user1.data!.mobile!);
       Future.delayed(const Duration(milliseconds: 3000), () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => landingPage(user1.data!),
         ));
+        Smartech().onHandleDeeplink((String? smtDeeplinkSource, String? smtDeeplink, Map<dynamic, dynamic>? smtPayload, Map<dynamic, dynamic>? smtCustomPayload) async {
+          String deeplink=smtDeeplink!.substring(0,smtDeeplink.indexOf('?'));
+          print(deeplink);
+          if(deeplink=='/about_us_screen'){
+            Get.toNamed(AppRoutes.aboutUsScreen);
+          }
+        });
         // Get.offNamed(AppRoutes.logInScreen);
       });
     }else{
-      if(Platform.isIOS){
-        FirebaseMessaging.instance.getAPNSToken().then((token) {
-          print('This is IOS Token: ' '${token}');
-          Smartech().login(token!);
-        });
-      }
-      else if(Platform.isAndroid){
-        FirebaseMessaging.instance.getToken().then((token) {
-          print('This is Android Token: ' '${token}');
-          Smartech().login(token!);
-        });
-      }
+      // if(Platform.isIOS){
+      //   FirebaseMessaging.instance.getAPNSToken().then((token) {
+      //     print('This is IOS Token: ' '${token}');
+      //     Smartech().login(token!);
+      //   });
+      // }
+      // else if(Platform.isAndroid){
+      //   FirebaseMessaging.instance.getToken().then((token) {
+      //     print('This is Android Token: ' '${token}');
+      //     Smartech().login(token!);
+      //   });
+      // }
       Future.delayed(const Duration(milliseconds: 3000), () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => landingPage1(),

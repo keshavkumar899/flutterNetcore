@@ -24,10 +24,33 @@
 	<string>2.0.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fabfurni</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>HanselKeys</key>
+	<dict>
+		<key>HanselAppId</key>
+		<string>value of app id</string>
+		<key>HanselAppKey</key>
+		<string>value of app key</string>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow permission to access camera to take photo for profile</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -41,9 +64,9 @@
 	<key>SmartechKeys</key>
 	<dict>
 		<key>SmartechAppGroup</key>
-		<string>group.com.keshav.fabfurni</string>
+		<string>group.com.netcore.SmartechApp</string>
 		<key>SmartechAppId</key>
-		<string>YOUR_NETCORE_APP_ID</string>
+		<string>83f135604f51c4e1eb268c1d8ff0f1fa</string>
 		<key>SmartechAutoFetchLocation</key>
 		<true/>
 		<key>SmartechUseAdvId</key>

@@ -26,12 +26,13 @@ end
 require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
 
 flutter_ios_podfile_setup
-pod 'Smartech-iOS-SDK', '~> 3.4.1'
-pod 'SmartPush-iOS-SDK', '~> 3.4.1'
 
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
+
+  pod 'Smartech-iOS-SDK', '~> 3.4.1'
+  pod 'SmartPush-iOS-SDK', '~> 3.4.1'
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
@@ -47,4 +48,26 @@ post_install do |installer|
         installer.pods_project.targets.each do |target|
         flutter_additional_ios_build_settings(target)
     end
+end
+
+#service extension target
+target 'SmartechNSE' do
+  ###
+  use_frameworks!
+
+  # Pods for 'YourServiceExtensionTarget'
+  pod 'SmartPush-iOS-SDK', '~> 3.4.1'
+
+
+end
+
+#content extension target
+target 'SmartechNCE' do
+  ####
+  use_frameworks!
+
+  # Pods for 'YourContentExtensionTarget'
+  pod 'SmartPush-iOS-SDK', '~> 3.4.1'
+
+
 end
