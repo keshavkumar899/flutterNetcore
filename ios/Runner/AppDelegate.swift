@@ -3,6 +3,8 @@ import Flutter
 import Smartech
 import SmartPush
 import smartech_base
+import SmartechNudges
+
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate, SmartechDelegate{
@@ -14,8 +16,7 @@ import smartech_base
         
         Smartech.sharedInstance().initSDK(with: self, withLaunchOptions: launchOptions)
         SmartPush.sharedInstance().registerForPushNotificationWithDefaultAuthorizationOptions()
-        //     SmartPush.sharedInstance().didRegisterForRemoteNotifications(withDeviceToken: deviceToken)
-        //     SmartPush.sharedInstance().didFailToRegisterForRemoteNotificationsWithError(error)
+        Hansel.enableDebugLogs()
         Smartech.sharedInstance().setDebugLevel(.verbose)
         Smartech.sharedInstance().trackAppInstallUpdateBySmartech()
         GeneratedPluginRegistrant.register(with: self)
@@ -52,6 +53,14 @@ import smartech_base
         NSLog("SMTL deeplink Native---> \(deeplinkURLString)")
    
         SmartechBasePlugin.handleDeeplinkAction(deeplinkURLString, andCustomPayload: notificationPayload)
+    }
+    
+     override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+          var handleBySmartech = Smartech.sharedInstance().application(app, open: url, options: options);
+        if(!handleBySmartech) {
+            //Handle the url by the app
+        }
+        return true;
     }
     
 }

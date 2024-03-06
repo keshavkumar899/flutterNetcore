@@ -8,6 +8,7 @@ import 'package:keshav_s_application2/presentation/store_screen/store_screen.dar
 import 'package:keshav_s_application2/presentation/whislist_screen/models/removewishlist.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/models/wishlist_model.dart' as wishlist;
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:smartech_base/smartech_base.dart';
 
 import '../otp_screen/models/otp_model.dart';
 import '../whislist_screen/widgets/whislist_item_widget.dart';
@@ -232,6 +233,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
 
   @override
   void initState() {
+    Smartech().trackEvent("screen_viewed", {});
     mywishlist = getWishlist();
     mywishlist!.then((value) {
       setState(() {

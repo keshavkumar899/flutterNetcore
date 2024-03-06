@@ -7,11 +7,13 @@ import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.d
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartech_base/smartech_base.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../screenwithoutlogin/landingpage1.dart';
 import 'controller/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
+import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 class SplashScreen extends StatefulWidget {
 
@@ -37,16 +39,30 @@ class _SplashScreenState extends State<SplashScreen> {
       Map <String,dynamic>json1 = jsonDecode(prefs.getString('userData')!);
       var user1 = OtpModel.fromJson(json1);
       print(user1.data);
-      Smartech().login(user1.data!.mobile!);
+      // Smartech().login(user1.data!.mobile!);
       Future.delayed(const Duration(milliseconds: 3000), () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => landingPage(user1.data!),
         ));
         Smartech().onHandleDeeplink((String? smtDeeplinkSource, String? smtDeeplink, Map<dynamic, dynamic>? smtPayload, Map<dynamic, dynamic>? smtCustomPayload) async {
-          String deeplink=smtDeeplink!.substring(0,smtDeeplink.indexOf('?'));
-          print(deeplink);
-          if(deeplink=='/about_us_screen'){
-            Get.toNamed(AppRoutes.aboutUsScreen);
+          // String deeplink1=smtDeeplink!;
+          // print(deeplink1);
+          print(smtDeeplink);
+            if(smtDeeplinkSource=='PushNotification'){
+              print(smtDeeplink);
+              String deeplink=smtDeeplink!.substring(0,smtDeeplink.indexOf('?'));
+              if(deeplink=='/about_us_screen'){
+                  Get.toNamed(AppRoutes.aboutUsScreen);
+              }
+            }
+          if(smtDeeplinkSource=='InAppMessage'){
+           // print(smtDeeplink);
+            if(smtDeeplink!.contains("https")) {
+              print("navigate to browser with url");
+              final Uri _url = Uri.parse(smtDeeplink);
+              if (!await launchUrl(_url)) throw 'Could not launch $_url';
+              await FlutterWebBrowser.openWebPage(url: smtDeeplink);
+            }
           }
         });
         // Get.offNamed(AppRoutes.logInScreen);

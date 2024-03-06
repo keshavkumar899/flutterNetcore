@@ -25,6 +25,7 @@ import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_6.dart';
 import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:sizer/sizer.dart';
+import 'package:smartech_base/smartech_base.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../widgets/app_bar/appbar_title.dart';
@@ -73,6 +74,34 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   int silderIndex=0;
+
+  @override
+  void initState() {
+    Smartech().trackEvent("screen_viewed", {});
+    home = getdashboard();
+    category = getCategory();
+    category!.then((value) {
+      setState(() {
+        categorylist = value.data!;
+      });
+    });
+    home!.then((value) {
+      setState(() {
+        homelist = value.data!;
+        banners = value.banners!;
+        bannersresportrait = value.bannersResPortrait!;
+        favouriteProduct = value.favouriteProduct!;
+        bannerswow = value.bannerswow!;
+        bannersgoodLooks = value.bannersgoodLooks!;
+        bannersBrothers = value.bannersBrothers!;
+        facebook = value.links!.facebook!;
+        instagram = value.links!.instagram!;
+        twitter = value.links!.tweeter!;
+      });
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -2152,32 +2181,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return jsonObject;
   }
 
-  @override
-  void initState() {
-    home = getdashboard();
-    category = getCategory();
-    category!.then((value) {
-      setState(() {
-        categorylist = value.data!;
-      });
-    });
-    home!.then((value) {
-      setState(() {
-        homelist = value.data!;
-        banners = value.banners!;
-        bannersresportrait = value.bannersResPortrait!;
-        favouriteProduct = value.favouriteProduct!;
-        bannerswow = value.bannerswow!;
-        bannersgoodLooks = value.bannersgoodLooks!;
-        bannersBrothers = value.bannersBrothers!;
-        facebook = value.links!.facebook!;
-        instagram = value.links!.instagram!;
-        twitter = value.links!.tweeter!;
-      });
-    });
-
-    super.initState();
-  }
 
   onTapImgSofa() {
     Get.toNamed(AppRoutes.storeScreen);

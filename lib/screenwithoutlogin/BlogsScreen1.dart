@@ -56,7 +56,6 @@ class _BlogsScreen1State extends State<BlogsScreen1> {
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
-      Smartech().trackEvent("screen_viewed",jsonObject);
       if (BlogsModel.fromJson(jsonObject).status == "true") {
         return BlogsModel.fromJson(jsonObject);
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
@@ -87,6 +86,7 @@ class _BlogsScreen1State extends State<BlogsScreen1> {
 
   @override
   void initState() {
+
     blogs = getBlogsList();
     blogs!.then((value) {
       setState(() {
@@ -95,6 +95,7 @@ class _BlogsScreen1State extends State<BlogsScreen1> {
     });
 
     super.initState();
+
   }
 
   @override

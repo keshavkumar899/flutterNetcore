@@ -128,10 +128,3 @@ class _PxDeeplinkListenerImpl extends PxDeeplinkListener {
   }
 }
 
-// <key>HanselKeys</key>
-// <dict>
-// <key>HanselAppId</key>
-// <string>BWUDOM1C5ENWY8MZ24MQN0CKA</string>
-// <key>HanselAppKey</key>
-// <string>HZXXUAMMHYCPBHVVPZL2F5VBJMFRTA4QAKS0RVPTZRKF8TM48Z</string>
-// </dict>

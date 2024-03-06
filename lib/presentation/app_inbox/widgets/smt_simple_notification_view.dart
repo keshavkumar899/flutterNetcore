@@ -78,7 +78,7 @@ class SMTSimpleNotificationView extends StatelessWidget {
                                               );
                                               ScaffoldMessenger.of(context).showSnackBar(snackBar); // -> show a notification
                                             });
-                                            if (e.actionDeeplink.contains("http")) {
+                                            if (e.actionDeeplink.contains("https")) {
                                               print("navigate to browser with url");
                                               final Uri _url = Uri.parse(e.actionDeeplink);
                                               if (!await launchUrl(_url)) throw 'Could not launch $_url';

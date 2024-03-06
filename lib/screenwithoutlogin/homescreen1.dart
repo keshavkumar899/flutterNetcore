@@ -746,6 +746,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                               //                               ])))
                               //                 ])))),
                               SizedBox(height: 8,),
+                              banners.length!=0?
                               Container(
                                 //height: 206,
                                 // width: 200.w,
@@ -799,7 +800,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                             height: 206,
                                             width: 100.w,
                                             borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                            delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                            delayInMilliSeconds: Duration(milliseconds: index * 5),
                                           ),
                                           // CircularProgressIndicator(
                                           //         color: Color(0xff9BA6BF),
@@ -956,7 +957,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                 //   // ),
                                 //
                                 // ),
-                              ),
+                              ):Container(),
                               SizedBox(
                                 height: 2.h,
                               ),
@@ -1011,7 +1012,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                               height: 206,
                                               width: 250,
                                               borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                              delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                              delayInMilliSeconds: Duration(milliseconds: index * 5),
                                             ),
                                             errorBuilder: (context, error, stackTrace) =>
                                                 Image.asset(
@@ -1466,7 +1467,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                             height: 280,
                                                             width: 150,
                                                             borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                            delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                            delayInMilliSeconds: Duration(milliseconds: index * 5),
                                                           ),
                                                           errorBuilder: (context, error,
                                                               stackTrace) =>
@@ -1615,7 +1616,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                       height: 145,
                                                       width: 200,
                                                       borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                      delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                      delayInMilliSeconds: Duration(milliseconds: index * 5),
                                                     ),
                                                     errorBuilder: (context, error,
                                                         stackTrace) =>
@@ -1779,7 +1780,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                         height: 140,
                                                         width: 150,
                                                         borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                        delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                        delayInMilliSeconds: Duration(milliseconds: index * 5),
                                                       ),
                                                       errorBuilder: (context, error,
                                                           stackTrace) =>
@@ -1948,7 +1949,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                                 height: 140,
                                                 width: 150,
                                                 borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                                delayInMilliSeconds: Duration(milliseconds: index * 5),
                                               ),
                                               errorBuilder: (context, error,
                                                   stackTrace) =>
