@@ -39,6 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Map <String,dynamic>json1 = jsonDecode(prefs.getString('userData')!);
       var user1 = OtpModel.fromJson(json1);
       print(user1.data);
+      Smartech().setUserIdentity(user1.data!.mobile!);
       // Smartech().login(user1.data!.mobile!);
       Future.delayed(const Duration(milliseconds: 3000), () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(

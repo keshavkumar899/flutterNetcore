@@ -10,4 +10,3 @@ class NotificationViewController: SMTCustomNotificationViewController {
         self.customView = customPNView
     }
 }
-

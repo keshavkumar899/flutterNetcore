@@ -6,6 +6,7 @@ import 'package:keshav_s_application2/presentation/order_detail_screen/order_det
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_5.dart';
 import 'package:sizer/sizer.dart';
+import 'package:smartech_base/smartech_base.dart';
 
 import 'controller/my_orders_controller.dart';
 import 'package:flutter/material.dart';
@@ -84,6 +85,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
 
   @override
   void initState() {
+    Smartech().trackEvent("screen_viewed", {});
     myorders = getOrdersList();
     myorders!.then((value) {
       setState(() {

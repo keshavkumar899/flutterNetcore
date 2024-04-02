@@ -41,7 +41,8 @@ class _WhislistScreenState extends State<WhislistScreen> {
   Future<wishlist.WishlistScreenModel>? mywishlist;
   List<wishlist.WishListData> wishlistdata = [];
   String? message;
-  Future<wishlist.WishlistScreenModel> getWishlist() async {
+  //Use the deep config you created on the dashboard
+    Future<wishlist.WishlistScreenModel> getWishlist() async {
     Map data = {
       'user_id': widget.data.id,
     };
