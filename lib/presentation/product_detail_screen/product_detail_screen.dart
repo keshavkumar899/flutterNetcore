@@ -11,7 +11,7 @@ import 'package:keshav_s_application2/presentation/select_product_screen/models/
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 import 'package:keshav_s_application2/widgets/custom_drop_down.dart';
 import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
 
 import '../otp_screen/models/otp_model.dart';
@@ -501,7 +501,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
                             onTap: (){
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: WhislistScreen(widget.data),
                                 withNavBar:
@@ -521,7 +521,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: CartScreen(widget.data),
                                 withNavBar:

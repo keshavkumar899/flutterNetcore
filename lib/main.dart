@@ -5,7 +5,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_web_browser/flutter_web_browser.dart';
 import 'package:keshav_s_application2/widgets/connection_lost.dart';
 import 'package:sizer/sizer.dart';
 
@@ -25,6 +24,7 @@ void main() async{
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
   final fcmToken = await FirebaseMessaging.instance.getToken();
   print(fcmToken);
+  Smartech().setUserIdentity('9873103345');
  NetcorePX.instance.registerPxActionListener('action',_PxActionListenerImpl());
  NetcorePX.instance.registerPxDeeplinkListener(_PxDeeplinkListenerImpl());
  NetcorePX.instance.registerPxInternalEventsListener(_PxInternalEventsListener());
@@ -58,11 +58,12 @@ void main() async{
         print("navigate to browser with url");
         final Uri _url = Uri.parse(smtDeeplink);
         if (!await launchUrl(_url)) throw 'Could not launch $_url';
-        await FlutterWebBrowser.openWebPage(url: smtDeeplink);
+        // await
+        // FlutterWebBrowser.openWebPage(url: smtDeeplink);
       }
     }
   });
-  Smartech().onHandleDeeplinkActionBackground();
+  // Smartech().onHandleDeeplinkActionBackground();
   getLocation();
 }
 
@@ -114,11 +115,11 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> startChecking() async {
-    final result = await Connectivity().checkConnectivity();
+    final List<ConnectivityResult> result = await Connectivity().checkConnectivity();
     showConnectivitySnackBar(result);
   }
 
-  void showConnectivitySnackBar(ConnectivityResult result) {
+  void showConnectivitySnackBar(List<ConnectivityResult> result) {
     setState(() {
       hasInternet = result != ConnectivityResult.none;
 

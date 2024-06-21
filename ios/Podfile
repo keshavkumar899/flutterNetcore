@@ -31,8 +31,9 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
-  pod 'Smartech-iOS-SDK', '~> 3.5.2'
-  pod 'SmartPush-iOS-SDK', '~> 3.5.0'
+  pod 'Smartech-iOS-SDK', '~> 3.5.3'
+  pod 'SmartPush-iOS-SDK', '~> 3.5.1'
+  pod 'GoogleTagManager', '~> 7.4'
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
@@ -56,7 +57,7 @@ target 'SmartechNSE' do
   use_frameworks!
 
   # Pods for 'YourServiceExtensionTarget'
-  pod 'SmartPush-iOS-SDK', '~> 3.5.0'
+  pod 'SmartPush-iOS-SDK', '~> 3.5.3'
 
 
 end
@@ -67,7 +68,7 @@ target 'SmartechNCE' do
   use_frameworks!
 
   # Pods for 'YourContentExtensionTarget'
-  pod 'SmartPush-iOS-SDK', '~> 3.5.0'
+  pod 'SmartPush-iOS-SDK', '~> 3.5.3'
 
 
 end

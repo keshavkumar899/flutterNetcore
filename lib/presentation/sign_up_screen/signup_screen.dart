@@ -7,8 +7,8 @@ import 'package:keshav_s_application2/core/utils/utils.dart';
 import 'package:keshav_s_application2/presentation/about_us_screen/models/SettingVO.dart';
 import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.dart';
 import 'package:keshav_s_application2/presentation/sign_up_screen/models/signup_screen_model.dart';
-import 'package:package_info/package_info.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 
 import '../../core/utils/appConstant.dart';
@@ -225,7 +225,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               alignment: Alignment.centerLeft,
                               margin: getMargin(left: 24, top: 2),
                               onTap: () {
-                                pushNewScreen(
+                                pushScreen(
                                   context,
                                   screen: landingPage1(),
                                   withNavBar:

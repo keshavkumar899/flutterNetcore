@@ -15,16 +15,16 @@
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		9C8B64E105166C14B94B2A6E /* Pods_SmartechNCE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3ABD10ABF19AA58AC247C /* Pods_SmartechNCE.framework */; };
-		B3CDEE583ADF0E7697958D69 /* Pods_SmartechNSE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51549BE6437636A17D57E57 /* Pods_SmartechNSE.framework */; };
 		E127B7A62BB3E8B300354839 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19BA7662B8F0B1100C5E9AE /* UserNotifications.framework */; };
 		E127B7A72BB3E8B300354839 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19BA7682B8F0B1100C5E9AE /* UserNotificationsUI.framework */; };
 		E127B7AA2BB3E8B300354839 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127B7A92BB3E8B300354839 /* NotificationViewController.swift */; };
 		E127B7AD2BB3E8B300354839 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E127B7AC2BB3E8B300354839 /* Base */; };
 		E127B7B12BB3E8B300354839 /* SmartechNCE.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E127B7A52BB3E8B300354839 /* SmartechNCE.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E1339E692BB3F72000806261 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1339E682BB3F72000806261 /* Media.xcassets */; };
-		E1456CED2B905EB400B97219 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1456CEC2B905EB400B97219 /* NotificationService.swift */; };
-		E1456CF12B905EB400B97219 /* SmartechNSE.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E1456CEA2B905EB400B97219 /* SmartechNSE.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E15026DA2BC9002900A21E70 /* container in Resources */ = {isa = PBXBuildFile; fileRef = E15026D92BC9002900A21E70 /* container */; };
 		E153BE222B888BDA00A1DB28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E153BE212B888BD900A1DB28 /* GoogleService-Info.plist */; };
+		E19AFB5D2C215F2F00DF0F17 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AFB5C2C215F2F00DF0F17 /* NotificationService.swift */; };
+		E19AFB612C215F2F00DF0F17 /* SmartechNSE.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E19AFB5A2C215F2F00DF0F17 /* SmartechNSE.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E19BA77B2B8F165100C5E9AE /* SmartechConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = E19BA77A2B8F165000C5E9AE /* SmartechConfig.plist */; };
 /* End PBXBuildFile section */
 
@@ -36,11 +36,11 @@
 			remoteGlobalIDString = E127B7A42BB3E8B300354839;
 			remoteInfo = SmartechNCE;
 		};
-		E1456CEF2B905EB400B97219 /* PBXContainerItemProxy */ = {
+		E19AFB5F2C215F2F00DF0F17 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E1456CE92B905EB300B97219;
+			remoteGlobalIDString = E19AFB592C215F2F00DF0F17;
 			remoteInfo = SmartechNSE;
 		};
 /* End PBXContainerItemProxy section */
@@ -62,8 +62,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				E19AFB612C215F2F00DF0F17 /* SmartechNSE.appex in Embed Foundation Extensions */,
 				E127B7B12BB3E8B300354839 /* SmartechNCE.appex in Embed Foundation Extensions */,
-				E1456CF12B905EB400B97219 /* SmartechNSE.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,13 +101,17 @@
 		E127B7AE2BB3E8B300354839 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E127B7B62BB3F5FC00354839 /* SmartechNCE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartechNCE.entitlements; sourceTree = "<group>"; };
 		E1339E682BB3F72000806261 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		E1456CEA2B905EB400B97219 /* SmartechNSE.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SmartechNSE.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1456CEC2B905EB400B97219 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		E1456CEE2B905EB400B97219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1456CF22B905EB400B97219 /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1456CF72B905EC300B97219 /* SmartechNSE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartechNSE.entitlements; sourceTree = "<group>"; };
+		E15026D92BC9002900A21E70 /* container */ = {isa = PBXFileReference; lastKnownFileType = folder; path = container; sourceTree = "<group>"; };
 		E153BE212B888BD900A1DB28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E153BE232B888C1C00A1DB28 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
+		E19AFB5A2C215F2F00DF0F17 /* SmartechNSE.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SmartechNSE.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E19AFB5C2C215F2F00DF0F17 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		E19AFB5E2C215F2F00DF0F17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E19AFB662C215F4700DF0F17 /* SmartechNSE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartechNSE.entitlements; sourceTree = "<group>"; };
 		E19BA7662B8F0B1100C5E9AE /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		E19BA7682B8F0B1100C5E9AE /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		E19BA77A2B8F165000C5E9AE /* SmartechConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SmartechConfig.plist; sourceTree = "<group>"; };
@@ -132,11 +136,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E1456CE72B905EB300B97219 /* Frameworks */ = {
+		E19AFB572C215F2F00DF0F17 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3CDEE583ADF0E7697958D69 /* Pods_SmartechNSE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,17 +172,18 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
+				E15026D92BC9002900A21E70 /* container */,
 				E19BA77A2B8F165000C5E9AE /* SmartechConfig.plist */,
 				E153BE212B888BD900A1DB28 /* GoogleService-Info.plist */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				B146FA05B37343351B186AAF /* Pods */,
-				E1456CEB2B905EB400B97219 /* SmartechNSE */,
 				E127B7A82BB3E8B300354839 /* SmartechNCE */,
+				E19AFB5B2C215F2F00DF0F17 /* SmartechNSE */,
 				54960B704D3317D1B2274FE1 /* Frameworks */,
-				E1456CEA2B905EB400B97219 /* SmartechNSE.appex */,
 				E1456CF22B905EB400B97219 /* Runner.app */,
 				E127B7A52BB3E8B300354839 /* SmartechNCE.appex */,
+				E19AFB5A2C215F2F00DF0F17 /* SmartechNSE.appex */,
 			);
 			sourceTree = "<group>";
 		};
@@ -202,6 +206,7 @@
 		B146FA05B37343351B186AAF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				E1456CEB2B905EB400B97219 /* SmartechNSE */,
 				0A172F8E98645AA850FF2DF9 /* Pods-Runner.debug.xcconfig */,
 				4D1EF7F9654C8986C7ADBE37 /* Pods-Runner.release.xcconfig */,
 				0034835DDA931DBE89333FBD /* Pods-Runner.profile.xcconfig */,
@@ -237,6 +242,16 @@
 			path = SmartechNSE;
 			sourceTree = "<group>";
 		};
+		E19AFB5B2C215F2F00DF0F17 /* SmartechNSE */ = {
+			isa = PBXGroup;
+			children = (
+				E19AFB662C215F4700DF0F17 /* SmartechNSE.entitlements */,
+				E19AFB5C2C215F2F00DF0F17 /* NotificationService.swift */,
+				E19AFB5E2C215F2F00DF0F17 /* Info.plist */,
+			);
+			path = SmartechNSE;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,12 +268,13 @@
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				C43E3C59AE3A87CB5E0E86EB /* [CP] Embed Pods Frameworks */,
+				CABC5C14FBE632949A8028C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E1456CF02B905EB400B97219 /* PBXTargetDependency */,
 				E127B7B02BB3E8B300354839 /* PBXTargetDependency */,
+				E19AFB602C215F2F00DF0F17 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
@@ -283,14 +299,13 @@
 			productReference = E127B7A52BB3E8B300354839 /* SmartechNCE.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		E1456CE92B905EB300B97219 /* SmartechNSE */ = {
+		E19AFB592C215F2F00DF0F17 /* SmartechNSE */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E1456CF32B905EB400B97219 /* Build configuration list for PBXNativeTarget "SmartechNSE" */;
+			buildConfigurationList = E19AFB622C215F2F00DF0F17 /* Build configuration list for PBXNativeTarget "SmartechNSE" */;
 			buildPhases = (
-				9A0CA53DF54341642508E1C9 /* [CP] Check Pods Manifest.lock */,
-				E1456CE62B905EB300B97219 /* Sources */,
-				E1456CE72B905EB300B97219 /* Frameworks */,
-				E1456CE82B905EB300B97219 /* Resources */,
+				E19AFB562C215F2F00DF0F17 /* Sources */,
+				E19AFB572C215F2F00DF0F17 /* Frameworks */,
+				E19AFB582C215F2F00DF0F17 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -298,7 +313,7 @@
 			);
 			name = SmartechNSE;
 			productName = SmartechNSE;
-			productReference = E1456CEA2B905EB400B97219 /* SmartechNSE.appex */;
+			productReference = E19AFB5A2C215F2F00DF0F17 /* SmartechNSE.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -307,7 +322,7 @@
 		97C146E61CF9000F007C117D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
@@ -318,8 +333,8 @@
 					E127B7A42BB3E8B300354839 = {
 						CreatedOnToolsVersion = 15.3;
 					};
-					E1456CE92B905EB300B97219 = {
-						CreatedOnToolsVersion = 15.2;
+					E19AFB592C215F2F00DF0F17 = {
+						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
@@ -337,8 +352,8 @@
 			projectRoot = "";
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
-				E1456CE92B905EB300B97219 /* SmartechNSE */,
 				E127B7A42BB3E8B300354839 /* SmartechNCE */,
+				E19AFB592C215F2F00DF0F17 /* SmartechNSE */,
 			);
 		};
 /* End PBXProject section */
@@ -352,6 +367,7 @@
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				E153BE222B888BDA00A1DB28 /* GoogleService-Info.plist in Resources */,
 				E19BA77B2B8F165100C5E9AE /* SmartechConfig.plist in Resources */,
+				E15026DA2BC9002900A21E70 /* container in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 			);
@@ -366,7 +382,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E1456CE82B905EB300B97219 /* Resources */ = {
+		E19AFB582C215F2F00DF0F17 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -429,28 +445,6 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
-		9A0CA53DF54341642508E1C9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SmartechNSE-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B122C2876638E9FC910E54D6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -490,6 +484,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CABC5C14FBE632949A8028C7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -510,11 +521,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E1456CE62B905EB300B97219 /* Sources */ = {
+		E19AFB562C215F2F00DF0F17 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1456CED2B905EB400B97219 /* NotificationService.swift in Sources */,
+				E19AFB5D2C215F2F00DF0F17 /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,10 +537,10 @@
 			target = E127B7A42BB3E8B300354839 /* SmartechNCE */;
 			targetProxy = E127B7AF2BB3E8B300354839 /* PBXContainerItemProxy */;
 		};
-		E1456CF02B905EB400B97219 /* PBXTargetDependency */ = {
+		E19AFB602C215F2F00DF0F17 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E1456CE92B905EB300B97219 /* SmartechNSE */;
-			targetProxy = E1456CEF2B905EB400B97219 /* PBXContainerItemProxy */;
+			target = E19AFB592C215F2F00DF0F17 /* SmartechNSE */;
+			targetProxy = E19AFB5F2C215F2F00DF0F17 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -828,7 +839,7 @@
 				INFOPLIST_FILE = SmartechNCE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SmartechNCE;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -873,7 +884,7 @@
 				INFOPLIST_FILE = SmartechNCE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SmartechNCE;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -915,7 +926,7 @@
 				INFOPLIST_FILE = SmartechNCE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SmartechNCE;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -935,15 +946,15 @@
 			};
 			name = Profile;
 		};
-		E1456CF42B905EB400B97219 /* Debug */ = {
+		E19AFB632C215F2F00DF0F17 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B55C024835B07E7A155A945D /* Pods-SmartechNSE.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = SmartechNSE/SmartechNSE.entitlements;
 				CODE_SIGN_STYLE = Manual;
@@ -956,7 +967,7 @@
 				INFOPLIST_FILE = SmartechNSE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SmartechNSE;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -979,15 +990,15 @@
 			};
 			name = Debug;
 		};
-		E1456CF52B905EB400B97219 /* Release */ = {
+		E19AFB642C215F2F00DF0F17 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 010658FC58B073C336511E39 /* Pods-SmartechNSE.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = SmartechNSE/SmartechNSE.entitlements;
 				CODE_SIGN_STYLE = Manual;
@@ -1000,7 +1011,7 @@
 				INFOPLIST_FILE = SmartechNSE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SmartechNSE;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1020,15 +1031,15 @@
 			};
 			name = Release;
 		};
-		E1456CF62B905EB400B97219 /* Profile */ = {
+		E19AFB652C215F2F00DF0F17 /* Profile */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7DD6E90EB659C15E83ECDCE4 /* Pods-SmartechNSE.profile.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = SmartechNSE/SmartechNSE.entitlements;
 				CODE_SIGN_STYLE = Manual;
@@ -1041,7 +1052,7 @@
 				INFOPLIST_FILE = SmartechNSE/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SmartechNSE;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1094,12 +1105,12 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E1456CF32B905EB400B97219 /* Build configuration list for PBXNativeTarget "SmartechNSE" */ = {
+		E19AFB622C215F2F00DF0F17 /* Build configuration list for PBXNativeTarget "SmartechNSE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E1456CF42B905EB400B97219 /* Debug */,
-				E1456CF52B905EB400B97219 /* Release */,
-				E1456CF62B905EB400B97219 /* Profile */,
+				E19AFB632C215F2F00DF0F17 /* Debug */,
+				E19AFB642C215F2F00DF0F17 /* Release */,
+				E19AFB652C215F2F00DF0F17 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

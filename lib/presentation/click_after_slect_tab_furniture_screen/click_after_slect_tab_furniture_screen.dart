@@ -7,8 +7,7 @@ import 'package:keshav_s_application2/presentation/select_product_screen/select_
 import 'package:keshav_s_application2/presentation/store_screen/models/StoreModel.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_2.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-import 'package:shimmer_animation/shimmer_animation.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import '../cart_screen/cart_screen.dart';
 import 'controller/click_after_slect_tab_furniture_controller.dart';
@@ -153,7 +152,7 @@ class _ClickAfterSlectTabFurnitureScreenState extends State<ClickAfterSlectTabFu
                           svgPath: ImageConstant.imgLocation,
                           margin: getMargin(top: 5, right: 6),
                           onTap: (){
-                            pushNewScreen(
+                            pushScreen(
                               context,
                               screen: WhislistScreen(widget.data),
                               withNavBar:
@@ -173,7 +172,7 @@ class _ClickAfterSlectTabFurnitureScreenState extends State<ClickAfterSlectTabFu
                     child: Stack(alignment: Alignment.topRight, children: [
                       AppbarImage(
                           onTap: () {
-                            pushNewScreen(
+                            pushScreen(
                               context,
                               screen: CartScreen(widget.data),
                               withNavBar:
@@ -210,14 +209,14 @@ class _ClickAfterSlectTabFurnitureScreenState extends State<ClickAfterSlectTabFu
                         InkWell(
                           onTap: (){
                             print(subcategore[index].id);
-                            pushNewScreen(
+                            pushScreen(
                               context,
                               screen:SelectProductScreen(widget.data,widget.category,subcategore[index].id!),
                               withNavBar: true, // OPTIONAL VALUE. True by default.
                               pageTransitionAnimation: PageTransitionAnimation.cupertino,
                             );
                             // Navigator.pushNamed(context, AppRoutes.clickAfterSlectTabFurnitureScreen);
-                            // pushNewScreen(
+                            // pushScreen(
                             //   context,
                             //   screen: ClickAfterSlectTabFurnitureScreen(widget.data,categorylist[index].id,categorylist[index].name),
                             //   withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -240,7 +239,7 @@ class _ClickAfterSlectTabFurnitureScreenState extends State<ClickAfterSlectTabFu
                                             getHorizontalSize(1.8))),
                                     InkWell(
                                       onTap: (){
-                                        pushNewScreen(
+                                        pushScreen(
                                           context,
                                           screen:SelectProductScreen(widget.data,widget.category,subcategore[index].id!),
                                           withNavBar: true, // OPTIONAL VALUE. True by default.

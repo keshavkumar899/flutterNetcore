@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:html/parser.dart';
 import 'package:keshav_s_application2/core/utils/appConstant.dart';
 import 'package:keshav_s_application2/presentation/about_us_screen/models/SettingVO.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../filter_screen/models/FilterVO.dart';
 import 'controller/about_us_controller.dart';
@@ -15,6 +15,7 @@ import 'package:keshav_s_application2/widgets/app_bar/appbar_image.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_5.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_6.dart';
 import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
+import 'package:gtm/gtm.dart';
 
 class AboutUsScreen extends StatefulWidget {
   @override
@@ -25,12 +26,22 @@ class _aboutUsScreen extends State<AboutUsScreen> {
   final List<Setting> _listData = <Setting>[];
   SettingVO? settingVO;
   String? versionCode;
+
+  final gtm = Gtm.instance;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _requestData();
     getVersion();
+    // Push event
+    gtm.push(
+      'about_us',
+      parameters: {
+        'user_no': 912342,
+      },
+    );
   }
   @override
   Widget build(BuildContext context) {

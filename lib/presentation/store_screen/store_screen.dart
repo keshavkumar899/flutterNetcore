@@ -6,7 +6,7 @@ import 'package:keshav_s_application2/presentation/select_product_screen/select_
 import 'package:keshav_s_application2/presentation/sidebar_menu_draweritem/sidebar_menu_draweritem.dart';
 import 'package:keshav_s_application2/presentation/store_screen/models/StoreModel.dart' as stores;
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import '../cart_screen/cart_screen.dart';
 import 'controller/store_controller.dart';
@@ -138,7 +138,7 @@ class _StoreScreenState extends State<StoreScreen> {
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
                             onTap: (){
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: WhislistScreen(widget.data),
                                 withNavBar:
@@ -158,7 +158,7 @@ class _StoreScreenState extends State<StoreScreen> {
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: CartScreen(widget.data),
                                 withNavBar:
@@ -192,33 +192,33 @@ class _StoreScreenState extends State<StoreScreen> {
                         InkWell(
                           onTap: (){
                             // Navigator.pushNamed(context, AppRoutes.clickAfterSlectTabFurnitureScreen);
-                            categorylist[index].subCategory!.length==0?pushNewScreen(
+                            categorylist[index].subCategory!.length==0?pushScreen(
                               context,
                               screen: NewProductScreen(widget.data,categorylist[index],),
                               withNavBar: true, // OPTIONAL VALUE. True by default.
                               pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                            ):pushNewScreen(
+                            ):pushScreen(
                               context,
                               screen: ClickAfterSlectTabFurnitureScreen(widget.data,categorylist[index],categorylist[index].name!,),
                               withNavBar: true, // OPTIONAL VALUE. True by default.
                               pageTransitionAnimation: PageTransitionAnimation.cupertino,
                             );
                             // if(categorylist[index].subCategory.length!=0){
-                            //   pushNewScreen(
+                            //   pushScreen(
                             //     context,
                             //     screen: SelectProductScreen(),
                             //     withNavBar: true, // OPTIONAL VALUE. True by default.
                             //     pageTransitionAnimation: PageTransitionAnimation.cupertino,
                             //   );
                             // }else{
-                            //   pushNewScreen(
+                            //   pushScreen(
                             //     context,
                             //     screen: ClickAfterSlectTabFurnitureScreen(widget.data,categorylist[index].id,categorylist[index].name),
                             //     withNavBar: true, // OPTIONAL VALUE. True by default.
                             //     pageTransitionAnimation: PageTransitionAnimation.cupertino,
                             //   );
                             // }
-                            // pushNewScreen(
+                            // pushScreen(
                             //   context,
                             //   screen: ClickAfterSlectTabFurnitureScreen(widget.data,categorylist[index].id,categorylist[index].name),
                             //   withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -242,12 +242,12 @@ class _StoreScreenState extends State<StoreScreen> {
                                               getHorizontalSize(1.8))),
                                       GestureDetector(
                                         onTap: (){
-                                          categorylist[index].subCategory!.length==0?pushNewScreen(
+                                          categorylist[index].subCategory!.length==0?pushScreen(
                                             context,
                                             screen: NewProductScreen(widget.data,categorylist[index],),
                                             withNavBar: true, // OPTIONAL VALUE. True by default.
                                             pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                                          ):pushNewScreen(
+                                          ):pushScreen(
                                             context,
                                             screen: ClickAfterSlectTabFurnitureScreen(widget.data,categorylist[index],categorylist[index].name!,),
                                             withNavBar: true, // OPTIONAL VALUE. True by default.

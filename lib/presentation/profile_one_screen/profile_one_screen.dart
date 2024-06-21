@@ -9,7 +9,7 @@ import 'package:keshav_s_application2/presentation/search_screen/search_screen.d
 import 'package:keshav_s_application2/presentation/sidebar_menu_draweritem/sidebar_menu_draweritem.dart';
 import 'package:keshav_s_application2/presentation/wallet/wallet_screen.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../resetPassword/resetpasswordafterlogin.dart';
@@ -75,7 +75,7 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
                             onTap: (){
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: WhislistScreen(widget.data),
                                 withNavBar:
@@ -95,7 +95,7 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: CartScreen(widget.data),
                                 withNavBar:
@@ -262,7 +262,7 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                         ),
                         InkWell(
                           onTap: (){
-                            pushNewScreen(
+                            pushScreen(
                               context,
                               screen: WhislistScreen(widget.data),
                               withNavBar:

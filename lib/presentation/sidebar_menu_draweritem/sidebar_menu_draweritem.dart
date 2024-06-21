@@ -4,7 +4,7 @@ import 'package:keshav_s_application2/presentation/drawermenuitems/offers/Offers
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/presentation/profile_screen/profile_screen.dart';
 import 'package:keshav_s_application2/presentation/store_screen/store_screen.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
 
 import '../my_orders_screen/my_orders_screen.dart';
@@ -145,7 +145,7 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                                 //   withNavBar: true,
                                 //   pageTransitionAnimation: PageTransitionAnimation.cupertino,
                                 // );
-                                pushNewScreen(
+                                pushScreen(
                                   context,
                                   screen: StoreScreen(widget.data),
                                   withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -221,7 +221,7 @@ class _SidebarMenuDraweritemState extends State<SidebarMenuDraweritem> {
                         ),
                         InkWell(
                           onTap: (){
-                            pushNewScreen(
+                            pushScreen(
                               context,
                               screen: WhislistScreen(widget.data),
                               withNavBar:

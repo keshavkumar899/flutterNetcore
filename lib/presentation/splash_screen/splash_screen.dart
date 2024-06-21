@@ -13,7 +13,6 @@ import '../../screenwithoutlogin/landingpage1.dart';
 import 'controller/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
-import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 class SplashScreen extends StatefulWidget {
 
@@ -62,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
               print("navigate to browser with url");
               final Uri _url = Uri.parse(smtDeeplink);
               if (!await launchUrl(_url)) throw 'Could not launch $_url';
-              await FlutterWebBrowser.openWebPage(url: smtDeeplink);
+              // await FlutterWebBrowser.openWebPage(url: smtDeeplink);
             }
           }
         });

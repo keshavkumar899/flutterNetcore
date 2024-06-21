@@ -7,7 +7,7 @@ import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.d
 import 'package:keshav_s_application2/presentation/search_screen/search_screen.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_6.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import '../add_address_screen_click_on_manage_address_screen/widgets/listhome_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -142,7 +142,7 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
                             onTap: (){
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: WhislistScreen(widget.data),
                                 withNavBar:
@@ -162,7 +162,7 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: CartScreen(widget.data),
                                 withNavBar:
@@ -456,7 +456,7 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
   }
 
   onTapAddnewaddress(BuildContext context) {
-    pushNewScreen(
+    pushScreen(
       context,
       screen: AddAddressScreen(widget.data),
       withNavBar: false, // OPTIONAL VALUE. True by default.

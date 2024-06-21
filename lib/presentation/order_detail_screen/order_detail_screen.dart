@@ -1,5 +1,4 @@
-import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_2.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
 
 import '../cart_screen/cart_screen.dart';
@@ -603,7 +602,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
             backgroundColor: Colors.greenAccent));
 
         Future.delayed(const Duration(seconds: 2), () {
-          pushNewScreen(
+          pushScreen(
             context,
             screen: CartScreen(widget.data),
             withNavBar:

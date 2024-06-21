@@ -5,8 +5,7 @@ import 'package:html/parser.dart';
 import 'package:keshav_s_application2/core/utils/appConstant.dart';
 import 'package:keshav_s_application2/presentation/about_us_screen/models/SettingVO.dart';
 import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.dart';
-import 'package:package_info/package_info.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/utils/utils.dart';
@@ -115,7 +114,7 @@ class _ProfileScreenWithoutLogin extends State<ProfileScreenWithoutLogin> {
                   SizedBox(height: 2.h,),
                   CustomButton(
                       onTap: (){
-                        pushNewScreen(
+                        pushScreen(
                           context,
                           screen: LogInScreen(),
                           withNavBar:

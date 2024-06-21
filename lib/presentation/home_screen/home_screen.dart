@@ -23,7 +23,7 @@ import 'package:keshav_s_application2/presentation/whislist_screen/whislist_scre
 import 'package:keshav_s_application2/widgets/app_bar/appbar_image.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_6.dart';
 import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
 import 'package:smartech_base/smartech_base.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
                             onTap: (){
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: WhislistScreen(widget.data),
                                 withNavBar:
@@ -169,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: CartScreen(widget.data),
                                 withNavBar:
@@ -239,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             onTap: () {
                               // print(homelist[index].id);
                               categorylist[index].subCategory!.length != 0
-                                  ? pushNewScreen(
+                                  ? pushScreen(
                                       context,
                                       screen: NewProductScreen(
                                         widget.data,
@@ -250,7 +250,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       pageTransitionAnimation:
                                           PageTransitionAnimation.cupertino,
                                     )
-                                  : pushNewScreen(
+                                  : pushScreen(
                                       context,
                                       screen: ClickAfterSlectTabFurnitureScreen(
                                           widget.data,
@@ -263,7 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       pageTransitionAnimation:
                                           PageTransitionAnimation.cupertino,
                                     );
-                              // pushNewScreen(
+                              // pushScreen(
                               //   context,
                               //   screen: ClickAfterSlectTabFurnitureScreen(widget.data),
                               //   withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -276,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       //     title: 'Furniture',
                       //     previewImageAsset: ImageConstant.imgSofa,
                       //     onTap: () {
-                      //       pushNewScreen(
+                      //       pushScreen(
                       //         context,
                       //         screen: ClickAfterSlectTabFurnitureScreen(widget.data),
                       //         withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -738,7 +738,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             //       );
                             //       // return CustomImageView(
                             //       //     onTap: (){
-                            //       //       pushNewScreen(
+                            //       //       pushScreen(
                             //       //         context,
                             //       //         screen: StoreScreen(widget.data),
                             //       //         withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -755,7 +755,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             //     //     title: 'Furniture',
                             //     //     previewImageAsset: ImageConstant.imgSofa,
                             //     //     onTap: () {
-                            //     //       pushNewScreen(
+                            //     //       pushScreen(
                             //     //         context,
                             //     //         screen: ClickAfterSlectTabFurnitureScreen(widget.data),
                             //     //         withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -897,7 +897,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   );
                                   // return CustomImageView(
                                   //     onTap: (){
-                                  //       pushNewScreen(
+                                  //       pushScreen(
                                   //         context,
                                   //         screen: StoreScreen(widget.data),
                                   //         withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -914,7 +914,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 //     title: 'Furniture',
                                 //     previewImageAsset: ImageConstant.imgSofa,
                                 //     onTap: () {
-                                //       pushNewScreen(
+                                //       pushScreen(
                                 //         context,
                                 //         screen: ClickAfterSlectTabFurnitureScreen(widget.data),
                                 //         withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -999,7 +999,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           //         children: [
                           //           CustomImageView(
                           //               onTap: (){
-                          //                 pushNewScreen(
+                          //                 pushScreen(
                           //                   context,
                           //                   screen: ClickAfterSlectTabFurnitureScreen(widget.data),
                           //                   withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -1012,7 +1012,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           //               width: getSize(190)),
                           //           CustomImageView(
                           //               onTap: (){
-                          //                 pushNewScreen(
+                          //                 pushScreen(
                           //                   context,
                           //                   screen: ClickAfterSlectTabFurnitureScreen(widget.data),
                           //                   withNavBar: true, // OPTIONAL VALUE. True by default.

@@ -7,19 +7,19 @@ import SmartechNudges
 
 
 @UIApplicationMain
-@objc class AppDelegate: FlutterAppDelegate, SmartechDelegate{
+@objc class AppDelegate: FlutterAppDelegate, SmartechDelegate,HanselActionListener{
     override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        GeneratedPluginRegistrant.register(with: self)
         UNUserNotificationCenter.current().delegate = self
-        
         Smartech.sharedInstance().initSDK(with: self, withLaunchOptions: launchOptions)
         SmartPush.sharedInstance().registerForPushNotificationWithDefaultAuthorizationOptions()
         Hansel.enableDebugLogs()
         Smartech.sharedInstance().setDebugLevel(.verbose)
         Smartech.sharedInstance().trackAppInstallUpdateBySmartech()
-        GeneratedPluginRegistrant.register(with: self)
+        Hansel.registerHanselActionListener(action: <#T##String#>, listener: <#T##any HanselActionListener#>)
         return super.application(application,
                                  //didRegisterForRemoteNotificationsWithDeviceToken:deviceToken,didFailToRegisterForRemoteNotificationsWithError:Error,
                                  didFinishLaunchingWithOptions: launchOptions)
@@ -62,5 +62,8 @@ import SmartechNudges
         }
         return true;
     }
+     func onLaunchURL(URLString: String!) {
+       
+       }
     
 }

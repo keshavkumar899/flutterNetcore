@@ -1,12 +1,5 @@
-//
-//  NotificationService.swift
-//  SmartechNSE
-//
-//  Created by Keshav Kumar on 29/02/24.
-//
-
 import UserNotifications
-import SmartPush
+import Smartech
 
 class NotificationService: UNNotificationServiceExtension {
   
@@ -14,9 +7,9 @@ class NotificationService: UNNotificationServiceExtension {
   
   override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
     //...
-  if SmartPush.sharedInstance().isNotification(fromSmartech:request.content.userInfo){
-      smartechServiceExtension.didReceive(request, withContentHandler: contentHandler)
-    }
+    if Smartech.sharedInstance().isNotification(fromSmartech:request.content.userInfo) {
+     smartechServiceExtension.didReceive(request, withContentHandler: contentHandler)
+ }
     //...
   }
   

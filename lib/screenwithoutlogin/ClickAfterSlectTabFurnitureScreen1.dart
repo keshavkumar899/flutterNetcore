@@ -9,7 +9,7 @@ import 'package:keshav_s_application2/presentation/whislist_screen/whislist_scre
 import 'package:keshav_s_application2/screenwithoutlogin/searchscreen1.dart';
 import 'package:keshav_s_application2/screenwithoutlogin/selectproductscreen1.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_2.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 
@@ -156,7 +156,7 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
                             onTap: (){
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
@@ -167,7 +167,7 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
                               // Navigator.of(context).pushReplacement(MaterialPageRoute(
                               //   builder: (context) => LogInScreen(),
                               // ));
-                              // pushNewScreen(
+                              // pushScreen(
                               //   context,
                               //   screen: WhislistScreen(widget.data),
                               //   withNavBar:
@@ -187,7 +187,7 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
@@ -198,7 +198,7 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
                               // Navigator.of(context).pushReplacement(MaterialPageRoute(
                               //   builder: (context) => LogInScreen(),
                               // ));
-                              // pushNewScreen(
+                              // pushScreen(
                               //   context,
                               //   screen: CartScreen(widget.data),
                               //   withNavBar:
@@ -235,14 +235,14 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
                             InkWell(
                               onTap: (){
                                 print(subcategore[index].id);
-                                pushNewScreen(
+                                pushScreen(
                                   context,
                                   screen:SelectProductScreen1(widget.category,subcategore[index].id!),
                                   withNavBar: true, // OPTIONAL VALUE. True by default.
                                   pageTransitionAnimation: PageTransitionAnimation.cupertino,
                                 );
                                 // Navigator.pushNamed(context, AppRoutes.ClickAfterSlectTabFurnitureScreen1);
-                                // pushNewScreen(
+                                // pushScreen(
                                 //   context,
                                 //   screen: ClickAfterSlectTabFurnitureScreen1(widget.data,categorylist[index].id,categorylist[index].name),
                                 //   withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -265,7 +265,7 @@ class _ClickAfterSlectTabFurnitureScreen1State extends State<ClickAfterSlectTabF
                                                 getHorizontalSize(1.8))),
                                         InkWell(
                                           onTap: (){
-                                            pushNewScreen(
+                                            pushScreen(
                                               context,
                                               screen:SelectProductScreen1(widget.category,subcategore[index].id!),
                                               withNavBar: true, // OPTIONAL VALUE. True by default.

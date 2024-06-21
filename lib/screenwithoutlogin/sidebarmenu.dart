@@ -1,3 +1,4 @@
+import 'package:keshav_s_application2/presentation/app_inbox/app_inbox_screen.dart';
 import 'package:keshav_s_application2/presentation/drawermenuitems/blogs/BlogsScreen.dart';
 import 'package:keshav_s_application2/presentation/drawermenuitems/offers/OffersScreen.dart';
 import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.dart';
@@ -5,7 +6,8 @@ import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.d
 import 'package:keshav_s_application2/presentation/profile_screen/profile_screen.dart';
 import 'package:keshav_s_application2/presentation/store_screen/store_screen.dart';
 import 'package:keshav_s_application2/screenwithoutlogin/BlogsScreen1.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:keshav_s_application2/screenwithoutlogin/HtmlPage.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
 
 
@@ -147,7 +149,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                                 //   withNavBar: true,
                                 //   pageTransitionAnimation: PageTransitionAnimation.cupertino,
                                 // );
-                                pushNewScreen(
+                                pushScreen(
                                   context,
                                   screen: StoreScreen1(),
                                   withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -194,7 +196,39 @@ class _SidebarMenuState extends State<SidebarMenu> {
                         ),
                         InkWell(
                           onTap: (){
-                            pushNewScreen(
+
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => HtmlPAGE(),
+                            ));
+                          },
+                          child: Container(
+                              width: 75.w,
+                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              child: Text("Html Page",
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,)
+                              )),
+                        ),
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => SMTAppInboxScreen(),
+                            ));
+                          },
+                          child: Container(
+                              width: 75.w,
+                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              child: Text("App Inbox",
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                        ),
+                        InkWell(
+                          onTap: (){
+                            pushScreen(
                               context,
                               screen: LogInScreen(),
                               withNavBar:
@@ -214,7 +248,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                         ),
                         InkWell(
                           onTap: (){
-                            pushNewScreen(
+                            pushScreen(
                               context,
                               screen: LogInScreen(),
                               withNavBar:
@@ -289,7 +323,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                         ),
                         InkWell(
                           onTap: (){
-                            pushNewScreen(
+                            pushScreen(
                               context,
                               screen: LogInScreen(),
                               withNavBar:

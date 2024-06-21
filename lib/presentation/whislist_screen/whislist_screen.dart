@@ -7,7 +7,7 @@ import 'package:keshav_s_application2/presentation/profile_screen/profile_screen
 import 'package:keshav_s_application2/presentation/store_screen/store_screen.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/models/removewishlist.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/models/wishlist_model.dart' as wishlist;
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:smartech_base/smartech_base.dart';
 
 import '../otp_screen/models/otp_model.dart';
@@ -305,7 +305,7 @@ class _WhislistScreenState extends State<WhislistScreen> {
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                           onTap:(){
-                            pushNewScreen(
+                            pushScreen(
                               context,
                               screen: CartScreen(widget.data),
                               withNavBar:

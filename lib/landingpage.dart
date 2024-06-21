@@ -6,11 +6,11 @@ import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.d
 import 'package:keshav_s_application2/presentation/profile_one_screen/profile_one_screen.dart';
 import 'package:keshav_s_application2/presentation/profile_screen/profile_screen.dart';
 import 'package:keshav_s_application2/presentation/store_screen/store_screen.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:keshav_s_application2/presentation/cart_screen/models/cart_model.dart' as carts;
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import 'core/utils/color_constant.dart';
 
@@ -35,34 +35,41 @@ class _landingPageState extends State<landingPage> {
     ];
   }
 
-  List<PersistentBottomNavBarItem> _navBarsItems() {
-    return [
-      PersistentBottomNavBarItem(
-        icon: Icon(
-          Icons.home,
-        ),
-        title: ("Home".toUpperCase()),
-        activeColorPrimary: Color(0xff65236A),
-        inactiveColorPrimary: Color(0xff949494),
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(
-          Icons.storefront,color: Colors.grey,
-        ),
-        title: ("Store"),
-        activeColorPrimary: Color(0xff65236A),
-        inactiveColorPrimary: Color(0xff949494),
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(
-          Icons.person,
-        ),
-        title: ("Profile".toUpperCase()),
-        activeColorPrimary: Color(0xff65236A),
-        inactiveColorPrimary: Color(0xff949494),
-      ),
-    ];
-  }
+  // List<PersistentTab> _navBarsItems() {
+  //   return [
+  //     PersistentTabConfig(
+  //       screen: YourFirstScreen(),
+  //       item: ItemConfig(
+  //         icon: Icon(Icons.home),
+  //         title: "Home".toUpperCase(),
+  //         activeForegroundColor:Color(0xff65236A),
+  //         inactiveBackgroundColor: Color(0xff949494)
+  //       ),
+  //       // icon: Icon(
+  //       //   Icons.home,
+  //       // ),
+  //       // title: ("Home".toUpperCase()),
+  //       // activeColorPrimary: Color(0xff65236A),
+  //       // inactiveColorPrimary: Color(0xff949494),
+  //     ),
+  //     PersistentBottomNavBarItem(
+  //       icon: Icon(
+  //         Icons.storefront,color: Colors.grey,
+  //       ),
+  //       title: ("Store"),
+  //       activeColorPrimary: Color(0xff65236A),
+  //       inactiveColorPrimary: Color(0xff949494),
+  //     ),
+  //     PersistentBottomNavBarItem(
+  //       icon: Icon(
+  //         Icons.person,
+  //       ),
+  //       title: ("Profile".toUpperCase()),
+  //       activeColorPrimary: Color(0xff65236A),
+  //       inactiveColorPrimary: Color(0xff949494),
+  //     ),
+  //   ];
+  // }
 
   Future<bool> _onWillPop(BuildContext context) async {
     return (await showDialog(
@@ -97,47 +104,81 @@ class _landingPageState extends State<landingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return
+    return PersistentTabView(
+      onWillPop: _onWillPop,
+      tabs: [
+        PersistentTabConfig(
+          screen: HomeScreen(widget.data,),
+          item: ItemConfig(
+            icon: Icon(Icons.home),
+            title: "Home",
+              activeForegroundColor:Color(0xff65236A),
+              inactiveBackgroundColor: Color(0xff949494)
+          ),
+        ),
+        PersistentTabConfig(
+          screen:  StoreScreen(widget.data),
+          item: ItemConfig(
+            icon: Icon( Icons.storefront,color: Colors.grey),
+            title: "Store",
+              activeForegroundColor:Color(0xff65236A),
+              inactiveBackgroundColor: Color(0xff949494)
+          ),
+        ),
+        PersistentTabConfig(
+          screen: ProfileOneScreen(widget.data),
+          item: ItemConfig(
+            icon: Icon( Icons.person),
+            title: "Profile",
+              activeForegroundColor:Color(0xff65236A),
+              inactiveBackgroundColor: Color(0xff949494)
+          ),
+        ),
+      ],
+      navBarBuilder: (navBarConfig) => Style15BottomNavBar(
+        navBarConfig: navBarConfig,
+      ),
+    );
       // Scaffold(
       // backgroundColor:ColorConstant.purple50,
       // bottomNavigationBar: Container(
       //   margin: EdgeInsets.only(bottom: 0),
       //   child:
-      PersistentTabView(
-        context,
-        onWillPop: (context) =>
-         _onWillPop(context!),
-        controller: _controller,
-        screens: _buildScreens(),
-        items: _navBarsItems(),
-        confineInSafeArea: true,
-        backgroundColor: Color(0xffFFFFFF), // Default is Colors.white.
-        handleAndroidBackButtonPress: true, // Default is true.
-        resizeToAvoidBottomInset:
-        true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-        stateManagement: true, // Default is true.
-        hideNavigationBarWhenKeyboardShows:
-        true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-        decoration: NavBarDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          colorBehindNavBar: Colors.white70,
-        ),
-        popAllScreensOnTapOfSelectedTab: true,
-        popActionScreens: PopActionScreensType.all,
-        itemAnimationProperties: ItemAnimationProperties(
-          // Navigation Bar's items animation properties.
-          duration: Duration(milliseconds: 200),
-          curve: Curves.ease,
-        ),
-        screenTransitionAnimation: ScreenTransitionAnimation(
-          // Screen transition animation on change of selected tab.
-          animateTabTransition: true,
-          curve: Curves.ease,
-          duration: Duration(milliseconds: 200),
-        ),
-        navBarStyle:
-        NavBarStyle.style15, // Choose the nav bar style with this property.
-      );
+      // PersistentTabView(
+      //   context,
+      //   onWillPop: (context) =>
+      //    _onWillPop(context!),
+      //   controller: _controller,
+      //   screens: _buildScreens(),
+      //   items: _navBarsItems(),
+      //   confineInSafeArea: true,
+      //   backgroundColor: Color(0xffFFFFFF), // Default is Colors.white.
+      //   handleAndroidBackButtonPress: true, // Default is true.
+      //   resizeToAvoidBottomInset:
+      //   true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+      //   stateManagement: true, // Default is true.
+      //   hideNavigationBarWhenKeyboardShows:
+      //   true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+      //   decoration: NavBarDecoration(
+      //     borderRadius: BorderRadius.circular(10.0),
+      //     colorBehindNavBar: Colors.white70,
+      //   ),
+      //   popAllScreensOnTapOfSelectedTab: true,
+      //   popActionScreens: PopActionScreensType.all,
+      //   itemAnimationProperties: ItemAnimationProperties(
+      //     // Navigation Bar's items animation properties.
+      //     duration: Duration(milliseconds: 200),
+      //     curve: Curves.ease,
+      //   ),
+      //   screenTransitionAnimation: ScreenTransitionAnimation(
+      //     // Screen transition animation on change of selected tab.
+      //     animateTabTransition: true,
+      //     curve: Curves.ease,
+      //     duration: Duration(milliseconds: 200),
+      //   ),
+      //   navBarStyle:
+      //   NavBarStyle.style15, // Choose the nav bar style with this property.
+      // );
     //   ),
     // );
   }

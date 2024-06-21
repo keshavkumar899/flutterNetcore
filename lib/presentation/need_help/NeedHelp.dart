@@ -1,10 +1,4 @@
-import 'dart:convert';
 
-import 'package:dio/dio.dart';
-import 'package:html/parser.dart';
-import 'package:keshav_s_application2/core/utils/appConstant.dart';
-import 'package:keshav_s_application2/presentation/about_us_screen/models/SettingVO.dart';
-import 'package:package_info/package_info.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/utils/utils.dart';

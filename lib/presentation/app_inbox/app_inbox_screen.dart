@@ -36,6 +36,7 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
   void initState() {
     super.initState();
     initialApiCall();
+    getMessagesList();
   }
 
   @override
@@ -105,7 +106,8 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
   /// ======>  This is method to get all notifications <======= ///
   getMessagesList() async {
     await SmartechAppinbox().getAppInboxMessages().then((value) {
-      log(value.toString());
+      // log(value.toString());
+      print("object: "+value.toString());
     });
   }
 

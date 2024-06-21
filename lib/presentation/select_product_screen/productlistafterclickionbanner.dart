@@ -13,8 +13,7 @@ import 'package:keshav_s_application2/presentation/sort_by_bottomsheet/controlle
 import 'package:keshav_s_application2/presentation/sort_by_bottomsheet/sort_by_bottomsheet.dart';
 import 'package:keshav_s_application2/presentation/store_screen/models/StoreModel.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
-import 'package:light_modal_bottom_sheet/light_modal_bottom_sheet.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import '../../core/utils/appConstant.dart';
 import '../otp_screen/models/otp_model.dart';
@@ -210,7 +209,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
                             onTap: (){
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: WhislistScreen(widget.data),
                                 withNavBar:
@@ -230,7 +229,7 @@ class _productlisrafterclickonbannerState extends State<productlisrafterclickonb
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: CartScreen(widget.data),
                                 withNavBar:

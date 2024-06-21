@@ -46,12 +46,12 @@
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>HanselKeys</key>
-    <dict>
-        <key>HanselAppId</key>
-        <string>BWUDOM1C5ENWY8MZ24MQN0CKA</string>
-        <key>HanselAppKey</key>
-        <string>HZXXUAMMHYCPBHVVPZL2F5VBJMFRTA4QAKS0RVPTZRKF8TM48Z</string>
-    </dict>
+	<dict>
+		<key>HanselAppId</key>
+		<string>BWUDOM1C5ENWY8MZ24MQN0CKA</string>
+		<key>HanselAppKey</key>
+		<string>HZXXUAMMHYCPBHVVPZL2F5VBJMFRTA4QAKS0RVPTZRKF8TM48Z</string>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -85,6 +85,7 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
+		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

@@ -6,7 +6,6 @@ import 'package:keshav_s_application2/presentation/home_screen/home_screen.dart'
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/presentation/payment_method_screen/payment_method_screen.dart';
 import 'package:keshav_s_application2/widgets/custom_button.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -1045,7 +1044,7 @@ class _AfterCartScreenState extends State<AfterCartScreen> {
     // Handle payment failure
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         duration: Duration(seconds: 3),
-        content: Text('Payment Failed\n'+response.error.toString()),
+        content: Text('Payment Failed\n'+response.toString()),
         backgroundColor: Colors.redAccent));
   }
 

@@ -24,11 +24,11 @@ import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
 import 'package:keshav_s_application2/widgets/custom_button.dart';
 import 'package:keshav_s_application2/widgets/custom_phone_number.dart';
 import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 
 import 'package:sizer/sizer.dart';
@@ -227,7 +227,7 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
                             onTap: (){
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: WhislistScreen(widget.data),
                                 withNavBar:
@@ -247,7 +247,7 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: CartScreen(widget.data),
                                 withNavBar:
@@ -280,7 +280,7 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                       children: [
                         CustomButton(
                             onTap: () {
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: AddAddressScreen(widget.data),
                                 withNavBar: false, // OPTIONAL VALUE. True by default.

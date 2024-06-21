@@ -12,7 +12,7 @@ import 'package:keshav_s_application2/presentation/select_product_screen/models/
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 import 'package:keshav_s_application2/widgets/custom_drop_down.dart';
 import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
 
 
@@ -499,7 +499,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
                             onTap: (){
-                            //   pushNewScreen(
+                            //   pushScreen(
                             //     context,
                             //     screen: WhislistScreen(widget.data),
                             //     withNavBar:
@@ -507,7 +507,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                             //     pageTransitionAnimation:
                             //     PageTransitionAnimation.cupertino,
                             //   );
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
@@ -530,7 +530,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
@@ -538,7 +538,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                 pageTransitionAnimation:
                                 PageTransitionAnimation.cupertino,
                               );
-                              // pushNewScreen(
+                              // pushScreen(
                               //   context,
                               //   screen: CartScreen(widget.data),
                               //   withNavBar:
@@ -959,7 +959,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                   ])),
                               CustomButton(
                                   onTap: (){
-                                    pushNewScreen(
+                                    pushScreen(
                                       context,
                                       screen: LogInScreen(),
                                       withNavBar:
@@ -996,7 +996,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                       children: [
                                         CustomButton(
                                             onTap:(){
-                                              pushNewScreen(
+                                              pushScreen(
                                                 context,
                                                 screen: LogInScreen(),
                                                 withNavBar:
@@ -1018,7 +1018,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                             ButtonFontStyle.RobotoMedium16),
                                         CustomButton(
                                             onTap: (){
-                                              pushNewScreen(
+                                              pushScreen(
                                                 context,
                                                 screen: LogInScreen(),
                                                 withNavBar:

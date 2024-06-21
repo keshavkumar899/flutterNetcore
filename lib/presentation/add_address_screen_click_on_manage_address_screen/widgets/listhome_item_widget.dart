@@ -5,7 +5,7 @@ import 'package:keshav_s_application2/presentation/add_address_screen_click_on_m
 import 'package:keshav_s_application2/presentation/add_new_address_screen_click_on_manage_address_screen/add_new_address_screen_click_on_manage_address_screen.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/widgets/custom_button.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import '../../../core/utils/utils.dart';
 import '../DeleteAddress.Modeldart.dart';
@@ -194,7 +194,7 @@ class _ListhomeItemWidgetState extends State<ListhomeItemWidget> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      pushNewScreen(
+                      pushScreen(
                         context,
                         screen: AddNewAddressScreenClickOnManageAddressScreen(
                             widget.data, widget.addressdata),

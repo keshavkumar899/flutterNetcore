@@ -6,12 +6,14 @@
 // @dart = 2.13
 
 import 'dart:io'; // flutter_ignore: dart_io_import.
+import 'package:gtm_android/gtm_android.dart';
 import 'package:path_provider_android/path_provider_android.dart';
 import 'package:shared_preferences_android/shared_preferences_android.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:url_launcher_android/url_launcher_android.dart';
 import 'package:video_player_android/video_player_android.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
+import 'package:gtm_ios/gtm_ios.dart';
 import 'package:path_provider_foundation/path_provider_foundation.dart';
 import 'package:shared_preferences_foundation/shared_preferences_foundation.dart';
 import 'package:sqflite/sqflite.dart';
@@ -42,6 +44,15 @@ class _PluginRegistrant {
   @pragma('vm:entry-point')
   static void register() {
     if (Platform.isAndroid) {
+      try {
+        GtmAndroid.registerWith();
+      } catch (err) {
+        print(
+          '`gtm_android` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+      }
+
       try {
         PathProviderAndroid.registerWith();
       } catch (err) {
@@ -97,6 +108,15 @@ class _PluginRegistrant {
       }
 
     } else if (Platform.isIOS) {
+      try {
+        GtmIOS.registerWith();
+      } catch (err) {
+        print(
+          '`gtm_ios` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+      }
+
       try {
         PathProviderFoundation.registerWith();
       } catch (err) {

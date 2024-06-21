@@ -8,7 +8,6 @@ import 'package:keshav_s_application2/presentation/store_screen/models/StoreMode
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 import 'package:keshav_s_application2/screenwithoutlogin/searchscreen1.dart';
 import 'package:keshav_s_application2/screenwithoutlogin/sidebarmenu.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 
 import 'package:flutter/material.dart';
@@ -21,6 +20,7 @@ import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import '../presentation/log_in_screen/log_in_screen.dart';
 import 'ClickAfterSlectTabFurnitureScreen1.dart';
@@ -142,7 +142,7 @@ class _StoreScreen1State extends State<StoreScreen1> {
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
                             onTap: (){
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
@@ -165,7 +165,7 @@ class _StoreScreen1State extends State<StoreScreen1> {
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
@@ -199,12 +199,12 @@ class _StoreScreen1State extends State<StoreScreen1> {
                             InkWell(
                               onTap: (){
                                 // Navigator.pushNamed(context, AppRoutes.clickAfterSlectTabFurnitureScreen);
-                                categorylist[index].subCategory!.length==0?pushNewScreen(
+                                categorylist[index].subCategory!.length==0?pushScreen(
                                   context,
                                   screen: NewProductScreen1(categorylist[index],),
                                   withNavBar: true, // OPTIONAL VALUE. True by default.
                                   pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                                ):pushNewScreen(
+                                ):pushScreen(
                                   context,
                                   screen: ClickAfterSlectTabFurnitureScreen1(categorylist[index],categorylist[index].name!,),
                                   withNavBar: true, // OPTIONAL VALUE. True by default.
@@ -249,12 +249,12 @@ class _StoreScreen1State extends State<StoreScreen1> {
                                                   getHorizontalSize(1.8))),
                                           GestureDetector(
                                             onTap: (){
-                                              categorylist[index].subCategory!.length==0?pushNewScreen(
+                                              categorylist[index].subCategory!.length==0?pushScreen(
                                                 context,
                                                 screen: NewProductScreen1(categorylist[index],),
                                                 withNavBar: true, // OPTIONAL VALUE. True by default.
                                                 pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                                              ):pushNewScreen(
+                                              ):pushScreen(
                                                 context,
                                                 screen: ClickAfterSlectTabFurnitureScreen1(categorylist[index],categorylist[index].name!,),
                                                 withNavBar: true, // OPTIONAL VALUE. True by default.

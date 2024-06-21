@@ -8,7 +8,7 @@ import 'package:keshav_s_application2/presentation/cart_screen/models/cart_model
 import 'package:keshav_s_application2/presentation/cart_screen/models/movetowishlist.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/presentation/select_product_screen/models/CheckPincode.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:smartech_base/smartech_base.dart';
 
 import 'controller/cart_screen_controller.dart';
@@ -1583,7 +1583,7 @@ class _CartScreenState extends State<CartScreen> {
                 content: Text("Please select atleast 1 product to continue"),
                 backgroundColor: Colors.redAccent));
           }else{
-          pushNewScreen(
+            pushScreen(
             context,
             screen: AfterCartScreen(widget.data),
             withNavBar:

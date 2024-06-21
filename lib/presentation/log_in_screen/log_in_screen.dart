@@ -6,8 +6,7 @@ import 'package:keshav_s_application2/core/utils/utils.dart';
 import 'package:keshav_s_application2/presentation/PasswordScreen.dart';
 import 'package:keshav_s_application2/presentation/log_in_screen/models/log_in_model.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/otp_screen.dart';
-import 'package:keshav_s_application2/presentation/sign_up_screen/signup_screen.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 
 import '../../screenwithoutlogin/landingpage1.dart';
@@ -186,7 +185,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           children: [
                             InkWell(
                               onTap: (){
-                                pushNewScreen(
+                                pushScreen(
                                   context,
                                   screen: landingPage1(),
                                   withNavBar:

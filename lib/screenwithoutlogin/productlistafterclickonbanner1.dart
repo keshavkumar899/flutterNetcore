@@ -16,7 +16,7 @@ import 'package:keshav_s_application2/presentation/whislist_screen/whislist_scre
 import 'package:keshav_s_application2/screenwithoutlogin/productdetailscreen1.dart';
 import 'package:keshav_s_application2/screenwithoutlogin/searchscreen1.dart';
 import 'package:light_modal_bottom_sheet/light_modal_bottom_sheet.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import '../../core/utils/appConstant.dart';
 
@@ -214,7 +214,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
                             onTap: (){
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
@@ -225,7 +225,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                               // Navigator.of(context).pushReplacement(MaterialPageRoute(
                               //   builder: (context) => LogInScreen(),
                               // ));
-                              // pushNewScreen(
+                              // pushScreen(
                               //   context,
                               //   screen: WhislistScreen(widget.data),
                               //   withNavBar:
@@ -245,7 +245,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
-                              pushNewScreen(
+                              pushScreen(
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
@@ -256,7 +256,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                               // Navigator.of(context).pushReplacement(MaterialPageRoute(
                               //   builder: (context) => LogInScreen(),
                               // ));
-                              // pushNewScreen(
+                              // pushScreen(
                               //   context,
                               //   screen: CartScreen(widget.data),
                               //   withNavBar:
@@ -643,7 +643,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                       Spacer(),
                                                       CustomImageView(
                                                           onTap: (){
-                                                            pushNewScreen(
+                                                            pushScreen(
                                                               context,
                                                               screen: LogInScreen(),
                                                               withNavBar:
@@ -669,7 +669,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                               bottom: 3)),
                                                       CustomImageView(
                                                           onTap: (){
-                                                            pushNewScreen(
+                                                            pushScreen(
                                                               context,
                                                               screen: LogInScreen(),
                                                               withNavBar:

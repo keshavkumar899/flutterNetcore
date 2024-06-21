@@ -6,7 +6,7 @@ import 'package:keshav_s_application2/presentation/add_address_screen_click_on_m
 import 'package:keshav_s_application2/presentation/cart_screen/cart_screen.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_6.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
 
 import '../add_address_screen_click_on_manage_address_screen/widgets/listhome_item_widget.dart';
@@ -577,7 +577,7 @@ class _ApplyCouponState extends State<ApplyCoupon> {
   }
 
   onTapAddnewaddress(BuildContext context) {
-    pushNewScreen(
+    pushScreen(
       context,
       screen: AddAddressScreen(widget.data),
       withNavBar: false, // OPTIONAL VALUE. True by default.

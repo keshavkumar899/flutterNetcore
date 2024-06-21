@@ -243,7 +243,7 @@ class _BlogsDetailScreenState extends State<BlogsDetailScreen> {
                               child: Text(
                                 blogslist[index].name ?? '',
                                 maxLines: 1,
-                                style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                                style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 20.sp,
                                 ),
