@@ -24,7 +24,8 @@ void main() async{
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
   final fcmToken = await FirebaseMessaging.instance.getToken();
   print(fcmToken);
-  Smartech().setUserIdentity('9873103345');
+  Smartech().login('8920616622');
+  //Smartech().setUserIdentity('9873103345');
  NetcorePX.instance.registerPxActionListener('action',_PxActionListenerImpl());
  NetcorePX.instance.registerPxDeeplinkListener(_PxDeeplinkListenerImpl());
  NetcorePX.instance.registerPxInternalEventsListener(_PxInternalEventsListener());
@@ -142,7 +143,6 @@ class _MyAppState extends State<MyApp> {
       child: Sizer(builder:(context, orientation, deviceType){
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          navigatorObservers: [PxNavigationObserver.instance],
           builder: (context, child) {
             return hasInternet
                 ? MediaQuery(

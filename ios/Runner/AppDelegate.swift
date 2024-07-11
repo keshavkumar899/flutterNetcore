@@ -7,7 +7,13 @@ import SmartechNudges
 
 
 @UIApplicationMain
-@objc class AppDelegate: FlutterAppDelegate, SmartechDelegate,HanselActionListener{
+@objc class AppDelegate: FlutterAppDelegate, SmartechDelegate
+                         //HanselActionListener
+{
+//    func onActionPerformed(action: String!) {
+//        <#code#>
+//    }
+    
     override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -19,9 +25,8 @@ import SmartechNudges
         Hansel.enableDebugLogs()
         Smartech.sharedInstance().setDebugLevel(.verbose)
         Smartech.sharedInstance().trackAppInstallUpdateBySmartech()
-        Hansel.registerHanselActionListener(action: <#T##String#>, listener: <#T##any HanselActionListener#>)
+//        Hansel.registerHanselActionListener(action: String, listener: any HanselActionListener)
         return super.application(application,
-                                 //didRegisterForRemoteNotificationsWithDeviceToken:deviceToken,didFailToRegisterForRemoteNotificationsWithError:Error,
                                  didFinishLaunchingWithOptions: launchOptions)
         //      return true
     }

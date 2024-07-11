@@ -47,11 +47,12 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
 
   Future initialApiCall() async {
     await getMessageListByApiCall();
+    //await getMessagesList();
     await Future.wait([
       getAppInboxCategoryWiseMessageList(),
       getCategoryList(),
       getAppInboxMessageCount(), // This method use to get appinbox messages count based on message type
-      // getMessagesList(); // This method use to get all types of notifications
+      //getMessagesList(),// This method use to get all types of notifications
     ]);
     isDataLoading = false;
     setState(() {});
@@ -74,7 +75,7 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
       if (value != null) {
         categoryList.addAll(value);
       }
-      log(categoryList.toString());
+      log("getCategoryList: "+categoryList.toString());
     });
   }
 
@@ -84,9 +85,10 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
         .getAppInboxCategoryWiseMessageList(categoryList: categoryList?.where((element) => element.selected).map((e) => e.name).toList() ?? [])
         .then((value) {
       if (value != null) {
+        print("getAppInboxCategoryWiseMessageList: "+value.toString());
         inboxList.addAll(value);
       }
-      log(inboxList.toString());
+      // log(inboxList.toString());
       setState(() {});
     });
   }
@@ -105,9 +107,15 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
 
   /// ======>  This is method to get all notifications <======= ///
   getMessagesList() async {
+    inboxList = [];
     await SmartechAppinbox().getAppInboxMessages().then((value) {
       // log(value.toString());
-      print("object: "+value.toString());
+      if (value != null) {
+        inboxList.addAll(value);
+      }
+      setState(() {});
+      // log(inboxList.toString());
+      print("getMessagesList: "+value.toString());
     });
   }
 
@@ -118,7 +126,7 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
             smtInboxDataType: smtInboxDataType ?? "",
             categoryList: categoryList.where((element) => element.selected).map((e) => e.name).toList())
         .then((value) {
-      print(value.toString());
+      print("getMessageListByApiCall: "+value.toString());
       setState(() {});
     });
   }

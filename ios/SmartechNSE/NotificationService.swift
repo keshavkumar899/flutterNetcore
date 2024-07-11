@@ -1,5 +1,5 @@
 import UserNotifications
-import Smartech
+import SmartPush
 
 class NotificationService: UNNotificationServiceExtension {
   
@@ -7,9 +7,9 @@ class NotificationService: UNNotificationServiceExtension {
   
   override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
     //...
-    if Smartech.sharedInstance().isNotification(fromSmartech:request.content.userInfo) {
-     smartechServiceExtension.didReceive(request, withContentHandler: contentHandler)
- }
+  if SmartPush.sharedInstance().isNotification(fromSmartech:request.content.userInfo){
+      smartechServiceExtension.didReceive(request, withContentHandler: contentHandler)
+    }
     //...
   }
   
