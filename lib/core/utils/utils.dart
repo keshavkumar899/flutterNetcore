@@ -80,4 +80,3 @@ TextStyle SafeGoogleFont(
     );
   }
 }
-

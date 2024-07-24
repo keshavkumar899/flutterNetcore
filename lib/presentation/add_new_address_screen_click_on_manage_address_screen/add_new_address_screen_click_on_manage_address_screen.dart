@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:checkbox_grouped/checkbox_grouped.dart';
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
 import 'package:country_pickers/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:grouped_buttons_ns/grouped_buttons_ns.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
 import 'package:keshav_s_application2/core/utils/utils.dart';
 import 'package:keshav_s_application2/presentation/add_address_screen/add_address_screen.dart';
@@ -46,7 +46,7 @@ import 'package:sizer/sizer.dart';
 class AddNewAddressScreenClickOnManageAddressScreen extends StatefulWidget {
   Data data;
   AddressData addressdata;
-  AddNewAddressScreenClickOnManageAddressScreen(this.data,this.addressdata);
+  AddNewAddressScreenClickOnManageAddressScreen(this.data, this.addressdata);
   @override
   State<AddNewAddressScreenClickOnManageAddressScreen> createState() =>
       _AddNewAddressScreenClickOnManageAddressScreenState();
@@ -79,6 +79,8 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
   String selected = "";
   List<String> _checked = [];
 
+  GroupController controller = GroupController();
+
   Future<AddressUpdate> postRequest() async {
     var url = 'https://fabfurni.com/api/Auth/addressUpdate';
     // var token = "432222222222";
@@ -92,12 +94,12 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
     };
 
     dio.FormData formData = dio.FormData.fromMap({
-        "address_id":widget.addressdata.id,
-        "user_id":widget.addressdata.userId,
-        "name":fullnameoneController.text,
-        "address_one":flatnumberController.text,
-        "address_two":"",
-        "city":cityController.text,
+      "address_id": widget.addressdata.id,
+      "user_id": widget.addressdata.userId,
+      "name": fullnameoneController.text,
+      "address_one": flatnumberController.text,
+      "address_two": "",
+      "city": cityController.text,
       "state": stateController.text,
       "pincode": pincodeController.text,
       "default": check1,
@@ -119,7 +121,7 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
     if (response.statusCode == 200) {
       if (AddressUpdate.fromJson(jsonObject).status == "true") {
         Fluttertoast.showToast(
-            msg:"Address Updated Successfully",
+            msg: "Address Updated Successfully",
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -170,15 +172,15 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final RoundedLoadingButtonController _btnController =
-  RoundedLoadingButtonController();
+      RoundedLoadingButtonController();
 
   @override
   Widget build(BuildContext context) {
-     fullnameoneController.text=widget.addressdata.name!.capitalizeFirst!;
-     flatnumberController.text=widget.addressdata.addressOne!.capitalizeFirst!;
-     pincodeController.text=widget.addressdata.pincode!;
-     cityController.text=widget.addressdata.city!.capitalizeFirst!;
-     stateController.text=widget.addressdata.state!.capitalizeFirst!;
+    fullnameoneController.text = widget.addressdata.name!.capitalizeFirst!;
+    flatnumberController.text = widget.addressdata.addressOne!.capitalizeFirst!;
+    pincodeController.text = widget.addressdata.pincode!;
+    cityController.text = widget.addressdata.city!.capitalizeFirst!;
+    stateController.text = widget.addressdata.state!.capitalizeFirst!;
 
     return SafeArea(
         child: Scaffold(
@@ -188,7 +190,7 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                 height: getVerticalSize(70),
                 leadingWidth: 41,
                 leading: AppbarImage(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                     },
                     height: getVerticalSize(15),
@@ -209,31 +211,31 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                       width: getSize(21),
                       svgPath: ImageConstant.imgSearch,
                       margin:
-                      getMargin(left: 12, top: 22, right: 10, bottom: 10),
-                      onTap: (){
+                          getMargin(left: 12, top: 22, right: 10, bottom: 10),
+                      onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SearchScreen(widget.data,''),
+                          builder: (context) => SearchScreen(widget.data, ''),
                         ));
                       }),
                   Container(
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 25, right: 10, bottom: 0),
+                          getMargin(left: 20, top: 25, right: 10, bottom: 0),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
                             width: getHorizontalSize(21),
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
-                            onTap: (){
+                            onTap: () {
                               pushScreen(
                                 context,
                                 screen: WhislistScreen(widget.data),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                             }),
                         // AppbarSubtitle6(
@@ -251,9 +253,9 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                                 context,
                                 screen: CartScreen(widget.data),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                               // Navigator.of(context).push(MaterialPageRoute(
                               //   builder: (context) => CartScreen(widget.data),
@@ -283,8 +285,10 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                               pushScreen(
                                 context,
                                 screen: AddAddressScreen(widget.data),
-                                withNavBar: false, // OPTIONAL VALUE. True by default.
-                                pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                                withNavBar:
+                                    false, // OPTIONAL VALUE. True by default.
+                                pageTransitionAnimation:
+                                    PageTransitionAnimation.cupertino,
                               );
                             },
                             height: getVerticalSize(39),
@@ -328,16 +332,17 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                                     style:
                                         AppStyle.txtRobotoRegular12Purple300))),
                         CustomTextFormField(
-                            focusNode: FocusNode(),
-                            controller: fullnameoneController,
-                            hintText: widget.addressdata.name!.capitalizeFirst!,
-                            margin: getMargin(left: 4, top: 5, right: 26),
+                          focusNode: FocusNode(),
+                          controller: fullnameoneController,
+                          hintText: widget.addressdata.name!.capitalizeFirst!,
+                          margin: getMargin(left: 4, top: 5, right: 26),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please enter name';
                             }
                             return null;
-                          },),
+                          },
+                        ),
                         Align(
                             alignment: Alignment.centerLeft,
                             child: Padding(
@@ -350,7 +355,8 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                         CustomTextFormField(
                             focusNode: FocusNode(),
                             controller: flatnumberController,
-                            hintText: widget.addressdata.addressOne!.capitalizeFirst!,
+                            hintText:
+                                widget.addressdata.addressOne!.capitalizeFirst!,
                             margin: getMargin(left: 4, top: 5, right: 26),
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -457,7 +463,8 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                         CustomTextFormField(
                             focusNode: FocusNode(),
                             controller: stateController,
-                            hintText: widget.addressdata.state!.capitalizeFirst!,
+                            hintText:
+                                widget.addressdata.state!.capitalizeFirst!,
                             margin: getMargin(left: 4, top: 6, right: 26),
                             textInputAction: TextInputAction.done,
                             textInputType: TextInputType.emailAddress,
@@ -701,42 +708,74 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                                   //         onChange: (value) {
                                   //           isCheckbox1 = value;
                                   //         })),
-
-                                  CheckboxGroup(
-                                    orientation:
-                                    GroupedButtonsOrientation.HORIZONTAL,
-                                    margin: const EdgeInsets.only(left: 20.0),
-                                    labels: <String>[
+                                  SimpleGroupedCheckbox(
+                                    controller: controller,
+                                    itemsTitle: [
                                       "Home",
                                       "Office",
                                     ],
-                                    // disabled: ["Wednesday", "Friday"],
-                                    checked: _checked,
-                                    activeColor: Colors.purple,
-                                    // itemBuilder: (checkbox,label,int){
-                                    //
-                                    // },
-                                    labelStyle:
-                                    AppStyle.txtRobotoRegular12Black900,
-                                    onChange: (bool isChecked, String label,
-                                        int index) {
-                                      check1 = index;
-                                      print(check1);
-                                      print(
-                                          "isChecked: $isChecked   label: $label  index: $index");
+                                    values: [1, 2, 4, 5],
+                                    groupStyle: GroupStyle(
+                                      activeColor: Colors.purple,
+                                      itemTitleStyle: TextStyle(fontSize: 13),
+                                      // labelStyle:
+                                      // AppStyle.txtRobotoRegular12Black900,
+                                      // onChange: (bool isChecked, String label,
+                                      // int index) {
+                                      // check1 = index;
+                                      // print(check1);
+                                      // print(
+                                      // "isChecked: $isChecked   label: $label  index: $index");
+                                    ),
+                                    onItemSelected: (selected) {
+                                      setState(() {
+                                        if (selected.length > 1) {
+                                          selected.removeAt(0);
+                                          print(
+                                              'selected length  ${selected.length}');
+                                        } else {
+                                          print("only one");
+                                        }
+                                        _checked = selected as List<String>;
+                                      });
                                     },
-                                    onSelected: (List selected) =>
-                                        setState(() {
-                                          if (selected.length > 1) {
-                                            selected.removeAt(0);
-                                            print(
-                                                'selected length  ${selected.length}');
-                                          } else {
-                                            print("only one");
-                                          }
-                                          _checked = selected as List<String>;
-                                        }),
-                                  ),
+                                  )
+                                  // CheckboxGroup(
+                                  //   orientation:
+                                  //   GroupedButtonsOrientation.HORIZONTAL,
+                                  //   margin: const EdgeInsets.only(left: 20.0),
+                                  //   labels: <String>[
+                                  //     "Home",
+                                  //     "Office",
+                                  //   ],
+                                  //   // disabled: ["Wednesday", "Friday"],
+                                  //   checked: _checked,
+                                  //   activeColor: Colors.purple,
+                                  //   // itemBuilder: (checkbox,label,int){
+                                  //   //
+                                  //   // },
+                                  //   labelStyle:
+                                  //   AppStyle.txtRobotoRegular12Black900,
+                                  //   onChange: (bool isChecked, String label,
+                                  //       int index) {
+                                  //     check1 = index;
+                                  //     print(check1);
+                                  //     print(
+                                  //         "isChecked: $isChecked   label: $label  index: $index");
+                                  //   },
+                                  //   onSelected: (List selected) =>
+                                  //       setState(() {
+                                  //         if (selected.length > 1) {
+                                  //           selected.removeAt(0);
+                                  //           print(
+                                  //               'selected length  ${selected.length}');
+                                  //         } else {
+                                  //           print("only one");
+                                  //         }
+                                  //         _checked = selected as List<String>;
+                                  //       }),
+                                  // ),
+
                                   // Container(
                                   //   width:100,
                                   //   child:
@@ -960,22 +999,24 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                         //       //         style: AppStyle.txtRobotoRegular12))
                         //     ])),
                         Padding(
-                            padding:
-                                getPadding(left: 1, top: 15, right: 2, bottom: 5),
+                            padding: getPadding(
+                                left: 1, top: 15, right: 2, bottom: 5),
                             child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   CustomButton(
-                                    onTap:(){
-                                      Navigator.of(context).pop();
-                                    },
+                                      onTap: () {
+                                        Navigator.of(context).pop();
+                                      },
                                       height: getVerticalSize(36),
                                       width: getHorizontalSize(195),
                                       text: "CANCEL",
                                       variant: ButtonVariant.FillBluegray100,
                                       shape: ButtonShape.CustomBorderBL50,
                                       padding: ButtonPadding.PaddingAll9,
-                                      fontStyle: ButtonFontStyle.RobotoMedium14),
+                                      fontStyle:
+                                          ButtonFontStyle.RobotoMedium14),
                                   CustomButton(
                                       height: getVerticalSize(36),
                                       width: getHorizontalSize(196),
@@ -984,7 +1025,8 @@ class _AddNewAddressScreenClickOnManageAddressScreenState
                                       padding: ButtonPadding.PaddingAll9,
                                       fontStyle: ButtonFontStyle.RobotoMedium14,
                                       onTap: () {
-                                        FocusManager.instance.primaryFocus!.unfocus();
+                                        FocusManager.instance.primaryFocus!
+                                            .unfocus();
                                         if (_formKey.currentState!.validate()) {
                                           postRequest();
                                           Timer(Duration(seconds: 3), () {

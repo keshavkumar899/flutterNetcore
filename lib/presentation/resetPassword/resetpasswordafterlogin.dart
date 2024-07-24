@@ -20,26 +20,26 @@ import '../ResetPassword.dart';
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
-import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
+import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart'
+    as otp;
 
 import 'model/ResetPasswordModel.dart';
 
 class ResetPasswordAfterLogin extends StatefulWidget {
-
   otp.Data data;
   ResetPasswordAfterLogin(this.data);
 
   @override
-  State<ResetPasswordAfterLogin> createState() => _ResetPasswordAfterLoginState();
+  State<ResetPasswordAfterLogin> createState() =>
+      _ResetPasswordAfterLoginState();
 }
 
 class _ResetPasswordAfterLoginState extends State<ResetPasswordAfterLogin> {
-
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   TextEditingController emailController = TextEditingController();
   final RoundedLoadingButtonController _btnController =
-  RoundedLoadingButtonController();
+      RoundedLoadingButtonController();
 
   Future<ResetPasswordModel> postRequest() async {
     var url = 'https://fabfurni.com/api/Auth/resetPassword';
@@ -54,8 +54,8 @@ class _ResetPasswordAfterLoginState extends State<ResetPasswordAfterLogin> {
     };
 
     dio.FormData formData = dio.FormData.fromMap({
-      "user_id":widget.data.id,
-      "email":emailController.text,
+      "user_id": widget.data.id,
+      "email": emailController.text,
     });
     print(formData.fields);
     var response = await dio.Dio().post(url,
@@ -72,9 +72,8 @@ class _ResetPasswordAfterLoginState extends State<ResetPasswordAfterLogin> {
     // print(jsonObject.toString());
     if (response.statusCode == 200) {
       if (ResetPasswordModel.fromJson(jsonObject).status == "true") {
-
         Fluttertoast.showToast(
-            msg:"Email sent Successfully. Please check your email",
+            msg: "Email sent Successfully. Please check your email",
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -87,7 +86,7 @@ class _ResetPasswordAfterLoginState extends State<ResetPasswordAfterLogin> {
         // ));
       } else if (ResetPasswordModel.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg:ResetPasswordModel.fromJson(jsonObject).message!,
+            msg: ResetPasswordModel.fromJson(jsonObject).message!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -112,7 +111,6 @@ class _ResetPasswordAfterLoginState extends State<ResetPasswordAfterLogin> {
     // return response;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -123,7 +121,7 @@ class _ResetPasswordAfterLoginState extends State<ResetPasswordAfterLogin> {
                 height: getVerticalSize(70),
                 leadingWidth: 41,
                 leading: AppbarImage(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                     },
                     height: getVerticalSize(15),
@@ -151,22 +149,23 @@ class _ResetPasswordAfterLoginState extends State<ResetPasswordAfterLogin> {
                                       style: AppStyle
                                           .txtRobotoRegular12Purple300))),
                           CustomTextFormField(
-                              focusNode: FocusNode(),
-                              controller: emailController,
-                              margin: getMargin(left: 27, top: 5, right: 26),
+                            focusNode: FocusNode(),
+                            controller: emailController,
+                            margin: getMargin(left: 27, top: 5, right: 26),
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Please enter the email';
                               }
                               return null;
                             },
-
                           ),
 
-                          SizedBox(height: 4.h,),
+                          SizedBox(
+                            height: 4.h,
+                          ),
 
                           CustomButton(
-                              onTap: (){
+                              onTap: () {
                                 FocusManager.instance.primaryFocus!.unfocus();
                                 if (_formKey.currentState!.validate()) {
                                   postRequest();
@@ -471,6 +470,7 @@ class _ResetPasswordAfterLoginState extends State<ResetPasswordAfterLogin> {
                                   height: getVerticalSize(5),
                                   thickness: getVerticalSize(5),
                                   color: ColorConstant.purple50))
-                        ])))));;
+                        ])))));
+    ;
   }
 }

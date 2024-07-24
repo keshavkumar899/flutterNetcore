@@ -3,9 +3,9 @@ import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
 import 'package:keshav_s_application2/core/app_export.dart';
 
 // ignore: must_be_immutable
-class CustomAppBar extends StatelessWidget implements  PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   CustomAppBar(
-      { this.height,
+      {this.height,
       this.styleType,
       this.leadingWidth,
       this.leading,
@@ -121,6 +121,31 @@ class CustomAppBar extends StatelessWidget implements  PreferredSizeWidget {
             ],
           ),
         );
+      case Style.bgShadowBlack90033height85:
+        return Container(
+          height: getVerticalSize(
+            85,
+          ),
+          width: double.maxFinite,
+          decoration: BoxDecoration(
+            color: ColorConstant.whiteA700,
+            boxShadow: [
+              BoxShadow(
+                color: ColorConstant.black90033,
+                spreadRadius: getHorizontalSize(
+                  2,
+                ),
+                blurRadius: getHorizontalSize(
+                  2,
+                ),
+                offset: Offset(
+                  0,
+                  1,
+                ),
+              ),
+            ],
+          ),
+        );
       case Style.bgOutlineGray40003:
         return Container(
           height: getVerticalSize(
@@ -148,5 +173,6 @@ enum Style {
   bgStyle_2,
   bgStyle,
   bgShadowBlack90033,
+  bgShadowBlack90033height85,
   bgOutlineGray40003,
 }

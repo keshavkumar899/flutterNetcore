@@ -50,7 +50,7 @@ class WishListData {
     data['user_id'] = this.userId;
     data['product_id'] = this.productId;
     if (this.productData != null) {
-    data['product_data'] = this.productData!.toJson();
+      data['product_data'] = this.productData!.toJson();
     }
     return data;
   }
@@ -71,46 +71,46 @@ class ProductData {
   String? discountPer;
   String? description;
   String? image;
-  String ?sellerId;
-  String ?emiOption;
-  String ?monthWarrenty;
-  String ?easyReturn;
-  String ?safeDelivery;
-  String ?metaTitle;
-  String ?metaDescription;
-  String ?isActive;
-  String ?featured;
-  String ?isDelete;
-  String ?createOn;
-  String ?updateOn;
+  String? sellerId;
+  String? emiOption;
+  String? monthWarrenty;
+  String? easyReturn;
+  String? safeDelivery;
+  String? metaTitle;
+  String? metaDescription;
+  String? isActive;
+  String? featured;
+  String? isDelete;
+  String? createOn;
+  String? updateOn;
 
   ProductData(
       {this.id,
-        this.name,
-        this.code,
-        this.categoryId,
-        this.subCategoryId,
-        this.brandId,
-        this.keywordsId,
-        this.cityId,
-        this.mrpPrice,
-        this.salePrice,
-        this.discountPrice,
-        this.discountPer,
-        this.description,
-        this.image,
-        this.sellerId,
-        this.emiOption,
-        this.monthWarrenty,
-        this.easyReturn,
-        this.safeDelivery,
-        this.metaTitle,
-        this.metaDescription,
-        this.isActive,
-        this.featured,
-        this.isDelete,
-        this.createOn,
-        this.updateOn});
+      this.name,
+      this.code,
+      this.categoryId,
+      this.subCategoryId,
+      this.brandId,
+      this.keywordsId,
+      this.cityId,
+      this.mrpPrice,
+      this.salePrice,
+      this.discountPrice,
+      this.discountPer,
+      this.description,
+      this.image,
+      this.sellerId,
+      this.emiOption,
+      this.monthWarrenty,
+      this.easyReturn,
+      this.safeDelivery,
+      this.metaTitle,
+      this.metaDescription,
+      this.isActive,
+      this.featured,
+      this.isDelete,
+      this.createOn,
+      this.updateOn});
 
   ProductData.fromJson(Map<String, dynamic> json) {
     id = json['id'];

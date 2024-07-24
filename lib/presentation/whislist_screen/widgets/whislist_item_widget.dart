@@ -3,7 +3,8 @@ import 'package:keshav_s_application2/presentation/product_detail_screen/models/
 import 'package:keshav_s_application2/presentation/product_detail_screen/models/addtocartfromwishlist.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/models/removewishlist.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/models/wishlist_model.dart';
-import 'package:keshav_s_application2/presentation/whislist_screen/models/wishlist_model.dart' as wishlist;
+import 'package:keshav_s_application2/presentation/whislist_screen/models/wishlist_model.dart'
+    as wishlist;
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 
 import '../../otp_screen/models/otp_model.dart';
@@ -17,7 +18,7 @@ import 'package:dio/dio.dart' as dio;
 
 // ignore: must_be_immutable
 class WhislistItemWidget extends StatefulWidget {
-  WhislistItemWidget(this.data,this.productdata);
+  WhislistItemWidget(this.data, this.productdata);
 
   // WhislistItemModel whislistItemModelObj;
   Data data;
@@ -28,27 +29,26 @@ class WhislistItemWidget extends StatefulWidget {
 }
 
 class _WhislistItemWidgetState extends State<WhislistItemWidget> {
-
   String? message;
 
   Future<AddtoCartfromwishlist> addtocart() async {
     Map data = {
       'user_id': widget.data.id,
-      'product_id':widget.productdata.id,
-      'qty':"1",
-      "add_wishlist_cart":"1",
+      'product_id': widget.productdata.id,
+      'qty': "1",
+      "add_wishlist_cart": "1",
     };
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/addtoCart",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/addtoCart",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
@@ -59,22 +59,27 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
             duration: Duration(seconds: 1),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text("Added to Cart "+AddtoCartfromwishlist.fromJson(jsonObject).message!+"ly",style: TextStyle(color: Colors.black),),
+            content: Text(
+              "Added to Cart " +
+                  AddtoCartfromwishlist.fromJson(jsonObject).message! +
+                  "ly",
+              style: TextStyle(color: Colors.black),
+            ),
             backgroundColor: Colors.greenAccent));
 
         return AddtoCartfromwishlist.fromJson(jsonObject);
 
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (AddtoCartfromwishlist.fromJson(jsonObject).status == "false") {
+      } else if (AddtoCartfromwishlist.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text(AddtoCartfromwishlist.fromJson(jsonObject).message!.capitalizeFirst!),
+            content: Text(AddtoCartfromwishlist.fromJson(jsonObject)
+                .message!
+                .capitalizeFirst!),
             backgroundColor: Colors.redAccent));
-
-      }
-      else if(AddtoCartfromwishlist.fromJson(jsonObject).data == null){
+      } else if (AddtoCartfromwishlist.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           duration: Duration(seconds: 3),
           behavior: SnackBarBehavior.floating,
@@ -85,8 +90,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -94,49 +98,52 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
     }
     return jsonObject;
   }
+
   Future<RemoveWishlist> removefromwishlist() async {
     Map data = {
       'user_id': widget.data.id,
-      'product_id':widget.productdata.id,
+      'product_id': widget.productdata.id,
     };
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/addWishlist",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/addWishlist",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
 
       if (RemoveWishlist.fromJson(jsonObject).status == "true") {
         // print(orders.MyOrdersModel.fromJson(jsonObject).data.first.products.first.image);
-        if (RemoveWishlist.fromJson(jsonObject).data == true){
+        if (RemoveWishlist.fromJson(jsonObject).data == true) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               duration: Duration(seconds: 1),
               behavior: SnackBarBehavior.floating,
               margin: EdgeInsets.only(bottom: 10.0),
-              content: Text("Removed from Wishlist ",style: TextStyle(color: Colors.black),),
+              content: Text(
+                "Removed from Wishlist ",
+                style: TextStyle(color: Colors.black),
+              ),
               backgroundColor: Colors.greenAccent));
         }
         return RemoveWishlist.fromJson(jsonObject);
 
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (RemoveWishlist.fromJson(jsonObject).status == "false") {
+      } else if (RemoveWishlist.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text(RemoveWishlist.fromJson(jsonObject).message!.capitalizeFirst!),
+            content: Text(
+                RemoveWishlist.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
-
-      }
-      else if(RemoveWishlist.fromJson(jsonObject).data == null){
+      } else if (RemoveWishlist.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           duration: Duration(seconds: 3),
           behavior: SnackBarBehavior.floating,
@@ -147,8 +154,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -156,6 +162,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
     }
     return jsonObject;
   }
+
   Future<wishlist.WishlistScreenModel> getWishlist() async {
     Map data = {
       'user_id': widget.data.id,
@@ -163,14 +170,14 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/wishlist",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/wishlist",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
@@ -181,14 +188,15 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
         return wishlist.WishlistScreenModel.fromJson(jsonObject);
 
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (wishlist.WishlistScreenModel.fromJson(jsonObject).status == "false") {
-        message=wishlist.WishlistScreenModel.fromJson(jsonObject).message;
+      } else if (wishlist.WishlistScreenModel.fromJson(jsonObject).status ==
+          "false") {
+        message = wishlist.WishlistScreenModel.fromJson(jsonObject).message;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(wishlist.WishlistScreenModel.fromJson(jsonObject).message!),
+            content: Text(
+                wishlist.WishlistScreenModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
-
-      }
-      else if(wishlist.WishlistScreenModel.fromJson(jsonObject).data == null){
+      } else if (wishlist.WishlistScreenModel.fromJson(jsonObject).data ==
+          null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
             jsonObject['message'] + ' Please check after sometime.',
@@ -196,8 +204,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -205,6 +212,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
     }
     return jsonObject;
   }
+
   // var controller = Get.find<WhislistController>();
   @override
   Widget build(BuildContext context) {
@@ -232,7 +240,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomImageView(
-                      url:widget.productdata.image!,
+                      url: widget.productdata.image!,
                       // imagePath: ImageConstant.imgImage5,
                       height: getSize(
                         65,
@@ -265,7 +273,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
                                 ),
                               ),
                               CustomImageView(
-                                onTap:(){
+                                onTap: () {
                                   removefromwishlist();
                                   getWishlist();
                                   // WhislistScreen(widget.data);
@@ -387,7 +395,7 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
                               top: 2,
                             ),
                             child: Text(
-                              widget.productdata.discountPer!+" % Off",
+                              widget.productdata.discountPer! + " % Off",
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
                               style: AppStyle.txtRobotoMedium8Purple900,
@@ -429,11 +437,9 @@ class _WhislistItemWidgetState extends State<WhislistItemWidget> {
                 width: 350,
                 height: 30,
                 child: GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     addtocart();
-                    setState(() {
-
-                    });
+                    setState(() {});
                   },
                   child: Container(
                     padding: getPadding(

@@ -41,15 +41,15 @@ class BlogsData {
 
   BlogsData(
       {this.id,
-        this.name,
-        this.image,
-        this.description,
-        this.metaTitle,
-        this.metaDescription,
-        this.isActive,
-        this.isDelete,
-        this.createOn,
-        this.updateOn});
+      this.name,
+      this.image,
+      this.description,
+      this.metaTitle,
+      this.metaDescription,
+      this.isActive,
+      this.isDelete,
+      this.createOn,
+      this.updateOn});
 
   BlogsData.fromJson(Map<String, dynamic> json) {
     id = json['id'];

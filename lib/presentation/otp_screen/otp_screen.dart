@@ -20,22 +20,19 @@ import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
 class OtpScreen extends StatefulWidget {
   String mobileNumber;
   String otp;
-  OtpScreen(this.mobileNumber,this.otp);
-
+  OtpScreen(this.mobileNumber, this.otp);
 
   @override
   State<OtpScreen> createState() => _OtpScreenState();
 }
 
 class _OtpScreenState extends State<OtpScreen> {
-
   TextEditingController otpController = TextEditingController();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final RoundedLoadingButtonController _btnController = RoundedLoadingButtonController();
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
 
-
-  Future<OtpModel> postRequest(
-      ) async {
+  Future<OtpModel> postRequest() async {
     var url = 'https://fabfurni.com/api/Auth/verifyOtp';
     // var token = "HDJJHJHJHSJHDJAHDAD";
 
@@ -47,10 +44,9 @@ class _OtpScreenState extends State<OtpScreen> {
       "Connection": "keep-alive"
     };
 
-
     dio.FormData formData = dio.FormData.fromMap({
       'mobile': widget.mobileNumber,
-      "otp":widget.otp,
+      "otp": widget.otp,
       // 'password': password,
       // 'fcm_token': token,
     });
@@ -92,16 +88,20 @@ class _OtpScreenState extends State<OtpScreen> {
         //   ),
         //   backgroundColor: Colors.greenAccent,
         // ));
-        Map <String,dynamic>json1 = jsonDecode(pref.getString('userData')!);
+        Map<String, dynamic> json1 = jsonDecode(pref.getString('userData')!);
         var user1 = OtpModel.fromJson(json1);
         print(user1.data);
         Smartech().login(user1.data!.mobile!);
         print(OtpModel.fromJson(jsonObject).data!.otps!);
-        Navigator.of(context).pushAndRemoveUntil<dynamic>(MaterialPageRoute(
-          builder: (context) => landingPage(OtpModel.fromJson(jsonObject).data!),
-        ),(route) => false,);
+        Navigator.of(context).pushAndRemoveUntil<dynamic>(
+          MaterialPageRoute(
+            builder: (context) =>
+                landingPage(OtpModel.fromJson(jsonObject).data!),
+          ),
+          (route) => false,
+        );
         Fluttertoast.showToast(
-            msg:"Logged in Successfully",
+            msg: "Logged in Successfully",
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -110,7 +110,7 @@ class _OtpScreenState extends State<OtpScreen> {
             fontSize: 14.0);
       } else if (OtpModel.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg:OtpModel.fromJson(jsonObject).message!,
+            msg: OtpModel.fromJson(jsonObject).message!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -120,21 +120,22 @@ class _OtpScreenState extends State<OtpScreen> {
         setState(() {
           _btnController.error();
         });
-      }
-      else if (OtpModel.fromJson(jsonObject).data == null){
+      } else if (OtpModel.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('Server Error..Please try again after sometime', style: SafeGoogleFont(
-              'Poppins SemiBold',
-              // fontSize: 18 * ffem,
-              fontWeight: FontWeight.w400,
-              // height: 1.2575 * ffem / fem,
-              color: Colors.black,
-            ),),
+            content: Text(
+              'Server Error..Please try again after sometime',
+              style: SafeGoogleFont(
+                'Poppins SemiBold',
+                // fontSize: 18 * ffem,
+                fontWeight: FontWeight.w400,
+                // height: 1.2575 * ffem / fem,
+                color: Colors.black,
+              ),
+            ),
             backgroundColor: Colors.redAccent));
         setState(() {
           _btnController.error();
         });
-
       }
 
       // print(Logindata.fromJson(jsonObject).message);
@@ -151,7 +152,7 @@ class _OtpScreenState extends State<OtpScreen> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     otpController.dispose();
     super.dispose();
   }
@@ -174,7 +175,7 @@ class _OtpScreenState extends State<OtpScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 CustomImageView(
-                  onTap: (){
+                  onTap: () {
                     Navigator.pop(context);
                   },
                   svgPath: ImageConstant.imgClosesvgrepocom,
@@ -302,9 +303,10 @@ class _OtpScreenState extends State<OtpScreen> {
                   ),
                 ),
                 CustomButton(
-                  onTap:(){
+                  onTap: () {
                     FocusManager.instance.primaryFocus!.unfocus();
-                    if (_formKey.currentState!.validate() && otpController.text==widget.otp) {
+                    if (_formKey.currentState!.validate() &&
+                        otpController.text == widget.otp) {
                       postRequest();
                       Timer(Duration(seconds: 3), () {
                         otpController.clear();
@@ -314,10 +316,9 @@ class _OtpScreenState extends State<OtpScreen> {
                       // if(cred!.=='success'){
                       //
                       // }
-
-                    } else{
+                    } else {
                       Fluttertoast.showToast(
-                          msg:"OTP entered is not valid",
+                          msg: "OTP entered is not valid",
                           toastLength: Toast.LENGTH_LONG,
                           gravity: ToastGravity.BOTTOM,
                           timeInSecForIosWeb: 3,
@@ -325,7 +326,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           textColor: Colors.black,
                           fontSize: 14.0);
                       setState(() {
-                        Timer(Duration(seconds:0), () {
+                        Timer(Duration(seconds: 0), () {
                           _btnController.reset();
                         });
                       });

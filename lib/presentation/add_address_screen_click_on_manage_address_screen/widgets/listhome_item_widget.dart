@@ -70,7 +70,8 @@ class _ListhomeItemWidgetState extends State<ListhomeItemWidget> {
             fontSize: 14.0);
         Navigator.of(context).pop();
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => AddAddressScreenClickOnManageAddressScreen(widget.data),
+          builder: (context) =>
+              AddAddressScreenClickOnManageAddressScreen(widget.data),
         ));
         // Navigator.of(context).pushReplacement(MaterialPageRoute(
         //   builder: (context) => LogInScreen(),

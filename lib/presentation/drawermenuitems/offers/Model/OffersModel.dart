@@ -48,22 +48,22 @@ class OffersData {
 
   OffersData(
       {this.id,
-        this.keywordsId,
-        this.title,
-        this.image,
-        this.description,
-        this.promoCode,
-        this.coupanType,
-        this.type,
-        this.amount,
-        this.minCart,
-        this.startDate,
-        this.endDate,
-        this.status,
-        this.metaTitle,
-        this.metaDescription,
-        this.createdAt,
-        this.isDelete});
+      this.keywordsId,
+      this.title,
+      this.image,
+      this.description,
+      this.promoCode,
+      this.coupanType,
+      this.type,
+      this.amount,
+      this.minCart,
+      this.startDate,
+      this.endDate,
+      this.status,
+      this.metaTitle,
+      this.metaDescription,
+      this.createdAt,
+      this.isDelete});
 
   OffersData.fromJson(Map<String, dynamic> json) {
     id = json['id'];

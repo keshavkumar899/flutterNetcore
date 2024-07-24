@@ -8,7 +8,9 @@ class ChangePasswordModel {
   ChangePasswordModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null ? new ChangePasswordData.fromJson(json['data']) : null;
+    data = json['data'] != null
+        ? new ChangePasswordData.fromJson(json['data'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -39,18 +41,18 @@ class ChangePasswordData {
 
   ChangePasswordData(
       {this.id,
-        this.firstName,
-        this.lastName,
-        this.email,
-        this.password,
-        this.mobile,
-        this.otps,
-        this.fcmToken,
-        this.profilePhoto,
-        this.createOn,
-        this.isDelete,
-        this.isActive,
-        this.walletBalence});
+      this.firstName,
+      this.lastName,
+      this.email,
+      this.password,
+      this.mobile,
+      this.otps,
+      this.fcmToken,
+      this.profilePhoto,
+      this.createOn,
+      this.isDelete,
+      this.isActive,
+      this.walletBalence});
 
   ChangePasswordData.fromJson(Map<String, dynamic> json) {
     id = json['id'];

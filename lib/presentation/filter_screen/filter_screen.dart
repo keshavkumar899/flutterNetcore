@@ -20,8 +20,6 @@ class FilterScreen extends StatefulWidget {
 }
 
 class _filterScreen extends State<FilterScreen> {
- 
-
   final List<Category> _listDataCategory = <Category>[];
   final List<SubCategorys> _listDataSubCategory = <SubCategorys>[];
   final List<Keywords> _listDataKeywords = <Keywords>[];
@@ -54,7 +52,7 @@ class _filterScreen extends State<FilterScreen> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        AppConstant.selectedIndex= 0;
+                        AppConstant.selectedIndex = 0;
                         AppConstant.selectedIndexCategory = -1;
                         AppConstant.selectedIndexCategoryId = '';
 
@@ -79,7 +77,7 @@ class _filterScreen extends State<FilterScreen> {
                 ],
                 styleType: Style.bgOutlineGray40003),
             bottomSheet: Container(
-              margin: EdgeInsets.only(bottom: 20),
+                margin: EdgeInsets.only(bottom: 20),
                 width: double.maxFinite,
                 decoration: AppDecoration.outlinePurple300,
                 child: Row(
@@ -88,7 +86,7 @@ class _filterScreen extends State<FilterScreen> {
                     children: [
                       GestureDetector(
                         onTap: () async {
-                          AppConstant.selectedIndex= 0;
+                          AppConstant.selectedIndex = 0;
                           AppConstant.selectedIndexCategory = -1;
                           AppConstant.selectedIndexCategoryId = '';
 
@@ -108,8 +106,9 @@ class _filterScreen extends State<FilterScreen> {
                             '',
                             '',
                             '',
-                            '',];
-                          Navigator.pop(context,stringArray.toList());
+                            '',
+                          ];
+                          Navigator.pop(context, stringArray.toList());
                         },
                         child: Padding(
                             padding: getPadding(top: 17, bottom: 20),
@@ -135,8 +134,9 @@ class _filterScreen extends State<FilterScreen> {
                             AppConstant.selectedIndexCategoryId,
                             AppConstant.selectedIndexSubCategoryId,
                             AppConstant.selectedIndexKeywordId,
-                            AppConstant.selectedIndexBrandId];
-                          Navigator.pop(context,stringArray.toList());
+                            AppConstant.selectedIndexBrandId
+                          ];
+                          Navigator.pop(context, stringArray.toList());
                           /*Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) => productlisrafterclickonbanner(
                                 user1.data,
@@ -172,7 +172,7 @@ class _filterScreen extends State<FilterScreen> {
                         return InkWell(
                           onTap: () {
                             setState(() {
-                              AppConstant.selectedIndex= index;
+                              AppConstant.selectedIndex = index;
                             });
                           },
                           child: Container(
@@ -186,9 +186,10 @@ class _filterScreen extends State<FilterScreen> {
                                     style: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 12,
-                                        color: AppConstant.selectedIndex== index
-                                            ? Color(0xffD04767)
-                                            : Colors.black),
+                                        color:
+                                            AppConstant.selectedIndex == index
+                                                ? Color(0xffD04767)
+                                                : Colors.black),
                                   ),
                                 ),
                               ],
@@ -197,383 +198,404 @@ class _filterScreen extends State<FilterScreen> {
                         );
                       }),
                 ),
-                AppConstant.selectedIndex== 0
+                AppConstant.selectedIndex == 0
                     ? Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(bottom: 70),
-                          child: Padding(
-                              padding: const EdgeInsets.only(left: 5, right: 5),
-                              child: _listDataCategory.isNotEmpty
-                                  ? GridView.builder(
-                                      physics: ScrollPhysics(),
-                                      scrollDirection: Axis.vertical,
-                                      shrinkWrap: true,
-                                      gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 2,
-                                              // Number of columns in the grid
-                                              childAspectRatio: 2.3,
-                                              // Desired aspect ratio (width:height) of each grid item
-                                              crossAxisSpacing: 5),
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              if(AppConstant.selectedIndexCategory == index){
-                                                AppConstant.selectedIndexCategory = -1;
-                                                AppConstant.selectedIndexCategoryId = '';
-                                                return;
-                                              }
-                                              AppConstant.selectedIndexCategory = index;
-                                              AppConstant.selectedIndexCategoryId =
-                                                  _listDataCategory[index].id!;
-                                            });
-                                          },
-                                          child: Container(
-                                            margin: EdgeInsets.symmetric(
-                                                horizontal: 3),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.stretch,
-                                              children: [
-                                                Card(
-                                                  elevation: 2,
-                                                  shape: RoundedRectangleBorder(
-                                                    side: BorderSide(
-                                                      color:
-                                                          AppConstant.selectedIndexCategory ==
-                                                                  index
-                                                              ? Color(0xffD04767)
-                                                              : Colors.white,
-                                                      // Border color
-                                                      width: 2.0, // Border width
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
+                        margin: EdgeInsets.only(bottom: 70),
+                        child: Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 5),
+                            child: _listDataCategory.isNotEmpty
+                                ? GridView.builder(
+                                    physics: ScrollPhysics(),
+                                    scrollDirection: Axis.vertical,
+                                    shrinkWrap: true,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 2,
+                                            // Number of columns in the grid
+                                            childAspectRatio: 2.3,
+                                            // Desired aspect ratio (width:height) of each grid item
+                                            crossAxisSpacing: 5),
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            if (AppConstant
+                                                    .selectedIndexCategory ==
+                                                index) {
+                                              AppConstant
+                                                  .selectedIndexCategory = -1;
+                                              AppConstant
+                                                  .selectedIndexCategoryId = '';
+                                              return;
+                                            }
+                                            AppConstant.selectedIndexCategory =
+                                                index;
+                                            AppConstant
+                                                    .selectedIndexCategoryId =
+                                                _listDataCategory[index].id!;
+                                          });
+                                        },
+                                        child: Container(
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 3),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                            children: [
+                                              Card(
+                                                elevation: 2,
+                                                shape: RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                    color: AppConstant
+                                                                .selectedIndexCategory ==
+                                                            index
+                                                        ? Color(0xffD04767)
+                                                        : Colors.white,
+                                                    // Border color
+                                                    width: 2.0, // Border width
                                                   ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets
-                                                            .symmetric(
-                                                        horizontal: 5,
-                                                        vertical: 10),
-                                                    child: Text(
-                                                      _listDataCategory[index]
-                                                          .name!,
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: TextStyle(
-                                                          fontWeight: FontWeight
-                                                              .w500,
-                                                          fontSize: 10,
-                                                          color:
-                                                              AppConstant.selectedIndexCategory ==
-                                                                      index
-                                                                  ? Color(
-                                                                      0xffD04767)
-                                                                  : Colors.black),
-                                                    ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 5,
+                                                      vertical: 10),
+                                                  child: Text(
+                                                    _listDataCategory[index]
+                                                        .name!,
+                                                    maxLines: 1,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 10,
+                                                        color: AppConstant
+                                                                    .selectedIndexCategory ==
+                                                                index
+                                                            ? Color(0xffD04767)
+                                                            : Colors.black),
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  height: 5,
-                                                )
-                                              ],
-                                            ),
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              )
+                                            ],
                                           ),
-                                        );
-                                      },
-                                      itemCount: _listDataCategory.length,
-                                    )
-                                  : Container()),
-                        ))
+                                        ),
+                                      );
+                                    },
+                                    itemCount: _listDataCategory.length,
+                                  )
+                                : Container()),
+                      ))
                     : Container(),
-                AppConstant.selectedIndex== 1
+                AppConstant.selectedIndex == 1
                     ? Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(bottom: 70),
-                          child: Padding(
-                              padding: const EdgeInsets.only(left: 5, right: 5),
-                              child: _listDataSubCategory.isNotEmpty
-                                  ? GridView.builder(
-                                      physics: ScrollPhysics(),
-                                      scrollDirection: Axis.vertical,
-                                      shrinkWrap: true,
-                                      gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 2,
-                                              // Number of columns in the grid
-                                              childAspectRatio: 2.3,
-                                              // Desired aspect ratio (width:height) of each grid item
-                                              crossAxisSpacing: 5),
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              if(AppConstant.selectedIndexSubCategory == index){
-                                                AppConstant.selectedIndexSubCategory = -1;
-                                                AppConstant.selectedIndexSubCategoryId = '';
-                                                return;
-                                              }
-                                              AppConstant.selectedIndexSubCategory = index;
-                                              AppConstant.selectedIndexSubCategoryId =
-                                                  _listDataSubCategory[index].id!;
-                                            });
-                                          },
-                                          child: Container(
-                                            margin: EdgeInsets.symmetric(
-                                                horizontal: 3),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.stretch,
-                                              children: [
-                                                Card(
-                                                  elevation: 2,
-                                                  shape: RoundedRectangleBorder(
-                                                    side: BorderSide(
-                                                      color:
-                                                          AppConstant.selectedIndexSubCategory ==
-                                                                  index
-                                                              ? Color(0xffD04767)
-                                                              : Colors.white,
-                                                      // Border color
-                                                      width: 2.0, // Border width
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
+                        margin: EdgeInsets.only(bottom: 70),
+                        child: Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 5),
+                            child: _listDataSubCategory.isNotEmpty
+                                ? GridView.builder(
+                                    physics: ScrollPhysics(),
+                                    scrollDirection: Axis.vertical,
+                                    shrinkWrap: true,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 2,
+                                            // Number of columns in the grid
+                                            childAspectRatio: 2.3,
+                                            // Desired aspect ratio (width:height) of each grid item
+                                            crossAxisSpacing: 5),
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            if (AppConstant
+                                                    .selectedIndexSubCategory ==
+                                                index) {
+                                              AppConstant
+                                                  .selectedIndexSubCategory = -1;
+                                              AppConstant
+                                                  .selectedIndexSubCategoryId = '';
+                                              return;
+                                            }
+                                            AppConstant
+                                                    .selectedIndexSubCategory =
+                                                index;
+                                            AppConstant
+                                                    .selectedIndexSubCategoryId =
+                                                _listDataSubCategory[index].id!;
+                                          });
+                                        },
+                                        child: Container(
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 3),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                            children: [
+                                              Card(
+                                                elevation: 2,
+                                                shape: RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                    color: AppConstant
+                                                                .selectedIndexSubCategory ==
+                                                            index
+                                                        ? Color(0xffD04767)
+                                                        : Colors.white,
+                                                    // Border color
+                                                    width: 2.0, // Border width
                                                   ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets
-                                                            .symmetric(
-                                                        horizontal: 5,
-                                                        vertical: 10),
-                                                    child: Text(
-                                                      _listDataSubCategory[index]
-                                                          .name!,
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: TextStyle(
-                                                          fontWeight: FontWeight
-                                                              .w500,
-                                                          fontSize: 10,
-                                                          color:
-                                                              AppConstant.selectedIndexSubCategory ==
-                                                                      index
-                                                                  ? Color(
-                                                                      0xffD04767)
-                                                                  : Colors.black),
-                                                    ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 5,
+                                                      vertical: 10),
+                                                  child: Text(
+                                                    _listDataSubCategory[index]
+                                                        .name!,
+                                                    maxLines: 1,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 10,
+                                                        color: AppConstant
+                                                                    .selectedIndexSubCategory ==
+                                                                index
+                                                            ? Color(0xffD04767)
+                                                            : Colors.black),
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  height: 5,
-                                                )
-                                              ],
-                                            ),
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              )
+                                            ],
                                           ),
-                                        );
-                                      },
-                                      itemCount: _listDataSubCategory.length,
-                                    )
-                                  : Container()),
-                        ))
+                                        ),
+                                      );
+                                    },
+                                    itemCount: _listDataSubCategory.length,
+                                  )
+                                : Container()),
+                      ))
                     : Container(),
-                AppConstant.selectedIndex== 2
+                AppConstant.selectedIndex == 2
                     ? Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(bottom: 70),
-                          child: Padding(
-                              padding: const EdgeInsets.only(left: 5, right: 5),
-                              child: _listDataKeywords.isNotEmpty
-                                  ? GridView.builder(
-                                      physics: ScrollPhysics(),
-                                      scrollDirection: Axis.vertical,
-                                      shrinkWrap: true,
-                                      gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 2,
-                                              // Number of columns in the grid
-                                              childAspectRatio: 2.3,
-                                              // Desired aspect ratio (width:height) of each grid item
-                                              crossAxisSpacing: 5),
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              if(AppConstant.selectedIndexKeyword == index){
-                                                AppConstant.selectedIndexKeyword = -1;
-                                                AppConstant.selectedIndexKeywordId = '';
-                                                return;
-                                              }
-                                              AppConstant.selectedIndexKeyword = index;
-                                              AppConstant.selectedIndexKeywordId =
-                                                  _listDataKeywords[index].id!;
-                                            });
-                                          },
-                                          child: Container(
-                                            margin: EdgeInsets.symmetric(
-                                                horizontal: 3),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.stretch,
-                                              children: [
-                                                Card(
-                                                  elevation: 2,
-                                                  shape: RoundedRectangleBorder(
-                                                    side: BorderSide(
-                                                      color:
-                                                          AppConstant.selectedIndexKeyword ==
-                                                                  index
-                                                              ? Color(0xffD04767)
-                                                              : Colors.white,
-                                                      // Border color
-                                                      width: 2.0, // Border width
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
+                        margin: EdgeInsets.only(bottom: 70),
+                        child: Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 5),
+                            child: _listDataKeywords.isNotEmpty
+                                ? GridView.builder(
+                                    physics: ScrollPhysics(),
+                                    scrollDirection: Axis.vertical,
+                                    shrinkWrap: true,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 2,
+                                            // Number of columns in the grid
+                                            childAspectRatio: 2.3,
+                                            // Desired aspect ratio (width:height) of each grid item
+                                            crossAxisSpacing: 5),
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            if (AppConstant
+                                                    .selectedIndexKeyword ==
+                                                index) {
+                                              AppConstant.selectedIndexKeyword =
+                                                  -1;
+                                              AppConstant
+                                                  .selectedIndexKeywordId = '';
+                                              return;
+                                            }
+                                            AppConstant.selectedIndexKeyword =
+                                                index;
+                                            AppConstant.selectedIndexKeywordId =
+                                                _listDataKeywords[index].id!;
+                                          });
+                                        },
+                                        child: Container(
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 3),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                            children: [
+                                              Card(
+                                                elevation: 2,
+                                                shape: RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                    color: AppConstant
+                                                                .selectedIndexKeyword ==
+                                                            index
+                                                        ? Color(0xffD04767)
+                                                        : Colors.white,
+                                                    // Border color
+                                                    width: 2.0, // Border width
                                                   ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets
-                                                            .symmetric(
-                                                        horizontal: 5,
-                                                        vertical: 10),
-                                                    child: Text(
-                                                      _listDataKeywords[index]
-                                                          .name!,
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: TextStyle(
-                                                          fontWeight: FontWeight
-                                                              .w500,
-                                                          fontSize: 10,
-                                                          color:
-                                                              AppConstant.selectedIndexKeyword ==
-                                                                      index
-                                                                  ? Color(
-                                                                      0xffD04767)
-                                                                  : Colors.black),
-                                                    ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 5,
+                                                      vertical: 10),
+                                                  child: Text(
+                                                    _listDataKeywords[index]
+                                                        .name!,
+                                                    maxLines: 1,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 10,
+                                                        color: AppConstant
+                                                                    .selectedIndexKeyword ==
+                                                                index
+                                                            ? Color(0xffD04767)
+                                                            : Colors.black),
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  height: 5,
-                                                )
-                                              ],
-                                            ),
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              )
+                                            ],
                                           ),
-                                        );
-                                      },
-                                      itemCount: _listDataKeywords.length,
-                                    )
-                                  : Container()),
-                        ))
+                                        ),
+                                      );
+                                    },
+                                    itemCount: _listDataKeywords.length,
+                                  )
+                                : Container()),
+                      ))
                     : Container(),
-                AppConstant.selectedIndex== 3
+                AppConstant.selectedIndex == 3
                     ? Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(bottom: 70),
-                          child: Padding(
-                              padding: const EdgeInsets.only(left: 5, right: 5),
-                              child: _listDataBrands.isNotEmpty
-                                  ? GridView.builder(
-                                      physics: ScrollPhysics(),
-                                      scrollDirection: Axis.vertical,
-                                      shrinkWrap: true,
-                                      gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 2,
-                                              // Number of columns in the grid
-                                              childAspectRatio: 2.3,
-                                              // Desired aspect ratio (width:height) of each grid item
-                                              crossAxisSpacing: 5),
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              if(AppConstant.selectedIndexBrand == index){
-                                                AppConstant.selectedIndexBrand = -1;
-                                                AppConstant.selectedIndexBrandId = '';
-                                                return;
-                                              }
-                                              AppConstant.selectedIndexBrand = index;
+                        margin: EdgeInsets.only(bottom: 70),
+                        child: Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 5),
+                            child: _listDataBrands.isNotEmpty
+                                ? GridView.builder(
+                                    physics: ScrollPhysics(),
+                                    scrollDirection: Axis.vertical,
+                                    shrinkWrap: true,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 2,
+                                            // Number of columns in the grid
+                                            childAspectRatio: 2.3,
+                                            // Desired aspect ratio (width:height) of each grid item
+                                            crossAxisSpacing: 5),
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            if (AppConstant
+                                                    .selectedIndexBrand ==
+                                                index) {
+                                              AppConstant.selectedIndexBrand =
+                                                  -1;
                                               AppConstant.selectedIndexBrandId =
-                                                  _listDataBrands[index].id!;
-                                            });
-                                          },
-                                          child: Container(
-                                            margin: EdgeInsets.symmetric(
-                                                horizontal: 3),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.stretch,
-                                              children: [
-                                                Card(
-                                                  elevation: 2,
-                                                  shape: RoundedRectangleBorder(
-                                                    side: BorderSide(
-                                                      color: AppConstant.selectedIndexBrand ==
-                                                              index
-                                                          ? Color(0xffD04767)
-                                                          : Colors.white,
-                                                      // Border color
-                                                      width: 2.0, // Border width
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
+                                                  '';
+                                              return;
+                                            }
+                                            AppConstant.selectedIndexBrand =
+                                                index;
+                                            AppConstant.selectedIndexBrandId =
+                                                _listDataBrands[index].id!;
+                                          });
+                                        },
+                                        child: Container(
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 3),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                            children: [
+                                              Card(
+                                                elevation: 2,
+                                                shape: RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                    color: AppConstant
+                                                                .selectedIndexBrand ==
+                                                            index
+                                                        ? Color(0xffD04767)
+                                                        : Colors.white,
+                                                    // Border color
+                                                    width: 2.0, // Border width
                                                   ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets
-                                                            .symmetric(
-                                                        horizontal: 5,
-                                                        vertical: 10),
-                                                    child: Text(
-                                                      _listDataBrands[index].name!,
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: TextStyle(
-                                                          fontWeight: FontWeight
-                                                              .w500,
-                                                          fontSize: 10,
-                                                          color:
-                                                              AppConstant.selectedIndexBrand ==
-                                                                      index
-                                                                  ? Color(
-                                                                      0xffD04767)
-                                                                  : Colors.black),
-                                                    ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 5,
+                                                      vertical: 10),
+                                                  child: Text(
+                                                    _listDataBrands[index]
+                                                        .name!,
+                                                    maxLines: 1,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 10,
+                                                        color: AppConstant
+                                                                    .selectedIndexBrand ==
+                                                                index
+                                                            ? Color(0xffD04767)
+                                                            : Colors.black),
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  height: 5,
-                                                )
-                                              ],
-                                            ),
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              )
+                                            ],
                                           ),
-                                        );
-                                      },
-                                      itemCount: _listDataBrands.length,
-                                    )
-                                  : Container()),
-                        ))
+                                        ),
+                                      );
+                                    },
+                                    itemCount: _listDataBrands.length,
+                                  )
+                                : Container()),
+                      ))
                     : Container(),
               ],
             ))));

@@ -55,7 +55,7 @@ class OrdersData {
       this.status,
       this.createOn,
       this.updateOn,
-        this.addressDetails,
+      this.addressDetails,
       this.products});
 
   OrdersData.fromJson(Map<String, dynamic> json) {
@@ -69,7 +69,9 @@ class OrdersData {
     status = json['status'];
     createOn = json['create_on'];
     updateOn = json['update_on'];
-    addressDetails = json['address_details'] != null ? new AddressDetails.fromJson(json['address_details']) : null;
+    addressDetails = json['address_details'] != null
+        ? new AddressDetails.fromJson(json['address_details'])
+        : null;
     if (json['products'] != null) {
       products = <Products>[];
       json['products'].forEach((v) {
@@ -92,7 +94,8 @@ class OrdersData {
     data['update_on'] = this.updateOn;
     if (this.addressDetails != null) {
       data['address_details'] = this.addressDetails!.toJson();
-    };
+    }
+    ;
     if (this.products != null) {
       data['products'] = this.products!.map((v) => v.toJson()).toList();
     }

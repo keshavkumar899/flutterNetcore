@@ -10,7 +10,6 @@ import 'package:keshav_s_application2/screenwithoutlogin/HtmlPage.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
 
-
 import 'package:flutter/material.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
 
@@ -20,8 +19,6 @@ import 'offersscreen1.dart';
 
 // ignore_for_file: must_be_immutable
 class SidebarMenu extends StatefulWidget {
-
-
   @override
   State<SidebarMenu> createState() => _SidebarMenuState();
 }
@@ -45,8 +42,8 @@ class _SidebarMenuState extends State<SidebarMenu> {
               child: Container(
                   width: getHorizontalSize(400),
                   padding: getPadding(left: 0, top: 0, right: 0, bottom: 0),
-                  decoration: AppDecoration.outlineBlack90026
-                      .copyWith(borderRadius: BorderRadiusStyle.customBorderBR393),
+                  decoration: AppDecoration.outlineBlack90026.copyWith(
+                      borderRadius: BorderRadiusStyle.customBorderBR393),
                   child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,93 +51,98 @@ class _SidebarMenuState extends State<SidebarMenu> {
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration (
+                          decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.only (
-                              bottomRight: Radius.circular(393*fem),
+                            borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(393 * fem),
                             ),
                             boxShadow: [
                               BoxShadow(
                                 color: Color(0x26000000),
-                                offset: Offset(2*fem, 1*fem),
-                                blurRadius: 3*fem,
+                                offset: Offset(2 * fem, 1 * fem),
+                                blurRadius: 3 * fem,
                               ),
                             ],
                           ),
-                          child: Stack(
-                              children:[ Image.asset(
-                                'assets/images/mask-group.png',
-                                scale: 2,
-                                // width: 369*fem,
-                                // height: 117*fem,
-                              ),
-                                Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+                          child: Stack(children: [
+                            Image.asset(
+                              'assets/images/mask-group.png',
+                              scale: 2,
+                              // width: 369*fem,
+                              // height: 117*fem,
+                            ),
+                            Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
                                   Container(
-                                      width: double.infinity,
-                                      // color: Colors.white,
-                                      padding: EdgeInsets.fromLTRB(12.0, 35.0, 8.0, 0.0),
-                                      // child: Column(
-                                      //   crossAxisAlignment: CrossAxisAlignment.start,
-                                      //   children: [
-                                      //     Row(
-                                      //       children: [
-                                      //         Container(constraints: const BoxConstraints(
-                                      //           maxWidth: 200,
-                                      //         ),
-                                      //
-                                      //           child: FittedBox(
-                                      //             fit:BoxFit.fill,
-                                      //             child: Text(
-                                      //               'Hi '+ widget.data.firstName.capitalizeFirst,
-                                      //               textAlign: TextAlign.center,
-                                      //               style: TextStyle(
-                                      //                 fontFamily: 'Roboto',
-                                      //                 fontSize: 15*ffem,
-                                      //                 fontWeight: FontWeight.w500,
-                                      //                 height: 1.1725*ffem/fem,
-                                      //                 letterSpacing: 0.7*fem,
-                                      //                 color: Color(0xff000000),
-                                      //               ),
-                                      //             ),
-                                      //           ),
-                                      //         ),
-                                      //         // IconButton(onPressed: (){
-                                      //         //   Get.toNamed(AppRoutes.profileScreen);
-                                      //         // }, icon: Icon(Icons.edit_calendar_outlined,color: Colors.blue,size: 20,))
-                                      //       ],
-                                      //     ),
-                                      //     Container(
-                                      //       constraints: const BoxConstraints(
-                                      //         maxWidth: 250,
-                                      //       ),
-                                      //       child: FittedBox(
-                                      //         fit: BoxFit.fill,
-                                      //         child: Text(
-                                      //           widget.data.email,
-                                      //           textAlign: TextAlign.center,
-                                      //           style: TextStyle(
-                                      //             fontFamily: 'Roboto',
-                                      //             fontSize: 12*ffem,
-                                      //             fontWeight: FontWeight.w400,
-                                      //             height: 1.1725*ffem/fem,
-                                      //             letterSpacing: 0.7*fem,
-                                      //             color: Color(0xff000000),
-                                      //           ),
-                                      //         ),
-                                      //       ),
-                                      //     ),
-                                      //   ],
-                                      // )
+                                    width: double.infinity,
+                                    // color: Colors.white,
+                                    padding: EdgeInsets.fromLTRB(
+                                        12.0, 35.0, 8.0, 0.0),
+                                    // child: Column(
+                                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                                    //   children: [
+                                    //     Row(
+                                    //       children: [
+                                    //         Container(constraints: const BoxConstraints(
+                                    //           maxWidth: 200,
+                                    //         ),
+                                    //
+                                    //           child: FittedBox(
+                                    //             fit:BoxFit.fill,
+                                    //             child: Text(
+                                    //               'Hi '+ widget.data.firstName.capitalizeFirst,
+                                    //               textAlign: TextAlign.center,
+                                    //               style: TextStyle(
+                                    //                 fontFamily: 'Roboto',
+                                    //                 fontSize: 15*ffem,
+                                    //                 fontWeight: FontWeight.w500,
+                                    //                 height: 1.1725*ffem/fem,
+                                    //                 letterSpacing: 0.7*fem,
+                                    //                 color: Color(0xff000000),
+                                    //               ),
+                                    //             ),
+                                    //           ),
+                                    //         ),
+                                    //         // IconButton(onPressed: (){
+                                    //         //   Get.toNamed(AppRoutes.profileScreen);
+                                    //         // }, icon: Icon(Icons.edit_calendar_outlined,color: Colors.blue,size: 20,))
+                                    //       ],
+                                    //     ),
+                                    //     Container(
+                                    //       constraints: const BoxConstraints(
+                                    //         maxWidth: 250,
+                                    //       ),
+                                    //       child: FittedBox(
+                                    //         fit: BoxFit.fill,
+                                    //         child: Text(
+                                    //           widget.data.email,
+                                    //           textAlign: TextAlign.center,
+                                    //           style: TextStyle(
+                                    //             fontFamily: 'Roboto',
+                                    //             fontSize: 12*ffem,
+                                    //             fontWeight: FontWeight.w400,
+                                    //             height: 1.1725*ffem/fem,
+                                    //             letterSpacing: 0.7*fem,
+                                    //             color: Color(0xff000000),
+                                    //           ),
+                                    //         ),
+                                    //       ),
+                                    //     ),
+                                    //   ],
+                                    // )
                                   ),
                                 ]),
-                              ]
-                          ),
+                          ]),
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Padding(
-                            padding: getPadding(left:18,right: 24,top:10,bottom: 0),
+                            padding: getPadding(
+                                left: 18, right: 24, top: 10, bottom: 0),
                             child: InkWell(
-                              onTap: (){
+                              onTap: () {
                                 // Get.toNamed(AppRoutes.storeScreen);
                                 // pushNewScreenWithRouteSettings(
                                 //   context,
@@ -152,109 +154,139 @@ class _SidebarMenuState extends State<SidebarMenu> {
                                 pushScreen(
                                   context,
                                   screen: StoreScreen1(),
-                                  withNavBar: true, // OPTIONAL VALUE. True by default.
-                                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                                  withNavBar:
+                                      true, // OPTIONAL VALUE. True by default.
+                                  pageTransitionAnimation:
+                                      PageTransitionAnimation.cupertino,
                                 );
                               },
                               child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text("msg_shop_by_department".tr,
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
-                                        style: AppStyle.txtRobotoMedium12Black900
+                                        style: AppStyle
+                                            .txtRobotoMedium12Black900
                                             .copyWith(
-                                            letterSpacing: getHorizontalSize(0.6))),
+                                                letterSpacing:
+                                                    getHorizontalSize(0.6))),
                                     CustomImageView(
-                                        svgPath: ImageConstant.imgArrowrightGray500,
+                                        svgPath:
+                                            ImageConstant.imgArrowrightGray500,
                                         height: getVerticalSize(10),
                                         width: getHorizontalSize(6),
                                         margin: getMargin(top: 2, bottom: 2))
                                   ]),
                             )),
-                        SizedBox(height: 20,),
+                        SizedBox(
+                          height: 20,
+                        ),
                         CustomPaint(
                           size: Size(280, 2),
                           painter: CurvePainter(),
                         ),
                         InkWell(
-                          onTap: (){
-
+                          onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => OffersScreen1(),
                             ));
                           },
                           child: Container(
                               width: 75.w,
-                              padding: getPadding(left:18,right: 24,top:20,bottom: 10),
-                              child: Text("Offers",
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,)
-                              )),
+                              padding: getPadding(
+                                  left: 18, right: 24, top: 20, bottom: 10),
+                              child:
+                                  // IconButton(onPressed:(){
+                                  //   Navigator.push(context,MaterialPageRoute(
+                                  //     builder: (context) => OffersScreen1(),
+                                  //   ));
+                                  // },icon:Icon(Icons.notification_add)),
+                                  Text("Offers",
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: 'Roboto',
+                                        fontWeight: FontWeight.w400,
+                                        color: ColorConstant.black900,
+                                      ))),
                         ),
                         InkWell(
-                          onTap: (){
-
+                          onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => HtmlPAGE(),
                             ));
                           },
                           child: Container(
                               width: 75.w,
-                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              padding: getPadding(
+                                  left: 18, right: 24, top: 10, bottom: 10),
                               child: Text("Html Page",
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,)
-                              )),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorConstant.black900,
+                                  ))),
                         ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => SMTAppInboxScreen(),
                             ));
                           },
                           child: Container(
                               width: 75.w,
-                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              padding: getPadding(
+                                  left: 18, right: 24, top: 10, bottom: 10),
                               child: Text("App Inbox",
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorConstant.black900,
+                                  ))),
                         ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             pushScreen(
                               context,
                               screen: LogInScreen(),
                               withNavBar:
-                              false, // OPTIONAL VALUE. True by default.
+                                  false, // OPTIONAL VALUE. True by default.
                               pageTransitionAnimation:
-                              PageTransitionAnimation.cupertino,
+                                  PageTransitionAnimation.cupertino,
                             );
                           },
                           child: Container(
                               width: 75.w,
-                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              padding: getPadding(
+                                  left: 18, right: 24, top: 10, bottom: 10),
                               child: Text("My Orders",
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorConstant.black900,
+                                  ))),
                         ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             pushScreen(
                               context,
                               screen: LogInScreen(),
                               withNavBar:
-                              false, // OPTIONAL VALUE. True by default.
+                                  false, // OPTIONAL VALUE. True by default.
                               pageTransitionAnimation:
-                              PageTransitionAnimation.cupertino,
+                                  PageTransitionAnimation.cupertino,
                             );
                             // pushNewScreen(
                             //   context,
@@ -267,12 +299,17 @@ class _SidebarMenuState extends State<SidebarMenu> {
                           },
                           child: Container(
                               width: 75.w,
-                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              padding: getPadding(
+                                  left: 18, right: 24, top: 10, bottom: 10),
                               child: Text("Wishlist",
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorConstant.black900,
+                                  ))),
                         ),
                         // InkWell(
                         //   onTap: (){
@@ -288,19 +325,24 @@ class _SidebarMenuState extends State<SidebarMenu> {
                         //             fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
                         // ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => BlogsScreen1(),
                             ));
                           },
                           child: Container(
                               width: 75.w,
-                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              padding: getPadding(
+                                  left: 18, right: 24, top: 10, bottom: 10),
                               child: Text("lbl_our_blogs".tr,
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorConstant.black900,
+                                  ))),
                         ),
                         // InkWell(
                         //   onTap: (){
@@ -316,33 +358,40 @@ class _SidebarMenuState extends State<SidebarMenu> {
                         //             fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
                         // ),
 
-                        SizedBox(height: 20,),
+                        SizedBox(
+                          height: 20,
+                        ),
                         CustomPaint(
                           size: Size(280, 2),
                           painter: CurvePainter(),
                         ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             pushScreen(
                               context,
                               screen: LogInScreen(),
                               withNavBar:
-                              false, // OPTIONAL VALUE. True by default.
+                                  false, // OPTIONAL VALUE. True by default.
                               pageTransitionAnimation:
-                              PageTransitionAnimation.cupertino,
+                                  PageTransitionAnimation.cupertino,
                             );
                             // Navigator.of(context).push(MaterialPageRoute(
                             //   builder: (context) => LogInScreen(),
                             // ));
                           },
                           child: Container(
-                            width: 75.w,
-                              padding: getPadding(left:18,right: 24,top:20,bottom: 10),
+                              width: 75.w,
+                              padding: getPadding(
+                                  left: 18, right: 24, top: 20, bottom: 10),
                               child: Text("lbl_my_account".tr,
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorConstant.black900,
+                                  ))),
                         ),
                         // Padding(
                         //     padding: getPadding(left:18,right: 24,top:10,bottom: 10),
@@ -352,37 +401,46 @@ class _SidebarMenuState extends State<SidebarMenu> {
                         //         style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
                         //           fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => NeedHelp(),
                             ));
                           },
                           child: Container(
-                            width: 75.w,
-                              padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                              width: 75.w,
+                              padding: getPadding(
+                                  left: 18, right: 24, top: 10, bottom: 10),
                               child: Text("lbl_need_help".tr,
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w400,color: ColorConstant.black900,))),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorConstant.black900,
+                                  ))),
                         ),
                         InkWell(
                             onTap: () {
                               onTapTxtAboutus();
                             },
                             child: Container(
-                              width: 75.w,
-                                padding: getPadding(left:18,right: 24,top:10,bottom: 10),
+                                width: 75.w,
+                                padding: getPadding(
+                                    left: 18, right: 24, top: 10, bottom: 10),
                                 child: Text("lbl_about_us2".tr,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.left,
-                                    style: TextStyle(fontSize: 14,fontFamily: 'Roboto',
-                                      fontWeight: FontWeight.w400,color: ColorConstant.black900,))))
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.w400,
+                                      color: ColorConstant.black900,
+                                    ))))
                       ]))),
         ),
       ),
     );
-
   }
 
   onTapTxtAboutus() {
@@ -390,8 +448,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
   }
 }
 
-onTapTxtMyAccount(){
-
+onTapTxtMyAccount() {
   Get.toNamed(AppRoutes.profileScreen);
 }
 

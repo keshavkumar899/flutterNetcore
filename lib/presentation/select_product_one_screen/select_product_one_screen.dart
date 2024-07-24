@@ -40,7 +40,8 @@ class SelectProductOneScreen extends GetWidget<SelectProductOneController> {
                       //Get.toNamed(AppRoutes.searchScreen);
                       SharedPreferences prefs =
                           await SharedPreferences.getInstance();
-                      Map <String,dynamic>json1 = jsonDecode(prefs.getString('userData')!);
+                      Map<String, dynamic> json1 =
+                          jsonDecode(prefs.getString('userData')!);
                       var user1 = OtpModel.fromJson(json1);
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => SearchScreen(user1.data!, '')));

@@ -4,7 +4,8 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:keshav_s_application2/presentation/cart_screen/Aftercartscreen.dart';
 import 'package:keshav_s_application2/presentation/cart_screen/models/RemovecartItem.dart';
-import 'package:keshav_s_application2/presentation/cart_screen/models/cart_model.dart' as carts;
+import 'package:keshav_s_application2/presentation/cart_screen/models/cart_model.dart'
+    as carts;
 import 'package:keshav_s_application2/presentation/cart_screen/models/movetowishlist.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/presentation/select_product_screen/models/CheckPincode.dart';
@@ -25,7 +26,6 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
 
-
 // ignore_for_file: must_be_immutable
 class CartScreen extends StatefulWidget {
   Data data;
@@ -37,7 +37,7 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController pincodeController =TextEditingController();
+  TextEditingController pincodeController = TextEditingController();
 
   Future<carts.CartModel>? mycart;
   List<carts.CartData> cartlist = [];
@@ -53,14 +53,14 @@ class _CartScreenState extends State<CartScreen> {
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/listCart",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/listCart",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
@@ -71,17 +71,15 @@ class _CartScreenState extends State<CartScreen> {
         return carts.CartModel.fromJson(jsonObject);
 
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (carts.CartModel.fromJson(jsonObject).status == "false") {
-        message=carts.CartModel.fromJson(jsonObject).message;
+      } else if (carts.CartModel.fromJson(jsonObject).status == "false") {
+        message = carts.CartModel.fromJson(jsonObject).message;
         // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         //     duration: Duration(seconds: 1),
         //     behavior: SnackBarBehavior.floating,
         //     margin: EdgeInsets.only(bottom: 25.0),
         //     content: Text(carts.CartModel.fromJson(jsonObject).message),
         //     backgroundColor: Colors.redAccent));
-
-      }
-      else if(carts.CartModel.fromJson(jsonObject).data == null){
+      } else if (carts.CartModel.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           duration: Duration(seconds: 2),
           behavior: SnackBarBehavior.floating,
@@ -92,8 +90,7 @@ class _CartScreenState extends State<CartScreen> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -105,19 +102,19 @@ class _CartScreenState extends State<CartScreen> {
   Future<CheckPincode> checkPincode() async {
     Map data = {
       'user_id': widget.data.id,
-      'pincode':pincodeController.text,
+      'pincode': pincodeController.text,
     };
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/checkPincode",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/checkPincode",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
@@ -186,13 +183,16 @@ class _CartScreenState extends State<CartScreen> {
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 25.0),
-            content: Text("Delivery Available at given pincode ",style: TextStyle(color: Colors.black),),
+            content: Text(
+              "Delivery Available at given pincode ",
+              style: TextStyle(color: Colors.black),
+            ),
             backgroundColor: Colors.greenAccent));
 
         return CheckPincode.fromJson(jsonObject);
 
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (CheckPincode.fromJson(jsonObject).data == "No") {
+      } else if (CheckPincode.fromJson(jsonObject).data == "No") {
         // showDialog(
         //   context: context,
         //   builder: (context) {
@@ -262,9 +262,7 @@ class _CartScreenState extends State<CartScreen> {
             margin: EdgeInsets.only(bottom: 25.0),
             content: Text("Delivery Not Available"),
             backgroundColor: Colors.redAccent));
-
-      }
-      else if(CheckPincode.fromJson(jsonObject).data == null){
+      } else if (CheckPincode.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           duration: Duration(seconds: 3),
           behavior: SnackBarBehavior.floating,
@@ -275,8 +273,7 @@ class _CartScreenState extends State<CartScreen> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -284,22 +281,23 @@ class _CartScreenState extends State<CartScreen> {
     }
     return jsonObject;
   }
+
   Future<Removefromcart> removecart(String cart_id) async {
     Map data = {
       'user_id': widget.data.id,
-       "cart_id":cart_id,
+      "cart_id": cart_id,
     };
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/removeCart",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/removeCart",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
@@ -314,23 +312,24 @@ class _CartScreenState extends State<CartScreen> {
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 25.0),
-            content: Text("Product removed Successfully ",style: TextStyle(color: Colors.black),),
+            content: Text(
+              "Product removed Successfully ",
+              style: TextStyle(color: Colors.black),
+            ),
             backgroundColor: Colors.greenAccent));
         // Navigator.of(context).pop();
 
         return Removefromcart.fromJson(jsonObject);
 
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (Removefromcart.fromJson(jsonObject).status == "false") {
+      } else if (Removefromcart.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 25.0),
             content: Text("Product not available in cart"),
             backgroundColor: Colors.redAccent));
-
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -338,23 +337,25 @@ class _CartScreenState extends State<CartScreen> {
     }
     return jsonObject;
   }
-  Future<MovetoWishlist> movetowishlist(String cart_id,String product_id) async {
+
+  Future<MovetoWishlist> movetowishlist(
+      String cart_id, String product_id) async {
     Map data = {
       'user_id': widget.data.id,
-      "product_id":product_id,
-      "cart_id":cart_id,
+      "product_id": product_id,
+      "cart_id": cart_id,
     };
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/moveWishlist",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/moveWishlist",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
@@ -369,23 +370,24 @@ class _CartScreenState extends State<CartScreen> {
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 25.0),
-            content: Text("Product moved to wishlist successfully ",style: TextStyle(color: Colors.black),),
+            content: Text(
+              "Product moved to wishlist successfully ",
+              style: TextStyle(color: Colors.black),
+            ),
             backgroundColor: Colors.greenAccent));
         // Navigator.of(context).pop();
 
         return MovetoWishlist.fromJson(jsonObject);
 
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (MovetoWishlist.fromJson(jsonObject).status == "false") {
+      } else if (MovetoWishlist.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 25.0),
             content: Text(MovetoWishlist.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
-
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -400,9 +402,9 @@ class _CartScreenState extends State<CartScreen> {
     mycart!.then((value) {
       setState(() {
         cartlist = value.data!;
-        CartScreen.count=value.count;
-        count1=value.count;
-        total=value.total;
+        CartScreen.count = value.count;
+        count1 = value.count;
+        total = value.total;
 
         // products=value.data;
         // recentuserslist = value.recentusers;
@@ -422,8 +424,9 @@ class _CartScreenState extends State<CartScreen> {
       setState(() {});
     }
   }
+
   @override
-  void dispose(){
+  void dispose() {
     pincodeController.dispose();
     super.dispose();
   }
@@ -434,15 +437,14 @@ class _CartScreenState extends State<CartScreen> {
         child: Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: ColorConstant.whiteA700,
-      appBar:  CustomAppBar(
+      appBar: CustomAppBar(
           height: getVerticalSize(91),
           leadingWidth: 34,
           leading: AppbarImage(
               height: getVerticalSize(15),
               width: getHorizontalSize(9),
               svgPath: ImageConstant.imgArrowleft,
-              margin: getMargin(
-                  left: 25, top: 34, bottom: 42),
+              margin: getMargin(left: 25, top: 34, bottom: 42),
               onTap: onTapArrowleft8),
           title: Padding(
               padding: getPadding(left: 19, top: 10, bottom: 18),
@@ -450,9 +452,8 @@ class _CartScreenState extends State<CartScreen> {
                 Text("CART",
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
-                    style: AppStyle.txtRobotoRomanMedium18.copyWith(
-                        letterSpacing: getHorizontalSize(1.62))
-                ),
+                    style: AppStyle.txtRobotoRomanMedium18
+                        .copyWith(letterSpacing: getHorizontalSize(1.62))),
                 AppbarImage(
                     height: getVerticalSize(10),
                     width: getHorizontalSize(6),
@@ -463,12 +464,12 @@ class _CartScreenState extends State<CartScreen> {
                     child: Text("ADDRESS",
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.left,
-                        style: AppStyle.txtRobotoRomanRegular18.copyWith(
-                            letterSpacing: getHorizontalSize(1.62)))),
+                        style: AppStyle.txtRobotoRomanRegular18
+                            .copyWith(letterSpacing: getHorizontalSize(1.62)))),
                 AppbarImage(
                     height: getVerticalSize(10),
                     width: getHorizontalSize(6),
-                    color:Colors.grey,
+                    color: Colors.grey,
                     imagePath: "assets/images/arrow.png",
                     margin: getMargin(left: 13, top: 6, bottom: 5)),
                 Padding(
@@ -476,26 +477,26 @@ class _CartScreenState extends State<CartScreen> {
                     child: Text("PAYMENT",
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.left,
-                        style: AppStyle.txtRobotoRomanRegular18.copyWith(
-                            letterSpacing: getHorizontalSize(1.62))))
+                        style: AppStyle.txtRobotoRomanRegular18
+                            .copyWith(letterSpacing: getHorizontalSize(1.62))))
               ])),
           styleType: Style.bgShadowBlack90033),
       body: RefreshIndicator(
         color: Colors.purple,
-        onRefresh: ()async{
+        onRefresh: () async {
           mycart = getCartList();
           mycart!.then((value) {
             setState(() {
               cartlist = value.data!;
-              CartScreen.count=value.count;
-              total=value.total;
+              CartScreen.count = value.count;
+              total = value.total;
             });
           });
         },
         child: FutureBuilder(
           future: mycart,
-          builder: (context,snapshot){
-            if(snapshot.hasData){
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
               return Form(
                   key: _formKey,
                   child: Column(
@@ -517,32 +518,33 @@ class _CartScreenState extends State<CartScreen> {
                                           bottom: 10),
                                       decoration: AppDecoration.outlineGray500
                                           .copyWith(
-                                          borderRadius: BorderRadiusStyle
-                                              .customBorderBR51),
+                                              borderRadius: BorderRadiusStyle
+                                                  .customBorderBR51),
                                       child: Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Expanded(
                                                 child: CustomTextFormField(
                                                     focusNode: FocusNode(),
-                                                    controller: pincodeController,
+                                                    controller:
+                                                        pincodeController,
                                                     hintText:
-                                                    "msg_enter_your_pincode"
-                                                        .tr,
+                                                        "msg_enter_your_pincode"
+                                                            .tr,
                                                     margin:
-                                                    getMargin(bottom: 1),
+                                                        getMargin(bottom: 1),
                                                     variant:
-                                                    TextFormFieldVariant
-                                                        .None,
+                                                        TextFormFieldVariant
+                                                            .None,
                                                     fontStyle:
-                                                    TextFormFieldFontStyle
-                                                        .RobotoMedium11,
+                                                        TextFormFieldFontStyle
+                                                            .RobotoMedium11,
                                                     textInputAction:
-                                                    TextInputAction.done,
+                                                        TextInputAction.done,
                                                     textInputType:
-                                                    TextInputType.number,
+                                                        TextInputType.number,
                                                     validator: (value) {
                                                       if (!isNumeric(value!)) {
                                                         return "Please enter valid number";
@@ -550,8 +552,10 @@ class _CartScreenState extends State<CartScreen> {
                                                       return null;
                                                     })),
                                             InkWell(
-                                              onTap: (){
-                                                SystemChannels.textInput.invokeMethod('TextInput.hide');
+                                              onTap: () {
+                                                SystemChannels.textInput
+                                                    .invokeMethod(
+                                                        'TextInput.hide');
                                                 checkPincode();
                                                 pincodeController.clear();
                                               },
@@ -560,7 +564,7 @@ class _CartScreenState extends State<CartScreen> {
                                                       left: 12, right: 1),
                                                   child: Text("lbl_check".tr,
                                                       overflow:
-                                                      TextOverflow.ellipsis,
+                                                          TextOverflow.ellipsis,
                                                       textAlign: TextAlign.left,
                                                       style: AppStyle
                                                           .txtRobotoMedium11)),
@@ -585,16 +589,19 @@ class _CartScreenState extends State<CartScreen> {
                                           left: 30, top: 11, right: 13),
                                       child: Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                                padding:
-                                                getPadding(bottom: 4),
-                                                child: Text(count1.toString()!='null'?count1.toString()+" ITEM":"0 ITEM",
+                                                padding: getPadding(bottom: 4),
+                                                child: Text(
+                                                    count1.toString() != 'null'
+                                                        ? count1.toString() +
+                                                            " ITEM"
+                                                        : "0 ITEM",
                                                     overflow:
-                                                    TextOverflow.ellipsis,
+                                                        TextOverflow.ellipsis,
                                                     textAlign: TextAlign.left,
                                                     style: AppStyle
                                                         .txtRobotoMedium11Black900)),
@@ -605,10 +612,14 @@ class _CartScreenState extends State<CartScreen> {
                                                 width: getHorizontalSize(9),
                                                 margin: getMargin(bottom: 3)),
                                             Padding(
-                                                padding: getPadding(left: 2,right: 10),
-                                                child: Text(total.toString()!='null'?total.toString():"0",
+                                                padding: getPadding(
+                                                    left: 2, right: 10),
+                                                child: Text(
+                                                    total.toString() != 'null'
+                                                        ? total.toString()
+                                                        : "0",
                                                     overflow:
-                                                    TextOverflow.ellipsis,
+                                                        TextOverflow.ellipsis,
                                                     textAlign: TextAlign.left,
                                                     style: AppStyle
                                                         .txtRobotoMedium14Purple900)),
@@ -670,11 +681,14 @@ class _CartScreenState extends State<CartScreen> {
                                       physics: ClampingScrollPhysics(),
                                       itemCount: cartlist.length,
                                       itemBuilder: (context, index) {
-                                        carts.ProductDetails product=cartlist[index].productDetails!;
-                                        Smartech().trackEvent("Cart Screen Viewed", {
-                                          "items":{"item_name":product.name!,
-                                            "item_id":product.id,
-                                            "item_price":product.salePrice
+                                        carts.ProductDetails product =
+                                            cartlist[index].productDetails!;
+                                        Smartech()
+                                            .trackEvent("Cart Screen Viewed", {
+                                          "items": {
+                                            "item_name": product.name!,
+                                            "item_id": product.id,
+                                            "item_price": product.salePrice
                                           }
                                         });
                                         return Column(
@@ -684,7 +698,7 @@ class _CartScreenState extends State<CartScreen> {
                                                 child: Divider(
                                                     height: getVerticalSize(3),
                                                     thickness:
-                                                    getVerticalSize(3),
+                                                        getVerticalSize(3),
                                                     color: ColorConstant
                                                         .purple5001)),
                                             Container(
@@ -694,16 +708,18 @@ class _CartScreenState extends State<CartScreen> {
                                                     right: 0),
                                                 child: Row(
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .start,
+                                                        MainAxisAlignment.start,
                                                     crossAxisAlignment:
-                                                    CrossAxisAlignment
-                                                        .start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Padding(
-                                                        padding: const EdgeInsets.only(top: 18.0),
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(
+                                                                top: 18.0),
                                                         child: CustomImageView(
-                                                            url:product.image!,
+                                                            url: product.image!,
                                                             // imagePath:
                                                             // ImageConstant
                                                             //     .imgImage17,
@@ -720,53 +736,66 @@ class _CartScreenState extends State<CartScreen> {
                                                               bottom: 17),
                                                           child: Column(
                                                               crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
+                                                                  CrossAxisAlignment
+                                                                      .start,
                                                               mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
+                                                                  MainAxisAlignment
+                                                                      .start,
                                                               children: [
                                                                 Row(
                                                                   children: [
-                                                                    SizedBox(width: 60.w,),
+                                                                    SizedBox(
+                                                                      width:
+                                                                          60.w,
+                                                                    ),
                                                                     Text(
-                                                                        "Qty: "+cartlist[index].qty!,
+                                                                        "Qty: " +
+                                                                            cartlist[index]
+                                                                                .qty!,
                                                                         overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
+                                                                            TextOverflow
+                                                                                .ellipsis,
                                                                         textAlign:
-                                                                        TextAlign
-                                                                            .right,
+                                                                            TextAlign
+                                                                                .right,
                                                                         style: AppStyle
                                                                             .txtRobotoMedium12Purple900),
                                                                   ],
                                                                 ),
                                                                 Container(
-                                                                  width:250,
+                                                                  width: 250,
                                                                   child: Text(
-                                                                      product.name!,
+                                                                      product
+                                                                          .name!,
                                                                       overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
+                                                                          TextOverflow
+                                                                              .ellipsis,
                                                                       textAlign:
-                                                                      TextAlign
-                                                                          .left,
+                                                                          TextAlign
+                                                                              .left,
                                                                       style: AppStyle
                                                                           .txtRobotoRegular18),
                                                                 ),
                                                                 // SizedBox(width: 10.w,),
-                                                                SizedBox(height: 0.5.h,),
+                                                                SizedBox(
+                                                                  height: 0.5.h,
+                                                                ),
                                                                 Text(
-                                                                    product.categoryName!+" by "+product.brandName!,
+                                                                    product.categoryName! +
+                                                                        " by " +
+                                                                        product
+                                                                            .brandName!,
                                                                     overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
+                                                                        TextOverflow
+                                                                            .ellipsis,
                                                                     textAlign:
-                                                                    TextAlign
-                                                                        .left,
+                                                                        TextAlign
+                                                                            .left,
                                                                     style: AppStyle
                                                                         .txtRobotoRegular14Purple400),
-                                                                SizedBox(height: 1.h,),
+                                                                SizedBox(
+                                                                  height: 1.h,
+                                                                ),
                                                                 // product.description.isNotEmpty?
                                                                 // Container(
                                                                 //   constraints: const BoxConstraints(
@@ -788,12 +817,12 @@ class _CartScreenState extends State<CartScreen> {
                                                                 // ):Container(),
                                                                 Padding(
                                                                     padding:
-                                                                    getPadding(
-                                                                        top:
-                                                                        9),
+                                                                        getPadding(
+                                                                            top:
+                                                                                9),
                                                                     child: Row(
                                                                         crossAxisAlignment:
-                                                                        CrossAxisAlignment.start,
+                                                                            CrossAxisAlignment.start,
                                                                         children: [
                                                                           CustomImageView(
                                                                               svgPath: ImageConstant.imgCut,
@@ -819,25 +848,29 @@ class _CartScreenState extends State<CartScreen> {
                                                                         ])),
                                                                 Row(
                                                                   children: [
-                                                                    SizedBox(width: 41.w,),
+                                                                    SizedBox(
+                                                                      width:
+                                                                          41.w,
+                                                                    ),
                                                                     Text(
                                                                         "msg_delivery_15_nov_2021"
                                                                             .tr,
                                                                         overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
+                                                                            TextOverflow
+                                                                                .ellipsis,
                                                                         textAlign:
-                                                                        TextAlign
-                                                                            .right,
+                                                                            TextAlign
+                                                                                .right,
                                                                         style: AppStyle
                                                                             .txtRobotoMedium12Teal700),
                                                                   ],
                                                                 ),
-
                                                               ])),
                                                     ])),
                                             Container(
-                                                width: MediaQuery.of(context).size.width,
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
                                                 margin: getMargin(top: 5),
                                                 // padding: getPadding(
                                                 //     left: 41, right: 41),
@@ -845,18 +878,21 @@ class _CartScreenState extends State<CartScreen> {
                                                     .outlineGray400,
                                                 child: Row(
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment.spaceBetween,
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
                                                     children: [
                                                       InkWell(
-                                                        onTap:()async{
+                                                        onTap: () async {
                                                           // print(cartlist[index].id);
-                                                          await removecart(cartlist[index].id!);
+                                                          await removecart(
+                                                              cartlist[index]
+                                                                  .id!);
                                                           setState(() {
                                                             initState();
                                                           });
                                                         },
                                                         child: Container(
-                                                          // color:Colors.black,
+                                                            // color:Colors.black,
                                                             //width:180,
                                                             padding: getPadding(
                                                                 left: 90,
@@ -865,70 +901,66 @@ class _CartScreenState extends State<CartScreen> {
                                                             child: Text(
                                                                 "lbl_remove".tr,
                                                                 overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
+                                                                    TextOverflow
+                                                                        .ellipsis,
                                                                 textAlign:
-                                                                TextAlign
-                                                                    .center,
+                                                                    TextAlign
+                                                                        .center,
                                                                 style: AppStyle
                                                                     .txtRobotoRegular12Black900
                                                                     .copyWith(
-                                                                    letterSpacing:
-                                                                    getHorizontalSize(
-                                                                        1.2)))),
+                                                                        letterSpacing:
+                                                                            getHorizontalSize(1.2)))),
                                                       ),
                                                       //Spacer(),
                                                       SizedBox(
                                                           height:
-                                                          getVerticalSize(
-                                                              36),
+                                                              getVerticalSize(
+                                                                  36),
                                                           child: VerticalDivider(
                                                               width:
-                                                              getHorizontalSize(
-                                                                  1),
+                                                                  getHorizontalSize(
+                                                                      1),
                                                               thickness:
-                                                              getVerticalSize(
-                                                                  1),
+                                                                  getVerticalSize(
+                                                                      1),
                                                               color: ColorConstant
                                                                   .gray40001)),
                                                       InkWell(
-                                                        onTap:()async{
-                                                          await movetowishlist(cartlist[index].id!,cartlist[index].productId!) ;
+                                                        onTap: () async {
+                                                          await movetowishlist(
+                                                              cartlist[index]
+                                                                  .id!,
+                                                              cartlist[index]
+                                                                  .productId!);
                                                           setState(() {
                                                             initState();
                                                           });
-                                                                                      },
+                                                        },
                                                         child: Container(
-                                                          // color:Colors.black,
+                                                            // color:Colors.black,
                                                             //width:200,
                                                             padding: getPadding(
                                                                 left: 0,
                                                                 top: 11,
-                                                                bottom: 9,right: 45),
+                                                                bottom: 9,
+                                                                right: 45),
                                                             child: Text(
                                                                 "msg_move_to_wishlist"
                                                                     .tr,
                                                                 overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
+                                                                    TextOverflow
+                                                                        .ellipsis,
                                                                 textAlign:
-                                                                TextAlign
-                                                                    .center,
+                                                                    TextAlign
+                                                                        .center,
                                                                 style: AppStyle
                                                                     .txtRobotoRegular12Black900
                                                                     .copyWith(
-                                                                    letterSpacing:
-                                                                    getHorizontalSize(
-                                                                        1.2)))),
+                                                                        letterSpacing:
+                                                                            getHorizontalSize(1.2)))),
                                                       )
                                                     ])),
-
-
-
-
-
-
-
                                           ],
                                         );
                                       }),
@@ -1559,13 +1591,15 @@ class _CartScreenState extends State<CartScreen> {
                         //         thickness: getVerticalSize(5),
                         //         color: ColorConstant.purple50))
                       ]));
-            }
-            else if(!snapshot.hasData){
+            } else if (!snapshot.hasData) {
               return Center(
-                  child: Image(image: AssetImage("assets/images/cart_empty.png"),filterQuality: FilterQuality.high,width: 200,height: 200,
-                     ));
-            }
-            else{
+                  child: Image(
+                image: AssetImage("assets/images/cart_empty.png"),
+                filterQuality: FilterQuality.high,
+                width: 200,
+                height: 200,
+              ));
+            } else {
               return const Center(
                 heightFactor: 15,
                 child: CircularProgressIndicator(
@@ -1577,25 +1611,24 @@ class _CartScreenState extends State<CartScreen> {
         ),
       ),
       bottomNavigationBar: GestureDetector(
-        onTap: (){
-          if(message=="Your Cart is Empty."){
+        onTap: () {
+          if (message == "Your Cart is Empty.") {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text("Please select atleast 1 product to continue"),
                 backgroundColor: Colors.redAccent));
-          }else{
+          } else {
             pushScreen(
-            context,
-            screen: AfterCartScreen(widget.data),
-            withNavBar:
-            false, // OPTIONAL VALUE. True by default.
-            pageTransitionAnimation:
-            PageTransitionAnimation.cupertino,
-          );}
+              context,
+              screen: AfterCartScreen(widget.data),
+              withNavBar: false, // OPTIONAL VALUE. True by default.
+              pageTransitionAnimation: PageTransitionAnimation.cupertino,
+            );
+          }
         },
         child: Container(
             width: double.maxFinite,
             child: Container(
-              height: 6.5.h,
+                height: 6.5.h,
                 // padding: getPadding(left: 158, top: 20, right: 158, bottom: 20),
                 decoration: AppDecoration.fillPurple900
                     .copyWith(borderRadius: BorderRadiusStyle.customBorderLR60),
@@ -1614,6 +1647,7 @@ class _CartScreenState extends State<CartScreen> {
       ),
     ));
   }
+
   buildLoading(BuildContext context) {
     return showDialog(
         context: context,

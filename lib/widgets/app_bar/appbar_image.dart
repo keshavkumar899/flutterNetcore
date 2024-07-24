@@ -4,11 +4,11 @@ import 'package:keshav_s_application2/core/app_export.dart';
 // ignore: must_be_immutable
 class AppbarImage extends StatelessWidget {
   AppbarImage(
-      { this.height,
-       this.width,
+      {this.height,
+      this.width,
       this.imagePath,
       this.svgPath,
-        this.color,
+      this.color,
       this.margin,
       this.onTap});
 
@@ -33,7 +33,7 @@ class AppbarImage extends StatelessWidget {
         onTap!.call();
       },
       child: Padding(
-        padding: margin  ?? EdgeInsets.zero,
+        padding: margin ?? EdgeInsets.zero,
         child: CustomImageView(
           color: color,
           svgPath: svgPath,
@@ -46,14 +46,16 @@ class AppbarImage extends StatelessWidget {
     );
   }
 }
+
 class CustomAppbarTitle extends StatelessWidget {
-  CustomAppbarTitle(
-      { this.height,
-        this.width,
-        this.imagePath,
-        this.svgPath,
-        this.color,
-        this.margin,});
+  CustomAppbarTitle({
+    this.height,
+    this.width,
+    this.imagePath,
+    this.svgPath,
+    this.color,
+    this.margin,
+  });
 
   double? height;
 
@@ -63,14 +65,14 @@ class CustomAppbarTitle extends StatelessWidget {
 
   String? svgPath;
 
-  Color ?color;
+  Color? color;
 
   EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: margin  ?? EdgeInsets.zero,
+      padding: margin ?? EdgeInsets.zero,
       child: CustomImageView(
         color: color,
         svgPath: svgPath,

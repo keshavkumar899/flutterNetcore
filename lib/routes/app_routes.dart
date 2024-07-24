@@ -80,7 +80,7 @@ class AppRoutes {
 
   static const String signUpScreen = '/signup_screen';
 
-  static const String landingScreen= '/landing_screen';
+  static const String landingScreen = '/landing_screen';
 
   static const String homeScreen = '/home_screen';
 
@@ -95,8 +95,7 @@ class AppRoutes {
 
   static const String profileOneScreen = '/profile_one_screen';
 
-  static const String cartScreen =
-      '/cart_screen';
+  static const String cartScreen = '/cart_screen';
 
   static const String addAddressScreen = '/add_address_screen';
 
@@ -324,7 +323,7 @@ class AppRoutes {
         ClickGstinBinding(),
       ],
     ),
-   /* GetPage(
+    /* GetPage(
       name: searchScreen,
       page: () => SearchScreen(),
       bindings: [

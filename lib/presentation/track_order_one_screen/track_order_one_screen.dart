@@ -17,7 +17,7 @@ class TrackOrderOneScreen extends GetWidget<TrackOrderOneController> {
             height: getVerticalSize(70),
             leadingWidth: 41,
             leading: AppbarImage(
-                onTap: (){
+                onTap: () {
                   Navigator.pop(context);
                 },
                 height: getVerticalSize(15),
@@ -461,9 +461,7 @@ class TrackOrderOneScreen extends GetWidget<TrackOrderOneController> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: (){
-
-                      },
+                        onTap: () {},
                         child: Padding(
                           padding: getPadding(
                             left: 107,

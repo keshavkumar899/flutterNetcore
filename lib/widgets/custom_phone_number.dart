@@ -7,8 +7,7 @@ import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
 
 // ignore: must_be_immutable
 class CustomPhoneNumber extends StatelessWidget {
-  CustomPhoneNumber(
-      { this.country,  this.onTap,  this.controller});
+  CustomPhoneNumber({this.country, this.onTap, this.controller});
 
   Country? country;
 

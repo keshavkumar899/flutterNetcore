@@ -1,8 +1,9 @@
 class CategorySubcategory {
   CategorySubcategory({
-      this.status, 
-      this.message, 
-      this.data,});
+    this.status,
+    this.message,
+    this.data,
+  });
 
   CategorySubcategory.fromJson(dynamic json) {
     status = json['status'];
@@ -22,7 +23,6 @@ class CategorySubcategory {
     }
     return map;
   }
-
 }
 
 class Data {
@@ -38,7 +38,8 @@ class Data {
     this.isDelete,
     this.createOn,
     this.updateOn,
-    this.subCategory,});
+    this.subCategory,
+  });
 
   Data.fromJson(dynamic json) {
     id = json['id'];
@@ -90,8 +91,8 @@ class Data {
     }
     return map;
   }
-
 }
+
 class SubCategory {
   SubCategory({
     this.id,
@@ -104,7 +105,8 @@ class SubCategory {
     this.isActive,
     this.isDelete,
     this.createOn,
-    this.updateOn,});
+    this.updateOn,
+  });
 
   SubCategory.fromJson(dynamic json) {
     id = json['id'];
@@ -126,7 +128,7 @@ class SubCategory {
   String? banner;
   String? metaTitle;
   String? metaDescription;
-  String ?isActive;
+  String? isActive;
   String? isDelete;
   String? createOn;
   dynamic? updateOn;
@@ -146,5 +148,4 @@ class SubCategory {
     map['update_on'] = updateOn;
     return map;
   }
-
 }

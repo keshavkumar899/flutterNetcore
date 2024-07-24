@@ -7,14 +7,14 @@ import 'package:keshav_s_application2/presentation/cart_screen/cart_screen.dart'
 import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.dart';
 import 'package:keshav_s_application2/presentation/product_detail_screen/models/AddWishlist.dart';
 import 'package:keshav_s_application2/presentation/product_detail_screen/models/AddtoCart.dart';
-import 'package:keshav_s_application2/presentation/product_detail_screen/models/Product_detail_model.dart' as products;
+import 'package:keshav_s_application2/presentation/product_detail_screen/models/Product_detail_model.dart'
+    as products;
 import 'package:keshav_s_application2/presentation/select_product_screen/models/CheckPincode.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 import 'package:keshav_s_application2/widgets/custom_drop_down.dart';
 import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
-
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +31,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart' as dio;
 
 class ProductDetailScreen1 extends StatefulWidget {
-
   String product_id;
   ProductDetailScreen1(this.product_id);
 
@@ -40,42 +39,53 @@ class ProductDetailScreen1 extends StatefulWidget {
 }
 
 class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
-  var number="12";
+  var number = "12";
 
-  TextEditingController pincodeController=TextEditingController();
+  TextEditingController pincodeController = TextEditingController();
   int silderIndex = 0;
 
   Future<products.ProductDetailModel>? product;
   products.Data? productlist;
   List<products.SimilarProduct> similarProduct = [];
   List<products.BrandProduct> brandProduct = [];
-  List<products.ProductImages> productImages=[];
-  List<products.Attributes> attributes=[];
+  List<products.ProductImages> productImages = [];
+  List<products.Attributes> attributes = [];
   // List<homes.FavouriteProduct> favouriteProduct = [];
   // List<homes.Bannerswow> bannerswow = [];
   // List<homes.BannersgoodLooks> bannersgoodLooks = [];
   // List<homes.BannersBrothers> bannersBrothers = [];
-  List<String> dropdownItemList = ["1", "2", "3","4","5","6","7","8","9","10"];
+  List<String> dropdownItemList = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+  ];
   String errorMsg = '';
-  String ?_selectedQty;
+  String? _selectedQty;
 
   Future<products.ProductDetailModel> getProductDetail() async {
     Map data = {
       // 'user_id': widget.data.id,
-      'product_id':widget.product_id,
+      'product_id': widget.product_id,
     };
     //encode Map to JSON
     var body = json.encode(data);
-    print('Detail --> '+json.encode(data));
-    var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/product_details",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+    print('Detail --> ' + json.encode(data));
+    var response = await dio.Dio()
+        .post("https://fabfurni.com/api/Webservice/product_details",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
@@ -86,17 +96,19 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
         return products.ProductDetailModel.fromJson(jsonObject);
 
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (products.ProductDetailModel.fromJson(jsonObject).status == "false") {
+      } else if (products.ProductDetailModel.fromJson(jsonObject).status ==
+          "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             duration: Duration(seconds: 2),
-            content: Text(products.ProductDetailModel.fromJson(jsonObject).message!.capitalizeFirst!),
+            content: Text(products.ProductDetailModel.fromJson(jsonObject)
+                .message!
+                .capitalizeFirst!),
             backgroundColor: Colors.redAccent));
         Timer(Duration(seconds: 3), () {
           Navigator.of(context).pop();
         });
-
-      }
-      else if(products.ProductDetailModel.fromJson(jsonObject).data == null){
+      } else if (products.ProductDetailModel.fromJson(jsonObject).data ==
+          null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
             jsonObject['message'] + ' Please check after sometime.',
@@ -104,8 +116,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -113,6 +124,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
     }
     return jsonObject;
   }
+
   // Future<AddtoCart> addtocart(String qty) async {
   //   Map data = {
   //     // 'user_id': widget.data.id,
@@ -241,19 +253,19 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
   Future<CheckPincode> checkPincode() async {
     Map data = {
       // 'user_id': widget.data.id,
-      'pincode':pincodeController.text,
+      'pincode': pincodeController.text,
     };
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/checkPincode",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/checkPincode",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
@@ -322,13 +334,16 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 25.0),
-            content: Text("Delivery Available at given pincode ",style: TextStyle(color: Colors.black),),
+            content: Text(
+              "Delivery Available at given pincode ",
+              style: TextStyle(color: Colors.black),
+            ),
             backgroundColor: Colors.greenAccent));
 
         return CheckPincode.fromJson(jsonObject);
 
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (CheckPincode.fromJson(jsonObject).data == "No") {
+      } else if (CheckPincode.fromJson(jsonObject).data == "No") {
         // showDialog(
         //   context: context,
         //   builder: (context) {
@@ -398,9 +413,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
             margin: EdgeInsets.only(bottom: 25.0),
             content: Text("Delivery Not Available"),
             backgroundColor: Colors.redAccent));
-
-      }
-      else if(CheckPincode.fromJson(jsonObject).data == null){
+      } else if (CheckPincode.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           duration: Duration(seconds: 3),
           behavior: SnackBarBehavior.floating,
@@ -411,8 +424,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -427,10 +439,10 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
     product!.then((value) {
       setState(() {
         productlist = value.data;
-        similarProduct=value.similarProduct!;
-        brandProduct=value.brandProduct!;
-        productImages=value.data!.productImages!;
-        attributes=value.data!.attributes!;
+        similarProduct = value.similarProduct!;
+        brandProduct = value.brandProduct!;
+        productImages = value.data!.productImages!;
+        attributes = value.data!.attributes!;
       });
     });
     print(attributes.length);
@@ -438,8 +450,9 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
 
     super.initState();
   }
+
   @override
-  void dispose(){
+  void dispose() {
     pincodeController.dispose();
     super.dispose();
   }
@@ -450,11 +463,8 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
   bool expanded3 = false;
   bool expanded4 = false;
 
-
   @override
   Widget build(BuildContext context) {
-
-
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.whiteA700,
@@ -462,7 +472,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                 height: getVerticalSize(70),
                 leadingWidth: 41,
                 leading: AppbarImage(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                     },
                     height: getVerticalSize(15),
@@ -483,37 +493,36 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                       width: getSize(21),
                       svgPath: ImageConstant.imgSearch,
                       margin:
-                      getMargin(left: 12, top: 22, right: 10, bottom: 10),
-                      onTap: (){
+                          getMargin(left: 12, top: 22, right: 10, bottom: 10),
+                      onTap: () {
                         Get.toNamed(AppRoutes.searchScreen);
                       }),
                   Container(
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
-                      margin:
-                      getMargin(left: 20, top: 5, right: 10, bottom: 0),
+                      margin: getMargin(left: 20, top: 5, right: 10, bottom: 0),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
                             width: getHorizontalSize(21),
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
-                            onTap: (){
-                            //   pushScreen(
-                            //     context,
-                            //     screen: WhislistScreen(widget.data),
-                            //     withNavBar:
-                            //     false, // OPTIONAL VALUE. True by default.
-                            //     pageTransitionAnimation:
-                            //     PageTransitionAnimation.cupertino,
-                            //   );
+                            onTap: () {
+                              //   pushScreen(
+                              //     context,
+                              //     screen: WhislistScreen(widget.data),
+                              //     withNavBar:
+                              //     false, // OPTIONAL VALUE. True by default.
+                              //     pageTransitionAnimation:
+                              //     PageTransitionAnimation.cupertino,
+                              //   );
                               pushScreen(
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                               // Navigator.of(context).pushReplacement(MaterialPageRoute(
                               //   builder: (context) => LogInScreen(),
@@ -526,7 +535,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 5, right: 31,bottom: 0),
+                      margin: getMargin(left: 14, top: 5, right: 31, bottom: 0),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -534,9 +543,9 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                               // pushScreen(
                               //   context,
@@ -564,9 +573,9 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                 ],
                 styleType: Style.bgShadowBlack90033),
             body: FutureBuilder(
-              future:product,
-              builder: (context, snapshot){
-                if(snapshot.hasData){
+              future: product,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
                   return SingleChildScrollView(
                     child: Container(
                         width: double.maxFinite,
@@ -582,107 +591,127 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                       style: AppStyle.txtRobotoRegular18)),
                               Padding(
                                   padding: getPadding(left: 11, top: 2),
-                                  child: Text("by "+productlist!.brandName!,
+                                  child: Text("by " + productlist!.brandName!,
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.left,
-                                      style: AppStyle.txtRobotoRegular12Purple700)),
+                                      style: AppStyle
+                                          .txtRobotoRegular12Purple700)),
                               Container(
                                   height: getVerticalSize(215),
                                   width: double.maxFinite,
                                   margin: getMargin(top: 5),
-                                  child:
-                                  Stack(alignment: Alignment.topRight, children: [
-                                    productImages.length!=0?
-                                    CarouselSlider.builder(
-                                        options: CarouselOptions(
-                                          height: getVerticalSize(215),
-                                          initialPage: 0,
-                                          autoPlay: true,
-                                          viewportFraction: 1.0,
-                                          enableInfiniteScroll: true,
-                                          autoPlayCurve: Curves.fastOutSlowIn,
-                                          scrollDirection: Axis.horizontal,
-                                          onPageChanged: (index, reason) {
-                                            silderIndex = index;
-                                          },
-                                          // onScrolled: (index) {
-                                          //   controller.silderIndex.value =
-                                          //       index as int;
-                                          // }
-                                        ),
-                                        itemCount: productImages.length,
-                                        itemBuilder: (context, index, realIndex) {
-                                          // SliderItemModel model = controller
-                                          //     .productDetailModelObj
-                                          //     .value
-                                          //     .sliderItemList[index];
-                                          return GestureDetector(
-                                            onTap: (){
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) => documentViewer(
-                                                      productImages[index].images!,
-                                                      context),
+                                  child: Stack(
+                                      alignment: Alignment.topRight,
+                                      children: [
+                                        productImages.length != 0
+                                            ? CarouselSlider.builder(
+                                                options: CarouselOptions(
+                                                  height: getVerticalSize(215),
+                                                  initialPage: 0,
+                                                  autoPlay: true,
+                                                  viewportFraction: 1.0,
+                                                  enableInfiniteScroll: true,
+                                                  autoPlayCurve:
+                                                      Curves.fastOutSlowIn,
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  onPageChanged:
+                                                      (index, reason) {
+                                                    silderIndex = index;
+                                                  },
+                                                  // onScrolled: (index) {
+                                                  //   controller.silderIndex.value =
+                                                  //       index as int;
+                                                  // }
                                                 ),
-                                              );
-                                            },
-                                            child: Align(
-                                              alignment: Alignment.center,
-                                              child: CustomImageView(
-                                                url:
-                                                productImages[index].images!,
-                                                height: getVerticalSize(
-                                                  215,
-                                                ),
-                                                width: getHorizontalSize(
-                                                  428,
+                                                itemCount: productImages.length,
+                                                itemBuilder: (context, index,
+                                                    realIndex) {
+                                                  // SliderItemModel model = controller
+                                                  //     .productDetailModelObj
+                                                  //     .value
+                                                  //     .sliderItemList[index];
+                                                  return GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              documentViewer(
+                                                                  productImages[
+                                                                          index]
+                                                                      .images!,
+                                                                  context),
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Align(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: CustomImageView(
+                                                        url:
+                                                            productImages[index]
+                                                                .images!,
+                                                        height: getVerticalSize(
+                                                          215,
+                                                        ),
+                                                        width:
+                                                            getHorizontalSize(
+                                                          428,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                  // SliderItemWidget(model);
+                                                })
+                                            : GestureDetector(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          documentViewer(
+                                                              productlist!
+                                                                  .image!,
+                                                              context),
+                                                    ),
+                                                  );
+                                                },
+                                                child: Align(
+                                                  alignment: Alignment.center,
+                                                  child: CustomImageView(
+                                                    url: productlist!.image!,
+                                                    height: getVerticalSize(
+                                                      215,
+                                                    ),
+                                                    width: getHorizontalSize(
+                                                      428,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          );
-                                          // SliderItemWidget(model);
-                                        }): GestureDetector(
-                                      onTap: (){
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => documentViewer(
-                                                productlist!.image!,
-                                                context),
-                                          ),
-                                        );
-                                      },
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: CustomImageView(
-                                          url:
-                                          productlist!.image!,
-                                          height: getVerticalSize(
-                                            215,
-                                          ),
-                                          width: getHorizontalSize(
-                                            428,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                        alignment: Alignment.topRight,
-                                        child: Container(
-                                            width: getHorizontalSize(60),
-                                            padding: getPadding(
-                                                left: 9, top: 2, right: 9, bottom: 2),
-                                            decoration: AppDecoration
-                                                .txtOutlineBlack9003f1
-                                                .copyWith(
-                                                borderRadius: BorderRadiusStyle
-                                                    .txtCustomBorderBL20),
-                                            child: Text("lbl_30_off2".tr,
-                                                overflow: TextOverflow.ellipsis,
-                                                textAlign: TextAlign.left,
-                                                style: AppStyle.txtRobotoMedium9)))
-                                  ])),
+                                        Align(
+                                            alignment: Alignment.topRight,
+                                            child: Container(
+                                                width: getHorizontalSize(60),
+                                                padding: getPadding(
+                                                    left: 9,
+                                                    top: 2,
+                                                    right: 9,
+                                                    bottom: 2),
+                                                decoration: AppDecoration
+                                                    .txtOutlineBlack9003f1
+                                                    .copyWith(
+                                                        borderRadius:
+                                                            BorderRadiusStyle
+                                                                .txtCustomBorderBL20),
+                                                child: Text("lbl_30_off2".tr,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    textAlign: TextAlign.left,
+                                                    style: AppStyle
+                                                        .txtRobotoMedium9)))
+                                      ])),
                               // Align(
                               //     alignment: Alignment.centerLeft,
                               //     child: Container(
@@ -706,9 +735,11 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                       thickness: getVerticalSize(1),
                                       color: ColorConstant.purple50)),
                               Padding(
-                                  padding: getPadding(left: 11, top: 9, right: 10),
+                                  padding:
+                                      getPadding(left: 11, top: 9, right: 10),
                                   child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
                                       children: [
                                         CustomImageView(
                                             svgPath: ImageConstant.imgCut,
@@ -736,38 +767,46 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                 alignment: Alignment.topCenter,
                                                 children: [
                                                   Align(
-                                                      alignment: Alignment.center,
-                                                      child: Text(productlist!.mrpPrice!,
-                                                          overflow:
-                                                          TextOverflow.ellipsis,
-                                                          textAlign: TextAlign.left,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Text(
+                                                          productlist!
+                                                              .mrpPrice!,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          textAlign:
+                                                              TextAlign.left,
                                                           style: AppStyle
                                                               .txtRobotoMedium12Gray500)),
                                                   Align(
-                                                      alignment: Alignment.topCenter,
+                                                      alignment:
+                                                          Alignment.topCenter,
                                                       child: Padding(
-                                                          padding: getPadding(top: 6),
+                                                          padding: getPadding(
+                                                              top: 6),
                                                           child: SizedBox(
                                                               width:
-                                                              getHorizontalSize(
-                                                                  37),
+                                                                  getHorizontalSize(
+                                                                      37),
                                                               child: Divider(
                                                                   height:
-                                                                  getVerticalSize(
-                                                                      1),
+                                                                      getVerticalSize(
+                                                                          1),
                                                                   thickness:
-                                                                  getVerticalSize(
-                                                                      1),
+                                                                      getVerticalSize(
+                                                                          1),
                                                                   color: ColorConstant
                                                                       .gray500))))
                                                 ])),
                                         Padding(
                                             padding: getPadding(
                                                 left: 5, top: 4, bottom: 3),
-                                            child: Text("msg_inclusive_of_all".tr,
+                                            child: Text(
+                                                "msg_inclusive_of_all".tr,
                                                 overflow: TextOverflow.ellipsis,
                                                 textAlign: TextAlign.left,
-                                                style: AppStyle.txtRobotoLight8)),
+                                                style:
+                                                    AppStyle.txtRobotoLight8)),
                                         Spacer(),
                                         // CustomImageView(
                                         //     svgPath: ImageConstant.imgShare,
@@ -783,10 +822,11 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                         child: Text("lbl_total_saving".tr,
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
-                                            style:
-                                            AppStyle.txtRobotoRegular8Gray600)),
+                                            style: AppStyle
+                                                .txtRobotoRegular8Gray600)),
                                     CustomImageView(
-                                        svgPath: ImageConstant.imgVectorPurple7008x5,
+                                        svgPath:
+                                            ImageConstant.imgVectorPurple7008x5,
                                         height: getVerticalSize(8),
                                         width: getHorizontalSize(5),
                                         margin: getMargin(left: 6, bottom: 3)),
@@ -795,15 +835,16 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                         child: Text(productlist!.discountPrice!,
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
-                                            style:
-                                            AppStyle.txtRobotoMedium10Purple700))
+                                            style: AppStyle
+                                                .txtRobotoMedium10Purple700))
                                   ])),
                               Align(
                                   alignment: Alignment.center,
                                   child: Padding(
                                       padding: getPadding(top: 16),
                                       child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             Column(
                                               children: [
@@ -814,11 +855,14 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                         svgPath: ImageConstant
                                                             .imgCalendar)),
                                                 Container(
-                                                  // width: getHorizontalSize(50),
+                                                    // width: getHorizontalSize(50),
                                                     child: Text(
-                                                        "EMI from\n"+ productlist!.emiOption!,
+                                                        "EMI from\n" +
+                                                            productlist!
+                                                                .emiOption!,
                                                         maxLines: null,
-                                                        textAlign: TextAlign.center,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                         style: AppStyle
                                                             .txtRobotoRegular8Black900)),
                                               ],
@@ -833,13 +877,16 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                         svgPath: ImageConstant
                                                             .imgCheckmark)),
                                                 Container(
-                                                  // width: getHorizontalSize(38),
+                                                    // width: getHorizontalSize(38),
                                                     margin: getMargin(
                                                         left: 28, bottom: 8),
                                                     child: Text(
-                                                        productlist!.monthWarrenty! + " Months \nWarranty",
+                                                        productlist!
+                                                                .monthWarrenty! +
+                                                            " Months \nWarranty",
                                                         maxLines: null,
-                                                        textAlign: TextAlign.center,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                         style: AppStyle
                                                             .txtRobotoRegular8Black900)),
                                               ],
@@ -854,12 +901,15 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                         svgPath: ImageConstant
                                                             .imgCutWhiteA700)),
                                                 Container(
-                                                  // width: getHorizontalSize(24),
+                                                    // width: getHorizontalSize(24),
                                                     margin: getMargin(
                                                         left: 36, bottom: 10),
-                                                    child: Text(productlist!.easyReturn!,
+                                                    child: Text(
+                                                        productlist!
+                                                            .easyReturn!,
                                                         maxLines: null,
-                                                        textAlign: TextAlign.center,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                         style: AppStyle
                                                             .txtRobotoRegular8Black900)),
                                               ],
@@ -870,19 +920,21 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                     height: 30,
                                                     width: 30,
                                                     margin: getMargin(left: 38),
-                                                    padding:
-                                                    IconButtonPadding.PaddingAll5,
+                                                    padding: IconButtonPadding
+                                                        .PaddingAll5,
                                                     child: CustomImageView(
                                                         svgPath: ImageConstant
                                                             .imgCarWhiteA700)),
                                                 Container(
-                                                  // width: getHorizontalSize(28),
+                                                    // width: getHorizontalSize(28),
                                                     margin: getMargin(
                                                         left: 43, bottom: 8),
                                                     child: Text(
-                                                        productlist!.safeDelivery!,
+                                                        productlist!
+                                                            .safeDelivery!,
                                                         maxLines: null,
-                                                        textAlign: TextAlign.center,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                         style: AppStyle
                                                             .txtRobotoRegular8Black900))
                                               ],
@@ -892,8 +944,12 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                   padding: getPadding(left: 20, top: 19),
                                   child: Row(children: [
                                     DropdownButton<String>(
-                                      hint: Text(" Qty  ",style: TextStyle(fontSize: 14),),
-                                      items: dropdownItemList.map((String value) {
+                                      hint: Text(
+                                        " Qty  ",
+                                        style: TextStyle(fontSize: 14),
+                                      ),
+                                      items:
+                                          dropdownItemList.map((String value) {
                                         return DropdownMenuItem<String>(
                                           value: value,
                                           child: Text(value),
@@ -909,7 +965,8 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                       iconEnabledColor: Colors.purple,
                                       value: _selectedQty,
                                       enableFeedback: true,
-                                      style: TextStyle(color: Colors.purple,fontSize: 15),
+                                      style: TextStyle(
+                                          color: Colors.purple, fontSize: 15),
                                       borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(
                                           getHorizontalSize(
@@ -958,14 +1015,14 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                     //         AppStyle.txtRobotoRegular8Yellow900))
                                   ])),
                               CustomButton(
-                                  onTap: (){
+                                  onTap: () {
                                     pushScreen(
                                       context,
                                       screen: LogInScreen(),
                                       withNavBar:
-                                      false, // OPTIONAL VALUE. True by default.
+                                          false, // OPTIONAL VALUE. True by default.
                                       pageTransitionAnimation:
-                                      PageTransitionAnimation.cupertino,
+                                          PageTransitionAnimation.cupertino,
                                     );
                                     // Navigator.of(context).pushReplacement(MaterialPageRoute(
                                     //   builder: (context) => LogInScreen(),
@@ -984,25 +1041,28 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                   },
                                   height: getVerticalSize(35),
                                   text: "lbl_buy_now".tr,
-                                  margin: getMargin(left: 10, top: 14, right: 10),
+                                  margin:
+                                      getMargin(left: 10, top: 14, right: 10),
                                   variant: ButtonVariant.FillPurple900,
                                   shape: ButtonShape.Square,
                                   fontStyle: ButtonFontStyle.RobotoMedium16),
                               Padding(
-                                  padding: getPadding(left: 10, top: 12, right: 10),
+                                  padding:
+                                      getPadding(left: 10, top: 12, right: 10),
                                   child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         CustomButton(
-                                            onTap:(){
+                                            onTap: () {
                                               pushScreen(
                                                 context,
                                                 screen: LogInScreen(),
                                                 withNavBar:
-                                                false, // OPTIONAL VALUE. True by default.
+                                                    false, // OPTIONAL VALUE. True by default.
                                                 pageTransitionAnimation:
-                                                PageTransitionAnimation.cupertino,
+                                                    PageTransitionAnimation
+                                                        .cupertino,
                                               );
                                               // Navigator.of(context).pushReplacement(MaterialPageRoute(
                                               //   builder: (context) => LogInScreen(),
@@ -1015,16 +1075,17 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                             variant: ButtonVariant.FillGray500,
                                             shape: ButtonShape.CustomBorderBL50,
                                             fontStyle:
-                                            ButtonFontStyle.RobotoMedium16),
+                                                ButtonFontStyle.RobotoMedium16),
                                         CustomButton(
-                                            onTap: (){
+                                            onTap: () {
                                               pushScreen(
                                                 context,
                                                 screen: LogInScreen(),
                                                 withNavBar:
-                                                false, // OPTIONAL VALUE. True by default.
+                                                    false, // OPTIONAL VALUE. True by default.
                                                 pageTransitionAnimation:
-                                                PageTransitionAnimation.cupertino,
+                                                    PageTransitionAnimation
+                                                        .cupertino,
                                               );
                                               // Navigator.of(context).pushReplacement(MaterialPageRoute(
                                               //   builder: (context) => LogInScreen(),
@@ -1045,19 +1106,23 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                             width: getHorizontalSize(190),
                                             text: "lbl_add_to_cart".tr,
                                             variant: ButtonVariant.FillRed800,
-                                            fontStyle: ButtonFontStyle.RobotoMedium16)
+                                            fontStyle:
+                                                ButtonFontStyle.RobotoMedium16)
                                       ])),
                               Container(
-                                  margin: getMargin(left: 10, top: 14, right: 10),
+                                  margin:
+                                      getMargin(left: 10, top: 14, right: 10),
                                   padding: getPadding(
                                       left: 18, top: 6, right: 18, bottom: 6),
                                   decoration: AppDecoration.fillPurple5001,
                                   child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Padding(
                                             padding: getPadding(top: 1),
-                                            child: Text("msg_delivery_services".tr,
+                                            child: Text(
+                                                "msg_delivery_services".tr,
                                                 overflow: TextOverflow.ellipsis,
                                                 textAlign: TextAlign.left,
                                                 style: AppStyle
@@ -1067,50 +1132,55 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                             child: Divider(
                                                 height: getVerticalSize(1),
                                                 thickness: getVerticalSize(1),
-                                                color: ColorConstant.gray40002)),
+                                                color:
+                                                    ColorConstant.gray40002)),
                                         Container(
-                                          margin:
-                                          getMargin(left: 2, top: 10, right: 2),
+                                          margin: getMargin(
+                                              left: 2, top: 10, right: 2),
                                           padding: getPadding(
                                               left: 11,
                                               top: 9,
                                               right: 5,
                                               bottom: 9),
                                           decoration:
-                                          AppDecoration.outlineBlack90019,
-                                          child:Row(
+                                              AppDecoration.outlineBlack90019,
+                                          child: Row(
                                               mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                                  MainAxisAlignment.center,
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 Expanded(
                                                     child: CustomTextFormField(
                                                         focusNode: FocusNode(),
-                                                        controller: pincodeController,
+                                                        controller:
+                                                            pincodeController,
                                                         hintText:
-                                                        "msg_enter_your_pincode"
-                                                            .tr,
-                                                        margin:
-                                                        getMargin(bottom: 1),
+                                                            "msg_enter_your_pincode"
+                                                                .tr,
+                                                        margin: getMargin(
+                                                            bottom: 1),
                                                         variant:
-                                                        TextFormFieldVariant
-                                                            .None,
+                                                            TextFormFieldVariant
+                                                                .None,
                                                         fontStyle:
-                                                        TextFormFieldFontStyle
-                                                            .RobotoMedium11,
+                                                            TextFormFieldFontStyle
+                                                                .RobotoMedium11,
                                                         // textInputAction:
                                                         // TextInputAction.done,
                                                         // textInputType:
                                                         // TextInputType.number,
                                                         validator: (value) {
-                                                          if (!isNumeric(value!)) {
+                                                          if (!isNumeric(
+                                                              value!)) {
                                                             return "Please enter valid number";
                                                           }
                                                           return null;
                                                         })),
                                                 InkWell(
-                                                  onTap: (){
-                                                    SystemChannels.textInput.invokeMethod('TextInput.hide');
+                                                  onTap: () {
+                                                    SystemChannels.textInput
+                                                        .invokeMethod(
+                                                            'TextInput.hide');
                                                     print("tapped");
                                                     checkPincode();
                                                     pincodeController.clear();
@@ -1118,10 +1188,12 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                   child: Padding(
                                                       padding: getPadding(
                                                           left: 5, right: 1),
-                                                      child: Text("lbl_check".tr,
-                                                          overflow:
-                                                          TextOverflow.ellipsis,
-                                                          textAlign: TextAlign.left,
+                                                      child: Text(
+                                                          "lbl_check".tr,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          textAlign:
+                                                              TextAlign.left,
                                                           style: AppStyle
                                                               .txtRobotoMedium11)),
                                                 )
@@ -1152,258 +1224,299 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                         Container(
                                             width: getHorizontalSize(194),
                                             margin: getMargin(top: 12),
-                                            child: Text("msg_enter_pincode_to".tr,
+                                            child: Text(
+                                                "msg_enter_pincode_to".tr,
                                                 maxLines: null,
                                                 textAlign: TextAlign.center,
                                                 style: AppStyle
                                                     .txtRobotoRegular10Gray600
                                                     .copyWith(
-                                                    letterSpacing:
-                                                    getHorizontalSize(0.5)))),
+                                                        letterSpacing:
+                                                            getHorizontalSize(
+                                                                0.5)))),
                                         Container(
                                             width: getHorizontalSize(174),
                                             margin: getMargin(top: 4),
-                                            child: Text("msg_delivery_assembly".tr,
+                                            child: Text(
+                                                "msg_delivery_assembly".tr,
                                                 maxLines: null,
                                                 textAlign: TextAlign.center,
                                                 style: AppStyle
                                                     .txtRobotoRegular10Gray800
                                                     .copyWith(
-                                                    letterSpacing:
-                                                    getHorizontalSize(0.5))))
+                                                        letterSpacing:
+                                                            getHorizontalSize(
+                                                                0.5))))
                                       ])),
-                              attributes.length !=0?
-                              Container(
-                                  margin: getMargin(left: 10, top: 10, right: 10),
-                                  padding: getPadding(
-                                      left: 18, top: 8, right: 18, bottom: 8),
-                                  decoration: AppDecoration.fillPurple5001,
-                                  child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Align(
-                                            alignment: Alignment.center,
-                                            child: Text("msg_delivery_services".tr,
-                                                overflow: TextOverflow.ellipsis,
-                                                textAlign: TextAlign.left,
-                                                style: AppStyle
-                                                    .txtRobotoRegular14Black900)),
-                                        Padding(
-                                            padding: getPadding(top: 7),
-                                            child: Divider(
-                                                height: getVerticalSize(1),
-                                                thickness: getVerticalSize(1),
-                                                color: ColorConstant.gray40002,
-                                                indent: getHorizontalSize(1))),
+                              attributes.length != 0
+                                  ? Container(
+                                      margin: getMargin(
+                                          left: 10, top: 10, right: 10),
+                                      padding: getPadding(
+                                          left: 18,
+                                          top: 8,
+                                          right: 18,
+                                          bottom: 8),
+                                      decoration: AppDecoration.fillPurple5001,
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Align(
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                    "msg_delivery_services".tr,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    textAlign: TextAlign.left,
+                                                    style: AppStyle
+                                                        .txtRobotoRegular14Black900)),
+                                            Padding(
+                                                padding: getPadding(top: 7),
+                                                child: Divider(
+                                                    height: getVerticalSize(1),
+                                                    thickness:
+                                                        getVerticalSize(1),
+                                                    color:
+                                                        ColorConstant.gray40002,
+                                                    indent:
+                                                        getHorizontalSize(1))),
 
-                                        Container(
-                                          width: 400,
-                                          height: 200,
-                                          child: ListView.builder(
-                                              itemCount: attributes.length,
-                                              itemBuilder: (context,index){
-                                                return  Padding(
-                                                    padding: getPadding(left: 0, top: 8),
-                                                    child: Row(
-                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                        children: [
-                                                          FittedBox(
-                                                            fit:BoxFit.fill,
-                                                            child: Container(
-                                                              width:120,
-                                                              child: Text(attributes[index].productKey!.capitalizeFirst!+":",
-                                                                  overflow: TextOverflow.ellipsis,
-                                                                  textAlign: TextAlign.left,
-                                                                  style: AppStyle
-                                                                      .txtRobotoRegular15),
-                                                            ),
-                                                          ),
-                                                          FittedBox(
-                                                            fit: BoxFit.fill,
-                                                            child: Container(
-                                                                width: 200,
-                                                                padding: getPadding(left: 0),
-                                                                child: Text(attributes[index].productValue!,
-                                                                    overflow: TextOverflow.ellipsis,
-                                                                    textAlign: TextAlign.left,
-                                                                    style: AppStyle
-                                                                        .txtRobotoRegular15)),
-                                                          )
-                                                        ]));
-                                              }),
-                                        ),
-                                        // Padding(
-                                        //     padding: getPadding(left: 8, top: 8),
-                                        //     child: Row(children: [
-                                        //       Text("lbl_brand".tr,
-                                        //           overflow: TextOverflow.ellipsis,
-                                        //           textAlign: TextAlign.left,
-                                        //           style: AppStyle
-                                        //               .txtRobotoRegular10Bluegray900),
-                                        //       Padding(
-                                        //           padding: getPadding(left: 84),
-                                        //           child: Text(productlist.brandName,
-                                        //               overflow: TextOverflow.ellipsis,
-                                        //               textAlign: TextAlign.left,
-                                        //               style: AppStyle
-                                        //                   .txtRobotoRegular10Bluegray900))
-                                        //     ])),
-                                        // Padding(
-                                        //     padding: getPadding(
-                                        //         left: 8, top: 8, right: 92),
-                                        //     child: Row(
-                                        //         crossAxisAlignment:
-                                        //         CrossAxisAlignment.start,
-                                        //         children: [
-                                        //           Padding(
-                                        //               padding: getPadding(bottom: 15),
-                                        //               child: Text("lbl_dimension".tr,
-                                        //                   overflow:
-                                        //                   TextOverflow.ellipsis,
-                                        //                   textAlign: TextAlign.left,
-                                        //                   style: AppStyle
-                                        //                       .txtRobotoRegular10Bluegray900)),
-                                        //           Container(
-                                        //               width: getHorizontalSize(159),
-                                        //               margin: getMargin(left: 63),
-                                        //               child: Text(
-                                        //                   "msg_h_37_5_w_62".tr,
-                                        //                   maxLines: null,
-                                        //                   textAlign: TextAlign.left,
-                                        //                   style: AppStyle
-                                        //                       .txtRobotoRegular10Bluegray9001))
-                                        //         ])),
-                                        // Padding(
-                                        //     padding: getPadding(left: 8, top: 6),
-                                        //     child: Row(children: [
-                                        //       Text("lbl_weight".tr,
-                                        //           overflow: TextOverflow.ellipsis,
-                                        //           textAlign: TextAlign.left,
-                                        //           style: AppStyle
-                                        //               .txtRobotoRegular10Bluegray900),
-                                        //       Padding(
-                                        //           padding: getPadding(left: 79),
-                                        //           child: Text("lbl_46_2_kg".tr,
-                                        //               overflow: TextOverflow.ellipsis,
-                                        //               textAlign: TextAlign.left,
-                                        //               style: AppStyle
-                                        //                   .txtRobotoRegular10Bluegray900))
-                                        //     ])),
-                                        // Padding(
-                                        //     padding: getPadding(left: 8, top: 9),
-                                        //     child: Row(children: [
-                                        //       Text("lbl_warrenty".tr,
-                                        //           overflow: TextOverflow.ellipsis,
-                                        //           textAlign: TextAlign.left,
-                                        //           style: AppStyle
-                                        //               .txtRobotoRegular10Bluegray900),
-                                        //       Padding(
-                                        //           padding: getPadding(left: 70),
-                                        //           child: Text(
-                                        //               "msg_12_months_warrenty2".tr,
-                                        //               overflow: TextOverflow.ellipsis,
-                                        //               textAlign: TextAlign.left,
-                                        //               style: AppStyle
-                                        //                   .txtRobotoRegular10Bluegray900))
-                                        //     ])),
-                                        // Padding(
-                                        //     padding: getPadding(left: 8, top: 8),
-                                        //     child: Row(children: [
-                                        //       Text("lbl_assembly".tr,
-                                        //           overflow: TextOverflow.ellipsis,
-                                        //           textAlign: TextAlign.left,
-                                        //           style: AppStyle
-                                        //               .txtRobotoRegular10Bluegray900),
-                                        //       Padding(
-                                        //           padding: getPadding(left: 66),
-                                        //           child: Text(
-                                        //               "msg_carpenter_assembly".tr,
-                                        //               overflow: TextOverflow.ellipsis,
-                                        //               textAlign: TextAlign.left,
-                                        //               style: AppStyle
-                                        //                   .txtRobotoRegular10Bluegray900))
-                                        //     ])),
-                                        // Padding(
-                                        //     padding: getPadding(left: 8, top: 7),
-                                        //     child: Row(children: [
-                                        //       Padding(
-                                        //           padding: getPadding(top: 1),
-                                        //           child: Text(
-                                        //               "msg_primary_material".tr,
-                                        //               overflow: TextOverflow.ellipsis,
-                                        //               textAlign: TextAlign.left,
-                                        //               style: AppStyle
-                                        //                   .txtRobotoRegular10Bluegray900)),
-                                        //       Padding(
-                                        //           padding:
-                                        //           getPadding(left: 37, bottom: 1),
-                                        //           child: Text("lbl_fabric".tr,
-                                        //               overflow: TextOverflow.ellipsis,
-                                        //               textAlign: TextAlign.left,
-                                        //               style: AppStyle
-                                        //                   .txtRobotoRegular10Bluegray900))
-                                        //     ])),
-                                        // Padding(
-                                        //     padding: getPadding(left: 8, top: 9),
-                                        //     child: Row(children: [
-                                        //       Text("lbl_room_type".tr,
-                                        //           overflow: TextOverflow.ellipsis,
-                                        //           textAlign: TextAlign.left,
-                                        //           style: AppStyle
-                                        //               .txtRobotoRegular10Bluegray900),
-                                        //       Padding(
-                                        //           padding: getPadding(left: 60),
-                                        //           child: Text("lbl_living_room".tr,
-                                        //               overflow: TextOverflow.ellipsis,
-                                        //               textAlign: TextAlign.left,
-                                        //               style: AppStyle
-                                        //                   .txtRobotoRegular10Bluegray900))
-                                        //     ])),
-                                        // Padding(
-                                        //     padding: getPadding(left: 8, top: 7),
-                                        //     child: Row(children: [
-                                        //       Text("lbl_seating_height".tr,
-                                        //           overflow: TextOverflow.ellipsis,
-                                        //           textAlign: TextAlign.left,
-                                        //           style: AppStyle
-                                        //               .txtRobotoRegular10Bluegray900),
-                                        //       Padding(
-                                        //           padding: getPadding(left: 45),
-                                        //           child: Text("lbl_18".tr,
-                                        //               overflow: TextOverflow.ellipsis,
-                                        //               textAlign: TextAlign.left,
-                                        //               style: AppStyle
-                                        //                   .txtRobotoRegular10Bluegray900))
-                                        //     ])),
-                                        // Padding(
-                                        //     padding: getPadding(left: 8, top: 8),
-                                        //     child: Row(children: [
-                                        //       Text("lbl_color".tr,
-                                        //           overflow: TextOverflow.ellipsis,
-                                        //           textAlign: TextAlign.left,
-                                        //           style: AppStyle
-                                        //               .txtRobotoRegular10Bluegray900),
-                                        //       Padding(
-                                        //           padding: getPadding(left: 86),
-                                        //           child: Text("lbl_black".tr,
-                                        //               overflow: TextOverflow.ellipsis,
-                                        //               textAlign: TextAlign.left,
-                                        //               style: AppStyle
-                                        //                   .txtRobotoRegular10Bluegray900))
-                                        //     ])),
-                                        // Padding(
-                                        //     padding: getPadding(
-                                        //         left: 8, top: 9, bottom: 5),
-                                        //     child: Text("lbl_sku".tr,
-                                        //         overflow: TextOverflow.ellipsis,
-                                        //         textAlign: TextAlign.left,
-                                        //         style: AppStyle
-                                        //             .txtRobotoRegular10Bluegray900))
-                                      ])):Container(),
+                                            Container(
+                                              width: 400,
+                                              height: 200,
+                                              child: ListView.builder(
+                                                  itemCount: attributes.length,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    return Padding(
+                                                        padding: getPadding(
+                                                            left: 0, top: 8),
+                                                        child: Row(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceAround,
+                                                            children: [
+                                                              FittedBox(
+                                                                fit:
+                                                                    BoxFit.fill,
+                                                                child:
+                                                                    Container(
+                                                                  width: 120,
+                                                                  child: Text(
+                                                                      attributes[index]
+                                                                              .productKey!
+                                                                              .capitalizeFirst! +
+                                                                          ":",
+                                                                      overflow: TextOverflow
+                                                                          .ellipsis,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .left,
+                                                                      style: AppStyle
+                                                                          .txtRobotoRegular15),
+                                                                ),
+                                                              ),
+                                                              FittedBox(
+                                                                fit:
+                                                                    BoxFit.fill,
+                                                                child: Container(
+                                                                    width: 200,
+                                                                    padding:
+                                                                        getPadding(
+                                                                            left:
+                                                                                0),
+                                                                    child: Text(
+                                                                        attributes[index]
+                                                                            .productValue!,
+                                                                        overflow:
+                                                                            TextOverflow
+                                                                                .ellipsis,
+                                                                        textAlign:
+                                                                            TextAlign
+                                                                                .left,
+                                                                        style: AppStyle
+                                                                            .txtRobotoRegular15)),
+                                                              )
+                                                            ]));
+                                                  }),
+                                            ),
+                                            // Padding(
+                                            //     padding: getPadding(left: 8, top: 8),
+                                            //     child: Row(children: [
+                                            //       Text("lbl_brand".tr,
+                                            //           overflow: TextOverflow.ellipsis,
+                                            //           textAlign: TextAlign.left,
+                                            //           style: AppStyle
+                                            //               .txtRobotoRegular10Bluegray900),
+                                            //       Padding(
+                                            //           padding: getPadding(left: 84),
+                                            //           child: Text(productlist.brandName,
+                                            //               overflow: TextOverflow.ellipsis,
+                                            //               textAlign: TextAlign.left,
+                                            //               style: AppStyle
+                                            //                   .txtRobotoRegular10Bluegray900))
+                                            //     ])),
+                                            // Padding(
+                                            //     padding: getPadding(
+                                            //         left: 8, top: 8, right: 92),
+                                            //     child: Row(
+                                            //         crossAxisAlignment:
+                                            //         CrossAxisAlignment.start,
+                                            //         children: [
+                                            //           Padding(
+                                            //               padding: getPadding(bottom: 15),
+                                            //               child: Text("lbl_dimension".tr,
+                                            //                   overflow:
+                                            //                   TextOverflow.ellipsis,
+                                            //                   textAlign: TextAlign.left,
+                                            //                   style: AppStyle
+                                            //                       .txtRobotoRegular10Bluegray900)),
+                                            //           Container(
+                                            //               width: getHorizontalSize(159),
+                                            //               margin: getMargin(left: 63),
+                                            //               child: Text(
+                                            //                   "msg_h_37_5_w_62".tr,
+                                            //                   maxLines: null,
+                                            //                   textAlign: TextAlign.left,
+                                            //                   style: AppStyle
+                                            //                       .txtRobotoRegular10Bluegray9001))
+                                            //         ])),
+                                            // Padding(
+                                            //     padding: getPadding(left: 8, top: 6),
+                                            //     child: Row(children: [
+                                            //       Text("lbl_weight".tr,
+                                            //           overflow: TextOverflow.ellipsis,
+                                            //           textAlign: TextAlign.left,
+                                            //           style: AppStyle
+                                            //               .txtRobotoRegular10Bluegray900),
+                                            //       Padding(
+                                            //           padding: getPadding(left: 79),
+                                            //           child: Text("lbl_46_2_kg".tr,
+                                            //               overflow: TextOverflow.ellipsis,
+                                            //               textAlign: TextAlign.left,
+                                            //               style: AppStyle
+                                            //                   .txtRobotoRegular10Bluegray900))
+                                            //     ])),
+                                            // Padding(
+                                            //     padding: getPadding(left: 8, top: 9),
+                                            //     child: Row(children: [
+                                            //       Text("lbl_warrenty".tr,
+                                            //           overflow: TextOverflow.ellipsis,
+                                            //           textAlign: TextAlign.left,
+                                            //           style: AppStyle
+                                            //               .txtRobotoRegular10Bluegray900),
+                                            //       Padding(
+                                            //           padding: getPadding(left: 70),
+                                            //           child: Text(
+                                            //               "msg_12_months_warrenty2".tr,
+                                            //               overflow: TextOverflow.ellipsis,
+                                            //               textAlign: TextAlign.left,
+                                            //               style: AppStyle
+                                            //                   .txtRobotoRegular10Bluegray900))
+                                            //     ])),
+                                            // Padding(
+                                            //     padding: getPadding(left: 8, top: 8),
+                                            //     child: Row(children: [
+                                            //       Text("lbl_assembly".tr,
+                                            //           overflow: TextOverflow.ellipsis,
+                                            //           textAlign: TextAlign.left,
+                                            //           style: AppStyle
+                                            //               .txtRobotoRegular10Bluegray900),
+                                            //       Padding(
+                                            //           padding: getPadding(left: 66),
+                                            //           child: Text(
+                                            //               "msg_carpenter_assembly".tr,
+                                            //               overflow: TextOverflow.ellipsis,
+                                            //               textAlign: TextAlign.left,
+                                            //               style: AppStyle
+                                            //                   .txtRobotoRegular10Bluegray900))
+                                            //     ])),
+                                            // Padding(
+                                            //     padding: getPadding(left: 8, top: 7),
+                                            //     child: Row(children: [
+                                            //       Padding(
+                                            //           padding: getPadding(top: 1),
+                                            //           child: Text(
+                                            //               "msg_primary_material".tr,
+                                            //               overflow: TextOverflow.ellipsis,
+                                            //               textAlign: TextAlign.left,
+                                            //               style: AppStyle
+                                            //                   .txtRobotoRegular10Bluegray900)),
+                                            //       Padding(
+                                            //           padding:
+                                            //           getPadding(left: 37, bottom: 1),
+                                            //           child: Text("lbl_fabric".tr,
+                                            //               overflow: TextOverflow.ellipsis,
+                                            //               textAlign: TextAlign.left,
+                                            //               style: AppStyle
+                                            //                   .txtRobotoRegular10Bluegray900))
+                                            //     ])),
+                                            // Padding(
+                                            //     padding: getPadding(left: 8, top: 9),
+                                            //     child: Row(children: [
+                                            //       Text("lbl_room_type".tr,
+                                            //           overflow: TextOverflow.ellipsis,
+                                            //           textAlign: TextAlign.left,
+                                            //           style: AppStyle
+                                            //               .txtRobotoRegular10Bluegray900),
+                                            //       Padding(
+                                            //           padding: getPadding(left: 60),
+                                            //           child: Text("lbl_living_room".tr,
+                                            //               overflow: TextOverflow.ellipsis,
+                                            //               textAlign: TextAlign.left,
+                                            //               style: AppStyle
+                                            //                   .txtRobotoRegular10Bluegray900))
+                                            //     ])),
+                                            // Padding(
+                                            //     padding: getPadding(left: 8, top: 7),
+                                            //     child: Row(children: [
+                                            //       Text("lbl_seating_height".tr,
+                                            //           overflow: TextOverflow.ellipsis,
+                                            //           textAlign: TextAlign.left,
+                                            //           style: AppStyle
+                                            //               .txtRobotoRegular10Bluegray900),
+                                            //       Padding(
+                                            //           padding: getPadding(left: 45),
+                                            //           child: Text("lbl_18".tr,
+                                            //               overflow: TextOverflow.ellipsis,
+                                            //               textAlign: TextAlign.left,
+                                            //               style: AppStyle
+                                            //                   .txtRobotoRegular10Bluegray900))
+                                            //     ])),
+                                            // Padding(
+                                            //     padding: getPadding(left: 8, top: 8),
+                                            //     child: Row(children: [
+                                            //       Text("lbl_color".tr,
+                                            //           overflow: TextOverflow.ellipsis,
+                                            //           textAlign: TextAlign.left,
+                                            //           style: AppStyle
+                                            //               .txtRobotoRegular10Bluegray900),
+                                            //       Padding(
+                                            //           padding: getPadding(left: 86),
+                                            //           child: Text("lbl_black".tr,
+                                            //               overflow: TextOverflow.ellipsis,
+                                            //               textAlign: TextAlign.left,
+                                            //               style: AppStyle
+                                            //                   .txtRobotoRegular10Bluegray900))
+                                            //     ])),
+                                            // Padding(
+                                            //     padding: getPadding(
+                                            //         left: 8, top: 9, bottom: 5),
+                                            //     child: Text("lbl_sku".tr,
+                                            //         overflow: TextOverflow.ellipsis,
+                                            //         textAlign: TextAlign.left,
+                                            //         style: AppStyle
+                                            //             .txtRobotoRegular10Bluegray900))
+                                          ]))
+                                  : Container(),
                               Container(
-                                // height: getVerticalSize(442),
+                                  // height: getVerticalSize(442),
                                   width: double.maxFinite,
                                   margin: getMargin(top: 10),
                                   child: Stack(
@@ -1412,189 +1525,225 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                         Align(
                                             alignment: Alignment.topCenter,
                                             child: Container(
-                                                padding:
-                                                getPadding(top: 9, bottom: 9),
+                                                padding: getPadding(
+                                                    top: 9, bottom: 9),
                                                 decoration:
-                                                AppDecoration.fillPurple50,
+                                                    AppDecoration.fillPurple50,
                                                 child: Column(
-                                                    mainAxisSize: MainAxisSize.min,
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment.start,
+                                                        MainAxisAlignment.start,
                                                     children: [
-                                                      Text("lbl_similar_prodcut".tr,
-                                                          overflow:
-                                                          TextOverflow.ellipsis,
-                                                          textAlign: TextAlign.left,
+                                                      Text(
+                                                          "lbl_similar_prodcut"
+                                                              .tr,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          textAlign:
+                                                              TextAlign.left,
                                                           style: AppStyle
                                                               .txtRobotoMedium13
                                                               .copyWith(
-                                                              letterSpacing:
-                                                              getHorizontalSize(
-                                                                  0.26))),
+                                                                  letterSpacing:
+                                                                      getHorizontalSize(
+                                                                          0.26))),
                                                       Container(
                                                           height:
-                                                          getVerticalSize(130),
-                                                          child: ListView.separated(
-                                                              padding: getPadding(
-                                                                  left: 16, top: 11),
-                                                              scrollDirection:
-                                                              Axis.horizontal,
-                                                              separatorBuilder:
-                                                                  (context, index) {
-                                                                return SizedBox(
-                                                                    height:
-                                                                    getVerticalSize(
-                                                                        10));
-                                                              },
-                                                              itemCount: similarProduct.length,
-                                                              // controller
-                                                              //     .productDetailScrollOneModelObj
-                                                              //     .value
-                                                              //     .listpriceItemList
-                                                              //     .length,
-                                                              itemBuilder:
-                                                                  (context, index) {
-                                                                // ListpriceItemModel
-                                                                // model =
-                                                                // controller
-                                                                //     .productDetailScrollOneModelObj
-                                                                //     .value
-                                                                //     .listpriceItemList[index];
-                                                                return GestureDetector(
-                                                                  onTap:(){
-                                                                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                                                      builder: (context) => ProductDetailScreen1(similarProduct[index].id!),
-                                                                    ));
-                                                                  },
-                                                                  child: FittedBox(
-                                                                    fit: BoxFit.fill,
-                                                                    child: Container(
-                                                                      width: 90.w,
-                                                                      margin: getMargin(
-                                                                        right: 10,
-                                                                      ),
-                                                                      padding:
+                                                              getVerticalSize(
+                                                                  130),
+                                                          child: ListView
+                                                              .separated(
+                                                                  padding:
                                                                       getPadding(
-                                                                        left: 10,
-                                                                        top: 4,
-                                                                        right: 10,
-                                                                        bottom: 4,
+                                                                          left:
+                                                                              16,
+                                                                          top:
+                                                                              11),
+                                                                  scrollDirection:
+                                                                      Axis
+                                                                          .horizontal,
+                                                                  separatorBuilder:
+                                                                      (context,
+                                                                          index) {
+                                                                    return SizedBox(
+                                                                        height:
+                                                                            getVerticalSize(10));
+                                                                  },
+                                                                  itemCount:
+                                                                      similarProduct
+                                                                          .length,
+                                                                  // controller
+                                                                  //     .productDetailScrollOneModelObj
+                                                                  //     .value
+                                                                  //     .listpriceItemList
+                                                                  //     .length,
+                                                                  itemBuilder:
+                                                                      (context,
+                                                                          index) {
+                                                                    // ListpriceItemModel
+                                                                    // model =
+                                                                    // controller
+                                                                    //     .productDetailScrollOneModelObj
+                                                                    //     .value
+                                                                    //     .listpriceItemList[index];
+                                                                    return GestureDetector(
+                                                                      onTap:
+                                                                          () {
+                                                                        Navigator.of(context)
+                                                                            .pushReplacement(MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                              ProductDetailScreen1(similarProduct[index].id!),
+                                                                        ));
+                                                                      },
+                                                                      child:
+                                                                          FittedBox(
+                                                                        fit: BoxFit
+                                                                            .fill,
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              90.w,
+                                                                          margin:
+                                                                              getMargin(
+                                                                            right:
+                                                                                10,
+                                                                          ),
+                                                                          padding:
+                                                                              getPadding(
+                                                                            left:
+                                                                                10,
+                                                                            top:
+                                                                                4,
+                                                                            right:
+                                                                                10,
+                                                                            bottom:
+                                                                                4,
+                                                                          ),
+                                                                          decoration:
+                                                                              AppDecoration.fillWhiteA700,
+                                                                          child:
+                                                                              Column(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.end,
+                                                                            children: [
+                                                                              CustomImageView(
+                                                                                url: similarProduct[index].image!,
+                                                                                height: getSize(
+                                                                                  130,
+                                                                                ),
+                                                                                width: getSize(
+                                                                                  300,
+                                                                                ),
+                                                                                margin: getMargin(
+                                                                                  top: 5,
+                                                                                ),
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: getPadding(
+                                                                                  top: 5,
+                                                                                ),
+                                                                                child: Text(
+                                                                                  similarProduct[index].name!,
+                                                                                  overflow: TextOverflow.ellipsis,
+                                                                                  textAlign: TextAlign.left,
+                                                                                  maxLines: 1,
+                                                                                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: ColorConstant.black900, fontFamily: 'Roboto'),
+                                                                                ),
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: getPadding(
+                                                                                  top: 5,
+                                                                                ),
+                                                                                child: Text(
+                                                                                  similarProduct[index].description!,
+                                                                                  overflow: TextOverflow.ellipsis,
+                                                                                  textAlign: TextAlign.left,
+                                                                                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400, color: ColorConstant.black900, fontFamily: 'Roboto'),
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
                                                                       ),
-                                                                      decoration:
-                                                                      AppDecoration
-                                                                          .fillWhiteA700,
-                                                                      child: Column(
-                                                                        mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .end,
-                                                                        children: [
-                                                                          CustomImageView(
-                                                                            url:
-                                                                            similarProduct[index].image!,
-                                                                            height:
-                                                                            getSize(
-                                                                              130,
-                                                                            ),
-                                                                            width:
-                                                                            getSize(
-                                                                              300,
-                                                                            ),
-                                                                            margin:
-                                                                            getMargin(
-                                                                              top: 5,
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: getPadding(
-                                                                              top: 5,
-                                                                            ),
-                                                                            child: Text(
-                                                                              similarProduct[index].name!,
-                                                                              overflow: TextOverflow.ellipsis,
-                                                                              textAlign: TextAlign.left,
-                                                                              maxLines: 1,
-                                                                              style: TextStyle(
-                                                                                  fontSize: 15,
-                                                                                  fontWeight:
-                                                                                  FontWeight.w400,
-                                                                                  color: ColorConstant
-                                                                                      .black900,
-                                                                                  fontFamily: 'Roboto'),
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: getPadding(
-                                                                              top: 5,
-                                                                            ),
-                                                                            child: Text(
-                                                                              similarProduct[index].description!,
-                                                                              overflow: TextOverflow.ellipsis,
-                                                                              textAlign: TextAlign.left,
-                                                                              style: TextStyle(
-                                                                                  fontSize: 13,
-                                                                                  fontWeight:
-                                                                                  FontWeight.w400,
-                                                                                  color: ColorConstant
-                                                                                      .black900,
-                                                                                  fontFamily: 'Roboto'),
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                                // ListpriceItemWidget(model);
-                                                              })),
+                                                                    );
+                                                                    // ListpriceItemWidget(model);
+                                                                  })),
                                                       CustomButton(
-                                                          onTap: (){
+                                                          onTap: () {
                                                             setState(() {
-                                                              expanded = !expanded;
+                                                              expanded =
+                                                                  !expanded;
                                                             });
                                                           },
-                                                          height: getVerticalSize(30),
-                                                          text: " Additional Info",
+                                                          height:
+                                                              getVerticalSize(
+                                                                  30),
+                                                          text:
+                                                              " Additional Info",
                                                           margin: getMargin(
                                                               left: 15,
                                                               top: 15,
                                                               right: 14),
-                                                          shape: ButtonShape.Square),
+                                                          shape: ButtonShape
+                                                              .Square),
                                                       AnimatedContainer(
-                                                        padding: EdgeInsets.all(20),
-                                                        duration: const Duration(milliseconds: 200),
-                                                        height: expanded ? 250 : 0,
-                                                        width: expanded?100.w :0,
+                                                        padding:
+                                                            EdgeInsets.all(20),
+                                                        duration:
+                                                            const Duration(
+                                                                milliseconds:
+                                                                    200),
+                                                        height:
+                                                            expanded ? 250 : 0,
+                                                        width: expanded
+                                                            ? 100.w
+                                                            : 0,
                                                         child: Container(
-                                                          padding: EdgeInsets.all(20),
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  20),
                                                           decoration: BoxDecoration(
-                                                              color: Color(0xffF7F8F9),
-                                                              borderRadius:
-                                                              BorderRadius.all(Radius.circular(20)),
+                                                              color: Color(
+                                                                  0xffF7F8F9),
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          20)),
                                                               boxShadow: const [
                                                                 BoxShadow(
-                                                                  color: Colors.grey,
-                                                                  offset: Offset(0.0, 1.0),
-                                                                  blurRadius: 6.0,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                  offset:
+                                                                      Offset(
+                                                                          0.0,
+                                                                          1.0),
+                                                                  blurRadius:
+                                                                      6.0,
                                                                 ),
                                                               ]),
-                                                          child: SingleChildScrollView(
+                                                          child:
+                                                              SingleChildScrollView(
                                                             child: Column(
                                                               children: <Widget>[
                                                                 Padding(
-                                                                    padding: getPadding(left: 0, top: 8),
+                                                                    padding: getPadding(
+                                                                        left: 0,
+                                                                        top: 8),
                                                                     child: Row(
-                                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment
+                                                                                .start,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.spaceAround,
                                                                         children: [
                                                                           FittedBox(
-                                                                            fit:BoxFit.fill,
-                                                                            child: Container(
-                                                                              width:75.w,
-                                                                              child: Text(productlist!.additionalInformation!=""?productlist!.additionalInformation!:"No Data Found",
-                                                                                  overflow: TextOverflow.ellipsis,
-                                                                                  textAlign: TextAlign.left,
-                                                                                  style: AppStyle
-                                                                                      .txtRobotoRegular15),
+                                                                            fit:
+                                                                                BoxFit.fill,
+                                                                            child:
+                                                                                Container(
+                                                                              width: 75.w,
+                                                                              child: Text(productlist!.additionalInformation != "" ? productlist!.additionalInformation! : "No Data Found", overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular15),
                                                                             ),
                                                                           ),
                                                                           // FittedBox(
@@ -1714,55 +1863,80 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                         ),
                                                       ),
                                                       CustomButton(
-                                                          onTap: (){
+                                                          onTap: () {
                                                             setState(() {
-                                                              expanded1 = !expanded1;
+                                                              expanded1 =
+                                                                  !expanded1;
                                                             });
                                                           },
-                                                          height: getVerticalSize(30),
+                                                          height:
+                                                              getVerticalSize(
+                                                                  30),
                                                           text:
-                                                          "  Customer Redressal",
+                                                              "  Customer Redressal",
                                                           margin: getMargin(
                                                               left: 15,
                                                               top: 10,
                                                               right: 14),
-                                                          shape: ButtonShape.Square),
+                                                          shape: ButtonShape
+                                                              .Square),
                                                       AnimatedContainer(
-                                                        padding: EdgeInsets.all(20),
-                                                        duration: const Duration(milliseconds: 200),
-                                                        height: expanded1 ? 250 : 0,
-                                                        width: expanded1?100.w :0,
+                                                        padding:
+                                                            EdgeInsets.all(20),
+                                                        duration:
+                                                            const Duration(
+                                                                milliseconds:
+                                                                    200),
+                                                        height:
+                                                            expanded1 ? 250 : 0,
+                                                        width: expanded1
+                                                            ? 100.w
+                                                            : 0,
                                                         child: Container(
-                                                          padding: EdgeInsets.all(20),
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  20),
                                                           decoration: BoxDecoration(
-                                                              color: Color(0xffF7F8F9),
-                                                              borderRadius:
-                                                              BorderRadius.all(Radius.circular(20)),
+                                                              color: Color(
+                                                                  0xffF7F8F9),
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          20)),
                                                               boxShadow: const [
                                                                 BoxShadow(
-                                                                  color: Colors.grey,
-                                                                  offset: Offset(0.0, 1.0),
-                                                                  blurRadius: 6.0,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                  offset:
+                                                                      Offset(
+                                                                          0.0,
+                                                                          1.0),
+                                                                  blurRadius:
+                                                                      6.0,
                                                                 ),
                                                               ]),
-                                                          child: SingleChildScrollView(
+                                                          child:
+                                                              SingleChildScrollView(
                                                             child: Column(
                                                               children: <Widget>[
                                                                 Padding(
-                                                                    padding: getPadding(left: 0, top: 8),
+                                                                    padding: getPadding(
+                                                                        left: 0,
+                                                                        top: 8),
                                                                     child: Row(
-                                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment
+                                                                                .start,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.spaceAround,
                                                                         children: [
                                                                           FittedBox(
-                                                                            fit:BoxFit.fill,
-                                                                            child: Container(
-                                                                              width:75.w,
-                                                                              child: Text(productlist!.customerRedressal!=""?productlist!.customerRedressal!:"No Data Found",
-                                                                                  overflow: TextOverflow.ellipsis,
-                                                                                  textAlign: TextAlign.left,
-                                                                                  style: AppStyle
-                                                                                      .txtRobotoRegular15),
+                                                                            fit:
+                                                                                BoxFit.fill,
+                                                                            child:
+                                                                                Container(
+                                                                              width: 75.w,
+                                                                              child: Text(productlist!.customerRedressal != "" ? productlist!.customerRedressal! : "No Data Found", overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular15),
                                                                             ),
                                                                           ),
                                                                         ])),
@@ -1773,54 +1947,80 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                         ),
                                                       ),
                                                       CustomButton(
-                                                          onTap: (){
+                                                          onTap: () {
                                                             setState(() {
-                                                              expanded2= !expanded2;
+                                                              expanded2 =
+                                                                  !expanded2;
                                                             });
                                                           },
-                                                          height: getVerticalSize(30),
-                                                          text: " Merchant Info",
+                                                          height:
+                                                              getVerticalSize(
+                                                                  30),
+                                                          text:
+                                                              " Merchant Info",
                                                           margin: getMargin(
                                                               left: 15,
                                                               top: 10,
                                                               right: 14),
-                                                          shape: ButtonShape.Square),
+                                                          shape: ButtonShape
+                                                              .Square),
                                                       AnimatedContainer(
-                                                        padding: EdgeInsets.all(20),
-                                                        duration: const Duration(milliseconds: 200),
-                                                        height: expanded2 ? 250 : 0,
-                                                        width: expanded2?100.w :0,
+                                                        padding:
+                                                            EdgeInsets.all(20),
+                                                        duration:
+                                                            const Duration(
+                                                                milliseconds:
+                                                                    200),
+                                                        height:
+                                                            expanded2 ? 250 : 0,
+                                                        width: expanded2
+                                                            ? 100.w
+                                                            : 0,
                                                         child: Container(
-                                                          padding: EdgeInsets.all(20),
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  20),
                                                           decoration: BoxDecoration(
-                                                              color: Color(0xffF7F8F9),
-                                                              borderRadius:
-                                                              BorderRadius.all(Radius.circular(20)),
+                                                              color: Color(
+                                                                  0xffF7F8F9),
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          20)),
                                                               boxShadow: const [
                                                                 BoxShadow(
-                                                                  color: Colors.grey,
-                                                                  offset: Offset(0.0, 1.0),
-                                                                  blurRadius: 6.0,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                  offset:
+                                                                      Offset(
+                                                                          0.0,
+                                                                          1.0),
+                                                                  blurRadius:
+                                                                      6.0,
                                                                 ),
                                                               ]),
-                                                          child:SingleChildScrollView(
+                                                          child:
+                                                              SingleChildScrollView(
                                                             child: Column(
                                                               children: <Widget>[
                                                                 Padding(
-                                                                    padding: getPadding(left: 0, top: 8),
+                                                                    padding: getPadding(
+                                                                        left: 0,
+                                                                        top: 8),
                                                                     child: Row(
-                                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment
+                                                                                .start,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.spaceAround,
                                                                         children: [
                                                                           FittedBox(
-                                                                            fit:BoxFit.fill,
-                                                                            child: Container(
-                                                                              width:75.w,
-                                                                              child: Text(productlist!.marchantInfo!=""?productlist!.marchantInfo!:"No Data Found",
-                                                                                  overflow: TextOverflow.ellipsis,
-                                                                                  textAlign: TextAlign.left,
-                                                                                  style: AppStyle
-                                                                                      .txtRobotoRegular15),
+                                                                            fit:
+                                                                                BoxFit.fill,
+                                                                            child:
+                                                                                Container(
+                                                                              width: 75.w,
+                                                                              child: Text(productlist!.marchantInfo != "" ? productlist!.marchantInfo! : "No Data Found", overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular15),
                                                                             ),
                                                                           ),
                                                                         ])),
@@ -1831,55 +2031,80 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                         ),
                                                       ),
                                                       CustomButton(
-                                                          onTap: (){
+                                                          onTap: () {
                                                             setState(() {
-                                                              expanded3= !expanded3;
+                                                              expanded3 =
+                                                                  !expanded3;
                                                             });
                                                           },
-                                                          height: getVerticalSize(30),
+                                                          height:
+                                                              getVerticalSize(
+                                                                  30),
                                                           text:
-                                                          "  Returns & Cancellation",
+                                                              "  Returns & Cancellation",
                                                           margin: getMargin(
                                                               left: 15,
                                                               top: 10,
                                                               right: 14),
-                                                          shape: ButtonShape.Square),
+                                                          shape: ButtonShape
+                                                              .Square),
                                                       AnimatedContainer(
-                                                        padding: EdgeInsets.all(20),
-                                                        duration: const Duration(milliseconds: 200),
-                                                        height: expanded3 ? 250 : 0,
-                                                        width: expanded3?100.w :0,
+                                                        padding:
+                                                            EdgeInsets.all(20),
+                                                        duration:
+                                                            const Duration(
+                                                                milliseconds:
+                                                                    200),
+                                                        height:
+                                                            expanded3 ? 250 : 0,
+                                                        width: expanded3
+                                                            ? 100.w
+                                                            : 0,
                                                         child: Container(
-                                                          padding: EdgeInsets.all(20),
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  20),
                                                           decoration: BoxDecoration(
-                                                              color: Color(0xffF7F8F9),
-                                                              borderRadius:
-                                                              BorderRadius.all(Radius.circular(20)),
+                                                              color: Color(
+                                                                  0xffF7F8F9),
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          20)),
                                                               boxShadow: const [
                                                                 BoxShadow(
-                                                                  color: Colors.grey,
-                                                                  offset: Offset(0.0, 1.0),
-                                                                  blurRadius: 6.0,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                  offset:
+                                                                      Offset(
+                                                                          0.0,
+                                                                          1.0),
+                                                                  blurRadius:
+                                                                      6.0,
                                                                 ),
                                                               ]),
-                                                          child: SingleChildScrollView(
+                                                          child:
+                                                              SingleChildScrollView(
                                                             child: Column(
                                                               children: <Widget>[
                                                                 Padding(
-                                                                    padding: getPadding(left: 0, top: 8),
+                                                                    padding: getPadding(
+                                                                        left: 0,
+                                                                        top: 8),
                                                                     child: Row(
-                                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment
+                                                                                .start,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.spaceAround,
                                                                         children: [
                                                                           FittedBox(
-                                                                            fit:BoxFit.fill,
-                                                                            child: Container(
-                                                                              width:75.w,
-                                                                              child: Text(productlist!.returnCancellation!=""?productlist!.returnCancellation!:"No Data Found",
-                                                                                  overflow: TextOverflow.ellipsis,
-                                                                                  textAlign: TextAlign.left,
-                                                                                  style: AppStyle
-                                                                                      .txtRobotoRegular15),
+                                                                            fit:
+                                                                                BoxFit.fill,
+                                                                            child:
+                                                                                Container(
+                                                                              width: 75.w,
+                                                                              child: Text(productlist!.returnCancellation != "" ? productlist!.returnCancellation! : "No Data Found", overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular15),
                                                                             ),
                                                                           ),
                                                                         ])),
@@ -1890,56 +2115,81 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                         ),
                                                       ),
                                                       CustomButton(
-                                                          onTap: (){
+                                                          onTap: () {
                                                             setState(() {
-                                                              expanded4= !expanded4;
+                                                              expanded4 =
+                                                                  !expanded4;
                                                             });
                                                           },
-                                                          height: getVerticalSize(30),
+                                                          height:
+                                                              getVerticalSize(
+                                                                  30),
                                                           text:
-                                                          "  Warranty Installation",
+                                                              "  Warranty Installation",
                                                           margin: getMargin(
                                                               left: 15,
                                                               top: 10,
                                                               right: 14,
                                                               bottom: 5),
-                                                          shape: ButtonShape.Square),
+                                                          shape: ButtonShape
+                                                              .Square),
                                                       AnimatedContainer(
-                                                        padding: EdgeInsets.all(20),
-                                                        duration: const Duration(milliseconds: 200),
-                                                        height: expanded4 ? 250 : 0,
-                                                        width: expanded4?100.w :0,
+                                                        padding:
+                                                            EdgeInsets.all(20),
+                                                        duration:
+                                                            const Duration(
+                                                                milliseconds:
+                                                                    200),
+                                                        height:
+                                                            expanded4 ? 250 : 0,
+                                                        width: expanded4
+                                                            ? 100.w
+                                                            : 0,
                                                         child: Container(
-                                                          padding: EdgeInsets.all(20),
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  20),
                                                           decoration: BoxDecoration(
-                                                              color: Color(0xffF7F8F9),
-                                                              borderRadius:
-                                                              BorderRadius.all(Radius.circular(20)),
+                                                              color: Color(
+                                                                  0xffF7F8F9),
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          20)),
                                                               boxShadow: const [
                                                                 BoxShadow(
-                                                                  color: Colors.grey,
-                                                                  offset: Offset(0.0, 1.0),
-                                                                  blurRadius: 6.0,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                  offset:
+                                                                      Offset(
+                                                                          0.0,
+                                                                          1.0),
+                                                                  blurRadius:
+                                                                      6.0,
                                                                 ),
                                                               ]),
-                                                          child: SingleChildScrollView(
+                                                          child:
+                                                              SingleChildScrollView(
                                                             child: Column(
                                                               children: <Widget>[
                                                                 Padding(
-                                                                    padding: getPadding(left: 0, top: 8),
+                                                                    padding: getPadding(
+                                                                        left: 0,
+                                                                        top: 8),
                                                                     child: Row(
-                                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment
+                                                                                .start,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.spaceAround,
                                                                         children: [
                                                                           FittedBox(
-                                                                            fit:BoxFit.fill,
-                                                                            child: Container(
-                                                                              width:75.w,
-                                                                              child: Text(productlist!.returnCancellation!=""?productlist!.returnCancellation!:"No Data Found",
-                                                                                  overflow: TextOverflow.ellipsis,
-                                                                                  textAlign: TextAlign.left,
-                                                                                  style: AppStyle
-                                                                                      .txtRobotoRegular15),
+                                                                            fit:
+                                                                                BoxFit.fill,
+                                                                            child:
+                                                                                Container(
+                                                                              width: 75.w,
+                                                                              child: Text(productlist!.returnCancellation != "" ? productlist!.returnCancellation! : "No Data Found", overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular15),
                                                                             ),
                                                                           ),
                                                                         ])),
@@ -1950,87 +2200,71 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                         ),
                                                       ),
                                                       Container(
-                                                        height: getVerticalSize(200),
-                                                        decoration: AppDecoration
-                                                            .fillWhiteA700,
+                                                        height: getVerticalSize(
+                                                            200),
+                                                        decoration:
+                                                            AppDecoration
+                                                                .fillWhiteA700,
                                                         child: Column(
                                                           mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
+                                                              MainAxisAlignment
+                                                                  .center,
                                                           children: [
                                                             Padding(
-                                                                padding: getPadding(
-                                                                    top: 11),
+                                                                padding:
+                                                                    getPadding(
+                                                                        top:
+                                                                            11),
                                                                 child: Text(
                                                                     "msg_more_from_brand"
                                                                         .tr,
                                                                     overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
+                                                                        TextOverflow
+                                                                            .ellipsis,
                                                                     textAlign:
-                                                                    TextAlign
-                                                                        .left,
+                                                                        TextAlign
+                                                                            .left,
                                                                     style: AppStyle
                                                                         .txtRobotoMedium13
                                                                         .copyWith(
-                                                                        letterSpacing:
-                                                                        getHorizontalSize(
-                                                                            0.26)))),
+                                                                            letterSpacing:
+                                                                                getHorizontalSize(0.26)))),
                                                             Flexible(
-                                                              child: ListView.builder(
-                                                                  itemCount: brandProduct.length,
-                                                                  scrollDirection:
-                                                                  Axis.horizontal,
-                                                                  itemBuilder:
-                                                                      (context,
-                                                                      index) {
-                                                                    return GestureDetector(
-                                                                      onTap:(){
-                                                                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                                                          builder: (context) => ProductDetailScreen1(brandProduct[index].id!),
-                                                                        ));
-                                                                      },
-                                                                      child: SingleChildScrollView(
-                                                                          padding:
-                                                                          getPadding(
-                                                                              left:
-                                                                              15,
-                                                                              top:
-                                                                              9),
-                                                                          child: Column(
-                                                                            children: [
-                                                                              CustomImageView(
-                                                                                  url: brandProduct[index].image!,
-                                                                                  height: getVerticalSize(
-                                                                                      124),
-                                                                                  width:
-                                                                                  getHorizontalSize(249)),
-                                                                              SizedBox(
-                                                                                height:
-                                                                                4,
-                                                                              ),
-                                                                              Row(
-                                                                                  mainAxisAlignment: MainAxisAlignment
-                                                                                      .center,
-                                                                                  crossAxisAlignment:
-                                                                                  CrossAxisAlignment.start,
-                                                                                  children: [
-                                                                                    Container(
-                                                                                        width: getHorizontalSize(154),
-                                                                                        child: Text(brandProduct[index].name!, maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular14Black900)),
-                                                                                    CustomImageView(
-                                                                                        svgPath: ImageConstant.imgCut,
-                                                                                        height: getVerticalSize(11),
-                                                                                        width: getHorizontalSize(7),
-                                                                                        margin: getMargin(left: 47, top: 3, bottom: 16)),
-                                                                                    Padding(
-                                                                                        padding: getPadding(left: 4, top: 3, bottom: 12),
-                                                                                        child: Text(brandProduct[index].salePrice!, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium12Purple900)),
+                                                              child: ListView
+                                                                  .builder(
+                                                                      itemCount:
+                                                                          brandProduct
+                                                                              .length,
+                                                                      scrollDirection:
+                                                                          Axis
+                                                                              .horizontal,
+                                                                      itemBuilder:
+                                                                          (context,
+                                                                              index) {
+                                                                        return GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                                                              builder: (context) => ProductDetailScreen1(brandProduct[index].id!),
+                                                                            ));
+                                                                          },
+                                                                          child: SingleChildScrollView(
+                                                                              padding: getPadding(left: 15, top: 9),
+                                                                              child: Column(
+                                                                                children: [
+                                                                                  CustomImageView(url: brandProduct[index].image!, height: getVerticalSize(124), width: getHorizontalSize(249)),
+                                                                                  SizedBox(
+                                                                                    height: 4,
+                                                                                  ),
+                                                                                  Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                                                                    Container(width: getHorizontalSize(154), child: Text(brandProduct[index].name!, maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtRobotoRegular14Black900)),
+                                                                                    CustomImageView(svgPath: ImageConstant.imgCut, height: getVerticalSize(11), width: getHorizontalSize(7), margin: getMargin(left: 47, top: 3, bottom: 16)),
+                                                                                    Padding(padding: getPadding(left: 4, top: 3, bottom: 12), child: Text(brandProduct[index].salePrice!, overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: AppStyle.txtRobotoMedium12Purple900)),
                                                                                   ])
-                                                                            ],
-                                                                          )),
-                                                                    );
-                                                                  }),
+                                                                                ],
+                                                                              )),
+                                                                        );
+                                                                      }),
                                                             )
                                                           ],
                                                         ),
@@ -2044,14 +2278,16 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                           top: 0,
                                                         ),
                                                         child: Stack(
-                                                          alignment:
-                                                          Alignment.topCenter,
+                                                          alignment: Alignment
+                                                              .topCenter,
                                                           children: [
                                                             Align(
                                                               alignment:
-                                                              Alignment.topCenter,
+                                                                  Alignment
+                                                                      .topCenter,
                                                               child: Container(
-                                                                padding: getPadding(
+                                                                padding:
+                                                                    getPadding(
                                                                   left: 59,
                                                                   top: 35,
                                                                   right: 59,
@@ -2060,26 +2296,25 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                                 // decoration: AppDecoration.fillGray5001,
                                                                 child: Column(
                                                                   mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .min,
+                                                                      MainAxisSize
+                                                                          .min,
                                                                   mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .end,
+                                                                      MainAxisAlignment
+                                                                          .end,
                                                                   children: [
                                                                     Padding(
                                                                       padding:
-                                                                      getPadding(
+                                                                          getPadding(
                                                                         top: 0,
                                                                       ),
-                                                                      child: Text(
+                                                                      child:
+                                                                          Text(
                                                                         "msg_like_what_you_see"
                                                                             .tr,
                                                                         overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
+                                                                            TextOverflow.ellipsis,
                                                                         textAlign:
-                                                                        TextAlign
-                                                                            .left,
+                                                                            TextAlign.left,
                                                                         style: AppStyle
                                                                             .txtRobotoRegular14Gray50001,
                                                                       ),
@@ -2087,38 +2322,38 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                                     Row(
                                                                       children: [
                                                                         SizedBox(
-                                                                          width: 13.w,
+                                                                          width:
+                                                                              13.w,
                                                                         ),
                                                                         IconButton(
                                                                             onPressed:
                                                                                 () {
                                                                               // _launchInBrowser(Uri.parse(facebook));
                                                                             },
-                                                                            icon: Image
-                                                                                .asset(
-                                                                                "assets/images/facebook.png")),
+                                                                            icon:
+                                                                                Image.asset("assets/images/facebook.png")),
                                                                         SizedBox(
-                                                                          width: 15,
+                                                                          width:
+                                                                              15,
                                                                         ),
                                                                         IconButton(
                                                                             onPressed:
                                                                                 () {
                                                                               // _launchInBrowser(Uri.parse(facebook));
                                                                             },
-                                                                            icon: Image
-                                                                                .asset(
-                                                                                "assets/images/instagram.png")),
+                                                                            icon:
+                                                                                Image.asset("assets/images/instagram.png")),
                                                                         SizedBox(
-                                                                          width: 15,
+                                                                          width:
+                                                                              15,
                                                                         ),
                                                                         IconButton(
                                                                             onPressed:
                                                                                 () {
                                                                               // _launchInBrowser(Uri.parse(facebook));
                                                                             },
-                                                                            icon: Image
-                                                                                .asset(
-                                                                                "assets/images/twitter.png")),
+                                                                            icon:
+                                                                                Image.asset("assets/images/twitter.png")),
                                                                       ],
                                                                     )
 
@@ -2140,17 +2375,18 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                                             ),
                                                             Align(
                                                               alignment:
-                                                              Alignment.topCenter,
+                                                                  Alignment
+                                                                      .topCenter,
                                                               child: SizedBox(
-                                                                width:
-                                                                double.maxFinite,
+                                                                width: double
+                                                                    .maxFinite,
                                                                 child: Divider(
                                                                   height:
-                                                                  getVerticalSize(
+                                                                      getVerticalSize(
                                                                     1,
                                                                   ),
                                                                   thickness:
-                                                                  getVerticalSize(
+                                                                      getVerticalSize(
                                                                     1,
                                                                   ),
                                                                 ),
@@ -2211,13 +2447,11 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                       color: ColorConstant.purple50))
                             ])),
                   );
-
                 } else if (!snapshot.hasData) {
                   return Container();
-                }else if (snapshot.hasError) {
+                } else if (snapshot.hasError) {
                   return Text("${snapshot.error}");
-                }
-                else {
+                } else {
                   return const Center(
                     heightFactor: 15,
                     child: CircularProgressIndicator(
@@ -2226,10 +2460,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                   );
                 }
               },
-            )
-
-
-        ));
+            )));
   }
 
   // Future<void> _launchInBrowser(Uri url) async {
@@ -2242,7 +2473,7 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
   // }
 
   static Widget documentViewer(String url, context) => SafeArea(
-      child: Scaffold(
+          child: Scaffold(
         appBar: AppBar(
           flexibleSpace: Container(
             decoration: const BoxDecoration(
@@ -2265,8 +2496,8 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
         ),
         backgroundColor: Colors.black,
         body: Container(
-          decoration: BoxDecoration (
-            gradient: LinearGradient (
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
               begin: Alignment(0.184, 1),
               end: Alignment(0.184, -1),
               colors: <Color>[Color(0xff000000), Color(0x00000000)],

@@ -23,7 +23,7 @@ class CustomCheckbox extends StatelessWidget {
 
   bool? value;
 
-  Function(bool) ?onChange;
+  Function(bool)? onChange;
 
   String? text;
 

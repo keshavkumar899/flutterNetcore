@@ -5,10 +5,12 @@ import 'package:smartech_appinbox/model/smt_appinbox_model.dart';
 
 class SMTVideoNotificationView extends StatefulWidget {
   final SMTAppInboxMessage inbox;
-  const SMTVideoNotificationView({Key? key, required this.inbox}) : super(key: key);
+  const SMTVideoNotificationView({Key? key, required this.inbox})
+      : super(key: key);
 
   @override
-  State<SMTVideoNotificationView> createState() => _SMTVideoNotificationViewState();
+  State<SMTVideoNotificationView> createState() =>
+      _SMTVideoNotificationViewState();
 }
 
 class _SMTVideoNotificationViewState extends State<SMTVideoNotificationView> {
@@ -33,14 +35,18 @@ class _SMTVideoNotificationViewState extends State<SMTVideoNotificationView> {
                   alignment: Alignment.centerRight,
                   child: Text(
                     widget.inbox.publishedDate!.getTimeAndDayCount(),
-                    style: TextStyle(fontSize: 12, color: AppColor.greyColorText, fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: AppColor.greyColorText,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 htmlText(widget.inbox.title),
-                if (widget.inbox.subtitle.toString() != "") htmlText(widget.inbox.subtitle),
+                if (widget.inbox.subtitle.toString() != "")
+                  htmlText(widget.inbox.subtitle),
                 htmlText(widget.inbox.body),
                 SizedBox(
                   height: 8,

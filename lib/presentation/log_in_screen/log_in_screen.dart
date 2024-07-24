@@ -29,10 +29,10 @@ class LogInScreen extends StatefulWidget {
 class _LogInScreenState extends State<LogInScreen> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController mobilenumberController = TextEditingController();
-  final RoundedLoadingButtonController _btnController = RoundedLoadingButtonController();
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
 
-  Future<LogInModel> postRequest(String mobileNumber
-      ) async {
+  Future<LogInModel> postRequest(String mobileNumber) async {
     var url = 'https://fabfurni.com/api/Auth/login';
     // var token = "HDJJHJHJHSJHDJAHDAD";
 
@@ -43,7 +43,6 @@ class _LogInScreenState extends State<LogInScreen> {
       "Accept-Encoding": "gzip, deflate, br",
       "Connection": "keep-alive"
     };
-
 
     dio.FormData formData = dio.FormData.fromMap({
       'mobile': mobileNumber,
@@ -91,7 +90,8 @@ class _LogInScreenState extends State<LogInScreen> {
         // print(user1.data);
         print(LogInModel.fromJson(jsonObject).data!.otps!);
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => OtpScreen(mobileNumber,LogInModel.fromJson(jsonObject).data!.otps!),
+          builder: (context) => OtpScreen(
+              mobileNumber, LogInModel.fromJson(jsonObject).data!.otps!),
         ));
       } else if (LogInModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -100,21 +100,22 @@ class _LogInScreenState extends State<LogInScreen> {
         setState(() {
           _btnController.error();
         });
-      }
-      else if (LogInModel.fromJson(jsonObject).data == null){
+      } else if (LogInModel.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('Server Error..Please try again after sometime', style: SafeGoogleFont(
-              'Poppins SemiBold',
-              // fontSize: 18 * ffem,
-              fontWeight: FontWeight.w400,
-              // height: 1.2575 * ffem / fem,
-              color: Colors.black,
-            ),),
+            content: Text(
+              'Server Error..Please try again after sometime',
+              style: SafeGoogleFont(
+                'Poppins SemiBold',
+                // fontSize: 18 * ffem,
+                fontWeight: FontWeight.w400,
+                // height: 1.2575 * ffem / fem,
+                color: Colors.black,
+              ),
+            ),
             backgroundColor: Colors.redAccent));
         setState(() {
           _btnController.error();
         });
-
       }
 
       // print(Logindata.fromJson(jsonObject).message);
@@ -131,39 +132,39 @@ class _LogInScreenState extends State<LogInScreen> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     mobilenumberController.dispose();
     super.dispose();
   }
 
   Future<bool> _onWillPop() async {
     return (await showDialog(
-      context: context,
-      builder: (context) => new AlertDialog(
-        elevation: 24,
-        backgroundColor: Colors.white,
-        shape:
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        title: new Text(
-          'Are you sure?',
-          style: TextStyle(fontWeight: FontWeight.w500),
-        ),
-        content: new Text('Do you want to exit the App',
-            style: TextStyle(fontWeight: FontWeight.w400)),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: new Text('No',
+          context: context,
+          builder: (context) => new AlertDialog(
+            elevation: 24,
+            backgroundColor: Colors.white,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+            title: new Text(
+              'Are you sure?',
+              style: TextStyle(fontWeight: FontWeight.w500),
+            ),
+            content: new Text('Do you want to exit the App',
                 style: TextStyle(fontWeight: FontWeight.w400)),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: new Text('No',
+                    style: TextStyle(fontWeight: FontWeight.w400)),
+              ),
+              TextButton(
+                onPressed: () => SystemNavigator.pop(),
+                child: new Text('Yes',
+                    style: TextStyle(fontWeight: FontWeight.w400)),
+              ),
+            ],
           ),
-          TextButton(
-            onPressed: () => SystemNavigator.pop(),
-            child: new Text('Yes',
-                style: TextStyle(fontWeight: FontWeight.w400)),
-          ),
-        ],
-      ),
-    )) ??
+        )) ??
         false;
   }
 
@@ -184,14 +185,14 @@ class _LogInScreenState extends State<LogInScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             InkWell(
-                              onTap: (){
+                              onTap: () {
                                 pushScreen(
                                   context,
                                   screen: landingPage1(),
                                   withNavBar:
-                                  false, // OPTIONAL VALUE. True by default.
+                                      false, // OPTIONAL VALUE. True by default.
                                   pageTransitionAnimation:
-                                  PageTransitionAnimation.cupertino,
+                                      PageTransitionAnimation.cupertino,
                                 );
                                 // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
                                 //     landingPage1()), (Route<dynamic> route) => false);
@@ -221,7 +222,8 @@ class _LogInScreenState extends State<LogInScreen> {
                                               margin:
                                                   getMargin(top: 1, bottom: 4),
                                               decoration: BoxDecoration(
-                                                  color: ColorConstant.purple900,
+                                                  color:
+                                                      ColorConstant.purple900,
                                                   borderRadius: BorderRadius.only(
                                                       bottomRight:
                                                           Radius.circular(
@@ -230,10 +232,11 @@ class _LogInScreenState extends State<LogInScreen> {
                                           Padding(
                                               padding: getPadding(left: 6),
                                               child: Text("lbl_log_in".tr,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   textAlign: TextAlign.left,
-                                                  style:
-                                                      AppStyle.txtRobotoMedium18))
+                                                  style: AppStyle
+                                                      .txtRobotoMedium18))
                                         ]))),
                             Align(
                                 alignment: Alignment.centerLeft,
@@ -252,7 +255,8 @@ class _LogInScreenState extends State<LogInScreen> {
                                 textInputAction: TextInputAction.done,
                                 textInputType: TextInputType.phone,
                                 suffix: Container(
-                                    margin: getMargin(left: 30, right: 14,bottom: 4),
+                                    margin: getMargin(
+                                        left: 30, right: 14, bottom: 4),
                                     // decoration: BoxDecoration(
                                     //     color: ColorConstant.purple900),
                                     child: CustomImageView(
@@ -274,22 +278,24 @@ class _LogInScreenState extends State<LogInScreen> {
                                 fontStyle: ButtonFontStyle.RobotoMedium14,
                                 onTap: onTapSendotp),
                             CustomButton(
-                              onTap: (){
-                                if(mobilenumberController.text.isEmpty){
-                                  Fluttertoast.showToast(
-                                      msg:"Please enter the mobile number",
-                                      toastLength: Toast.LENGTH_LONG,
-                                      gravity: ToastGravity.BOTTOM,
-                                      timeInSecForIosWeb: 3,
-                                      backgroundColor: Colors.red,
-                                      textColor: Colors.black,
-                                      fontSize: 14.0);
-                                }else {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          PasswordScreen(
-                                              mobilenumberController.text)));
-                                }
+                                onTap: () {
+                                  if (mobilenumberController.text.isEmpty) {
+                                    Fluttertoast.showToast(
+                                        msg: "Please enter the mobile number",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        timeInSecForIosWeb: 3,
+                                        backgroundColor: Colors.red,
+                                        textColor: Colors.black,
+                                        fontSize: 14.0);
+                                  } else {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                PasswordScreen(
+                                                    mobilenumberController
+                                                        .text)));
+                                  }
                                 },
                                 height: getVerticalSize(39),
                                 text: "msg_login_using_password".tr,
@@ -307,7 +313,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             Padding(
                                 padding: getPadding(top: 9),
                                 child: GestureDetector(
-                                  onTap: (){
+                                  onTap: () {
                                     // Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignUpScreen()));
                                     Get.toNamed(AppRoutes.signUpScreen);
                                   },
@@ -338,24 +344,22 @@ class _LogInScreenState extends State<LogInScreen> {
                                     margin: getMargin(top: 39))
                               ],
                             )
-                          ])))
-          )
-      ),
+                          ]))))),
     );
   }
 
   onTapSendotp() {
     FocusManager.instance.primaryFocus!.unfocus();
-    if(mobilenumberController.text.isEmpty){
+    if (mobilenumberController.text.isEmpty) {
       Fluttertoast.showToast(
-          msg:"Please enter the mobile number",
+          msg: "Please enter the mobile number",
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 3,
           backgroundColor: Colors.red,
           textColor: Colors.black,
           fontSize: 14.0);
-    }else {
+    } else {
       postRequest(
         mobilenumberController.text,
       );

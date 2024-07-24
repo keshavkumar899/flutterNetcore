@@ -39,17 +39,17 @@ class Data {
 
   Data(
       {this.id,
-        this.firstName,
-        this.lastName,
-        this.email,
-        this.password,
-        this.mobile,
-        this.otps,
-        this.fcmToken,
-        this.profilePhoto,
-        this.createOn,
-        this.isDelete,
-        this.isActive,
+      this.firstName,
+      this.lastName,
+      this.email,
+      this.password,
+      this.mobile,
+      this.otps,
+      this.fcmToken,
+      this.profilePhoto,
+      this.createOn,
+      this.isDelete,
+      this.isActive,
       this.wallet_balance});
 
   Data.fromJson(Map<String, dynamic> json) {
@@ -65,7 +65,7 @@ class Data {
     createOn = json['create_on'];
     isDelete = json['is_delete'];
     isActive = json['is_active'];
-    wallet_balance=json['wallet_balence'];
+    wallet_balance = json['wallet_balence'];
   }
 
   Map<String, dynamic> toJson() {
@@ -82,7 +82,7 @@ class Data {
     data['create_on'] = this.createOn;
     data['is_delete'] = this.isDelete;
     data['is_active'] = this.isActive;
-    data['wallet_balence']=this.wallet_balance;
+    data['wallet_balence'] = this.wallet_balance;
     return data;
   }
 }

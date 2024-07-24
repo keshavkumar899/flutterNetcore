@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ResetPasswordBeforeLogin extends StatefulWidget {
-
   @override
-  State<ResetPasswordBeforeLogin> createState() => _ResetPasswordBeforeLoginState();
+  State<ResetPasswordBeforeLogin> createState() =>
+      _ResetPasswordBeforeLoginState();
 }
 
 class _ResetPasswordBeforeLoginState extends State<ResetPasswordBeforeLogin> {

@@ -51,9 +51,9 @@ class Body {
 
   Body(
       {this.resultInfo,
-        this.txnToken,
-        this.isPromoCodeValid,
-        this.authenticated});
+      this.txnToken,
+      this.isPromoCodeValid,
+      this.authenticated});
 
   Body.fromJson(Map<String, dynamic> json) {
     resultInfo = json['resultInfo'] != null

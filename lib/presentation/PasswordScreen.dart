@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -27,18 +26,16 @@ class PasswordScreen extends StatefulWidget {
   String mobileNumber;
   PasswordScreen(this.mobileNumber);
 
-
   @override
   State<PasswordScreen> createState() => _PasswordScreenState();
 }
 
 class _PasswordScreenState extends State<PasswordScreen> {
+  TextEditingController passwordController = TextEditingController();
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
 
-  TextEditingController passwordController=TextEditingController();
-  final RoundedLoadingButtonController _btnController = RoundedLoadingButtonController();
-
-  Future<OtpModel> postRequest(
-      ) async {
+  Future<OtpModel> postRequest() async {
     var url = 'https://fabfurni.com/api/auth/loginWithPassword';
     // var token = "HDJJHJHJHSJHDJAHDAD";
 
@@ -50,10 +47,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
       "Connection": "keep-alive"
     };
 
-
     dio.FormData formData = dio.FormData.fromMap({
       'mobile': widget.mobileNumber,
-      "password":passwordController.text,
+      "password": passwordController.text,
       // 'password': password,
       // 'fcm_token': token,
     });
@@ -95,15 +91,19 @@ class _PasswordScreenState extends State<PasswordScreen> {
         //   ),
         //   backgroundColor: Colors.greenAccent,
         // ));
-        Map <String,dynamic>json1 = jsonDecode(pref.getString('userData')!);
+        Map<String, dynamic> json1 = jsonDecode(pref.getString('userData')!);
         var user1 = OtpModel.fromJson(json1);
         print(user1.data);
         print(OtpModel.fromJson(jsonObject).data!.otps!);
-        Navigator.of(context).pushAndRemoveUntil<dynamic>(MaterialPageRoute(
-          builder: (context) => landingPage(OtpModel.fromJson(jsonObject).data!),
-        ),(route) => false,);
+        Navigator.of(context).pushAndRemoveUntil<dynamic>(
+          MaterialPageRoute(
+            builder: (context) =>
+                landingPage(OtpModel.fromJson(jsonObject).data!),
+          ),
+          (route) => false,
+        );
         Fluttertoast.showToast(
-            msg:"Logged in Successfully",
+            msg: "Logged in Successfully",
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -112,7 +112,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
             fontSize: 14.0);
       } else if (OtpModel.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg:OtpModel.fromJson(jsonObject).message!,
+            msg: OtpModel.fromJson(jsonObject).message!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -122,21 +122,22 @@ class _PasswordScreenState extends State<PasswordScreen> {
         setState(() {
           _btnController.error();
         });
-      }
-      else if (OtpModel.fromJson(jsonObject).data == null){
+      } else if (OtpModel.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('Server Error..Please try again after sometime', style: SafeGoogleFont(
-              'Poppins SemiBold',
-              // fontSize: 18 * ffem,
-              fontWeight: FontWeight.w400,
-              // height: 1.2575 * ffem / fem,
-              color: Colors.black,
-            ),),
+            content: Text(
+              'Server Error..Please try again after sometime',
+              style: SafeGoogleFont(
+                'Poppins SemiBold',
+                // fontSize: 18 * ffem,
+                fontWeight: FontWeight.w400,
+                // height: 1.2575 * ffem / fem,
+                color: Colors.black,
+              ),
+            ),
             backgroundColor: Colors.redAccent));
         setState(() {
           _btnController.error();
         });
-
       }
 
       // print(Logindata.fromJson(jsonObject).message);
@@ -151,6 +152,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
     return jsonObject;
     // return response;
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -167,7 +169,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               CustomImageView(
-                onTap: (){
+                onTap: () {
                   Navigator.pop(context);
                 },
                 svgPath: ImageConstant.imgClosesvgrepocom,
@@ -293,12 +295,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
               //   ),
               // ),
               CustomButton(
-                onTap:(){
+                onTap: () {
                   print(widget.mobileNumber);
                   print(passwordController.text);
 
                   FocusManager.instance.primaryFocus!.unfocus();
-                  if(passwordController.text.isEmpty){
+                  if (passwordController.text.isEmpty) {
                     Fluttertoast.showToast(
                         msg: "Please enter your password",
                         toastLength: Toast.LENGTH_LONG,
@@ -307,7 +309,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         backgroundColor: Colors.redAccent,
                         textColor: Colors.black,
                         fontSize: 14.0);
-                  }else{
+                  } else {
                     postRequest();
                   }
                   Timer(Duration(seconds: 1), () {

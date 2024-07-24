@@ -3,7 +3,7 @@ import 'package:keshav_s_application2/core/app_export.dart';
 
 // ignore: must_be_immutable
 class AppbarSubtitle4 extends StatelessWidget {
-  AppbarSubtitle4({ this.text, this.margin, this.onTap});
+  AppbarSubtitle4({this.text, this.margin, this.onTap});
 
   String? text;
 

@@ -304,12 +304,15 @@ class ProductDetailScrollScreen
                                         height: getVerticalSize(124),
                                         width: getHorizontalSize(249)),
                                     Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Container(
                                               width: getHorizontalSize(154),
-                                              child: Text("msg_fabiola_2_seater3".tr,
+                                              child: Text(
+                                                  "msg_fabiola_2_seater3".tr,
                                                   maxLines: null,
                                                   textAlign: TextAlign.left,
                                                   style: AppStyle
@@ -319,25 +322,28 @@ class ProductDetailScrollScreen
                                               height: getVerticalSize(11),
                                               width: getHorizontalSize(7),
                                               margin: getMargin(
-                                                  left: 47, top: 3, bottom: 16)),
+                                                  left: 47,
+                                                  top: 3,
+                                                  bottom: 16)),
                                           Padding(
-                                              padding:
-                                              getPadding(left: 4, top: 3, bottom: 12),
+                                              padding: getPadding(
+                                                  left: 4, top: 3, bottom: 12),
                                               child: Text("lbl_49_999".tr,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   textAlign: TextAlign.left,
                                                   style: AppStyle
                                                       .txtRobotoMedium12Purple900)),
                                           Container(
                                               width: getHorizontalSize(154),
                                               margin: getMargin(left: 10),
-                                              child: Text("msg_fabiola_2_seater3".tr,
+                                              child: Text(
+                                                  "msg_fabiola_2_seater3".tr,
                                                   maxLines: null,
                                                   textAlign: TextAlign.left,
                                                   style: AppStyle
                                                       .txtRobotoRegular12Black9001))
                                         ])
-
                                   ],
                                 ),
                                 CustomImageView(

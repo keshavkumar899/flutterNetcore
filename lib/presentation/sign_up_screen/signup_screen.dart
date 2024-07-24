@@ -40,14 +40,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   TextEditingController passwordController = TextEditingController();
   bool _isObscure = false;
-  final RoundedLoadingButtonController _btnController = RoundedLoadingButtonController();
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
 
   final List<Setting> _listData = <Setting>[];
   SettingVO? settingVO;
   String? versionCode;
 
-  Future<SignUpScreenModel> postRequest(String name,String mobile,String email,String password
-      ) async {
+  Future<SignUpScreenModel> postRequest(
+      String name, String mobile, String email, String password) async {
     var url = 'https://fabfurni.com/api/Auth/signUp';
     var token = "432222222222";
 
@@ -59,12 +60,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       "Connection": "keep-alive"
     };
 
-
     dio.FormData formData = dio.FormData.fromMap({
-      'name':name,
+      'name': name,
       'mobile': mobile,
-      'email':email,
-      'password':password,
+      'email': email,
+      'password': password,
       'fcm_token': token,
     });
     print(formData.fields);
@@ -91,8 +91,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
           backgroundColor: Colors.greenAccent,
         ));
-        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-            LogInScreen()), (Route<dynamic> route) => false);
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => LogInScreen()),
+            (Route<dynamic> route) => false);
       } else if (SignUpScreenModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(SignUpScreenModel.fromJson(jsonObject).message!),
@@ -100,21 +101,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
         setState(() {
           _btnController.error();
         });
-      }
-      else if (SignUpScreenModel.fromJson(jsonObject).data == null){
+      } else if (SignUpScreenModel.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('Server Error..Please try again after sometime', style: SafeGoogleFont(
-              'Poppins SemiBold',
-              // fontSize: 18 * ffem,
-              fontWeight: FontWeight.w400,
-              // height: 1.2575 * ffem / fem,
-              color: Colors.black,
-            ),),
+            content: Text(
+              'Server Error..Please try again after sometime',
+              style: SafeGoogleFont(
+                'Poppins SemiBold',
+                // fontSize: 18 * ffem,
+                fontWeight: FontWeight.w400,
+                // height: 1.2575 * ffem / fem,
+                color: Colors.black,
+              ),
+            ),
             backgroundColor: Colors.redAccent));
         setState(() {
           _btnController.error();
         });
-
       }
 
       // print(Logindata.fromJson(jsonObject).message);
@@ -130,7 +132,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     // return response;
   }
 
-
   @override
   void initState() {
     // TODO: implement initState
@@ -140,14 +141,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     fullnameController.dispose();
     mobilenumberController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
   }
-
 
   getVersion() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -158,10 +158,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
   }
 
-
   onTapTxt() {
     Get.toNamed(AppRoutes.termsOfConditionScreen);
   }
+
   apiCall() {
     BaseOptions options = new BaseOptions(
         baseUrl: 'https://fabfurni.com/api/',
@@ -174,6 +174,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final dioClient = Dio(options);
     return dioClient;
   }
+
   Future<void> _requestData() async {
     try {
       var response = await apiCall().get(
@@ -185,8 +186,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             settingVO!.status == 'true' &&
             settingVO!.data!.isNotEmpty) {
           _listData.addAll(settingVO!.data!);
-
-
         }
         setState(() {});
       } else {}
@@ -196,7 +195,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   String _parseHtmlString(String htmlString) {
-
     var document = parse(htmlString);
 
     String parsedString = parse(document.body!.text).documentElement!.text;
@@ -229,9 +227,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   context,
                                   screen: landingPage1(),
                                   withNavBar:
-                                  false, // OPTIONAL VALUE. True by default.
+                                      false, // OPTIONAL VALUE. True by default.
                                   pageTransitionAnimation:
-                                  PageTransitionAnimation.cupertino,
+                                      PageTransitionAnimation.cupertino,
                                 );
                               }),
                           Align(
@@ -348,8 +346,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 });
                               },
                             ),
-                            suffixConstraints: BoxConstraints(
-                                maxHeight: getVerticalSize(20)),
+                            suffixConstraints:
+                                BoxConstraints(maxHeight: getVerticalSize(20)),
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Please enter the password';
@@ -387,21 +385,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             fontFamily: 'Roboto',
                                             fontWeight: FontWeight.w400),
                                         recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        AppConstant.aboutType = '1';
-                                        int index = _listData.indexWhere((
-                                            setting) =>
-                                        setting.settingsKeys ==
-                                            'terms_condition');
-                                        AppConstant.terms = _parseHtmlString(
-                                            _listData[index].settingsValues!);
-                                        onTapTxt();
-                                        // setState(() {
-                                        //   _launched = _launchInBrowser(Uri(scheme: 'https', host: '', path: 'headers/'));
-                                        // });
-                                        // }),
-                                      }
-                                      ),
+                                          ..onTap = () {
+                                            AppConstant.aboutType = '1';
+                                            int index = _listData.indexWhere(
+                                                (setting) =>
+                                                    setting.settingsKeys ==
+                                                    'terms_condition');
+                                            AppConstant.terms =
+                                                _parseHtmlString(
+                                                    _listData[index]
+                                                        .settingsValues!);
+                                            onTapTxt();
+                                            // setState(() {
+                                            //   _launched = _launchInBrowser(Uri(scheme: 'https', host: '', path: 'headers/'));
+                                            // });
+                                            // }),
+                                          }),
                                     TextSpan(
                                         text: "lbl".tr,
                                         style: TextStyle(
@@ -419,15 +418,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
                                             AppConstant.aboutType = '2';
-                                            int index = _listData.indexWhere((setting) => setting.settingsKeys == 'privacy_policy');
-                                            AppConstant.terms = _parseHtmlString(_listData[index].settingsValues!);
+                                            int index = _listData.indexWhere(
+                                                (setting) =>
+                                                    setting.settingsKeys ==
+                                                    'privacy_policy');
+                                            AppConstant.terms =
+                                                _parseHtmlString(
+                                                    _listData[index]
+                                                        .settingsValues!);
                                             onTapTxt();
                                             // setState(() {
                                             //   _launched = _launchInBrowser(Uri(scheme: 'https', host: '', path: 'headers/'));
                                             // });
                                             // }),
-                                          }
-                                    )
+                                          })
                                   ]),
                                   textAlign: TextAlign.center)),
                           Spacer(),
@@ -436,7 +440,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               textAlign: TextAlign.left,
                               style: AppStyle.txtRobotoMedium12),
                           GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               Navigator.of(context).pop();
                             },
                             child: Padding(
@@ -472,9 +476,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   onTapRegisterone() {
     FocusManager.instance.primaryFocus!.unfocus();
     if (_formKey.currentState!.validate()) {
-      postRequest(
-        fullnameController.text,mobilenumberController.text,emailController.text,passwordController.text
-      );
+      postRequest(fullnameController.text, mobilenumberController.text,
+          emailController.text, passwordController.text);
       Timer(Duration(seconds: 3), () {
         mobilenumberController.clear();
         fullnameController.clear();
@@ -486,10 +489,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       // if(cred!.=='success'){
       //
       // }
-
-    } else{
+    } else {
       setState(() {
-        Timer(Duration(seconds:0), () {
+        Timer(Duration(seconds: 0), () {
           _btnController.reset();
         });
       });

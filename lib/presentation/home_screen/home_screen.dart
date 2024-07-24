@@ -35,13 +35,13 @@ import 'controller/home_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   Data data;
-  HomeScreen(this.data,);
+  HomeScreen(
+    this.data,
+  );
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
-
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -73,11 +73,11 @@ class _HomeScreenState extends State<HomeScreen> {
     ImageConstant.imgWardrobe
   ];
 
-  int silderIndex=0;
+  int silderIndex = 0;
 
   @override
   void initState() {
-   Smartech().trackEvent("screen_viewed", {});
+    Smartech().trackEvent("screen_viewed", {});
     home = getdashboard();
     category = getCategory();
     category!.then((value) {
@@ -148,14 +148,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: getHorizontalSize(21),
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
-                            onTap: (){
+                            onTap: () {
                               pushScreen(
                                 context,
                                 screen: WhislistScreen(widget.data),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                             }),
                         // AppbarSubtitle6(
@@ -165,7 +165,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 0, right: 31,bottom: 15),
+                      margin:
+                          getMargin(left: 14, top: 0, right: 31, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -193,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 styleType: Style.bgShadowBlack90033),
             body: RefreshIndicator(
               color: Colors.purple,
-              onRefresh: ()async{
+              onRefresh: () async {
                 home = getdashboard();
                 category = getCategory();
                 category!.then((value) {
@@ -216,8 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   });
                 });
               },
-              child:
-              SingleChildScrollView(
+              child: SingleChildScrollView(
                   child: Column(children: [
                 Container(
                   // change your height based on preference
@@ -253,10 +253,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   : pushScreen(
                                       context,
                                       screen: ClickAfterSlectTabFurnitureScreen(
-                                          widget.data,
-                                          categorylist[index],
-                                          categorylist[index].name!,
-                                          // categorylist[index].subCategory[index]
+                                        widget.data,
+                                        categorylist[index],
+                                        categorylist[index].name!,
+                                        // categorylist[index].subCategory[index]
                                       ),
                                       withNavBar:
                                           true, // OPTIONAL VALUE. True by default.
@@ -620,219 +620,244 @@ class _HomeScreenState extends State<HomeScreen> {
                           //                                         bottom: 3))
                           //                               ])))
                           //                 ])))),
-                          SizedBox(height: 8,),
-                          banners.length!=0?
-                          Container(
-                           // height: 206,
-                            // width: 200.w,
-                            padding: getPadding(left: 10,right: 10),
-                            // color: Colors.black,
-                            child: CarouselSlider.builder(
-                                options: CarouselOptions(
-                                  //height: getVerticalSize(215),
-                                  initialPage: 0,
-                                  autoPlay: true,
-                                  viewportFraction: 1.0,
-                                  enableInfiniteScroll: true,
-                                  autoPlayCurve: Curves.fastOutSlowIn,
-                                  scrollDirection: Axis.horizontal,
-                                  onPageChanged: (index, reason) {
-                                    silderIndex = index;
-                                  },
-                                  // onScrolled: (index) {
-                                  //   controller.silderIndex.value =
-                                  //       index as int;
-                                  // }
-                                ),
-                                itemCount: banners.length,
-                                itemBuilder: (context, index, realIndex) {
-                                  // SliderItemModel model = controller
-                                  //     .productDetailModelObj
-                                  //     .value
-                                  //     .sliderItemList[index];
-                                  return GestureDetector(
-                                    onTap: (){
-                                      if(banners[index].keywordId=='0' || banners[index].keywordId==null){
-                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                            content: Text("No Data"),
-                                            backgroundColor: Colors.redAccent));
-                                      }else{
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                          builder: (context) => productlisrafterclickonbanner(widget.data,banners[index].keywordId!,'','',''),
-                                        ));}
-                                    },
-                                    child: Image.network(
-                                      banners[index].image!,
-                                      fit: BoxFit.cover,
-                                      width: 95.w,
-                                      alignment: Alignment(1.2, 1.2),
-                                      filterQuality: FilterQuality.high,
-                                      loadingBuilder:
-                                          (context, child, loadingProgress) =>
-                                      (loadingProgress == null)
-                                          ? child
-                                          : AnimatedShimmer(
-                                        height: 206,
-                                        width: 100.w,
-                                        borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                        delayInMilliSeconds: Duration(milliseconds: index * 5),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          banners.length != 0
+                              ? Container(
+                                  // height: 206,
+                                  // width: 200.w,
+                                  padding: getPadding(left: 10, right: 10),
+                                  // color: Colors.black,
+                                  child: CarouselSlider.builder(
+                                      options: CarouselOptions(
+                                        //height: getVerticalSize(215),
+                                        initialPage: 0,
+                                        autoPlay: true,
+                                        viewportFraction: 1.0,
+                                        enableInfiniteScroll: true,
+                                        autoPlayCurve: Curves.fastOutSlowIn,
+                                        scrollDirection: Axis.horizontal,
+                                        onPageChanged: (index, reason) {
+                                          silderIndex = index;
+                                        },
+                                        // onScrolled: (index) {
+                                        //   controller.silderIndex.value =
+                                        //       index as int;
+                                        // }
                                       ),
-                                      // CircularProgressIndicator(
-                                      //         color: Color(0xff9BA6BF),
-                                      //         strokeWidth: 2,
-                                      //       ),
-                                      errorBuilder: (context, error, stackTrace) =>
-                                          Image.asset(
-                                              "assets/images/image_not_found.png"),
-                                    ),
-                                  );
-                                  // SliderItemWidget(model);
-                                })
-                            // ListView.separated(
-                            //     // set the scroll direction to horizontal
-                            //     itemCount: banners.length,
-                            //     scrollDirection: Axis.horizontal,
-                            //     separatorBuilder: (context, int) {
-                            //       return Padding(
-                            //         padding: EdgeInsets.fromLTRB(5,0, 5, 0),
-                            //       );
-                            //     },
-                            //     itemBuilder: (context, index) {
-                            //       // return
-                            //       //   SvgPicture.network(banners[index].image);
-                            //       return GestureDetector(
-                            //         onTap: (){
-                            //           if(banners[index].keywordId=='0' || banners[index].keywordId==null){
-                            //             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            //                 content: Text("No Data"),
-                            //                 backgroundColor: Colors.redAccent));
-                            //           }else{
-                            //           Navigator.of(context).push(MaterialPageRoute(
-                            //             builder: (context) => productlisrafterclickonbanner(widget.data,banners[index].keywordId,'','',''),
-                            //           ));}
-                            //         },
-                            //         child: Image.network(
-                            //           banners[index].image,
-                            //           fit: BoxFit.cover,
-                            //           width: 100.w,
-                            //           alignment: Alignment(1.2, 1.2),
-                            //           filterQuality: FilterQuality.high,
-                            //           loadingBuilder:
-                            //               (context, child, loadingProgress) =>
-                            //                   (loadingProgress == null)
-                            //                       ? child
-                            //                       : AnimatedShimmer(
-                            //                     height: 206,
-                            //                     width: 100.w,
-                            //                     borderRadius: const BorderRadius.all(Radius.circular(10)),
-                            //                     delayInMilliSeconds: Duration(milliseconds: index * 500),
-                            //                   ),
-                            //                   // CircularProgressIndicator(
-                            //                   //         color: Color(0xff9BA6BF),
-                            //                   //         strokeWidth: 2,
-                            //                   //       ),
-                            //           errorBuilder: (context, error, stackTrace) =>
-                            //               Image.asset(
-                            //                   "assets/images/image_not_found.png"),
-                            //         ),
-                            //       );
-                            //       // return CustomImageView(
-                            //       //     onTap: (){
-                            //       //       pushScreen(
-                            //       //         context,
-                            //       //         screen: StoreScreen(widget.data),
-                            //       //         withNavBar: true, // OPTIONAL VALUE. True by default.
-                            //       //         pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                            //       //       );
-                            //       //     },
-                            //       //     url:"https://fabfurni.com/assets/uploads/1682784086decore-icon_2_.svg",
-                            //       //     // ImageConstant.imgFurnituresocialmediabanner,
-                            //       //     // height: getVerticalSize(206),
-                            //       //     // width: getHorizontalSize(396),
-                            //       //     margin: getMargin(top: 13,left: 10));
-                            //     }
-                            //     // CategoryCard(
-                            //     //     title: 'Furniture',
-                            //     //     previewImageAsset: ImageConstant.imgSofa,
-                            //     //     onTap: () {
-                            //     //       pushScreen(
-                            //     //         context,
-                            //     //         screen: ClickAfterSlectTabFurnitureScreen(widget.data),
-                            //     //         withNavBar: true, // OPTIONAL VALUE. True by default.
-                            //     //         pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                            //     //       );
-                            //     //       // Get.toNamed(AppRoutes.clickAfterSlectTabFurnitureScreen);
-                            //     //     }),
-                            //     // // space them using a sized box
-                            //     // SizedBox(
-                            //     //   width: 15,
-                            //     // ),
-                            //     // CategoryCard(
-                            //     //     title: 'Living',
-                            //     //     previewImageAsset: ImageConstant.imgTvstand,
-                            //     //     onTap: () {}),
-                            //     // SizedBox(
-                            //     //   width: 15,
-                            //     // ),
-                            //     // CategoryCard(
-                            //     //     title: 'Bedroom',
-                            //     //     previewImageAsset: ImageConstant.imgBed,
-                            //     //     onTap: () {}),
-                            //     // SizedBox(
-                            //     //   width: 15,
-                            //     // ),
-                            //     // CategoryCard(
-                            //     //     title: 'Kids Room',
-                            //     //     previewImageAsset: ImageConstant.imgBabybed,
-                            //     //     onTap: () {}),
-                            //     // SizedBox(
-                            //     //   width: 15,
-                            //     // ),
-                            //     // CategoryCard(
-                            //     //     title: 'Mattresses',
-                            //     //     previewImageAsset: ImageConstant.imgMattress,
-                            //     //     onTap: () {}),
-                            //     // SizedBox(
-                            //     //   width: 15,
-                            //     // ),
-                            //     // CategoryCard(
-                            //     //     title: 'Furnishings',
-                            //     //     previewImageAsset: ImageConstant.imgCurtain,
-                            //     //     onTap: () {}),
-                            //     // SizedBox(
-                            //     //   width: 15,
-                            //     // ),
-                            //     // CategoryCard(
-                            //     //     title: 'Decor',
-                            //     //     previewImageAsset: ImageConstant.imgSpiderplant,
-                            //     //     onTap: () {}),
-                            //     // SizedBox(
-                            //     //   width: 15,
-                            //     // ),
-                            //     // CategoryCard(
-                            //     //     title: 'Lighting',
-                            //     //     previewImageAsset: 'assets/images/vector-cH4.png',
-                            //     //     onTap: () {}),
-                            //     // SizedBox(
-                            //     //   width: 15,
-                            //     // ),
-                            //     // CategoryCard(
-                            //     //     title: 'Appliances',
-                            //     //     previewImageAsset: ImageConstant.imgMicrowave,
-                            //     //     onTap: () {}),
-                            //     // SizedBox(
-                            //     //   width: 15,
-                            //     // ),
-                            //     // CategoryCard(
-                            //     //     title: 'Modular Furniture',
-                            //     //     previewImageAsset: ImageConstant.imgWardrobe,
-                            //     //     onTap: () {}),
-                            //     // SizedBox(
-                            //     //   width: 15,
-                            //     // ),
-                            //
-                            //     ),
-                          ):Container(),
+                                      itemCount: banners.length,
+                                      itemBuilder: (context, index, realIndex) {
+                                        // SliderItemModel model = controller
+                                        //     .productDetailModelObj
+                                        //     .value
+                                        //     .sliderItemList[index];
+                                        return GestureDetector(
+                                          onTap: () {
+                                            if (banners[index].keywordId ==
+                                                    '0' ||
+                                                banners[index].keywordId ==
+                                                    null) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
+                                                      content: Text("No Data"),
+                                                      backgroundColor:
+                                                          Colors.redAccent));
+                                            } else {
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    productlisrafterclickonbanner(
+                                                        widget.data,
+                                                        banners[index]
+                                                            .keywordId!,
+                                                        '',
+                                                        '',
+                                                        ''),
+                                              ));
+                                            }
+                                          },
+                                          child: Image.network(
+                                            banners[index].image!,
+                                            fit: BoxFit.cover,
+                                            width: 95.w,
+                                            alignment: Alignment(1.2, 1.2),
+                                            filterQuality: FilterQuality.high,
+                                            loadingBuilder: (context, child,
+                                                    loadingProgress) =>
+                                                (loadingProgress == null)
+                                                    ? child
+                                                    : AnimatedShimmer(
+                                                        height: 206,
+                                                        width: 100.w,
+                                                        borderRadius:
+                                                            const BorderRadius
+                                                                .all(
+                                                                Radius.circular(
+                                                                    10)),
+                                                        delayInMilliSeconds:
+                                                            Duration(
+                                                                milliseconds:
+                                                                    index * 5),
+                                                      ),
+                                            // CircularProgressIndicator(
+                                            //         color: Color(0xff9BA6BF),
+                                            //         strokeWidth: 2,
+                                            //       ),
+                                            errorBuilder: (context, error,
+                                                    stackTrace) =>
+                                                Image.asset(
+                                                    "assets/images/image_not_found.png"),
+                                          ),
+                                        );
+                                        // SliderItemWidget(model);
+                                      })
+                                  // ListView.separated(
+                                  //     // set the scroll direction to horizontal
+                                  //     itemCount: banners.length,
+                                  //     scrollDirection: Axis.horizontal,
+                                  //     separatorBuilder: (context, int) {
+                                  //       return Padding(
+                                  //         padding: EdgeInsets.fromLTRB(5,0, 5, 0),
+                                  //       );
+                                  //     },
+                                  //     itemBuilder: (context, index) {
+                                  //       // return
+                                  //       //   SvgPicture.network(banners[index].image);
+                                  //       return GestureDetector(
+                                  //         onTap: (){
+                                  //           if(banners[index].keywordId=='0' || banners[index].keywordId==null){
+                                  //             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                  //                 content: Text("No Data"),
+                                  //                 backgroundColor: Colors.redAccent));
+                                  //           }else{
+                                  //           Navigator.of(context).push(MaterialPageRoute(
+                                  //             builder: (context) => productlisrafterclickonbanner(widget.data,banners[index].keywordId,'','',''),
+                                  //           ));}
+                                  //         },
+                                  //         child: Image.network(
+                                  //           banners[index].image,
+                                  //           fit: BoxFit.cover,
+                                  //           width: 100.w,
+                                  //           alignment: Alignment(1.2, 1.2),
+                                  //           filterQuality: FilterQuality.high,
+                                  //           loadingBuilder:
+                                  //               (context, child, loadingProgress) =>
+                                  //                   (loadingProgress == null)
+                                  //                       ? child
+                                  //                       : AnimatedShimmer(
+                                  //                     height: 206,
+                                  //                     width: 100.w,
+                                  //                     borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                  //                     delayInMilliSeconds: Duration(milliseconds: index * 500),
+                                  //                   ),
+                                  //                   // CircularProgressIndicator(
+                                  //                   //         color: Color(0xff9BA6BF),
+                                  //                   //         strokeWidth: 2,
+                                  //                   //       ),
+                                  //           errorBuilder: (context, error, stackTrace) =>
+                                  //               Image.asset(
+                                  //                   "assets/images/image_not_found.png"),
+                                  //         ),
+                                  //       );
+                                  //       // return CustomImageView(
+                                  //       //     onTap: (){
+                                  //       //       pushScreen(
+                                  //       //         context,
+                                  //       //         screen: StoreScreen(widget.data),
+                                  //       //         withNavBar: true, // OPTIONAL VALUE. True by default.
+                                  //       //         pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                                  //       //       );
+                                  //       //     },
+                                  //       //     url:"https://fabfurni.com/assets/uploads/1682784086decore-icon_2_.svg",
+                                  //       //     // ImageConstant.imgFurnituresocialmediabanner,
+                                  //       //     // height: getVerticalSize(206),
+                                  //       //     // width: getHorizontalSize(396),
+                                  //       //     margin: getMargin(top: 13,left: 10));
+                                  //     }
+                                  //     // CategoryCard(
+                                  //     //     title: 'Furniture',
+                                  //     //     previewImageAsset: ImageConstant.imgSofa,
+                                  //     //     onTap: () {
+                                  //     //       pushScreen(
+                                  //     //         context,
+                                  //     //         screen: ClickAfterSlectTabFurnitureScreen(widget.data),
+                                  //     //         withNavBar: true, // OPTIONAL VALUE. True by default.
+                                  //     //         pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                                  //     //       );
+                                  //     //       // Get.toNamed(AppRoutes.clickAfterSlectTabFurnitureScreen);
+                                  //     //     }),
+                                  //     // // space them using a sized box
+                                  //     // SizedBox(
+                                  //     //   width: 15,
+                                  //     // ),
+                                  //     // CategoryCard(
+                                  //     //     title: 'Living',
+                                  //     //     previewImageAsset: ImageConstant.imgTvstand,
+                                  //     //     onTap: () {}),
+                                  //     // SizedBox(
+                                  //     //   width: 15,
+                                  //     // ),
+                                  //     // CategoryCard(
+                                  //     //     title: 'Bedroom',
+                                  //     //     previewImageAsset: ImageConstant.imgBed,
+                                  //     //     onTap: () {}),
+                                  //     // SizedBox(
+                                  //     //   width: 15,
+                                  //     // ),
+                                  //     // CategoryCard(
+                                  //     //     title: 'Kids Room',
+                                  //     //     previewImageAsset: ImageConstant.imgBabybed,
+                                  //     //     onTap: () {}),
+                                  //     // SizedBox(
+                                  //     //   width: 15,
+                                  //     // ),
+                                  //     // CategoryCard(
+                                  //     //     title: 'Mattresses',
+                                  //     //     previewImageAsset: ImageConstant.imgMattress,
+                                  //     //     onTap: () {}),
+                                  //     // SizedBox(
+                                  //     //   width: 15,
+                                  //     // ),
+                                  //     // CategoryCard(
+                                  //     //     title: 'Furnishings',
+                                  //     //     previewImageAsset: ImageConstant.imgCurtain,
+                                  //     //     onTap: () {}),
+                                  //     // SizedBox(
+                                  //     //   width: 15,
+                                  //     // ),
+                                  //     // CategoryCard(
+                                  //     //     title: 'Decor',
+                                  //     //     previewImageAsset: ImageConstant.imgSpiderplant,
+                                  //     //     onTap: () {}),
+                                  //     // SizedBox(
+                                  //     //   width: 15,
+                                  //     // ),
+                                  //     // CategoryCard(
+                                  //     //     title: 'Lighting',
+                                  //     //     previewImageAsset: 'assets/images/vector-cH4.png',
+                                  //     //     onTap: () {}),
+                                  //     // SizedBox(
+                                  //     //   width: 15,
+                                  //     // ),
+                                  //     // CategoryCard(
+                                  //     //     title: 'Appliances',
+                                  //     //     previewImageAsset: ImageConstant.imgMicrowave,
+                                  //     //     onTap: () {}),
+                                  //     // SizedBox(
+                                  //     //   width: 15,
+                                  //     // ),
+                                  //     // CategoryCard(
+                                  //     //     title: 'Modular Furniture',
+                                  //     //     previewImageAsset: ImageConstant.imgWardrobe,
+                                  //     //     onTap: () {}),
+                                  //     // SizedBox(
+                                  //     //   width: 15,
+                                  //     // ),
+                                  //
+                                  //     ),
+                                  )
+                              : Container(),
                           SizedBox(
                             height: 2.h,
                           ),
@@ -840,29 +865,43 @@ class _HomeScreenState extends State<HomeScreen> {
                             height: 206,
                             // width: 200.w,
                             // color: Colors.black,
-                            padding: getPadding(left: 10,right: 10),
+                            padding: getPadding(left: 10, right: 10),
                             child: ListView.separated(
                                 // set the scroll direction to horizontal
                                 itemCount: bannersresportrait.length,
                                 scrollDirection: Axis.horizontal,
                                 separatorBuilder: (context, int) {
                                   return Padding(
-                                    padding: getPadding(left: 10,right: 10),
+                                    padding: getPadding(left: 10, right: 10),
                                   );
                                 },
                                 itemBuilder: (context, index) {
                                   // return
                                   //   SvgPicture.network(banners[index].image);
                                   return GestureDetector(
-                                    onTap: (){
-                                      if(bannersresportrait[index].keywordId=='0' || bannersresportrait[index].keywordId==null){
-                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                            content: Text("No Data"),
-                                            backgroundColor: Colors.redAccent));
-                                      }else{
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                          builder: (context) => productlisrafterclickonbanner(widget.data,bannersresportrait[index].keywordId!,'','',''),
-                                        ));}
+                                    onTap: () {
+                                      if (bannersresportrait[index].keywordId ==
+                                              '0' ||
+                                          bannersresportrait[index].keywordId ==
+                                              null) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                content: Text("No Data"),
+                                                backgroundColor:
+                                                    Colors.redAccent));
+                                      } else {
+                                        Navigator.of(context)
+                                            .push(MaterialPageRoute(
+                                          builder: (context) =>
+                                              productlisrafterclickonbanner(
+                                                  widget.data,
+                                                  bannersresportrait[index]
+                                                      .keywordId!,
+                                                  '',
+                                                  '',
+                                                  ''),
+                                        ));
+                                      }
                                       // print("tapped");
                                       // Navigator.of(context).push(MaterialPageRoute(
                                       //   builder: (context) => ProductDetailScreen(widget.data,bannersresportrait[index].id),
@@ -879,17 +918,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                         // height: 100.h,
                                         alignment: Alignment(0.8, 0.8),
                                         filterQuality: FilterQuality.high,
-                                        loadingBuilder:
-                                            (context, child, loadingProgress) =>
-                                                (loadingProgress == null)
-                                                    ? child
-                                                    : AnimatedShimmer(
-                                                  height: 206,
-                                                  width: 250,
-                                                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                  delayInMilliSeconds: Duration(milliseconds: index * 5),
-                                                ),
-                                        errorBuilder: (context, error, stackTrace) =>
+                                        loadingBuilder: (context, child,
+                                                loadingProgress) =>
+                                            (loadingProgress == null)
+                                                ? child
+                                                : AnimatedShimmer(
+                                                    height: 206,
+                                                    width: 250,
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                10)),
+                                                    delayInMilliSeconds:
+                                                        Duration(
+                                                            milliseconds:
+                                                                index * 5),
+                                                  ),
+                                        errorBuilder: (context, error,
+                                                stackTrace) =>
                                             Image.asset(
                                                 "assets/images/image_not_found.png"),
                                       ),
@@ -1301,8 +1347,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             Navigator.of(context)
                                                 .push(MaterialPageRoute(
                                               builder: (context) =>
-                                                  ProductDetailScreen(widget.data,
-                                                      favouriteProduct[index].id!),
+                                                  ProductDetailScreen(
+                                                      widget.data,
+                                                      favouriteProduct[index]
+                                                          .id!),
                                             ));
                                           },
                                           child: Container(
@@ -1322,29 +1370,40 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   MainAxisAlignment.end,
                                               children: [
                                                 Flexible(
-                                                  flex:1,
+                                                  flex: 1,
                                                   child: Container(
                                                     width: 280,
                                                     //height: 150,
                                                     child: Image.network(
-                                                      favouriteProduct[index].image!,
+                                                      favouriteProduct[index]
+                                                          .image!,
                                                       fit: BoxFit.cover,
                                                       // width: 100.w,
-                                                      alignment: Alignment(-0.15, -0.15),
+                                                      alignment: Alignment(
+                                                          -0.15, -0.15),
                                                       filterQuality:
                                                           FilterQuality.high,
                                                       loadingBuilder: (context,
                                                               child,
                                                               loadingProgress) =>
-                                                          (loadingProgress == null)
+                                                          (loadingProgress ==
+                                                                  null)
                                                               ? child
                                                               : AnimatedShimmer(
-                                                            height: 280,
-                                                            width: 150,
-                                                            borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                            delayInMilliSeconds: Duration(milliseconds: index * 5),
-                                                          ),
-                                                      errorBuilder: (context, error,
+                                                                  height: 280,
+                                                                  width: 150,
+                                                                  borderRadius:
+                                                                      const BorderRadius
+                                                                          .all(
+                                                                          Radius.circular(
+                                                                              10)),
+                                                                  delayInMilliSeconds: Duration(
+                                                                      milliseconds:
+                                                                          index *
+                                                                              5),
+                                                                ),
+                                                      errorBuilder: (context,
+                                                              error,
                                                               stackTrace) =>
                                                           Image.asset(
                                                               "assets/images/image_not_found.png"),
@@ -1363,7 +1422,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     favouriteProduct[index]
                                                         .description!,
                                                     maxLines: 2,
-                                                    overflow: TextOverflow.ellipsis,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                     textAlign: TextAlign.left,
                                                     style: TextStyle(
                                                         fontSize: 15,
@@ -1415,9 +1475,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       Padding(
-                        padding: getPadding(
-                          top: 4,bottom: 6
-                        ),
+                        padding: getPadding(top: 4, bottom: 6),
                         child: Text(
                           "msg_jaw_dropping_gorgeous".tr,
                           overflow: TextOverflow.ellipsis,
@@ -1430,7 +1488,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       Flexible(
-                        flex:1,
+                        flex: 1,
                         child: SizedBox(
                           height: 150,
                           child: ListView.builder(
@@ -1446,15 +1504,26 @@ class _HomeScreenState extends State<HomeScreen> {
                                     right: 10,
                                   ),
                                   child: GestureDetector(
-                                    onTap: (){
-                                      if(bannerswow[index].keywordId=='0' || bannerswow[index].keywordId==null){
-                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                            content: Text("No Data"),
-                                            backgroundColor: Colors.redAccent));
-                                      }else{
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                          builder: (context) => productlisrafterclickonbanner(widget.data,bannerswow[index].keywordId!,'','',''),
-                                        ));}
+                                    onTap: () {
+                                      if (bannerswow[index].keywordId == '0' ||
+                                          bannerswow[index].keywordId == null) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                content: Text("No Data"),
+                                                backgroundColor:
+                                                    Colors.redAccent));
+                                      } else {
+                                        Navigator.of(context)
+                                            .push(MaterialPageRoute(
+                                          builder: (context) =>
+                                              productlisrafterclickonbanner(
+                                                  widget.data,
+                                                  bannerswow[index].keywordId!,
+                                                  '',
+                                                  '',
+                                                  ''),
+                                        ));
+                                      }
                                       // Navigator.of(context).push(MaterialPageRoute(
                                       //   builder: (context) => ProductDetailScreen(widget.data,bannerswow[index].id),
                                       // ));
@@ -1471,10 +1540,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
                                         children: [
                                           Flexible(
-                                            flex:1,
+                                            flex: 1,
                                             child: Container(
                                               // width: 400,
                                               height: 145,
@@ -1482,17 +1552,27 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 bannerswow[index].image!,
                                                 fit: BoxFit.cover,
                                                 alignment: Alignment(1, 1),
-                                                filterQuality: FilterQuality.high,
-                                                loadingBuilder: (context, child,
-                                                        loadingProgress) =>
-                                                    (loadingProgress == null)
-                                                        ? child
-                                                        : AnimatedShimmer(
-                                                      height: 145,
-                                                      width: 200,
-                                                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                      delayInMilliSeconds: Duration(milliseconds: index * 5),
-                                                    ),
+                                                filterQuality:
+                                                    FilterQuality.high,
+                                                loadingBuilder:
+                                                    (context, child,
+                                                            loadingProgress) =>
+                                                        (loadingProgress ==
+                                                                null)
+                                                            ? child
+                                                            : AnimatedShimmer(
+                                                                height: 145,
+                                                                width: 200,
+                                                                borderRadius:
+                                                                    const BorderRadius
+                                                                        .all(
+                                                                        Radius.circular(
+                                                                            10)),
+                                                                delayInMilliSeconds: Duration(
+                                                                    milliseconds:
+                                                                        index *
+                                                                            5),
+                                                              ),
                                                 errorBuilder: (context, error,
                                                         stackTrace) =>
                                                     Image.asset(
@@ -1606,15 +1686,29 @@ class _HomeScreenState extends State<HomeScreen> {
                                     //     .value
                                     //     .afterScrollItemList[index];
                                     return GestureDetector(
-                                      onTap: (){
-                                        if(bannersgoodLooks[index].keywordId=='0' || bannersgoodLooks[index].keywordId==null){
-                                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                              content: Text("No Data"),
-                                              backgroundColor: Colors.redAccent));
-                                        }else{
-                                          Navigator.of(context).push(MaterialPageRoute(
-                                            builder: (context) => productlisrafterclickonbanner(widget.data,bannersgoodLooks[index].keywordId!,'','',''),
-                                          ));}
+                                      onTap: () {
+                                        if (bannersgoodLooks[index].keywordId ==
+                                                '0' ||
+                                            bannersgoodLooks[index].keywordId ==
+                                                null) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                                  content: Text("No Data"),
+                                                  backgroundColor:
+                                                      Colors.redAccent));
+                                        } else {
+                                          Navigator.of(context)
+                                              .push(MaterialPageRoute(
+                                            builder: (context) =>
+                                                productlisrafterclickonbanner(
+                                                    widget.data,
+                                                    bannersgoodLooks[index]
+                                                        .keywordId!,
+                                                    '',
+                                                    '',
+                                                    ''),
+                                          ));
+                                        }
                                         // Navigator.of(context).push(MaterialPageRoute(
                                         //   builder: (context) => ProductDetailScreen(widget.data,bannersgoodLooks[index].id),
                                         // ));
@@ -1637,26 +1731,39 @@ class _HomeScreenState extends State<HomeScreen> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Flexible(
-                                              flex:1,
+                                              flex: 1,
                                               child: Container(
                                                 width: 150,
                                                 height: 140,
-                                                padding: getPadding(top: 0,bottom: 0),
+                                                padding: getPadding(
+                                                    top: 0, bottom: 0),
                                                 child: Image.network(
-                                                  bannersgoodLooks[index].image!,
+                                                  bannersgoodLooks[index]
+                                                      .image!,
                                                   fit: BoxFit.cover,
-                                                  alignment: Alignment(0.7, 0.7),
-                                                  filterQuality: FilterQuality.high,
-                                                  loadingBuilder: (context, child,
+                                                  alignment:
+                                                      Alignment(0.7, 0.7),
+                                                  filterQuality:
+                                                      FilterQuality.high,
+                                                  loadingBuilder: (context,
+                                                          child,
                                                           loadingProgress) =>
                                                       (loadingProgress == null)
                                                           ? child
                                                           : AnimatedShimmer(
-                                                        height: 140,
-                                                        width: 150,
-                                                        borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                        delayInMilliSeconds: Duration(milliseconds: index * 5),
-                                                      ),
+                                                              height: 140,
+                                                              width: 150,
+                                                              borderRadius:
+                                                                  const BorderRadius
+                                                                      .all(
+                                                                      Radius.circular(
+                                                                          10)),
+                                                              delayInMilliSeconds:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          index *
+                                                                              5),
+                                                            ),
                                                   errorBuilder: (context, error,
                                                           stackTrace) =>
                                                       Image.asset(
@@ -1673,12 +1780,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 child: Text(
                                                   bannersgoodLooks[index].name!,
                                                   maxLines: 2,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       fontSize: 12,
-                                                      fontWeight: FontWeight.w400,
-                                                      color: ColorConstant.black900,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: ColorConstant
+                                                          .black900,
                                                       fontFamily: 'Roboto'),
                                                 ),
                                               ),
@@ -1717,7 +1827,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Container(
-                 // height: 27.h,
+                  // height: 27.h,
                   color: ColorConstant.whiteA700,
                   child: Column(
                     children: [
@@ -1757,11 +1867,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         child: ListView.separated(
                           padding: getPadding(
-                            left: 0,
-                            top: 10,
-                            bottom: 3,
-                            right: 10
-                          ),
+                              left: 0, top: 10, bottom: 3, right: 10),
                           scrollDirection: Axis.horizontal,
                           separatorBuilder: (context, index) {
                             return SizedBox(
@@ -1779,15 +1885,24 @@ class _HomeScreenState extends State<HomeScreen> {
                             //     .value
                             //     .afterScrollItemList[index];
                             return GestureDetector(
-                              onTap: (){
-                                if(bannersBrothers[index].keywordId=='0' || bannersBrothers[index].keywordId==null){
-                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                      content: Text("No Data"),
-                                      backgroundColor: Colors.redAccent));
-                                }else{
+                              onTap: () {
+                                if (bannersBrothers[index].keywordId == '0' ||
+                                    bannersBrothers[index].keywordId == null) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text("No Data"),
+                                          backgroundColor: Colors.redAccent));
+                                } else {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => productlisrafterclickonbanner(widget.data,bannersBrothers[index].keywordId!,'','',''),
-                                  ));}
+                                    builder: (context) =>
+                                        productlisrafterclickonbanner(
+                                            widget.data,
+                                            bannersBrothers[index].keywordId!,
+                                            '',
+                                            '',
+                                            ''),
+                                  ));
+                                }
                                 // Navigator.of(context).push(MaterialPageRoute(
                                 //   builder: (context) => ProductDetailScreen(widget.data,bannersBrothers[index].id),
                                 // ));
@@ -1809,7 +1924,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     Flexible(
-                                      flex:1,
+                                      flex: 1,
                                       child: Container(
                                         width: 150,
                                         height: 140,
@@ -1818,16 +1933,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                           fit: BoxFit.cover,
                                           alignment: Alignment(0.7, 0.7),
                                           filterQuality: FilterQuality.high,
-                                          loadingBuilder:
-                                              (context, child, loadingProgress) =>
-                                                  (loadingProgress == null)
-                                                      ? child
-                                                      : AnimatedShimmer(
-                                                    height: 140,
-                                                    width: 150,
-                                                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                    delayInMilliSeconds: Duration(milliseconds: index * 5),
-                                                  ),
+                                          loadingBuilder: (context, child,
+                                                  loadingProgress) =>
+                                              (loadingProgress == null)
+                                                  ? child
+                                                  : AnimatedShimmer(
+                                                      height: 140,
+                                                      width: 150,
+                                                      borderRadius:
+                                                          const BorderRadius
+                                                              .all(
+                                                              Radius.circular(
+                                                                  10)),
+                                                      delayInMilliSeconds:
+                                                          Duration(
+                                                              milliseconds:
+                                                                  index * 5),
+                                                    ),
                                           errorBuilder: (context, error,
                                                   stackTrace) =>
                                               Image.asset(
@@ -1970,7 +2092,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     //SizedBox(
-                                      //width: 13.w,
+                                    //width: 13.w,
                                     //),
                                     IconButton(
                                         onPressed: () {
@@ -2058,7 +2180,8 @@ class _HomeScreenState extends State<HomeScreen> {
   //   }
   // }
 
-   CategoryCard({String? title, String? previewImageAsset, VoidCallback? onTap}) {
+  CategoryCard(
+      {String? title, String? previewImageAsset, VoidCallback? onTap}) {
     return Padding(
       padding: const EdgeInsets.only(left: 15.0, top: 5),
       child: InkWell(
@@ -2069,7 +2192,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 0,
             ),
             Flexible(
-              flex:1,
+              flex: 1,
               child: CustomImageView(
                 url: previewImageAsset!,
                 height: getSize(40),
@@ -2077,7 +2200,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 margin: getMargin(top: 3),
               ),
             ),
-            SizedBox(height: 5,),
+            SizedBox(
+              height: 5,
+            ),
             //Spacer(),
             Text(
               title!,
@@ -2181,14 +2306,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return jsonObject;
   }
 
-
   onTapImgSofa() {
     Get.toNamed(AppRoutes.storeScreen);
   }
 
   onTapSearch() {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => SearchScreen(widget.data,''),
+      builder: (context) => SearchScreen(widget.data, ''),
     ));
   }
 
@@ -2207,15 +2331,16 @@ class _LinkWebView extends StatefulWidget {
   @override
   State<_LinkWebView> createState() => __LinkWebViewState();
 }
+
 class __LinkWebViewState extends State<_LinkWebView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:CustomAppBar(
+      appBar: CustomAppBar(
           height: getVerticalSize(70),
           leadingWidth: 41,
           leading: AppbarImage(
-              onTap: (){
+              onTap: () {
                 Navigator.pop(context);
               },
               height: getVerticalSize(15),
@@ -2241,8 +2366,7 @@ class __LinkWebViewState extends State<_LinkWebView> {
                 onPageFinished: (String url) {},
                 onWebResourceError: (WebResourceError error) {},
                 onNavigationRequest: (NavigationRequest request) {
-                  if (request.url
-                      .startsWith('${widget.conts}')) {
+                  if (request.url.startsWith('${widget.conts}')) {
                     return NavigationDecision.prevent;
                   }
                   return NavigationDecision.navigate;

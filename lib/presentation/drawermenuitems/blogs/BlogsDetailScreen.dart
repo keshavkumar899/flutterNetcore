@@ -13,57 +13,51 @@ import '../../../widgets/app_bar/appbar_subtitle_5.dart';
 import '../../../widgets/app_bar/appbar_title.dart';
 import '../../../widgets/app_bar/custom_app_bar.dart' as customappbar;
 import 'Model/blogsdetailsModel.dart';
-import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
+import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart'
+    as otp;
 
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
 
 class BlogsDetailScreen extends StatefulWidget {
-
   otp.Data data;
   String blog_id;
 
-  BlogsDetailScreen(this.data,this.blog_id);
+  BlogsDetailScreen(this.data, this.blog_id);
 
   @override
   State<BlogsDetailScreen> createState() => _BlogsDetailScreenState();
 }
 
 class _BlogsDetailScreenState extends State<BlogsDetailScreen> {
-
   Future<BlogsDetailModel>? blogs;
   List<BlogsDetailData> blogslist = [];
 
   Future<BlogsDetailModel> getBlogsList() async {
-    Map data = {
-      'user_id': widget.data.id,
-      "blog_id":widget.blog_id
-    };
+    Map data = {'user_id': widget.data.id, "blog_id": widget.blog_id};
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/blogDetails",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/blogDetails",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
       if (BlogsDetailModel.fromJson(jsonObject).status == "true") {
         return BlogsDetailModel.fromJson(jsonObject);
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (BlogsDetailModel.fromJson(jsonObject).status == "false") {
+      } else if (BlogsDetailModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(BlogsDetailModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
-
-      }
-      else if(BlogsDetailModel.fromJson(jsonObject).data == null){
+      } else if (BlogsDetailModel.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
             jsonObject['message'] + ' Please check after sometime.',
@@ -71,8 +65,7 @@ class _BlogsDetailScreenState extends State<BlogsDetailScreen> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -80,7 +73,6 @@ class _BlogsDetailScreenState extends State<BlogsDetailScreen> {
     }
     return jsonObject;
   }
-
 
   @override
   void initState() {
@@ -94,7 +86,6 @@ class _BlogsDetailScreenState extends State<BlogsDetailScreen> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,7 +98,7 @@ class _BlogsDetailScreenState extends State<BlogsDetailScreen> {
               width: getHorizontalSize(9),
               svgPath: ImageConstant.imgArrowleft,
               margin: getMargin(left: 25, top: 53, bottom: 23),
-              onTap: (){
+              onTap: () {
                 Navigator.pop(context);
               }),
           title: AppbarTitle(
@@ -152,13 +143,13 @@ class _BlogsDetailScreenState extends State<BlogsDetailScreen> {
           styleType: customappbar.Style.bgStyle_2),
       body: FutureBuilder(
         future: blogs,
-        builder: (context,snapshot){
-          if(snapshot.hasData){
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
             if (!snapshot.hasData) {
               return Center(
                   child: Padding(
                       padding: const EdgeInsets.only(left: 4.0),
-                      child:  Expanded(
+                      child: Expanded(
                         child: Wrap(
                           children: [
                             RichText(
@@ -166,8 +157,7 @@ class _BlogsDetailScreenState extends State<BlogsDetailScreen> {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text:
-                                    "Data Not Found",
+                                    text: "Data Not Found",
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: Colors.grey[600],
@@ -178,104 +168,105 @@ class _BlogsDetailScreenState extends State<BlogsDetailScreen> {
                             )
                           ],
                         ),
-                      )
-                  )
-                // Utils.noDataTextWidget()
-              );
-            } else{
+                      ))
+                  // Utils.noDataTextWidget()
+                  );
+            } else {
               return ListView.builder(
                   itemCount: blogslist.length,
-                  itemBuilder: (context,index){
-                return SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                            Radius.circular(16)),
-                        child: Container(
-                          padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                          height: 28.h,
-                          width: 100.w,
-                          child: CachedNetworkImage(
-                            imageUrl: blogslist[index].image!,
-                            imageBuilder: (context, imageProvider) => GestureDetector(
-                              onTap: (() {
-                                // print(newsList.image!);
-                                // Navigator.push(context,
-                                //     MaterialPageRoute(builder: (context) {
-                                //       return Utils.documentViewer(
-                                //           '${AppConfig.domainName}${newsList.image!}',
-                                //           context);
-                                //     }));
-                              }),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: imageProvider,
-                                    fit: BoxFit.fitWidth,
+                  itemBuilder: (context, index) {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(16)),
+                            child: Container(
+                              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                              height: 28.h,
+                              width: 100.w,
+                              child: CachedNetworkImage(
+                                imageUrl: blogslist[index].image!,
+                                imageBuilder: (context, imageProvider) =>
+                                    GestureDetector(
+                                  onTap: (() {
+                                    // print(newsList.image!);
+                                    // Navigator.push(context,
+                                    //     MaterialPageRoute(builder: (context) {
+                                    //       return Utils.documentViewer(
+                                    //           '${AppConfig.domainName}${newsList.image!}',
+                                    //           context);
+                                    //     }));
+                                  }),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: imageProvider,
+                                        fit: BoxFit.fitWidth,
+                                      ),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20)),
+                                    ),
                                   ),
-                                  borderRadius:
-                                  const BorderRadius.all(
-                                      Radius.circular(20)),
                                 ),
+                                fit: BoxFit.contain,
+                                placeholder: (context, url) =>
+                                    const CupertinoActivityIndicator(),
+                                errorWidget: (context, url, error) =>
+                                    Image.asset(
+                                        "assets/images/image_not_found.png"),
                               ),
                             ),
-                            fit: BoxFit.contain,
-                            placeholder: (context, url) =>
-                            const CupertinoActivityIndicator(),
-                            errorWidget: (context, url, error) => Image.asset(
-                                "assets/images/image_not_found.png"),
                           ),
-                        ),
-                      ),
-                      Container(
-                        width: 100.w,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 1.h,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5.0, left: 19.0),
-                              child: Text(
-                                blogslist[index].name ?? '',
-                                maxLines: 1,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 20.sp,
+                          Container(
+                            width: 100.w,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 1.h,
                                 ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 1.5.h,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10.0),
-                              child: html.Html(
-                                data: blogslist[index].description ?? '',
-                                style: {
-                                  '*': html.Style(
-                                    fontSize: FontSize(14.sp),
-                                    fontFamily: 'Roboto',
-                                    color: Colors.black87,
-                                    fontWeight: FontWeight.w400,
-                                    lineHeight: LineHeight(1.sp),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5.0, left: 19.0),
+                                  child: Text(
+                                    blogslist[index].name ?? '',
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 20.sp,
+                                    ),
                                   ),
-                                },
-                              ),
+                                ),
+                                SizedBox(
+                                  height: 1.5.h,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10.0),
+                                  child: html.Html(
+                                    data: blogslist[index].description ?? '',
+                                    style: {
+                                      '*': html.Style(
+                                        fontSize: FontSize(14.sp),
+                                        fontFamily: 'Roboto',
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.w400,
+                                        lineHeight: LineHeight(1.sp),
+                                      ),
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                );
-              });
+                    );
+                  });
             }
-          }else if (snapshot.hasError) {
+          } else if (snapshot.hasError) {
             return const Text("Something Went Wrong");
           } else {
             return const Center(

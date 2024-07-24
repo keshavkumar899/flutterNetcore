@@ -20,7 +20,10 @@ class GIFNotificationView extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: Text(
                 inbox.publishedDate!.getTimeAndDayCount(),
-                style: TextStyle(fontSize: 12, color: AppColor.greyColorText, fontWeight: FontWeight.w400),
+                style: TextStyle(
+                    fontSize: 12,
+                    color: AppColor.greyColorText,
+                    fontWeight: FontWeight.w400),
               ),
             ),
             SizedBox(

@@ -1,15 +1,16 @@
 class HomeModel {
   HomeModel({
-      this.status, 
-      this.message, 
-      this.data, 
-      this.banners, 
-      this.bannersResPortrait, 
-      this.favouriteProduct, 
-      this.bannerswow, 
-      this.bannersgoodLooks, 
-      this.bannersBrothers, 
-      this.links,});
+    this.status,
+    this.message,
+    this.data,
+    this.banners,
+    this.bannersResPortrait,
+    this.favouriteProduct,
+    this.bannerswow,
+    this.bannersgoodLooks,
+    this.bannersBrothers,
+    this.links,
+  });
 
   HomeModel.fromJson(dynamic json) {
     status = json['status'];
@@ -80,16 +81,19 @@ class HomeModel {
       map['banners'] = banners!.map((v) => v.toJson()).toList();
     }
     if (bannersResPortrait != null) {
-      map['bannersResPortrait'] = bannersResPortrait!.map((v) => v.toJson()).toList();
+      map['bannersResPortrait'] =
+          bannersResPortrait!.map((v) => v.toJson()).toList();
     }
     if (favouriteProduct != null) {
-      map['favourite_product'] = favouriteProduct!.map((v) => v.toJson()).toList();
+      map['favourite_product'] =
+          favouriteProduct!.map((v) => v.toJson()).toList();
     }
     if (bannerswow != null) {
       map['bannerswow'] = bannerswow!.map((v) => v.toJson()).toList();
     }
     if (bannersgoodLooks != null) {
-      map['bannersgoodLooks'] = bannersgoodLooks!.map((v) => v.toJson()).toList();
+      map['bannersgoodLooks'] =
+          bannersgoodLooks!.map((v) => v.toJson()).toList();
     }
     if (bannersBrothers != null) {
       map['bannersBrothers'] = bannersBrothers!.map((v) => v.toJson()).toList();
@@ -99,8 +103,8 @@ class HomeModel {
     }
     return map;
   }
-
 }
+
 class HomeData {
   HomeData({
     this.id,
@@ -113,7 +117,8 @@ class HomeData {
     this.isActive,
     this.isDelete,
     this.createOn,
-    this.updateOn,});
+    this.updateOn,
+  });
 
   HomeData.fromJson(dynamic json) {
     id = json['id'];
@@ -155,7 +160,6 @@ class HomeData {
     map['update_on'] = updateOn;
     return map;
   }
-
 }
 
 class BannersResPortrait {
@@ -171,7 +175,8 @@ class BannersResPortrait {
     this.isActive,
     this.isDelete,
     this.createOn,
-    this.updateOn,});
+    this.updateOn,
+  });
 
   BannersResPortrait.fromJson(dynamic json) {
     id = json['id'];
@@ -216,8 +221,8 @@ class BannersResPortrait {
     map['update_on'] = updateOn;
     return map;
   }
-
 }
+
 class Banners {
   Banners({
     this.id,
@@ -231,7 +236,8 @@ class Banners {
     this.isActive,
     this.isDelete,
     this.createOn,
-    this.updateOn,});
+    this.updateOn,
+  });
 
   Banners.fromJson(dynamic json) {
     id = json['id'];
@@ -276,8 +282,8 @@ class Banners {
     map['update_on'] = updateOn;
     return map;
   }
-
 }
+
 class FavouriteProduct {
   FavouriteProduct({
     this.id,
@@ -299,7 +305,8 @@ class FavouriteProduct {
     this.featured,
     this.isDelete,
     this.createOn,
-    this.updateOn,});
+    this.updateOn,
+  });
 
   FavouriteProduct.fromJson(dynamic json) {
     id = json['id'];
@@ -368,8 +375,8 @@ class FavouriteProduct {
     map['update_on'] = updateOn;
     return map;
   }
-
 }
+
 class Bannerswow {
   Bannerswow({
     this.id,
@@ -383,7 +390,8 @@ class Bannerswow {
     this.isActive,
     this.isDelete,
     this.createOn,
-    this.updateOn,});
+    this.updateOn,
+  });
 
   Bannerswow.fromJson(dynamic json) {
     id = json['id'];
@@ -428,8 +436,8 @@ class Bannerswow {
     map['update_on'] = updateOn;
     return map;
   }
-
 }
+
 class BannersgoodLooks {
   BannersgoodLooks({
     this.id,
@@ -443,7 +451,8 @@ class BannersgoodLooks {
     this.isActive,
     this.isDelete,
     this.createOn,
-    this.updateOn,});
+    this.updateOn,
+  });
 
   BannersgoodLooks.fromJson(dynamic json) {
     id = json['id'];
@@ -488,8 +497,8 @@ class BannersgoodLooks {
     map['update_on'] = updateOn;
     return map;
   }
-
 }
+
 class BannersBrothers {
   BannersBrothers({
     this.id,
@@ -503,7 +512,8 @@ class BannersBrothers {
     this.isActive,
     this.isDelete,
     this.createOn,
-    this.updateOn,});
+    this.updateOn,
+  });
 
   BannersBrothers.fromJson(dynamic json) {
     id = json['id'];
@@ -548,13 +558,14 @@ class BannersBrothers {
     map['update_on'] = updateOn;
     return map;
   }
-
 }
+
 class Links {
   Links({
     this.facebook,
     this.instagram,
-    this.tweeter,});
+    this.tweeter,
+  });
 
   Links.fromJson(dynamic json) {
     facebook = json['facebook'];
@@ -572,5 +583,4 @@ class Links {
     map['tweeter'] = tweeter;
     return map;
   }
-
 }

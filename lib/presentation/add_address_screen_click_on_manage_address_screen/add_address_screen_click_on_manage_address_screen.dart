@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:keshav_s_application2/presentation/add_address_screen/add_address_screen.dart';
 import 'package:keshav_s_application2/presentation/add_address_screen_click_on_manage_address_screen/ManageAddressModel.dart';
 import 'package:keshav_s_application2/presentation/cart_screen/cart_screen.dart';
-import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
+import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart'
+    as otp;
 import 'package:keshav_s_application2/presentation/search_screen/search_screen.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_6.dart';
@@ -22,17 +23,15 @@ import 'dart:convert';
 import 'package:dio/dio.dart' as dio;
 
 class AddAddressScreenClickOnManageAddressScreen extends StatefulWidget {
-
   otp.Data data;
   AddAddressScreenClickOnManageAddressScreen(this.data);
   @override
-  State<AddAddressScreenClickOnManageAddressScreen> createState() => _AddAddressScreenClickOnManageAddressScreenState();
+  State<AddAddressScreenClickOnManageAddressScreen> createState() =>
+      _AddAddressScreenClickOnManageAddressScreenState();
 }
 
-
-
-class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressScreenClickOnManageAddressScreen> {
-
+class _AddAddressScreenClickOnManageAddressScreenState
+    extends State<AddAddressScreenClickOnManageAddressScreen> {
   Future<AddressList>? manageAddress;
   List<AddressData> addresslist = [];
 
@@ -43,27 +42,25 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Auth/addressList",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Auth/addressList",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
       if (AddressList.fromJson(jsonObject).status == "true") {
         return AddressList.fromJson(jsonObject);
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (AddressList.fromJson(jsonObject).status == "false") {
+      } else if (AddressList.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(AddressList.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
-
-      }
-      else if(AddressList.fromJson(jsonObject).data == null){
+      } else if (AddressList.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
             jsonObject['message'] + ' Please check after sometime.',
@@ -71,8 +68,7 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -93,7 +89,6 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -103,7 +98,7 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
                 height: getVerticalSize(70),
                 leadingWidth: 41,
                 leading: AppbarImage(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                     },
                     height: getVerticalSize(15),
@@ -124,31 +119,30 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
                       width: getSize(21),
                       svgPath: ImageConstant.imgSearch,
                       margin:
-                      getMargin(left: 12, top: 22, right: 10, bottom: 10),
-                      onTap: (){
+                          getMargin(left: 12, top: 22, right: 10, bottom: 10),
+                      onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SearchScreen(widget.data,''),
+                          builder: (context) => SearchScreen(widget.data, ''),
                         ));
                       }),
                   Container(
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
-                      margin:
-                      getMargin(left: 20, top: 5, right: 10, bottom: 0),
+                      margin: getMargin(left: 20, top: 5, right: 10, bottom: 0),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
                             width: getHorizontalSize(21),
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
-                            onTap: (){
+                            onTap: () {
                               pushScreen(
                                 context,
                                 screen: WhislistScreen(widget.data),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                             }),
                         // AppbarSubtitle6(
@@ -166,9 +160,9 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
                                 context,
                                 screen: CartScreen(widget.data),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                               // Navigator.of(context).push(MaterialPageRoute(
                               //   builder: (context) => CartScreen(widget.data),
@@ -186,7 +180,7 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
                 styleType: Style.bgShadowBlack90033),
             body: RefreshIndicator(
               color: Colors.purple,
-              onRefresh: () async{
+              onRefresh: () async {
                 setState(() {
                   manageAddress = getAddressList();
                   manageAddress!.then((value) {
@@ -205,251 +199,268 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
                       width: size.width,
                       padding: EdgeInsets.only(bottom: 30),
                       child: FutureBuilder(
-                        future: manageAddress,
-                        builder: (context, snapshot){
-                          if(snapshot.hasData){
-                            if(!snapshot.hasData){
-                              return Center(
-                                  child: Text('No data available.',
-                                      style: TextStyle(
-                                        fontFamily: 'poppins',
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: const Color(0xff45536A),
-                                      )));
+                          future: manageAddress,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              if (!snapshot.hasData) {
+                                return Center(
+                                    child: Text('No data available.',
+                                        style: TextStyle(
+                                          fontFamily: 'poppins',
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: const Color(0xff45536A),
+                                        )));
+                              } else {
+                                return SingleChildScrollView(
+                                    padding: getPadding(top: 25, bottom: 10),
+                                    child: Padding(
+                                        padding: getPadding(left: 4, right: 25),
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                  padding: getPadding(left: 21),
+                                                  child: ListView.separated(
+                                                      physics:
+                                                          NeverScrollableScrollPhysics(),
+                                                      shrinkWrap: true,
+                                                      separatorBuilder:
+                                                          (context, index) {
+                                                        return SizedBox(
+                                                            height:
+                                                                getVerticalSize(
+                                                                    25));
+                                                      },
+                                                      itemCount:
+                                                          addresslist.length,
+                                                      itemBuilder:
+                                                          (context, index) {
+                                                        return ListhomeItemWidget(
+                                                            widget.data,
+                                                            addresslist[index]
+                                                            //     onTapStackedit: () {
+                                                            //   // onTapStackedit(context);
+                                                            // }
+                                                            );
+                                                      })),
+                                              CustomButton(
+                                                  variant: ButtonVariant
+                                                      .FillPurple900,
+                                                  height: getVerticalSize(50),
+                                                  width: getHorizontalSize(250),
+                                                  text: "Add New Address",
+                                                  margin: getMargin(
+                                                      top: 30, right: 64),
+                                                  padding:
+                                                      ButtonPadding.PaddingT16,
+                                                  fontStyle: ButtonFontStyle
+                                                      .RobotoMedium15,
+                                                  prefixWidget: Container(
+                                                      margin:
+                                                          getMargin(right: 12),
+                                                      // decoration: BoxDecoration(
+                                                      //     color: ColorConstant.whiteA700),
+                                                      child: CustomImageView(
+                                                        svgPath: ImageConstant
+                                                            .imgPlus,
+                                                        color: Colors.white,
+                                                      )),
+                                                  onTap: () {
+                                                    onTapAddnewaddress(context);
+                                                  }),
+                                              // Align(
+                                              //     alignment: Alignment.centerLeft,
+                                              //     child: Container(
+                                              //         height: getVerticalSize(14),
+                                              //         width: getHorizontalSize(208),
+                                              //         margin: getMargin(top: 527),
+                                              //         child: Stack(
+                                              //             alignment: Alignment.topCenter,
+                                              //             children: [
+                                              //               Align(
+                                              //                   alignment:
+                                              //                       Alignment.bottomCenter,
+                                              //                   child: Container(
+                                              //                       padding: getPadding(
+                                              //                           left: 67,
+                                              //                           top: 2,
+                                              //                           right: 67,
+                                              //                           bottom: 2),
+                                              //                       decoration: AppDecoration
+                                              //                           .fillLightblueA100
+                                              //                           .copyWith(
+                                              //                               borderRadius:
+                                              //                                   BorderRadiusStyle
+                                              //                                       .customBorderBL11),
+                                              //                       child: Column(
+                                              //                           mainAxisSize:
+                                              //                               MainAxisSize.min,
+                                              //                           mainAxisAlignment:
+                                              //                               MainAxisAlignment
+                                              //                                   .start,
+                                              //                           children: [
+                                              //                             Text(
+                                              //                                 "Boy Fashion 2-4 year",
+                                              //                                 overflow:
+                                              //                                     TextOverflow
+                                              //                                         .ellipsis,
+                                              //                                 textAlign:
+                                              //                                     TextAlign
+                                              //                                         .left,
+                                              //                                 style: AppStyle
+                                              //                                     .txtRobotoRegular8)
+                                              //                           ]))),
+                                              //               Align(
+                                              //                   alignment: Alignment.topCenter,
+                                              //                   child: Container(
+                                              //                       width:
+                                              //                           getHorizontalSize(208),
+                                              //                       padding: getPadding(
+                                              //                           left: 30,
+                                              //                           top: 2,
+                                              //                           right: 67,
+                                              //                           bottom: 2),
+                                              //                       decoration: AppDecoration
+                                              //                           .txtFillLightblueA100
+                                              //                           .copyWith(
+                                              //                               borderRadius:
+                                              //                                   BorderRadiusStyle
+                                              //                                       .txtCustomBorderBL11),
+                                              //                       child: Text(
+                                              //                           "Boy Fashion 2-4 year",
+                                              //                           overflow: TextOverflow
+                                              //                               .ellipsis,
+                                              //                           textAlign:
+                                              //                               TextAlign.left,
+                                              //                           style: AppStyle
+                                              //                               .txtRobotoRegular8)))
+                                              //             ])))
+                                            ])));
+                              }
+                            } else {
+                              return const Center(
+                                heightFactor: 15,
+                                child: CircularProgressIndicator(
+                                  color: Colors.purple,
+                                ),
+                              );
                             }
-                            else{
-                              return SingleChildScrollView(
-                                  padding: getPadding(top: 25,bottom: 10),
-                                  child: Padding(
-                                      padding: getPadding(left: 4, right: 25),
-                                      child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                                padding: getPadding(left: 21),
-                                                child: ListView.separated(
-                                                    physics: NeverScrollableScrollPhysics(),
-                                                    shrinkWrap: true,
-                                                    separatorBuilder: (context, index) {
-                                                      return SizedBox(
-                                                          height: getVerticalSize(25));
-                                                    },
-                                                    itemCount: addresslist.length,
-                                                    itemBuilder: (context, index) {
-                                                      return ListhomeItemWidget(widget.data,addresslist[index]
-                                                        //     onTapStackedit: () {
-                                                        //   // onTapStackedit(context);
-                                                        // }
-                                                      );
-                                                    })),
-                                            CustomButton(
-                                                variant: ButtonVariant.FillPurple900,
-                                                height: getVerticalSize(50),
-                                                width: getHorizontalSize(250),
-                                                text: "Add New Address",
-                                                margin: getMargin(top: 30, right: 64),
-                                                padding: ButtonPadding.PaddingT16,
-                                                fontStyle: ButtonFontStyle.RobotoMedium15,
-                                                prefixWidget: Container(
-                                                    margin: getMargin(right: 12),
-                                                    // decoration: BoxDecoration(
-                                                    //     color: ColorConstant.whiteA700),
-                                                    child: CustomImageView(
-                                                      svgPath: ImageConstant.imgPlus,color: Colors.white,)),
-                                                onTap: () {
-                                                  onTapAddnewaddress(context);
-                                                }),
-                                            // Align(
-                                            //     alignment: Alignment.centerLeft,
-                                            //     child: Container(
-                                            //         height: getVerticalSize(14),
-                                            //         width: getHorizontalSize(208),
-                                            //         margin: getMargin(top: 527),
-                                            //         child: Stack(
-                                            //             alignment: Alignment.topCenter,
-                                            //             children: [
-                                            //               Align(
-                                            //                   alignment:
-                                            //                       Alignment.bottomCenter,
-                                            //                   child: Container(
-                                            //                       padding: getPadding(
-                                            //                           left: 67,
-                                            //                           top: 2,
-                                            //                           right: 67,
-                                            //                           bottom: 2),
-                                            //                       decoration: AppDecoration
-                                            //                           .fillLightblueA100
-                                            //                           .copyWith(
-                                            //                               borderRadius:
-                                            //                                   BorderRadiusStyle
-                                            //                                       .customBorderBL11),
-                                            //                       child: Column(
-                                            //                           mainAxisSize:
-                                            //                               MainAxisSize.min,
-                                            //                           mainAxisAlignment:
-                                            //                               MainAxisAlignment
-                                            //                                   .start,
-                                            //                           children: [
-                                            //                             Text(
-                                            //                                 "Boy Fashion 2-4 year",
-                                            //                                 overflow:
-                                            //                                     TextOverflow
-                                            //                                         .ellipsis,
-                                            //                                 textAlign:
-                                            //                                     TextAlign
-                                            //                                         .left,
-                                            //                                 style: AppStyle
-                                            //                                     .txtRobotoRegular8)
-                                            //                           ]))),
-                                            //               Align(
-                                            //                   alignment: Alignment.topCenter,
-                                            //                   child: Container(
-                                            //                       width:
-                                            //                           getHorizontalSize(208),
-                                            //                       padding: getPadding(
-                                            //                           left: 30,
-                                            //                           top: 2,
-                                            //                           right: 67,
-                                            //                           bottom: 2),
-                                            //                       decoration: AppDecoration
-                                            //                           .txtFillLightblueA100
-                                            //                           .copyWith(
-                                            //                               borderRadius:
-                                            //                                   BorderRadiusStyle
-                                            //                                       .txtCustomBorderBL11),
-                                            //                       child: Text(
-                                            //                           "Boy Fashion 2-4 year",
-                                            //                           overflow: TextOverflow
-                                            //                               .ellipsis,
-                                            //                           textAlign:
-                                            //                               TextAlign.left,
-                                            //                           style: AppStyle
-                                            //                               .txtRobotoRegular8)))
-                                            //             ])))
-                                          ])));
-                            }
-                          }else {
-                            return const Center(
-                              heightFactor: 15,
-                              child: CircularProgressIndicator(
-                                color: Colors.purple,
-                              ),
-                            );
                           }
-                        }
-                        // child: SingleChildScrollView(
-                        //     padding: getPadding(top: 25),
-                        //     child: Padding(
-                        //         padding: getPadding(left: 4, right: 25),
-                        //         child: Column(
-                        //             crossAxisAlignment: CrossAxisAlignment.end,
-                        //             mainAxisAlignment: MainAxisAlignment.start,
-                        //             children: [
-                        //               Padding(
-                        //                   padding: getPadding(left: 21),
-                        //                   child: ListView.separated(
-                        //                       physics: NeverScrollableScrollPhysics(),
-                        //                       shrinkWrap: true,
-                        //                       separatorBuilder: (context, index) {
-                        //                         return SizedBox(
-                        //                             height: getVerticalSize(25));
-                        //                       },
-                        //                       itemCount: 2,
-                        //                       itemBuilder: (context, index) {
-                        //                         return ListhomeItemWidget(widget.data
-                        //                         //     onTapStackedit: () {
-                        //                         //   // onTapStackedit(context);
-                        //                         // }
-                        //                         );
-                        //                       })),
-                        //               CustomButton(
-                        //                   variant: ButtonVariant.FillPurple900,
-                        //                   height: getVerticalSize(50),
-                        //                   width: getHorizontalSize(250),
-                        //                   text: "Add New Address",
-                        //                   margin: getMargin(top: 30, right: 64),
-                        //                   padding: ButtonPadding.PaddingT16,
-                        //                   fontStyle: ButtonFontStyle.RobotoMedium15,
-                        //                   prefixWidget: Container(
-                        //                       margin: getMargin(right: 12),
-                        //                       // decoration: BoxDecoration(
-                        //                       //     color: ColorConstant.whiteA700),
-                        //                       child: CustomImageView(
-                        //                           svgPath: ImageConstant.imgPlus,color: Colors.white,)),
-                        //                   onTap: () {
-                        //                     onTapAddnewaddress(context);
-                        //                   }),
-                        //               // Align(
-                        //               //     alignment: Alignment.centerLeft,
-                        //               //     child: Container(
-                        //               //         height: getVerticalSize(14),
-                        //               //         width: getHorizontalSize(208),
-                        //               //         margin: getMargin(top: 527),
-                        //               //         child: Stack(
-                        //               //             alignment: Alignment.topCenter,
-                        //               //             children: [
-                        //               //               Align(
-                        //               //                   alignment:
-                        //               //                       Alignment.bottomCenter,
-                        //               //                   child: Container(
-                        //               //                       padding: getPadding(
-                        //               //                           left: 67,
-                        //               //                           top: 2,
-                        //               //                           right: 67,
-                        //               //                           bottom: 2),
-                        //               //                       decoration: AppDecoration
-                        //               //                           .fillLightblueA100
-                        //               //                           .copyWith(
-                        //               //                               borderRadius:
-                        //               //                                   BorderRadiusStyle
-                        //               //                                       .customBorderBL11),
-                        //               //                       child: Column(
-                        //               //                           mainAxisSize:
-                        //               //                               MainAxisSize.min,
-                        //               //                           mainAxisAlignment:
-                        //               //                               MainAxisAlignment
-                        //               //                                   .start,
-                        //               //                           children: [
-                        //               //                             Text(
-                        //               //                                 "Boy Fashion 2-4 year",
-                        //               //                                 overflow:
-                        //               //                                     TextOverflow
-                        //               //                                         .ellipsis,
-                        //               //                                 textAlign:
-                        //               //                                     TextAlign
-                        //               //                                         .left,
-                        //               //                                 style: AppStyle
-                        //               //                                     .txtRobotoRegular8)
-                        //               //                           ]))),
-                        //               //               Align(
-                        //               //                   alignment: Alignment.topCenter,
-                        //               //                   child: Container(
-                        //               //                       width:
-                        //               //                           getHorizontalSize(208),
-                        //               //                       padding: getPadding(
-                        //               //                           left: 30,
-                        //               //                           top: 2,
-                        //               //                           right: 67,
-                        //               //                           bottom: 2),
-                        //               //                       decoration: AppDecoration
-                        //               //                           .txtFillLightblueA100
-                        //               //                           .copyWith(
-                        //               //                               borderRadius:
-                        //               //                                   BorderRadiusStyle
-                        //               //                                       .txtCustomBorderBL11),
-                        //               //                       child: Text(
-                        //               //                           "Boy Fashion 2-4 year",
-                        //               //                           overflow: TextOverflow
-                        //               //                               .ellipsis,
-                        //               //                           textAlign:
-                        //               //                               TextAlign.left,
-                        //               //                           style: AppStyle
-                        //               //                               .txtRobotoRegular8)))
-                        //               //             ])))
-                        //             ]))),
-                      )),
+                          // child: SingleChildScrollView(
+                          //     padding: getPadding(top: 25),
+                          //     child: Padding(
+                          //         padding: getPadding(left: 4, right: 25),
+                          //         child: Column(
+                          //             crossAxisAlignment: CrossAxisAlignment.end,
+                          //             mainAxisAlignment: MainAxisAlignment.start,
+                          //             children: [
+                          //               Padding(
+                          //                   padding: getPadding(left: 21),
+                          //                   child: ListView.separated(
+                          //                       physics: NeverScrollableScrollPhysics(),
+                          //                       shrinkWrap: true,
+                          //                       separatorBuilder: (context, index) {
+                          //                         return SizedBox(
+                          //                             height: getVerticalSize(25));
+                          //                       },
+                          //                       itemCount: 2,
+                          //                       itemBuilder: (context, index) {
+                          //                         return ListhomeItemWidget(widget.data
+                          //                         //     onTapStackedit: () {
+                          //                         //   // onTapStackedit(context);
+                          //                         // }
+                          //                         );
+                          //                       })),
+                          //               CustomButton(
+                          //                   variant: ButtonVariant.FillPurple900,
+                          //                   height: getVerticalSize(50),
+                          //                   width: getHorizontalSize(250),
+                          //                   text: "Add New Address",
+                          //                   margin: getMargin(top: 30, right: 64),
+                          //                   padding: ButtonPadding.PaddingT16,
+                          //                   fontStyle: ButtonFontStyle.RobotoMedium15,
+                          //                   prefixWidget: Container(
+                          //                       margin: getMargin(right: 12),
+                          //                       // decoration: BoxDecoration(
+                          //                       //     color: ColorConstant.whiteA700),
+                          //                       child: CustomImageView(
+                          //                           svgPath: ImageConstant.imgPlus,color: Colors.white,)),
+                          //                   onTap: () {
+                          //                     onTapAddnewaddress(context);
+                          //                   }),
+                          //               // Align(
+                          //               //     alignment: Alignment.centerLeft,
+                          //               //     child: Container(
+                          //               //         height: getVerticalSize(14),
+                          //               //         width: getHorizontalSize(208),
+                          //               //         margin: getMargin(top: 527),
+                          //               //         child: Stack(
+                          //               //             alignment: Alignment.topCenter,
+                          //               //             children: [
+                          //               //               Align(
+                          //               //                   alignment:
+                          //               //                       Alignment.bottomCenter,
+                          //               //                   child: Container(
+                          //               //                       padding: getPadding(
+                          //               //                           left: 67,
+                          //               //                           top: 2,
+                          //               //                           right: 67,
+                          //               //                           bottom: 2),
+                          //               //                       decoration: AppDecoration
+                          //               //                           .fillLightblueA100
+                          //               //                           .copyWith(
+                          //               //                               borderRadius:
+                          //               //                                   BorderRadiusStyle
+                          //               //                                       .customBorderBL11),
+                          //               //                       child: Column(
+                          //               //                           mainAxisSize:
+                          //               //                               MainAxisSize.min,
+                          //               //                           mainAxisAlignment:
+                          //               //                               MainAxisAlignment
+                          //               //                                   .start,
+                          //               //                           children: [
+                          //               //                             Text(
+                          //               //                                 "Boy Fashion 2-4 year",
+                          //               //                                 overflow:
+                          //               //                                     TextOverflow
+                          //               //                                         .ellipsis,
+                          //               //                                 textAlign:
+                          //               //                                     TextAlign
+                          //               //                                         .left,
+                          //               //                                 style: AppStyle
+                          //               //                                     .txtRobotoRegular8)
+                          //               //                           ]))),
+                          //               //               Align(
+                          //               //                   alignment: Alignment.topCenter,
+                          //               //                   child: Container(
+                          //               //                       width:
+                          //               //                           getHorizontalSize(208),
+                          //               //                       padding: getPadding(
+                          //               //                           left: 30,
+                          //               //                           top: 2,
+                          //               //                           right: 67,
+                          //               //                           bottom: 2),
+                          //               //                       decoration: AppDecoration
+                          //               //                           .txtFillLightblueA100
+                          //               //                           .copyWith(
+                          //               //                               borderRadius:
+                          //               //                                   BorderRadiusStyle
+                          //               //                                       .txtCustomBorderBL11),
+                          //               //                       child: Text(
+                          //               //                           "Boy Fashion 2-4 year",
+                          //               //                           overflow: TextOverflow
+                          //               //                               .ellipsis,
+                          //               //                           textAlign:
+                          //               //                               TextAlign.left,
+                          //               //                           style: AppStyle
+                          //               //                               .txtRobotoRegular8)))
+                          //               //             ])))
+                          //             ]))),
+                          )),
                 ],
               ),
             )));
@@ -470,6 +481,7 @@ class _AddAddressScreenClickOnManageAddressScreenState extends State<AddAddressS
   onTapArrowleft1(BuildContext context) {
     Navigator.pop(context);
   }
+
   onTapSearch() {
     Get.toNamed(AppRoutes.searchScreen);
   }

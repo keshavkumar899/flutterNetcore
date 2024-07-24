@@ -1,8 +1,9 @@
 class AddtoCart {
   AddtoCart({
-      this.status, 
-      this.message, 
-      this.data,});
+    this.status,
+    this.message,
+    this.data,
+  });
 
   AddtoCart.fromJson(dynamic json) {
     status = json['status'];
@@ -20,5 +21,4 @@ class AddtoCart {
     map['data'] = data;
     return map;
   }
-
 }

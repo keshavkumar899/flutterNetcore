@@ -18,19 +18,17 @@ class _termsOfConditionScreen extends State<TermsOfConditionScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    if(AppConstant.aboutType=='1'){
+    if (AppConstant.aboutType == '1') {
       toolbarName = "lbl_terms_of_use".tr;
-    }
-    else if(AppConstant.aboutType=='2'){
+    } else if (AppConstant.aboutType == '2') {
       toolbarName = "lbl_privacy_policy".tr;
-    }
-    else if(AppConstant.aboutType=='3'){
+    } else if (AppConstant.aboutType == '3') {
       toolbarName = "Return policy";
-    }
-    else if(AppConstant.aboutType=='4'){
+    } else if (AppConstant.aboutType == '4') {
       toolbarName = "msg_grievance_redressal".tr;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

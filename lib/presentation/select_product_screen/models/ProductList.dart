@@ -1,8 +1,9 @@
 class ProductList {
   ProductList({
-      this.status, 
-      this.message, 
-      this.data,});
+    this.status,
+    this.message,
+    this.data,
+  });
 
   ProductList.fromJson(dynamic json) {
     status = json['status'];
@@ -27,7 +28,6 @@ class ProductList {
     }
     return map;
   }
-
 }
 
 class ProductListData {
@@ -54,7 +54,8 @@ class ProductListData {
     this.updateOn,
     this.categoryName,
     this.brandName,
-    this.isWishlist,});
+    this.isWishlist,
+  });
 
   ProductListData.fromJson(dynamic json) {
     id = json['id'];
@@ -94,7 +95,7 @@ class ProductListData {
   String? discountPrice;
   String? description;
   String? image;
-  String ?metaTitle;
+  String? metaTitle;
   String? metaDescription;
   String? isActive;
   String? featured;
@@ -132,5 +133,4 @@ class ProductListData {
     map['is_wishlist'] = isWishlist;
     return map;
   }
-
 }

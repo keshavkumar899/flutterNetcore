@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:ffi';
 import 'package:custom_pop_up_menu/custom_pop_up_menu.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+//import 'package:keshav_s_application2/presentation/app_inbox/utils/AppInboxModel.dart';
 import 'package:keshav_s_application2/presentation/app_inbox/utils/utils.dart';
 import 'package:keshav_s_application2/presentation/app_inbox/widgets/smt_audio_notification_view.dart';
 import 'package:keshav_s_application2/presentation/app_inbox/widgets/smt_carousel_notification_view.dart';
@@ -28,7 +31,7 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
 
   var appBarHeight = AppBar().preferredSize.height;
   CustomPopupMenuController _controller = CustomPopupMenuController();
-  int messageLimit = 10;
+  int messageLimit = 30;
   String smtInboxDataType = "all";
   String smtAppInboxMessageType = "inbox";
   Int64? latestMessageTimeStamp;
@@ -75,17 +78,40 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
       if (value != null) {
         categoryList.addAll(value);
       }
-      log("getCategoryList: "+categoryList.toString());
+      log("getCategoryList: " + categoryList.toString());
     });
   }
 
-  Future getAppInboxCategoryWiseMessageList({List<MessageCategory>? categoryList}) async {
+  Future getAppInboxCategoryWiseMessageList(
+      {List<MessageCategory>? categoryList}) async {
     inboxList = [];
+    // var url =
+    //     'https://appinbox.netcoresmartech.com/v1/appinbox?appId=83f135604f51c4e1eb268c1d8ff0f1fa&identity=8920616622&limit=10&direction=all&timestamp=-1&guid=D274A9CA-1837-47C4-A290-9496BEDB876B';
+    // var response = await Dio().get(
+    //   url,
+    //   // options: Options(
+    //   //   headers: {
+    //   //     "Content-Type": "application/json",
+    //   //     "Accept": "*/*",
+    //   //   },
+    //   // ),
+    //   // data: formData
+    // );
+    // if (response.statusCode == 200) {
+    //   //print(response.data);
+    //   // var model = jsonEncode(response.data);
+    //   // Map<String, dynamic> data = jsonDecode(model);
+    //   // print(data['inbox'][4]['aps']['payload']);
+    // }
     await SmartechAppinbox()
-        .getAppInboxCategoryWiseMessageList(categoryList: categoryList?.where((element) => element.selected).map((e) => e.name).toList() ?? [])
+        .getAppInboxCategoryWiseMessageList(
+            categoryList: categoryList
+                    ?.where((element) => element.selected)
+                    .map((e) => e.name)
+                    .toList() ??
+                [])
         .then((value) {
       if (value != null) {
-        print("getAppInboxCategoryWiseMessageList: "+value.toString());
         inboxList.addAll(value);
       }
       // log(inboxList.toString());
@@ -107,32 +133,41 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
 
   /// ======>  This is method to get all notifications <======= ///
   getMessagesList() async {
-    inboxList = [];
+    // inboxList = [];
     await SmartechAppinbox().getAppInboxMessages().then((value) {
       // log(value.toString());
-      if (value != null) {
-        inboxList.addAll(value);
-      }
-      setState(() {});
+      // if (value != null) {
+      //   inboxList.addAll(value);
+      // }
+      // setState(() {});
       // log(inboxList.toString());
-      print("getMessagesList: "+value.toString());
+      print(value);
     });
   }
 
-  Future getMessageListByApiCall({int? messageLimit, String? smtInboxDataType, List<MessageCategory>? filterCategoryList}) async {
+  Future getMessageListByApiCall(
+      {int? messageLimit,
+      String? smtInboxDataType,
+      List<MessageCategory>? filterCategoryList}) async {
     await SmartechAppinbox()
         .getAppInboxMessagesByApiCall(
-            messageLimit: messageLimit ?? 10,
+            messageLimit: messageLimit ?? 30,
             smtInboxDataType: smtInboxDataType ?? "",
-            categoryList: categoryList.where((element) => element.selected).map((e) => e.name).toList())
+            categoryList: categoryList
+                .where((element) => element.selected)
+                .map((e) => e.name)
+                .toList())
         .then((value) {
-      print("getMessageListByApiCall: "+value.toString());
+      print("getMessageListByApiCall: " + value.toString());
       setState(() {});
     });
   }
 
   Future getAppInboxMessageCount({String? smtAppInboxMessageType}) async {
-    await SmartechAppinbox().getAppInboxMessageCount(smtAppInboxMessageType: smtAppInboxMessageType ?? "").then(
+    await SmartechAppinbox()
+        .getAppInboxMessageCount(
+            smtAppInboxMessageType: smtAppInboxMessageType ?? "")
+        .then(
       (value) {
         print(value.toString());
       },
@@ -155,7 +190,8 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
         ),
         title: Text(
           "Notifications",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
+          style: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -171,7 +207,8 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                     (selectedList) {
                       categoryList = selectedList;
                       print(categoryList);
-                      getAppInboxCategoryWiseMessageList(categoryList: categoryList);
+                      getAppInboxCategoryWiseMessageList(
+                          categoryList: categoryList);
                       setState(() {});
                     },
                   ),
@@ -187,7 +224,10 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
         children: [
           Padding(
             padding: EdgeInsets.only(left: 16, right: 16, top: 8),
-            child: MultiSelectChip(categoryList.where((element) => (element.selected == true)).toList(), onSelectionChanged: (selectedList) {
+            child: MultiSelectChip(
+                categoryList
+                    .where((element) => (element.selected == true))
+                    .toList(), onSelectionChanged: (selectedList) {
               getAppInboxCategoryWiseMessageList(categoryList: categoryList);
               setState(() {});
             }),
@@ -216,17 +256,25 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                             return VisibilityDetector(
                               key: Key(index.toString()),
                               onVisibilityChanged: (VisibilityInfo info) {
-                                var visiblePercentage = info.visibleFraction * 100;
+                                var visiblePercentage =
+                                    info.visibleFraction * 100;
                                 // log('Widget ${inboxList[index].trid} is ${visiblePercentage}% visible');
-                                if (visiblePercentage == 100 && inboxList[index].smtPayload!.status.toLowerCase() != "viewed") {
-                                  markMessageAsViewed(inboxList[index].smtPayload!.trid);
+                                if (visiblePercentage == 100 &&
+                                    inboxList[index]
+                                            .smtPayload!
+                                            .status
+                                            .toLowerCase() !=
+                                        "viewed") {
+                                  markMessageAsViewed(
+                                      inboxList[index].smtPayload!.trid);
                                   return;
                                 }
                               },
                               child: Dismissible(
                                 key: Key(inboxList[index].smtPayload!.trid),
                                 onDismissed: (direction) async {
-                                  await markMessageAsDismissed(inboxList[index].smtPayload!.trid);
+                                  await markMessageAsDismissed(
+                                      inboxList[index].smtPayload!.trid);
                                   await inboxList.removeAt(index);
                                   await getCategoryList();
                                   setState(() {});
@@ -242,7 +290,9 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                                     )),
                                 child: InkWell(
                                   onTap: () {
-                                    markMessageAsClicked(inboxList[index].smtPayload!.deeplink, inboxList[index].smtPayload!.trid);
+                                    markMessageAsClicked(
+                                        inboxList[index].smtPayload!.deeplink,
+                                        inboxList[index].smtPayload!.trid);
                                   },
                                   child: SMTImageNotificationView(
                                     inbox: inboxList[index].smtPayload!,
@@ -256,17 +306,25 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                             return VisibilityDetector(
                               key: Key(index.toString()),
                               onVisibilityChanged: (VisibilityInfo info) {
-                                var visiblePercentage = info.visibleFraction * 100;
+                                var visiblePercentage =
+                                    info.visibleFraction * 100;
                                 // log('Widget ${inboxList[index].trid} is ${visiblePercentage}% visible');
-                                if (visiblePercentage == 100 && inboxList[index].smtPayload!.status.toLowerCase() != "viewed") {
-                                  markMessageAsViewed(inboxList[index].smtPayload!.trid);
+                                if (visiblePercentage == 100 &&
+                                    inboxList[index]
+                                            .smtPayload!
+                                            .status
+                                            .toLowerCase() !=
+                                        "viewed") {
+                                  markMessageAsViewed(
+                                      inboxList[index].smtPayload!.trid);
                                   return;
                                 }
                               },
                               child: Dismissible(
                                 key: Key(inboxList[index].smtPayload!.trid),
                                 onDismissed: (direction) async {
-                                  await markMessageAsDismissed(inboxList[index].smtPayload!.trid);
+                                  await markMessageAsDismissed(
+                                      inboxList[index].smtPayload!.trid);
                                   await inboxList.removeAt(index);
                                   await getCategoryList();
                                   setState(() {});
@@ -282,7 +340,9 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                                     )),
                                 child: InkWell(
                                   onTap: () {
-                                    markMessageAsClicked(inboxList[index].smtPayload!.deeplink, inboxList[index].smtPayload!.trid);
+                                    markMessageAsClicked(
+                                        inboxList[index].smtPayload!.deeplink,
+                                        inboxList[index].smtPayload!.trid);
                                   },
                                   child: GIFNotificationView(
                                     inbox: inboxList[index].smtPayload!,
@@ -296,17 +356,25 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                             return VisibilityDetector(
                               key: Key(index.toString()),
                               onVisibilityChanged: (VisibilityInfo info) {
-                                var visiblePercentage = info.visibleFraction * 100;
+                                var visiblePercentage =
+                                    info.visibleFraction * 100;
                                 // log('Widget ${inboxList[index].trid} is ${visiblePercentage}% visible');
-                                if (visiblePercentage == 100 && inboxList[index].smtPayload!.status.toLowerCase() != "viewed") {
-                                  markMessageAsViewed(inboxList[index].smtPayload!.trid);
+                                if (visiblePercentage == 100 &&
+                                    inboxList[index]
+                                            .smtPayload!
+                                            .status
+                                            .toLowerCase() !=
+                                        "viewed") {
+                                  markMessageAsViewed(
+                                      inboxList[index].smtPayload!.trid);
                                   return;
                                 }
                               },
                               child: Dismissible(
                                 key: Key(inboxList[index].smtPayload!.trid),
                                 onDismissed: (direction) async {
-                                  await markMessageAsDismissed(inboxList[index].smtPayload!.trid);
+                                  await markMessageAsDismissed(
+                                      inboxList[index].smtPayload!.trid);
                                   await inboxList.removeAt(index);
                                   await getCategoryList();
                                   setState(() {});
@@ -322,7 +390,9 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                                     )),
                                 child: InkWell(
                                   onTap: () {
-                                    markMessageAsClicked(inboxList[index].smtPayload!.deeplink, inboxList[index].smtPayload!.trid);
+                                    markMessageAsClicked(
+                                        inboxList[index].smtPayload!.deeplink,
+                                        inboxList[index].smtPayload!.trid);
                                   },
                                   child: SMTAudioNotificationView(
                                     inbox: inboxList[index].smtPayload!,
@@ -337,17 +407,25 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                             return VisibilityDetector(
                               key: Key(index.toString()),
                               onVisibilityChanged: (VisibilityInfo info) {
-                                var visiblePercentage = info.visibleFraction * 100;
+                                var visiblePercentage =
+                                    info.visibleFraction * 100;
                                 // log('Widget ${inboxList[index].trid} is ${visiblePercentage}% visible');
-                                if (visiblePercentage == 100 && inboxList[index].smtPayload!.status.toLowerCase() != "viewed") {
-                                  markMessageAsViewed(inboxList[index].smtPayload!.trid);
+                                if (visiblePercentage == 100 &&
+                                    inboxList[index]
+                                            .smtPayload!
+                                            .status
+                                            .toLowerCase() !=
+                                        "viewed") {
+                                  markMessageAsViewed(
+                                      inboxList[index].smtPayload!.trid);
                                   return;
                                 }
                               },
                               child: Dismissible(
                                 key: Key(inboxList[index].smtPayload!.trid),
                                 onDismissed: (direction) async {
-                                  await markMessageAsDismissed(inboxList[index].smtPayload!.trid);
+                                  await markMessageAsDismissed(
+                                      inboxList[index].smtPayload!.trid);
                                   await inboxList.removeAt(index);
                                   await getCategoryList();
                                   setState(() {});
@@ -363,7 +441,9 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                                     )),
                                 child: InkWell(
                                   onTap: () async {
-                                    markMessageAsClicked(inboxList[index].smtPayload!.deeplink, inboxList[index].smtPayload!.trid);
+                                    markMessageAsClicked(
+                                        inboxList[index].smtPayload!.deeplink,
+                                        inboxList[index].smtPayload!.trid);
                                   },
                                   child: SMTCarouselNotificationView(
                                     inbox: inboxList[index].smtPayload!,
@@ -377,17 +457,25 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                             return VisibilityDetector(
                               key: Key(index.toString()),
                               onVisibilityChanged: (VisibilityInfo info) {
-                                var visiblePercentage = info.visibleFraction * 100;
+                                var visiblePercentage =
+                                    info.visibleFraction * 100;
                                 // log('Widget ${inboxList[index].trid} is ${visiblePercentage}% visible');
-                                if (visiblePercentage == 100 && inboxList[index].smtPayload!.status.toLowerCase() != "viewed") {
-                                  markMessageAsViewed(inboxList[index].smtPayload!.trid);
+                                if (visiblePercentage == 100 &&
+                                    inboxList[index]
+                                            .smtPayload!
+                                            .status
+                                            .toLowerCase() !=
+                                        "viewed") {
+                                  markMessageAsViewed(
+                                      inboxList[index].smtPayload!.trid);
                                   return;
                                 }
                               },
                               child: Dismissible(
                                 key: Key(inboxList[index].smtPayload!.trid),
                                 onDismissed: (direction) async {
-                                  await markMessageAsDismissed(inboxList[index].smtPayload!.trid);
+                                  await markMessageAsDismissed(
+                                      inboxList[index].smtPayload!.trid);
                                   await inboxList.removeAt(index);
                                   await getCategoryList();
                                   setState(() {});
@@ -403,7 +491,9 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                                     )),
                                 child: InkWell(
                                   onTap: () {
-                                    markMessageAsClicked(inboxList[index].smtPayload!.deeplink, inboxList[index].smtPayload!.trid);
+                                    markMessageAsClicked(
+                                        inboxList[index].smtPayload!.deeplink,
+                                        inboxList[index].smtPayload!.trid);
                                   },
                                   child: SMTVideoNotificationView(
                                     inbox: inboxList[index].smtPayload!,
@@ -418,17 +508,25 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                             return VisibilityDetector(
                               key: Key(index.toString()),
                               onVisibilityChanged: (VisibilityInfo info) {
-                                var visiblePercentage = info.visibleFraction * 100;
+                                var visiblePercentage =
+                                    info.visibleFraction * 100;
                                 // log('Widget ${inboxList[index].trid} is ${visiblePercentage}% visible');
-                                if (visiblePercentage == 100 && inboxList[index].smtPayload!.status.toLowerCase() != "viewed") {
-                                  markMessageAsViewed(inboxList[index].smtPayload!.trid);
+                                if (visiblePercentage == 100 &&
+                                    inboxList[index]
+                                            .smtPayload!
+                                            .status
+                                            .toLowerCase() !=
+                                        "viewed") {
+                                  markMessageAsViewed(
+                                      inboxList[index].smtPayload!.trid);
                                   return;
                                 }
                               },
                               child: Dismissible(
                                 key: Key(inboxList[index].smtPayload!.trid),
                                 onDismissed: (direction) async {
-                                  await markMessageAsDismissed(inboxList[index].smtPayload!.trid);
+                                  await markMessageAsDismissed(
+                                      inboxList[index].smtPayload!.trid);
                                   await inboxList.removeAt(index);
                                   await getCategoryList();
                                   setState(() {});
@@ -444,7 +542,9 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                                     )),
                                 child: InkWell(
                                   onTap: () {
-                                    markMessageAsClicked(inboxList[index].smtPayload!.deeplink, inboxList[index].smtPayload!.trid);
+                                    markMessageAsClicked(
+                                        inboxList[index].smtPayload!.deeplink,
+                                        inboxList[index].smtPayload!.trid);
                                   },
                                   child: SMTSimpleNotificationView(
                                     inbox: inboxList[index].smtPayload!,
@@ -572,7 +672,8 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
                 value: categoryList[index].selected,
                 onChanged: (bool? value) {
                   setState(() {
-                    categoryList[index].selected = !categoryList[index].selected;
+                    categoryList[index].selected =
+                        !categoryList[index].selected;
                   });
                   widget.onSelected(categoryList);
                 },

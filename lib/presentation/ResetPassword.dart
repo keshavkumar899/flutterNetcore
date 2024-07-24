@@ -11,19 +11,17 @@ import 'package:sizer/sizer.dart';
 import '../widgets/custom_image_view.dart';
 
 class ResetPassword extends StatefulWidget {
-
   @override
   State<ResetPassword> createState() => _ResetPasswordState();
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
-
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController newpasswordController=TextEditingController();
-  TextEditingController confirmpasswordController=TextEditingController();
+  TextEditingController newpasswordController = TextEditingController();
+  TextEditingController confirmpasswordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   final RoundedLoadingButtonController _btnController =
-  RoundedLoadingButtonController();
+      RoundedLoadingButtonController();
   bool _isObscure = false;
   @override
   Widget build(BuildContext context) {
@@ -46,7 +44,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                               alignment: Alignment.centerLeft,
                               margin: getMargin(left: 24, top: 2),
                               onTap: () {
-                              Navigator.pop(context);
+                                Navigator.pop(context);
                               }),
                           Align(
                               alignment: Alignment.centerLeft,
@@ -54,29 +52,31 @@ class _ResetPasswordState extends State<ResetPassword> {
                                   padding: getPadding(top: 47),
                                   child: Row(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Container(
                                             height: getVerticalSize(16),
                                             width: getHorizontalSize(21),
                                             margin:
-                                            getMargin(top: 1, bottom: 4),
+                                                getMargin(top: 1, bottom: 4),
                                             decoration: BoxDecoration(
                                                 color: ColorConstant.purple900,
                                                 borderRadius: BorderRadius.only(
                                                     bottomRight:
-                                                    Radius.circular(
-                                                        getHorizontalSize(
-                                                            30))))),
+                                                        Radius.circular(
+                                                            getHorizontalSize(
+                                                                30))))),
                                         Padding(
                                             padding: getPadding(left: 6),
                                             child: Text("Reset Password",
                                                 overflow: TextOverflow.ellipsis,
                                                 textAlign: TextAlign.left,
                                                 style:
-                                                AppStyle.txtRobotoMedium18))
+                                                    AppStyle.txtRobotoMedium18))
                                       ]))),
-                          SizedBox(height: 8.h,),
+                          SizedBox(
+                            height: 8.h,
+                          ),
                           Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
@@ -96,7 +96,6 @@ class _ResetPasswordState extends State<ResetPassword> {
                               }
                               return null;
                             },
-
                           ),
                           CustomButton(
                               height: getVerticalSize(39),
@@ -105,14 +104,18 @@ class _ResetPasswordState extends State<ResetPassword> {
                               variant: ButtonVariant.FillPurple900,
                               padding: ButtonPadding.PaddingAll11,
                               fontStyle: ButtonFontStyle.RobotoMedium14,
-                              onTap: (){
-
-                              }),
+                              onTap: () {}),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text("OTP will be sent to your Registered Mobile Number & Email Address",style: TextStyle(fontSize: 11,fontWeight: FontWeight.w400),),
+                            child: Text(
+                              "OTP will be sent to your Registered Mobile Number & Email Address",
+                              style: TextStyle(
+                                  fontSize: 11, fontWeight: FontWeight.w400),
+                            ),
                           ),
-                          SizedBox(height: 44.h,),
+                          SizedBox(
+                            height: 44.h,
+                          ),
                           CustomImageView(
                               imagePath: ImageConstant.imgFinallogo03,
                               height: getVerticalSize(32),

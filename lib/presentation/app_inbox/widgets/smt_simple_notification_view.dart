@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+//import 'package:keshav_s_application2/presentation/app_inbox/utils/AppInboxModel.dart';
 import 'package:keshav_s_application2/presentation/app_inbox/utils/utils.dart';
 import 'package:smartech_appinbox/model/smt_appinbox_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SMTSimpleNotificationView extends StatelessWidget {
   final SMTAppInboxMessage inbox;
-  const SMTSimpleNotificationView({Key? key, required this.inbox}) : super(key: key);
+  const SMTSimpleNotificationView({Key? key, required this.inbox})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -22,7 +24,10 @@ class SMTSimpleNotificationView extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: Text(
                     inbox.publishedDate!.getTimeAndDayCount(),
-                    style: TextStyle(fontSize: 12, color: AppColor.greyColorText, fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: AppColor.greyColorText,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
                 htmlText(inbox.title),
@@ -47,10 +52,13 @@ class SMTSimpleNotificationView extends StatelessWidget {
                                       onTap: () async {
                                         if (e.actionDeeplink.contains("http")) {
                                           print("navigate to browser with url");
-                                          final Uri _url = Uri.parse(e.actionDeeplink);
-                                          if (!await launchUrl(_url)) throw 'Could not launch $_url';
+                                          final Uri _url =
+                                              Uri.parse(e.actionDeeplink);
+                                          if (!await launchUrl(_url))
+                                            throw 'Could not launch $_url';
                                           // await FlutterWebBrowser.openWebPage(url: e.actionDeeplink);
-                                        } else if (e.actionDeeplink.contains("smartechflutter://profile")) {
+                                        } else if (e.actionDeeplink.contains(
+                                            "smartechflutter://profile")) {
                                           //NavigationUtilities.pushRoute(UpdateProfile.route);
                                         } else {
                                           // Map<String, dynamic> dict = HashMap();
@@ -64,32 +72,50 @@ class SMTSimpleNotificationView extends StatelessWidget {
                                       },
                                       child: Text(
                                         e.actionName.toString(),
-                                        style: TextStyle(color: Color.fromRGBO(75, 79, 81, 1), fontSize: 14, fontWeight: FontWeight.w500),
+                                        style: TextStyle(
+                                            color:
+                                                Color.fromRGBO(75, 79, 81, 1),
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500),
                                       ),
                                     )
                                   : e.aTyp == 2
                                       ? InkWell(
                                           onTap: () async {
                                             print("navigation called");
-                                            Clipboard.setData(ClipboardData(text: e.configCtxt)).then((result) {
+                                            Clipboard.setData(ClipboardData(
+                                                    text: e.configCtxt))
+                                                .then((result) {
                                               final snackBar = SnackBar(
                                                 content: Text('Copied'),
-                                                duration: Duration(milliseconds: 500),
+                                                duration:
+                                                    Duration(milliseconds: 500),
                                               );
-                                              ScaffoldMessenger.of(context).showSnackBar(snackBar); // -> show a notification
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                      snackBar); // -> show a notification
                                             });
-                                            if (e.actionDeeplink.contains("https")) {
-                                              print("navigate to browser with url");
-                                              final Uri _url = Uri.parse(e.actionDeeplink);
-                                              if (!await launchUrl(_url)) throw 'Could not launch $_url';
+                                            if (e.actionDeeplink
+                                                .contains("https")) {
+                                              print(
+                                                  "navigate to browser with url");
+                                              final Uri _url =
+                                                  Uri.parse(e.actionDeeplink);
+                                              if (!await launchUrl(_url))
+                                                throw 'Could not launch $_url';
                                               // await FlutterWebBrowser.openWebPage(url: e.actionDeeplink);
-                                            } else if (e.actionDeeplink.contains("smartechflutter://profile")) {
+                                            } else if (e.actionDeeplink.contains(
+                                                "smartechflutter://profile")) {
                                               //NavigationUtilities.pushRoute(UpdateProfile.route);
                                             }
                                           },
                                           child: Text(
                                             e.actionName.toString(),
-                                            style: TextStyle(color: Color.fromRGBO(75, 79, 81, 1), fontSize: 14, fontWeight: FontWeight.w500),
+                                            style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    75, 79, 81, 1),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500),
                                           ),
                                         )
                                       : SizedBox(

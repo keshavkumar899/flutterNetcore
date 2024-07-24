@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:intl/intl.dart';
-import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
+import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart'
+    as otp;
 import 'package:sizer/sizer.dart';
 
 import '../../../core/utils/color_constant.dart';
@@ -10,7 +11,6 @@ import '../../../core/utils/size_utils.dart';
 import '../../../widgets/app_bar/appbar_image.dart';
 import '../../../widgets/app_bar/appbar_title.dart';
 import '../../../widgets/app_bar/custom_app_bar.dart';
-
 
 import 'dart:convert';
 
@@ -28,8 +28,6 @@ class OffersScreen1 extends StatefulWidget {
 }
 
 class _OffersScreen1State extends State<OffersScreen1> {
-
-
   Future<OffersModel>? offers;
   List<OffersData> offerslist = [];
 
@@ -40,27 +38,25 @@ class _OffersScreen1State extends State<OffersScreen1> {
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().get("https://fabfurni.com/api/Webservice/offerList",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().get("https://fabfurni.com/api/Webservice/offerList",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
       if (OffersModel.fromJson(jsonObject).status == "true") {
         return OffersModel.fromJson(jsonObject);
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (OffersModel.fromJson(jsonObject).status == "false") {
+      } else if (OffersModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(OffersModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
-
-      }
-      else if(OffersModel.fromJson(jsonObject).data == null){
+      } else if (OffersModel.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
             jsonObject['message'] + ' Please check after sometime.',
@@ -68,8 +64,7 @@ class _OffersScreen1State extends State<OffersScreen1> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -77,7 +72,6 @@ class _OffersScreen1State extends State<OffersScreen1> {
     }
     return jsonObject;
   }
-
 
   @override
   void initState() {
@@ -91,18 +85,16 @@ class _OffersScreen1State extends State<OffersScreen1> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
-
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
             height: getVerticalSize(70),
             leadingWidth: 41,
             leading: AppbarImage(
-                onTap: (){
+                onTap: () {
                   Navigator.pop(context);
                 },
                 height: getVerticalSize(15),
@@ -113,8 +105,7 @@ class _OffersScreen1State extends State<OffersScreen1> {
                 text: "OFFERS",
                 margin: getMargin(left: 19, top: 49, bottom: 42)),
             styleType: Style.bgShadowBlack90033),
-        body:
-        SafeArea(
+        body: SafeArea(
           child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: FutureBuilder<OffersModel>(
@@ -126,15 +117,14 @@ class _OffersScreen1State extends State<OffersScreen1> {
                         return Center(
                             child: Padding(
                                 padding: const EdgeInsets.only(left: 4.0),
-                                child:  Wrap(
+                                child: Wrap(
                                   children: [
                                     RichText(
                                       textAlign: TextAlign.center,
                                       text: TextSpan(
                                         children: [
                                           TextSpan(
-                                            text:
-                                            "No Offers Available",
+                                            text: "No Offers Available",
                                             style: TextStyle(
                                               fontSize: 15,
                                               color: Colors.grey[600],
@@ -144,10 +134,9 @@ class _OffersScreen1State extends State<OffersScreen1> {
                                       ),
                                     )
                                   ],
-                                )
-                            )
-                          // Utils.noDataTextWidget()
-                        );
+                                ))
+                            // Utils.noDataTextWidget()
+                            );
                       } else {
                         return ListView.separated(
                           separatorBuilder: (context, index) {
@@ -167,17 +156,22 @@ class _OffersScreen1State extends State<OffersScreen1> {
                                   padding: const EdgeInsets.all(8),
                                   width: size.width,
                                   height: 100,
-                                  decoration:  BoxDecoration(
-                                      image: DecorationImage(image: NetworkImage(data.image!),fit: BoxFit.cover),
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: NetworkImage(data.image!),
+                                          fit: BoxFit.cover),
                                       color: Colors.white,
                                       border: Border.all(
-                                        color: Colors.purple,  // Set the desired border color here
-                                        width: 1.0,  // Set the desired border width here
+                                        color: Colors
+                                            .purple, // Set the desired border color here
+                                        width:
+                                            1.0, // Set the desired border width here
                                       ),
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(12))),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(12))),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       // ClipRRect(
@@ -213,39 +207,56 @@ class _OffersScreen1State extends State<OffersScreen1> {
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           // mainAxisAlignment:
                                           // MainAxisAlignment.spaceBetween,
                                           children: [
                                             Row(
                                               mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                                  MainAxisAlignment.start,
                                               children: [
-                                                data.promoCode!.isNotEmpty?
-                                                Container(
-                                                  decoration: BoxDecoration(  // Set the background color here
-                                                    borderRadius:
-                                                    BorderRadius.all(Radius.circular(5)),
-                                                    border: Border.all(
-                                                      color: Colors.purple,  // Set the border color here
-                                                      width: 1.0,  // Set the border width here
-                                                    ),),
-                                                  child: Text(
-                                                    // (Utils.parseHtmlString(
-                                                    data.promoCode ?? '',
-                                                    // ))
-                                                    // .sentenceCase,
-                                                    style: const TextStyle(
-                                                      fontSize: 16,
-                                                      color: Colors.white,
-                                                      fontWeight: FontWeight.w600,
-                                                    ),
-                                                    maxLines: 1,
-                                                    overflow: TextOverflow.ellipsis,
-                                                  ),
-                                                ):Container(),
-                                                data.promoCode!.isNotEmpty?
-                                                SizedBox(width: 4.w,):SizedBox(width: 0,),
+                                                data.promoCode!.isNotEmpty
+                                                    ? Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          // Set the background color here
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          5)),
+                                                          border: Border.all(
+                                                            color: Colors
+                                                                .purple, // Set the border color here
+                                                            width:
+                                                                1.0, // Set the border width here
+                                                          ),
+                                                        ),
+                                                        child: Text(
+                                                          // (Utils.parseHtmlString(
+                                                          data.promoCode ?? '',
+                                                          // ))
+                                                          // .sentenceCase,
+                                                          style:
+                                                              const TextStyle(
+                                                            fontSize: 16,
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                          maxLines: 1,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                        ),
+                                                      )
+                                                    : Container(),
+                                                data.promoCode!.isNotEmpty
+                                                    ? SizedBox(
+                                                        width: 4.w,
+                                                      )
+                                                    : SizedBox(
+                                                        width: 0,
+                                                      ),
                                                 Text(
                                                   // (Utils.parseHtmlString(
                                                   data.title ?? '',
@@ -253,11 +264,12 @@ class _OffersScreen1State extends State<OffersScreen1> {
                                                   // .sentenceCase,
                                                   style: const TextStyle(
                                                       fontSize: 18,
-                                                      fontWeight: FontWeight.w600,
-                                                      color: Colors.white
-                                                  ),
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.white),
                                                   maxLines: 1,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                 ),
                                               ],
                                             ),
@@ -339,6 +351,7 @@ class _OffersScreen1State extends State<OffersScreen1> {
       ),
     );
   }
+
   static String parseHtmlString(String htmlString) {
     final document = parse(htmlString);
     final String parsedString =

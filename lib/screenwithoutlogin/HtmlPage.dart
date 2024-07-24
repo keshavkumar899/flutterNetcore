@@ -35,7 +35,7 @@ class _HtmlPAGEState extends State<HtmlPAGE> {
           title: AppbarTitle(
               text: "Html Page",
               margin: getMargin(left: 19, top: 49, bottom: 42)),
-          styleType: Style.bgShadowBlack90033),
+          styleType: Style.bgShadowBlack90033height85),
       body: Padding(
         padding: const EdgeInsets.only(left: 20.0, top: 10, bottom: 50),
         child: HtmlWidget(

@@ -3,11 +3,11 @@ import 'package:keshav_s_application2/core/app_export.dart';
 
 class AppDecoration {
   static BoxDecoration get txtFillLightblueA100 => BoxDecoration(
-    color: ColorConstant.lightBlueA100,
-  );
+        color: ColorConstant.lightBlueA100,
+      );
   static BoxDecoration get fillLightblueA100 => BoxDecoration(
-    color: ColorConstant.lightBlueA100,
-  );
+        color: ColorConstant.lightBlueA100,
+      );
   static BoxDecoration get txtFillPurple900 => BoxDecoration(
         color: ColorConstant.purple900,
       );
@@ -172,29 +172,29 @@ class AppDecoration {
         color: ColorConstant.gray20001,
       );
   static BoxDecoration get outlinePurple9001 => BoxDecoration(
-    color: ColorConstant.whiteA700,
-    border: Border.all(
-      color: ColorConstant.purple900,
-      width: getHorizontalSize(
-        1,
-      ),
-    ),
-    boxShadow: [
-      BoxShadow(
-        color: ColorConstant.black90033,
-        spreadRadius: getHorizontalSize(
-          2,
+        color: ColorConstant.whiteA700,
+        border: Border.all(
+          color: ColorConstant.purple900,
+          width: getHorizontalSize(
+            1,
+          ),
         ),
-        blurRadius: getHorizontalSize(
-          2,
-        ),
-        offset: Offset(
-          0,
-          0,
-        ),
-      ),
-    ],
-  );
+        boxShadow: [
+          BoxShadow(
+            color: ColorConstant.black90033,
+            spreadRadius: getHorizontalSize(
+              2,
+            ),
+            blurRadius: getHorizontalSize(
+              2,
+            ),
+            offset: Offset(
+              0,
+              0,
+            ),
+          ),
+        ],
+      );
   static BoxDecoration get outlineBlack90019 => BoxDecoration(
         color: ColorConstant.whiteA700,
         boxShadow: [

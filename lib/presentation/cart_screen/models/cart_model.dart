@@ -51,19 +51,19 @@ class CartData {
 
   CartData(
       {this.id,
-        this.userId,
-        this.productId,
-        this.name,
-        this.code,
-        this.qty,
-        this.description,
-        this.image,
-        this.mrpPrice,
-        this.salePrice,
-        this.discountPrice,
-        this.cityId,
-        this.updateOn,
-        this.productDetails});
+      this.userId,
+      this.productId,
+      this.name,
+      this.code,
+      this.qty,
+      this.description,
+      this.image,
+      this.mrpPrice,
+      this.salePrice,
+      this.discountPrice,
+      this.cityId,
+      this.updateOn,
+      this.productDetails});
 
   CartData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -79,8 +79,8 @@ class CartData {
     discountPrice = json['discount_price'];
     cityId = json['city_id'];
     updateOn = json['update_on'];
-    productDetails = json['product_details'] != null?
-         new ProductDetails.fromJson(json['product_details'])
+    productDetails = json['product_details'] != null
+        ? new ProductDetails.fromJson(json['product_details'])
         : null;
   }
 
@@ -135,30 +135,30 @@ class ProductDetails {
 
   ProductDetails(
       {this.id,
-        this.name,
-        this.code,
-        this.categoryId,
-        this.subCategoryId,
-        this.brandId,
-        this.keywordsId,
-        this.cityId,
-        this.mrpPrice,
-        this.salePrice,
-        this.discountPrice,
-        this.description,
-        this.image,
-        this.metaTitle,
-        this.metaDescription,
-        this.isActive,
-        this.featured,
-        this.isDelete,
-        this.createOn,
-        this.updateOn,
-        this.categoryName,
-        this.brandName,
-        this.isWishlist,
-        this.productImages,
-        this.attributes});
+      this.name,
+      this.code,
+      this.categoryId,
+      this.subCategoryId,
+      this.brandId,
+      this.keywordsId,
+      this.cityId,
+      this.mrpPrice,
+      this.salePrice,
+      this.discountPrice,
+      this.description,
+      this.image,
+      this.metaTitle,
+      this.metaDescription,
+      this.isActive,
+      this.featured,
+      this.isDelete,
+      this.createOn,
+      this.updateOn,
+      this.categoryName,
+      this.brandName,
+      this.isWishlist,
+      this.productImages,
+      this.attributes});
 
   ProductDetails.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -256,6 +256,4 @@ class ProductImages {
   }
 }
 
-class Attributes{
-
-}
+class Attributes {}

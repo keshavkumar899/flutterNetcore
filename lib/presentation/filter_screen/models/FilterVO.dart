@@ -74,6 +74,7 @@ class Data {
     return data;
   }
 }
+
 class Category {
   String? id;
   String? parentId;
@@ -89,16 +90,16 @@ class Category {
 
   Category(
       {this.id,
-        this.parentId,
-        this.name,
-        this.image,
-        this.banner,
-        this.metaTitle,
-        this.metaDescription,
-        this.isActive,
-        this.isDelete,
-        this.createOn,
-        this.updateOn});
+      this.parentId,
+      this.name,
+      this.image,
+      this.banner,
+      this.metaTitle,
+      this.metaDescription,
+      this.isActive,
+      this.isDelete,
+      this.createOn,
+      this.updateOn});
 
   Category.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -130,6 +131,7 @@ class Category {
     return data;
   }
 }
+
 class SubCategorys {
   String? id;
   String? parentId;

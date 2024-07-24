@@ -16,7 +16,8 @@ import 'package:keshav_s_application2/presentation/my_orders_screen/models/my_or
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
-import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
+import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart'
+    as otp;
 
 class OrderDetailScreen extends StatefulWidget {
   otp.Data data;
@@ -27,14 +28,13 @@ class OrderDetailScreen extends StatefulWidget {
   String order_date;
   String order_total;
   orders.OrdersData order;
-  OrderDetailScreen(this.data,this.productdetails, this.product, this.Status,
+  OrderDetailScreen(this.data, this.productdetails, this.product, this.Status,
       this.order_number, this.order_date, this.order_total, this.order);
   @override
   State<OrderDetailScreen> createState() => _OrderDetailScreenState();
 }
 
 class _OrderDetailScreenState extends State<OrderDetailScreen> {
-
   String? _selectedQty;
   @override
   Widget build(BuildContext context) {
@@ -457,8 +457,11 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                                                   )))
                                                         ])),
                                                 CustomButton(
-                                                    onTap: (){
-                                                      _showQuantityBottomSheet(context,widget.product.productId!);
+                                                    onTap: () {
+                                                      _showQuantityBottomSheet(
+                                                          context,
+                                                          widget.product
+                                                              .productId!);
                                                       // if(_selectedQty==null){
                                                       //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                                       //       duration: Duration(seconds: 1),
@@ -571,23 +574,24 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                       ])),
             )));
   }
-  Future<AddtoCart> addtocart(String qty,String product_id) async {
+
+  Future<AddtoCart> addtocart(String qty, String product_id) async {
     Map data = {
       'user_id': widget.data.id,
-      'product_id':product_id,
-      'qty':qty,
+      'product_id': product_id,
+      'qty': qty,
     };
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/addtoCart",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/addtoCart",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
@@ -598,33 +602,33 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 20.0),
-            content: Text("Added to Cart "+AddtoCart.fromJson(jsonObject).message!+"ly",style: TextStyle(color: Colors.black),),
+            content: Text(
+              "Added to Cart " + AddtoCart.fromJson(jsonObject).message! + "ly",
+              style: TextStyle(color: Colors.black),
+            ),
             backgroundColor: Colors.greenAccent));
 
         Future.delayed(const Duration(seconds: 2), () {
           pushScreen(
             context,
             screen: CartScreen(widget.data),
-            withNavBar:
-            false, // OPTIONAL VALUE. True by default.
-            pageTransitionAnimation:
-            PageTransitionAnimation.cupertino,
+            withNavBar: false, // OPTIONAL VALUE. True by default.
+            pageTransitionAnimation: PageTransitionAnimation.cupertino,
           );
         });
 
         return AddtoCart.fromJson(jsonObject);
 
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (AddtoCart.fromJson(jsonObject).status == "false") {
+      } else if (AddtoCart.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.only(bottom: 10.0),
-            content: Text(AddtoCart.fromJson(jsonObject).message!.capitalizeFirst!),
+            content:
+                Text(AddtoCart.fromJson(jsonObject).message!.capitalizeFirst!),
             backgroundColor: Colors.redAccent));
-
-      }
-      else if(AddtoCart.fromJson(jsonObject).data == null){
+      } else if (AddtoCart.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           duration: Duration(seconds: 3),
           behavior: SnackBarBehavior.floating,
@@ -635,8 +639,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -644,7 +647,8 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
     }
     return jsonObject;
   }
-  void _showQuantityBottomSheet(BuildContext context,String product_id) {
+
+  void _showQuantityBottomSheet(BuildContext context, String product_id) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -653,7 +657,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
     ).then((value) {
       if (value != null) {
         // Handle the selected quantity returned from the bottom sheet
-        addtocart(value.toString(),product_id);
+        addtocart(value.toString(), product_id);
         print('Selected quantity: $value');
       }
     });

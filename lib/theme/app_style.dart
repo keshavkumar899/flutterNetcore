@@ -36,7 +36,6 @@ class AppStyle {
     fontWeight: FontWeight.w400,
   );
 
-
   static TextStyle txtRobotoRegular10Gray700 = TextStyle(
     color: ColorConstant.gray700,
     fontSize: getFontSize(

@@ -13,7 +13,8 @@ import '../../../widgets/app_bar/appbar_subtitle_5.dart';
 import '../../../widgets/app_bar/appbar_title.dart';
 import '../../../widgets/app_bar/custom_app_bar.dart' as customappbar;
 
-import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
+import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart'
+    as otp;
 
 import 'dart:convert';
 
@@ -22,8 +23,6 @@ import 'package:dio/dio.dart' as dio;
 import '../presentation/drawermenuitems/blogs/Model/blogsdetailsModel.dart';
 
 class BlogsDetailScreen1 extends StatefulWidget {
-
- 
   String blog_id;
 
   BlogsDetailScreen1(this.blog_id);
@@ -33,39 +32,36 @@ class BlogsDetailScreen1 extends StatefulWidget {
 }
 
 class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
-
   Future<BlogsDetailModel>? blogs;
   List<BlogsDetailData> blogslist = [];
 
   Future<BlogsDetailModel> getBlogsList() async {
     Map data = {
       // 'user_id': widget.data.id,
-      "blog_id":widget.blog_id
+      "blog_id": widget.blog_id
     };
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/blogDetails",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/blogDetails",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
       if (BlogsDetailModel.fromJson(jsonObject).status == "true") {
         return BlogsDetailModel.fromJson(jsonObject);
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (BlogsDetailModel.fromJson(jsonObject).status == "false") {
+      } else if (BlogsDetailModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(BlogsDetailModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
-
-      }
-      else if(BlogsDetailModel.fromJson(jsonObject).data == null){
+      } else if (BlogsDetailModel.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
             jsonObject['message'] + ' Please check after sometime.',
@@ -73,8 +69,7 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -82,7 +77,6 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
     }
     return jsonObject;
   }
-
 
   @override
   void initState() {
@@ -96,7 +90,6 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,7 +102,7 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
               width: getHorizontalSize(9),
               svgPath: ImageConstant.imgArrowleft,
               margin: getMargin(left: 25, top: 53, bottom: 23),
-              onTap: (){
+              onTap: () {
                 Navigator.pop(context);
               }),
           title: AppbarTitle(
@@ -154,13 +147,13 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
           styleType: customappbar.Style.bgStyle_2),
       body: FutureBuilder(
         future: blogs,
-        builder: (context,snapshot){
-          if(snapshot.hasData){
-            if (!snapshot.hasData ) {
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            if (!snapshot.hasData) {
               return Center(
                   child: Padding(
                       padding: const EdgeInsets.only(left: 4.0),
-                      child:  Expanded(
+                      child: Expanded(
                         child: Wrap(
                           children: [
                             RichText(
@@ -168,8 +161,7 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text:
-                                    "Data Not Found",
+                                    text: "Data Not Found",
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: Colors.grey[600],
@@ -180,29 +172,29 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
                             )
                           ],
                         ),
-                      )
-                  )
-                // Utils.noDataTextWidget()
-              );
-            } else{
+                      ))
+                  // Utils.noDataTextWidget()
+                  );
+            } else {
               return ListView.builder(
                   itemCount: blogslist.length,
-                  itemBuilder: (context,index){
+                  itemBuilder: (context, index) {
                     return SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           ClipRRect(
-                            borderRadius: const BorderRadius.all(
-                                Radius.circular(16)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(16)),
                             child: Container(
                               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                               height: 28.h,
                               width: 100.w,
                               child: CachedNetworkImage(
                                 imageUrl: blogslist[index].image!,
-                                imageBuilder: (context, imageProvider) => GestureDetector(
+                                imageBuilder: (context, imageProvider) =>
+                                    GestureDetector(
                                   onTap: (() {
                                     // print(newsList.image!);
                                     // Navigator.push(context,
@@ -218,17 +210,17 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
                                         image: imageProvider,
                                         fit: BoxFit.fitWidth,
                                       ),
-                                      borderRadius:
-                                      const BorderRadius.all(
+                                      borderRadius: const BorderRadius.all(
                                           Radius.circular(20)),
                                     ),
                                   ),
                                 ),
                                 fit: BoxFit.contain,
                                 placeholder: (context, url) =>
-                                const CupertinoActivityIndicator(),
-                                errorWidget: (context, url, error) => Image.asset(
-                                    "assets/images/image_not_found.png"),
+                                    const CupertinoActivityIndicator(),
+                                errorWidget: (context, url, error) =>
+                                    Image.asset(
+                                        "assets/images/image_not_found.png"),
                               ),
                             ),
                           ),
@@ -241,7 +233,8 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
                                   height: 1.h,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 5.0, left: 19.0),
+                                  padding: const EdgeInsets.only(
+                                      top: 5.0, left: 19.0),
                                   child: Text(
                                     blogslist[index].name ?? '',
                                     maxLines: 1,
@@ -277,7 +270,7 @@ class _BlogsDetailScreen1State extends State<BlogsDetailScreen1> {
                     );
                   });
             }
-          }else if (snapshot.hasError) {
+          } else if (snapshot.hasError) {
             return const Text("Something Went Wrong");
           } else {
             return const Center(

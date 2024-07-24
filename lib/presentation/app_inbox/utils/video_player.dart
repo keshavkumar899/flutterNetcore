@@ -7,7 +7,8 @@ import 'package:video_player/video_player.dart';
 class VideoPlayerDialog extends StatefulWidget {
   final String? videoUrl;
 
-  const VideoPlayerDialog({Key? key, @required this.videoUrl}) : super(key: key);
+  const VideoPlayerDialog({Key? key, @required this.videoUrl})
+      : super(key: key);
 
   @override
   _VideoPlayerDialogState createState() => _VideoPlayerDialogState();
@@ -31,7 +32,8 @@ class _VideoPlayerDialogState extends State<VideoPlayerDialog> {
   }
 
   Future<void> initializePlayer() async {
-    _videoPlayerController1 = VideoPlayerController.network(widget.videoUrl.toString());
+    _videoPlayerController1 =
+        VideoPlayerController.network(widget.videoUrl.toString());
     await Future.wait([
       _videoPlayerController1!.initialize(),
     ]);
@@ -78,7 +80,8 @@ class _VideoPlayerDialogState extends State<VideoPlayerDialog> {
           ],
         ),
         child: Center(
-          child: _chewieController != null && _chewieController!.videoPlayerController.value.isInitialized
+          child: _chewieController != null &&
+                  _chewieController!.videoPlayerController.value.isInitialized
               ? Chewie(
                   controller: _chewieController!,
                 )

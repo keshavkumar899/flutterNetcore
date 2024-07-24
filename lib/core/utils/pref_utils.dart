@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PrefUtils {
-  static SharedPreferences ?_sharedPreferences;
+  static SharedPreferences? _sharedPreferences;
 
   PrefUtils() {
     SharedPreferences.getInstance().then((value) {
@@ -11,7 +11,7 @@ class PrefUtils {
     });
   }
 
-   init() async {
+  init() async {
     _sharedPreferences ??= await SharedPreferences.getInstance();
     print('SharedPreference Initialized');
   }

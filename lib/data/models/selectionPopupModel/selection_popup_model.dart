@@ -8,7 +8,7 @@ class SelectionPopupModel {
 
   SelectionPopupModel({
     this.id,
-     this.title,
+    this.title,
     this.value,
     this.isSelected = false,
   });

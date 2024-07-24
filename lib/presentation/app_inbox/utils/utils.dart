@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-// import 'package:flutter_html/flutter_html.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 showToast(String msg) {
@@ -27,7 +26,9 @@ Widget htmlText(String title) {
     children: [
       Html(
         data: title,
-        style: {"body": Style(margin: Margins.zero, padding: HtmlPaddings.zero)},
+        style: {
+          "body": Style(margin: Margins.zero, padding: HtmlPaddings.zero)
+        },
       ),
       SizedBox(
         height: 4,

@@ -23,7 +23,6 @@ import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_6.dart';
 import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
 
 class ProfileOneScreen extends StatefulWidget {
-
   Data data;
   ProfileOneScreen(this.data);
   @override
@@ -61,27 +60,27 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                       width: getSize(21),
                       svgPath: ImageConstant.imgSearch,
                       margin:
-                      getMargin(left: 12, top: 0, right: 10, bottom: 10),
+                          getMargin(left: 12, top: 0, right: 10, bottom: 10),
                       onTap: onTapSearch),
                   Container(
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 0, right: 10, bottom: 15),
+                          getMargin(left: 20, top: 0, right: 10, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
                             width: getHorizontalSize(21),
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
-                            onTap: (){
+                            onTap: () {
                               pushScreen(
                                 context,
                                 screen: WhislistScreen(widget.data),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                             }),
                         // AppbarSubtitle6(
@@ -91,7 +90,8 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 0, right: 31,bottom: 15),
+                      margin:
+                          getMargin(left: 14, top: 0, right: 31, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -99,9 +99,9 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                                 context,
                                 screen: CartScreen(widget.data),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                               // Navigator.of(context).push(MaterialPageRoute(
                               //   builder: (context) => CartScreen(widget.data),
@@ -117,7 +117,7 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                       ]))
                 ],
                 styleType: Style.bgShadowBlack90033),
-            drawer:  SidebarMenuDraweritem(widget.data),
+            drawer: SidebarMenuDraweritem(widget.data),
             body: SingleChildScrollView(
               child: Container(
                   width: double.maxFinite,
@@ -129,7 +129,8 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                             height: getVerticalSize(75),
                             width: double.maxFinite,
                             margin: getMargin(top: 0),
-                            child: Stack(alignment: Alignment.center, children: [
+                            child:
+                                Stack(alignment: Alignment.center, children: [
                               Align(
                                   alignment: Alignment.bottomLeft,
                                   child: Padding(
@@ -150,34 +151,42 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                                       child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                           children: [
                                             Padding(
                                                 padding: getPadding(top: 0),
                                                 child: Row(children: [
-                                                  Text('Hi '+ widget.data.firstName!.capitalizeFirst!,
+                                                  Text(
+                                                      'Hi ' +
+                                                          widget.data.firstName!
+                                                              .capitalizeFirst!,
                                                       overflow:
-                                                      TextOverflow.ellipsis,
+                                                          TextOverflow.ellipsis,
                                                       textAlign: TextAlign.left,
                                                       style: AppStyle
                                                           .txtRobotoRegular14Black900
                                                           .copyWith(
-                                                          letterSpacing:
-                                                          getHorizontalSize(
-                                                              0.7))),
+                                                              letterSpacing:
+                                                                  getHorizontalSize(
+                                                                      0.7))),
                                                   CustomImageView(
-                                                    onTap: (){
-                                                      Navigator.of(context).push(MaterialPageRoute(
-                                                        builder: (context) => ProfileScreen(widget.data),
-                                                      ));
-                                                    },
+                                                      onTap: () {
+                                                        Navigator.of(context)
+                                                            .push(
+                                                                MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              ProfileScreen(
+                                                                  widget.data),
+                                                        ));
+                                                      },
                                                       svgPath:
-                                                      ImageConstant.imgEdit,
-                                                      height: getVerticalSize(14),
+                                                          ImageConstant.imgEdit,
+                                                      height:
+                                                          getVerticalSize(14),
                                                       width:
-                                                      getHorizontalSize(14),
+                                                          getHorizontalSize(14),
                                                       margin: getMargin(
                                                           left: 15,
                                                           top: 3,
@@ -185,18 +194,16 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                                                 ])),
                                             Padding(
                                                 padding: getPadding(top: 9),
-                                                child: Text(
-                                                    widget.data.email!
-                                                    ,
+                                                child: Text(widget.data.email!,
                                                     overflow:
-                                                    TextOverflow.ellipsis,
+                                                        TextOverflow.ellipsis,
                                                     textAlign: TextAlign.left,
                                                     style: AppStyle
                                                         .txtRobotoLight10
                                                         .copyWith(
-                                                        letterSpacing:
-                                                        getHorizontalSize(
-                                                            0.5))))
+                                                            letterSpacing:
+                                                                getHorizontalSize(
+                                                                    0.5))))
                                           ]))),
                               CustomImageView(
                                   imagePath: ImageConstant.imgRectangle136,
@@ -205,7 +212,7 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                                   alignment: Alignment.centerRight)
                             ])),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => MyOrdersScreen(widget.data),
                             ));
@@ -258,17 +265,20 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                         // ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Divider(color: Colors.purple,thickness: 0.5,),
+                          child: Divider(
+                            color: Colors.purple,
+                            thickness: 0.5,
+                          ),
                         ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             pushScreen(
                               context,
                               screen: WhislistScreen(widget.data),
                               withNavBar:
-                              false, // OPTIONAL VALUE. True by default.
+                                  false, // OPTIONAL VALUE. True by default.
                               pageTransitionAnimation:
-                              PageTransitionAnimation.cupertino,
+                                  PageTransitionAnimation.cupertino,
                             );
                           },
                           child: Align(
@@ -277,7 +287,8 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                                   padding: getPadding(left: 25, top: 0),
                                   child: Row(children: [
                                     CustomImageView(
-                                        svgPath: ImageConstant.imgFavoritePurple700,
+                                        svgPath:
+                                            ImageConstant.imgFavoritePurple700,
                                         height: getVerticalSize(25),
                                         width: getHorizontalSize(18),
                                         margin: getMargin(left: 4)),
@@ -292,16 +303,18 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Divider(color: Colors.purple,thickness: 0.5,),
+                          child: Divider(
+                            color: Colors.purple,
+                            thickness: 0.5,
+                          ),
                         ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        WalletScreen(widget.data
-                                        )));
+                                        WalletScreen(widget.data)));
                           },
                           child: Align(
                               alignment: Alignment.centerLeft,
@@ -324,12 +337,17 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Divider(color: Colors.purple,thickness: 0.5,),
+                          child: Divider(
+                            color: Colors.purple,
+                            thickness: 0.5,
+                          ),
                         ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => AddAddressScreenClickOnManageAddressScreen(widget.data),
+                              builder: (context) =>
+                                  AddAddressScreenClickOnManageAddressScreen(
+                                      widget.data),
                             ));
                           },
                           child: Align(
@@ -338,7 +356,8 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                                   padding: getPadding(left: 25, top: 0),
                                   child: Row(children: [
                                     CustomImageView(
-                                        svgPath: ImageConstant.imgVectorPurple700,
+                                        svgPath:
+                                            ImageConstant.imgVectorPurple700,
                                         height: getVerticalSize(25),
                                         width: getHorizontalSize(18),
                                         margin: getMargin(left: 4)),
@@ -353,16 +372,18 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Divider(color: Colors.purple,thickness: 0.5,),
+                          child: Divider(
+                            color: Colors.purple,
+                            thickness: 0.5,
+                          ),
                         ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        ChangePassword(
-                                            widget.data,
+                                    builder: (context) => ChangePassword(
+                                          widget.data,
                                         )));
                           },
                           child: Align(
@@ -386,10 +407,13 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Divider(color: Colors.purple,thickness: 0.5,),
+                          child: Divider(
+                            color: Colors.purple,
+                            thickness: 0.5,
+                          ),
                         ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -419,7 +443,10 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Divider(color: Colors.purple,thickness: 0.5,),
+                          child: Divider(
+                            color: Colors.purple,
+                            thickness: 0.5,
+                          ),
                         ),
                         // InkWell(
                         //   onTap: (){
@@ -449,11 +476,16 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                         //   child: Divider(color: Colors.purple,thickness: 0.5,),
                         // ),
                         InkWell(
-                          onTap: () async{
-                            final SharedPreferences prefs = await SharedPreferences.getInstance();
+                          onTap: () async {
+                            final SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
                             prefs.clear();
-                            Navigator.of(context, rootNavigator: true).pushAndRemoveUntil( new MaterialPageRoute(
-                              builder: (context) => LogInScreen(),), (route) => false);
+                            Navigator.of(context, rootNavigator: true)
+                                .pushAndRemoveUntil(
+                                    new MaterialPageRoute(
+                                      builder: (context) => LogInScreen(),
+                                    ),
+                                    (route) => false);
                           },
                           child: Align(
                               alignment: Alignment.centerLeft,
@@ -476,9 +508,11 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Divider(color: Colors.purple,thickness: 0.5,),
+                          child: Divider(
+                            color: Colors.purple,
+                            thickness: 0.5,
+                          ),
                         ),
-
 
                         // Container(
                         //     height: getVerticalSize(477),
@@ -882,7 +916,7 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
 
   onTapSearch() {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => SearchScreen(widget.data,''),
+      builder: (context) => SearchScreen(widget.data, ''),
     ));
   }
 

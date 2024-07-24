@@ -105,8 +105,8 @@ class _SortByBottomsheetState extends State<SortByBottomsheet> {
               //   ),
               // ),
               GestureDetector(
-                onTap: (){
-                  Navigator.pop(context,"lbl_relevance".tr);
+                onTap: () {
+                  Navigator.pop(context, "lbl_relevance".tr);
                 },
                 child: Padding(
                   padding: getPadding(
@@ -117,14 +117,19 @@ class _SortByBottomsheetState extends State<SortByBottomsheet> {
                     "lbl_relevance".tr,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 14,color: ColorConstant.black900,fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: ColorConstant.black900,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 5,
+              ),
               GestureDetector(
-                onTap: (){
-                  Navigator.pop(context,"msg_highest_priced_first".tr);
+                onTap: () {
+                  Navigator.pop(context, "msg_highest_priced_first".tr);
                 },
                 child: Padding(
                   padding: getPadding(
@@ -135,14 +140,19 @@ class _SortByBottomsheetState extends State<SortByBottomsheet> {
                     "msg_highest_priced_first".tr,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 14,color: ColorConstant.black900,fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: ColorConstant.black900,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 5,
+              ),
               GestureDetector(
-                onTap: (){
-                  Navigator.pop(context,"msg_lowest_priced_first".tr);
+                onTap: () {
+                  Navigator.pop(context, "msg_lowest_priced_first".tr);
                 },
                 child: Padding(
                   padding: getPadding(
@@ -153,14 +163,19 @@ class _SortByBottomsheetState extends State<SortByBottomsheet> {
                     "msg_lowest_priced_first".tr,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 14,color: ColorConstant.black900,fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: ColorConstant.black900,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 5,
+              ),
               GestureDetector(
-                onTap: (){
-                  Navigator.pop(context,"msg_fastest_shipping".tr);
+                onTap: () {
+                  Navigator.pop(context, "msg_fastest_shipping".tr);
                 },
                 child: Padding(
                   padding: getPadding(
@@ -171,14 +186,19 @@ class _SortByBottomsheetState extends State<SortByBottomsheet> {
                     "msg_fastest_shipping".tr,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 14,color: ColorConstant.black900,fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: ColorConstant.black900,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 5,
+              ),
               GestureDetector(
-                onTap: (){
-                  Navigator.pop(context,"lbl_newest".tr);
+                onTap: () {
+                  Navigator.pop(context, "lbl_newest".tr);
                 },
                 child: Padding(
                   padding: getPadding(
@@ -190,7 +210,10 @@ class _SortByBottomsheetState extends State<SortByBottomsheet> {
                     "lbl_newest".tr,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 14,color: ColorConstant.black900,fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: ColorConstant.black900,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),

@@ -1,10 +1,11 @@
 class ProductDetailModel {
   ProductDetailModel({
-      this.status, 
-      this.message, 
-      this.data, 
-      this.similarProduct, 
-      this.brandProduct,});
+    this.status,
+    this.message,
+    this.data,
+    this.similarProduct,
+    this.brandProduct,
+  });
 
   ProductDetailModel.fromJson(dynamic json) {
     status = json['status'];
@@ -44,7 +45,6 @@ class ProductDetailModel {
     }
     return map;
   }
-
 }
 
 class Data {
@@ -84,7 +84,8 @@ class Data {
     this.brandName,
     this.isWishlist,
     this.productImages,
-    this.attributes,});
+    this.attributes,
+  });
 
   Data.fromJson(dynamic json) {
     id = json['id'];
@@ -153,7 +154,7 @@ class Data {
   String? monthWarrenty;
   String? easyReturn;
   String? safeDelivery;
-  String ?metaTitle;
+  String? metaTitle;
   String? metaDescription;
   String? isActive;
   String? featured;
@@ -184,7 +185,7 @@ class Data {
     map['mrp_price'] = mrpPrice;
     map['sale_price'] = salePrice;
     map['discount_price'] = discountPrice;
-    map['discount_per']=discountPer;
+    map['discount_per'] = discountPer;
     map['description'] = description;
     map['image'] = image;
     map['seller_id'] = sellerId;
@@ -215,14 +216,14 @@ class Data {
     }
     return map;
   }
-
 }
 
 class ProductImages {
   ProductImages({
     this.id,
     this.productId,
-    this.images,});
+    this.images,
+  });
 
   ProductImages.fromJson(dynamic json) {
     id = json['id'];
@@ -240,7 +241,6 @@ class ProductImages {
     map['images'] = images;
     return map;
   }
-
 }
 
 class SimilarProduct {
@@ -267,7 +267,8 @@ class SimilarProduct {
     this.updateOn,
     this.categoryName,
     this.brandName,
-    this.isWishlist,});
+    this.isWishlist,
+  });
 
   SimilarProduct.fromJson(dynamic json) {
     id = json['id'];
@@ -303,10 +304,10 @@ class SimilarProduct {
   String? keywordsId;
   String? cityId;
   String? mrpPrice;
-  String ?salePrice;
-  String ?discountPrice;
-  String ?description;
-  String ?image;
+  String? salePrice;
+  String? discountPrice;
+  String? description;
+  String? image;
   String? metaTitle;
   String? metaDescription;
   String? isActive;
@@ -345,7 +346,6 @@ class SimilarProduct {
     map['is_wishlist'] = isWishlist;
     return map;
   }
-
 }
 
 class BrandProduct {
@@ -372,7 +372,8 @@ class BrandProduct {
     this.updateOn,
     this.categoryName,
     this.brandName,
-    this.isWishlist,});
+    this.isWishlist,
+  });
 
   BrandProduct.fromJson(dynamic json) {
     id = json['id'];
@@ -450,7 +451,6 @@ class BrandProduct {
     map['is_wishlist'] = isWishlist;
     return map;
   }
-
 }
 
 class Attributes {

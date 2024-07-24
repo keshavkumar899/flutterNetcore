@@ -16,7 +16,7 @@ class CustomTextFormField extends StatelessWidget {
       this.textInputAction = TextInputAction.next,
       this.textInputType = TextInputType.text,
       this.maxLines,
-        this.maxLength,
+      this.maxLength,
       this.hintText,
       this.prefix,
       this.prefixConstraints,
@@ -61,7 +61,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget? suffix;
 
   BoxConstraints? suffixConstraints;
-  FormFieldValidator<String> ?validator;
+  FormFieldValidator<String>? validator;
 
   @override
   Widget build(BuildContext context) {

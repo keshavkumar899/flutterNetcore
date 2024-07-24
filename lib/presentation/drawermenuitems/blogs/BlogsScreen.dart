@@ -11,7 +11,8 @@ import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_5.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_title.dart';
 import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
 
-import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
+import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart'
+    as otp;
 import 'package:sizer/sizer.dart';
 
 import '../../../widgets/app_bar/appbar_subtitle_6.dart';
@@ -31,7 +32,6 @@ class BlogsScreen extends StatefulWidget {
 }
 
 class _BlogsScreenState extends State<BlogsScreen> {
-
   Future<BlogsModel>? blogs;
   List<BlogsData> blogslist = [];
 
@@ -42,27 +42,25 @@ class _BlogsScreenState extends State<BlogsScreen> {
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().get("https://fabfurni.com/api/Webservice/blogList",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().get("https://fabfurni.com/api/Webservice/blogList",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
       if (BlogsModel.fromJson(jsonObject).status == "true") {
         return BlogsModel.fromJson(jsonObject);
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (BlogsModel.fromJson(jsonObject).status == "false") {
+      } else if (BlogsModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(BlogsModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
-
-      }
-      else if(BlogsModel.fromJson(jsonObject).data == null){
+      } else if (BlogsModel.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
             jsonObject['message'] + ' Please check after sometime.',
@@ -70,8 +68,7 @@ class _BlogsScreenState extends State<BlogsScreen> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -79,7 +76,6 @@ class _BlogsScreenState extends State<BlogsScreen> {
     }
     return jsonObject;
   }
-
 
   @override
   void initState() {
@@ -95,15 +91,14 @@ class _BlogsScreenState extends State<BlogsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
-
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
             height: getVerticalSize(70),
             leadingWidth: 41,
             leading: AppbarImage(
-                onTap: (){
+                onTap: () {
                   Navigator.pop(context);
                 },
                 height: getVerticalSize(15),
@@ -114,8 +109,7 @@ class _BlogsScreenState extends State<BlogsScreen> {
                 text: "Our Blogs",
                 margin: getMargin(left: 19, top: 49, bottom: 42)),
             styleType: Style.bgShadowBlack90033),
-        body:
-        SafeArea(
+        body: SafeArea(
           child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: FutureBuilder<BlogsModel>(
@@ -127,15 +121,14 @@ class _BlogsScreenState extends State<BlogsScreen> {
                         return Center(
                             child: Padding(
                                 padding: const EdgeInsets.only(left: 4.0),
-                                child:  Wrap(
+                                child: Wrap(
                                   children: [
                                     RichText(
                                       textAlign: TextAlign.center,
                                       text: TextSpan(
                                         children: [
                                           TextSpan(
-                                            text:
-                                            "No Blogs Found",
+                                            text: "No Blogs Found",
                                             style: TextStyle(
                                               fontSize: 15,
                                               color: Colors.grey[600],
@@ -145,10 +138,9 @@ class _BlogsScreenState extends State<BlogsScreen> {
                                       ),
                                     )
                                   ],
-                                )
-                            )
-                          // Utils.noDataTextWidget()
-                        );
+                                ))
+                            // Utils.noDataTextWidget()
+                            );
                       } else {
                         return ListView.separated(
                           separatorBuilder: (context, index) {
@@ -164,10 +156,8 @@ class _BlogsScreenState extends State<BlogsScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            BlogsDetailScreen(
-                                                widget.data,data.id!
-                                            )));
+                                        builder: (context) => BlogsDetailScreen(
+                                            widget.data, data.id!)));
                               },
                               child: Container(
                                   padding: const EdgeInsets.all(8),
@@ -175,10 +165,11 @@ class _BlogsScreenState extends State<BlogsScreen> {
                                   height: 220,
                                   decoration: const BoxDecoration(
                                       color: Colors.white,
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(12))),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(12))),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       ClipRRect(
@@ -187,26 +178,34 @@ class _BlogsScreenState extends State<BlogsScreen> {
                                         child: Container(
                                           height: 16.h,
                                           width: 90.w,
-                                          child: Image.network(
-                                            data.image!,
+                                          child: Image.network(data.image!,
                                               fit: BoxFit.cover,
                                               width: 100.w,
                                               // alignment: Alignment(1.2, 1.2),
                                               filterQuality: FilterQuality.high,
                                               loadingBuilder:
-                                                  (context, child, loadingProgress) =>
-                                              (loadingProgress == null)
-                                                  ? child
-                                                  : AnimatedShimmer(
-                                                height: 16.h,
-                                                width: 90.w,
-                                                borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                delayInMilliSeconds: Duration(milliseconds: index * 500),
-                                              ),
-                                              errorBuilder: (context, error, stackTrace) =>
+                                                  (context, child,
+                                                          loadingProgress) =>
+                                                      (loadingProgress == null)
+                                                          ? child
+                                                          : AnimatedShimmer(
+                                                              height: 16.h,
+                                                              width: 90.w,
+                                                              borderRadius:
+                                                                  const BorderRadius
+                                                                      .all(
+                                                                      Radius.circular(
+                                                                          10)),
+                                                              delayInMilliSeconds:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          index *
+                                                                              500),
+                                                            ),
+                                              errorBuilder: (context, error,
+                                                      stackTrace) =>
                                                   Image.asset(
-                                                      "assets/images/image_not_found.png")
-                                          ),
+                                                      "assets/images/image_not_found.png")),
                                         ),
                                       ),
                                       SizedBox(
@@ -216,9 +215,9 @@ class _BlogsScreenState extends State<BlogsScreen> {
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
                                               // (Utils.parseHtmlString(
@@ -239,10 +238,12 @@ class _BlogsScreenState extends State<BlogsScreen> {
                                                   (parseHtmlString(
                                                       data.description ?? '')),
                                                   maxLines: 2,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   style: const TextStyle(
                                                       fontSize: 12,
-                                                      fontWeight: FontWeight.w400,
+                                                      fontWeight:
+                                                          FontWeight.w400,
                                                       color: Colors.blueGrey),
                                                 ),
                                               ),
@@ -301,6 +302,7 @@ class _BlogsScreenState extends State<BlogsScreen> {
       ),
     );
   }
+
   static String parseHtmlString(String htmlString) {
     final document = parse(htmlString);
     final String parsedString =
@@ -309,5 +311,3 @@ class _BlogsScreenState extends State<BlogsScreen> {
     return parsedString;
   }
 }
-
-

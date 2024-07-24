@@ -1,8 +1,9 @@
 class StoreModel {
   StoreModel({
-      this.status, 
-      this.message, 
-      this.data,});
+    this.status,
+    this.message,
+    this.data,
+  });
 
   StoreModel.fromJson(dynamic json) {
     status = json['status'];
@@ -27,7 +28,6 @@ class StoreModel {
     }
     return map;
   }
-
 }
 
 class StoreData {
@@ -43,7 +43,8 @@ class StoreData {
     this.isDelete,
     this.createOn,
     this.updateOn,
-    this.subCategory,});
+    this.subCategory,
+  });
 
   StoreData.fromJson(dynamic json) {
     id = json['id'];
@@ -95,7 +96,6 @@ class StoreData {
     }
     return map;
   }
-
 }
 
 class SubCategory {
@@ -110,7 +110,8 @@ class SubCategory {
     this.isActive,
     this.isDelete,
     this.createOn,
-    this.updateOn,});
+    this.updateOn,
+  });
 
   SubCategory.fromJson(dynamic json) {
     id = json['id'];
@@ -152,5 +153,4 @@ class SubCategory {
     map['update_on'] = updateOn;
     return map;
   }
-
 }

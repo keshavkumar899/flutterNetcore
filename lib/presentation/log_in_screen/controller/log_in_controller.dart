@@ -125,6 +125,4 @@ class LogInController extends GetxController {
   //   return jsonObject;
   //   // return response;
   // }
-
-
 }

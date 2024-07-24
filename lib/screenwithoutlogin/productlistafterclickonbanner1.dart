@@ -8,7 +8,8 @@ import 'package:keshav_s_application2/presentation/product_detail_screen/models/
 import 'package:keshav_s_application2/presentation/product_detail_screen/models/AddtoCart.dart';
 import 'package:keshav_s_application2/presentation/product_detail_screen/product_detail_screen.dart';
 import 'package:keshav_s_application2/presentation/search_screen/search_screen.dart';
-import 'package:keshav_s_application2/presentation/select_product_screen/models/ProductList.dart' as products;
+import 'package:keshav_s_application2/presentation/select_product_screen/models/ProductList.dart'
+    as products;
 import 'package:keshav_s_application2/presentation/sort_by_bottomsheet/controller/sort_by_controller.dart';
 import 'package:keshav_s_application2/presentation/sort_by_bottomsheet/sort_by_bottomsheet.dart';
 import 'package:keshav_s_application2/presentation/store_screen/models/StoreModel.dart';
@@ -42,14 +43,16 @@ class productlisrafterclickonbanner1 extends StatefulWidget {
   String subCategoryId;
   String brandId;
 
-  productlisrafterclickonbanner1(this.keyword_id,this.categoryId,this.subCategoryId,this.brandId);
+  productlisrafterclickonbanner1(
+      this.keyword_id, this.categoryId, this.subCategoryId, this.brandId);
   @override
-  State<productlisrafterclickonbanner1> createState() => _productlisrafterclickonbanner1State();
+  State<productlisrafterclickonbanner1> createState() =>
+      _productlisrafterclickonbanner1State();
 }
 
-class _productlisrafterclickonbanner1State extends State<productlisrafterclickonbanner1> {
-
-  Future<products.ProductList> ?product;
+class _productlisrafterclickonbanner1State
+    extends State<productlisrafterclickonbanner1> {
+  Future<products.ProductList>? product;
   List<products.ProductListData> productlist = [];
   var sortBy = '';
   final ScrollController _controller = ScrollController();
@@ -74,25 +77,25 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
   Future<products.ProductList> getProduct() async {
     Map data = {
       // 'user_id': widget.data.id,
-      "category_id":widget.categoryId,
-      "sub_category_id":widget.subCategoryId,
-      "keyword_id":widget.keyword_id,
-      "brand_id":widget.brandId,
-      "city_id":"",
-      "sort":sortBy
+      "category_id": widget.categoryId,
+      "sub_category_id": widget.subCategoryId,
+      "keyword_id": widget.keyword_id,
+      "brand_id": widget.brandId,
+      "city_id": "",
+      "sort": sortBy
     };
     //encode Map to JSON
-    print('REQ --> '+json.encode(data).toString());
+    print('REQ --> ' + json.encode(data).toString());
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/productList",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/productList",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
@@ -103,9 +106,11 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
         return products.ProductList.fromJson(jsonObject);
 
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (products.ProductList.fromJson(jsonObject).status == "false") {
+      } else if (products.ProductList.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg: products.ProductList.fromJson(jsonObject).message!.capitalizeFirst!,
+            msg: products.ProductList.fromJson(jsonObject)
+                .message!
+                .capitalizeFirst!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 5,
@@ -118,9 +123,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
         /*Timer(Duration(seconds: 2), () {
           Navigator.of(context).pop();
         });*/
-
-      }
-      else if(products.ProductList.fromJson(jsonObject).data == null){
+      } else if (products.ProductList.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
             jsonObject['message'] + ' Please check after sometime.',
@@ -128,8 +131,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -151,8 +153,8 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
     super.initState();
   }
 
-  void clearFilter(){
-    AppConstant.selectedIndex= 0;
+  void clearFilter() {
+    AppConstant.selectedIndex = 0;
     AppConstant.selectedIndexCategory = -1;
     AppConstant.selectedIndexCategoryId = '';
 
@@ -165,6 +167,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
     AppConstant.selectedIndexBrand = -1;
     AppConstant.selectedIndexBrandId = '';
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -174,7 +177,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                 height: getVerticalSize(90),
                 leadingWidth: 41,
                 leading: AppbarImage(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                     },
                     height: getVerticalSize(15),
@@ -195,32 +198,33 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                       width: getSize(21),
                       svgPath: ImageConstant.imgSearch,
                       margin:
-                      getMargin(left: 12, top: 0, right: 10, bottom: 10),
-                      onTap: (){
+                          getMargin(left: 12, top: 0, right: 10, bottom: 10),
+                      onTap: () {
                         //Get.toNamed(AppRoutes.searchScreen);
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SearchScreen1(widget.keyword_id),
+                          builder: (context) =>
+                              SearchScreen1(widget.keyword_id),
                         ));
                       }),
                   Container(
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 0, right: 10, bottom: 15),
+                          getMargin(left: 20, top: 0, right: 10, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
                             width: getHorizontalSize(21),
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
-                            onTap: (){
+                            onTap: () {
                               pushScreen(
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                               // Navigator.of(context).pushReplacement(MaterialPageRoute(
                               //   builder: (context) => LogInScreen(),
@@ -241,7 +245,8 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 0, right: 31,bottom: 15),
+                      margin:
+                          getMargin(left: 14, top: 0, right: 31, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -249,9 +254,9 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                               // Navigator.of(context).pushReplacement(MaterialPageRoute(
                               //   builder: (context) => LogInScreen(),
@@ -280,7 +285,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                 styleType: Style.bgShadowBlack90033),
             body: RefreshIndicator(
               color: Colors.purple,
-              onRefresh: ()async{
+              onRefresh: () async {
                 product = getProduct();
                 product!.then((value) {
                   setState(() {
@@ -297,17 +302,18 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             InkWell(
-                              onTap: (){
+                              onTap: () {
                                 _showsortbyBottomSheet(context);
                               },
                               child: Container(
-                                width: Get.width/2.1,
+                                width: Get.width / 2.1,
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     CustomImageView(
-                                        svgPath: ImageConstant.imgVectorBlack900,
+                                        svgPath:
+                                            ImageConstant.imgVectorBlack900,
                                         height: getVerticalSize(16),
                                         width: getHorizontalSize(12),
                                         margin: getMargin(
@@ -330,13 +336,13 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                     thickness: getVerticalSize(1),
                                     color: ColorConstant.gray40002)),
                             InkWell(
-                              onTap: (){
+                              onTap: () {
                                 //Get.toNamed(AppRoutes.filterScreen);
                                 //dialogFilter();
                                 _showFilterBottomSheet(context);
                               },
                               child: Container(
-                                width: Get.width/2.1,
+                                width: Get.width / 2.1,
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -379,22 +385,30 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                 margin: getMargin(top: 8),
                                                 child: Stack(
                                                     alignment:
-                                                    Alignment.topCenter,
+                                                        Alignment.topCenter,
                                                     children: [
                                                       CustomImageView(
-                                                          url:
-                                                          productlist[index].image!,
+                                                          url: productlist[
+                                                                  index]
+                                                              .image!,
                                                           height:
-                                                          getVerticalSize(
-                                                              206),
+                                                              getVerticalSize(
+                                                                  206),
                                                           width:
-                                                          getHorizontalSize(
-                                                              412),
+                                                              getHorizontalSize(
+                                                                  412),
                                                           alignment:
-                                                          Alignment.center,
+                                                              Alignment.center,
                                                           onTap: () {
-                                                            Navigator.of(context).push(MaterialPageRoute(
-                                                              builder: (context) => ProductDetailScreen1(productlist[index].id!),
+                                                            Navigator.of(
+                                                                    context)
+                                                                .push(
+                                                                    MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  ProductDetailScreen1(
+                                                                      productlist[
+                                                                              index]
+                                                                          .id!),
                                                             ));
                                                           }),
                                                       Align(
@@ -402,29 +416,29 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                               .topCenter,
                                                           child: Padding(
                                                               padding:
-                                                              getPadding(
-                                                                  bottom:
-                                                                  190),
+                                                                  getPadding(
+                                                                      bottom:
+                                                                          190),
                                                               child: Row(
                                                                   mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
                                                                   children: [
                                                                     Container(
                                                                         width: getHorizontalSize(
                                                                             60),
                                                                         margin: getMargin(
                                                                             bottom:
-                                                                            1),
+                                                                                1),
                                                                         padding: getPadding(
                                                                             left:
-                                                                            20,
+                                                                                20,
                                                                             top:
-                                                                            1,
+                                                                                1,
                                                                             right:
-                                                                            20,
+                                                                                20,
                                                                             bottom:
-                                                                            1),
+                                                                                1),
                                                                         decoration: AppDecoration.txtOutlineBlack9003f.copyWith(
                                                                             borderRadius: BorderRadiusStyle
                                                                                 .txtCustomBorderBR20),
@@ -432,7 +446,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                                             "lbl_new"
                                                                                 .tr,
                                                                             overflow:
-                                                                            TextOverflow.ellipsis,
+                                                                                TextOverflow.ellipsis,
                                                                             textAlign: TextAlign.left,
                                                                             style: AppStyle.txtRobotoMedium9)),
                                                                     Container(
@@ -440,13 +454,13 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                                             60),
                                                                         padding: getPadding(
                                                                             left:
-                                                                            9,
+                                                                                9,
                                                                             top:
-                                                                            2,
+                                                                                2,
                                                                             right:
-                                                                            9,
+                                                                                9,
                                                                             bottom:
-                                                                            2),
+                                                                                2),
                                                                         decoration: AppDecoration.txtOutlineBlack9003f1.copyWith(
                                                                             borderRadius: BorderRadiusStyle
                                                                                 .txtCustomBorderBL20),
@@ -454,7 +468,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                                             "lbl_30_off2"
                                                                                 .tr,
                                                                             overflow:
-                                                                            TextOverflow.ellipsis,
+                                                                                TextOverflow.ellipsis,
                                                                             textAlign: TextAlign.left,
                                                                             style: AppStyle.txtRobotoMedium9))
                                                                   ])))
@@ -464,24 +478,25 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                     left: 8, top: 8, right: 8),
                                                 child: Row(
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .center,
+                                                        MainAxisAlignment
+                                                            .center,
                                                     crossAxisAlignment:
-                                                    CrossAxisAlignment
-                                                        .start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Container(
-                                                          width:300,
+                                                          width: 300,
                                                           padding: getPadding(
                                                               bottom: 3),
                                                           child: Text(
-                                                              productlist[index].name!,
+                                                              productlist[index]
+                                                                  .name!,
                                                               overflow:
-                                                              TextOverflow
-                                                                  .ellipsis,
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                               textAlign:
-                                                              TextAlign
-                                                                  .left,
+                                                                  TextAlign
+                                                                      .left,
                                                               style: AppStyle
                                                                   .txtRobotoRegular18)),
                                                       Spacer(),
@@ -489,25 +504,28 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                           svgPath: ImageConstant
                                                               .imgCut,
                                                           height:
-                                                          getVerticalSize(
-                                                              11),
+                                                              getVerticalSize(
+                                                                  11),
                                                           width:
-                                                          getHorizontalSize(
-                                                              7),
+                                                              getHorizontalSize(
+                                                                  7),
                                                           margin: getMargin(
                                                               top: 3,
                                                               bottom: 4)),
                                                       Padding(
                                                           padding: getPadding(
-                                                              left: 4, top: 3,right: 4),
+                                                              left: 4,
+                                                              top: 3,
+                                                              right: 4),
                                                           child: Text(
-                                                              productlist[index].salePrice!,
+                                                              productlist[index]
+                                                                  .salePrice!,
                                                               overflow:
-                                                              TextOverflow
-                                                                  .ellipsis,
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                               textAlign:
-                                                              TextAlign
-                                                                  .left,
+                                                                  TextAlign
+                                                                      .left,
                                                               style: AppStyle
                                                                   .txtRobotoMedium12Purple900))
                                                     ])),
@@ -516,15 +534,19 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                     left: 8, top: 2, right: 8),
                                                 child: Row(
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .center,
+                                                        MainAxisAlignment
+                                                            .center,
                                                     children: [
                                                       Text(
-                                                          productlist[index].categoryName!+" by "+productlist[index].brandName!,
+                                                          productlist[index]
+                                                                  .categoryName! +
+                                                              " by " +
+                                                              productlist[index]
+                                                                  .brandName!,
                                                           overflow: TextOverflow
                                                               .ellipsis,
                                                           textAlign:
-                                                          TextAlign.left,
+                                                              TextAlign.left,
                                                           style: AppStyle
                                                               .txtRobotoRegular12Purple700),
                                                       Spacer(),
@@ -532,52 +554,53 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                           svgPath: ImageConstant
                                                               .imgVectorGray500,
                                                           height:
-                                                          getVerticalSize(
-                                                              8),
+                                                              getVerticalSize(
+                                                                  8),
                                                           width:
-                                                          getHorizontalSize(
-                                                              5),
+                                                              getHorizontalSize(
+                                                                  5),
                                                           margin: getMargin(
                                                               top: 1,
                                                               bottom: 3)),
                                                       Container(
                                                           height:
-                                                          getVerticalSize(
-                                                              12),
+                                                              getVerticalSize(
+                                                                  12),
                                                           width:
-                                                          getHorizontalSize(
-                                                              32),
+                                                              getHorizontalSize(
+                                                                  32),
                                                           margin: getMargin(
                                                               left: 3),
                                                           child: Stack(
                                                               alignment:
-                                                              Alignment
-                                                                  .center,
+                                                                  Alignment
+                                                                      .center,
                                                               children: [
                                                                 Align(
                                                                     alignment:
-                                                                    Alignment
-                                                                        .center,
+                                                                        Alignment
+                                                                            .center,
                                                                     child: Text(
-                                                                        productlist[index].mrpPrice!,
+                                                                        productlist[index]
+                                                                            .mrpPrice!,
                                                                         overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
+                                                                            TextOverflow
+                                                                                .ellipsis,
                                                                         textAlign:
-                                                                        TextAlign
-                                                                            .left,
+                                                                            TextAlign
+                                                                                .left,
                                                                         style: AppStyle
                                                                             .txtRobotoMedium10Gray500)),
                                                                 Align(
                                                                     alignment:
-                                                                    Alignment
-                                                                        .center,
+                                                                        Alignment
+                                                                            .center,
                                                                     child: SizedBox(
                                                                         width: getHorizontalSize(
                                                                             32),
                                                                         child: Divider(
                                                                             height:
-                                                                            getVerticalSize(1),
+                                                                                getVerticalSize(1),
                                                                             thickness: getVerticalSize(1),
                                                                             color: ColorConstant.gray500)))
                                                               ]))
@@ -589,35 +612,35 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                     right: 12),
                                                 child: Row(
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .center,
+                                                        MainAxisAlignment
+                                                            .center,
                                                     crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
+                                                        CrossAxisAlignment.end,
                                                     children: [
                                                       Column(
                                                           mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
+                                                              MainAxisAlignment
+                                                                  .start,
                                                           children: [
                                                             Text(
                                                                 "msg_limited_time_offer"
                                                                     .tr,
                                                                 overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
+                                                                    TextOverflow
+                                                                        .ellipsis,
                                                                 textAlign:
-                                                                TextAlign
-                                                                    .left,
+                                                                    TextAlign
+                                                                        .left,
                                                                 style: AppStyle
                                                                     .txtRobotoRegular10Black900),
                                                             Padding(
                                                                 padding:
-                                                                getPadding(
-                                                                    top: 8),
+                                                                    getPadding(
+                                                                        top: 8),
                                                                 child: Row(
                                                                     mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
+                                                                        MainAxisAlignment
+                                                                            .center,
                                                                     children: [
                                                                       Text(
                                                                           "lbl_ships_in_1_day"
@@ -627,7 +650,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                                           textAlign: TextAlign
                                                                               .left,
                                                                           style:
-                                                                          AppStyle.txtRobotoMedium10Black900),
+                                                                              AppStyle.txtRobotoMedium10Black900),
                                                                       CustomImageView(
                                                                           svgPath: ImageConstant
                                                                               .imgCar,
@@ -642,14 +665,16 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                           ]),
                                                       Spacer(),
                                                       CustomImageView(
-                                                          onTap: (){
+                                                          onTap: () {
                                                             pushScreen(
                                                               context,
-                                                              screen: LogInScreen(),
+                                                              screen:
+                                                                  LogInScreen(),
                                                               withNavBar:
-                                                              false, // OPTIONAL VALUE. True by default.
+                                                                  false, // OPTIONAL VALUE. True by default.
                                                               pageTransitionAnimation:
-                                                              PageTransitionAnimation.cupertino,
+                                                                  PageTransitionAnimation
+                                                                      .cupertino,
                                                             );
                                                             // Navigator.of(context).pushReplacement(MaterialPageRoute(
                                                             //   builder: (context) => LogInScreen(),
@@ -659,23 +684,25 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                           svgPath: ImageConstant
                                                               .imgLocation,
                                                           height:
-                                                          getVerticalSize(
-                                                              18),
+                                                              getVerticalSize(
+                                                                  18),
                                                           width:
-                                                          getHorizontalSize(
-                                                              21),
+                                                              getHorizontalSize(
+                                                                  21),
                                                           margin: getMargin(
                                                               top: 10,
                                                               bottom: 3)),
                                                       CustomImageView(
-                                                          onTap: (){
+                                                          onTap: () {
                                                             pushScreen(
                                                               context,
-                                                              screen: LogInScreen(),
+                                                              screen:
+                                                                  LogInScreen(),
                                                               withNavBar:
-                                                              false, // OPTIONAL VALUE. True by default.
+                                                                  false, // OPTIONAL VALUE. True by default.
                                                               pageTransitionAnimation:
-                                                              PageTransitionAnimation.cupertino,
+                                                                  PageTransitionAnimation
+                                                                      .cupertino,
                                                             );
                                                             // Navigator.of(context).pushReplacement(MaterialPageRoute(
                                                             //   builder: (context) => LogInScreen(),
@@ -685,11 +712,11 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                           svgPath: ImageConstant
                                                               .imgCart,
                                                           height:
-                                                          getVerticalSize(
-                                                              20),
+                                                              getVerticalSize(
+                                                                  20),
                                                           width:
-                                                          getHorizontalSize(
-                                                              23),
+                                                              getHorizontalSize(
+                                                                  23),
                                                           margin: getMargin(
                                                               left: 35,
                                                               top: 9,
@@ -700,7 +727,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                                 child: Divider(
                                                     height: getVerticalSize(5),
                                                     thickness:
-                                                    getVerticalSize(5),
+                                                        getVerticalSize(5),
                                                     color: ColorConstant
                                                         .purple50)),
                                           ],
@@ -1257,6 +1284,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
               ),
             )));
   }
+
   dialogFilter() {
     Size size = MediaQuery.of(context).size;
     Get.bottomSheet(
@@ -1343,10 +1371,10 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                 itemCount: filterSortByItem.length,
                                 shrinkWrap: true,
                                 gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    childAspectRatio: 2 / 0.5,
-                                    crossAxisCount: 2,
-                                    crossAxisSpacing: 0),
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        childAspectRatio: 2 / 0.5,
+                                        crossAxisCount: 2,
+                                        crossAxisSpacing: 0),
                                 itemBuilder: (context, index) {
                                   return Container(
                                     child: Row(
@@ -1408,12 +1436,8 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                               max: 10000,
                               divisions: 200,
                               labels: RangeLabels(
-                                _currentRangeValues.start
-                                    .round()
-                                    .toString(),
-                                _currentRangeValues.end
-                                    .round()
-                                    .toString(),
+                                _currentRangeValues.start.round().toString(),
+                                _currentRangeValues.end.round().toString(),
                               ),
                               onChanged: (RangeValues values) {
                                 setState(() {
@@ -1422,8 +1446,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                               },
                             ),
                             Container(
-                              margin:
-                              EdgeInsets.only(left: 10, right: 10),
+                              margin: EdgeInsets.only(left: 10, right: 10),
                               child: Row(
                                 children: [
                                   Text(
@@ -1472,7 +1495,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                                             setPriceMaxValue = '';
                                             selectedPaymentMethod = '';
                                             _currentRangeValues =
-                                            const RangeValues(1, 10000);
+                                                const RangeValues(1, 10000);
                                             //callAPI();
                                           }
                                         },
@@ -1696,14 +1719,13 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                 topRight: const Radius.circular(25.0),
               ),
             ),
-            child:  SortByBottomsheet());
-
+            child: SortByBottomsheet());
       },
     ).then((value) {
       if (value != null) {
         // Handle the selected quantity returned from the bottom sheet
         // addtocart(value.toString(),product_id);
-        print('Selected quantity: '+ value);
+        print('Selected quantity: ' + value);
         Fluttertoast.showToast(
             msg: value,
             toastLength: Toast.LENGTH_LONG,
@@ -1738,8 +1760,7 @@ class _productlisrafterclickonbanner1State extends State<productlisrafterclickon
                 topRight: const Radius.circular(25.0),
               ),
             ),
-            child: FilterScreen()
-        );
+            child: FilterScreen());
       },
     ).then((value) {
       if (value != null) {

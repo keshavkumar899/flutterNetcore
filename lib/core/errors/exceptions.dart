@@ -6,7 +6,7 @@ class NetworkException implements Exception {}
 
 ///can be used for throwing [NoInternetException]
 class NoInternetException implements Exception {
-   String? _message;
+  String? _message;
 
   NoInternetException([String message = 'NoInternetException Occurred']) {
     this._message = message;

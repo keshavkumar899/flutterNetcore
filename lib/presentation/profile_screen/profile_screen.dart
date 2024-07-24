@@ -7,7 +7,8 @@ import 'package:keshav_s_application2/presentation/cart_screen/cart_screen.dart'
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 
-import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
+import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart'
+    as otp;
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 
@@ -32,7 +33,6 @@ import 'models/profileget.dart';
 
 // ignore_for_file: must_be_immutable
 class ProfileScreen extends StatefulWidget {
-
   otp.Data data;
   ProfileScreen(this.data);
   @override
@@ -49,7 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController emailController = TextEditingController();
 
   final RoundedLoadingButtonController _btnController =
-  RoundedLoadingButtonController();
+      RoundedLoadingButtonController();
 
   Future<ProfileGet>? myProfile;
 
@@ -66,9 +66,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     };
 
     dio.FormData formData = dio.FormData.fromMap({
-      "user_id":widget.data.id,
-      "name":fullnameoneController.text,
-      "mobile":mobilenumberController.text,
+      "user_id": widget.data.id,
+      "name": fullnameoneController.text,
+      "mobile": mobilenumberController.text,
       "email": emailController.text,
       // 'fcm_token': token,
     });
@@ -87,9 +87,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // print(jsonObject.toString());
     if (response.statusCode == 200) {
       if (ProfileUpdate.fromJson(jsonObject).status == "true") {
-
         Fluttertoast.showToast(
-            msg:"Profile Updated Successful",
+            msg: "Profile Updated Successful",
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -103,7 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         // ));
       } else if (ProfileUpdate.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg:ProfileUpdate.fromJson(jsonObject).message!,
+            msg: ProfileUpdate.fromJson(jsonObject).message!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -151,14 +150,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Auth/myprofile",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Auth/myprofile",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
@@ -195,9 +194,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     myProfile = getProfileData();
     myProfile!.then((value) {
       setState(() {
-        fullnameoneController.text = value.data!.firstName! + " "+ value.data!.lastName!;
-        mobilenumberController.text=value.data!.mobile!;
-        emailController.text=value.data!.email!;
+        fullnameoneController.text =
+            value.data!.firstName! + " " + value.data!.lastName!;
+        mobilenumberController.text = value.data!.mobile!;
+        emailController.text = value.data!.email!;
       });
     });
 
@@ -232,27 +232,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       width: getSize(21),
                       svgPath: ImageConstant.imgSearch,
                       margin:
-                      getMargin(left: 12, top: 0, right: 10, bottom: 10),
+                          getMargin(left: 12, top: 0, right: 10, bottom: 10),
                       onTap: onTapSearch),
                   Container(
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 0, right: 10, bottom: 15),
+                          getMargin(left: 20, top: 0, right: 10, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
                             width: getHorizontalSize(21),
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
-                            onTap: (){
+                            onTap: () {
                               pushScreen(
                                 context,
                                 screen: WhislistScreen(widget.data),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                             }),
                         // AppbarSubtitle6(
@@ -262,7 +262,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 0, right: 31,bottom: 15),
+                      margin:
+                          getMargin(left: 14, top: 0, right: 31, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -270,9 +271,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 context,
                                 screen: CartScreen(widget.data),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                               // Navigator.of(context).push(MaterialPageRoute(
                               //   builder: (context) => CartScreen(widget.data),
@@ -335,7 +336,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           CustomTextFormField(
                               focusNode: FocusNode(),
                               controller: emailController,
-                              hintText:emailController.text,
+                              hintText: emailController.text,
                               margin: getMargin(left: 27, top: 6, right: 26),
                               textInputAction: TextInputAction.done,
                               textInputType: TextInputType.emailAddress,
@@ -347,22 +348,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 return null;
                               }),
                           CustomButton(
-                            onTap: (){
-                              FocusManager.instance.primaryFocus!.unfocus();
-                              if (_formKey.currentState!.validate()) {
-                                postRequest();
-                                // print(field);
-                                // if(cred!.=='success'){
-                                //
-                                // }
-                              } else {
-                                setState(() {
-                                  Timer(Duration(seconds: 0), () {
-                                    _btnController.reset();
+                              onTap: () {
+                                FocusManager.instance.primaryFocus!.unfocus();
+                                if (_formKey.currentState!.validate()) {
+                                  postRequest();
+                                  // print(field);
+                                  // if(cred!.=='success'){
+                                  //
+                                  // }
+                                } else {
+                                  setState(() {
+                                    Timer(Duration(seconds: 0), () {
+                                      _btnController.reset();
+                                    });
                                   });
-                                });
-                              }
-                            },
+                                }
+                              },
                               height: getVerticalSize(39),
                               text: "lbl_save".tr,
                               margin: getMargin(left: 27, top: 43, right: 26),
@@ -661,7 +662,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   onTapSearch() {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => SearchScreen(widget.data,''),
+      builder: (context) => SearchScreen(widget.data, ''),
     ));
   }
 

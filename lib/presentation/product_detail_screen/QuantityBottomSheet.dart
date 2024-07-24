@@ -64,8 +64,8 @@ class _QuantityBottomSheetState extends State<QuantityBottomSheet> {
           ),
           SizedBox(height: 0.0),
           CustomButton(
-              onTap: (){
-                if(_selectedQuantity==null){
+              onTap: () {
+                if (_selectedQuantity == null) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       duration: Duration(seconds: 2),
                       behavior: SnackBarBehavior.floating,
@@ -73,7 +73,7 @@ class _QuantityBottomSheetState extends State<QuantityBottomSheet> {
                       dismissDirection: DismissDirection.none,
                       content: Text("Please select quantity"),
                       backgroundColor: Colors.redAccent));
-                }else{
+                } else {
                   Navigator.pop(context, _selectedQuantity);
                 }
               },

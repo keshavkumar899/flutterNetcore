@@ -4,18 +4,22 @@ import 'package:smartech_appinbox/model/smt_appinbox_model.dart';
 
 class SMTCarouselNotificationView extends StatefulWidget {
   final SMTAppInboxMessage inbox;
-  const SMTCarouselNotificationView({Key? key, required this.inbox}) : super(key: key);
+  const SMTCarouselNotificationView({Key? key, required this.inbox})
+      : super(key: key);
 
   @override
-  State<SMTCarouselNotificationView> createState() => _SMTCarouselNotificationViewState();
+  State<SMTCarouselNotificationView> createState() =>
+      _SMTCarouselNotificationViewState();
 }
 
-class _SMTCarouselNotificationViewState extends State<SMTCarouselNotificationView> {
+class _SMTCarouselNotificationViewState
+    extends State<SMTCarouselNotificationView> {
   late PageController _pageController;
 
   @override
   void initState() {
-    _pageController = PageController(initialPage: 0, viewportFraction: 1, keepPage: true);
+    _pageController =
+        PageController(initialPage: 0, viewportFraction: 1, keepPage: true);
     super.initState();
   }
 
@@ -32,14 +36,18 @@ class _SMTCarouselNotificationViewState extends State<SMTCarouselNotificationVie
               alignment: Alignment.centerRight,
               child: Text(
                 widget.inbox.publishedDate!.getTimeAndDayCount(),
-                style: TextStyle(fontSize: 12, color: AppColor.greyColorText, fontWeight: FontWeight.w400),
+                style: TextStyle(
+                    fontSize: 12,
+                    color: AppColor.greyColorText,
+                    fontWeight: FontWeight.w400),
               ),
             ),
             SizedBox(
               height: 8,
             ),
             htmlText(widget.inbox.title),
-            if (widget.inbox.subtitle.toString() != "") htmlText(widget.inbox.subtitle),
+            if (widget.inbox.subtitle.toString() != "")
+              htmlText(widget.inbox.subtitle),
             htmlText(widget.inbox.body),
             SizedBox(
               height: 16,
@@ -53,8 +61,9 @@ class _SMTCarouselNotificationViewState extends State<SMTCarouselNotificationVie
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
                         onTap: () async {
-                          Future.delayed(const Duration(milliseconds: 500), () async {
-                           // Globle().deepLinkNavigation(widget.inbox.carousel[index].imgDeeplink, {});
+                          Future.delayed(const Duration(milliseconds: 500),
+                              () async {
+                            // Globle().deepLinkNavigation(widget.inbox.carousel[index].imgDeeplink, {});
                           });
                         },
                         child: Column(
@@ -93,7 +102,9 @@ class _SMTCarouselNotificationViewState extends State<SMTCarouselNotificationVie
                                   bottom: 8,
                                   child: InkWell(
                                     onTap: () {
-                                      if (index != widget.inbox.carousel.length - 1) _pageController.jumpToPage(index + 1);
+                                      if (index !=
+                                          widget.inbox.carousel.length - 1)
+                                        _pageController.jumpToPage(index + 1);
                                     },
                                     child: Container(
                                       color: Colors.white.withOpacity(0.6),

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
-import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart' as otp;
+import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart'
+    as otp;
 
 import 'dart:convert';
 
@@ -25,7 +26,6 @@ import '../../widgets/custom_text_form_field.dart';
 import 'model/changepassword.dart';
 
 class ChangePassword extends StatefulWidget {
-
   otp.Data data;
   ChangePassword(this.data);
 
@@ -34,12 +34,11 @@ class ChangePassword extends StatefulWidget {
 }
 
 class _ChangePasswordState extends State<ChangePassword> {
-
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   TextEditingController passwordController = TextEditingController();
   final RoundedLoadingButtonController _btnController =
-  RoundedLoadingButtonController();
+      RoundedLoadingButtonController();
 
   Future<ChangePasswordModel> postRequest() async {
     var url = 'https://fabfurni.com/api/Auth/changePassword';
@@ -54,8 +53,8 @@ class _ChangePasswordState extends State<ChangePassword> {
     };
 
     dio.FormData formData = dio.FormData.fromMap({
-      "user_id":widget.data.id,
-      "password":passwordController.text,
+      "user_id": widget.data.id,
+      "password": passwordController.text,
     });
     print(formData.fields);
     var response = await dio.Dio().post(url,
@@ -72,9 +71,8 @@ class _ChangePasswordState extends State<ChangePassword> {
     // print(jsonObject.toString());
     if (response.statusCode == 200) {
       if (ChangePasswordModel.fromJson(jsonObject).status == "true") {
-
         Fluttertoast.showToast(
-            msg:"Password Changed Successfully",
+            msg: "Password Changed Successfully",
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -87,7 +85,7 @@ class _ChangePasswordState extends State<ChangePassword> {
         // ));
       } else if (ChangePasswordModel.fromJson(jsonObject).status == "false") {
         Fluttertoast.showToast(
-            msg:ChangePasswordModel.fromJson(jsonObject).message!,
+            msg: ChangePasswordModel.fromJson(jsonObject).message!,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 3,
@@ -128,7 +126,6 @@ class _ChangePasswordState extends State<ChangePassword> {
     // return response;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -139,7 +136,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 height: getVerticalSize(70),
                 leadingWidth: 41,
                 leading: AppbarImage(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                     },
                     height: getVerticalSize(15),
@@ -171,10 +168,12 @@ class _ChangePasswordState extends State<ChangePassword> {
                               controller: passwordController,
                               margin: getMargin(left: 27, top: 5, right: 26)),
 
-                          SizedBox(height: 4.h,),
+                          SizedBox(
+                            height: 4.h,
+                          ),
 
                           CustomButton(
-                              onTap: (){
+                              onTap: () {
                                 FocusManager.instance.primaryFocus!.unfocus();
                                 if (_formKey.currentState!.validate()) {
                                   postRequest();

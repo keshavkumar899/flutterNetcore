@@ -37,19 +37,20 @@ class Data {
   String? isActive;
   String? walletBalence;
 
-  Data({this.id,
-    this.firstName,
-    this.lastName,
-    this.email,
-    this.password,
-    this.mobile,
-    this.otps,
-    this.fcmToken,
-    this.profilePhoto,
-    this.createOn,
-    this.isDelete,
-    this.isActive,
-    this.walletBalence});
+  Data(
+      {this.id,
+      this.firstName,
+      this.lastName,
+      this.email,
+      this.password,
+      this.mobile,
+      this.otps,
+      this.fcmToken,
+      this.profilePhoto,
+      this.createOn,
+      this.isDelete,
+      this.isActive,
+      this.walletBalence});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];

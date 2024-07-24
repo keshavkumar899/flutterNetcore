@@ -15,27 +15,23 @@ import 'package:flutter/material.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
 
 class SplashScreen extends StatefulWidget {
-
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
-
   @override
   void initState() {
     fetchUser();
     super.initState();
-
   }
 
-  fetchUser() async{
+  fetchUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool? isLoggedIn = prefs.getBool("isLoggedIn");
-    var data=prefs.getString('userData');
-    if(data!=null && isLoggedIn != null && isLoggedIn){
-      Map <String,dynamic>json1 = jsonDecode(prefs.getString('userData')!);
+    var data = prefs.getString('userData');
+    if (data != null && isLoggedIn != null && isLoggedIn) {
+      Map<String, dynamic> json1 = jsonDecode(prefs.getString('userData')!);
       var user1 = OtpModel.fromJson(json1);
       print(user1.data);
       Smartech().setUserIdentity(user1.data!.mobile!);
@@ -44,20 +40,24 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => landingPage(user1.data!),
         ));
-        Smartech().onHandleDeeplink((String? smtDeeplinkSource, String? smtDeeplink, Map<dynamic, dynamic>? smtPayload, Map<dynamic, dynamic>? smtCustomPayload) async {
+        Smartech().onHandleDeeplink((String? smtDeeplinkSource,
+            String? smtDeeplink,
+            Map<dynamic, dynamic>? smtPayload,
+            Map<dynamic, dynamic>? smtCustomPayload) async {
           // String deeplink1=smtDeeplink!;
           // print(deeplink1);
           print(smtDeeplink);
-            if(smtDeeplinkSource=='PushNotification'){
-              print(smtDeeplink);
-              String deeplink=smtDeeplink!.substring(0,smtDeeplink.indexOf('?'));
-              if(deeplink=='/about_us_screen'){
-                  Get.toNamed(AppRoutes.aboutUsScreen);
-              }
+          if (smtDeeplinkSource == 'PushNotification') {
+            print(smtDeeplink);
+            String deeplink =
+                smtDeeplink!.substring(0, smtDeeplink.indexOf('?'));
+            if (deeplink == '/about_us_screen') {
+              Get.toNamed(AppRoutes.aboutUsScreen);
             }
-          if(smtDeeplinkSource=='InAppMessage'){
-           // print(smtDeeplink);
-            if(smtDeeplink!.contains("https")) {
+          }
+          if (smtDeeplinkSource == 'InAppMessage') {
+            // print(smtDeeplink);
+            if (smtDeeplink!.contains("https")) {
               print("navigate to browser with url");
               final Uri _url = Uri.parse(smtDeeplink);
               if (!await launchUrl(_url)) throw 'Could not launch $_url';
@@ -67,7 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
         });
         // Get.offNamed(AppRoutes.logInScreen);
       });
-    }else{
+    } else {
       // if(Platform.isIOS){
       //   FirebaseMessaging.instance.getAPNSToken().then((token) {
       //     print('This is IOS Token: ' '${token}');
@@ -121,10 +121,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 width: getHorizontalSize(
                   148,
                 ),
-                margin: getMargin(
-                  top: 350,
-                  bottom: 30
-                ),
+                margin: getMargin(top: 350, bottom: 30),
               ),
             ],
           ),

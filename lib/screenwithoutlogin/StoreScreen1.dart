@@ -4,11 +4,11 @@ import 'package:keshav_s_application2/presentation/search_screen/search_screen.d
 import 'package:keshav_s_application2/presentation/select_product_screen/newproductlist.dart';
 import 'package:keshav_s_application2/presentation/select_product_screen/select_product_screen.dart';
 import 'package:keshav_s_application2/presentation/sidebar_menu_draweritem/sidebar_menu_draweritem.dart';
-import 'package:keshav_s_application2/presentation/store_screen/models/StoreModel.dart' as stores;
+import 'package:keshav_s_application2/presentation/store_screen/models/StoreModel.dart'
+    as stores;
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 import 'package:keshav_s_application2/screenwithoutlogin/searchscreen1.dart';
 import 'package:keshav_s_application2/screenwithoutlogin/sidebarmenu.dart';
-
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
@@ -27,8 +27,6 @@ import 'ClickAfterSlectTabFurnitureScreen1.dart';
 import 'NewProductScreen1.dart';
 
 class StoreScreen1 extends StatefulWidget {
-
- 
   @override
   State<StoreScreen1> createState() => _StoreScreen1State();
 }
@@ -45,14 +43,14 @@ class _StoreScreen1State extends State<StoreScreen1> {
     //encode Map to JSON
     var body = json.encode(data);
     var response =
-    await dio.Dio().post("https://fabfurni.com/api/Webservice/category",
-        options: dio.Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-          },
-        ),
-        data: body);
+        await dio.Dio().post("https://fabfurni.com/api/Webservice/category",
+            options: dio.Options(
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+              },
+            ),
+            data: body);
     var jsonObject = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       print(jsonObject);
@@ -63,13 +61,11 @@ class _StoreScreen1State extends State<StoreScreen1> {
         return stores.StoreModel.fromJson(jsonObject);
 
         // inviteList.sort((a, b) => a.id.compareTo(b.id));
-      }else if (stores.StoreModel.fromJson(jsonObject).status == "false") {
+      } else if (stores.StoreModel.fromJson(jsonObject).status == "false") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(stores.StoreModel.fromJson(jsonObject).message!),
             backgroundColor: Colors.redAccent));
-
-      }
-      else if(stores.StoreModel.fromJson(jsonObject).data == null){
+      } else if (stores.StoreModel.fromJson(jsonObject).data == null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
             jsonObject['message'] + ' Please check after sometime.',
@@ -77,8 +73,7 @@ class _StoreScreen1State extends State<StoreScreen1> {
           ),
           backgroundColor: Colors.redAccent,
         ));
-      }
-      else {
+      } else {
         throw Exception('Failed to load');
       }
     } else {
@@ -105,7 +100,7 @@ class _StoreScreen1State extends State<StoreScreen1> {
         child: Scaffold(
             key: _scaffoldKey,
             backgroundColor: ColorConstant.whiteA700,
-            drawer:  SidebarMenu(),
+            drawer: SidebarMenu(),
             appBar: CustomAppBar(
                 height: getVerticalSize(90),
                 leadingWidth: 41,
@@ -128,27 +123,27 @@ class _StoreScreen1State extends State<StoreScreen1> {
                       width: getSize(21),
                       svgPath: ImageConstant.imgSearch,
                       margin:
-                      getMargin(left: 12, top: 0, right: 10, bottom: 10),
+                          getMargin(left: 12, top: 0, right: 10, bottom: 10),
                       onTap: onTapSearch),
                   Container(
                       height: getVerticalSize(23),
                       width: getHorizontalSize(27),
                       margin:
-                      getMargin(left: 20, top: 0, right: 10, bottom: 15),
+                          getMargin(left: 20, top: 0, right: 10, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             height: getVerticalSize(21),
                             width: getHorizontalSize(21),
                             svgPath: ImageConstant.imgLocation,
                             margin: getMargin(top: 5, right: 6),
-                            onTap: (){
+                            onTap: () {
                               pushScreen(
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                               // Navigator.of(context).pushReplacement(MaterialPageRoute(
                               //   builder: (context) => LogInScreen(),
@@ -161,7 +156,8 @@ class _StoreScreen1State extends State<StoreScreen1> {
                   Container(
                       height: getVerticalSize(24),
                       width: getHorizontalSize(29),
-                      margin: getMargin(left: 14, top: 0, right: 31,bottom: 15),
+                      margin:
+                          getMargin(left: 14, top: 0, right: 31, bottom: 15),
                       child: Stack(alignment: Alignment.topRight, children: [
                         AppbarImage(
                             onTap: () {
@@ -169,9 +165,9 @@ class _StoreScreen1State extends State<StoreScreen1> {
                                 context,
                                 screen: LogInScreen(),
                                 withNavBar:
-                                false, // OPTIONAL VALUE. True by default.
+                                    false, // OPTIONAL VALUE. True by default.
                                 pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
+                                    PageTransitionAnimation.cupertino,
                               );
                               // Navigator.of(context).pushReplacement(MaterialPageRoute(
                               //   builder: (context) => LogInScreen(),
@@ -189,7 +185,7 @@ class _StoreScreen1State extends State<StoreScreen1> {
                 styleType: Style.bgShadowBlack90033),
             body: ListView.builder(
                 itemCount: categorylist.length,
-                itemBuilder: (context,index){
+                itemBuilder: (context, index) {
                   return Container(
                       width: double.maxFinite,
                       padding: getPadding(bottom: 21),
@@ -197,19 +193,31 @@ class _StoreScreen1State extends State<StoreScreen1> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             InkWell(
-                              onTap: (){
+                              onTap: () {
                                 // Navigator.pushNamed(context, AppRoutes.clickAfterSlectTabFurnitureScreen);
-                                categorylist[index].subCategory!.length==0?pushScreen(
-                                  context,
-                                  screen: NewProductScreen1(categorylist[index],),
-                                  withNavBar: true, // OPTIONAL VALUE. True by default.
-                                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                                ):pushScreen(
-                                  context,
-                                  screen: ClickAfterSlectTabFurnitureScreen1(categorylist[index],categorylist[index].name!,),
-                                  withNavBar: true, // OPTIONAL VALUE. True by default.
-                                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                                );
+                                categorylist[index].subCategory!.length == 0
+                                    ? pushScreen(
+                                        context,
+                                        screen: NewProductScreen1(
+                                          categorylist[index],
+                                        ),
+                                        withNavBar:
+                                            true, // OPTIONAL VALUE. True by default.
+                                        pageTransitionAnimation:
+                                            PageTransitionAnimation.cupertino,
+                                      )
+                                    : pushScreen(
+                                        context,
+                                        screen:
+                                            ClickAfterSlectTabFurnitureScreen1(
+                                          categorylist[index],
+                                          categorylist[index].name!,
+                                        ),
+                                        withNavBar:
+                                            true, // OPTIONAL VALUE. True by default.
+                                        pageTransitionAnimation:
+                                            PageTransitionAnimation.cupertino,
+                                      );
                                 // if(categorylist[index].subCategory.length!=0){
                                 //   pushNewScreen(
                                 //     context,
@@ -237,7 +245,8 @@ class _StoreScreen1State extends State<StoreScreen1> {
                                 child: Padding(
                                     padding: getPadding(left: 31, right: 40),
                                     child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(categorylist[index].name!,
                                               overflow: TextOverflow.ellipsis,
@@ -245,30 +254,51 @@ class _StoreScreen1State extends State<StoreScreen1> {
                                               style: AppStyle
                                                   .txtRobotoRegular12Black900
                                                   .copyWith(
-                                                  letterSpacing:
-                                                  getHorizontalSize(1.8))),
+                                                      letterSpacing:
+                                                          getHorizontalSize(
+                                                              1.8))),
                                           GestureDetector(
-                                            onTap: (){
-                                              categorylist[index].subCategory!.length==0?pushScreen(
-                                                context,
-                                                screen: NewProductScreen1(categorylist[index],),
-                                                withNavBar: true, // OPTIONAL VALUE. True by default.
-                                                pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                                              ):pushScreen(
-                                                context,
-                                                screen: ClickAfterSlectTabFurnitureScreen1(categorylist[index],categorylist[index].name!,),
-                                                withNavBar: true, // OPTIONAL VALUE. True by default.
-                                                pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                                              );
+                                            onTap: () {
+                                              categorylist[index]
+                                                          .subCategory!
+                                                          .length ==
+                                                      0
+                                                  ? pushScreen(
+                                                      context,
+                                                      screen: NewProductScreen1(
+                                                        categorylist[index],
+                                                      ),
+                                                      withNavBar:
+                                                          true, // OPTIONAL VALUE. True by default.
+                                                      pageTransitionAnimation:
+                                                          PageTransitionAnimation
+                                                              .cupertino,
+                                                    )
+                                                  : pushScreen(
+                                                      context,
+                                                      screen:
+                                                          ClickAfterSlectTabFurnitureScreen1(
+                                                        categorylist[index],
+                                                        categorylist[index]
+                                                            .name!,
+                                                      ),
+                                                      withNavBar:
+                                                          true, // OPTIONAL VALUE. True by default.
+                                                      pageTransitionAnimation:
+                                                          PageTransitionAnimation
+                                                              .cupertino,
+                                                    );
                                             },
                                             child: Container(
                                               // width: 20,
                                               // height: 15,
                                               child: CustomImageView(
-                                                  svgPath: ImageConstant.imgArrowrightGray500,
+                                                  svgPath: ImageConstant
+                                                      .imgArrowrightGray500,
                                                   height: getVerticalSize(15),
                                                   width: getHorizontalSize(20),
-                                                  margin: getMargin(top: 2, bottom: 2)),
+                                                  margin: getMargin(
+                                                      top: 2, bottom: 2)),
                                             ),
                                           )
                                         ])),
@@ -504,9 +534,7 @@ class _StoreScreen1State extends State<StoreScreen1> {
                             //         height: getVerticalSize(1),
                             //         thickness: getVerticalSize(1)))
                           ]));
-                })
-
-        ));
+                })));
   }
 
   onTapSearch() {

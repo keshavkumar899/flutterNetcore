@@ -11,10 +11,9 @@ class SplashController extends GetxController {
   Rx<SplashModel> splashModelObj = SplashModel().obs;
 
   @override
-  void onReady() async{
+  void onReady() async {
     super.onReady();
     Future.delayed(const Duration(milliseconds: 3000), () {
-
       // Get.offNamed(AppRoutes.logInScreen);
     });
   }

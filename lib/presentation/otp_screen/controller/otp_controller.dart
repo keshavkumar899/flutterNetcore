@@ -20,7 +20,7 @@ class OtpController extends GetxController {
     super.onReady();
   }
 
-  void fetchData(){
+  void fetchData() {
     print("error");
   }
 

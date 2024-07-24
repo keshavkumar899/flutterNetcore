@@ -1,6 +1,7 @@
 import 'dart:async';
 
 // import 'package:grouped_buttons/grouped_buttons.dart';
+import 'package:checkbox_grouped/checkbox_grouped.dart';
 import 'package:keshav_s_application2/core/utils/utils.dart';
 import 'package:keshav_s_application2/presentation/add_address_screen/models/add_address_model.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
@@ -19,11 +20,11 @@ import 'package:keshav_s_application2/widgets/custom_drop_down.dart';
 import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
 
 import 'dart:convert';
-import 'package:grouped_buttons_ns/grouped_buttons_ns.dart';
 
 import 'package:dio/dio.dart' as dio;
 
 import '../add_address_screen_click_on_manage_address_screen/add_address_screen_click_on_manage_address_screen.dart';
+
 class AddAddressScreen extends StatefulWidget {
   Data data;
   AddAddressScreen(this.data);
@@ -61,6 +62,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   int? check2;
   String selected = "";
   List<String> _checked = [];
+  GroupController controller = GroupController();
   List checkListItems = [
     {
       "id": 0,
@@ -94,7 +96,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     dio.FormData formData = dio.FormData.fromMap({
       "user_id": widget.data.id,
       "name": fullnameController.text,
-      "mobile_number":mobilenumberController.text,
+      "mobile_number": mobilenumberController.text,
       "address_one": addressController.text,
       "address_two": "",
       "city": cityController.text,
@@ -186,7 +188,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                 height: getVerticalSize(70),
                 leadingWidth: 41,
                 leading: AppbarImage(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                     },
                     height: getVerticalSize(15),
@@ -306,7 +308,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                           Align(
                               alignment: Alignment.centerLeft,
                               child: Container(
-                                 // height: getVerticalSize(75),
+                                  // height: getVerticalSize(75),
                                   width: getHorizontalSize(400),
                                   margin: getMargin(left: 25, top: 24),
                                   child: Row(children: [
@@ -341,42 +343,73 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                     //         onChange: (value) {
                                     //           isCheckbox1 = value;
                                     //         })),
-
-                                    CheckboxGroup(
-                                      orientation:
-                                          GroupedButtonsOrientation.HORIZONTAL,
-                                      margin: const EdgeInsets.only(left: 20.0),
-                                      labels: <String>[
+                                    SimpleGroupedCheckbox(
+                                      controller: controller,
+                                      itemsTitle: [
                                         "Home",
                                         "Office",
                                       ],
-                                      // disabled: ["Wednesday", "Friday"],
-                                      checked: _checked,
-                                      activeColor: Colors.purple,
-                                      // itemBuilder: (checkbox,label,int){
-                                      //
-                                      // },
-                                      labelStyle:
-                                          AppStyle.txtRobotoRegular12Black900,
-                                      onChange: (bool isChecked, String label,
-                                          int index) {
-                                        check1 = index;
-                                        print(check1);
-                                        print(
-                                            "isChecked: $isChecked   label: $label  index: $index");
+                                      values: [1, 2, 4, 5],
+                                      groupStyle: GroupStyle(
+                                        activeColor: Colors.purple,
+                                        itemTitleStyle: TextStyle(fontSize: 13),
+                                        // labelStyle:
+                                        // AppStyle.txtRobotoRegular12Black900,
+                                        // onChange: (bool isChecked, String label,
+                                        // int index) {
+                                        // check1 = index;
+                                        // print(check1);
+                                        // print(
+                                        // "isChecked: $isChecked   label: $label  index: $index");
+                                      ),
+                                      onItemSelected: (selected) {
+                                        setState(() {
+                                          if (selected.length > 1) {
+                                            selected.removeAt(0);
+                                            print(
+                                                'selected length  ${selected.length}');
+                                          } else {
+                                            print("only one");
+                                          }
+                                          _checked = selected as List<String>;
+                                        });
                                       },
-                                      onSelected: (List selected) =>
-                                          setState(() {
-                                        if (selected.length > 1) {
-                                          selected.removeAt(0);
-                                          print(
-                                              'selected length  ${selected.length}');
-                                        } else {
-                                          print("only one");
-                                        }
-                                        _checked = selected as List<String>;
-                                      }),
-                                    ),
+                                    )
+                                    // CheckboxGroup(
+                                    //   orientation:
+                                    //       GroupedButtonsOrientation.HORIZONTAL,
+                                    //   margin: const EdgeInsets.only(left: 20.0),
+                                    //   labels: <String>[
+                                    //     "Home",
+                                    //     "Office",
+                                    //   ],
+                                    //   // disabled: ["Wednesday", "Friday"],
+                                    //   checked: _checked,
+                                    //   activeColor: Colors.purple,
+                                    //   // itemBuilder: (checkbox,label,int){
+                                    //   //
+                                    //   // },
+                                    //   labelStyle:
+                                    //       AppStyle.txtRobotoRegular12Black900,
+                                    //   onChange: (bool isChecked, String label,
+                                    //       int index) {
+                                    //     check1 = index;
+                                    //     print(check1);
+                                    //     print(
+                                    //         "isChecked: $isChecked   label: $label  index: $index");
+                                    //   },
+                                    //   onSelected: (List selected) =>
+                                    //       setState(() {
+                                    //     if (selected.length > 1) {
+                                    //       selected.removeAt(0);
+                                    //       print(
+                                    //           'selected length  ${selected.length}');
+                                    //     } else {
+                                    //       print("only one");
+                                    //     }
+                                    //     _checked = selected as List<String>;
+                                    //   }),
+                                    // ),
                                     // Container(
                                     //   width:100,
                                     //   child:

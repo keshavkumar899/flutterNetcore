@@ -5,8 +5,7 @@ import 'package:keshav_s_application2/presentation/cart_screen/models/cart_model
 class CartScreenController extends GetxController {
   TextEditingController pincodeController = TextEditingController();
 
-  Rx<CartModel> CartModelObj =
-      CartModel().obs;
+  Rx<CartModel> CartModelObj = CartModel().obs;
 
   @override
   void onReady() {

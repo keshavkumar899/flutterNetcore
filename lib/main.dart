@@ -18,7 +18,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'core/app_export.dart';
 import 'package:location/location.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
@@ -26,9 +26,11 @@ void main() async{
   print(fcmToken);
   Smartech().login('8920616622');
   //Smartech().setUserIdentity('9873103345');
- NetcorePX.instance.registerPxActionListener('action',_PxActionListenerImpl());
- NetcorePX.instance.registerPxDeeplinkListener(_PxDeeplinkListenerImpl());
- NetcorePX.instance.registerPxInternalEventsListener(_PxInternalEventsListener());
+  NetcorePX.instance
+      .registerPxActionListener('action', _PxActionListenerImpl());
+  NetcorePX.instance.registerPxDeeplinkListener(_PxDeeplinkListenerImpl());
+  NetcorePX.instance
+      .registerPxInternalEventsListener(_PxInternalEventsListener());
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((value) {
@@ -42,20 +44,23 @@ void main() async{
   //     Get.toNamed(AppRoutes.aboutUsScreen);
   //   }
   // });
-  Smartech().onHandleDeeplink((String? smtDeeplinkSource, String? smtDeeplink, Map<dynamic, dynamic>? smtPayload, Map<dynamic, dynamic>? smtCustomPayload) async {
+  Smartech().onHandleDeeplink((String? smtDeeplinkSource,
+      String? smtDeeplink,
+      Map<dynamic, dynamic>? smtPayload,
+      Map<dynamic, dynamic>? smtCustomPayload) async {
     // String deeplink1=smtDeeplink!;
     // print(deeplink1);
     print(smtDeeplink);
-    if(smtDeeplinkSource=='PushNotification'){
+    if (smtDeeplinkSource == 'PushNotification') {
       print(smtDeeplink);
-      String deeplink=smtDeeplink!.substring(0,smtDeeplink.indexOf('?'));
-      if(deeplink=='/about_us_screen'){
+      String deeplink = smtDeeplink!.substring(0, smtDeeplink.indexOf('?'));
+      if (deeplink == '/about_us_screen') {
         Get.toNamed(AppRoutes.aboutUsScreen);
       }
     }
-    if(smtDeeplinkSource=='InAppMessage'){
+    if (smtDeeplinkSource == 'InAppMessage') {
       // print(smtDeeplink);
-      if(smtDeeplink!.contains("https")) {
+      if (smtDeeplink!.contains("https")) {
         print("navigate to browser with url");
         final Uri _url = Uri.parse(smtDeeplink);
         if (!await launchUrl(_url)) throw 'Could not launch $_url';
@@ -95,14 +100,12 @@ void getLocation() async {
   _locationData = await location.getLocation();
 }
 
-
 class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-
   bool hasInternet = true;
   bool isOffline = false;
   StreamSubscription? subscription;
@@ -116,14 +119,14 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> startChecking() async {
-    final List<ConnectivityResult> result = await Connectivity().checkConnectivity();
+    final List<ConnectivityResult> result =
+        await Connectivity().checkConnectivity();
     showConnectivitySnackBar(result);
   }
 
   void showConnectivitySnackBar(List<ConnectivityResult> result) {
     setState(() {
       hasInternet = result != ConnectivityResult.none;
-
     });
 
     // final message = hasInternet
@@ -136,20 +139,20 @@ class _MyAppState extends State<MyApp> {
     subscription!.cancel();
     super.dispose();
   }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return SmartechPxWidget(
-      child: Sizer(builder:(context, orientation, deviceType){
+      child: Sizer(builder: (context, orientation, deviceType) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           builder: (context, child) {
             return hasInternet
                 ? MediaQuery(
-              child: child!,
-              data: MediaQuery.of(context)
-                  .copyWith(textScaleFactor: 1.0),
-            )
+                    child: child!,
+                    data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                  )
                 : ConnectionLostScreen();
           },
           theme: ThemeData(
@@ -162,8 +165,8 @@ class _MyAppState extends State<MyApp> {
           initialBinding: InitialBindings(),
           initialRoute: AppRoutes.initialRoute,
           getPages: AppRoutes.pages,
-        );}
-      ),
+        );
+      }),
     );
   }
 }
@@ -171,7 +174,6 @@ class _MyAppState extends State<MyApp> {
 class _PxActionListenerImpl extends PxActionListener {
   @override
   void onActionPerformed(String action) {
-
     print('PXAction: $action');
   }
 }
@@ -179,7 +181,7 @@ class _PxActionListenerImpl extends PxActionListener {
 class _PxDeeplinkListenerImpl extends PxDeeplinkListener {
   @override
   void onLaunchUrl(String url) {
-    if(url=='/about_us_screen'){
+    if (url == '/about_us_screen') {
       Get.toNamed(AppRoutes.aboutUsScreen);
     }
     print('PXDeeplink: $url');
@@ -187,10 +189,8 @@ class _PxDeeplinkListenerImpl extends PxDeeplinkListener {
 }
 
 class _PxInternalEventsListener extends PxInternalEventsListener {
-
   @override
   void onEvent(String eventName, Map dataFromHansel) {
     debugPrint('PXEvent: $eventName eventData : $dataFromHansel');
   }
 }
-

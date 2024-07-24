@@ -7,13 +7,16 @@ import 'package:smartech_appinbox/model/smt_appinbox_model.dart';
 
 class SMTAudioNotificationView extends StatefulWidget {
   final SMTAppInboxMessage inbox;
-  const SMTAudioNotificationView({Key? key, required this.inbox}) : super(key: key);
+  const SMTAudioNotificationView({Key? key, required this.inbox})
+      : super(key: key);
 
   @override
-  State<SMTAudioNotificationView> createState() => _SMTAudioNotificationViewState();
+  State<SMTAudioNotificationView> createState() =>
+      _SMTAudioNotificationViewState();
 }
 
-class _SMTAudioNotificationViewState extends State<SMTAudioNotificationView> with WidgetsBindingObserver {
+class _SMTAudioNotificationViewState extends State<SMTAudioNotificationView>
+    with WidgetsBindingObserver {
   final _player = AudioPlayer();
   @override
   void initState() {
@@ -24,7 +27,8 @@ class _SMTAudioNotificationViewState extends State<SMTAudioNotificationView> wit
 
   Future<void> _init() async {
     try {
-      await _player.setAudioSource(AudioSource.uri(Uri.parse(widget.inbox.mediaUrl)));
+      await _player
+          .setAudioSource(AudioSource.uri(Uri.parse(widget.inbox.mediaUrl)));
     } catch (e) {
       print("Error loading audio source: $e");
     }
@@ -50,11 +54,13 @@ class _SMTAudioNotificationViewState extends State<SMTAudioNotificationView> wit
 
   /// Collects the data useful for displaying in a seek bar, using a handy
   /// feature of rx_dart to combine the 3 streams of interest into one.
-  Stream<PositionData> get _positionDataStream => Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
-      _player.positionStream,
-      _player.bufferedPositionStream,
-      _player.durationStream,
-      (position, bufferedPosition, duration) => PositionData(position, bufferedPosition, duration ?? Duration.zero));
+  Stream<PositionData> get _positionDataStream =>
+      Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
+          _player.positionStream,
+          _player.bufferedPositionStream,
+          _player.durationStream,
+          (position, bufferedPosition, duration) => PositionData(
+              position, bufferedPosition, duration ?? Duration.zero));
 
   @override
   Widget build(BuildContext context) {
@@ -69,14 +75,18 @@ class _SMTAudioNotificationViewState extends State<SMTAudioNotificationView> wit
               alignment: Alignment.centerRight,
               child: Text(
                 widget.inbox.publishedDate!.getTimeAndDayCount(),
-                style: TextStyle(fontSize: 12, color: AppColor.greyColorText, fontWeight: FontWeight.w400),
+                style: TextStyle(
+                    fontSize: 12,
+                    color: AppColor.greyColorText,
+                    fontWeight: FontWeight.w400),
               ),
             ),
             SizedBox(
               height: 8,
             ),
             htmlText(widget.inbox.title),
-            if (widget.inbox.subtitle.toString() != "") htmlText(widget.inbox.subtitle),
+            if (widget.inbox.subtitle.toString() != "")
+              htmlText(widget.inbox.subtitle),
             htmlText(widget.inbox.body),
             SizedBox(
               height: 8,
@@ -91,7 +101,8 @@ class _SMTAudioNotificationViewState extends State<SMTAudioNotificationView> wit
                 return SeekBar(
                   duration: positionData?.duration ?? Duration.zero,
                   position: positionData?.position ?? Duration.zero,
-                  bufferedPosition: positionData?.bufferedPosition ?? Duration.zero,
+                  bufferedPosition:
+                      positionData?.bufferedPosition ?? Duration.zero,
                   onChangeEnd: _player.seek,
                 );
               },
@@ -141,7 +152,8 @@ class ControlButtons extends StatelessWidget {
             final playerState = snapshot.data;
             final processingState = playerState?.processingState;
             final playing = playerState?.playing;
-            if (processingState == ProcessingState.loading || processingState == ProcessingState.buffering) {
+            if (processingState == ProcessingState.loading ||
+                processingState == ProcessingState.buffering) {
               return Container(
                 margin: const EdgeInsets.all(8.0),
                 width: 64.0,
@@ -173,7 +185,8 @@ class ControlButtons extends StatelessWidget {
         StreamBuilder<double>(
           stream: player.speedStream,
           builder: (context, snapshot) => IconButton(
-            icon: Text("${snapshot.data?.toStringAsFixed(1)}x", style: const TextStyle(fontWeight: FontWeight.bold)),
+            icon: Text("${snapshot.data?.toStringAsFixed(1)}x",
+                style: const TextStyle(fontWeight: FontWeight.bold)),
             onPressed: () {
               showSliderDialog(
                 context: context,
