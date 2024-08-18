@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:convert';
 
 import 'package:animated_shimmer/animated_shimmer.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' as carousel;
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -629,8 +629,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   // width: 200.w,
                                   padding: getPadding(left: 10, right: 10),
                                   // color: Colors.black,
-                                  child: CarouselSlider.builder(
-                                      options: CarouselOptions(
+                                  child: carousel.CarouselSlider.builder(
+                                      options: carousel.CarouselOptions(
                                         //height: getVerticalSize(215),
                                         initialPage: 0,
                                         autoPlay: true,

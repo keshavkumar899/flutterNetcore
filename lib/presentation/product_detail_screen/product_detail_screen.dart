@@ -19,7 +19,7 @@ import '../otp_screen/models/otp_model.dart';
 import '../product_detail_screen/widgets/slider_item_widget.dart';
 import 'controller/product_detail_controller.dart';
 import 'models/slider_item_model.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' as carousel;
 import 'package:flutter/material.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_image.dart';
@@ -592,8 +592,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       alignment: Alignment.topRight,
                                       children: [
                                         productImages.length != 0
-                                            ? CarouselSlider.builder(
-                                                options: CarouselOptions(
+                                            ? carousel.CarouselSlider.builder(
+                                                options: carousel.CarouselOptions(
                                                   height: getVerticalSize(215),
                                                   initialPage: 0,
                                                   autoPlay: true,

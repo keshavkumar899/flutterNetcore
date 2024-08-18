@@ -144,7 +144,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return SmartechPxWidget(
-      child: Sizer(builder: (context, orientation, deviceType) {
+      child: ResponsiveSizer
+        (builder: (context, orientation, deviceType) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           builder: (context, child) {

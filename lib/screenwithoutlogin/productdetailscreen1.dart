@@ -16,7 +16,7 @@ import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
 
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' as carousel;
 import 'package:flutter/material.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_image.dart';
@@ -604,8 +604,8 @@ class _ProductDetailScreen1State extends State<ProductDetailScreen1> {
                                       alignment: Alignment.topRight,
                                       children: [
                                         productImages.length != 0
-                                            ? CarouselSlider.builder(
-                                                options: CarouselOptions(
+                                            ? carousel.CarouselSlider.builder(
+                                                options: carousel.CarouselOptions(
                                                   height: getVerticalSize(215),
                                                   initialPage: 0,
                                                   autoPlay: true,

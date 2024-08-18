@@ -19,7 +19,7 @@ import 'package:keshav_s_application2/screenwithoutlogin/searchscreen1.dart';
 import 'package:keshav_s_application2/screenwithoutlogin/sidebarmenu.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' as carousel;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
@@ -764,8 +764,8 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                   // width: 200.w,
                                   padding: getPadding(left: 10, right: 10),
                                   // color: Colors.black,
-                                  child: CarouselSlider.builder(
-                                      options: CarouselOptions(
+                                  child: carousel.CarouselSlider.builder(
+                                      options: carousel.CarouselOptions(
                                         //height: getVerticalSize(215),
                                         initialPage: 0,
                                         autoPlay: true,
