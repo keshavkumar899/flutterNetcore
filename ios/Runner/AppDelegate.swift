@@ -6,7 +6,7 @@ import smartech_base
 import SmartechNudges
 
 
-@UIApplicationMain
+@main
 @objc class AppDelegate: FlutterAppDelegate, SmartechDelegate
                          //HanselActionListener
 {

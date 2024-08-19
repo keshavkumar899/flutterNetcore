@@ -5,6 +5,7 @@ import 'package:html/parser.dart';
 import 'package:keshav_s_application2/core/utils/appConstant.dart';
 import 'package:keshav_s_application2/presentation/about_us_screen/models/SettingVO.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:smartech_nudges/netcore_px.dart';
 
 import '../filter_screen/models/FilterVO.dart';
 import 'controller/about_us_controller.dart';
@@ -28,6 +29,7 @@ class _aboutUsScreen extends State<AboutUsScreen> {
   String? versionCode;
 
   final gtm = Gtm.instance;
+  var event_name = "about_us";
 
   @override
   void initState() {
@@ -36,6 +38,11 @@ class _aboutUsScreen extends State<AboutUsScreen> {
     _requestData();
     getVersion();
     // Push event
+    NetcorePX.instance.logEvent(event_name, "smt", {
+      "user_no":912342,
+      "name":"keshav",
+      "age":22
+    });
     gtm.push(
       'about_us',
       parameters: {
