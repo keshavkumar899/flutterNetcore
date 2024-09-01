@@ -17,6 +17,7 @@ import 'package:smartech_nudges/tracker/route_obersver.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'core/app_export.dart';
 import 'package:location/location.dart';
+import 'dart:io' show Platform;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +26,23 @@ void main() async {
   final fcmToken = await FirebaseMessaging.instance.getToken();
   print(fcmToken);
   Smartech().login('8920616622');
+  if(Platform.isAndroid){
+    var mapandroid={
+      "name":"keshav",
+      "update":"sent by android platform"
+    };
+    print(mapandroid);
+    Smartech().updateUserProfile(mapandroid);
+  }
+ if(Platform.isIOS){
+   var mapiOS={
+     "name":"keshav",
+     "update":"sent by iOS platform"
+   };
+   print(mapiOS);
+   Smartech().updateUserProfile(mapiOS);
+ }
+
   //Smartech().setUserIdentity('9873103345');
   NetcorePX.instance
       .registerPxActionListener('action', _PxActionListenerImpl());
@@ -50,7 +68,8 @@ void main() async {
       Map<dynamic, dynamic>? smtCustomPayload) async {
     // String deeplink1=smtDeeplink!;
     // print(deeplink1);
-    print(smtDeeplink);
+    print('$smtDeeplink');
+    print('$smtDeeplink');
     if (smtDeeplinkSource == 'PushNotification') {
       print(smtDeeplink);
       String deeplink = smtDeeplink!.substring(0, smtDeeplink.indexOf('?'));
@@ -148,6 +167,7 @@ class _MyAppState extends State<MyApp> {
         (builder: (context, orientation, deviceType) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
+          navigatorObservers: [PxNavigationObserver()],
           builder: (context, child) {
             return hasInternet
                 ? MediaQuery(
@@ -192,6 +212,7 @@ class _PxDeeplinkListenerImpl extends PxDeeplinkListener {
 class _PxInternalEventsListener extends PxInternalEventsListener {
   @override
   void onEvent(String eventName, Map dataFromHansel) {
+    // Smartech().trackEvent(eventName, dataFromHansel);
     debugPrint('PXEvent: $eventName eventData : $dataFromHansel');
   }
 }

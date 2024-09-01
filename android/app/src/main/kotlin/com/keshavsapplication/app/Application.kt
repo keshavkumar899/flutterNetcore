@@ -2,10 +2,13 @@ package com.keshavsapplication.app
 
 import android.util.Log
 import com.netcore.android.Smartech
+import com.netcore.android.smartechpush.SmartPush
+import com.netcore.android.smartechpush.notification.SMTNotificationOptions
 import com.netcore.smartech_appinbox.SmartechAppinboxPlugin
 import com.netcore.smartech_base.SmartechBasePlugin
 import com.netcore.smartech_push.SmartechPushPlugin
 import io.flutter.app.FlutterApplication
+import io.hansel.core.logger.HSLLogLevel
 import java.lang.ref.WeakReference
 
 class Application: FlutterApplication() {
@@ -19,6 +22,11 @@ class Application: FlutterApplication() {
         // Add the below line to track app install and update by smartech
         Smartech.getInstance(WeakReference(applicationContext)).trackAppInstallUpdateBySmartech()
 
+        HSLLogLevel.all.setEnabled(true);
+        HSLLogLevel.mid.setEnabled(true);
+        HSLLogLevel.debug.setEnabled(true);
+        HSLLogLevel.min.setEnabled(true);
+
         // Initialize Flutter Smartech Base Plugin
         SmartechBasePlugin.initializePlugin(this)
 
@@ -26,6 +34,15 @@ class Application: FlutterApplication() {
         SmartechPushPlugin.initializePlugin(this)
 
         SmartechAppinboxPlugin.initializePlugin(this)
+
+        val options = SMTNotificationOptions(this)
+        options.brandLogo = "Fabfurni"//e.g.logo is sample name for brand logo
+        options.largeIcon = "ic_launcher"//e.g.ic_notification is sample name for large icon
+        options.smallIcon = "ic_launcher"//e.g.ic_action_play is sample name for icon
+        options.smallIconTransparent = "ic_launcher"//e.g.ic_action_play is sample name for transparent small icon
+//        options.transparentIconBgColor = "#ffffff"
+        options.placeHolderIcon = "ic_launcher"//e.g.ic_notification is sample name for placeholder icon
+        SmartPush.getInstance(WeakReference(applicationContext)).setNotificationOptions(options)
     }
 
     override fun onTerminate() {

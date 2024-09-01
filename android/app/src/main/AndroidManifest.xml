@@ -38,12 +38,19 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
+<!--                <data android:scheme="fabfurni"-->
+<!--                    android:host="smartech_sdk_td" />-->
+<!--            </intent-filter>-->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="fabfurni"
-                    android:host="smartech_sdk_td" />
+                <data android:scheme="fabfurnihansel" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
@@ -53,7 +60,14 @@
             android:value="2" />
         <meta-data
             android:name="SMT_APP_ID"
-            android:value="f40a9bca7ad7f10042ce7ae27bdc84f3" />
+            android:value="c233670ff952e492b556c946405e5ce1" />
+        <meta-data
+            android:name="HANSEL_APP_ID"
+            android:value="2LOT46SOUILN1W2VZEIVKQBZE" />
+
+        <meta-data
+            android:name="HANSEL_APP_KEY"
+            android:value="E2BW8TRR2S8FJHIGG7JMJKUB0N89Q89GIOSIXYXIDD31SZG9NC" />
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
