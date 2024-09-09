@@ -188,9 +188,19 @@ class _HomeScreen1State extends State<HomeScreen1> {
     ImageConstant.imgMattress,
     ImageConstant.imgCurtain,
     ImageConstant.imgSpiderplant,
-    'assets/images/vector-cH4.png',
     ImageConstant.imgMicrowave,
     ImageConstant.imgWardrobe
+  ];
+  List imagesName = [
+    "Sofa",
+    "TV",
+    "Bed",
+    "Baby Bed",
+    "Mattress",
+    "Curtain",
+    "Plant",
+    "Microwave",
+    "Wardrobe"
   ];
 
   int silderIndex = 0;
@@ -338,10 +348,11 @@ class _HomeScreen1State extends State<HomeScreen1> {
                 Container(
                   // change your height based on preference
                   height: 60,
+                  padding: EdgeInsets.only(right: 10),
                   width: double.infinity,
                   child: ListView.separated(
                       // set the scroll direction to horizontal
-                      itemCount: homelist.length,
+                      itemCount: images.length,
                       scrollDirection: Axis.horizontal,
                       separatorBuilder: (context, int) {
                         return SizedBox(
@@ -350,8 +361,8 @@ class _HomeScreen1State extends State<HomeScreen1> {
                       },
                       itemBuilder: (context, index) {
                         return CategoryCard(
-                            title: homelist[index].name!,
-                            previewImageAsset:  homelist[index].image,
+                            title: imagesName[index],
+                            previewImageAsset: images[index],
                             onTap: () {
                               // print(homelist[index].id);
                               categorylist[index].subCategory!.length != 0
@@ -760,9 +771,10 @@ class _HomeScreen1State extends State<HomeScreen1> {
                           SizedBox(
                             height: 8,
                           ),
-                          banners.length != 0
-                              ? Container(
-                                  //height: 206,
+                         // banners.length != 0
+                              //?
+                    Container(
+                                  //height: 100,
                                   // width: 200.w,
                                   padding: getPadding(left: 10, right: 10),
                                   // color: Colors.black,
@@ -783,7 +795,8 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                         //       index as int;
                                         // }
                                       ),
-                                      itemCount: banners.length,
+                                      itemCount: 3,
+                                      //banners.length,
                                       itemBuilder: (context, index, realIndex) {
                                         // SliderItemModel model = controller
                                         //     .productDetailModelObj
@@ -813,29 +826,30 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                               ));
                                             }
                                           },
-                                          child: Image.network(
-                                            banners[index].image!,
+                                          child: Image.asset(
+                                            //banners[index].image!,
+                                            "assets/images/img_image14_215x428.png",
                                             fit: BoxFit.cover,
                                             width: 95.w,
                                             alignment: Alignment(1.2, 1.2),
                                             filterQuality: FilterQuality.high,
-                                            loadingBuilder: (context, child,
-                                                    loadingProgress) =>
-                                                (loadingProgress == null)
-                                                    ? child
-                                                    : AnimatedShimmer(
-                                                        height: 206,
-                                                        width: 100.w,
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .all(
-                                                                Radius.circular(
-                                                                    10)),
-                                                        delayInMilliSeconds:
-                                                            Duration(
-                                                                milliseconds:
-                                                                    index * 5),
-                                                      ),
+                                            // loadingBuilder: (context, child,
+                                            //         loadingProgress) =>
+                                            //     (loadingProgress == null)
+                                            //         ? child
+                                            //         : AnimatedShimmer(
+                                            //             height: 206,
+                                            //             width: 100.w,
+                                            //             borderRadius:
+                                            //                 const BorderRadius
+                                            //                     .all(
+                                            //                     Radius.circular(
+                                            //                         10)),
+                                            //             delayInMilliSeconds:
+                                            //                 Duration(
+                                            //                     milliseconds:
+                                            //                         index * 5),
+                                            //           ),
                                             // CircularProgressIndicator(
                                             //         color: Color(0xff9BA6BF),
                                             //         strokeWidth: 2,
@@ -992,8 +1006,8 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                   //   // ),
                                   //
                                   // ),
-                                  )
-                              : Container(),
+                                  ),
+                             // : Container(),
                           SizedBox(
                             height: 2.h,
                           ),
@@ -1004,7 +1018,8 @@ class _HomeScreen1State extends State<HomeScreen1> {
                             padding: getPadding(left: 10, right: 10),
                             child: ListView.separated(
                                 // set the scroll direction to horizontal
-                                itemCount: bannersresportrait.length,
+                                itemCount:3,
+                               // bannersresportrait.length,
                                 scrollDirection: Axis.horizontal,
                                 separatorBuilder: (context, int) {
                                   return Padding(
@@ -1046,29 +1061,30 @@ class _HomeScreen1State extends State<HomeScreen1> {
                                       width: 250,
                                       // height: 200,
                                       // color: Colors.black,
-                                      child: Image.network(
-                                        bannersresportrait[index].image!,
+                                      child: Image.asset(
+                                        "assets/images/img_image1.png",
+                                        //bannersresportrait[index].image!,
                                         fit: BoxFit.cover,
                                         // width: 100.w,
                                         // height: 100.h,
                                         alignment: Alignment(0.8, 0.8),
                                         filterQuality: FilterQuality.high,
-                                        loadingBuilder: (context, child,
-                                                loadingProgress) =>
-                                            (loadingProgress == null)
-                                                ? child
-                                                : AnimatedShimmer(
-                                                    height: 206,
-                                                    width: 250,
-                                                    borderRadius:
-                                                        const BorderRadius.all(
-                                                            Radius.circular(
-                                                                10)),
-                                                    delayInMilliSeconds:
-                                                        Duration(
-                                                            milliseconds:
-                                                                index * 5),
-                                                  ),
+                                        // loadingBuilder: (context, child,
+                                        //         loadingProgress) =>
+                                        //     (loadingProgress == null)
+                                        //         ? child
+                                        //         : AnimatedShimmer(
+                                        //             height: 206,
+                                        //             width: 250,
+                                        //             borderRadius:
+                                        //                 const BorderRadius.all(
+                                        //                     Radius.circular(
+                                        //                         10)),
+                                        //             delayInMilliSeconds:
+                                        //                 Duration(
+                                        //                     milliseconds:
+                                        //                         index * 5),
+                                        //           ),
                                         errorBuilder: (context, error,
                                                 stackTrace) =>
                                             Image.asset(
@@ -2340,7 +2356,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
             Flexible(
               flex: 1,
               child: CustomImageView(
-                url: previewImageAsset!,
+                imagePath: previewImageAsset!,
                 height: getSize(40),
                 width: getSize(40),
                 margin: getMargin(top: 3),
