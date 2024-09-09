@@ -4,6 +4,7 @@ import Smartech
 import SmartPush
 import smartech_base
 import SmartechNudges
+import Firebase
 
 
 @main
@@ -18,6 +19,7 @@ import SmartechNudges
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        FirebaseApp.configure()
         GeneratedPluginRegistrant.register(with: self)
         UNUserNotificationCenter.current().delegate = self
         Smartech.sharedInstance().initSDK(with: self, withLaunchOptions: launchOptions)
@@ -33,6 +35,7 @@ import SmartechNudges
     
     override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
+        Messaging.messaging().apnsToken = deviceToken
         SmartPush.sharedInstance().didRegisterForRemoteNotifications(withDeviceToken: deviceToken)
         
     }
@@ -48,8 +51,11 @@ import SmartechNudges
     }
     
     override func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        SmartPush.sharedInstance().didReceive(response)
-        completionHandler()
+        // MARK: Adding the delay of 5ms in didReceive response class will give the pn_clicked event in Terminated state also. Replace existing code with the below lines.
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(0.5 * Double(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
+                    SmartPush.sharedInstance().didReceive(response)
+                    completionHandler()
+                })
     }
     
     func handleDeeplinkAction(withURLString deeplinkURLString: String, andNotificationPayload notificationPayload: [AnyHashable : Any]?) {

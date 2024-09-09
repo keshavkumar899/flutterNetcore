@@ -202,7 +202,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
     double ffem = fem * 0.97;
     return SafeArea(
         child: Scaffold(
-            key: _scaffoldKey,
+          key: _scaffoldKey,
             backgroundColor: ColorConstant.purple50,
             drawer: SidebarMenu(),
             appBar: CustomAppBar(
@@ -307,6 +307,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                 ],
                 styleType: Style.bgShadowBlack90033),
             body: RefreshIndicator(
+               key: ValueKey("anything_hsl_ignore"),
               color: Colors.purple,
               onRefresh: () async {
                 home = getdashboard();
@@ -332,7 +333,8 @@ class _HomeScreen1State extends State<HomeScreen1> {
                 });
               },
               child: SingleChildScrollView(
-                  child: Column(children: [
+                  child: Column(
+                    children: [
                 Container(
                   // change your height based on preference
                   height: 60,
@@ -349,7 +351,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                       itemBuilder: (context, index) {
                         return CategoryCard(
                             title: homelist[index].name!,
-                            previewImageAsset: homelist[index].image!,
+                            previewImageAsset:  homelist[index].image,
                             onTap: () {
                               // print(homelist[index].id);
                               categorylist[index].subCategory!.length != 0

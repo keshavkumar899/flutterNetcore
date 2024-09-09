@@ -186,14 +186,14 @@ class _LogInScreenState extends State<LogInScreen> {
                           children: [
                             InkWell(
                               onTap: () {
-                                pushScreen(
-                                  context,
-                                  screen: landingPage1(),
-                                  withNavBar:
-                                      false, // OPTIONAL VALUE. True by default.
-                                  pageTransitionAnimation:
-                                      PageTransitionAnimation.cupertino,
-                                );
+                                // pushScreen(
+                                //   context,
+                                //   screen: landingPage1(),
+                                //   withNavBar:
+                                //       false, // OPTIONAL VALUE. True by default.
+                                //   pageTransitionAnimation:
+                                //       PageTransitionAnimation.cupertino,
+                                // );
                                 // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
                                 //     landingPage1()), (Route<dynamic> route) => false);
                                 // Navigator.of(context).pushReplacement(MaterialPageRoute(

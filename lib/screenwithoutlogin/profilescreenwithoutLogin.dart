@@ -7,6 +7,7 @@ import 'package:keshav_s_application2/presentation/about_us_screen/models/Settin
 import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:sizer/sizer.dart';
+import 'package:smartech_base/smartech_base.dart';
 
 import '../../core/utils/utils.dart';
 import '../../widgets/app_bar/appbar_title.dart';
@@ -42,6 +43,7 @@ class _ProfileScreenWithoutLogin extends State<ProfileScreenWithoutLogin> {
 
   @override
   Widget build(BuildContext context) {
+    Smartech().trackEvent('profile_screen', {});
     return SafeArea(
         child: Scaffold(
       backgroundColor: ColorConstant.whiteA700,

@@ -170,13 +170,6 @@ class AppRoutes {
         SelectProductOneBinding(),
       ],
     ),
-    GetPage(
-      name: splashScreen,
-      page: () => SplashScreen(),
-      bindings: [
-        SplashBinding(),
-      ],
-    ),
     // GetPage(
     //   name: otpScreen,
     //   page: () => OtpScreen(),
@@ -358,12 +351,5 @@ class AppRoutes {
         AppNavigationBinding(),
       ],
     ),
-    GetPage(
-      name: initialRoute,
-      page: () => SplashScreen(),
-      bindings: [
-        SplashBinding(),
-      ],
-    )
   ];
 }

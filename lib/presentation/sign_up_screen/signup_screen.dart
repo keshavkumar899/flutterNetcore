@@ -223,14 +223,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               alignment: Alignment.centerLeft,
                               margin: getMargin(left: 24, top: 2),
                               onTap: () {
-                                pushScreen(
-                                  context,
-                                  screen: landingPage1(),
-                                  withNavBar:
-                                      false, // OPTIONAL VALUE. True by default.
-                                  pageTransitionAnimation:
-                                      PageTransitionAnimation.cupertino,
-                                );
+                                // pushScreen(
+                                //   context,
+                                //   screen: landingPage1(),
+                                //   withNavBar:
+                                //       false, // OPTIONAL VALUE. True by default.
+                                //   pageTransitionAnimation:
+                                //       PageTransitionAnimation.cupertino,
+                                // );
                               }),
                           Align(
                               alignment: Alignment.centerLeft,

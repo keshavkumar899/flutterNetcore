@@ -5,6 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:keshav_s_application2/presentation/splash_screen/splash_screen.dart';
 import 'package:keshav_s_application2/widgets/connection_lost.dart';
 import 'package:sizer/sizer.dart';
 
@@ -25,23 +26,26 @@ void main() async {
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
   final fcmToken = await FirebaseMessaging.instance.getToken();
   print(fcmToken);
-  Smartech().login('8920616622');
-  if(Platform.isAndroid){
-    var mapandroid={
-      "name":"keshav",
-      "update":"sent by android platform"
-    };
-    print(mapandroid);
-    Smartech().updateUserProfile(mapandroid);
-  }
- if(Platform.isIOS){
-   var mapiOS={
-     "name":"keshav",
-     "update":"sent by iOS platform"
-   };
-   print(mapiOS);
-   Smartech().updateUserProfile(mapiOS);
- }
+  // if(Smartech().getUserIdentity().toString().isEmpty){
+    Smartech().login('8920616622');
+  // }
+
+ //  if(Platform.isAndroid){
+ //    var mapandroid={
+ //      "name":"keshav",
+ //      "update":"sent by android platform"
+ //    };
+ //    print(mapandroid);
+ //    Smartech().updateUserProfile(mapandroid);
+ //  }
+ // if(Platform.isIOS){
+ //   var mapiOS={
+ //     "name":"keshav",
+ //     "update":"sent by iOS platform"
+ //   };
+ //   print(mapiOS);
+ //   Smartech().updateUserProfile(mapiOS);
+ // }
 
   //Smartech().setUserIdentity('9873103345');
   NetcorePX.instance
@@ -62,33 +66,60 @@ void main() async {
   //     Get.toNamed(AppRoutes.aboutUsScreen);
   //   }
   // });
-  Smartech().onHandleDeeplink((String? smtDeeplinkSource,
-      String? smtDeeplink,
-      Map<dynamic, dynamic>? smtPayload,
-      Map<dynamic, dynamic>? smtCustomPayload) async {
-    // String deeplink1=smtDeeplink!;
-    // print(deeplink1);
-    print('$smtDeeplink');
-    print('$smtDeeplink');
-    if (smtDeeplinkSource == 'PushNotification') {
-      print(smtDeeplink);
-      String deeplink = smtDeeplink!.substring(0, smtDeeplink.indexOf('?'));
-      if (deeplink == '/about_us_screen') {
-        Get.toNamed(AppRoutes.aboutUsScreen);
-      }
-    }
-    if (smtDeeplinkSource == 'InAppMessage') {
-      // print(smtDeeplink);
-      if (smtDeeplink!.contains("https")) {
-        print("navigate to browser with url");
-        final Uri _url = Uri.parse(smtDeeplink);
-        if (!await launchUrl(_url)) throw 'Could not launch $_url';
-        // await
-        // FlutterWebBrowser.openWebPage(url: smtDeeplink);
-      }
-    }
-  });
-  // Smartech().onHandleDeeplinkActionBackground();
+    Smartech().onHandleDeeplink((String? smtDeeplinkSource,
+        String? smtDeeplink,
+        Map<dynamic, dynamic>? smtPayload,
+        Map<dynamic, dynamic>? smtCustomPayload) async {
+      // String deeplink1=smtDeeplink!;
+      // print(deeplink1);
+      print('$smtDeeplink');
+      print('$smtDeeplink');
+
+      Future.delayed(const Duration(milliseconds: 2500), () async {
+        if (smtDeeplinkSource == 'PushNotification') {
+          print(smtDeeplink);
+          String deeplink = smtDeeplink!.substring(0, smtDeeplink.indexOf('?'));
+          if (deeplink == '/about_us_screen') {
+            Get.toNamed(AppRoutes.aboutUsScreen);
+          }
+          if (deeplink == '/terms_of_condition_screen') {
+            Get.toNamed(AppRoutes.termsOfConditionScreen);
+          }
+          if (deeplink == '/log_in_screen') {
+            Get.toNamed(AppRoutes.logInScreen);
+          }
+          if (smtDeeplink.contains("https")) {
+            print("navigate to browser with url");
+            final Uri _url = Uri.parse(smtDeeplink);
+            if (!await launchUrl(_url)) throw 'Could not launch $_url';
+            // await
+            // FlutterWebBrowser.openWebPage(url: smtDeeplink);
+          }
+        }
+        if (smtDeeplinkSource == 'InAppMessage') {
+          // print(smtDeeplink);
+          if (smtDeeplink == '/about_us_screen') {
+            Get.toNamed(AppRoutes.aboutUsScreen);
+          }
+          if (smtDeeplink == '/terms_of_condition_screen') {
+            Get.toNamed(AppRoutes.termsOfConditionScreen);
+          }
+          if (smtDeeplink == '/log_in_screen') {
+            Get.toNamed(AppRoutes.logInScreen);
+          }
+          if (smtDeeplink!.contains("https")) {
+            print("navigate to browser with url");
+            final Uri _url = Uri.parse(smtDeeplink);
+            if (!await launchUrl(_url)) throw 'Could not launch $_url';
+            // await
+            // FlutterWebBrowser.openWebPage(url: smtDeeplink);
+          }
+        }
+      });
+
+    });
+
+  // Smartech().onHandleDeeplinkAction();
   getLocation();
 }
 
@@ -184,7 +215,8 @@ class _MyAppState extends State<MyApp> {
           fallbackLocale: Locale('en', 'US'),
           title: 'FabFurni',
           initialBinding: InitialBindings(),
-          initialRoute: AppRoutes.initialRoute,
+          home: SplashScreen(),
+          // initialRoute: AppRoutes.initialRoute,
           getPages: AppRoutes.pages,
         );
       }),
@@ -212,7 +244,12 @@ class _PxDeeplinkListenerImpl extends PxDeeplinkListener {
 class _PxInternalEventsListener extends PxInternalEventsListener {
   @override
   void onEvent(String eventName, Map dataFromHansel) {
-    // Smartech().trackEvent(eventName, dataFromHansel);
+
+    Map<String, dynamic> newMap =
+    Map<String, dynamic>.from(dataFromHansel.map((key, value) {
+      return MapEntry(key.toString(), value);
+    }));
+    Smartech().trackEvent(eventName, newMap );
     debugPrint('PXEvent: $eventName eventData : $dataFromHansel');
   }
 }

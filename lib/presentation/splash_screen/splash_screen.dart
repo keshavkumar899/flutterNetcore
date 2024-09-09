@@ -36,35 +36,39 @@ class _SplashScreenState extends State<SplashScreen> {
       print(user1.data);
       Smartech().setUserIdentity(user1.data!.mobile!);
       // Smartech().login(user1.data!.mobile!);
-      Future.delayed(const Duration(milliseconds: 3000), () {
+      Future.delayed(const Duration(milliseconds: 1500), () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => landingPage(user1.data!),
         ));
-        Smartech().onHandleDeeplink((String? smtDeeplinkSource,
-            String? smtDeeplink,
-            Map<dynamic, dynamic>? smtPayload,
-            Map<dynamic, dynamic>? smtCustomPayload) async {
-          // String deeplink1=smtDeeplink!;
-          // print(deeplink1);
-          print(smtDeeplink);
-          if (smtDeeplinkSource == 'PushNotification') {
-            print(smtDeeplink);
-            String deeplink =
-                smtDeeplink!.substring(0, smtDeeplink.indexOf('?'));
-            if (deeplink == '/about_us_screen') {
-              Get.toNamed(AppRoutes.aboutUsScreen);
-            }
-          }
-          if (smtDeeplinkSource == 'InAppMessage') {
-            // print(smtDeeplink);
-            if (smtDeeplink!.contains("https")) {
-              print("navigate to browser with url");
-              final Uri _url = Uri.parse(smtDeeplink);
-              if (!await launchUrl(_url)) throw 'Could not launch $_url';
-              // await FlutterWebBrowser.openWebPage(url: smtDeeplink);
-            }
-          }
-        });
+        // Smartech().onHandleDeeplink((String? smtDeeplinkSource,
+        //     String? smtDeeplink,
+        //     Map<dynamic, dynamic>? smtPayload,
+        //     Map<dynamic, dynamic>? smtCustomPayload) async {
+        //   // String deeplink1=smtDeeplink!;
+        //   // print(deeplink1);
+        //   print('$smtDeeplink');
+        //   print('$smtDeeplink');
+        //   Future.delayed(const Duration(milliseconds: 2000), () async {
+        //     if (smtDeeplinkSource == 'PushNotification') {
+        //       print(smtDeeplink);
+        //       String deeplink = smtDeeplink!.substring(0, smtDeeplink.indexOf('?'));
+        //       if (deeplink == '/about_us_screen') {
+        //         Get.toNamed(AppRoutes.aboutUsScreen);
+        //       }
+        //     }
+        //     if (smtDeeplinkSource == 'InAppMessage') {
+        //       // print(smtDeeplink);
+        //       if (smtDeeplink!.contains("https")) {
+        //         print("navigate to browser with url");
+        //         final Uri _url = Uri.parse(smtDeeplink);
+        //         if (!await launchUrl(_url)) throw 'Could not launch $_url';
+        //         // await
+        //         // FlutterWebBrowser.openWebPage(url: smtDeeplink);
+        //       }
+        //     }
+        //   });
+        //
+        // });
         // Get.offNamed(AppRoutes.logInScreen);
       });
     } else {
@@ -80,7 +84,7 @@ class _SplashScreenState extends State<SplashScreen> {
       //     Smartech().login(token!);
       //   });
       // }
-      Future.delayed(const Duration(milliseconds: 3000), () {
+      Future.delayed(const Duration(milliseconds: 1500), () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => landingPage1(),
         ));
