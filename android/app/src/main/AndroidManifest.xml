@@ -68,6 +68,9 @@
         <meta-data
             android:name="HANSEL_APP_KEY"
             android:value="E2BW8TRR2S8FJHIGG7JMJKUB0N89Q89GIOSIXYXIDD31SZG9NC" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification"  />
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">

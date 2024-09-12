@@ -36,12 +36,12 @@ class Application: FlutterApplication() {
         SmartechAppinboxPlugin.initializePlugin(this)
 
         val options = SMTNotificationOptions(this)
-        options.brandLogo = "Fabfurni"//e.g.logo is sample name for brand logo
-        options.largeIcon = "ic_launcher"//e.g.ic_notification is sample name for large icon
-        options.smallIcon = "ic_launcher"//e.g.ic_action_play is sample name for icon
-        options.smallIconTransparent = "ic_launcher"//e.g.ic_action_play is sample name for transparent small icon
-//        options.transparentIconBgColor = "#ffffff"
-        options.placeHolderIcon = "ic_launcher"//e.g.ic_notification is sample name for placeholder icon
+        options.brandLogo = "@drawable/ic_notification"//e.g.logo is sample name for brand logo
+        options.largeIcon = "@drawable/ic_notification"//e.g.ic_notification is sample name for large icon
+        options.smallIcon = "@drawable/ic_notification"//e.g.ic_action_play is sample name for icon
+        options.smallIconTransparent = "@drawable/ic_notification"//e.g.ic_action_play is sample name for transparent small icon
+        options.transparentIconBgColor = "#88568C"
+        options.placeHolderIcon = "@drawable/ic_notification"//e.g.ic_notification is sample name for placeholder icon
         SmartPush.getInstance(WeakReference(applicationContext)).setNotificationOptions(options)
     }
 

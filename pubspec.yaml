@@ -57,11 +57,16 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons:
+  android_notification_icons: ^0.0.1
 
 flutter_icons:
   android: true
   ios: true
   image_path: "assets/images/img_appicon0202.png"
+
+android_notification_icons:
+  image_path: 'assets/images/img_appicon0202_processed.png'
+  icon_name: 'ic_notification'
 
 flutter:
   uses-material-design: true
