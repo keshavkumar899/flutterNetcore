@@ -2,9 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:keshav_s_application2/presentation/app_inbox/utils/utils.dart';
 import 'package:smartech_appinbox/model/smt_appinbox_model.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../routes/app_routes.dart';
 
 class SMTImageNotificationView extends StatefulWidget {
   final SMTAppInboxMessage inbox;
@@ -94,9 +97,20 @@ class _SMTImageNotificationViewState extends State<SMTImageNotificationView> {
                                             throw 'Could not launch $_url';
                                           // await FlutterWebBrowser.openWebPage(url: e.actionDeeplink);
                                         } else if (e.actionDeeplink.contains(
-                                            "smartechflutter://profile")) {
+                                            "/about_us_screen")) {
+                                          Get.toNamed(AppRoutes.aboutUsScreen);
                                           // NavigationUtilities.pushRoute(UpdateProfile.route);
-                                        } else {
+                                        } else if (e.actionDeeplink.contains(
+                                            "/terms_of_condition_screen")) {
+                                          Get.toNamed(AppRoutes.termsOfConditionScreen);
+                                          // NavigationUtilities.pushRoute(UpdateProfile.route);
+                                        }
+                                        else if (e.actionDeeplink.contains(
+                                            "/log_in_screen")) {
+                                          Get.toNamed(AppRoutes.logInScreen);
+                                          // NavigationUtilities.pushRoute(UpdateProfile.route);
+                                        }
+                                        else {
                                           // Map<String, dynamic> dict = HashMap();
                                           // dict["actionDeeplink"] = e.actionDeeplink;
                                           // dict['isFromScreen'] = true;

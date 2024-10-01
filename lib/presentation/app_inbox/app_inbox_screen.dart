@@ -1,11 +1,9 @@
-import 'dart:convert';
+
 import 'dart:developer';
 import 'dart:ffi';
 import 'package:custom_pop_up_menu/custom_pop_up_menu.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:keshav_s_application2/presentation/app_inbox/utils/AppInboxModel.dart';
 import 'package:keshav_s_application2/presentation/app_inbox/utils/utils.dart';
 import 'package:keshav_s_application2/presentation/app_inbox/widgets/smt_audio_notification_view.dart';
 import 'package:keshav_s_application2/presentation/app_inbox/widgets/smt_carousel_notification_view.dart';
@@ -251,7 +249,7 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                       itemCount: inboxList.length,
                       itemBuilder: (BuildContext context, int index) {
                         switch (inboxList[index].smtPayload!.type) {
-                          // ******* Imgae type Notifications ******* \\
+                          // ******* Image type Notifications ******* \\
                           case SMTNotificationType.image:
                             return VisibilityDetector(
                               key: Key(index.toString()),

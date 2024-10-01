@@ -27,7 +27,13 @@ void main() async {
   final fcmToken = await FirebaseMessaging.instance.getToken();
   print(fcmToken);
   // if(Smartech().getUserIdentity().toString().isEmpty){
+  if(Platform.isAndroid){
     Smartech().login('8920616622');
+  }
+  if(Platform.isIOS){
+    Smartech().login('9873103345');
+  }
+
   // }
 
  //  if(Platform.isAndroid){
@@ -194,7 +200,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return SmartechPxWidget(
-      child: ResponsiveSizer
+      child: Sizer
         (builder: (context, orientation, deviceType) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
@@ -203,7 +209,7 @@ class _MyAppState extends State<MyApp> {
             return hasInternet
                 ? MediaQuery(
                     child: child!,
-                    data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                    data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1.0)),
                   )
                 : ConnectionLostScreen();
           },
