@@ -1,0 +1,3 @@
+-keep class com.razorpay.** { *; }
+-dontwarn com.google.protobuf.java_com_google_android_gmscore_sdk_target_granule__proguard_group_gtm_N1281923064GeneratedExtensionRegistryLite$Loader
+ -ignorewarnings
