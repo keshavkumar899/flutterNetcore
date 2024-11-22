@@ -12,5 +12,9 @@
 	<array>
 		<string>$(AppIdentifierPrefix)hansel_public_key</string>
 	</array>
+	<key>com.apple.developer.associated-domains</key>
+    <array>
+        <string>applinks:elink.savmoney.me</string>
+    </array>
 </dict>
 </plist>

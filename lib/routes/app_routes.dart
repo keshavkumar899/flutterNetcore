@@ -63,12 +63,16 @@ import 'package:keshav_s_application2/presentation/app_navigation_screen/app_nav
 import 'package:keshav_s_application2/presentation/app_navigation_screen/binding/app_navigation_binding.dart';
 import 'package:get/get.dart';
 
+import '../screenwithoutlogin/HtmlPage.dart';
+
 class AppRoutes {
   static const String logInScreen = '/log_in_screen';
 
   static const String termsOfConditionScreen = '/terms_of_condition_screen';
 
   static const String aboutUsScreen = '/about_us_screen';
+
+  static const String htmlscreen = '/html_screen';
 
   static const String whislistScreen = '/whislist_screen';
 
@@ -350,6 +354,13 @@ class AppRoutes {
       bindings: [
         AppNavigationBinding(),
       ],
+    ),
+    GetPage(
+      name: htmlscreen,
+      page: () => HtmlPAGE(),
+      // bindings: [
+      //   AppNavigationBinding(),
+      // ],
     ),
   ];
 }

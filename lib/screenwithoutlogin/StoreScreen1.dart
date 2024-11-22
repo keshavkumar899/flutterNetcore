@@ -21,6 +21,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:smartech_base/smartech_base.dart';
 
 import '../presentation/log_in_screen/log_in_screen.dart';
 import 'ClickAfterSlectTabFurnitureScreen1.dart';
@@ -96,6 +97,9 @@ class _StoreScreen1State extends State<StoreScreen1> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Smartech().trackEvent("store_page", {"login":"no"});
+    });
     return SafeArea(
         child: Scaffold(
             key: _scaffoldKey,

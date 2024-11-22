@@ -32,6 +32,7 @@ import 'package:keshav_s_application2/presentation/store_screen/models/StoreMode
     as stores;
 
 import 'package:dio/dio.dart' as dio;
+import 'package:smartech_base/smartech_base.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../presentation/log_in_screen/log_in_screen.dart';
@@ -207,6 +208,9 @@ class _HomeScreen1State extends State<HomeScreen1> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Smartech().trackEvent("home_page", {"login":"no"});
+    });
     double baseWidth = 428;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;

@@ -1,4 +1,5 @@
 
+import 'dart:async';
 import 'dart:developer';
 import 'dart:ffi';
 import 'package:custom_pop_up_menu/custom_pop_up_menu.dart';
@@ -13,6 +14,7 @@ import 'package:keshav_s_application2/presentation/app_inbox/widgets/smt_simple_
 import 'package:keshav_s_application2/presentation/app_inbox/widgets/smt_video_notification_view.dart';
 import 'package:smartech_appinbox/model/smt_appinbox_model.dart';
 import 'package:smartech_appinbox/smartech_appinbox.dart';
+import 'package:smartech_base/smartech_base.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class SMTAppInboxScreen extends StatefulWidget {
@@ -38,6 +40,10 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
     super.initState();
     initialApiCall();
     getMessagesList();
+    Timer(Duration(seconds: 2), () {
+      Smartech().trackEvent("app_inbox_screen", {"login":"no"});
+    });
+
   }
 
   @override
