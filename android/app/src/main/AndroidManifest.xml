@@ -10,7 +10,7 @@
 
     <application
         android:name=".Application"
-        android:label="FabFurni"
+        android:label="FabFurni by Netcore"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

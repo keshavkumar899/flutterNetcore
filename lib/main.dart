@@ -314,7 +314,7 @@ class _MyAppState extends State<MyApp> {
           translations: AppLocalization(),
           locale: Get.deviceLocale, //for setting localization strings
           fallbackLocale: Locale('en', 'US'),
-          title: 'FabFurni',
+          title: 'FabFurni by Netcore',
           initialBinding: InitialBindings(),
           home: SplashScreen(),
           // initialRoute: AppRoutes.initialRoute,
