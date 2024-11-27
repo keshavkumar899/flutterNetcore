@@ -32,14 +32,14 @@ void main() async {
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
 
   // if(Smartech().getUserIdentity().toString().isEmpty){
-  if (Platform.isAndroid) {
-    final fcmToken = await FirebaseMessaging.instance.getToken();
-    print(fcmToken);
-    Smartech().login('8920616622');
-  }
-  if (Platform.isIOS) {
-    Smartech().login('9873103345');
-  }
+  // if (Platform.isAndroid) {
+  //   final fcmToken = await FirebaseMessaging.instance.getToken();
+  //   print(fcmToken);
+  //   Smartech().login('8920616622');
+  // }
+  // if (Platform.isIOS) {
+  //   Smartech().login('9873103345');
+  // }
 
   // }
 

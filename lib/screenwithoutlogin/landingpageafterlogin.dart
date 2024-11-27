@@ -2,61 +2,51 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:keshav_s_application2/presentation/home_screen/home_screen.dart';
+import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.dart';
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/presentation/profile_one_screen/profile_one_screen.dart';
 import 'package:keshav_s_application2/presentation/profile_screen/profile_screen.dart';
 import 'package:keshav_s_application2/presentation/store_screen/store_screen.dart';
+import 'package:keshav_s_application2/screenwithoutlogin/profilescreenwithoutLogin.dart';
 import 'package:keshav_s_application2/presentation/cart_screen/models/cart_model.dart'
-    as carts;
+as carts;
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
-import 'core/utils/color_constant.dart';
+import 'StoreScreen1.dart';
+import 'homescreen1.dart';
 
-class landingPage extends StatefulWidget {
-  Data data;
-  //
-  landingPage(
-    this.data,
-  );
+class landingpageafterlogin extends StatefulWidget {
+
+  String mobileNumber;
+  landingpageafterlogin(this.mobileNumber);
   @override
-  State<landingPage> createState() => _landingPageState();
+  State<landingpageafterlogin> createState() => _landingpageafterloginState();
 }
 
-class _landingPageState extends State<landingPage> {
+class _landingpageafterloginState extends State<landingpageafterlogin> {
   PersistentTabController _controller =
-      PersistentTabController(initialIndex: 0);
+  PersistentTabController(initialIndex: 0);
 
   List<Widget> _buildScreens() {
     return [
-      HomeScreen(
-        widget.data,
-      ),
-      StoreScreen(widget.data),
-      ProfileOneScreen(
-         // widget.data
-      ""),
+      HomeScreen1(),
+      StoreScreen1(),
+      ProfileOneScreen(widget.mobileNumber),
     ];
   }
 
-  // List<PersistentTab> _navBarsItems() {
+  // List<PersistentBottomNavBarItem> _navBarsItems() {
   //   return [
-  //     PersistentTabConfig(
-  //       screen: YourFirstScreen(),
-  //       item: ItemConfig(
-  //         icon: Icon(Icons.home),
-  //         title: "Home".toUpperCase(),
-  //         activeForegroundColor:Color(0xff65236A),
-  //         inactiveBackgroundColor: Color(0xff949494)
+  //     PersistentBottomNavBarItem(
+  //       icon: Icon(
+  //         Icons.home,
   //       ),
-  //       // icon: Icon(
-  //       //   Icons.home,
-  //       // ),
-  //       // title: ("Home".toUpperCase()),
-  //       // activeColorPrimary: Color(0xff65236A),
-  //       // inactiveColorPrimary: Color(0xff949494),
+  //       title: ("Home".toUpperCase()),
+  //       activeColorPrimary: Color(0xff65236A),
+  //       inactiveColorPrimary: Color(0xff949494),
   //     ),
   //     PersistentBottomNavBarItem(
   //       icon: Icon(
@@ -77,46 +67,45 @@ class _landingPageState extends State<landingPage> {
   //   ];
   // }
 
-  Future<bool> _onWillPop(BuildContext context) async {
+  Future<bool> _onWillPop(BuildContext? context) async {
     return (await showDialog(
-          context: context,
-          builder: (context) => new AlertDialog(
-            elevation: 24,
-            backgroundColor: Colors.white,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-            title: new Text(
-              'Are you sure?',
-              style: TextStyle(fontWeight: FontWeight.w500),
-            ),
-            content: new Text('Do you want to exit the App',
+      context: context!,
+      builder: (context) => new AlertDialog(
+        elevation: 24,
+        backgroundColor: Colors.white,
+        shape:
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        title: new Text(
+          'Are you sure?',
+          style: TextStyle(fontWeight: FontWeight.w500),
+        ),
+        content: new Text('Do you want to exit the App',
+            style: TextStyle(fontWeight: FontWeight.w400)),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: new Text('No',
                 style: TextStyle(fontWeight: FontWeight.w400)),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: new Text('No',
-                    style: TextStyle(fontWeight: FontWeight.w400)),
-              ),
-              TextButton(
-                onPressed: () => SystemNavigator.pop(),
-                child: new Text('Yes',
-                    style: TextStyle(fontWeight: FontWeight.w400)),
-              ),
-            ],
           ),
-        )) ??
+          TextButton(
+            onPressed: () => SystemNavigator.pop(),
+            child: new Text('Yes',
+                style: TextStyle(fontWeight: FontWeight.w400)),
+          ),
+        ],
+      ),
+    )) ??
         false;
   }
 
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
+
       onWillPop: _onWillPop,
       tabs: [
         PersistentTabConfig(
-          screen: HomeScreen(
-            widget.data,
-          ),
+          screen: HomeScreen1(),
           item: ItemConfig(
               icon: Icon(Icons.home),
               title: "Home",
@@ -124,7 +113,7 @@ class _landingPageState extends State<landingPage> {
               inactiveBackgroundColor: Color(0xff949494)),
         ),
         PersistentTabConfig(
-          screen: StoreScreen(widget.data),
+          screen: StoreScreen1(),
           item: ItemConfig(
               icon: Icon(Icons.storefront, color: Colors.grey),
               title: "Store",
@@ -132,9 +121,7 @@ class _landingPageState extends State<landingPage> {
               inactiveBackgroundColor: Color(0xff949494)),
         ),
         PersistentTabConfig(
-          screen: ProfileOneScreen(
-             // widget.data
-          ""),
+          screen: ProfileOneScreen(widget.mobileNumber),
           item: ItemConfig(
               icon: Icon(Icons.person),
               title: "Profile",
@@ -153,9 +140,9 @@ class _landingPageState extends State<landingPage> {
     //   child:
     // PersistentTabView(
     //   context,
-    //   onWillPop: (context) =>
-    //    _onWillPop(context!),
     //   controller: _controller,
+    //   onWillPop: (context) =>
+    //       _onWillPop(context!),
     //   screens: _buildScreens(),
     //   items: _navBarsItems(),
     //   confineInSafeArea: true,
