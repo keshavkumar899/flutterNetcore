@@ -163,6 +163,8 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                 .toList())
         .then((value) {
       print("getMessageListByApiCall: " + value.toString());
+
+      
       setState(() {});
     });
   }

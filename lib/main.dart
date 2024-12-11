@@ -79,6 +79,16 @@ void main() async {
   //     Get.toNamed(AppRoutes.aboutUsScreen);
   //   }
   // });
+  MethodChannel("Apnreceived").setMethodCallHandler((handler) async {
+    if (handler.method == 'didReceivedCallback') {
+      // Do your logic here.
+      print("******************************");
+      print(handler.arguments);
+      print("******************************");
+    } else {
+      print('Unknown method from MethodChannel: ${handler.method}');
+    }
+  });
   Smartech().onHandleDeeplink((String? smtDeeplinkSource,
       String? smtDeeplink,
       Map<dynamic, dynamic>? smtPayload,
