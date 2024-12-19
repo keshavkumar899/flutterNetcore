@@ -283,6 +283,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import Flutter;
 @import Foundation;
 @import Smartech;
+@import SmartechNudges;
 @import UIKit;
 @import UserNotifications;
 #endif
@@ -316,7 +317,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @class NSURL;
 
 SWIFT_CLASS("_TtC6Runner11AppDelegate")
-@interface AppDelegate : FlutterAppDelegate <SmartechDelegate>
+@interface AppDelegate : FlutterAppDelegate <SmartechDelegate, HanselDeepLinkListener>
 - (BOOL)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions SWIFT_WARN_UNUSED_RESULT;
 - (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
 - (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
@@ -324,6 +325,7 @@ SWIFT_CLASS("_TtC6Runner11AppDelegate")
 - (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
 - (void)handleDeeplinkActionWithURLString:(NSString * _Nonnull)deeplinkURLString andNotificationPayload:(NSDictionary * _Nullable)notificationPayload;
 - (BOOL)application:(UIApplication * _Nonnull)app openURL:(NSURL * _Nonnull)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
+- (void)onLaunchURL:(NSString * _Null_unspecified)URLString;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

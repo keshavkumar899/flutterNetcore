@@ -8,7 +8,7 @@ import Firebase
 
 
 @main
-@objc class AppDelegate: FlutterAppDelegate, SmartechDelegate
+@objc class AppDelegate: FlutterAppDelegate, SmartechDelegate,HanselDeepLinkListener
                          //HanselActionListener
 {
 //    func onActionPerformed(action: String!) {
