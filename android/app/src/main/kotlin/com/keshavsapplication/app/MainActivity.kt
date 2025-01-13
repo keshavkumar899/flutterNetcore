@@ -4,7 +4,7 @@ import io.flutter.embedding.android.FlutterActivity
 import io.hansel.hanselsdk.Hansel
 
 class MainActivity: FlutterActivity() {
-     fun onCreate() {
+     override fun onCreate() {
           Hansel.pairTestDevice(getIntent().getDataString());
      }
 }

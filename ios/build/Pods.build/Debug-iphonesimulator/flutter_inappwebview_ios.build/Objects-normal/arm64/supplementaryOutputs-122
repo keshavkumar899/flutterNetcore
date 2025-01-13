@@ -1,0 +1,18 @@
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/InAppBrowser/InAppBrowserChannelDelegate.swift":
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/InAppBrowserChannelDelegate.dia"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/InAppBrowserChannelDelegate.swiftconstvalues"
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/InAppBrowserChannelDelegate.o"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/InAppBrowserChannelDelegate.d"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/InAppBrowserChannelDelegate.swiftdeps"
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/Types/HttpAuthenticationChallenge.swift":
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/HttpAuthenticationChallenge.swiftdeps"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/HttpAuthenticationChallenge.d"
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/HttpAuthenticationChallenge.o"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/HttpAuthenticationChallenge.dia"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/HttpAuthenticationChallenge.swiftconstvalues"
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/Types/HttpAuthResponse.swift":
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/HttpAuthResponse.o"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/HttpAuthResponse.swiftconstvalues"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/HttpAuthResponse.d"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/HttpAuthResponse.swiftdeps"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/HttpAuthResponse.dia"

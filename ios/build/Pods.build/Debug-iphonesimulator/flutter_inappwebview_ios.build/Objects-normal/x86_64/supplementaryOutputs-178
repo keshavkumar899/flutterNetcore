@@ -1,0 +1,18 @@
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/PluginScriptsJS/FindTextHighlightJS.swift":
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindTextHighlightJS.o"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindTextHighlightJS.swiftdeps"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindTextHighlightJS.dia"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindTextHighlightJS.d"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindTextHighlightJS.swiftconstvalues"
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/FindInteraction/FindInteractionController.swift":
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindInteractionController.swiftdeps"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindInteractionController.dia"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindInteractionController.d"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindInteractionController.swiftconstvalues"
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindInteractionController.o"
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/PluginScriptsJS/FindElementsAtPointJS.swift":
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindElementsAtPointJS.o"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindElementsAtPointJS.swiftconstvalues"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindElementsAtPointJS.dia"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindElementsAtPointJS.swiftdeps"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/FindElementsAtPointJS.d"

@@ -1,0 +1,24 @@
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/PluginScriptsJS/WebMessageChannelJS.swift":
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessageChannelJS.swiftconstvalues"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessageChannelJS.dia"
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessageChannelJS.o"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessageChannelJS.swiftdeps"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessageChannelJS.d"
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/PluginScriptsJS/WebMessageListenerJS.swift":
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessageListenerJS.swiftconstvalues"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessageListenerJS.d"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessageListenerJS.swiftdeps"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessageListenerJS.dia"
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessageListenerJS.o"
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/PluginScriptsJS/WindowIdJS.swift":
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WindowIdJS.dia"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WindowIdJS.swiftdeps"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WindowIdJS.d"
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WindowIdJS.o"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WindowIdJS.swiftconstvalues"
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/Types/WebMessagePort.swift":
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessagePort.swiftconstvalues"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessagePort.d"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessagePort.swiftdeps"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessagePort.dia"
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/arm64/WebMessagePort.o"

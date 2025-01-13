@@ -1,0 +1,18 @@
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/PluginScriptsJS/InterceptFetchRequestJS.swift":
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/InterceptFetchRequestJS.d"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/InterceptFetchRequestJS.dia"
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/InterceptFetchRequestJS.o"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/InterceptFetchRequestJS.swiftdeps"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/InterceptFetchRequestJS.swiftconstvalues"
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/PluginScriptsJS/OnLoadResourceJS.swift":
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/OnLoadResourceJS.d"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/OnLoadResourceJS.dia"
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/OnLoadResourceJS.o"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/OnLoadResourceJS.swiftdeps"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/OnLoadResourceJS.swiftconstvalues"
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/PluginScriptsJS/LastTouchedAnchorOrImageJS.swift":
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/LastTouchedAnchorOrImageJS.dia"
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/LastTouchedAnchorOrImageJS.o"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/LastTouchedAnchorOrImageJS.swiftconstvalues"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/LastTouchedAnchorOrImageJS.swiftdeps"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/LastTouchedAnchorOrImageJS.d"

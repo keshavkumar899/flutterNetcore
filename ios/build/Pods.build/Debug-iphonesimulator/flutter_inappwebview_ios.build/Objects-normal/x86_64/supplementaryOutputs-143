@@ -1,0 +1,24 @@
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/WebAuthenticationSession/WebAuthenticationSession.swift":
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/WebAuthenticationSession.dia"
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/WebAuthenticationSession.o"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/WebAuthenticationSession.swiftdeps"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/WebAuthenticationSession.d"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/WebAuthenticationSession.swiftconstvalues"
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/WebAuthenticationSession/WebAuthenticationSessionChannelDelegate.swift":
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/WebAuthenticationSessionChannelDelegate.o"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/WebAuthenticationSessionChannelDelegate.swiftdeps"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/WebAuthenticationSessionChannelDelegate.swiftconstvalues"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/WebAuthenticationSessionChannelDelegate.d"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/WebAuthenticationSessionChannelDelegate.dia"
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/SwiftFlutterPlugin.swift":
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/SwiftFlutterPlugin.d"
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/SwiftFlutterPlugin.o"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/SwiftFlutterPlugin.swiftdeps"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/SwiftFlutterPlugin.dia"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/SwiftFlutterPlugin.swiftconstvalues"
+"/Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2/ios/Classes/Util.swift":
+  object: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/Util.o"
+  const-values: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/Util.swiftconstvalues"
+  dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/Util.d"
+  diagnostics: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/Util.dia"
+  swift-dependencies: "/Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Pods.build/Debug-iphonesimulator/flutter_inappwebview_ios.build/Objects-normal/x86_64/Util.swiftdeps"

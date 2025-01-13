@@ -6,11 +6,19 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		iJ01f1LsXlio0sRiM+A9ZByo55Y=
+		Bju3rMGH/QCKRwqZN0W5qAnnnS4=
 		</data>
 		<key>Checkout.storyboardc/Info.plist</key>
 		<data>
-		y2kAH+0QgahEFSiW6ZX/MkGPcJ0=
+		DFcy10+V49NKtjJ4RLpByN10P1k=
+		</data>
+		<key>Checkout.storyboardc/MagicXNavController.nib/objects-11.0+.nib</key>
+		<data>
+		2CirjXkAaTuDLc4zw3TTR01v6hY=
+		</data>
+		<key>Checkout.storyboardc/MagicXNavController.nib/runtime.nib</key>
+		<data>
+		2CirjXkAaTuDLc4zw3TTR01v6hY=
 		</data>
 		<key>Checkout.storyboardc/OpinionatedAlertVC.nib/objects-11.0+.nib</key>
 		<data>
@@ -44,6 +52,14 @@
 		<data>
 		ZnQL9pjNKu2IujGRcLuxvNEwdtg=
 		</data>
+		<key>Checkout.storyboardc/RazorpayMagicxVC.nib/objects-11.0+.nib</key>
+		<data>
+		eTt4FnKOhvYjwYf1odsqLi0ehZ8=
+		</data>
+		<key>Checkout.storyboardc/RazorpayMagicxVC.nib/runtime.nib</key>
+		<data>
+		eTt4FnKOhvYjwYf1odsqLi0ehZ8=
+		</data>
 		<key>Checkout.storyboardc/UINavigationController-ODs-ga-9IN.nib/objects-11.0+.nib</key>
 		<data>
 		bHc46UFZ5G9OBiYbYzEHDYGyxtM=
@@ -51,6 +67,14 @@
 		<key>Checkout.storyboardc/UINavigationController-ODs-ga-9IN.nib/runtime.nib</key>
 		<data>
 		bHc46UFZ5G9OBiYbYzEHDYGyxtM=
+		</data>
+		<key>Checkout.storyboardc/ytB-xX-zk3-view-vP9-Lh-TPB.nib/objects-11.0+.nib</key>
+		<data>
+		GuaLaOgcxzpvPP6jj7CE6UW1x54=
+		</data>
+		<key>Checkout.storyboardc/ytB-xX-zk3-view-vP9-Lh-TPB.nib/runtime.nib</key>
+		<data>
+		Ucg3HkU3DNFIfnKf6gQlzd/zqTg=
 		</data>
 		<key>CommonAssets/Razorpay_Logo.png</key>
 		<data>
@@ -74,7 +98,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		YLlC1P7kJEdfqbUhQuWyHJgvWrA=
+		YR3MQeLCXa5211oWIMWSfgiw/9U=
 		</data>
 		<key>PrivacyInfo.xcprivacy</key>
 		<data>
@@ -87,22 +111,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iJ01f1LsXlio0sRiM+A9ZByo55Y=
+			Bju3rMGH/QCKRwqZN0W5qAnnnS4=
 			</data>
 			<key>hash2</key>
 			<data>
-			d0WE3JGG0UHlSOVPMZLzxgGucecHjnbfAUHoQt/RkvU=
+			PHb2ZuQOlqYYHw0P0haHf/aFuDNeeCbe+axDReTr7h0=
 			</data>
 		</dict>
 		<key>Checkout.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			y2kAH+0QgahEFSiW6ZX/MkGPcJ0=
+			DFcy10+V49NKtjJ4RLpByN10P1k=
 			</data>
 			<key>hash2</key>
 			<data>
-			P3shU6aQyxgzypgUoC3KpfE1OU+6scwXMTPu3BDIy0Y=
+			XV+Km0uI0aCCx6b8FFBL8ctnAUqg/+iH2HKwpDJJDns=
+			</data>
+		</dict>
+		<key>Checkout.storyboardc/MagicXNavController.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			2CirjXkAaTuDLc4zw3TTR01v6hY=
+			</data>
+			<key>hash2</key>
+			<data>
+			73JFEP0sFACHxUK6LX1J9W1PrvWwlvOD0X4rzePA5gs=
+			</data>
+		</dict>
+		<key>Checkout.storyboardc/MagicXNavController.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			2CirjXkAaTuDLc4zw3TTR01v6hY=
+			</data>
+			<key>hash2</key>
+			<data>
+			73JFEP0sFACHxUK6LX1J9W1PrvWwlvOD0X4rzePA5gs=
 			</data>
 		</dict>
 		<key>Checkout.storyboardc/OpinionatedAlertVC.nib/objects-11.0+.nib</key>
@@ -193,6 +239,28 @@
 			0/j4lIa+XPXRntjqyuVYoj+ec1JQhaWcgbEA+pTeUS4=
 			</data>
 		</dict>
+		<key>Checkout.storyboardc/RazorpayMagicxVC.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			eTt4FnKOhvYjwYf1odsqLi0ehZ8=
+			</data>
+			<key>hash2</key>
+			<data>
+			9zvXxG2snoKkgapAWomrFN7f+rElxJa0oMXH0TXW1Cw=
+			</data>
+		</dict>
+		<key>Checkout.storyboardc/RazorpayMagicxVC.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			eTt4FnKOhvYjwYf1odsqLi0ehZ8=
+			</data>
+			<key>hash2</key>
+			<data>
+			9zvXxG2snoKkgapAWomrFN7f+rElxJa0oMXH0TXW1Cw=
+			</data>
+		</dict>
 		<key>Checkout.storyboardc/UINavigationController-ODs-ga-9IN.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
@@ -213,6 +281,28 @@
 			<key>hash2</key>
 			<data>
 			F+AoeMvt8cWCXt1AHDFVr11OaNWhhz4gCztJy9+OcjI=
+			</data>
+		</dict>
+		<key>Checkout.storyboardc/ytB-xX-zk3-view-vP9-Lh-TPB.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			GuaLaOgcxzpvPP6jj7CE6UW1x54=
+			</data>
+			<key>hash2</key>
+			<data>
+			I8p2+VocnQu/7nTAHxHwPLoZ9J+et+y957CgfHi+MQo=
+			</data>
+		</dict>
+		<key>Checkout.storyboardc/ytB-xX-zk3-view-vP9-Lh-TPB.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Ucg3HkU3DNFIfnKf6gQlzd/zqTg=
+			</data>
+			<key>hash2</key>
+			<data>
+			h05YMT+1oAA6um16sH5KVB2c6toLm935YPmV2d/ZDU8=
 			</data>
 		</dict>
 		<key>CommonAssets/Razorpay_Logo.png</key>

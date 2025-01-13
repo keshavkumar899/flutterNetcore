@@ -11,6 +11,7 @@ import 'package:keshav_s_application2/presentation/wallet/wallet_screen.dart';
 import 'package:keshav_s_application2/presentation/whislist_screen/whislist_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smartech_appinbox/smartech_appinbox.dart';
 import 'package:smartech_base/smartech_base.dart';
 
 import '../../screenwithoutlogin/sidebarmenu.dart';
@@ -37,6 +38,25 @@ class ProfileOneScreen extends StatefulWidget {
 
 class _ProfileOneScreenState extends State<ProfileOneScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  var inbox_count;
+
+  @override
+  void initState() {
+    getAppInboxMessageCount();
+    super.initState();
+  }
+
+  Future getAppInboxMessageCount({String? smtAppInboxMessageType}) async {
+    await SmartechAppinbox()
+        .getAppInboxMessageCount(
+        smtAppInboxMessageType: smtAppInboxMessageType ?? "")
+        .then(
+          (value) {
+        inbox_count=int.tryParse(value.toString() ?? "");
+        print(inbox_count);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +143,7 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
                       ]))
                 ],
                 styleType: Style.bgShadowBlack90033),
-            drawer: SidebarMenu(),
+            drawer: SidebarMenu(inbox_count),
             // SidebarMenuDraweritem(
             //     widget.data
             // ),

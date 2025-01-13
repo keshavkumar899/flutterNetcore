@@ -7,6 +7,7 @@ import 'package:keshav_s_application2/presentation/log_in_screen/log_in_screen.d
 import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.dart';
 import 'package:keshav_s_application2/screenwithoutlogin/landingpageafterlogin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smartech_appinbox/smartech_appinbox.dart';
 import 'package:smartech_base/smartech_base.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -26,6 +27,8 @@ class _SplashScreenState extends State<SplashScreen> {
     fetchUser();
     super.initState();
   }
+
+
 
   fetchUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

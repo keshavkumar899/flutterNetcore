@@ -1,6 +1,7 @@
 dependencies: \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/app_links/app_links.framework/Modules/module.modulemap \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/connectivity_plus/connectivity_plus.framework/Modules/module.modulemap \
+  /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/flutter_inappwebview_ios/flutter_inappwebview_ios.framework/Modules/module.modulemap \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/gtm_ios/gtm_ios.framework/Modules/module.modulemap \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/path_provider_foundation/path_provider_foundation.framework/Modules/module.modulemap \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/razorpay_flutter/razorpay_flutter.framework/Modules/module.modulemap \
@@ -16,6 +17,9 @@ dependencies: \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/firebase_core/firebase_core.framework/Headers/FLTFirebaseCorePlugin.h \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/firebase_messaging/firebase_messaging.framework/Modules/module.modulemap \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/firebase_messaging/firebase_messaging.framework/Headers/FLTFirebaseMessagingPlugin.h \
+  /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/flutter_downloader/flutter_downloader.framework/Modules/module.modulemap \
+  /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/flutter_downloader/flutter_downloader.framework/Headers/FlutterDownloaderPlugin.h \
+  /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/flutter_inappwebview_ios/flutter_inappwebview_ios.framework/Headers/InAppWebViewFlutterPlugin.h \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/fluttertoast/fluttertoast.framework/Modules/module.modulemap \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/fluttertoast/fluttertoast.framework/Headers/FluttertoastPlugin.h \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/gtm_ios/gtm_ios.framework/Headers/GtmIosPlugin.h \
@@ -25,6 +29,8 @@ dependencies: \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/location/location.framework/Headers/LocationPlugin.h \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/package_info_plus/package_info_plus.framework/Modules/module.modulemap \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/package_info_plus/package_info_plus.framework/Headers/FPPPackageInfoPlusPlugin.h \
+  /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/permission_handler_apple/permission_handler_apple.framework/Modules/module.modulemap \
+  /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/permission_handler_apple/permission_handler_apple.framework/Headers/PermissionHandlerPlugin.h \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/razorpay_flutter/razorpay_flutter.framework/Headers/RazorpayFlutterPlugin.h \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/smartech_appinbox/smartech_appinbox.framework/Modules/module.modulemap \
   /Users/keshav.kumar/Documents/GitHub/FabFurni/ios/build/Debug-iphoneos/smartech_appinbox/smartech_appinbox.framework/Headers/SmartechAppinboxPlugin.h \

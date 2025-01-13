@@ -13,7 +13,7 @@ dependencies:
   #  grouped_buttons:
 #  grouped_buttons_ns: ^1.0.0
   checkbox_grouped: ^2.0.0
-  shimmer_animation: ^2.1.0+1
+  #shimmer_animation: ^2.2.2
   shared_preferences:
   connectivity_plus: ^6.1.0
   fluttertoast:
@@ -43,16 +43,22 @@ dependencies:
   smartech_nudges:
   smartech_appinbox: ^3.5.2
   video_player: ^2.6.1
-  chewie: ^1.5.0
+  chewie: ^1.9.0
   custom_pop_up_menu: ^1.2.4
   visibility_detector: ^0.4.0+2
-  just_audio: ^0.9.33
+  just_audio: ^0.9.42
   url_launcher: ^6.1.11
   #  flutter_web_browser:
   location:
   gtm: ^1.0.0
   flutter_widget_from_html_core: ^0.15.1
   app_links: ^6.3.2
+  flutter_inappwebview: ^6.1.5
+  permission_handler:
+  path_provider:
+  file_utils:
+  flutter_downloader:
+  icon_badge: ^1.0.0
 
 dev_dependencies:
   flutter_test:

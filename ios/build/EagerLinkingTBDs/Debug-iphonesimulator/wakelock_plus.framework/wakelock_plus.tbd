@@ -9,18 +9,19 @@
           ],
           "objc_class": [
             "WakelockPlusPlugin",
-            "FLTIsEnabledMessage",
-            "FLTToggleMessage",
-            "FLTWakelockPlusApiCodecWriter",
-            "FLTWakelockPlusApiCodecReader",
-            "FLTWakelockPlusApiCodecReaderWriter",
+            "WAKELOCKPLUSMessagesPigeonCodecReader",
+            "WAKELOCKPLUSIsEnabledMessage",
+            "WAKELOCKPLUSToggleMessage",
+            "WAKELOCKPLUSMessagesPigeonCodecReaderWriter",
+            "WAKELOCKPLUSMessagesPigeonCodecWriter",
             "PodsDummy_wakelock_plus"
           ]
         },
         "text": {
           "global": [
-            "_SetUpFLTWakelockPlusApi",
-            "_FLTWakelockPlusApiGetCodec"
+            "_WAKELOCKPLUSGetMessagesCodec",
+            "_SetUpWAKELOCKPLUSWakelockPlusApiWithSuffix",
+            "_SetUpWAKELOCKPLUSWakelockPlusApi"
           ]
         }
       }

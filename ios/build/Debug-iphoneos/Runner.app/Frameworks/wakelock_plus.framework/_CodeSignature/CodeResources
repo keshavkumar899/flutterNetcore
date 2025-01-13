@@ -6,27 +6,27 @@
 	<dict>
 		<key>Info.plist</key>
 		<data>
-		FbNTm/mPnygHre0fe5b1+RkGc2o=
+		ANC6iC8j8C3mbCyyBz9+0Od+vMI=
 		</data>
-		<key>thermal.bundle/Info.plist</key>
+		<key>wakelock_plus_privacy.bundle/Info.plist</key>
 		<data>
-		9aej/bVh9cwlv/mBTZ3YLoI+/5U=
+		82A9W3bav6+QWEpdJi3DhiN6EYI=
 		</data>
-		<key>thermal.bundle/PrivacyInfo.xcprivacy</key>
+		<key>wakelock_plus_privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
 		/LX0ZlwxwIAIhjZaDB8EiH5KpXA=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>thermal.bundle/Info.plist</key>
+		<key>wakelock_plus_privacy.bundle/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XQVQ6sYrHgwTt9SqB3nIhf2T4EaymVe8IicbL53HNDk=
+			H3mZxYlTqolHtphewkjuuENKhfyu3fSeSxQuOhAiZmI=
 			</data>
 		</dict>
-		<key>thermal.bundle/PrivacyInfo.xcprivacy</key>
+		<key>wakelock_plus_privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<dict>
 			<key>hash2</key>
 			<data>

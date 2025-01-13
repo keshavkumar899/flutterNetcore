@@ -33,6 +33,7 @@ import 'package:keshav_s_application2/presentation/store_screen/models/StoreMode
     as stores;
 
 import 'package:dio/dio.dart' as dio;
+import 'package:smartech_appinbox/smartech_appinbox.dart';
 import 'package:smartech_base/smartech_base.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -62,6 +63,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
   String? twitter;
   Future<stores.StoreModel>? category;
   List<stores.StoreData> categorylist = [];
+  var inbox_count;
 
   Future<stores.StoreModel> getCategory() async {
     Map data = {
@@ -163,6 +165,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
       setState(() {
         categorylist = value.data!;
       });
+
     });
     home!.then((value) {
       setState(() {
@@ -178,7 +181,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
         twitter = value.links!.tweeter!;
       });
     });
-
+    getAppInboxMessageCount();
     super.initState();
   }
 
@@ -207,6 +210,18 @@ class _HomeScreen1State extends State<HomeScreen1> {
 
   int silderIndex = 0;
 
+  Future getAppInboxMessageCount({String? smtAppInboxMessageType}) async {
+    await SmartechAppinbox()
+        .getAppInboxMessageCount(
+        smtAppInboxMessageType: smtAppInboxMessageType ?? "")
+        .then(
+          (value) {
+            inbox_count=int.tryParse(value.toString() ?? "");
+        print(inbox_count);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
@@ -222,7 +237,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
         child: Scaffold(
           key: _scaffoldKey,
             backgroundColor: ColorConstant.purple50,
-            drawer: SidebarMenu(),
+            drawer: SidebarMenu(inbox_count),
             appBar: CustomAppBar(
                 height: getVerticalSize(90),
                 leadingWidth: 41,
