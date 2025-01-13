@@ -73,23 +73,7 @@ void main() async {
     Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
     runApp(MyApp());
   });
-  // Smartech().onHandleDeeplink((String? smtDeeplinkSource, String? smtDeeplink, Map<dynamic, dynamic>? smtPayload, Map<dynamic, dynamic>? smtCustomPayload) async {
-  //   String deeplink=smtDeeplink!.substring(0,smtDeeplink.indexOf('?'));
-  //   print(deeplink);
-  //   if(deeplink=='/about_us_screen'){
-  //     Get.toNamed(AppRoutes.aboutUsScreen);
-  //   }
-  // });
-  MethodChannel("Apnreceived").setMethodCallHandler((handler) async {
-    if (handler.method == 'didReceivedCallback') {
-      // Do your logic here.
-      print("******************************");
-      print(handler.arguments);
-      print("******************************");
-    } else {
-      print('Unknown method from MethodChannel: ${handler.method}');
-    }
-  });
+
   Smartech().onHandleDeeplink((String? smtDeeplinkSource,
       String? smtDeeplink,
       Map<dynamic, dynamic>? smtPayload,
@@ -349,6 +333,13 @@ class _PxDeeplinkListenerImpl extends PxDeeplinkListener {
     if (url == '/about_us_screen') {
       Get.toNamed(AppRoutes.aboutUsScreen);
     }
+    if (url == '/terms_of_condition_screen') {
+      Get.toNamed(AppRoutes.termsOfConditionScreen);
+    }
+    if (url == '/log_in_screen') {
+      Get.toNamed(AppRoutes.logInScreen);
+    }
+
     print('PXDeeplink: $url');
   }
 }
