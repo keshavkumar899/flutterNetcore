@@ -340,7 +340,6 @@ class _HomeScreen1State extends State<HomeScreen1> {
                 ],
                 styleType: Style.bgShadowBlack90033),
             body: RefreshIndicator(
-               key: ValueKey("anything_hsl_ignore"),
               color: Colors.purple,
               onRefresh: () async {
                 home = getdashboard();

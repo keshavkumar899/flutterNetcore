@@ -374,6 +374,12 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "flutter_web_browser",
+      "rootUri": "file:///Users/keshav.kumar/.pub-cache/hosted/pub.dev/flutter_web_browser-0.17.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_web_plugins",
       "rootUri": "file:///Users/keshav.kumar/Documents/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
@@ -1124,7 +1130,7 @@
       "languageVersion": "2.13"
     }
   ],
-  "generated": "2025-01-10T07:02:41.488374Z",
+  "generated": "2025-01-15T06:32:42.684140Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///Users/keshav.kumar/Documents/flutter",

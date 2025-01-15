@@ -81,7 +81,7 @@ void main() async {
     // String deeplink1=smtDeeplink!;
     // print(deeplink1);
     print('$smtDeeplink');
-    print('$smtDeeplink');
+    
 
     Future.delayed(const Duration(milliseconds: 2500), () async {
       if (smtDeeplinkSource == 'PushNotification') {
