@@ -8,6 +8,7 @@ import 'package:keshav_s_application2/presentation/log_in_screen/models/log_in_m
 import 'package:keshav_s_application2/presentation/otp_screen/otp_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../screenwithoutlogin/landingpage1.dart';
 import 'controller/log_in_controller.dart';
@@ -19,6 +20,7 @@ import 'package:keshav_s_application2/core/app_export.dart';
 import 'package:keshav_s_application2/core/utils/validation_functions.dart';
 import 'package:keshav_s_application2/widgets/custom_button.dart';
 import 'package:keshav_s_application2/widgets/custom_text_form_field.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 // ignore_for_file: must_be_immutable
 class LogInScreen extends StatefulWidget {
@@ -173,6 +175,7 @@ class _LogInScreenState extends State<LogInScreen> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: SafeArea(
+        maintainBottomViewPadding: true,
           child: Scaffold(
               resizeToAvoidBottomInset: false,
               backgroundColor: ColorConstant.whiteA700,

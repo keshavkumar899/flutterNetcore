@@ -41,6 +41,7 @@ import '../presentation/log_in_screen/log_in_screen.dart';
 import '../widgets/app_bar/appbar_title.dart';
 import 'ClickAfterSlectTabFurnitureScreen1.dart';
 import 'NewProductScreen1.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class HomeScreen1 extends StatefulWidget {
   @override
@@ -240,7 +241,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
             drawer: SidebarMenu(inbox_count),
             appBar: CustomAppBar(
                 height: getVerticalSize(90),
-                leadingWidth: 41,
+                leadingWidth: kIsWeb?getHorizontalSize(30):41,
                 leading: AppbarImage(
                     onTap: () {
                       _scaffoldKey.currentState!.openDrawer();
@@ -796,7 +797,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                          // banners.length != 0
                               //?
                     Container(
-                                  //height: 100,
+                                  height: 50.h,
                                   // width: 200.w,
                                   padding: getPadding(left: 10, right: 10),
                                   // color: Colors.black,

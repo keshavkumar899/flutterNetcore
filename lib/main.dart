@@ -25,11 +25,32 @@ import 'package:location/location.dart';
 import 'dart:io' show Platform;
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 var response1;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+
+  if (!kIsWeb) {
+    await Firebase.initializeApp();
+  } else {
+    await Firebase.initializeApp(options: FirebaseOptions(
+        apiKey: "AIzaSyAyoGDHO83zRE-iNren011TmrR3Y0Xxm50",
+
+        authDomain: "fabfurni.firebaseapp.com",
+
+        projectId: "fabfurni",
+
+        storageBucket: "fabfurni.firebasestorage.app",
+
+        messagingSenderId: "893910930509",
+
+        appId: "1:893910930509:web:9e6d17e3d82499e6e07804",
+
+        measurementId: "G-4YLYZ1EXJL"
+
+    ));
+  }
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
 
   // if(Smartech().getUserIdentity().toString().isEmpty){
@@ -309,7 +330,7 @@ class _MyAppState extends State<MyApp> {
           translations: AppLocalization(),
           locale: Get.deviceLocale, //for setting localization strings
           fallbackLocale: Locale('en', 'US'),
-          title: 'FabFurni by Netcore',
+          title: 'FabFurni',
           initialBinding: InitialBindings(),
           home: SplashScreen(),
           // initialRoute: AppRoutes.initialRoute,
