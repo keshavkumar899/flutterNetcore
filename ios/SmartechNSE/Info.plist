@@ -12,7 +12,7 @@
 		<key>SmartechAppId</key>
 		<string>cdd5abdf5d9441b21b0f9e6223a4ed7a</string>
 		<key>SmartechAppGroup</key>
-		<string>group.com.netcore.SmartechApp</string>
+		<string>group.com.netcore.SmartechApp</string> s
 	</dict>
 	<key>NSExtension</key>
 	<dict>
@@ -20,6 +20,13 @@
 		<string>com.apple.usernotifications.service</string>
 		<key>NSExtensionPrincipalClass</key>
 		<string>$(PRODUCT_MODULE_NAME).NotificationService</string>
+	</dict>
+	<key>SmartechKeys</key>
+	<dict>
+		<key>SmartechAppGroup</key>
+		<string>group.com.netcore.SmartechApp</string>
+		<key>SmartechAppId</key>
+		<string>cdd5abdf5d9441b21b0f9e6223a4ed7a</string>
 	</dict>
 </dict>
 </plist>
