@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:keshav_s_application2/presentation/app_inbox/utils/utils.dart';
 import 'package:smartech_appinbox/model/smt_appinbox_model.dart';
 
@@ -29,9 +30,15 @@ class GIFNotificationView extends StatelessWidget {
             SizedBox(
               height: 8,
             ),
-            htmlText(inbox.title),
+            htmlText(inbox.title.capitalizeFirst!),
             if (inbox.subtitle.toString() != "") htmlText(inbox.subtitle),
             htmlText(inbox.body),
+            Row(
+              children: [
+                Text("Status:  "),
+                htmlText(inbox.status),
+              ],
+            ),
             SizedBox(
               height: 8,
             ),

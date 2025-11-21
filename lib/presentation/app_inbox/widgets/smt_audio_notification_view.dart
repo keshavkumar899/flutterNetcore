@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:keshav_s_application2/presentation/app_inbox/utils/audio_page_manager.dart';
 import 'package:keshav_s_application2/presentation/app_inbox/utils/utils.dart';
@@ -84,10 +85,16 @@ class _SMTAudioNotificationViewState extends State<SMTAudioNotificationView>
             SizedBox(
               height: 8,
             ),
-            htmlText(widget.inbox.title),
+            htmlText(widget.inbox.title.capitalizeFirst!),
             if (widget.inbox.subtitle.toString() != "")
               htmlText(widget.inbox.subtitle),
             htmlText(widget.inbox.body),
+            Row(
+              children: [
+                Text("Status:  "),
+                htmlText(widget.inbox.status),
+              ],
+            ),
             SizedBox(
               height: 8,
             ),

@@ -1,5 +1,6 @@
 
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 import 'package:custom_pop_up_menu/custom_pop_up_menu.dart';
 import 'package:flutter/cupertino.dart';
@@ -52,7 +53,7 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
   }
 
   Future initialApiCall() async {
-    await getMessageListByApiCall();
+    //await getMessageListByApiCall();
     //await getMessagesList();
     await Future.wait([
       getAppInboxCategoryWiseMessageList(),
@@ -106,20 +107,33 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
     //   // Map<String, dynamic> data = jsonDecode(model);
     //   // print(data['inbox'][4]['aps']['payload']);
     // }
-    await SmartechAppinbox()
-        .getAppInboxCategoryWiseMessageList(
-            categoryList: categoryList
+    SmartechAppinbox()
+        .getAppInboxCategoryWiseMessageList( categoryList: categoryList
                     ?.where((element) => element.selected)
                     .map((e) => e.name)
                     .toList() ??
                 [])
         .then((value) {
-      if (value != null) {
-        inboxList.addAll(value);
-      }
-      // log(inboxList.toString());
-      setState(() {});
+      inboxList = value!;
     });
+
+    return Future.value(inboxList);
+
+    // await SmartechAppinbox()
+    //     .getAppInboxCategoryWiseMessageList(
+    //         categoryList: categoryList
+    //                 ?.where((element) => element.selected)
+    //                 .map((e) => e.name)
+    //                 .toList() ??
+    //             [])
+    //     .then((value) {
+    //   if (value != null) {
+    //
+    //     //inboxList.addAll(value);
+    //   }
+    //  // log("inboxlist :" + inboxList.);
+    //   setState(() {});
+    // });
   }
 
   markMessageAsDismissed(String trid) async {
@@ -255,6 +269,26 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
                     child: ListView.builder(
                       itemCount: inboxList.length,
                       itemBuilder: (BuildContext context, int index) {
+                        print("Timestamp: "+inboxList[index].smtPayload!.timestamp);
+                        print("Published Date: "+inboxList[index].smtPayload!.publishedDate.toString());
+                        print("Category: "+inboxList[index].smtPayload!.appInboxCategory);
+                        print("AppInboxttl: "+inboxList[index].smtPayload!.appInboxTtl);
+                        print("Body: "+inboxList[index].smtPayload!.body);
+                        print("deeplink: "+inboxList[index].smtPayload!.deeplink);
+                        print("mediaURL: "+inboxList[index].smtPayload!.mediaUrl);
+                        print("smtSRC: "+inboxList[index].smtPayload!.smtSrc);
+                        print("Sound: "+inboxList[index].smtPayload!.sound.toString());
+                        print("status: "+inboxList[index].smtPayload!.status);
+                        print("subtitle: "+inboxList[index].smtPayload!.subtitle);
+                        print("title: "+inboxList[index].smtPayload!.title);
+                        print("trid: "+inboxList[index].smtPayload!.trid);
+                        // print("Action Button Name: "+inboxList[index].smtPayload!.actionButton[index].actionName);
+                        // print("Action Button Deeplink: "+inboxList[index].smtPayload!.actionButton[index].actionDeeplink);
+                        // print("Action Button Call To Action: "+inboxList[index].smtPayload!.actionButton[index].callToAction);
+                        // print("Action Button aTYP: "+inboxList[index].smtPayload!.actionButton[index].aTyp.toString());
+                        // print("Action Button ConfigCTXT: "+inboxList[index].smtPayload!.actionButton[index].configCtxt);
+
+
                         switch (inboxList[index].smtPayload!.type) {
                           // ******* Image type Notifications ******* \\
                           case SMTNotificationType.image:

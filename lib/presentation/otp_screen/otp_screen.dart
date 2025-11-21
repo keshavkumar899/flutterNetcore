@@ -7,6 +7,7 @@ import 'package:keshav_s_application2/presentation/otp_screen/models/otp_model.d
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartech_base/smartech_base.dart';
+import 'package:smartech_nudges/netcore_px.dart';
 
 import '../../screenwithoutlogin/landingpageafterlogin.dart';
 import 'controller/otp_controller.dart';
@@ -328,6 +329,17 @@ class _OtpScreenState extends State<OtpScreen> {
                       pref.setString("mobileNumber", widget.mobileNumber);
                       pref.setBool("isLoggedIn", true);
                       Smartech().login(widget.mobileNumber);
+                      // Smartech().getUserIdentity()
+                      Smartech().updateUserProfile({
+                        "NAME":"KeshavKK",
+                        "LOCATION":"DELHI",
+                        "constitution_code":"ABC123ER"
+                      });
+                      // Map<String,Object> attributes = {
+                      //   "NAME":"KeshavKK",
+                      //   "LOCATION":"DELHI",
+                      // };
+                      // NetcorePX.instance.putAttributes(attributes);
                       Navigator.of(context).pushAndRemoveUntil<dynamic>(
                           MaterialPageRoute(
                             builder: (context) =>

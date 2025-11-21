@@ -1,5 +1,5 @@
 # Uncomment this line to define a global platform for your project
-platform :ios, '14.0'
+platform :ios, '15.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -31,10 +31,6 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
-#   pod 'Smartech-iOS-SDK', '~> 3.5.5'
-#   pod 'SmartPush-iOS-SDK', '~> 3.5.5'
-  pod 'GoogleTagManager', '~> 7.4'
-
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 
@@ -42,7 +38,7 @@ post_install do |installer|
     installer.generated_projects.each do |project|
             project.targets.each do |target|
                 target.build_configurations.each do |config|
-                    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
+                    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
                  end
             end
     end
@@ -57,18 +53,19 @@ target 'SmartechNSE' do
   use_frameworks!
 
   # Pods for 'YourServiceExtensionTarget'
-   pod 'SmartPush-iOS-SDK', '~> 3.5.5'
+   pod 'Smartech-iOS-SDK'
+   pod 'SmartPush-iOS-SDK'
 
 
 end
 
 #content extension target
-target 'SmartechNCE' do
+target 'SmartechContent' do
   ####
   use_frameworks!
 
   # Pods for 'YourContentExtensionTarget'
-   pod 'SmartPush-iOS-SDK', '~> 3.5.5'
+   pod 'SmartPush-iOS-SDK'
 
 
 end

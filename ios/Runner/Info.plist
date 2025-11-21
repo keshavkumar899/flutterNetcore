@@ -67,13 +67,6 @@
 	<false/>
 	<key>FlutterDeepLinkingEnabled</key>
 	<false/>
-	<key>HanselKeys</key>
-	<dict>
-		<key>HanselAppId</key>
-		<string>enter app id here from hansel panel</string>
-		<key>HanselAppKey</key>
-		<string>enter app key here from hansel panel</string>
-	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -93,10 +86,10 @@
 	<string>Allow access of microphone to search product by voice</string>
 	<key>SmartechKeys</key>
 	<dict>
-		<key>SmartechAppGroup</key>
-		<string>group.com.netcore.SmartechApp</string>
-		<key>SmartechAppId</key>
-		<string>enter app id here from panel</string>
+<!--		<key>SmartechAppGroup</key>-->
+<!--		<string>group.com.netcore.SmartechApp</string>-->
+<!--		<key>SmartechAppId</key>-->
+<!--		<string>cdd5abdf5d9441b21b0f9e6223a4ed7a</string>-->
 		<key>SmartechAutoFetchLocation</key>
 		<true/>
 		<key>SmartechUseAdvId</key>

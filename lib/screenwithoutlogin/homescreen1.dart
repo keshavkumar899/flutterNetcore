@@ -33,8 +33,10 @@ import 'package:keshav_s_application2/presentation/store_screen/models/StoreMode
     as stores;
 
 import 'package:dio/dio.dart' as dio;
+import 'package:smartech_appinbox/model/smt_appinbox_model.dart';
 import 'package:smartech_appinbox/smartech_appinbox.dart';
 import 'package:smartech_base/smartech_base.dart';
+import 'package:smartech_nudges/netcore_px.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../presentation/log_in_screen/log_in_screen.dart';
@@ -50,6 +52,7 @@ class HomeScreen1 extends StatefulWidget {
 
 class _HomeScreen1State extends State<HomeScreen1> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  var mobileNumber;
 
   Future<homes.HomeModel>? home;
   List<homes.HomeData> homelist = [];
@@ -64,6 +67,8 @@ class _HomeScreen1State extends State<HomeScreen1> {
   String? twitter;
   Future<stores.StoreModel>? category;
   List<stores.StoreData> categorylist = [];
+
+  List<SMTAppInboxMessages> inboxList = [];
   var inbox_count;
 
   Future<stores.StoreModel> getCategory() async {
@@ -160,6 +165,8 @@ class _HomeScreen1State extends State<HomeScreen1> {
 
   @override
   void initState() {
+    fetchUser();
+    Smartech().setUserIdentity(mobileNumber??"");
     home = getdashboard();
     category = getCategory();
     category!.then((value) {
@@ -168,6 +175,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
       });
 
     });
+    getFMvalues();
     home!.then((value) {
       setState(() {
         homelist = value.data!;
@@ -183,6 +191,11 @@ class _HomeScreen1State extends State<HomeScreen1> {
       });
     });
     getAppInboxMessageCount();
+
+    SmartechAppinbox().getAppInboxMessagesByApiCall(messageLimit: 10, smtInboxDataType: 'all', categoryList: [],
+    ).then((value) {
+      inboxList = value!;
+    });
     super.initState();
   }
 
@@ -210,6 +223,21 @@ class _HomeScreen1State extends State<HomeScreen1> {
   ];
 
   int silderIndex = 0;
+  fetchUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool? isLoggedIn = prefs.getBool("isLoggedIn");
+    mobileNumber = prefs.getString("mobileNumber");
+    print("$mobileNumber is hot");
+  }
+  Future getFMvalues()async{
+    // getJSONObject retrieves a value by key, with a fallback if key doesn't exist
+    // The second parameter is the fallback value, not data to be serialized
+    Object client_side = await NetcorePX.instance.getJSONObject("client_side", {});
+    Object server_side = await NetcorePX.instance.getJSONObject("server", {});
+    print("client_side: "+client_side.toString());
+    print("server_side: "+server_side.toString());
+
+  }
 
   Future getAppInboxMessageCount({String? smtAppInboxMessageType}) async {
     await SmartechAppinbox()
@@ -223,6 +251,8 @@ class _HomeScreen1State extends State<HomeScreen1> {
     );
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
@@ -230,6 +260,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
       bool? isLoggedIn = prefs.getBool("isLoggedIn");
       print(isLoggedIn);
       Smartech().trackEvent("home_page", {"login":isLoggedIn});
+      // Smartech().getDeviceGuid();
     });
     double baseWidth = 428;
     double fem = MediaQuery.of(context).size.width / baseWidth;
@@ -343,6 +374,9 @@ class _HomeScreen1State extends State<HomeScreen1> {
             body: RefreshIndicator(
               color: Colors.purple,
               onRefresh: () async {
+                fetchUser();
+                Smartech().setUserIdentity(mobileNumber??"");
+                getFMvalues();
                 home = getdashboard();
                 category = getCategory();
                 category!.then((value) {
@@ -797,7 +831,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                          // banners.length != 0
                               //?
                     Container(
-                                  height: 50.h,
+                                  // height: 50.h,
                                   // width: 200.w,
                                   padding: getPadding(left: 10, right: 10),
                                   // color: Colors.black,

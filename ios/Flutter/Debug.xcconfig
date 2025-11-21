@@ -1,3 +1,5 @@
 //#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
 #include "Generated.xcconfig"
 #include "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
+HANSEL_APP_ID =UJMDZOCJJF92T72LR3GUOVZ4F
+HANSEL_APP_KEY =WRAUGKWQFE620ERVV21NCU3PDM0B31UYL9GYOEDCCNOPWYZ11Q

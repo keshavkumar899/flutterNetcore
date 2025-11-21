@@ -110,9 +110,9 @@ class _HtmlPAGEState extends State<HtmlPAGE> {
             return null;
           },
           onTapUrl: (url) async {
-            if (await canLaunchUrl(Uri.parse(url))) {
+            if (await canLaunchUrl(Uri.parse("https://www.google.com"))) {
               await launchUrl(
-                Uri.parse(url),
+                Uri.parse("https://www.google.com"),
               );
             }
             throw 'Could not launch $url';

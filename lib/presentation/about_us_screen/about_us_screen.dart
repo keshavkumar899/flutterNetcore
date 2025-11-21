@@ -16,7 +16,6 @@ import 'package:keshav_s_application2/widgets/app_bar/appbar_image.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_5.dart';
 import 'package:keshav_s_application2/widgets/app_bar/appbar_subtitle_6.dart';
 import 'package:keshav_s_application2/widgets/app_bar/custom_app_bar.dart';
-import 'package:gtm/gtm.dart';
 
 class AboutUsScreen extends StatefulWidget {
   @override
@@ -28,7 +27,6 @@ class _aboutUsScreen extends State<AboutUsScreen> {
   SettingVO? settingVO;
   String? versionCode;
 
-  final gtm = Gtm.instance;
   var event_name = "about_us";
 
   @override
@@ -43,12 +41,6 @@ class _aboutUsScreen extends State<AboutUsScreen> {
       "name":"keshav",
       "age":22
     });
-    gtm.push(
-      'about_us',
-      parameters: {
-        'user_no': 912342,
-      },
-    );
   }
 
   @override

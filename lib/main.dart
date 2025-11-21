@@ -11,6 +11,9 @@ import 'package:intl/intl.dart';
 import 'package:keshav_s_application2/presentation/splash_screen/splash_screen.dart';
 import 'package:keshav_s_application2/screenwithoutlogin/HtmlPage.dart';
 import 'package:keshav_s_application2/widgets/connection_lost.dart';
+import 'package:permission_handler/permission_handler.dart' as permission;
+// import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -64,6 +67,7 @@ void main() async {
   // }
 
   // }
+  // print(Platform.operatingSystem);
 
   //  if(Platform.isAndroid){
   //    var mapandroid={
@@ -101,7 +105,14 @@ void main() async {
       Map<dynamic, dynamic>? smtCustomPayload) async {
     // String deeplink1=smtDeeplink!;
     // print(deeplink1);
-    print('$smtDeeplink');
+    print("smtDeeplink: "+smtDeeplink!);
+    final Map<String, dynamic> payload =
+    smtCustomPayload!.map((key, value) => MapEntry(key.toString(), value));
+
+    // Print all key-value pairs
+    payload.forEach((key, value) {
+      print("$key : $value");
+    });
     
 
     Future.delayed(const Duration(milliseconds: 2500), () async {
@@ -241,6 +252,9 @@ void getLocation() async {
   _locationData = await location.getLocation();
 }
 
+
+
+
 class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
@@ -260,6 +274,10 @@ class _MyAppState extends State<MyApp> {
     subscription =
         Connectivity().onConnectivityChanged.listen(showConnectivitySnackBar);
     startChecking();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      checkAndRemindForNotifications(context);
+    });
   }
 
   @override
@@ -268,6 +286,73 @@ class _MyAppState extends State<MyApp> {
     subscription!.cancel();
 
     super.dispose();
+  }
+
+  Future<bool> checkNotificationPermission() async {
+    return await permission.Permission.notification.isGranted;
+  }
+
+  Future<void> requestNotificationPermission() async {
+    await permission.Permission.notification.request();
+  }
+
+  Future<bool> shouldRemindUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    int? lastReminder = prefs.getInt('lastNotificationReminder');
+
+    if (lastReminder == null) return true; // First-time users should be reminded
+
+    DateTime lastReminderTime = DateTime.fromMillisecondsSinceEpoch(lastReminder);
+    DateTime now = DateTime.now();
+
+    // Check if 48 hours (2 days) have passed
+    return now.difference(lastReminderTime).inHours >= 48;
+  }
+
+  Future<void> saveReminderTimestamp() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setInt('lastNotificationReminder', DateTime.now().millisecondsSinceEpoch);
+  }
+
+  void promptToEnableNotifications(BuildContext context) async {
+    bool granted = await checkNotificationPermission();
+    if (granted) return;
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Enable Notifications"),
+          content: Text("You're missing important updates! Enable notifications in Settings."),
+          actions: [
+            TextButton(
+              onPressed: () async {
+                await permission.openAppSettings();
+                // saveReminderTimestamp(); // Save timestamp after prompt
+                Navigator.of(context).pop();
+              },
+              child: Text("Open Settings"),
+            ),
+            TextButton(
+              onPressed: () {
+                saveReminderTimestamp();
+                Navigator.of(context).pop();
+              },
+              child: Text("Maybe Later"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void checkAndRemindForNotifications(BuildContext context) async {
+    bool permissionGranted = await checkNotificationPermission();
+    bool shouldRemind = await shouldRemindUser();
+
+    if (!permissionGranted ) {
+      Future.delayed(Duration(seconds: 3), () => promptToEnableNotifications(context)); // Delay for better UX
+    }
   }
 
   Future<void> startChecking() async {

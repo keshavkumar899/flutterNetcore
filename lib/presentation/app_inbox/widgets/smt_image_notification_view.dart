@@ -50,10 +50,16 @@ class _SMTImageNotificationViewState extends State<SMTImageNotificationView> {
                 SizedBox(
                   height: 8,
                 ),
-                htmlText(widget.inbox.title),
+                htmlText(widget.inbox.title.capitalizeFirst!),
                 if (widget.inbox.subtitle.toString() != "")
                   htmlText(widget.inbox.subtitle),
                 htmlText(widget.inbox.body),
+                Row(
+                  children: [
+                    Text("Status:  "),
+                    htmlText(widget.inbox.status),
+                  ],
+                ),
                 SizedBox(
                   height: 8,
                 ),

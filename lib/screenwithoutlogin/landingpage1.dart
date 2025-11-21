@@ -39,7 +39,7 @@ class _landingPage1State extends State<landingPage1> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool? isLoggedIn = prefs.getBool("isLoggedIn");
     mobileNumber = prefs.getString("mobileNumber");
-    print("$mobileNumber is hot");
+    // print("$mobileNumber is hot");
   }
 
   List<Widget> _buildScreens() {
@@ -113,7 +113,7 @@ class _landingPage1State extends State<landingPage1> {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
-      onWillPop: _onWillPop,
+      //onWillPop: _onWillPop,
       tabs: [
         PersistentTabConfig(
           screen: HomeScreen1(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:keshav_s_application2/presentation/app_inbox/utils/utils.dart';
 import 'package:smartech_appinbox/model/smt_appinbox_model.dart';
 
@@ -45,10 +46,16 @@ class _SMTCarouselNotificationViewState
             SizedBox(
               height: 8,
             ),
-            htmlText(widget.inbox.title),
+            htmlText(widget.inbox.title.capitalizeFirst!),
             if (widget.inbox.subtitle.toString() != "")
               htmlText(widget.inbox.subtitle),
             htmlText(widget.inbox.body),
+            Row(
+              children: [
+                Text("Status:  "),
+                htmlText(widget.inbox.status),
+              ],
+            ),
             SizedBox(
               height: 16,
             ),

@@ -22,17 +22,12 @@ class AppColor {
 }
 
 Widget htmlText(String title) {
-  return Column(
-    children: [
+  return
       Html(
         data: title,
         style: {
           "body": Style(margin: Margins.zero, padding: HtmlPaddings.zero)
         },
-      ),
-      SizedBox(
-        height: 4,
-      ),
-    ],
-  );
+      )
+    ;
 }
