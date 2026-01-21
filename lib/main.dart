@@ -24,7 +24,7 @@ import 'package:smartech_nudges/px_widget.dart';
 import 'package:smartech_nudges/tracker/route_obersver.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'core/app_export.dart';
-import 'package:location/location.dart';
+//import 'package:location/location.dart';
 import 'dart:io' show Platform;
 import 'dart:io';
 import 'package:http/http.dart' as http;
@@ -162,7 +162,7 @@ void main() async {
   // resolveUrl(
   //     'https://elink.savmoney.me/vtrack?clientid=170681&ul=BgVRBlNEBR5TX15DB154R1VASw4KWVYdTx4=&ml=BA9VSFJEA1MESw==&sl=dUolSDdrSTF9Y0tUClBWXxpFBBUIWF0BSkwLU0xQ&pp=0&c=0000&fl=X0ISRBECGk1DVkFQFkkWVURGSw8MWVhLew88UHkiXFZrI1M=&ext=');
   // Smartech().onHandleDeeplinkAction();
-  getLocation();
+  //getLocation();
 }
 
 Future<String> resolveUrl(String url) async {
@@ -225,32 +225,32 @@ void handleUrl(String url) async {
 // print("Resolved URL: $resolvedUrl");
 // Use the resolved URL in your app logic
 
-void getLocation() async {
-  Location location = Location();
-
-  bool _serviceEnabled;
-  PermissionStatus _permissionGranted;
-  // ignore: unused_local_variable
-  LocationData _locationData;
-
-  _serviceEnabled = await location.serviceEnabled();
-  if (!_serviceEnabled) {
-    _serviceEnabled = await location.requestService();
-    if (!_serviceEnabled) {
-      return;
-    }
-  }
-
-  _permissionGranted = await location.hasPermission();
-  if (_permissionGranted == PermissionStatus.denied) {
-    _permissionGranted = await location.requestPermission();
-    if (_permissionGranted != PermissionStatus.granted) {
-      return;
-    }
-  }
-
-  _locationData = await location.getLocation();
-}
+// void getLocation() async {
+//   Location location = Location();
+//
+//   bool _serviceEnabled;
+//   PermissionStatus _permissionGranted;
+//   // ignore: unused_local_variable
+//   LocationData _locationData;
+//
+//   _serviceEnabled = await location.serviceEnabled();
+//   if (!_serviceEnabled) {
+//     _serviceEnabled = await location.requestService();
+//     if (!_serviceEnabled) {
+//       return;
+//     }
+//   }
+//
+//   _permissionGranted = await location.hasPermission();
+//   if (_permissionGranted == PermissionStatus.denied) {
+//     _permissionGranted = await location.requestPermission();
+//     if (_permissionGranted != PermissionStatus.granted) {
+//       return;
+//     }
+//   }
+//
+//   _locationData = await location.getLocation();
+// }
 
 
 
@@ -435,7 +435,8 @@ class _PxActionListenerImpl extends PxActionListener {
 
 class _PxDeeplinkListenerImpl extends PxDeeplinkListener {
   @override
-  void onLaunchUrl(String url) {
+  void onLaunchUrl(String url) async{
+    print('PXDeeplink: $url');
     if (url == '/about_us_screen') {
       Get.toNamed(AppRoutes.aboutUsScreen);
     }
@@ -445,8 +446,15 @@ class _PxDeeplinkListenerImpl extends PxDeeplinkListener {
     if (url == '/log_in_screen') {
       Get.toNamed(AppRoutes.logInScreen);
     }
+    if (url.contains("https")) {
+      print("navigate to browser with url");
+      final Uri _url = Uri.parse(url);
+      if (!await launchUrl(_url)) throw 'Could not launch $_url';
+    // await
+    // FlutterWebBrowser.openWebPage(url: smtDeeplink);
+    }
 
-    print('PXDeeplink: $url');
+
   }
 }
 
@@ -454,7 +462,7 @@ class _PxInternalEventsListener extends PxInternalEventsListener {
   @override
   void onEvent(String eventName, Map dataFromHansel) {
     Map<String, dynamic> newMap =
-        Map<String, dynamic>.from(dataFromHansel.map((key, value) {
+    Map<String, dynamic>.from(dataFromHansel.map((key, value) {
       return MapEntry(key.toString(), value);
     }));
     Smartech().trackEvent(eventName, newMap);

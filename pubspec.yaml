@@ -2,7 +2,7 @@ name: keshav_s_application2
 description: A new Flutter project.
 version: 1.0.0+1
 environment:
-  sdk: '>=2.13.0 <3.0.0'
+  sdk: ^3.10.7
 dependencies:
   flutter:
     sdk: flutter
@@ -26,7 +26,7 @@ dependencies:
   flutter_svg: ^2.0.9
   flutter_svg_provider: ^1.0.3
   carousel_slider: ^5.0.0
-  smooth_page_indicator: ^1.0.0+2
+  smooth_page_indicator: ^2.0.1
   intl: ^0.20.2
   webview_flutter: ^4.2.2
   #  url_launcher: ^6.1.11
@@ -35,7 +35,7 @@ dependencies:
   sizer: ^3.0.3
   light_modal_bottom_sheet: ^0.0.5
   dio: ^5.1.1
-  google_fonts: ^6.1.0
+  google_fonts: ^7.0.2
   rounded_loading_button_plus: ^3.0.1
   firebase_core:
   firebase_messaging: ^16.0.0
@@ -47,12 +47,11 @@ dependencies:
   chewie: ^1.9.0
   custom_pop_up_menu: ^1.2.4
   visibility_detector: ^0.4.0+2
-  just_audio: ^0.10.4
+  just_audio: ^0.10.5
   url_launcher: ^6.1.11
   #  flutter_web_browser:
-  location:
   flutter_widget_from_html_core: ^0.17.0
-  app_links: ^6.3.2
+  app_links: ^7.0.0
   flutter_inappwebview: ^6.1.5
   permission_handler:
   path_provider:
@@ -96,5 +95,3 @@ flutter:
           weight: 500
         - asset: assets/fonts/RobotoLight.ttf
           weight: 300
-        - asset: assets/fonts/RobotoBold.ttf
-          weight: 700

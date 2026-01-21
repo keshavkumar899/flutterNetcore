@@ -110,7 +110,7 @@ class _SMTAudioNotificationViewState extends State<SMTAudioNotificationView>
                   position: positionData?.position ?? Duration.zero,
                   bufferedPosition:
                       positionData?.bufferedPosition ?? Duration.zero,
-                  onChangeEnd: _player.seek,
+                  // onChangeEnd: _player.seek,
                 );
               },
             ),
@@ -125,7 +125,7 @@ class _SMTAudioNotificationViewState extends State<SMTAudioNotificationView>
 class ControlButtons extends StatelessWidget {
   final AudioPlayer player;
 
-  const ControlButtons(this.player, {Key? key}) : super(key: key);
+ const ControlButtons(this.player, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

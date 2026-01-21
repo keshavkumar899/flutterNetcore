@@ -1,3 +1,7 @@
+buildscript {
+    ext.kotlin_version = '2.2.0'
+}
+
 allprojects {
     repositories {
         google()
@@ -9,9 +13,71 @@ allprojects {
 rootProject.buildDir = '../build'
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
-    project.evaluationDependsOn(':app')
+    
+    // Force Kotlin version to 2.2.0 for all subprojects (including Flutter plugins)
+    configurations.all {
+        resolutionStrategy {
+            force 'org.jetbrains.kotlin:kotlin-stdlib:2.2.0'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.2.0'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.2.0'
+        }
+    }
+    
+    // Ensure Kotlin plugin uses version 2.2.0 and skip metadata version check
+    afterEvaluate { project ->
+        // Ensure Java and Kotlin use compatible JVM targets
+        if (project.plugins.hasPlugin('com.android.application') || project.plugins.hasPlugin('com.android.library')) {
+            try {
+                def android = project.android
+                def currentSourceCompat = android.compileOptions.sourceCompatibility
+                def currentTargetCompat = android.compileOptions.targetCompatibility
+                
+                // Determine the Java target version
+                def javaTargetVersion = currentSourceCompat
+                if (javaTargetVersion == null || javaTargetVersion == JavaVersion.VERSION_1_8) {
+                    // Default to 17 for Flutter plugins that don't specify
+                    javaTargetVersion = JavaVersion.VERSION_17
+                    android.compileOptions {
+                        sourceCompatibility = JavaVersion.VERSION_17
+                        targetCompatibility = JavaVersion.VERSION_17
+                    }
+                }
+                
+                // Convert JavaVersion to string format for Kotlin JVM target
+                // JavaVersion.toString() returns format like "VERSION_17", "VERSION_21", or "VERSION_1_8"
+                def javaTargetString
+                if (javaTargetVersion == JavaVersion.VERSION_1_8) {
+                    javaTargetString = '1.8'
+                } else {
+                    // For Java 11+, extract the version number
+                    def versionStr = javaTargetVersion.toString()
+                        .replace('VERSION_', '')
+                        .replace('_', '')
+                    javaTargetString = versionStr
+                }
+                
+                // Ensure Kotlin matches Java target
+                if (project.plugins.hasPlugin('org.jetbrains.kotlin.android')) {
+                    project.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+                        kotlinOptions {
+                            // Always match Kotlin to Java target to avoid compatibility issues
+                            jvmTarget = javaTargetString
+                            freeCompilerArgs += ['-Xskip-metadata-version-check']
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                // Ignore if android extension is not available
+            }
+        } else if (project.plugins.hasPlugin('org.jetbrains.kotlin.android')) {
+            // For non-Android Kotlin projects, just add the metadata flag
+            project.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+                kotlinOptions {
+                    freeCompilerArgs += ['-Xskip-metadata-version-check']
+                }
+            }
+        }
+    }
 }
 
 tasks.register("clean", Delete) {

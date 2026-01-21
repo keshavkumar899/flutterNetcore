@@ -14,6 +14,7 @@ import 'package:sizer/sizer.dart';
 
 import 'package:flutter/material.dart';
 import 'package:keshav_s_application2/core/app_export.dart';
+import 'package:smartech_base/smartech_base.dart';
 
 import '../presentation/need_help/NeedHelp.dart';
 import 'InAppWebview.dart';
@@ -233,6 +234,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                         ),
                         InkWell(
                           onTap: () {
+                            Smartech().trackEvent("html_page", {});
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => HtmlPAGE(),
                             ));
@@ -253,6 +255,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                         ),
                         InkWell(
                           onTap: () {
+                            Smartech().trackEvent("app_inbox_page", {});
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => SMTAppInboxScreen(),
                             ));
@@ -292,6 +295,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
 
                         InkWell(
                           onTap: () {
+                            Smartech().trackEvent("webview_page", {});
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => Inappwebview(),
                             ));

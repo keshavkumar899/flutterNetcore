@@ -1,6 +1,6 @@
-plugins{
+plugins {
     id 'com.android.application'
-    id 'kotlin-android'
+    id "org.jetbrains.kotlin.android"
     id "dev.flutter.flutter-gradle-plugin"
     id "com.google.gms.google-services"
 }
@@ -27,14 +27,9 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-//apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-//apply plugin: 'com.android.application'
-//apply plugin: 'com.google.gms.google-services'
-//apply plugin: 'kotlin-android'
-
 android {
     namespace = "com.keshavsapplication.app"
-    compileSdk 35
+    compileSdk 36
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -43,6 +38,11 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_21
         targetCompatibility JavaVersion.VERSION_21
+    }
+
+    kotlinOptions {
+        jvmTarget = '21'
+        freeCompilerArgs += ['-Xskip-metadata-version-check']
     }
 
 
@@ -74,14 +74,15 @@ flutter {
 
 dependencies {
     implementation "androidx.multidex:multidex:2.0.1"
-    implementation platform('com.google.firebase:firebase-bom:33.9.0')
-    implementation 'com.google.firebase:firebase-analytics:22.2.0'
+    implementation platform('com.google.firebase:firebase-bom:34.8.0')
+    implementation 'com.google.firebase:firebase-analytics:23.0.0'
     api "com.netcore.android:smartech-sdk:${SMARTECH_BASE_SDK_VERSION}"
     api "com.netcore.android:smartech-push:${SMARTECH_PUSH_SDK_VERSION}"
     api "com.netcore.android:smartech-appinbox:${SMARTECH_APPINBOX_SDK_VERSION}"
 
-    implementation 'androidx.work:work-runtime-ktx:2.10.0'
-    implementation 'com.google.firebase:firebase-messaging-ktx:24.1.0'
-    implementation 'com.guardsquare:proguard-annotations:7.0.0' // or the latest version
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3' // or the latest version
+    implementation 'androidx.work:work-runtime-ktx:2.11.0'
+    implementation 'com.google.firebase:firebase-messaging-ktx:24.1.2'
+    // Removed explicit proguard-annotations dependency to avoid conflict with Razorpay's bundled version
+    // Razorpay core includes proguard annotations, so we use that version
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2' // or the latest version
 }
