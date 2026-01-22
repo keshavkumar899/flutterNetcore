@@ -43,8 +43,16 @@ class _ProfileOneScreenState extends State<ProfileOneScreen> {
 
   @override
   void initState() {
-    getAppInboxMessageCount();
     super.initState();
+    getAppInboxMessageCount();
+    //for(int i =0;i<5;i++){
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
+      Smartech().trackEvent("profile_screen", {"login":"yes"});
+    });
+      // Smartech().trackEvent("profile_screen", {"login":"yes"});
+      print('Epoch time Profile Screen logged in: ${DateTime.now().millisecondsSinceEpoch}');
+
+    //}
   }
 
   Future getAppInboxMessageCount({String? smtAppInboxMessageType}) async {

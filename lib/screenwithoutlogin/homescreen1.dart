@@ -54,6 +54,7 @@ class HomeScreen1 extends StatefulWidget {
 class _HomeScreen1State extends State<HomeScreen1> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   var mobileNumber;
+  var isLoggedIn;
 
   Future<homes.HomeModel>? home;
   List<homes.HomeData> homelist = [];
@@ -166,8 +167,18 @@ class _HomeScreen1State extends State<HomeScreen1> {
 
   @override
   void initState() {
+    super.initState();
     fetchUser();
     Smartech().setUserIdentity(mobileNumber??"");
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
+      Smartech().trackEvent("home_page", {"login":isLoggedIn});
+    });
+    // print(DateTime.now().millisecondsSinceEpoch);
+    // for(int i =0;i<5;i++){
+      print('Epoch time Home screen: ${DateTime.now().millisecondsSinceEpoch}');
+
+    // }
     home = getdashboard();
     category = getCategory();
     category!.then((value) {
@@ -199,7 +210,6 @@ class _HomeScreen1State extends State<HomeScreen1> {
     ).then((value) {
       inboxList = value!;
     });
-    super.initState();
   }
 
   List images = [
@@ -228,7 +238,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
   int silderIndex = 0;
   fetchUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool? isLoggedIn = prefs.getBool("isLoggedIn");
+    isLoggedIn = prefs.getBool("isLoggedIn");
     mobileNumber = prefs.getString("mobileNumber");
     print("$mobileNumber is hot");
   }

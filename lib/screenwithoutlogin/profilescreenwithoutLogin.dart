@@ -33,17 +33,25 @@ class _ProfileScreenWithoutLogin extends State<ProfileScreenWithoutLogin> {
   // SettingVO settingVO;
   // String versionCode;
 
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   _requestData();
-  //   getVersion();
-  // }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
+      Smartech().trackEvent("profile_screen", {"login":"no"});
+    });
+    // for(int i =0;i<5;i++){
+      //Smartech().trackEvent("profile_screen", {"login":"no"});
+      print('Epoch time Profile Screen Not logged in: ${DateTime.now().millisecondsSinceEpoch}');
+
+    // }
+    // _requestData();
+    // getVersion();
+  }
 
   @override
   Widget build(BuildContext context) {
-    Smartech().trackEvent('profile_screen', {});
+    // Smartech().trackEvent('profile_screen', {});
     return SafeArea(
         child: Scaffold(
       backgroundColor: ColorConstant.whiteA700,
