@@ -33,6 +33,7 @@
 .pub/
 .git/
 /build/
+/.dart_tool/
 /ios/build/
 /ios/DerivedData/
 /ios/Pods/
