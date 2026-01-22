@@ -10,6 +10,7 @@
 .svn/
 /build/**/*.*
 
+
 # IntelliJ related
 *.iml
 *.ipr
@@ -30,6 +31,7 @@
 .packages
 .pub-cache/
 .pub/
+.git/
 /build/
 /ios/build/
 /ios/DerivedData/
