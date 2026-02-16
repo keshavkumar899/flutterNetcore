@@ -3,34 +3,35 @@ PODS:
     - Flutter
   - audio_session (0.0.1):
     - Flutter
+  - BranchSDK (3.13.3)
   - connectivity_plus (0.0.1):
     - Flutter
-  - Firebase/CoreOnly (12.6.0):
-    - FirebaseCore (~> 12.6.0)
-  - Firebase/Messaging (12.6.0):
+  - Firebase/CoreOnly (12.8.0):
+    - FirebaseCore (~> 12.8.0)
+  - Firebase/Messaging (12.8.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 12.6.0)
-  - firebase_core (4.3.0):
-    - Firebase/CoreOnly (= 12.6.0)
+    - FirebaseMessaging (~> 12.8.0)
+  - firebase_core (4.4.0):
+    - Firebase/CoreOnly (= 12.8.0)
     - Flutter
-  - firebase_messaging (16.1.0):
-    - Firebase/Messaging (= 12.6.0)
+  - firebase_messaging (16.1.1):
+    - Firebase/Messaging (= 12.8.0)
     - firebase_core
     - Flutter
-  - FirebaseCore (12.6.0):
-    - FirebaseCoreInternal (~> 12.6.0)
+  - FirebaseCore (12.8.0):
+    - FirebaseCoreInternal (~> 12.8.0)
     - GoogleUtilities/Environment (~> 8.1)
     - GoogleUtilities/Logger (~> 8.1)
-  - FirebaseCoreInternal (12.6.0):
+  - FirebaseCoreInternal (12.8.0):
     - "GoogleUtilities/NSData+zlib (~> 8.1)"
-  - FirebaseInstallations (12.6.0):
-    - FirebaseCore (~> 12.6.0)
+  - FirebaseInstallations (12.8.0):
+    - FirebaseCore (~> 12.8.0)
     - GoogleUtilities/Environment (~> 8.1)
     - GoogleUtilities/UserDefaults (~> 8.1)
     - PromisesObjC (~> 2.4)
-  - FirebaseMessaging (12.6.0):
-    - FirebaseCore (~> 12.6.0)
-    - FirebaseInstallations (~> 12.6.0)
+  - FirebaseMessaging (12.8.0):
+    - FirebaseCore (~> 12.8.0)
+    - FirebaseInstallations (~> 12.8.0)
     - GoogleDataTransport (~> 10.1)
     - GoogleUtilities/AppDelegateSwizzler (~> 8.1)
     - GoogleUtilities/Environment (~> 8.1)
@@ -38,6 +39,9 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 8.1)
     - nanopb (~> 3.30910.0)
   - Flutter (1.0.0)
+  - flutter_branch_sdk (9.0.0):
+    - BranchSDK (~> 3.13.0)
+    - Flutter
   - flutter_downloader (0.0.1):
     - Flutter
   - flutter_inappwebview_ios (0.0.1):
@@ -89,9 +93,6 @@ PODS:
   - OrderedSet (6.0.3)
   - package_info_plus (0.4.5):
     - Flutter
-  - path_provider_foundation (0.0.1):
-    - Flutter
-    - FlutterMacOS
   - permission_handler_apple (9.3.0):
     - Flutter
   - PromisesObjC (2.4.0)
@@ -104,7 +105,7 @@ PODS:
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - Smartech-iOS-SDK (3.7.3)
+  - Smartech-iOS-SDK (3.8.0)
   - smartech_appinbox (1.0.0):
     - Flutter
     - Smartech-iOS-SDK
@@ -119,11 +120,11 @@ PODS:
   - smartech_push (1.0.0):
     - Flutter
     - SmartPush-iOS-SDK
-  - SmartechAppInbox-iOS-SDK (3.5.9)
-  - SmartechNudges (9.0.27):
+  - SmartechAppInbox-iOS-SDK (3.6.0)
+  - SmartechNudges (9.0.28):
     - Smartech-iOS-SDK (>= 3.7.3)
-  - SmartPush-iOS-SDK (3.5.7):
-    - Smartech-iOS-SDK (>= 3.7.2)
+  - SmartPush-iOS-SDK (3.5.8):
+    - Smartech-iOS-SDK (>= 3.7.4)
   - sqflite_darwin (0.0.4):
     - Flutter
     - FlutterMacOS
@@ -145,13 +146,13 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
+  - flutter_branch_sdk (from `.symlinks/plugins/flutter_branch_sdk/ios`)
   - flutter_downloader (from `.symlinks/plugins/flutter_downloader/ios`)
   - flutter_inappwebview_ios (from `.symlinks/plugins/flutter_inappwebview_ios/ios`)
   - flutter_web_browser (from `.symlinks/plugins/flutter_web_browser/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/darwin`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
-  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - razorpay_flutter (from `.symlinks/plugins/razorpay_flutter/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
@@ -169,6 +170,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - BranchSDK
     - Firebase
     - FirebaseCore
     - FirebaseCoreInternal
@@ -199,6 +201,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_messaging/ios"
   Flutter:
     :path: Flutter
+  flutter_branch_sdk:
+    :path: ".symlinks/plugins/flutter_branch_sdk/ios"
   flutter_downloader:
     :path: ".symlinks/plugins/flutter_downloader/ios"
   flutter_inappwebview_ios:
@@ -211,8 +215,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/just_audio/darwin"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
-  path_provider_foundation:
-    :path: ".symlinks/plugins/path_provider_foundation/darwin"
   permission_handler_apple:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
   razorpay_flutter:
@@ -241,15 +243,17 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   app_links: a754cbec3c255bd4bbb4d236ecc06f28cd9a7ce8
   audio_session: 9bb7f6c970f21241b19f5a3658097ae459681ba0
+  BranchSDK: 19a6e97115350db916a57823c7f6ed96d1e70e46
   connectivity_plus: cb623214f4e1f6ef8fe7403d580fdad517d2f7dd
-  Firebase: a451a7b61536298fd5cbfe3a746fd40443a50679
-  firebase_core: ba00a168e719694f38960502ceb560285603d073
-  firebase_messaging: bf0e29321927edc02a563c984dbfa5b063864b15
-  FirebaseCore: 0e38ad5d62d980a47a64b8e9301ffa311457be04
-  FirebaseCoreInternal: 69bf1306a05b8ac43004f6cc1f804bb7b05b229e
-  FirebaseInstallations: 631b38da2e11a83daa4bfb482f79d286a5dfa7ad
-  FirebaseMessaging: a61bc42dcab3f7a346d94bbb54dab2c9435b18b2
+  Firebase: 9a58fdbc9d8655ed7b79a19cf9690bb007d3d46d
+  firebase_core: ee30637e6744af8e0c12a6a1e8a9718506ec2398
+  firebase_messaging: 343de01a8d3e18b60df0c6d37f7174c44ae38e02
+  FirebaseCore: 0dbad74bda10b8fb9ca34ad8f375fb9dd3ebef7c
+  FirebaseCoreInternal: fe5fa466aeb314787093a7dce9f0beeaad5a2a21
+  FirebaseInstallations: 6a14ab3d694ebd9f839c48d330da5547e9ca9dc0
+  FirebaseMessaging: 7f42cfd10ec64181db4e01b305a613791c8e782c
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  flutter_branch_sdk: 832f8173c0194f52da2ccdce500bb0c562357838
   flutter_downloader: 78da0da1084e709cbfd3b723c7ea349c71681f09
   flutter_inappwebview_ios: b89ba3482b96fb25e00c967aae065701b66e9b99
   flutter_web_browser: 68b27d2c4773b059cef19e12c890cb204518d3c3
@@ -260,21 +264,20 @@ SPEC CHECKSUMS:
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
   package_info_plus: af8e2ca6888548050f16fa2f1938db7b5a5df499
-  path_provider_foundation: bb55f6dbba17d0dccd6737fe6f7f34fbd0376880
   permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   razorpay-core-pod: ef0309dbf8e3e5a1330f6cad89dcf9226d8ef758
   razorpay-pod: a9cb6e158aee8754053b147008eff6b4897789c8
   razorpay_flutter: 0e98e4fcaae27ad50e011d85f66d85e0a008754a
   shared_preferences_foundation: 7036424c3d8ec98dfe75ff1667cb0cd531ec82bb
-  Smartech-iOS-SDK: fd53918d27411ec17aa9843b473f3e34e2070dc5
+  Smartech-iOS-SDK: 0922860b7b8ee3a6228e4da1613836870f9bf40d
   smartech_appinbox: eca08565a6fa37e384a54dff4b063d49a63657ad
   smartech_base: f24a62060405604f108f2e06dea603e573a09b21
   smartech_nudges: 849f26b409e8473ca3573f0f5485bd4111117129
   smartech_push: bd907255309b5aa88a4a1df794e0869a5c46c99d
-  SmartechAppInbox-iOS-SDK: e6acedc333cf18f7d0e8806451f16fbe33c15740
-  SmartechNudges: 4be812b6f7ffd0980c9bae4cc5ab10a700867329
-  SmartPush-iOS-SDK: 4b4b814db0760ee9a061c97b7fe1fde1f5367637
+  SmartechAppInbox-iOS-SDK: d5eaff85ffea1dd14901af4b35523b80957c57f8
+  SmartechNudges: 101a680f8fb330749813a14b40dd48e9fb0c1870
+  SmartPush-iOS-SDK: a153ddc6488d7ee40bfa2661bb91f9f07d447b11
   sqflite_darwin: 20b2a3a3b70e43edae938624ce550a3cbf66a3d0
   url_launcher_ios: 7a95fa5b60cc718a708b8f2966718e93db0cef1b
   video_player_avfoundation: dd410b52df6d2466a42d28550e33e4146928280a

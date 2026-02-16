@@ -53,6 +53,7 @@ class _ProfileScreenWithoutLogin extends State<ProfileScreenWithoutLogin> {
   Widget build(BuildContext context) {
     // Smartech().trackEvent('profile_screen', {});
     return SafeArea(
+        key: ValueKey("profile_hsl_ignore"),
         child: Scaffold(
       backgroundColor: ColorConstant.whiteA700,
       appBar: CustomAppBar(

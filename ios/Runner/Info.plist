@@ -2,27 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-     <key>UIApplicationSceneManifest</key>
-     <dict>
-      <key>UIApplicationSupportsMultipleScenes</key>
-      <false/>
-      <key>UISceneConfigurations</key>
-      <dict>
-      <key>UIWindowSceneSessionRoleApplication</key>
-        <array>
-          <dict>
-            <key>UISceneClassName</key>
-            <string>UIWindowScene</string>
-            <key>UISceneDelegateClassName</key>
-            <string>FlutterSceneDelegate</string>
-            <key>UISceneConfigurationName</key>
-            <string>flutter</string>
-            <key>UISceneStoryboardFile</key>
-            <string>Main</string>
-          </dict>
-        </array>
-       </dict>
-     </dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -68,7 +47,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>savopen</string>
+				<string>fabfurni://resolve?url=https://elink.savmoney.me/vtrack?clientid=170681&amp;ul=...</string>
 			</array>
 		</dict>
 		<dict>
@@ -88,6 +67,13 @@
 	<false/>
 	<key>FlutterDeepLinkingEnabled</key>
 	<false/>
+	<key>HanselKeys</key>
+	<dict>
+		<key>HanselAppId</key>
+		<string>UJMDZOCJJF92T72LR3GUOVZ4F</string>
+		<key>HanselAppKey</key>
+		<string>WRAUGKWQFE620ERVV21NCU3PDM0B31UYL9GYOEDCCNOPWYZ11Q</string>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -116,13 +102,27 @@
 		<key>SmartechUseAdvId</key>
 		<false/>
 	</dict>
-    <key>HanselKeys</key>
-    <dict>
-        <key>HanselAppId</key>
-        <string>UJMDZOCJJF92T72LR3GUOVZ4F</string>
-        <key>HanselAppKey</key>
-        <string>WRAUGKWQFE620ERVV21NCU3PDM0B31UYL9GYOEDCCNOPWYZ11Q</string>
-    </dict>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneClassName</key>
+					<string>UIWindowScene</string>
+					<key>UISceneConfigurationName</key>
+					<string>flutter</string>
+					<key>UISceneDelegateClassName</key>
+					<string>FlutterSceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
@@ -150,5 +150,16 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>branch_key</key>
+	<dict>
+		<key>live</key>
+		<string>key_live_YOUR_BRANCH_KEY_LIVE</string>
+		<key>test</key>
+		<string>key_test_YOUR_BRANCH_KEY_TEST</string>
+	</dict>
+	<key>branch_universal_link_domains</key>
+	<array>
+		<string>smartechapp.app.link</string>
+	</array>
 </dict>
 </plist>

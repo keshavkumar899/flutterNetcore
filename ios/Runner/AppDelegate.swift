@@ -99,11 +99,24 @@ import Firebase
        }
        
         override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+            // Branch SDK handles URI scheme links automatically via flutter_branch_sdk plugin
+            // The plugin uses method swizzling to intercept deep links
+            
             let handleBySmartech = Smartech.sharedInstance().application(app, open: url, options: options);
            if(!handleBySmartech) {
                //Handle the url by the app
+               // Call super to allow Flutter plugins (including Branch) to handle the URL
+               return super.application(app, open: url, options: options)
            }
            return true;
+
+       }
+       
+       // MARK: - Universal Links (handles terminated state for Branch deep links)
+       override func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+           // Forward to super - flutter_branch_sdk plugin will handle Branch Universal Links
+           // This is critical for terminated state deep linking to work
+           return super.application(application, continue: userActivity, restorationHandler: restorationHandler)
        }
         func onLaunchURL(URLString: String!) {
           

@@ -116,6 +116,7 @@ class _StoreScreen1State extends State<StoreScreen1> {
       Smartech().trackEvent("store_page", {"login":"no"});
     });
     return SafeArea(
+      key: ValueKey("storeScreen_hsl_ignore"),
         child: Scaffold(
             key: _scaffoldKey,
             backgroundColor: ColorConstant.whiteA700,

@@ -45,6 +45,7 @@ import '../widgets/app_bar/appbar_title.dart';
 import 'ClickAfterSlectTabFurnitureScreen1.dart';
 import 'NewProductScreen1.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:keshav_s_application2/main.dart' show PendingDeepLink;
 
 class HomeScreen1 extends StatefulWidget {
   @override
@@ -209,6 +210,11 @@ class _HomeScreen1State extends State<HomeScreen1> {
     SmartechAppinbox().getAppInboxMessagesByApiCall(messageLimit: 10, smtInboxDataType: 'all', categoryList: [],
     ).then((value) {
       inboxList = value!;
+    });
+    
+    // Check for pending deep link and show dialog when HomeScreen is loaded
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      PendingDeepLink.showPendingDialogIfExists(context);
     });
   }
 
