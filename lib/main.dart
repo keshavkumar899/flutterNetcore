@@ -146,7 +146,8 @@ void main() async {
   // if(Platform.isIOS){
   //   var mapiOS={
   //     "name":"keshav",
-  //     "update":"sent by iOS platform"
+  //     "update":"sent by iOS platform",
+  //     "platforms_touchpoint":"[iOS, Android, Desktop, Mobile Web, CTV, ATV, Apple TV]",
   //   };
   //   print(mapiOS);
   //   Smartech().updateUserProfile(mapiOS);

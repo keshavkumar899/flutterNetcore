@@ -463,6 +463,13 @@ class _HomeScreen1State extends State<HomeScreen1> {
                             previewImageAsset: images[index],
                             onTap: () {
                               // print(homelist[index].id);
+                              // var mapiOS={
+                              //   "name":"keshav",
+                              //   "update":"sent by iOS platform",
+                              //   "platforms_touchpoint":"[iOS, Android, Desktop, Mobile Web, CTV, ATV, Apple TV]",
+                              // };
+                              // print(mapiOS);
+                              // Smartech().updateUserProfile(mapiOS);
                               categorylist[index].subCategory!.length != 0
                                   ? pushScreen(
                                       context,

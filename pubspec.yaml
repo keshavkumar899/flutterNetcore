@@ -22,6 +22,7 @@ dependencies:
   html:
   #  package_info:
   package_info_plus: ^9.0.0
+  riverpod: ^3.2.1
   cached_network_image: ^3.2.1
   flutter_svg: ^2.0.9
   flutter_svg_provider: ^1.0.3
