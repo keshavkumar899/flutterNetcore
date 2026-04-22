@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -38,8 +39,8 @@ TYPE_ALIASES = {
     "object": "object",
     "null": "null",
     "none": "null",
-    "date": "string",
-    "datetime": "string",
+    "date": "date",
+    "datetime": "date",
     "any": "any",
 }
 
@@ -52,6 +53,7 @@ DISPLAY_TYPE_NAMES = {
     "float": "Float",
     "number": "Number",
     "null": "Null",
+    "date": "Date",
     "any": "Any",
 }
 
@@ -137,6 +139,13 @@ def normalize_expected_type(type_name: str) -> str:
     return normalized
 
 
+def normalize_expected_key(key_name: str) -> str:
+    cleaned = key_name.strip().strip('"').strip("'").strip("`")
+    if not cleaned:
+        raise ValueError(f"Invalid empty key name from '{key_name}'.")
+    return cleaned
+
+
 def parse_expected_schema(schema_csv: str) -> dict[str, str]:
     """
     Parse expected schema in either format:
@@ -158,9 +167,7 @@ def parse_expected_schema(schema_csv: str) -> dict[str, str]:
                     f"Invalid entry '{entry}'. Use key:type format, e.g. media_id:str"
                 )
             key, expected_type = entry.split(":", 1)
-            key = key.strip()
-            if not key:
-                raise ValueError(f"Invalid empty key in entry '{entry}'.")
+            key = normalize_expected_key(key)
             parsed[key] = normalize_expected_type(expected_type)
         return parsed
 
@@ -172,7 +179,7 @@ def parse_expected_schema(schema_csv: str) -> dict[str, str]:
         )
 
     for idx in range(0, len(tokens), 2):
-        key = tokens[idx]
+        key = normalize_expected_key(tokens[idx])
         expected_type = tokens[idx + 1]
         parsed[key] = normalize_expected_type(expected_type)
 
@@ -187,12 +194,27 @@ def parse_expected_keys(keys_csv: str) -> list[str]:
     - key1 key2 key3
     - key1, key2 key3
     """
-    keys = [chunk.strip() for chunk in re.split(r"[,\s]+", keys_csv) if chunk.strip()]
+    keys = [
+        normalize_expected_key(chunk)
+        for chunk in re.split(r"[,\s]+", keys_csv)
+        if chunk.strip()
+    ]
     if not keys:
         raise ValueError("Expected keys list is empty.")
 
     # Keep original order while removing duplicates.
     return list(dict.fromkeys(keys))
+
+
+def is_datetime_string(value: str) -> bool:
+    text = value.strip()
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}", text):
+        return False
+    try:
+        datetime.strptime(text, "%Y-%m-%d %H:%M:%S")
+    except ValueError:
+        return False
+    return True
 
 
 def detect_type(value: Any) -> str:
@@ -205,6 +227,8 @@ def detect_type(value: Any) -> str:
     if isinstance(value, float):
         return "float"
     if isinstance(value, str):
+        if is_datetime_string(value):
+            return "date"
         return "string"
     if isinstance(value, list):
         return "array"
@@ -228,6 +252,11 @@ def matches_type(value: Any, expected: str) -> bool:
         if isinstance(value, int) and not isinstance(value, bool):
             return value in {0, 1}
         return False
+    if expected == "date":
+        return isinstance(value, str) and is_datetime_string(value)
+    if expected == "string":
+        # Date values are still strings and should pass string validations.
+        return actual in {"string", "date"}
     return actual == expected
 
 
