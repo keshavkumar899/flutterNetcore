@@ -110,9 +110,9 @@ HTML_PAGE = """<!doctype html>
     <label for="log_text">Log text</label>
     <textarea id="log_text" name="log_text" rows="8" placeholder="Paste full log line here...">{log_text}</textarea>
 
-    <label for="expected">Expected (keys + types)</label>
+    <label for="expected">Expected (keys + data type)</label>
     <input id="expected" name="expected" type="text" value="{expected}" placeholder="media_id:str,video_type:int OR media_id String video_type String" />
-    <div class="hint">Used in "Keys + Types" mode. Supports comma style (key:type) and sheet style (key type key2 type2).</div>
+    <div class="hint">Used in "Keys + Data Type" mode. Supports comma style (key:type) and sheet style (key type key2 type2).</div>
 
     <label for="expected_keys">Expected keys only (key1,key2,key3)</label>
     <input id="expected_keys" name="expected_keys" type="text" value="{expected_keys}" placeholder="media_id,video_type,program_genres" />
