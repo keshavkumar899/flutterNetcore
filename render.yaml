@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: payload-validator
+    runtime: python
+    plan: free
+    buildCommand: "python --version"
+    startCommand: "HOST=0.0.0.0 python payload_validator_webapp.py"
