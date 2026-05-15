@@ -6,6 +6,8 @@ Example:
 python payload_log_validator.py \
   --log '🟩 SMTLogger(INFO) SMTTrackEventRequest: Single Event: {"payload":{"video_type":341,"premium_video":"false"}} -[SMTTrackEventRequest ...]' \
   --expected 'video_type:int,premium_video:str'
+  # text and textline are aliases for str/string
+  --expected 'title:text,description:textline'
 
 python payload_log_validator.py \
   --log '🟩 SMTLogger(INFO) SMTTrackEventRequest: Single Event: {"payload":{"video_type":341,"premium_video":"false"}} -[SMTTrackEventRequest ...]' \
@@ -25,6 +27,8 @@ from typing import Any
 TYPE_ALIASES = {
     "str": "string",
     "string": "string",
+    "text": "string",
+    "textline": "string",
     "int": "integer",
     "integer": "integer",
     "float": "float",
@@ -348,7 +352,8 @@ def parse_args() -> argparse.Namespace:
         "--expected",
         help=(
             "Expected schema in either format: "
-            "'media_id:str,video_type:int' OR 'media_id String video_type String'"
+            "'media_id:str,video_type:int' OR 'title:text' OR 'media_id String video_type String' "
+            "(str/string/text/textline for strings)"
         ),
     )
     parser.add_argument(

@@ -170,10 +170,12 @@ class _HomeScreen1State extends State<HomeScreen1> {
   void initState() {
     super.initState();
     fetchUser();
-    Smartech().setUserIdentity(mobileNumber??"");
+    // Smartech().setUserIdentity(mobileNumber??"");
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
-      Smartech().trackEvent("home_page", {"login":isLoggedIn});
+      Smartech().trackEvent("home_page",{}
+         // {"login":isLoggedIn}
+      );
     });
     // print(DateTime.now().millisecondsSinceEpoch);
     // for(int i =0;i<5;i++){
@@ -416,7 +418,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
               color: Colors.purple,
               onRefresh: () async {
                 fetchUser();
-                Smartech().setUserIdentity(mobileNumber??"");
+                //Smartech().setUserIdentity(mobileNumber??"");
                 getFMvalues();
                 home = getdashboard();
                 category = getCategory();

@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    Smartech().trackEvent("screen_viewed", {});
+    Smartech().trackEvent("home_page", {});
     home = getdashboard();
     category = getCategory();
     category!.then((value) {
