@@ -195,7 +195,14 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return PopScope(
+      onPopInvokedWithResult: (bool didPop, Object? result) {
+        if (didPop) {
+          print("popped from app inbox screen");
+          Smartech().trackEvent("popped_from_app_inbox_screen", {});
+        }
+      },
+      child: Scaffold(
       appBar: AppBar(
         leading: InkWell(
           onTap: () {
@@ -598,6 +605,7 @@ class _SMTAppInboxScreenState extends State<SMTAppInboxScreen> {
           ))
         ],
       ),
+    ),
     );
   }
 }

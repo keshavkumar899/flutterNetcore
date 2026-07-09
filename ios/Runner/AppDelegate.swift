@@ -55,6 +55,22 @@ import Firebase
   func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
     GeneratedPluginRegistrant.register(with: engineBridge.pluginRegistry)
   }
+    override func application(
+        _ application: UIApplication,
+        configurationForConnecting connectingSceneSession: UISceneSession,
+        options: UIScene.ConnectionOptions
+    ) -> UISceneConfiguration {
+
+        print("Scene connection created")
+        return UISceneConfiguration(
+            name: "Default Configuration",
+            sessionRole: connectingSceneSession.role
+        )
+    }
+    
+    override func applicationDidBecomeActive(_ application: UIApplication) {
+        print("App Active")
+    }
     
     override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
            
@@ -70,7 +86,7 @@ import Firebase
        //MARK:- UNUserNotificationCenterDelegate Methods
        override func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
            SmartPush.sharedInstance().willPresentForegroundNotification(notification)
-           completionHandler([.alert, .badge, .sound])
+           completionHandler([.banner, .badge, .sound])
        }
        
        override func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {

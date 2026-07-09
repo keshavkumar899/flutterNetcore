@@ -18,10 +18,9 @@ dependencies:
   connectivity_plus: ^7.0.0
   fluttertoast:
   razorpay_flutter: ^1.4.0
-  flutter_web_browser: ^0.17.3
   html:
   #  package_info:
-  package_info_plus: ^9.0.0
+  package_info_plus: ^10.2.0
   riverpod: ^3.2.1
   cached_network_image: ^3.2.1
   flutter_svg: ^2.0.9
@@ -36,7 +35,7 @@ dependencies:
   sizer: ^3.0.3
   light_modal_bottom_sheet: ^0.0.5
   dio: ^5.1.1
-  google_fonts: ^7.0.2
+  google_fonts: ^8.1.0
   rounded_loading_button_plus: ^3.0.1
   firebase_core:
   firebase_messaging: ^16.0.0
@@ -44,8 +43,8 @@ dependencies:
   smartech_push:
   smartech_nudges:
   smartech_appinbox:
-  video_player: ^2.6.1
-  chewie: ^1.9.0
+#  video_player: ^2.6.1
+#  chewie: ^1.9.0
   custom_pop_up_menu: ^1.2.4
   visibility_detector: ^0.4.0+2
   just_audio: ^0.10.5
@@ -57,8 +56,9 @@ dependencies:
   flutter_inappwebview: ^6.1.5
   permission_handler:
   path_provider:
+  provider: ^6.1.5+1
   file_utils:
-  flutter_downloader:
+#  flutter_downloader:
   icon_badge: ^1.0.0
 
 #dependency_overrides:

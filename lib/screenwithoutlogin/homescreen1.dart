@@ -172,11 +172,11 @@ class _HomeScreen1State extends State<HomeScreen1> {
     fetchUser();
     // Smartech().setUserIdentity(mobileNumber??"");
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
-      Smartech().trackEvent("home_page",{}
-         // {"login":isLoggedIn}
-      );
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
+    //   Smartech().trackEvent("home_page",{}
+    //      // {"login":isLoggedIn}
+    //   );
+    // });
     // print(DateTime.now().millisecondsSinceEpoch);
     // for(int i =0;i<5;i++){
       print('Epoch time Home screen: ${DateTime.now().millisecondsSinceEpoch}');
@@ -298,13 +298,13 @@ class _HomeScreen1State extends State<HomeScreen1> {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      bool? isLoggedIn = prefs.getBool("isLoggedIn");
-      print(isLoggedIn);
-      // Smartech().trackEvent("home_page", {"login":isLoggedIn});
+  // WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
+  //     SharedPreferences prefs = await SharedPreferences.getInstance();
+  //     bool? isLoggedIn = prefs.getBool("isLoggedIn");
+  //     print(isLoggedIn);
+      Smartech().trackEvent("home_page", {});
       // Smartech().getDeviceGuid();
-    });
+     //});
     double baseWidth = 428;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
@@ -464,6 +464,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                             title: imagesName[index],
                             previewImageAsset: images[index],
                             onTap: () {
+                               Smartech().trackEvent("home_page", {});
                               // print(homelist[index].id);
                               // var mapiOS={
                               //   "name":"keshav",

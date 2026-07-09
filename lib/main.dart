@@ -153,7 +153,7 @@ void main() async {
   //   Smartech().updateUserProfile(mapiOS);
   // }
 
-  //Smartech().setUserIdentity('9873103345');
+  // Smartech().login('pid1816735');
   NetcorePX.instance
       .registerPxActionListener('action', _PxActionListenerImpl());
   NetcorePX.instance.registerPxDeeplinkListener(_PxDeeplinkListenerImpl());

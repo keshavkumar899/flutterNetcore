@@ -63,9 +63,10 @@ class _SMTVideoNotificationViewState extends State<SMTVideoNotificationView> {
                     showDialog(
                         context: context,
                         builder: (BuildContext context) {
-                          return VideoPlayerDialog(
-                            videoUrl: widget.inbox.mediaUrl,
-                          );
+                          return Container();
+                          //   VideoPlayerDialog(
+                          //   videoUrl: widget.inbox.mediaUrl,
+                          // );
                         });
                   },
                   child: Container(

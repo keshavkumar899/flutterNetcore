@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    Smartech().trackEvent("home_page", {});
+    // Smartech().trackEvent("home_page", {});
     home = getdashboard();
     category = getCategory();
     category!.then((value) {
@@ -105,6 +105,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    //WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
+      // SharedPreferences prefs = await SharedPreferences.getInstance();
+      // bool? isLoggedIn = prefs.getBool("isLoggedIn");
+      // print(isLoggedIn);
+      Smartech().trackEvent("home_page", {});
+      // Smartech().getDeviceGuid();
+    // });
+
     double baseWidth = 428;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
@@ -238,6 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             previewImageAsset: homelist[index].image!,
                             onTap: () {
                               // print(homelist[index].id);
+                                Smartech().trackEvent("home_page", {});
                               categorylist[index].subCategory!.length != 0
                                   ? pushScreen(
                                       context,
