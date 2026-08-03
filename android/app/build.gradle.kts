@@ -7,7 +7,7 @@ plugins {
 android {
     namespace = "com.netcore.keshav_s_application2"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "30.0.15729638"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

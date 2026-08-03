@@ -8,9 +8,9 @@ import 'package:smartech_base/smartech_base.dart';
 
 const _smartechInitChannel = MethodChannel('fabfurni/smartech');
 
-/// Ensures native Smartech SDK is initialized on iOS before login/events.
+/// Ensures native Smartech SDK is initialized before login/events.
 Future<void> initializeNativeSmartechIfNeeded() async {
-  if (!Platform.isIOS) {
+  if (!Platform.isIOS && !Platform.isAndroid) {
     return;
   }
 
@@ -20,12 +20,10 @@ Future<void> initializeNativeSmartechIfNeeded() async {
 /// Initializes native Smartech (when needed) and logs in the user identity.
 /// Call this only after the app has saved isLoggedIn = true.
 Future<void> smartechLogin(String userIdentity) async {
-  if (!Platform.isIOS) {
-    await Smartech().login(userIdentity);
-    return;
+  if (Platform.isIOS || Platform.isAndroid) {
+    await initializeNativeSmartechIfNeeded();
   }
 
-  await initializeNativeSmartechIfNeeded();
   await Smartech().login(userIdentity);
 }
 

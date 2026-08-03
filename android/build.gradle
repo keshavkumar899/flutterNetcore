@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '2.2.0'
+    ext.kotlin_version = '2.2.20'
 }
 
 allprojects {
@@ -17,9 +17,9 @@ subprojects {
     // Force Kotlin version to 2.2.0 for all subprojects (including Flutter plugins)
     configurations.all {
         resolutionStrategy {
-            force 'org.jetbrains.kotlin:kotlin-stdlib:2.2.0'
-            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.2.0'
-            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.2.0'
+            force 'org.jetbrains.kotlin:kotlin-stdlib:2.2.20'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.2.20'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.2.20'
         }
     }
     
