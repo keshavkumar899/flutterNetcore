@@ -52,7 +52,7 @@ dependencies:
   #  flutter_web_browser:
   flutter_widget_from_html_core: ^0.17.0
   app_links: ^7.0.0
-  flutter_branch_sdk: ^9.0.0
+#  flutter_branch_sdk: ^9.0.0
   flutter_inappwebview: ^6.1.5
   permission_handler:
   path_provider:

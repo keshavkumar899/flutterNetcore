@@ -13,6 +13,8 @@ import 'package:smartech_appinbox/smartech_appinbox.dart';
 import 'package:smartech_base/smartech_base.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../core/utils/utils.dart';
+import '../../core/utils/utils.dart';
 import '../../screenwithoutlogin/homescreen1.dart';
 import '../../screenwithoutlogin/landingpage1.dart';
 import 'controller/splash_controller.dart';
@@ -41,8 +43,9 @@ class _SplashScreenState extends State<SplashScreen> {
       Map<String, dynamic> json1 = jsonDecode(prefs.getString('userData')!);
       var user1 = OtpModel.fromJson(json1);
       print(user1.data);
-      // Smartech().setUserIdentity(user1.data!.mobile!);
-      // Smartech().login(user1.data!.mobile!);
+      if (user1.data?.mobile != null) {
+        await smartechLogin(user1.data!.mobile!);
+      }
       Future.delayed(const Duration(milliseconds: 1500), () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => landingPage(user1.data!),
@@ -96,6 +99,7 @@ class _SplashScreenState extends State<SplashScreen> {
       var mobileNumber = prefs.getString("mobileNumber");
       print(mobileNumber);
       if (mobileNumber!=null && isLoggedIn != null && isLoggedIn) {
+        await smartechLogin(mobileNumber!);
         Future.delayed(const Duration(milliseconds: 1500), () {
           kIsWeb?
           pushWithoutNavBar(

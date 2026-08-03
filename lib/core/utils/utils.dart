@@ -1,6 +1,33 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smartech_base/smartech_base.dart';
+
+const _smartechInitChannel = MethodChannel('fabfurni/smartech');
+
+/// Ensures native Smartech SDK is initialized on iOS before login/events.
+Future<void> initializeNativeSmartechIfNeeded() async {
+  if (!Platform.isIOS) {
+    return;
+  }
+
+  await _smartechInitChannel.invokeMethod('initializeSmartechSDK');
+}
+
+/// Initializes native Smartech (when needed) and logs in the user identity.
+/// Call this only after the app has saved isLoggedIn = true.
+Future<void> smartechLogin(String userIdentity) async {
+  if (!Platform.isIOS) {
+    await Smartech().login(userIdentity);
+    return;
+  }
+
+  await initializeNativeSmartechIfNeeded();
+  await Smartech().login(userIdentity);
+}
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
   @override

@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:keshav_s_application2/core/utils/utils.dart';
 import 'package:keshav_s_application2/core/utils/color_constant.dart';
 import 'package:keshav_s_application2/core/utils/image_constant.dart';
 import 'package:keshav_s_application2/core/utils/size_utils.dart';
@@ -251,11 +252,11 @@ class _InappwebviewState extends State<Inappwebview>
                     _webViewController!.addJavaScriptHandler(
                         handlerName: 'login',
                         callback: (args) async {
-                          Smartech().login(args[0].toString());
                           SharedPreferences pref =
                               await SharedPreferences.getInstance();
                           pref.setString("mobileNumber", args[0].toString());
-                          pref.setBool("isLoggedIn", true);
+                          await pref.setBool("isLoggedIn", true);
+                          await smartechLogin(args[0].toString());
                           print(args);
                         });
 

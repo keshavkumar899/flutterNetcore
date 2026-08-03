@@ -3,7 +3,6 @@ PODS:
     - Flutter
   - audio_session (0.0.1):
     - Flutter
-  - BranchSDK (3.14.1)
   - connectivity_plus (0.0.1):
     - Flutter
   - Firebase/CoreOnly (12.15.0):
@@ -39,9 +38,6 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 8.1)
     - nanopb (~> 3.30910.0)
   - Flutter (1.0.0)
-  - flutter_branch_sdk (9.3.2):
-    - BranchSDK (~> 3.14.0)
-    - Flutter
   - flutter_inappwebview_ios (0.0.1):
     - Flutter
     - flutter_inappwebview_ios/Core (= 0.0.1)
@@ -92,7 +88,9 @@ PODS:
   - permission_handler_apple (9.4.8):
     - Flutter
   - PromisesObjC (2.4.1)
-  - razorpay-pod (1.5.4)
+  - razorpay-core-pod (1.0.7)
+  - razorpay-pod (1.5.5):
+    - razorpay-core-pod (= 1.0.7)
   - razorpay_flutter (1.1.10):
     - Flutter
     - razorpay-pod
@@ -136,7 +134,6 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
-  - flutter_branch_sdk (from `.symlinks/plugins/flutter_branch_sdk/ios`)
   - flutter_inappwebview_ios (from `.symlinks/plugins/flutter_inappwebview_ios/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/darwin`)
@@ -156,7 +153,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - BranchSDK
     - Firebase
     - FirebaseCore
     - FirebaseCoreInternal
@@ -167,6 +163,7 @@ SPEC REPOS:
     - nanopb
     - OrderedSet
     - PromisesObjC
+    - razorpay-core-pod
     - razorpay-pod
     - Smartech-iOS-SDK
     - SmartechAppInbox-iOS-SDK
@@ -186,8 +183,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_messaging/ios"
   Flutter:
     :path: Flutter
-  flutter_branch_sdk:
-    :path: ".symlinks/plugins/flutter_branch_sdk/ios"
   flutter_inappwebview_ios:
     :path: ".symlinks/plugins/flutter_inappwebview_ios/ios"
   fluttertoast:
@@ -220,7 +215,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   app_links: a754cbec3c255bd4bbb4d236ecc06f28cd9a7ce8
   audio_session: 9bb7f6c970f21241b19f5a3658097ae459681ba0
-  BranchSDK: fa4247f4a8878471e5efc268878497507184a1e2
   connectivity_plus: cb623214f4e1f6ef8fe7403d580fdad517d2f7dd
   Firebase: a8539b633d474fbeb654c7043f9c1649e274045b
   firebase_core: fc23178af8ea070194d09031ae4198a9608a3d22
@@ -230,7 +224,6 @@ SPEC CHECKSUMS:
   FirebaseInstallations: eb29ccbf64eaedf86fd5b2ccc7fabde567660b52
   FirebaseMessaging: 40017d7bc8457ee295b0f41d480a80fdabc9994e
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
-  flutter_branch_sdk: b216b407e9616d207031ef9b15cc55fd8b506801
   flutter_inappwebview_ios: b89ba3482b96fb25e00c967aae065701b66e9b99
   fluttertoast: fe6790210fdba20801685be946e3a2124b72eef5
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
@@ -241,7 +234,8 @@ SPEC CHECKSUMS:
   package_info_plus: af8e2ca6888548050f16fa2f1938db7b5a5df499
   permission_handler_apple: 92d754bbaa7361d436db2d6c3c1c2a0fdcec462e
   PromisesObjC: 752c3227f599e3467650e47ea36f433eeb10c273
-  razorpay-pod: 3ba80419f3315352d6ffa336a194ad95ab249700
+  razorpay-core-pod: c7f3ac3d214c1a7fac4e9a59c1de7eac02130573
+  razorpay-pod: 62c4e6efcf77674e93a6a82dac0f3e24f69c7515
   razorpay_flutter: 0e98e4fcaae27ad50e011d85f66d85e0a008754a
   shared_preferences_foundation: 7036424c3d8ec98dfe75ff1667cb0cd531ec82bb
   Smartech-iOS-SDK: 6362c321c737f5258185450bf9b1a63951160bb4

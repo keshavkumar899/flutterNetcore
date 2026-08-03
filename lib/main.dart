@@ -25,7 +25,7 @@ import 'package:smartech_nudges/netcore_px.dart';
 import 'package:smartech_nudges/px_widget.dart';
 import 'package:smartech_nudges/tracker/route_obersver.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_branch_sdk/flutter_branch_sdk.dart';
+// import 'package:flutter_branch_sdk/flutter_branch_sdk.dart';
 import 'core/app_export.dart';
 //import 'package:location/location.dart';
 import 'dart:io' show Platform;
@@ -530,7 +530,7 @@ class _MyAppState extends State<MyApp> {
   
   /// Initialize Branch SDK - init() must complete before listSession()
   Future<void> initBranch() async {
-    await FlutterBranchSdk.init();
+    // await FlutterBranchSdk.init();
     initBranchSession();
   }
 
@@ -618,17 +618,17 @@ class _MyAppState extends State<MyApp> {
 
   /// Initialize Branch SDK and listen for deep link data
   void initBranchSession() {
-    _branchSubscription = FlutterBranchSdk.listSession().listen((data) {
-      debugPrint('Branch Deep Link Data: $data');
-      
-      if (data.containsKey('+clicked_branch_link') &&
-          data['+clicked_branch_link'] == true) {
-        // A Branch link was clicked - handle the deep link
-        handleBranchDeepLink(data);
-      }
-    }, onError: (error) {
-      debugPrint('Branch InitSession error: ${error.toString()}');
-    });
+    // _branchSubscription = FlutterBranchSdk.listSession().listen((data) {
+    //   debugPrint('Branch Deep Link Data: $data');
+    //
+    //   if (data.containsKey('+clicked_branch_link') &&
+    //       data['+clicked_branch_link'] == true) {
+    //     // A Branch link was clicked - handle the deep link
+    //     handleBranchDeepLink(data);
+    //   }
+    // }, onError: (error) {
+    //   debugPrint('Branch InitSession error: ${error.toString()}');
+    // });
 
     // Uncomment the line below to validate your Branch integration during development
     // FlutterBranchSdk.validateSDKIntegration();

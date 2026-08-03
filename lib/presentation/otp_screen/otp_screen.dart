@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartech_base/smartech_base.dart';
 import 'package:smartech_nudges/netcore_px.dart';
 
+import '../../core/utils/utils.dart';
 import '../../screenwithoutlogin/landingpageafterlogin.dart';
 import 'controller/otp_controller.dart';
 import 'dart:convert';
@@ -79,7 +80,7 @@ class _OtpScreenState extends State<OtpScreen> {
         String user = jsonEncode(jsonObject);
         print(user.toString());
         pref.setString('userData', user);
-        pref.setBool("isLoggedIn", true);
+        await pref.setBool("isLoggedIn", true);
         // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         //   behavior: SnackBarBehavior.floating,
         //   margin: EdgeInsets.only(top: 100.0),
@@ -93,7 +94,7 @@ class _OtpScreenState extends State<OtpScreen> {
         Map<String, dynamic> json1 = jsonDecode(pref.getString('userData')!);
         var user1 = OtpModel.fromJson(json1);
         print(user1.data);
-        Smartech().login(widget.mobileNumber);
+        await smartechLogin(widget.mobileNumber);
         print(OtpModel.fromJson(jsonObject).data!.otps!);
         Navigator.of(context).pushAndRemoveUntil<dynamic>(
           MaterialPageRoute(
@@ -327,8 +328,8 @@ class _OtpScreenState extends State<OtpScreen> {
 
                       SharedPreferences pref = await SharedPreferences.getInstance();
                       pref.setString("mobileNumber", widget.mobileNumber);
-                      pref.setBool("isLoggedIn", true);
-                      Smartech().login(widget.mobileNumber);
+                      await pref.setBool("isLoggedIn", true);
+                      await smartechLogin(widget.mobileNumber);
                       // Smartech().getUserIdentity()
                       Smartech().updateUserProfile({
                         "NAME":"KeshavKK",

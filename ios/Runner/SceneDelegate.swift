@@ -1,6 +1,5 @@
 import UIKit
 import Flutter
-import Smartech
 
 class SceneDelegate: FlutterSceneDelegate {
 
@@ -12,18 +11,8 @@ class SceneDelegate: FlutterSceneDelegate {
 
         if let urlContext = connectionOptions.urlContexts.first {
             let url = urlContext.url
-
             print("Scene willConnect URL: \(url.absoluteString)")
-
-            let handled = Smartech.sharedInstance().application(
-                UIApplication.shared,
-                open: url,
-                options: [:]
-            )
-
-            if !handled {
-                // Handle by your app if needed
-            }
+            routeOpenURL(url)
         }
     }
 
@@ -37,17 +26,15 @@ class SceneDelegate: FlutterSceneDelegate {
         }
 
         let url = urlContext.url
-
         print("Scene openURL: \(url.absoluteString)")
+        routeOpenURL(url)
+    }
 
-        let handled = Smartech.sharedInstance().application(
-            UIApplication.shared,
-            open: url,
-            options: [:]
-        )
-
-        if !handled {
-            // Handle by your app if needed
+    private func routeOpenURL(_ url: URL) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
         }
+
+        _ = appDelegate.handleOpenURL(url, options: [:])
     }
 }
