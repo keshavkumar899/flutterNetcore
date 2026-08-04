@@ -82,6 +82,20 @@ import SmartechNudges
             return
         }
 
+        let config = SmartechConfig.sharedInstance()
+
+
+        // App IDs can be set programmatically to avoid Info.plist level configuration (which may compromise security)
+        config.smartechAppId = "cdd5abdf5d9441b21b0f9e6223a4ed7a"
+        config.hanselAppId = "UJMDZOCJJF92T72LR3GUOVZ4F"
+        config.hanselAppKey = "WRAUGKWQFE620ERVV21NCU3PDM0B31UYL9GYOEDCCNOPWYZ11Q"
+
+        // By default, Hansel SDK is enabled and initialized. Set this flag to true to disable Hansel SDK
+        config.isHanselDisabled = false
+
+        // Apply the complete Smartech configuration before initializing the SDK
+        Smartech.sharedInstance().setSmartechConfig(config)
+
         Smartech.sharedInstance().initSDK(with: self, withLaunchOptions: launchOptions)
         SmartPush.sharedInstance().registerForPushNotificationWithDefaultAuthorizationOptions()
         Hansel.enableDebugLogs()

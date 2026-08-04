@@ -5,6 +5,7 @@ import android.util.Log
 import com.netcore.android.Smartech
 import com.netcore.android.smartechpush.SmartPush
 import com.netcore.android.smartechpush.notification.SMTNotificationOptions
+import com.netcore.android.utility.config.SmartechConfig
 import com.netcore.smartech_appinbox.SmartechAppinboxPlugin
 import com.netcore.smartech_base.SmartechBasePlugin
 import com.netcore.smartech_push.SmartechPushPlugin
@@ -34,6 +35,18 @@ class Application : Application() {
             }
 
             Log.d(TAG, "Initializing Smartech SDK after login")
+
+            val config = SmartechConfig()
+
+            //Appid's can be set through below functions to avoid Manifest level configuration(which breaks the security)
+            config.smartechAppId = "c233670ff952e492b556c946405e5ce1"
+            config.hanselAppId = "2LOT46SOUILN1W2VZEIVKQBZE"
+            config.hanselAppKey = "E2BW8TRR2S8FJHIGG7JMJKUB0N89Q89GIOSIXYXIDD31SZG9NC"
+            //By defalut hansel sdk is enabled and initialized, to disable hansel you can set the flag to true
+            config.disableHansel = false
+            //Set the complete Smartech config before initializing the sdk
+            Smartech.getInstance(WeakReference(applicationContext)).setConfig(config)
+
 
             Smartech.getInstance(WeakReference(applicationContext)).initializeSdk(this)
             Smartech.getInstance(WeakReference(applicationContext)).setDebugLevel(9)

@@ -29,6 +29,12 @@ subprojects {
         if (project.plugins.hasPlugin('com.android.application') || project.plugins.hasPlugin('com.android.library')) {
             try {
                 def android = project.android
+                
+                // Force compileSdk to at least 34 to satisfy dependency requirements
+                if (android.compileSdk < 34) {
+                    android.compileSdk 34
+                }
+                
                 def currentSourceCompat = android.compileOptions.sourceCompatibility
                 def currentTargetCompat = android.compileOptions.targetCompatibility
                 

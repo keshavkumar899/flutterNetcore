@@ -99,7 +99,8 @@ class _SplashScreenState extends State<SplashScreen> {
       var mobileNumber = prefs.getString("mobileNumber");
       print(mobileNumber);
       if (mobileNumber!=null && isLoggedIn != null && isLoggedIn) {
-        await smartechLogin(mobileNumber!);
+        // await smartechLogin(mobileNumber!);
+        initializeNativeSmartechIfNeeded();
         Future.delayed(const Duration(milliseconds: 1500), () {
           kIsWeb?
           pushWithoutNavBar(

@@ -24,7 +24,10 @@ Future<void> smartechLogin(String userIdentity) async {
     await initializeNativeSmartechIfNeeded();
   }
 
-  await Smartech().login(userIdentity);
+  await Future.delayed(
+    const Duration(seconds: 1),
+        () => Smartech().login(userIdentity),
+  );
 }
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
