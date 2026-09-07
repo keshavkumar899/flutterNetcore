@@ -144,6 +144,7 @@ import SmartechNudges
         Messaging.messaging().apnsToken = deviceToken
         guard isSmartechInitialized else { return }
         SmartPush.sharedInstance().didRegisterForRemoteNotifications(withDeviceToken: deviceToken)
+        super.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
     }
 
     override func application(_ application: UIApplication,
@@ -151,6 +152,7 @@ import SmartechNudges
         print("Failed to register for remote notifications: \(error)")
         guard isSmartechInitialized else { return }
         SmartPush.sharedInstance().didFailToRegisterForRemoteNotificationsWithError(error)
+        super.application(application, didFailToRegisterForRemoteNotificationsWithError: error)
     }
 
     // Handle background notifications with content-available
@@ -179,6 +181,7 @@ import SmartechNudges
             SmartPush.sharedInstance().willPresentForegroundNotification(notification)
         }
         completionHandler([.alert, .sound, .badge])
+        super.userNotificationCenter(center, willPresent: notification, withCompletionHandler: completionHandler)
     }
 
     override func userNotificationCenter(_ center: UNUserNotificationCenter,

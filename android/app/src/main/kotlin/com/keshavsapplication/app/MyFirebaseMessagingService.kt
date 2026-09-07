@@ -11,10 +11,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         super.onNewToken(token)
 
-        val app = application as Application
-        if (!app.isSmartechInitialized()) {
-            return
-        }
+//        val app = application as Application
+//        if (!app.isSmartechInitialized()) {
+//            return
+//        }
 
         SmartPush.getInstance(WeakReference(this)).setDevicePushToken(token)
     }
@@ -22,10 +22,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
 
-        val app = application as Application
-        if (!app.isSmartechInitialized()) {
-            return
-        }
+//        val app = application as Application
+//        if (!app.isSmartechInitialized()) {
+//            return
+//        }
 
         val isPushFromSmartech = SmartPush.getInstance(WeakReference(this)).isNotificationFromSmartech(
             JSONObject(message.data.toString())

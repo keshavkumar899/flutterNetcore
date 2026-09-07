@@ -26,7 +26,10 @@ Future<void> smartechLogin(String userIdentity) async {
 
   await Future.delayed(
     const Duration(seconds: 1),
-        () => Smartech().login(userIdentity),
+        () {
+          Smartech().login(userIdentity);
+          Smartech().optTracking(true);
+        }
   );
 }
 

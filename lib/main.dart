@@ -33,6 +33,8 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart' show kIsWeb;
 
+import 'core/utils/utils.dart';
+
 var response1;
 
 /// Logger that works in both debug and release mode
@@ -102,6 +104,15 @@ void main() async {
 
   if (!kIsWeb) {
     await Firebase.initializeApp();
+    final apnsToken =
+    await FirebaseMessaging.instance.getAPNSToken();
+
+    print("APNS = $apnsToken");
+
+    final fcmToken =
+    await FirebaseMessaging.instance.getToken();
+
+    print("FCM = $fcmToken");
   } else {
     await Firebase.initializeApp(options: FirebaseOptions(
         apiKey: "AIzaSyAyoGDHO83zRE-iNren011TmrR3Y0Xxm50",
@@ -154,6 +165,8 @@ void main() async {
   // }
 
   // Smartech().login('pid1816735');
+
+  //await smartechLogin("12345");
   NetcorePX.instance
       .registerPxActionListener('action', _PxActionListenerImpl());
   NetcorePX.instance.registerPxDeeplinkListener(_PxDeeplinkListenerImpl());
