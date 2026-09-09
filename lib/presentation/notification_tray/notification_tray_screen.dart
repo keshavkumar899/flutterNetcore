@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 /// A model representing a delivered notification in the iOS notification tray.
 class DeliveredNotification {
@@ -92,33 +93,98 @@ class _NotificationTrayScreenState extends State<NotificationTrayScreen> {
         _notifications.removeWhere((n) => n.trid == notification.trid);
       });
 
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Removed: ${notification.title}'),
-            duration: const Duration(seconds: 2),
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-      }
+      Fluttertoast.showToast(
+        msg: "✅ Removed: ${notification.title.isNotEmpty ? notification.title : 'Notification'}",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: const Color(0xFF323232),
+        textColor: Colors.white,
+        fontSize: 14.0,
+      );
     } on PlatformException catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Failed to remove: ${e.message}'),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
+      Fluttertoast.showToast(
+        msg: "❌ Failed to remove: ${e.message}",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red.shade700,
+        textColor: Colors.white,
+        fontSize: 14.0,
+      );
     }
+  }
+
+  Future<void> _removeAllNotifications() async {
+    if (_notifications.isEmpty) return;
+
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: const Text('Clear All Notifications'),
+        content: Text(
+          'Remove all ${_notifications.length} notification(s) from the tray?',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: const Text('Remove All'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm != true) return;
+
+    int removedCount = 0;
+    for (final notification in List.of(_notifications)) {
+      try {
+        await _channel.invokeMethod('removeNotificationByTrid', {
+          'trid': notification.trid,
+        });
+        removedCount++;
+      } catch (_) {}
+    }
+
+    setState(() {
+      _notifications.clear();
+    });
+
+    Fluttertoast.showToast(
+      msg: "🗑️ Cleared $removedCount notification(s) from tray",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: const Color(0xFF323232),
+      textColor: Colors.white,
+      fontSize: 14.0,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notification Tray'),
+        title: const Text(
+          'Notification Tray',
+          style: TextStyle(fontWeight: FontWeight.w600),
+        ),
         actions: [
+          if (_notifications.isNotEmpty)
+            IconButton(
+              icon: const Icon(Icons.delete_sweep_outlined),
+              tooltip: 'Remove All',
+              onPressed: _removeAllNotifications,
+            ),
           IconButton(
             icon: const Icon(Icons.refresh),
             tooltip: 'Refresh',
@@ -142,45 +208,91 @@ class _NotificationTrayScreenState extends State<NotificationTrayScreen> {
       return Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: Text(
-            _errorMessage!,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 16, color: Colors.grey),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.error_outline, size: 56, color: Colors.orange),
+              const SizedBox(height: 16),
+              Text(
+                _errorMessage!,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 15, color: Colors.grey),
+              ),
+            ],
           ),
         ),
       );
     }
 
     if (_notifications.isEmpty) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.notifications_off_outlined, size: 64, color: Colors.grey),
-            SizedBox(height: 16),
+            Icon(
+              Icons.notifications_off_outlined,
+              size: 64,
+              color: Colors.grey.shade400,
+            ),
+            const SizedBox(height: 16),
             Text(
               'No Smartech notifications\nin the tray',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.grey),
+              style: TextStyle(fontSize: 16, color: Colors.grey.shade500),
+            ),
+            const SizedBox(height: 24),
+            OutlinedButton.icon(
+              onPressed: () {
+                setState(() => _isLoading = true);
+                _fetchNotifications();
+              },
+              icon: const Icon(Icons.refresh, size: 18),
+              label: const Text('Refresh'),
             ),
           ],
         ),
       );
     }
 
-    return RefreshIndicator(
-      onRefresh: _fetchNotifications,
-      child: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        itemCount: _notifications.length,
-        itemBuilder: (context, index) {
-          final notification = _notifications[index];
-          return _NotificationTile(
-            notification: notification,
-            onDismissed: () => _removeNotification(notification),
-          );
-        },
-      ),
+    return Column(
+      children: [
+        // Count header
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          color: Colors.grey.shade100,
+          child: Text(
+            '${_notifications.length} notification(s) in tray',
+            style: TextStyle(
+              fontSize: 13,
+              color: Colors.grey.shade600,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        // List
+        Expanded(
+          child: RefreshIndicator(
+            onRefresh: _fetchNotifications,
+            child: ListView.separated(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              itemCount: _notifications.length,
+              separatorBuilder: (_, __) => Divider(
+                height: 1,
+                indent: 72,
+                color: Colors.grey.shade200,
+              ),
+              itemBuilder: (context, index) {
+                final notification = _notifications[index];
+                return _NotificationTile(
+                  notification: notification,
+                  onDismissed: () => _removeNotification(notification),
+                );
+              },
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -202,54 +314,96 @@ class _NotificationTile extends StatelessWidget {
       direction: DismissDirection.endToStart,
       background: Container(
         alignment: Alignment.centerRight,
-        padding: const EdgeInsets.only(right: 20),
-        color: Colors.red,
-        child: const Icon(Icons.delete, color: Colors.white),
+        padding: const EdgeInsets.only(right: 24),
+        color: Colors.red.shade400,
+        child: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.delete_outline, color: Colors.white, size: 24),
+            SizedBox(height: 4),
+            Text(
+              'Remove',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
       ),
-      onDismissed: (_) => onDismissed(),
-      child: Card(
-        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-        child: ListTile(
-          leading: const CircleAvatar(
-            backgroundColor: Color(0xFF6A1B9A),
-            child: Icon(Icons.notifications, color: Colors.white, size: 20),
+      confirmDismiss: (_) async {
+        onDismissed();
+        return true;
+      },
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+        leading: Container(
+          width: 44,
+          height: 44,
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [Color(0xFF6A1B9A), Color(0xFF8E24AA)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.circular(12),
           ),
-          title: Text(
-            notification.title.isNotEmpty ? notification.title : '(No title)',
-            style: const TextStyle(fontWeight: FontWeight.w600),
+          child: const Icon(
+            Icons.notifications_active_outlined,
+            color: Colors.white,
+            size: 22,
           ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (notification.body.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Text(
-                    notification.body,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+        ),
+        title: Text(
+          notification.title.isNotEmpty ? notification.title : '(No title)',
+          style: const TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 15,
+          ),
+        ),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (notification.body.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(
+                  notification.body,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey.shade700,
                   ),
                 ),
-              Padding(
-                padding: const EdgeInsets.only(top: 6),
+              ),
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(6),
+                ),
                 child: Text(
                   'trid: ${notification.trid}',
                   style: TextStyle(
                     fontSize: 11,
-                    color: Colors.grey[600],
+                    color: Colors.grey.shade600,
                     fontFamily: 'monospace',
                   ),
                 ),
               ),
-            ],
-          ),
-          trailing: IconButton(
-            icon: const Icon(Icons.close, color: Colors.red),
-            tooltip: 'Remove from tray',
-            onPressed: onDismissed,
-          ),
-          isThreeLine: notification.body.isNotEmpty,
+            ),
+          ],
         ),
+        trailing: IconButton(
+          icon: Icon(Icons.close, color: Colors.red.shade400, size: 20),
+          tooltip: 'Remove from tray',
+          onPressed: onDismissed,
+        ),
+        isThreeLine: notification.body.isNotEmpty,
       ),
     );
   }
