@@ -57,6 +57,17 @@ import SmartechNudges
                     result(self.isSmartechInitialized)
                 case "isSmartechInitialized":
                     result(self.isSmartechInitialized)
+                case "getDeliveredNotifications":
+                    self.getDeliveredNotifications(result: result)
+                case "removeNotificationByTrid":
+                    if let args = call.arguments as? [String: Any],
+                       let trid = args["trid"] as? String {
+                        self.removeNotification(byTrid: trid, result: result)
+                    } else {
+                        result(FlutterError(code: "INVALID_ARGS",
+                                            message: "Missing 'trid' argument",
+                                            details: nil))
+                    }
                 default:
                     result(FlutterMethodNotImplemented)
                 }
@@ -104,6 +115,90 @@ import SmartechNudges
         isSmartechInitialized = true
 
         processPendingDeepLinkIfNeeded()
+    }
+
+    // MARK: - Notification Tray Management
+
+    /// Returns all delivered notifications that contain a `trid` in their payload.
+    private func getDeliveredNotifications(result: @escaping FlutterResult) {
+        UNUserNotificationCenter.current().getDeliveredNotifications { notifications in
+            let mapped: [[String: Any]] = notifications.compactMap { notification in
+                let userInfo = notification.request.content.userInfo
+                let title = notification.request.content.title
+                let body = notification.request.content.body
+                let identifier = notification.request.identifier
+
+                // Try to extract trid from top-level userInfo or nested smtPayload
+                var trid: String? = nil
+                if let topLevelTrid = userInfo["trid"] as? String {
+                    trid = topLevelTrid
+                } else if let smtPayload = userInfo["smtPayload"] as? [String: Any],
+                          let nestedTrid = smtPayload["trid"] as? String {
+                    trid = nestedTrid
+                } else if let smtPayloadString = userInfo["smtPayload"] as? String,
+                          let data = smtPayloadString.data(using: .utf8),
+                          let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                          let parsedTrid = json["trid"] as? String {
+                    trid = parsedTrid
+                }
+
+                guard let resolvedTrid = trid, !resolvedTrid.isEmpty else {
+                    return nil
+                }
+
+                return [
+                    "identifier": identifier,
+                    "title": title,
+                    "body": body,
+                    "trid": resolvedTrid,
+                ]
+            }
+
+            DispatchQueue.main.async {
+                result(mapped)
+            }
+        }
+    }
+
+    /// Removes delivered notifications whose payload contains the given `trid`.
+    private func removeNotification(byTrid trid: String, result: @escaping FlutterResult) {
+        UNUserNotificationCenter.current().getDeliveredNotifications { notifications in
+            let identifiersToRemove: [String] = notifications.compactMap { notification in
+                let userInfo = notification.request.content.userInfo
+
+                // Check top-level trid
+                if let topTrid = userInfo["trid"] as? String, topTrid == trid {
+                    return notification.request.identifier
+                }
+
+                // Check nested dictionary smtPayload
+                if let smtPayload = userInfo["smtPayload"] as? [String: Any],
+                   let nestedTrid = smtPayload["trid"] as? String,
+                   nestedTrid == trid {
+                    return notification.request.identifier
+                }
+
+                // Check string-encoded smtPayload
+                if let smtPayloadString = userInfo["smtPayload"] as? String,
+                   let data = smtPayloadString.data(using: .utf8),
+                   let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                   let parsedTrid = json["trid"] as? String,
+                   parsedTrid == trid {
+                    return notification.request.identifier
+                }
+
+                return nil
+            }
+
+            if !identifiersToRemove.isEmpty {
+                UNUserNotificationCenter.current()
+                    .removeDeliveredNotifications(withIdentifiers: identifiersToRemove)
+            }
+
+            DispatchQueue.main.async {
+                result(identifiersToRemove.count)
+            }
+        }
     }
 
     private func processPendingDeepLinkIfNeeded() {
